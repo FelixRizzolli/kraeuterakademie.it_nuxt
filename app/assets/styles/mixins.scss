@@ -1,0 +1,141 @@
+////////////////////////////////////////////////////////////
+// transitions
+////////////////////////////////////////////////////////////
+
+@mixin transition($value: all 0.5s) {
+    transition: $value;
+}
+
+@mixin transition2($value1: all 0.5s, $value2: all 0.5s) {
+    transition: $value1, $value2;
+}
+
+@mixin transition3($value1: all 0.5s, $value2: all 0.5s, $value3: all 0.5s) {
+    transition: $value1, $value2, $value3;
+}
+
+////////////////////////////////////////////////////////////
+// font
+////////////////////////////////////////////////////////////
+
+@mixin font($fontsize, $lineheight: $fontsize, $letterspacing: 0) {
+    font-size: ($fontsize / 10rem);
+    line-height: round(($lineheight / $fontsize) * 100%);
+    letter-spacing: $letterspacing*0.01em;
+}
+
+@mixin fontFamily($fontfamily) {
+    font-family: $fontfamily;
+}
+
+////////////////////////////////////////////////////////////
+// shapes & positions
+////////////////////////////////////////////////////////////
+
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+@mixin round($size: 0) {
+    @include size($size);
+    border-radius: 50%;
+}
+
+@mixin centerY() {
+    position: absolute;
+    top: 50%;
+    @include translateY(-50%);
+}
+
+@mixin centerX() {
+    position: absolute;
+    left: 50%;
+    @include translateX(-50%);
+}
+
+@mixin center() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include translate(-50%, -50%);
+}
+
+@mixin centerFull() {
+    @include center();
+    width: 100%;
+    height: 100%;
+
+    html.browser-ie & {
+        min-height: 100%;
+        height: auto;
+    }
+}
+
+@mixin leftCenter() {
+    left: 50%;
+    @include translate(-50%);
+}
+
+@mixin topCenter() {
+    top: 50%;
+    @include translateY(-50%);
+}
+
+@mixin absoluteFull() {
+    @include posAbsolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+@mixin content($content: '') {
+    content: $content;
+}
+
+////////////////////////////////////////////////////////////
+// text
+////////////////////////////////////////////////////////////
+
+@mixin wordbreak() {
+    hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    -webkit-hyphenate-limit-before: 5; // Safari
+    -webkit-hyphenate-limit-after: 5; // Safari
+    -webkit-hyphenate-limit-chars: auto 5;
+    hyphenate-limit-chars: auto 5;
+    -ms-hyphenate-limit-chars: auto 5;
+    -webkit-hyphenate-limit-lines: 2;
+    -ms-hyphenate-limit-lines: 2;
+    hyphenate-limit-lines: 2;
+}
+
+@mixin noSelect() {
+    user-select: none;
+    tap-highlight-color: transparent;
+}
+
+////////////////////////////////////////////////////////////
+// col / row
+////////////////////////////////////////////////////////////
+
+@mixin col($col: 1) {
+    grid-column-end: span $col;
+}
+
+@mixin col-start($colstart: 1) {
+    grid-column-start: $colstart;
+}
+
+@mixin row($row: 1) {
+    grid-row-end: span $row;
+}
+
+@mixin row-start($rowstart: 1) {
+    grid-row-start: $rowstart;
+}

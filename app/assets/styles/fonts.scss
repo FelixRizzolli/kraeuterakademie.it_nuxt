@@ -1,0 +1,44 @@
+@use 'mixins' as *;
+
+////////////////////////////////////////////////////////////
+// fonts
+////////////////////////////////////////////////////////////
+
+$fontFamilyDefault: 'Arial, sans-serif';
+$fontFamilyHeading: 'Georgia, serif';
+
+@mixin fontFamilyDefault() {
+    @include fontFamily($fontFamilyDefault);
+}
+
+@mixin fontFamilyHeadming() {
+    @include fontFamily($fontFamilyHeading);
+}
+
+@mixin fontSizeText() {
+
+}
+
+@mixin fontSizeH1() {
+
+}
+
+@mixin fontSizeH2() {
+
+}
+
+@mixin fontSizeH3() {
+
+}
+
+@mixin fontSizeH4() {
+
+}
+
+@mixin fontSizeH5() {
+
+}
+
+@mixin fontSizeH6() {
+
+}

@@ -1,0 +1,44 @@
+////////////////////////////////////////////////////////////
+// prefixer
+////////////////////////////////////////////////////////////
+
+@mixin border-radius($args) {
+    border-radius: $args;
+    background-clip: padding-box;
+}
+
+@mixin transform($args) {
+    transform: $args;
+}
+
+@mixin transform-origin($args) {
+    transform-origin: $args;
+}
+
+@mixin transform-style($style) {
+    transform-style: $style;
+}
+
+@mixin rotate($deg: 45deg) {
+    @include transform(rotate($deg));
+}
+
+@mixin scale($factor: 0$mixin 5) {
+    @include transform(scale($factor));
+}
+
+@mixin translate($x, $y) {
+    @include transform(translate3d($x, $y, 0));
+}
+
+@mixin translateX($x) {
+    @include transform(translate3d($x, 0, 0));
+}
+
+@mixin translateY($y) {
+    @include transform(translate3d(0, $y, 0));
+}
+
+@mixin translate3d($x, $y, $z) {
+    @include transform(translate3d($x, $y, $z));
+}

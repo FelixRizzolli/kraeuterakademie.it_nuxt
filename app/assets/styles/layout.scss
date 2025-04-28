@@ -1,0 +1,141 @@
+@use 'fonts' as *;
+@use 'colors' as *;
+@use 'mixins' as *;
+
+////////////////////////////////////////////////////////////
+// rem
+////////////////////////////////////////////////////////////
+
+:root {
+    font-size: 10 * 0.2777777777777778vw !important;
+    --adaptive-height: 100vh;
+    --dp-font-family: $fontDefault, sans-serif !important;
+
+    @media (min-width: 768px) {
+        font-size: 10 * 0.13020833333333334vw !important;
+    }
+
+    @media (min-width: 1024px) {
+        font-size: 10 * 0.052083333333333336vw !important;
+    }
+
+    @media (min-width: 2000px) {
+        font-size: 10 * 0.045vw !important;
+    }
+}
+
+////////////////////////////////////////////////////////////
+// fonts
+////////////////////////////////////////////////////////////
+
+body {
+    @include fontFamilyDefault();
+    @include fontSizeText();
+    color: $colorFont;
+    --dp-font-size: 1.7rem;
+    --dp-preview-font-size: 1.7rem;
+}
+
+h1,
+.h1 {
+    @include fontSizeH1();
+}
+
+h2,
+.h2 {
+    @include fontSizeH2();
+}
+
+h3,
+.h3 {
+    @include fontSizeH3();
+}
+
+h4,
+.h4 {
+    @include fontSizeH4();
+}
+
+h5,
+.h5 {
+    @include fontSizeH5();
+}
+
+h6,
+.h6 {
+    @include fontSizeH6();
+}
+
+////////////////////////////////////////////////////////////
+// links
+////////////////////////////////////////////////////////////
+
+.link-container {
+    display: flex;
+}
+
+main a {
+    color: $colorFont;
+
+    &:hover {
+        color: $colorCta;
+    }
+}
+
+////////////////////////////////////////////////////////////
+// list
+////////////////////////////////////////////////////////////
+
+:where(ul) {
+    list-style-type: none;
+    display: inline-block;
+    margin-top: 3rem;
+
+    + p {
+        margin-top: 3rem;
+    }
+
+    > li {
+        position: relative;
+        margin: 0 auto;
+        margin-left: 1.5ch;
+
+        &:before {
+            @include content;
+            position: relative;
+            display: inline-block;
+            width: 0.7ch;
+            height: 2px;
+            min-width: 0.6ch;
+            bottom: 0.5ex;
+            transform: translateY(25%);
+            background-color: currentColor;
+            margin-right: 0.8ch;
+            margin-left: -1.5ch;
+            // LAYOUT mobile
+            @media (max-width: 1023px) {
+                height: 2px;
+            }
+        }
+
+        > * {
+            &:first-child {
+                display: inline-block;
+            }
+        }
+
+        ul li:before {
+            background-color: unset;
+            border: 1px solid;
+        }
+    }
+}
+
+:where(ol) {
+    padding-left: 2.5ch;
+    display: inline-block;
+}
+
+.abcList {
+    list-style-type: lower-alpha;
+}

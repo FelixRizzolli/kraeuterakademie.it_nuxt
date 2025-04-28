@@ -1,0 +1,41 @@
+@use 'mixins' as *;
+
+:root {
+    --grid-gap: 2rem;
+    --grid-margin: 7rem;
+    --grid-margin-withoutgap: 32rem;
+
+    // LAYOUT mobile
+    @media (max-width: 1023px) {
+        --grid-gap: 1rem;
+        --grid-margin: 2rem;
+    }
+}
+
+.grid-container {
+    display: grid;
+}
+
+.grid-container > div:first-child:last-child:not([class]) {
+    grid-column-start: 2;
+    grid-column-end: 14;
+}
+
+.grid-container {
+    grid-column-gap: var(--grid-gap);
+    grid-template-columns: var(--grid-margin) repeat(12, 1fr) var(--grid-margin);
+
+    // LAYOUT mobile
+    @media (max-width: 1023px) {
+        grid-template-columns: var(--grid-margin) repeat(12, 1fr) var(--grid-margin);
+    }
+}
+
+.grid-container-inner {
+    @include col(12);
+    @include col-start(2);
+
+    display: grid;
+    grid-column-gap: var(--grid-gap);
+    grid-template-columns: repeat(12, 1fr);
+}
