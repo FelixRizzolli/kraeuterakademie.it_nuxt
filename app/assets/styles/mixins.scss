@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 ////////////////////////////////////////////////////////////
 // transitions
 ////////////////////////////////////////////////////////////
@@ -19,8 +21,8 @@
 ////////////////////////////////////////////////////////////
 
 @mixin font($fontsize, $lineheight: $fontsize, $letterspacing: 0) {
-    font-size: ($fontsize / 10rem);
-    line-height: round(($lineheight / $fontsize) * 100%);
+    font-size: #{math.div($fontsize, 10)}rem;
+    line-height: math.round(math.div($lineheight, $fontsize) * 100%);
     letter-spacing: $letterspacing*0.01em;
 }
 

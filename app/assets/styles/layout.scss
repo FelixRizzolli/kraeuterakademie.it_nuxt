@@ -31,9 +31,12 @@
 body {
     @include fontFamilyDefault();
     @include fontSizeText();
-    color: $colorFont;
-    --dp-font-size: 1.7rem;
-    --dp-preview-font-size: 1.7rem;
+
+    & {
+        color: $colorFont;
+        --dp-font-size: 1.7rem;
+        --dp-preview-font-size: 1.7rem;
+    }
 }
 
 h1,
@@ -101,20 +104,24 @@ main a {
         margin-left: 1.5ch;
 
         &:before {
-            @include content;
-            position: relative;
-            display: inline-block;
-            width: 0.7ch;
-            height: 2px;
-            min-width: 0.6ch;
-            bottom: 0.5ex;
-            transform: translateY(25%);
-            background-color: currentColor;
-            margin-right: 0.8ch;
-            margin-left: -1.5ch;
-            // LAYOUT mobile
-            @media (max-width: 1023px) {
+            @include content();
+
+            & {
+                position: relative;
+                display: inline-block;
+                width: 0.7ch;
                 height: 2px;
+                min-width: 0.6ch;
+                bottom: 0.5ex;
+                transform: translateY(25%);
+                background-color: currentColor;
+                margin-right: 0.8ch;
+                margin-left: -1.5ch;
+    
+                // LAYOUT mobile
+                @media (max-width: 1023px) {
+                    height: 2px;
+                }
             }
         }
 

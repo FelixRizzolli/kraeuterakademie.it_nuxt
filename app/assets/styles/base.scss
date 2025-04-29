@@ -106,8 +106,11 @@ table {
 }
 
 a {
-    display: inline-block;
-    @include transition;
+    @include transition();
+
+    & {
+        display: inline-block;
+    }
 }
 
 b,
@@ -262,9 +265,12 @@ table {
 ////////////////////////////////////////////////////////////
 
 .gme-info-window {
-    padding: 1.5rem 0 1.5rem 1.5rem;
-    @include fontSizeText;
-    font-size: 1.4rem;
+    @include fontSizeText();
+
+    & {
+        padding: 1.5rem 0 1.5rem 1.5rem;
+        font-size: 1.4rem;
+    }
 
     a {
         color: $colorFont;
