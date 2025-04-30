@@ -23,6 +23,10 @@ $fontFamilyHeading: 'roca', sans-serif;
 @mixin fontSizeH1() {
     @include font-70-72-1();
     @include fontFamilyHeading();
+
+    & {
+        font-weight: 900;
+    }
 }
 
 @mixin fontSizeH2() {
@@ -95,8 +99,9 @@ $fontFamilyHeading: 'roca', sans-serif;
     }
 }
 
-@mixin font-17-17-10-M() { // Link
+@mixin font-17-17-10-M-U() { // Link
     @include font(17, 17, 10);
+    text-transform: uppercase;
 
     // LAYOUT mobile
     @media (max-width: 1023px) {

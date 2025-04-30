@@ -73,6 +73,28 @@ h6,
 // links
 ////////////////////////////////////////////////////////////
 
+.link-button {
+    @include font-17-17-10-M-U();
+
+    & {
+        border-radius: 3rem;
+        padding: 1.2rem 2.5rem;
+
+        width: max-content;
+
+        background-color: $colorCta;
+        color: $colorFontWhite;
+
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    &:hover {
+        background-color: $colorBackgroundBrown;
+        color: $colorFont;
+    }
+}
+
 .link-container {
     display: flex;
 }

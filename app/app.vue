@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ContentHeroSmall />
   </div>
 </template>
 
