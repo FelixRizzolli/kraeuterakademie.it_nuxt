@@ -1,6 +1,7 @@
 <template>
   <div>
     <ContentHeroSmall />
+    <ContentImageText />
   </div>
 </template>
 
