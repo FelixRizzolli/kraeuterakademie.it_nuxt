@@ -1,7 +1,10 @@
 <template>
   <div>
+    <Header />
     <ContentHeroSmall />
     <ContentImageText />
+    <ContentAnimatedText />
+    <Footer />
   </div>
 </template>
 
