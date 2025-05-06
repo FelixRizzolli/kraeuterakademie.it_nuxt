@@ -90,8 +90,9 @@ $fontFamilyHeading: 'roca', sans-serif;
     }
 }
 
-@mixin font-50-63-1() { // Paragraph
+@mixin font-50-63-1-BL() { // Paragraph
     @include font(50, 63, 1);
+    font-weight: 900;
 
     // LAYOUT mobile
     @media (max-width: 1023px) {
