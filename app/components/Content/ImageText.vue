@@ -1,5 +1,5 @@
 <template>
-  <section class="contentelement_imgagetext grid-container">
+  <section class="contentelement_imagetext grid-container">
     <div class="image">
       <img :src="image?.src" :alt="image?.alt" />
     </div>
