@@ -31,4 +31,10 @@ export default defineNuxtConfig({
       }
     }
   },
+
+  nitro: {
+    output: {
+      dir: '.output'
+    }
+  },
 })

@@ -1,0 +1,4 @@
+.nuxt
+.DS_Store
+.pnpm-store
+node_modules
