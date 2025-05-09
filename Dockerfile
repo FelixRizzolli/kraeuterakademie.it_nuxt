@@ -13,7 +13,9 @@ COPY . ./
 
 # Install dependencies & build the project
 RUN corepack enable && \
+    rm -rf node_modules && \
     pnpm install --prod && \
+    rm -rf .output && \
     pnpm run build
 
 # Change the port and host
