@@ -1,9 +1,9 @@
 <template>
   <div>
     <Header />
-    <ContentHeroSmall />
-    <ContentImageText />
-    <ContentAnimatedText />
+    <HeroSmall />
+    <ImageText />
+    <AnimatedText />
     <Footer />
   </div>
 </template>

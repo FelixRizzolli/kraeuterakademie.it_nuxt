@@ -1,5 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  components: [
+    { path: '~/components/elements', pathPrefix: false },
+    { path: '~/components/layout', pathPrefix: false },
+    { path: '~/components/sections', pathPrefix: false },
+  ],
+
   future: {
     compatibilityVersion: 4,
   },
@@ -39,10 +45,10 @@ export default defineNuxtConfig({
   svgo: {
       // https://www.npmjs.com/package/nuxt-svgo
       componentPrefix: "i",
-      
+
       autoImportPath: "~/assets/icons/",
 
-      customComponent: "KaIcon",
+      customComponent: "Icon",
 
       // if many icons, maybe set to false for better performance (currently generates chunks for each icon)
       // global: false, 
