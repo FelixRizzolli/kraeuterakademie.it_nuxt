@@ -42,7 +42,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .contentelement_imagetext {
-  margin-top: 15rem;
+  margin: 15rem 0;
 }
 
 .image {
