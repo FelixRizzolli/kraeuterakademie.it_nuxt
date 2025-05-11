@@ -21,7 +21,7 @@ $fontFamilyHeading: "roca", sans-serif;
 }
 
 @mixin fontSizeH1() {
-    @include font-70-72-1();
+    @include font-70-72-1-BL();
     @include fontFamilyHeading();
 
     & {
@@ -30,7 +30,7 @@ $fontFamilyHeading: "roca", sans-serif;
 }
 
 @mixin fontSizeH2() {
-    @include font-30-30-5();
+    @include font-30-30-5-BL();
     @include fontFamilyHeading();
 }
 
@@ -54,9 +54,10 @@ $fontFamilyHeading: "roca", sans-serif;
 // fonts - specific
 ////////////////////////////////////////////////////////////
 
-@mixin font-70-72-1() {
+@mixin font-70-72-1-BL() {
     // Titel
     @include font(70, 72, 1);
+    font-weight: 900;
 
     // LAYOUT mobile
     @media (max-width: 1023px) {
@@ -64,9 +65,10 @@ $fontFamilyHeading: "roca", sans-serif;
     }
 }
 
-@mixin font-30-30-5() {
+@mixin font-30-30-5-BL() {
     // Title Small
     @include font(30, 30, 5);
+    font-weight: 900;
 
     // LAYOUT mobile
     @media (max-width: 1023px) {

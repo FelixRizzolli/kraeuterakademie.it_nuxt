@@ -1,10 +1,10 @@
 <template>
     <section class="contentelement_herobig">
-        <div class="image-container">
-            <img :src="image?.src" :alt="image?.alt" class="image" />
-        </div>
         <div class="content-container grid-container">
             <h1 class="title">{{ title }}</h1>
+        </div>
+        <div class="image-container">
+            <img :src="image?.src" :alt="image?.alt" class="image" />
         </div>
     </section>
 </template>
@@ -28,6 +28,10 @@ const props = defineProps<HeroBigProps>();
     padding-top: 30rem;
 }
 
+.content-container {
+    margin-bottom: -4rem;
+}
+
 .title {
     @include col-start(3);
     @include col(6);
@@ -40,13 +44,10 @@ const props = defineProps<HeroBigProps>();
 }
 
 .image-container {
-    position: relative;
     margin-left: 21rem;
 }
 
 .image {
-    margin-top: 3.5rem;
-    position: absolute;
     width: 100%;
     height: auto;
 }

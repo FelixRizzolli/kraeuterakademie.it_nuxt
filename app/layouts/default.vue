@@ -32,7 +32,7 @@ const pageData = ref<PageData>({
                 { text: "Bücher", href: "/buecher" },
                 { text: "Über Mich", href: "/ueber-mich" },
                 { text: "FNL", href: "/fnl" },
-                { text: "Kontakt", href: "/contact" },
+                { text: "Kontakt", href: "/kontakt" },
             ],
         },
         ctaButton: {
