@@ -1,6 +1,6 @@
-@use 'fonts' as *;
-@use 'colors' as *;
-@use 'mixins' as *;
+@use "fonts" as *;
+@use "colors" as *;
+@use "mixins" as *;
 
 ////////////////////////////////////////////////////////////
 // rem
@@ -139,7 +139,7 @@ main a {
                 background-color: currentColor;
                 margin-right: 0.8ch;
                 margin-left: -1.5ch;
-    
+
                 // LAYOUT mobile
                 @media (max-width: 1023px) {
                     height: 2px;

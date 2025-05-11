@@ -1,20 +1,15 @@
 <template>
-  <footer>
-    
-  </footer>
+    <footer></footer>
 </template>
 
 <script lang="ts" setup>
-
-export interface FooterProps {
-}
+export interface FooterProps {}
 
 const props = defineProps<FooterProps>();
-
 </script>
 
 <style>
-  footer {
+footer {
     height: 100rem;
-  }
+}
 </style>

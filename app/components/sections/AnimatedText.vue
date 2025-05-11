@@ -1,7 +1,7 @@
 <template>
-  <section class="contentelement_animatedtext grid-container">
-    <p class="text" ref="textElement">{{ text }}</p>
-  </section>
+    <section class="contentelement_animatedtext grid-container">
+        <p class="text" ref="textElement">{{ text }}</p>
+    </section>
 </template>
 
 <script lang="ts" setup>
@@ -48,19 +48,17 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-
 .contentelement_animatedtext {
-  padding: 15rem 0;
+    padding: 15rem 0;
 
-  background-color: $colorBackgroundBrown;
-  color: $colorFontWhite;
+    background-color: $colorBackgroundBrown;
+    color: $colorFontWhite;
 }
 
 .text {
-  @include col-start(3);
-  @include col(10);
-  @include font-50-63-1-BL();
-  @include fontFamilyHeading();
+    @include col-start(3);
+    @include col(10);
+    @include font-50-63-1-BL();
+    @include fontFamilyHeading();
 }
-
 </style>

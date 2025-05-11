@@ -1,0 +1,8 @@
+dist
+coverage
+.vscode/settings.json
+.output
+.nuxt
+.pnpm-store
+public
+node_modules
