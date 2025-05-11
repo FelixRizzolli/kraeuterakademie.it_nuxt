@@ -1,19 +1,19 @@
 <template>
   <nav class="top-navigation">
-    <NuxtLink v-for="link in links" :key="link.name" class="link" :to="link.href">{{ link.name }}</NuxtLink>
+    <NuxtLink v-for="(link, index) in links" :key="index" class="link" :to="link.href">{{ link.text }}</NuxtLink>
   </nav>
 </template>
 
 <script lang="ts" setup>
 
-const links = ref<Array<{ name: string; href: string }>>([
-  { name: 'Kräuterkurse', href: '/kraeuterkurse' },
-  { name: 'Seminare', href: '/seminare' },
-  { name: 'Bücher', href: '/buecher' },
-  { name: 'Über Mich', href: '/ueber-mich' },
-  { name: 'FNL', href: '/fnl' },
-  { name: 'Kontakt', href: '/contact' },
-]);
+export interface HeaderTopNavigationProps {
+  links: Array<{
+    text: string;
+    href: string;
+  }>;
+}
+
+const props = defineProps<HeaderTopNavigationProps>();
 
 </script>
 

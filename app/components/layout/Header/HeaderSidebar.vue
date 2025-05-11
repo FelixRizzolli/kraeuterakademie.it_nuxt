@@ -5,23 +5,26 @@
     </div>
 
     <nav class="links">
-      <NuxtLink class="link" to="/blog">
-        <i-blog class="link-icon" />
-        <span class="link-text">Blog</span>
-      </NuxtLink>
-      <NuxtLink class="link" to="/termine">
-        <i-calendar class="link-icon" />
-        <span class="link-text">Termine</span>
-      </NuxtLink>
-      <NuxtLink class="link" to="/galerie">
-        <i-camera class="link-icon" />
-        <span class="link-text">Galerie</span>
+      <NuxtLink class="link" :to="link.href" v-for="(link, index) in links" :key="index">
+        <component :is="'i-' + link.icon" class="link-icon" />
+        <span class="link-text">{{ link.text }}</span>
       </NuxtLink>
     </nav>
   </section>
 </template>
 
 <script lang="ts" setup>
+
+export interface HeaderSidebarProps {
+  logo: string;
+  links: Array<{
+    icon: string;
+    href: string;
+    text: string;
+  }>;
+}
+
+const porps = defineProps<HeaderSidebarProps>();
 
 </script>
 

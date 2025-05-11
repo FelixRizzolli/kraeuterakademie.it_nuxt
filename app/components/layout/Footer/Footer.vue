@@ -6,6 +6,11 @@
 
 <script lang="ts" setup>
 
+export interface FooterProps {
+}
+
+const props = defineProps<FooterProps>();
+
 </script>
 
 <style>
