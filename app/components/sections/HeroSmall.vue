@@ -26,15 +26,13 @@ interface Image {
   alt: string;
 }
 
-const title = ref<string>('Kurse zu Wildpflanzen und Heilkräuter');
-const link = ref<Link>({
-  href: '/akademie',
-  text: 'Kräuterakademie',
-});
-const image = ref<Image>({
-  src: '/images/herosmall_1.png',
-  alt: 'Kräuterakademie',
-});
+interface HeroSmallProps {
+  title: string;
+  link: Link;
+  image: Image;
+}
+
+const props = defineProps<HeroSmallProps>();
 
 onBeforeMount(() => {
   console.log('HeroSmall component mounted');

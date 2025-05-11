@@ -22,17 +22,15 @@ interface Link {
   text: string;
 }
 
-const image = ref<Image>({
-  src: '/images/imgtext_1.png',
-  alt: 'Seminare',
-});
-const text1 = ref<string>('Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht – und oftmals gar nicht erst gelesen. Aber bin ich allein deshalb ein Text.');
-const infos = ref<string>('Finde zu deiner Natur und entfalte deine Kraft.');
-const text2 = ref<string>('Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben');
-const link = ref<Link>({
-  href: '/seminare',
-  text: 'Link Seminare',
-});
+interface ImageTextProps {
+  image: Image;
+  text1: string;
+  infos: string;
+  text2: string;
+  link: Link;
+}
+
+const props = defineProps<ImageTextProps>();
 
 onMounted(() => {
   console.log('Component mounted');
