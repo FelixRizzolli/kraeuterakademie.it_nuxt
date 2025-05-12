@@ -184,7 +184,7 @@ footer {
     justify-content: end;
     gap: 4.5rem;
 
-    :deep(svg) {
+    img {
         height: 9rem;
         width: auto;
     }
