@@ -25,7 +25,6 @@ const props = defineProps<TextElementProps>();
 .title {
     @include col-start(3);
     @include col(6);
-    @include fontSizeH1();
 
     & {
         margin-bottom: 7.5rem;

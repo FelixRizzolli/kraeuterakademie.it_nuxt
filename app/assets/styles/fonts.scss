@@ -30,11 +30,16 @@ $fontFamilyHeading: "roca", sans-serif;
 }
 
 @mixin fontSizeH2() {
-    @include font-30-30-5-BL();
+    @include font-70-72-1-BL();
     @include fontFamilyHeading();
+
+    & {
+        font-weight: 900;
+    }
 }
 
 @mixin fontSizeH3() {
+    @include font-30-30-5-BL();
     @include fontFamilyHeading();
 }
 

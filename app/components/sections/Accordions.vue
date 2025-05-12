@@ -7,7 +7,7 @@
                 <details class="accordion" @click.prevent="toggleAccordion(index)">
                     <summary class="accordion-title">
                         <div class="safari-fix">
-                            <h4 v-html="accordion.title" class="inner"></h4>
+                            <h3 v-html="accordion.title" class="inner"></h3>
                             <div class="toggle">
                                 <i-toggle :filled="false" />
                             </div>
@@ -118,8 +118,6 @@ const closeAccordion = (accordionWrapper: HTMLDivElement) => {
 
     @include col-start(3);
     @include col(11);
-
-    @include fontSizeH1();
 }
 
 details summary::-webkit-details-marker {
@@ -160,10 +158,6 @@ details > summary {
 
         display: flex;
         justify-content: space-between;
-
-        .inner {
-            @include fontSizeH2();
-        }
 
         .toggle {
             display: flex;

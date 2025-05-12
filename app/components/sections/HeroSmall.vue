@@ -56,11 +56,7 @@ onBeforeMount(() => {
 }
 
 .title {
-    @include fontSizeH1();
-
-    & {
-        text-align: right;
-    }
+    text-align: right;
 }
 
 .link-button {
