@@ -4,6 +4,7 @@
             <h3 v-if="info.title" class="title">{{ info.title }}</h3>
             <p v-if="info.text" class="text">{{ info.text }}</p>
         </div>
+        <NuxtLink v-if="link" class="link-button" :to="link.href">{{ link.text }}</NuxtLink>
     </section>
 </template>
 
@@ -13,6 +14,10 @@ export interface TemplateProps {
         title?: string;
         text?: string;
     }>;
+    link?: {
+        href: string;
+        text: string;
+    };
 }
 
 const props = defineProps<TemplateProps>();
@@ -62,6 +67,7 @@ const props = defineProps<TemplateProps>();
     .contentelement_template {
         padding: 7.5rem 0;
     }
+
     .info {
         @include col(12);
 
@@ -84,6 +90,15 @@ const props = defineProps<TemplateProps>();
 
         &:not(:first-of-type) {
             margin-top: 3.5rem;
+        }
+    }
+
+    .link-button {
+        @include col-start(2);
+        @include col(12);
+
+        & {
+            margin: 6rem auto 0 auto;
         }
     }
 }

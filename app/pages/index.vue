@@ -3,7 +3,7 @@
     <ImageText :image="pageData.imagetext.image" :text1="pageData.imagetext.text1" :infos="pageData.imagetext.infos" :text2="pageData.imagetext.text2" :link="pageData.imagetext.link" />
     <AnimatedText :text="pageData.animatedtext.text" />
     <MoodPicture :image="pageData.moodpicture.image" />
-    <Infos :infos="pageData.infos" />
+    <Infos :infos="pageData.infos.infos" />
 </template>
 
 <script lang="ts" setup>
@@ -41,20 +41,22 @@ const pageData = ref<any>({
             alt: "Kräuterakademie",
         },
     },
-    infos: [
-        {
-            title: "Lehrgangskosten € 270 + Mwst",
-            text: "Im Preis inbegriffen sind umfangreiche Unterlagen und Bestimmungshilfen",
-        },
-        {
-            title: "Teilnehmerzahl ist begrenzt",
-            text: "Bei Fragen oder Infos: 338 269 8477 oder sigrid.thaler@gmail.com",
-        },
-        {
-            title: "Referentin Sigrid Thaler",
-            text: "Referentin der FNL Kräuterakademie",
-        },
-    ],
+    infos: {
+        infos: [
+            {
+                title: "Lehrgangskosten € 270 + Mwst",
+                text: "Im Preis inbegriffen sind umfangreiche Unterlagen und Bestimmungshilfen",
+            },
+            {
+                title: "Teilnehmerzahl ist begrenzt",
+                text: "Bei Fragen oder Infos: 338 269 8477 oder sigrid.thaler@gmail.com",
+            },
+            {
+                title: "Referentin Sigrid Thaler",
+                text: "Referentin der FNL Kräuterakademie",
+            },
+        ],
+    },
 });
 </script>
 
