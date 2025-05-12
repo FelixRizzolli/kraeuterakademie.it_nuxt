@@ -17,18 +17,18 @@ const pageData = ref<PageData>({
         highlight: {
             logo: "",
             links: [
-                { icon: "open-book", text: "Blog", href: "/blog" },
-                { icon: "calendar", text: "Termine", href: "/termine" },
-                { icon: "camera", text: "Galerie", href: "/galerie" },
+                //{ icon: "open-book", text: "Blog", href: "/blog" },
+                //{ icon: "calendar", text: "Termine", href: "/termine" },
+                //{ icon: "camera", text: "Galerie", href: "/galerie" },
             ],
         },
         navigation: {
             links: [
                 { text: "Kräuterkurse", href: "/kraeuterkurse" },
-                { text: "Seminare", href: "/seminare" },
-                { text: "Bücher", href: "/buecher" },
+                //{ text: "Seminare", href: "/seminare" },
+                //{ text: "Bücher", href: "/buecher" },
                 { text: "Über Mich", href: "/ueber-mich" },
-                { text: "FNL", href: "/fnl" },
+                //{ text: "FNL", href: "/fnl" },
                 { text: "Kontakt", href: "/kontakt" },
             ],
         },
