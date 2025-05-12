@@ -1,12 +1,12 @@
 <template>
     <section class="contentelement_imagetext grid-container">
-        <div class="image">
-            <img :src="image?.src" :alt="image?.alt" />
+        <div v-if="image" class="image">
+            <img :src="image.src" :alt="image.alt" />
         </div>
-        <p class="text">{{ text1 }}</p>
-        <p class="infos">{{ infos }}</p>
-        <p class="text">{{ text2 }}</p>
-        <NuxtLink class="link-button" :to="link?.href">{{ link?.text }}</NuxtLink>
+        <div v-if="text1" class="text" v-html="text1"></div>
+        <div v-if="infos" class="infos" v-html="infos"></div>
+        <div v-if="text2" class="text" v-html="text2"></div>
+        <NuxtLink v-if="link" class="link-button" :to="link.href">{{ link.text }}</NuxtLink>
     </section>
 </template>
 
@@ -22,11 +22,11 @@ interface Link {
 }
 
 interface ImageTextProps {
-    image: Image;
-    text1: string;
-    infos: string;
-    text2: string;
-    link: Link;
+    image?: Image;
+    text1?: string;
+    infos?: string;
+    text2?: string;
+    link?: Link;
 }
 
 const props = defineProps<ImageTextProps>();
@@ -45,6 +45,11 @@ onMounted(() => {
     @include col-start(3);
     @include col(4);
     @include row(4);
+
+    img {
+        width: 100%;
+        height: auto;
+    }
 }
 
 .text {
@@ -93,5 +98,9 @@ onMounted(() => {
     & {
         margin-top: 4.5rem;
     }
+}
+
+:deep(h3:not(:first-child)) {
+    margin-top: 4.5rem;
 }
 </style>
