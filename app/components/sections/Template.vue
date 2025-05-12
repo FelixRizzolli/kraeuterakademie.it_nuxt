@@ -8,4 +8,8 @@ export interface TemplateProps {}
 const props = defineProps<TemplateProps>();
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.contentelement_template {
+    margin-bottom: 15rem;
+}
+</style>

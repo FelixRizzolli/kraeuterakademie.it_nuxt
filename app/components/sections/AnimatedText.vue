@@ -50,6 +50,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .contentelement_animatedtext {
     padding: 15rem 0;
+    margin-bottom: 15rem;
 
     background-color: $colorBackgroundBrown;
     color: $colorFontWhite;

@@ -38,7 +38,9 @@ onBeforeMount(() => {
 
 <style lang="scss" scoped>
 .contentelement_herosmall {
+    margin-bottom: 15rem;
     padding-top: 30rem;
+
     position: relative;
 }
 

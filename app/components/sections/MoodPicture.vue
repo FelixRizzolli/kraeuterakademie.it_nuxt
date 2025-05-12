@@ -21,6 +21,7 @@ const props = defineProps<MoodPictureProps>();
 
 <style lang="scss" scoped>
 .image-container {
+    margin-bottom: 15rem;
     margin-left: 21rem;
 }
 

@@ -25,6 +25,7 @@ const props = defineProps<HeroBigProps>();
 
 <style lang="scss" scoped>
 .contentelement_herobig {
+    margin-bottom: 15rem;
     padding-top: 30rem;
 }
 

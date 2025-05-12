@@ -22,6 +22,10 @@ const props = defineProps<TextElementProps>();
 </script>
 
 <style lang="scss" scoped>
+.contentelement_textelement {
+    margin-bottom: 15rem;
+}
+
 .title {
     @include col-start(3);
     @include col(6);

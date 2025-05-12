@@ -110,7 +110,7 @@ const closeAccordion = (accordionWrapper: HTMLDivElement) => {
 
 <style lang="scss" scoped>
 .contentelement_accordions {
-    padding: 15rem 0;
+    margin-bottom: 15rem;
 }
 
 .title {
