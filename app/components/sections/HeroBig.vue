@@ -30,7 +30,7 @@ const props = defineProps<HeroBigProps>();
 }
 
 .content-container {
-    margin-bottom: -4rem;
+    margin-bottom: -3.5rem;
 }
 
 .title {
