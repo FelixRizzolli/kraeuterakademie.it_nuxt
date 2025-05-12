@@ -103,4 +103,38 @@ onMounted(() => {
 :deep(h3:not(:first-child)) {
     margin-top: 4.5rem;
 }
+
+@media (max-width: 1023px) {
+    .contentelement_imagetext {
+        margin-bottom: 7.5rem;
+    }
+
+    .image {
+        @include col-start(2);
+        @include col(10);
+    }
+
+    .infos {
+        @include col-start(3);
+        @include col(11);
+
+        & {
+            margin: 4.5rem 0 0 0;
+        }
+    }
+
+    .text {
+        @include col-start(2);
+        @include col(10);
+
+        & {
+            margin-top: 4.5rem;
+        }
+    }
+
+    .link-button {
+        @include col-start(2);
+        @include col(12);
+    }
+}
 </style>
