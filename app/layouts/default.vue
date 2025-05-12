@@ -1,5 +1,5 @@
 <template>
-    <Header :highlight="pageData.header.highlight" :top-navigation="pageData.header.topNavigation" :cta-button="pageData.header.ctaButton" />
+    <Header :highlight="pageData.header.highlight" :navigation="pageData.header.navigation" :cta-button="pageData.header.ctaButton" />
     <main>
         <slot />
     </main>
@@ -22,7 +22,7 @@ const pageData = ref<PageData>({
                 { icon: "camera", text: "Galerie", href: "/galerie" },
             ],
         },
-        topNavigation: {
+        navigation: {
             links: [
                 { text: "Kräuterkurse", href: "/kraeuterkurse" },
                 { text: "Seminare", href: "/seminare" },

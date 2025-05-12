@@ -42,6 +42,7 @@ const porps = defineProps<HeaderHighlightProps>();
 }
 
 .logo {
+    z-index: 10;
     margin-top: 4.2rem;
 
     display: flex;
