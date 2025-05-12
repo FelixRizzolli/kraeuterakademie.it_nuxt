@@ -1,11 +1,9 @@
 <template>
-    <div>
-        <HeroSmall :title="pageData.herosmall.title" :image="pageData.herosmall.image" :link="pageData.herosmall.link" />
-        <ImageText :image="pageData.imagetext.image" :text1="pageData.imagetext.text1" :infos="pageData.imagetext.infos" :text2="pageData.imagetext.text2" :link="pageData.imagetext.link" />
-        <AnimatedText :text="pageData.animatedtext.text" />
-        <MoodPicture :image="pageData.moodpicture.image" />
-        <Infos :infos="pageData.infos" />
-    </div>
+    <HeroSmall :title="pageData.herosmall.title" :image="pageData.herosmall.image" :link="pageData.herosmall.link" />
+    <ImageText :image="pageData.imagetext.image" :text1="pageData.imagetext.text1" :infos="pageData.imagetext.infos" :text2="pageData.imagetext.text2" :link="pageData.imagetext.link" />
+    <AnimatedText :text="pageData.animatedtext.text" />
+    <MoodPicture :image="pageData.moodpicture.image" />
+    <Infos :infos="pageData.infos" />
 </template>
 
 <script lang="ts" setup>
