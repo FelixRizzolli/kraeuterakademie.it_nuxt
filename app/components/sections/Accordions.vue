@@ -119,7 +119,7 @@ const closeAccordion = (accordionWrapper: HTMLDivElement) => {
     @include col-start(3);
     @include col(11);
 
-    @include font-70-72-1-BL();
+    @include fontSizeH1();
 }
 
 details summary::-webkit-details-marker {
@@ -162,7 +162,7 @@ details > summary {
         justify-content: space-between;
 
         .inner {
-            @include font-30-30-5-BL();
+            @include fontSizeH2();
         }
 
         .toggle {

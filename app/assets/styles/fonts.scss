@@ -79,6 +79,7 @@ $fontFamilyHeading: "roca", sans-serif;
 @mixin font-24-39-5-L() {
     // Text
     @include font(24, 39, 5);
+    font-weight: 300;
 
     // LAYOUT mobile
     @media (max-width: 1023px) {
@@ -89,6 +90,7 @@ $fontFamilyHeading: "roca", sans-serif;
 @mixin font-19-30-5-L() {
     // Body Text
     @include font(19, 30, 5);
+    font-weight: 300;
 
     // LAYOUT mobile
     @media (max-width: 1023px) {

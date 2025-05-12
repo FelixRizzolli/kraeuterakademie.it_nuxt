@@ -112,50 +112,22 @@ main a {
 ////////////////////////////////////////////////////////////
 
 :where(ul) {
-    list-style-type: none;
-    display: inline-block;
-    margin-top: 3rem;
-
-    + p {
-        margin-top: 3rem;
-    }
+    list-style: none;
+    padding: 0;
 
     > li {
         position: relative;
-        margin: 0 auto;
-        margin-left: 1.5ch;
+        padding-left: 2rem;
 
-        &:before {
-            @include content();
-
-            & {
-                position: relative;
-                display: inline-block;
-                width: 0.7ch;
-                height: 2px;
-                min-width: 0.6ch;
-                bottom: 0.5ex;
-                transform: translateY(25%);
-                background-color: currentColor;
-                margin-right: 0.8ch;
-                margin-left: -1.5ch;
-
-                // LAYOUT mobile
-                @media (max-width: 1023px) {
-                    height: 2px;
-                }
-            }
-        }
-
-        > * {
-            &:first-child {
-                display: inline-block;
-            }
-        }
-
-        ul li:before {
-            background-color: unset;
-            border: 1px solid;
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 1.3rem;
+            width: 1.2rem;
+            height: 1.5rem;
+            background: url("@/assets/icons/leaf.svg") no-repeat center center;
+            background-size: contain;
         }
     }
 }
