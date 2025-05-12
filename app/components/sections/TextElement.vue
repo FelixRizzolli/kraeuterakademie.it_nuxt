@@ -1,8 +1,8 @@
 <template>
     <section class="contentelement_textelement grid-container">
-        <h2 class="title">{{ title }}</h2>
+        <h2 v-if="title" class="title">{{ title }}</h2>
         <div class="content" v-html="text"></div>
-        <NuxtLink class="link-button" :to="link?.href">{{ link?.text }}</NuxtLink>
+        <NuxtLink v-if="link" class="link-button" :to="link.href">{{ link.text }}</NuxtLink>
     </section>
 </template>
 
