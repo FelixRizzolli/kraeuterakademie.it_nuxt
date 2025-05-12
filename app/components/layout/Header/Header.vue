@@ -2,7 +2,7 @@
     <header>
         <HeaderHighlight :logo="highlight.logo" :links="highlight.links" />
         <HeaderNavigation :links="navigation.links" />
-        <section class="button"></section>
+        <HeaderCtaButtons :menu="ctaButtons.menu" :link="ctaButtons.link" />
     </header>
 </template>
 
@@ -15,7 +15,7 @@ export interface HeaderCtaButtonProps {
 export interface HeaderProps {
     highlight: HeaderHighlightProps;
     navigation: HeaderNavigationProps;
-    ctaButton: HeaderCtaButtonProps;
+    ctaButtons: HeaderCtaButtonsProps;
 }
 
 const props = defineProps<HeaderProps>();

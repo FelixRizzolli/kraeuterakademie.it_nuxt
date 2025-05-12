@@ -189,4 +189,10 @@ footer {
         width: auto;
     }
 }
+
+@media (max-width: 1024px) {
+    footer {
+        display: none;
+    }
+}
 </style>

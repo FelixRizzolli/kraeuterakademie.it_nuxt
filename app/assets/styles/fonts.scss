@@ -117,6 +117,7 @@ $fontFamilyHeading: "roca", sans-serif;
 @mixin font-17-17-10-M-U() {
     // Link
     @include font(17, 17, 10);
+    font-weight: 500;
     text-transform: uppercase;
 
     // LAYOUT mobile

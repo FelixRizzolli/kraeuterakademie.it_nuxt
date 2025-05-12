@@ -1,5 +1,5 @@
 <template>
-    <Header :highlight="pageData.header.highlight" :navigation="pageData.header.navigation" :cta-button="pageData.header.ctaButton" />
+    <Header :highlight="pageData.header.highlight" :navigation="pageData.header.navigation" :cta-buttons="pageData.header.ctaButtons" />
     <main>
         <slot />
     </main>
@@ -32,9 +32,12 @@ const pageData = ref<PageData>({
                 { text: "Kontakt", href: "/kontakt" },
             ],
         },
-        ctaButton: {
-            text: "Zum Kurs anmelden",
-            link: "/kraeuterkurse",
+        ctaButtons: {
+            link: {
+                text: "Zum Kurs anmelden",
+                link: "/kraeuterkurse",
+            },
+            menu: "Menü",
         },
     },
     footer: {},
