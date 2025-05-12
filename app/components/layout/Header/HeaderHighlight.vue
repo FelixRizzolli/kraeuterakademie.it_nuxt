@@ -1,8 +1,8 @@
 <template>
     <section class="highlight">
-        <div class="logo">
+        <NuxtLink class="logo" to="/">
             <i-logo />
-        </div>
+        </NuxtLink>
 
         <nav class="links">
             <NuxtLink class="link" :to="link.href" v-for="(link, index) in links" :key="index">
