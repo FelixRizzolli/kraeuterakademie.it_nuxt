@@ -24,6 +24,8 @@ const props = defineProps<CtaButtonsProps>();
     position: absolute;
     height: 100vh;
     width: 100%;
+
+    pointer-events: none;
 }
 
 .cta-buttons {
@@ -43,6 +45,8 @@ const props = defineProps<CtaButtonsProps>();
         margin-left: auto;
         margin-right: auto;
         width: fit-content;
+
+        pointer-events: auto;
     }
 }
 
@@ -50,6 +54,8 @@ const props = defineProps<CtaButtonsProps>();
     display: none;
     width: 100%;
     background-color: $colorBackgroundBrown;
+
+    pointer-events: auto;
 }
 
 @media (max-width: 1024px) {
