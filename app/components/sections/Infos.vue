@@ -1,8 +1,8 @@
 <template>
     <section class="contentelement_template grid-container">
         <div class="info" v-for="(info, index) in infos" :key="index">
-            <h3 class="title">{{ info.title }}</h3>
-            <p class="text">{{ info.text }}</p>
+            <h3 v-if="info.title" class="title">{{ info.title }}</h3>
+            <p v-if="info.text" class="text">{{ info.text }}</p>
         </div>
     </section>
 </template>
@@ -10,8 +10,8 @@
 <script lang="ts" setup>
 export interface TemplateProps {
     infos: Array<{
-        title: string;
-        text: string;
+        title?: string;
+        text?: string;
     }>;
 }
 
