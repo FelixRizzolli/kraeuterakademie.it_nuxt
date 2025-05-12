@@ -192,7 +192,105 @@ footer {
 
 @media (max-width: 1024px) {
     footer {
-        display: none;
+        row-gap: 0;
+    }
+
+    .address {
+        @include col-start(2);
+        @include col(12);
+
+        & {
+            padding-bottom: 4.5rem;
+        }
+    }
+
+    .address {
+        @include col-start(2);
+        @include col(12);
+
+        & {
+            padding-bottom: 4.5rem;
+        }
+    }
+
+    .contact {
+        @include col-start(2);
+        @include col(12);
+        @include font-50-63-1-B();
+
+        & {
+            padding-bottom: 4.5rem;
+        }
+
+        a {
+            text-align: left;
+        }
+    }
+
+    .text1 {
+        @include col-start(2);
+        @include col(12);
+
+        & {
+            padding-bottom: 1.5rem;
+        }
+
+        p {
+            text-align: left;
+        }
+    }
+
+    .text2 {
+        @include col-start(2);
+        @include col(12);
+
+        & {
+            padding-bottom: 4.5rem;
+        }
+    }
+
+    .socials {
+        @include col-start(2);
+        @include col(12);
+
+        & {
+            padding-bottom: 4.5rem;
+            justify-content: left;
+            gap: 2rem;
+        }
+
+        .social {
+            img {
+                height: 6rem;
+                width: 6rem;
+            }
+
+            :deep(svg) {
+                height: 6rem;
+                width: 6rem;
+            }
+        }
+    }
+
+    .footer-links {
+        @include col-start(2);
+        @include col(12);
+
+        & {
+            padding-bottom: 1.5rem;
+            justify-content: left;
+        }
+    }
+
+    .partner {
+        padding: 2.5rem;
+
+        justify-content: start;
+        gap: 2rem;
+
+        img {
+            height: 4.4rem;
+        }
     }
 }
 </style>

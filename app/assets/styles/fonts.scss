@@ -144,6 +144,17 @@ $fontFamilyHeading: "roca", sans-serif;
     }
 }
 
+@mixin font-50-63-1-B() {
+    // Infos
+    @include font(50, 63, 1);
+    font-weight: 700;
+
+    // LAYOUT mobile
+    @media (max-width: 1023px) {
+        @include font(23, 35, 1);
+    }
+}
+
 ////////////////////////////////////////////////////////////
 // font faces
 ////////////////////////////////////////////////////////////

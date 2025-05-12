@@ -34,7 +34,7 @@ const pageData = ref<PageData>({
         },
         ctaButtons: {
             link: {
-                text: "Zum Kurs anmelden",
+                text: "Kurs anfragen",
                 link: "/kraeuterkurse",
             },
             menu: "Menü",
