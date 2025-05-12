@@ -1,13 +1,13 @@
 <template>
     <section class="contentelement_courselist grid-container">
-        <h2 class="title">{{ title }}</h2>
+        <h2 v-if="title" class="title">{{ title }}</h2>
         <Course v-for="(course, index) in courses" :key="index" :course="course" />
     </section>
 </template>
 
 <script lang="ts" setup>
 export interface CourseListProps {
-    title: string;
+    title?: string;
     courses: Array<Course>;
 }
 
