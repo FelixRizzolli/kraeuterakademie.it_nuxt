@@ -75,5 +75,40 @@ onBeforeMount(() => {
         grid-row: 1;
         z-index: 0;
     }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 1023px) {
+    .contentelement_herosmall {
+        margin-bottom: 7.5rem;
+        padding-top: 0;
+    }
+
+    .content {
+        @include col-start(5);
+        @include col(9);
+
+        & {
+            margin-top: 2rem;
+
+            z-index: 0;
+            grid-row: 2;
+        }
+    }
+
+    .image {
+        @include col-start(2);
+        @include col(10);
+
+        & {
+            margin-top: 0;
+
+            grid-row: 1;
+        }
+    }
 }
 </style>
