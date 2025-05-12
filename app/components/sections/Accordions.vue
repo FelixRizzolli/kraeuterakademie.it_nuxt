@@ -117,7 +117,7 @@ const closeAccordion = (accordionWrapper: HTMLDivElement) => {
     margin-bottom: 7.5rem;
 
     @include col-start(3);
-    @include col(11);
+    @include col(6);
 }
 
 details summary::-webkit-details-marker {
@@ -194,7 +194,11 @@ details > summary {
         @include col-start(4);
         @include col(8);
 
-        padding: 6rem 13.7rem 1.5rem 0;
+        padding: 3rem 13.7rem 1.5rem 0;
+
+        :deep(p:not(:first-of-type)) {
+            margin-top: 3rem;
+        }
     }
 }
 
