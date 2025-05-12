@@ -57,4 +57,34 @@ const props = defineProps<TemplateProps>();
 .text {
     @include font-24-39-5-L();
 }
+
+@media (max-width: 1024px) {
+    .contentelement_template {
+        padding: 7.5rem 0;
+    }
+    .info {
+        @include col(12);
+
+        &:nth-child(3n + 1) {
+            @include col-start(2);
+            @include col(12);
+        }
+
+        &:nth-child(3n + 2) {
+            @include col-start(2);
+            @include col(12);
+            margin-top: 0;
+        }
+
+        &:nth-child(3n) {
+            @include col-start(2);
+            @include col(12);
+            margin-top: 0;
+        }
+
+        &:not(:first-of-type) {
+            margin-top: 3.5rem;
+        }
+    }
+}
 </style>
