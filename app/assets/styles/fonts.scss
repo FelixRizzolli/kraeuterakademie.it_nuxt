@@ -125,6 +125,13 @@ $fontFamilyHeading: "roca", sans-serif;
     }
 }
 
+@mixin font-17-29-5-L-U() {
+    // Footer Text
+    @include font(17, 29, 5);
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
 @mixin font-50-63-1-BL() {
     // Infos
     @include font(50, 63, 1);
