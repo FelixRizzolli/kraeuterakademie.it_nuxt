@@ -30,7 +30,7 @@ const props = defineProps<MoodPictureProps>();
     height: auto;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
     .image-container {
         margin: 0;
     }
