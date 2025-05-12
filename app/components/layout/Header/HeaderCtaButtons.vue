@@ -27,7 +27,7 @@ const props = defineProps<CtaButtonsProps>();
 }
 
 .cta-buttons {
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
 
     position: fixed;
     bottom: 0;
@@ -37,20 +37,42 @@ const props = defineProps<CtaButtonsProps>();
 
 .link {
     @include col-start(2);
-    @include col(8);
+    @include col(12);
 
     & {
-        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
     }
 }
 
 .menu {
-    @include col-start(10);
-    @include col(4);
+    display: none;
+    width: 100%;
+    background-color: $colorBackgroundBrown;
+}
 
-    & {
-        width: 100%;
-        background-color: $colorBackgroundBrown;
+@media (max-width: 1024px) {
+    .cta-buttons {
+        padding-bottom: 1rem;
+    }
+
+    .link {
+        @include col-start(2);
+        @include col(8);
+
+        & {
+            width: 100%;
+        }
+    }
+
+    .menu {
+        @include col-start(10);
+        @include col(4);
+
+        & {
+            display: block;
+        }
     }
 }
 </style>
