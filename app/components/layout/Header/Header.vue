@@ -1,22 +1,19 @@
 <template>
     <header>
-        <HeaderSidebar :logo="sidebar.logo" :links="sidebar.links" />
+        <HeaderHighlight :logo="highlight.logo" :links="highlight.links" />
         <HeaderTopNavigation :links="topNavigation.links" />
         <section class="button"></section>
     </header>
 </template>
 
 <script lang="ts" setup>
-import type { HeaderTopNavigationProps } from "./HeaderTopNavigation.vue";
-import type { HeaderSidebarProps } from "./HeaderSidebar.vue";
-
 export interface HeaderCtaButtonProps {
     text: string;
     link: string;
 }
 
 export interface HeaderProps {
-    sidebar: HeaderSidebarProps;
+    highlight: HeaderHighlightProps;
     topNavigation: HeaderTopNavigationProps;
     ctaButton: HeaderCtaButtonProps;
 }

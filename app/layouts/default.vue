@@ -1,5 +1,5 @@
 <template>
-    <Header :sidebar="pageData.header.sidebar" :top-navigation="pageData.header.topNavigation" :cta-button="pageData.header.ctaButton" />
+    <Header :highlight="pageData.header.highlight" :top-navigation="pageData.header.topNavigation" :cta-button="pageData.header.ctaButton" />
     <main>
         <slot />
     </main>
@@ -7,9 +7,6 @@
 </template>
 
 <script lang="ts" setup>
-import type { FooterProps } from "~/components/layout/Footer/Footer.vue";
-import type { HeaderProps } from "~/components/layout/Header/Header.vue";
-
 interface PageData {
     header: HeaderProps;
     footer: FooterProps;
@@ -17,7 +14,7 @@ interface PageData {
 
 const pageData = ref<PageData>({
     header: {
-        sidebar: {
+        highlight: {
             logo: "",
             links: [
                 { icon: "open-book", text: "Blog", href: "/blog" },

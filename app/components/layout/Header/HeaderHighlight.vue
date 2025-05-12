@@ -1,5 +1,5 @@
 <template>
-    <section class="sidebar">
+    <section class="highlight">
         <div class="logo">
             <i-logo />
         </div>
@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-export interface HeaderSidebarProps {
+export interface HeaderHighlightProps {
     logo: string;
     links: Array<{
         icon: string;
@@ -23,11 +23,11 @@ export interface HeaderSidebarProps {
     }>;
 }
 
-const porps = defineProps<HeaderSidebarProps>();
+const porps = defineProps<HeaderHighlightProps>();
 </script>
 
 <style lang="scss" scoped>
-.sidebar {
+.highlight {
     position: fixed;
     top: 0;
     left: 0;
@@ -94,6 +94,28 @@ const porps = defineProps<HeaderSidebarProps>();
 
     .link-text {
         color: $colorCta;
+    }
+}
+
+@media (max-width: 1024px) {
+    .highlight {
+        width: 100%;
+        position: static;
+
+        background-color: $colorBackgroundWhite;
+    }
+
+    .links {
+        display: none;
+    }
+
+    .logo {
+        margin: 2rem auto 6rem auto;
+        width: 11rem;
+
+        :deep(svg) {
+            width: 11rem;
+        }
     }
 }
 </style>
