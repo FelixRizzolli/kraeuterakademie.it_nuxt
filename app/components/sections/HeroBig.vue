@@ -1,10 +1,10 @@
 <template>
     <section class="contentelement_herobig">
-        <div class="content-container grid-container">
+        <div v-if="title" class="content-container grid-container">
             <h1 class="title">{{ title }}</h1>
         </div>
-        <div class="image-container">
-            <img :src="image?.src" :alt="image?.alt" class="image" />
+        <div v-if="image" class="image-container">
+            <img :src="image.src" :alt="image.alt" class="image" />
         </div>
     </section>
 </template>
@@ -16,8 +16,8 @@ interface Image {
 }
 
 export interface HeroBigProps {
-    title: string;
-    image: Image;
+    title?: string;
+    image?: Image;
 }
 
 const props = defineProps<HeroBigProps>();
