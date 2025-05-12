@@ -29,4 +29,10 @@ const props = defineProps<MoodPictureProps>();
     width: 100%;
     height: auto;
 }
+
+@media (max-width: 1024px) {
+    .image-container {
+        margin: 0;
+    }
+}
 </style>
