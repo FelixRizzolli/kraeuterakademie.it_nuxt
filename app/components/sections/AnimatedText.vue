@@ -62,4 +62,17 @@ onMounted(() => {
     @include font-50-63-1-BL();
     @include fontFamilyHeading();
 }
+
+@media (max-width: 1023px) {
+    .contentelement_animatedtext {
+        padding: 7.5rem 0;
+        margin-bottom: 7.5rem;
+    }
+
+    .text {
+        @include col-start(2);
+        @include col(12);
+        @include font(22, 28, 1);
+    }
+}
 </style>
