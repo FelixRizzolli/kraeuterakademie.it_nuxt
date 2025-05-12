@@ -12,4 +12,10 @@ const props = defineProps<TemplateProps>();
 .contentelement_template {
     margin-bottom: 15rem;
 }
+
+@media (max-width: 1023px) {
+    .contentelement_template {
+        margin: 7.5rem;
+    }
+}
 </style>
