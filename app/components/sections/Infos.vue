@@ -1,5 +1,5 @@
 <template>
-    <section class="contentelement_template grid-container">
+    <section class="contentelement_infos grid-container">
         <div class="info" v-for="(info, index) in infos" :key="index">
             <h3 v-if="info.title" class="title">{{ info.title }}</h3>
             <p v-if="info.text" class="text">{{ info.text }}</p>
@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-export interface TemplateProps {
+export interface InfosProps {
     infos: Array<{
         title?: string;
         text?: string;
@@ -20,11 +20,11 @@ export interface TemplateProps {
     };
 }
 
-const props = defineProps<TemplateProps>();
+const props = defineProps<InfosProps>();
 </script>
 
 <style lang="scss" scoped>
-.contentelement_template {
+.contentelement_infos {
     margin-bottom: 15rem;
     padding: 15rem 0;
 
@@ -63,9 +63,10 @@ const props = defineProps<TemplateProps>();
     @include font-24-39-5-L();
 }
 
-@media (max-width: 1024px) {
-    .contentelement_template {
+@media (max-width: 1023px) {
+    .contentelement_infos {
         padding: 7.5rem 0;
+        margin-bottom: 7.5rem;
     }
 
     .info {
