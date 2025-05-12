@@ -1,10 +1,10 @@
 <template>
     <section class="contentelement_herosmall grid-container">
-        <div class="content">
-            <h1 class="title">{{ title }}</h1>
-            <NuxtLink class="link-button" :to="link?.href">{{ link?.text }}</NuxtLink>
+        <div v-if="title || link" class="content">
+            <h1 v-if="title" class="title">{{ title }}</h1>
+            <NuxtLink v-if="link" class="link-button" :to="link.href">{{ link.text }}</NuxtLink>
         </div>
-        <div class="image">
+        <div v-if="image" class="image">
             <img :src="image?.src" :alt="image?.alt" class="hero-image" />
         </div>
     </section>
@@ -24,9 +24,9 @@ interface Image {
 }
 
 interface HeroSmallProps {
-    title: string;
-    link: Link;
-    image: Image;
+    title?: string;
+    link?: Link;
+    image?: Image;
 }
 
 const props = defineProps<HeroSmallProps>();
