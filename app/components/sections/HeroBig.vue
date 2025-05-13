@@ -52,4 +52,24 @@ const props = defineProps<HeroBigProps>();
     width: 100%;
     height: auto;
 }
+
+@media (max-width: 1023px) {
+    .contentelement_herobig {
+        margin-bottom: 7.5rem;
+        padding: 0;
+    }
+
+    .content-container {
+        margin-bottom: -2rem;
+    }
+
+    .title {
+        @include col-start(2);
+        @include col(12);
+    }
+
+    .image-container {
+        margin: 0;
+    }
+}
 </style>
