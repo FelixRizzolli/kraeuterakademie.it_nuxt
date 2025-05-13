@@ -1,10 +1,10 @@
 <template>
-    <sectoion class="cta-buttons-container">
+    <section class="cta-buttons-container">
         <div class="cta-buttons grid-container">
             <NuxtLink class="link link-button" :to="link?.href">{{ link?.text }}</NuxtLink>
             <div class="menu link-button">{{ menu }}</div>
         </div>
-    </sectoion>
+    </section>
 </template>
 
 <script lang="ts" setup>
