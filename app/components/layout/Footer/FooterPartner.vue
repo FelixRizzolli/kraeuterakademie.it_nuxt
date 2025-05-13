@@ -12,7 +12,11 @@
     </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { gsap } from "gsap";
+
+onMounted(() => {});
+</script>
 
 <style lang="scss" scoped>
 .partner {
