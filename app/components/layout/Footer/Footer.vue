@@ -1,10 +1,5 @@
 <template>
     <footer class="grid-container">
-        <address class="address">
-            <p class="name">Sigrid Thaler Rizzolli</p>
-            <p class="street">Weingütl Nr. 6</p>
-            <p class="place">39040 Montan, Italien</p>
-        </address>
         <div class="contact">
             <a href="tel:+39 3382 698 477" class="link">+39 3382 698 477</a>
             <a href="mailto:sigrid.thaler@gmail.com" class="link">sigrid.thaler@gmail.com</a>
@@ -35,11 +30,6 @@ footer {
     & {
         padding-top: 6rem;
     }
-}
-
-.address {
-    @include col-start(2);
-    @include col(3);
 }
 
 .contact {
@@ -92,24 +82,6 @@ footer {
 @media (max-width: 1023px) {
     footer {
         row-gap: 0;
-    }
-
-    .address {
-        @include col-start(2);
-        @include col(12);
-
-        & {
-            padding-bottom: 4.5rem;
-        }
-    }
-
-    .address {
-        @include col-start(2);
-        @include col(12);
-
-        & {
-            padding-bottom: 4.5rem;
-        }
     }
 
     .contact {
