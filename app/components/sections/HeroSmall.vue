@@ -1,17 +1,17 @@
 <template>
     <section class="contentelement_herosmall grid-container">
-        <div v-if="title || link" class="content">
+        <div v-if="title || link" class="content" ref="contentElement">
             <h1 v-if="title" class="title">{{ title }}</h1>
             <NuxtLink v-if="link" class="link-button" :to="link.href">{{ link.text }}</NuxtLink>
         </div>
-        <div v-if="image" class="image">
+        <div v-if="image" class="image scale-animation" ref="imageElement" :class="{ 'scale-active': showImageElement }">
             <img :src="image?.src" :alt="image?.alt" class="hero-image" />
         </div>
     </section>
 </template>
 
 <script lang="ts" setup>
-import { ref, onBeforeMount } from "vue";
+import { gsap } from "gsap";
 
 interface Link {
     href: string;
@@ -31,8 +31,20 @@ interface HeroSmallProps {
 
 const props = defineProps<HeroSmallProps>();
 
-onBeforeMount(() => {
-    console.log("HeroSmall component mounted");
+const contentElement = ref<HTMLElement>();
+const imageElement = ref<HTMLElement>();
+const showImageElement = ref(false);
+
+onMounted(() => {
+    if (imageElement.value) {
+        const effectForImage = getScaleEffect(gsap);
+        effectForImage(imageElement, showImageElement);
+    }
+
+    if (contentElement.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(contentElement);
+    }
 });
 </script>
 

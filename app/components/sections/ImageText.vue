@@ -1,16 +1,18 @@
 <template>
     <section class="contentelement_imagetext grid-container">
-        <div v-if="image" class="image">
+        <div v-if="image" class="image scale-animation" ref="imageElement" :class="{ 'scale-active': showImageElement }">
             <img :src="image.src" :alt="image.alt" />
         </div>
-        <div v-if="text1" class="text" v-html="text1"></div>
-        <div v-if="infos" class="infos" v-html="infos"></div>
-        <div v-if="text2" class="text" v-html="text2"></div>
-        <NuxtLink v-if="link" class="link-button" :to="link.href">{{ link.text }}</NuxtLink>
+        <div v-if="text1" class="text" v-html="text1" ref="text1Element"></div>
+        <div v-if="infos" class="infos" v-html="infos" ref="infosElement"></div>
+        <div v-if="text2" class="text" v-html="text2" ref="text2Element"></div>
+        <NuxtLink v-if="link" class="link-button" :to="link.href" ref="linkElement">{{ link.text }}</NuxtLink>
     </section>
 </template>
 
 <script lang="ts" setup>
+import { gsap } from "gsap";
+
 interface Image {
     src: string;
     alt: string;
@@ -31,8 +33,39 @@ interface ImageTextProps {
 
 const props = defineProps<ImageTextProps>();
 
+const imageElement = ref<HTMLElement>();
+const showImageElement = ref(false);
+
+const text1Element = ref<HTMLElement>();
+const infosElement = ref<HTMLElement>();
+const text2Element = ref<HTMLElement>();
+const linkElement = ref<HTMLElement>();
+
 onMounted(() => {
-    console.log("Component mounted");
+    if (imageElement.value) {
+        const effectForImage = getScaleEffect(gsap);
+        effectForImage(imageElement, showImageElement);
+    }
+
+    if (text1Element.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(text1Element);
+    }
+
+    if (infosElement.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(text1Element);
+    }
+
+    if (text2Element.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(text2Element);
+    }
+
+    if (linkElement.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(linkElement);
+    }
 });
 </script>
 

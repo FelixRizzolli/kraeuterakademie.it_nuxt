@@ -1,12 +1,14 @@
 <template>
     <section class="contentelement_textelement grid-container">
-        <h2 v-if="title" class="title">{{ title }}</h2>
-        <div v-if="text" class="content" v-html="text"></div>
-        <NuxtLink v-if="link" class="link-button" :to="link.href">{{ link.text }}</NuxtLink>
+        <h2 v-if="title" class="title" ref="titleElement">{{ title }}</h2>
+        <div v-if="text" class="content" v-html="text" ref="contentElement"></div>
+        <NuxtLink v-if="link" class="link-button" :to="link.href" ref="linkElement">{{ link.text }}</NuxtLink>
     </section>
 </template>
 
 <script lang="ts" setup>
+import { gsap } from "gsap";
+
 interface Link {
     href: string;
     text: string;
@@ -19,6 +21,27 @@ export interface TextElementProps {
 }
 
 const props = defineProps<TextElementProps>();
+
+const titleElement = ref<HTMLElement>();
+const contentElement = ref<HTMLElement>();
+const linkElement = ref<HTMLElement>();
+
+onMounted(() => {
+    if (titleElement.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(titleElement);
+    }
+
+    if (contentElement.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(contentElement);
+    }
+
+    if (linkElement.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(linkElement);
+    }
+});
 </script>
 
 <style lang="scss" scoped>

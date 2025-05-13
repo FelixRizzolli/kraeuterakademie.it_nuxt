@@ -3,9 +3,13 @@
 </template>
 
 <script lang="ts" setup>
+import { gsap } from "gsap";
+
 export interface TemplateProps {}
 
 const props = defineProps<TemplateProps>();
+
+onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>

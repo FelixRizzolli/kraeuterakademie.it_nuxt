@@ -1,14 +1,16 @@
 <template>
     <section class="contentelement_infos grid-container">
-        <div class="info" v-for="(info, index) in infos" :key="index">
+        <div class="info" v-for="(info, index) in infos" :key="index" ref="infoElements">
             <h3 v-if="info.title" class="title">{{ info.title }}</h3>
             <p v-if="info.text" class="text">{{ info.text }}</p>
         </div>
-        <NuxtLink v-if="link" class="link-button" :to="link.href">{{ link.text }}</NuxtLink>
+        <NuxtLink v-if="link" class="link-button" :to="link.href" ref="linkElement">{{ link.text }}</NuxtLink>
     </section>
 </template>
 
 <script lang="ts" setup>
+import { gsap } from "gsap";
+
 export interface InfosProps {
     infos: Array<{
         title?: string;
@@ -21,6 +23,15 @@ export interface InfosProps {
 }
 
 const props = defineProps<InfosProps>();
+
+const infoElements = ref<HTMLElement[]>([]);
+
+onMounted(() => {
+    infoElements.value.forEach((element) => {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(ref(element));
+    });
+});
 </script>
 
 <style lang="scss" scoped>

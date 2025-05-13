@@ -6,6 +6,8 @@
 </template>
 
 <script lang="ts" setup>
+import type { Course } from '../elements/Course.vue';
+
 export interface CourseListProps {
     title?: string;
     courses: Array<Course>;

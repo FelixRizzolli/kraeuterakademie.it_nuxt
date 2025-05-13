@@ -1,5 +1,5 @@
 <template>
-    <section class="contentelement_herobig">
+    <section class="contentelement_herobig" ref="heroBig">
         <div v-if="title" class="content-container grid-container">
             <h1 class="title">{{ title }}</h1>
         </div>
@@ -10,6 +10,8 @@
 </template>
 
 <script lang="ts" setup>
+import { gsap } from "gsap";
+
 interface Image {
     src: string;
     alt: string;
@@ -21,6 +23,15 @@ export interface HeroBigProps {
 }
 
 const props = defineProps<HeroBigProps>();
+
+const heroBig = ref<HTMLElement>();
+
+onMounted(() => {
+    if (heroBig.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(heroBig);
+    }
+});
 </script>
 
 <style lang="scss" scoped>

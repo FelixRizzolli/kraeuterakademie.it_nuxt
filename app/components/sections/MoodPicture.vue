@@ -7,6 +7,8 @@
 </template>
 
 <script lang="ts" setup>
+import { gsap } from "gsap";
+
 interface Image {
     src: string;
     alt: string;
@@ -17,6 +19,15 @@ export interface MoodPictureProps {
 }
 
 const props = defineProps<MoodPictureProps>();
+
+const imageElement = ref<HTMLElement>();
+
+onMounted(() => {
+    if (imageElement.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(imageElement);
+    }
+});
 </script>
 
 <style lang="scss" scoped>

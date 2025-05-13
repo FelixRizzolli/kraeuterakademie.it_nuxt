@@ -1,6 +1,6 @@
 <template>
     <section class="contentelement_accordions grid-container">
-        <h2 class="title">{{ title }}</h2>
+        <h2 class="title" ref="titleElement">{{ title }}</h2>
 
         <div class="accordions-container">
             <div v-for="(accordion, index) in accordions" class="accordion-wrapper" ref="accordionList">
@@ -38,14 +38,20 @@ export interface AccordionsProps {
 
 const props = defineProps<AccordionsProps>();
 
+const titleElement = ref<HTMLElement>();
+
 const accordionList = ref<HTMLDivElement[]>([]);
 const animationDuration: number = 0.8;
 let ctx: any;
 
 onMounted(() => {
     gsap.registerPlugin(ScrollTrigger);
-
     ctx = gsap.context(() => {});
+
+    if (titleElement.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(titleElement);
+    }
 });
 
 onUnmounted(() => {
