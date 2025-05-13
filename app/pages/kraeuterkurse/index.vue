@@ -73,7 +73,7 @@ const pageData = ref<any>({
                         Die Ausbildung dauert eineinhalb bis zwei Jahre und umfasst mindestens 200 Unterrichtseinheiten, verteilt auf 30 Kurstage, einer Lehrfahrt sowie Prüfungsvorbereitungseinheiten. Gastreferenten bereichern den Kurs mit ihrem Wissen.
                     </p>
                     <p>
-                        <strong>Die Kurszeigten sind von 9:00 bis 19:00 Uhr.</strong>
+                        <strong>Die Kurszeiten sind von 9:00 bis 17:00 Uhr.</strong>
                     </p>
                     <p>
                         Die <strong>Diplomprüfung</strong> findet im <strong>Schloss Hunnenbrunn</strong> statt; alternativ erhält man einen Kursnachweis.
