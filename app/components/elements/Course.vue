@@ -1,12 +1,12 @@
 <template>
     <section class="course">
         <h3 class="title">{{ course.title }}</h3>
-        <span class="key-infos">{{ course.place }} | {{ course.fromDate }} - {{ course.toDate }}</span>
+        <span class="key-infos">{{ course.place }} | {{ formatDate(course.fromDate) }} - {{ formatDate(course.toDate) }}</span>
         <p class="description">{{ course.description }}</p>
         <a class="open-close" @click="toggleDates">Alle Termine ansehen</a>
         <div class="dates" ref="dates">
             <p class="date" v-for="(date, index) in course.dates" :key="index">
-                {{ date }}
+                {{ formatDate2(date) }}
             </p>
         </div>
         <NuxtLink class="link-button" :to="course.link?.href">{{ course.link?.text }}</NuxtLink>
@@ -40,6 +40,30 @@ const toggleDates = () => {
         dates.value.style.height = dates.value.style.height === "0px" ? "auto" : "0px";
         dates.value.style.paddingTop = dates.value.style.paddingTop === "0px" ? "2.5rem" : "0px";
     }
+};
+
+// Function to format ISO date YYYY-MM-DD to DD.MM.YYYY
+const formatDate = (isoDate: string): string => {
+    const date = new Date(isoDate);
+    return new Intl.DateTimeFormat("de-DE", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+    }).format(date);
+};
+
+// Function to format ISO date YYYY-MM-DD to DD.MM.YYYY WD with weekday
+const formatDate2 = (isoDate: string): string => {
+    const date = new Date(isoDate);
+    const formattedDate = new Intl.DateTimeFormat("de-DE", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+    }).format(date);
+    const weekday = new Intl.DateTimeFormat("de-DE", {
+        weekday: "short",
+    }).format(date);
+    return `${formattedDate} ${weekday}`;
 };
 </script>
 
@@ -78,6 +102,8 @@ const toggleDates = () => {
 
     display: grid;
     grid-template-columns: 1fr 1fr;
+
+    text-transform: uppercase;
 }
 
 .open-close {
