@@ -100,6 +100,10 @@ onBeforeMount(() => {
         }
     }
 
+    .link-button {
+        margin-top: 3.5rem;
+    }
+
     .image {
         @include col-start(2);
         @include col(10);
