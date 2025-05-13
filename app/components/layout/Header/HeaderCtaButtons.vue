@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-export interface CtaButtonsProps {
+export interface HeaderCtaButtonsProps {
     link: {
         href: string;
         text: string;
@@ -16,7 +16,7 @@ export interface CtaButtonsProps {
     menu: string;
 }
 
-const props = defineProps<CtaButtonsProps>();
+const props = defineProps<HeaderCtaButtonsProps>();
 </script>
 
 <style lang="scss" scoped>

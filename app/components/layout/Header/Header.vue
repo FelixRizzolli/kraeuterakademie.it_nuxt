@@ -7,10 +7,9 @@
 </template>
 
 <script lang="ts" setup>
-export interface HeaderCtaButtonProps {
-    text: string;
-    link: string;
-}
+import type { HeaderHighlightProps } from './HeaderHighlight.vue';
+import type { HeaderNavigationProps } from './HeaderNavigation.vue';
+import type { HeaderCtaButtonsProps } from './HeaderCtaButtons.vue';
 
 export interface HeaderProps {
     highlight: HeaderHighlightProps;
