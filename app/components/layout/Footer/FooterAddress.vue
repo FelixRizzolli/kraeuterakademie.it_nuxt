@@ -1,5 +1,5 @@
 <template>
-    <address class="address">
+    <address class="address" ref="containerElement">
         <p class="name">Sigrid Thaler Rizzolli</p>
         <p class="street">Weingütl Nr. 6</p>
         <p class="place">39040 Montan, Italien</p>
@@ -9,7 +9,14 @@
 <script lang="ts" setup>
 import { gsap } from "gsap";
 
-onMounted(() => {});
+const containerElement = ref<HTMLElement>();
+
+onMounted(() => {
+    if (containerElement.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(containerElement);
+    }
+});
 </script>
 
 <style lang="scss" scoped>

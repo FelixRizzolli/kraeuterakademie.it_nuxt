@@ -1,5 +1,5 @@
 <template>
-    <div class="contact">
+    <div class="contact" ref="containerElement">
         <a href="tel:+39 3382 698 477" class="link">+39 3382 698 477</a>
         <a href="mailto:sigrid.thaler@gmail.com" class="link">sigrid.thaler@gmail.com</a>
     </div>
@@ -8,7 +8,14 @@
 <script lang="ts" setup>
 import { gsap } from "gsap";
 
-onMounted(() => {});
+const containerElement = ref<HTMLElement>();
+
+onMounted(() => {
+    if (containerElement.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(containerElement);
+    }
+});
 </script>
 
 <style lang="scss" scoped>

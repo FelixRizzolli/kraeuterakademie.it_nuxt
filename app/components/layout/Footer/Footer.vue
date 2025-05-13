@@ -2,11 +2,11 @@
     <footer class="grid-container">
         <FooterAddress />
         <FooterContact />
-        <div class="text1">
+        <div class="text1" ref="text1Element">
             <p>Natürliche Entscheidungen.</p>
             <p>Gesundes Leben.</p>
         </div>
-        <div class="text2">Kräuterakademie Südtirol</div>
+        <div class="text2" ref="text2Element">Kräuterakademie Südtirol</div>
         <FooterSocials />
         <FooterLinks />
         <FooterPartner />
@@ -14,9 +14,24 @@
 </template>
 
 <script lang="ts" setup>
+import { gsap } from "gsap";
 export interface FooterProps {}
 
 const props = defineProps<FooterProps>();
+
+const text1Element = ref<HTMLElement>();
+const text2Element = ref<HTMLElement>();
+
+onMounted(() => {
+    if (text1Element.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(text1Element);
+    }
+    if (text2Element.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(text2Element);
+    }
+});
 </script>
 
 <style lang="scss" scoped>
@@ -54,20 +69,6 @@ footer {
 @media (max-width: 1023px) {
     footer {
         row-gap: 0;
-    }
-
-    .contact {
-        @include col-start(2);
-        @include col(12);
-        @include font-50-63-1-B();
-
-        & {
-            padding-bottom: 4.5rem;
-        }
-
-        a {
-            text-align: left;
-        }
     }
 
     .text1 {

@@ -1,20 +1,54 @@
 <template>
     <div class="socials">
-        <NuxtLink class="social" to="/impressum">
-            <img src="/images/socials/facebook.png" alt="Facebook" />
-            <i-facebook />
-        </NuxtLink>
-        <NuxtLink class="social" to="/impressum">
-            <img src="/images/socials/instagram.png" alt="Instagram" />
-            <i-instagram />
-        </NuxtLink>
+        <div class="scale-animation" v-for="(social, index) in data" :key="index" ref="socialElements" :class="{ 'scale-active': showSocialElements[index] }">
+            <NuxtLink class="social" :to="social.href">
+                <img :src="social.src" :alt="social.alt" />
+                <component :is="'i-' + social.icon" />
+            </NuxtLink>
+        </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { gsap } from "gsap";
 
-onMounted(() => {});
+const data = ref<Array<any>>([
+    {
+        icon: "facebook",
+        href: "https://www.facebook.com/sigrid.thaler.73",
+        src: "/images/socials/facebook.png",
+        alt: "Facebook",
+    },
+    {
+        icon: "instagram",
+        href: "https://www.instagram.com/thalersigrid/",
+        src: "/images/socials/instagram.png",
+        alt: "Instagram",
+    },
+]);
+
+const socialElements = ref<HTMLElement[]>([]);
+const showSocialElements = ref<boolean[]>([]);
+
+onMounted(() => {
+    // Initialize visibility array with false values
+    showSocialElements.value = Array(socialElements.value.length).fill(false);
+
+    // Set up scale effect for each element
+    socialElements.value.forEach((element, index) => {
+        const scaleEffect = getScaleEffect(gsap);
+        const elementRef = ref(element);
+
+        const elementShowRef = computed({
+            get: () => showSocialElements.value[index],
+            set: (value) => {
+                showSocialElements.value[index] = value;
+            },
+        });
+
+        scaleEffect(elementRef, elementShowRef);
+    });
+});
 </script>
 
 <style lang="scss" scoped>

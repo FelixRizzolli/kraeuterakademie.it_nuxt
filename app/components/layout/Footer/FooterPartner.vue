@@ -1,13 +1,7 @@
 <template>
     <div class="partner">
-        <NuxtLink to="https://fnl-kraeuterakademie.at/">
-            <img src="/images/partner/fnl_akademie_logo.png" alt="FML Kräuterakademie nach Ignaz Schlifni" />
-        </NuxtLink>
-        <NuxtLink to="https://fnl.at/">
-            <img src="/images/partner/fnl_experte_logo.png" alt="FML Kräuterexperte*in nach Ignaz Schlifni" />
-        </NuxtLink>
-        <NuxtLink to="http://www.suedtiroler-kraeuterpaedagogen.it/">
-            <img src="/images/partner/skp_logo.png" alt="Südtiroler Kräuterpädagogen" />
+        <NuxtLink :to="partner.href" v-for="(partner, index) in data" :key="index">
+            <img :src="partner.src" :alt="partner.alt" class="scale-animation" ref="partnerElements" :class="{ 'scale-active': showPartnerElements[index] }" />
         </NuxtLink>
     </div>
 </template>
@@ -15,7 +9,46 @@
 <script lang="ts" setup>
 import { gsap } from "gsap";
 
-onMounted(() => {});
+const data = ref<Array<any>>([
+    {
+        href: "https://fnl-kraeuterakademie.at/",
+        src: "/images/partner/fnl_akademie_logo.png",
+        alt: "FML Kräuterakademie nach Ignaz Schlifni",
+    },
+    {
+        href: "https://fnl.at/",
+        src: "/images/partner/fnl_experte_logo.png",
+        alt: "FML Kräuterexperte*in nach Ignaz Schlifni",
+    },
+    {
+        href: "http://www.suedtiroler-kraeuterpaedagogen.it/",
+        src: "/images/partner/skp_logo.png",
+        alt: "Südtiroler Kräuterpädagogen",
+    },
+]);
+
+const partnerElements = ref<HTMLElement[]>([]);
+const showPartnerElements = ref<boolean[]>([]);
+
+onMounted(() => {
+    // Initialize visibility array with false values
+    showPartnerElements.value = Array(partnerElements.value.length).fill(false);
+
+    // Set up scale effect for each element
+    partnerElements.value.forEach((element, index) => {
+        const scaleEffect = getScaleEffect(gsap);
+        const elementRef = ref(element);
+
+        const elementShowRef = computed({
+            get: () => showPartnerElements.value[index],
+            set: (value) => {
+                showPartnerElements.value[index] = value;
+            },
+        });
+
+        scaleEffect(elementRef, elementShowRef);
+    });
+});
 </script>
 
 <style lang="scss" scoped>

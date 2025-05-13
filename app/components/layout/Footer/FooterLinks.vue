@@ -1,5 +1,5 @@
 <template>
-    <nav class="footer-links">
+    <nav class="footer-links" ref="containerElement">
         <NuxtLink class="link" to="/impressum">Impressum</NuxtLink>
         <span class="sep">.</span>
         <NuxtLink class="link" to="/privacy">Privacy</NuxtLink>
@@ -11,7 +11,14 @@
 <script lang="ts" setup>
 import { gsap } from "gsap";
 
-onMounted(() => {});
+const containerElement = ref<HTMLElement>();
+
+onMounted(() => {
+    if (containerElement.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(containerElement);
+    }
+});
 </script>
 
 <style lang="scss" scoped>
