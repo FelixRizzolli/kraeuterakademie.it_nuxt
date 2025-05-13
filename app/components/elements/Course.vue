@@ -97,4 +97,22 @@ const toggleDates = () => {
     order: 6;
     margin-top: 4.5rem;
 }
+
+@media (max-width: 1023px) {
+    .title {
+        margin-top: 2.5rem;
+    }
+
+    .description {
+        margin-top: 1rem;
+    }
+
+    .open-close {
+        margin-top: 1.5rem;
+    }
+
+    .link-button {
+        margin-top: 3rem;
+    }
+}
 </style>
