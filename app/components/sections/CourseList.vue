@@ -1,12 +1,13 @@
 <template>
     <section class="contentelement_courselist grid-container">
-        <h2 v-if="title" class="title">{{ title }}</h2>
+        <h2 v-if="title" class="title" ref="titleElement">{{ title }}</h2>
         <Course v-for="(course, index) in courses" :key="index" :course="course" />
     </section>
 </template>
 
 <script lang="ts" setup>
-import type { Course } from '../elements/Course.vue';
+import { gsap } from "gsap";
+import type { Course } from "../elements/Course.vue";
 
 export interface CourseListProps {
     title?: string;
@@ -14,6 +15,15 @@ export interface CourseListProps {
 }
 
 const props = defineProps<CourseListProps>();
+
+const titleElement = ref<HTMLElement>();
+
+onMounted(() => {
+    if (titleElement.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(titleElement);
+    }
+});
 </script>
 
 <style lang="scss" scoped>

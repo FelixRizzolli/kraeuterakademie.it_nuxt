@@ -1,5 +1,5 @@
 <template>
-    <section class="course">
+    <section class="course" ref="courseElement">
         <h3 class="title">{{ course.title }}</h3>
         <span class="key-infos">{{ course.place }} | {{ formatDate(course.fromDate) }} - {{ formatDate(course.toDate) }}</span>
         <p class="description">{{ course.description }}</p>
@@ -14,6 +14,8 @@
 </template>
 
 <script lang="ts" setup>
+import { gsap } from "gsap";
+
 export interface Course {
     title: string;
     place: string;
@@ -34,6 +36,7 @@ export interface CourseProps {
 const props = defineProps<CourseProps>();
 
 const dates = ref<HTMLDivElement | null>(null);
+const courseElement = ref<HTMLElement>();
 
 const toggleDates = () => {
     if (dates.value) {
@@ -65,6 +68,13 @@ const formatDate2 = (isoDate: string): string => {
     }).format(date);
     return `${formattedDate} ${weekday}`;
 };
+
+onMounted(() => {
+    if (courseElement.value) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(courseElement);
+    }
+});
 </script>
 
 <style lang="scss" scoped>
