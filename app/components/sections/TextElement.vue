@@ -39,7 +39,7 @@ const props = defineProps<TextElementProps>();
     @include col-start(6);
     @include col(6);
 
-    & {
+    &:not(:last-child) {
         margin-bottom: 4.5rem;
     }
 }
@@ -55,5 +55,25 @@ const props = defineProps<TextElementProps>();
 
 .content {
     @include font-24-39-5-L();
+}
+
+@media (max-width: 1023px) {
+    .contentelement_textelement {
+        margin-bottom: 7.5rem;
+    }
+
+    .title {
+        @include col-start(3);
+        @include col(11);
+
+        & {
+            margin-bottom: 1rem;
+        }
+    }
+
+    .content {
+        @include col-start(2);
+        @include col(12);
+    }
 }
 </style>
