@@ -2,7 +2,7 @@
     <section class="cta-buttons-container">
         <div class="cta-buttons grid-container">
             <NuxtLink class="link link-button" :to="link?.href">{{ link?.text }}</NuxtLink>
-            <div class="menu link-button">{{ menu }}</div>
+            <div class="menu link-button" @click="$emit('toggleNavigation')">{{ menu }}</div>
         </div>
     </section>
 </template>
@@ -21,9 +21,10 @@ const props = defineProps<HeaderCtaButtonsProps>();
 
 <style lang="scss" scoped>
 .cta-buttons-container {
+    z-index: 10;
     position: absolute;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
 
     pointer-events: none;
 }
@@ -58,7 +59,7 @@ const props = defineProps<HeaderCtaButtonsProps>();
     pointer-events: auto;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
     .cta-buttons {
         padding-bottom: 1rem;
     }

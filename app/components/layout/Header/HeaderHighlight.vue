@@ -21,6 +21,7 @@ export interface HeaderHighlightProps {
         href: string;
         text: string;
     }>;
+    menuOpen: boolean;
 }
 
 const porps = defineProps<HeaderHighlightProps>();
@@ -98,7 +99,7 @@ const porps = defineProps<HeaderHighlightProps>();
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
     .highlight {
         width: 100%;
         position: static;

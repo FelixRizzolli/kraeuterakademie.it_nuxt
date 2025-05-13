@@ -1,5 +1,8 @@
 <template>
-    <nav class="navigation">
+    <nav class="navigation" :class="{ 'menu-open': menuOpen }">
+        <NuxtLink class="logo" to="/">
+            <i-logo />
+        </NuxtLink>
         <NuxtLink v-for="(link, index) in links" :key="index" class="link" :to="link.href">{{ link.text }}</NuxtLink>
     </nav>
 </template>
@@ -10,12 +13,26 @@ export interface HeaderNavigationProps {
         text: string;
         href: string;
     }>;
+    menuOpen: boolean;
 }
 
 const props = defineProps<HeaderNavigationProps>();
 </script>
 
 <style lang="scss" scoped>
+.logo {
+    margin: 2rem auto 6rem auto;
+    width: 11rem;
+    height: auto;
+
+    display: none;
+
+    :deep(svg) {
+        width: 11rem;
+        height: auto;
+    }
+}
+
 .navigation {
     margin: 4.5rem 9rem 0 0;
 
@@ -25,6 +42,12 @@ const props = defineProps<HeaderNavigationProps>();
 
     display: flex;
     gap: 4.5rem;
+
+    transition: transform 0.5s ease-in-out;
+
+    &.menu-open {
+        transform: translateY(0);
+    }
 }
 
 .link {
@@ -38,28 +61,26 @@ const props = defineProps<HeaderNavigationProps>();
     color: $colorCta;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
+    .logo {
+        display: block;
+    }
+
     .navigation {
         margin: 0;
-        z-index: 1;
-        position: absolute;
+        z-index: 10;
+        position: fixed;
 
         align-items: center;
         flex-direction: column;
         gap: 3rem;
 
         height: 100vh;
-        width: 100%;
+        width: 100vw;
 
         background-color: $colorBackgroundCream;
 
-        transform: translateY(-100%);
-    }
-
-    .link {
-        &:first-of-type {
-            margin-top: 22rem;
-        }
+        transform: translateY(+100%);
     }
 }
 </style>
