@@ -1,7 +1,7 @@
 <template>
-    <HeroBig :title="pageData.herobig.title" :image="pageData.herobig.image" />
-    <TextElement :title="pageData.werdegang.title" :text="pageData.werdegang.content" :link="pageData.werdegang.link" />
-    <TextElement :title="pageData.privat.title" :text="pageData.privat.content" :link="pageData.privat.link" />
+    <HeroBig :data="pageData.herobig" />
+    <TextElement :data="pageData.werdegang" />
+    <TextElement :data="pageData.privat" />
 </template>
 
 <script lang="ts" setup>

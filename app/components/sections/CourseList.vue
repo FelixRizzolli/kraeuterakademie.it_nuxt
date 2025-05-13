@@ -1,7 +1,7 @@
 <template>
     <section class="contentelement_courselist grid-container">
-        <h2 v-if="title" class="title" ref="titleElement">{{ title }}</h2>
-        <Course v-for="(course, index) in courses" :key="index" :course="course" />
+        <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
+        <Course v-for="(course, index) in data.courses" :key="index" :course="course" />
     </section>
 </template>
 
@@ -9,9 +9,16 @@
 import { gsap } from "gsap";
 import type { Course } from "../elements/Course.vue";
 
-export interface CourseListProps {
+interface CourseListData {
     title?: string;
     courses: Array<Course>;
+}
+
+interface CourseListSettings {}
+
+export interface CourseListProps {
+    data: CourseListData;
+    settings?: CourseListSettings;
 }
 
 const props = defineProps<CourseListProps>();

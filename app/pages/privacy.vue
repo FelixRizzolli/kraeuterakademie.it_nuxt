@@ -1,26 +1,29 @@
 <template>
-    <HeroBig title="Privacy" />
+    <HeroBig :data="pageData.hero" />
     <div class="spacer" />
-    <TextElement :title="pageData.verantwortlicher.title" :text="pageData.verantwortlicher.text" />
-    <TextElement :title="pageData.sicherheit.title" :text="pageData.sicherheit.text" />
-    <TextElement :title="pageData.begriffsbestimmungen.title" :text="pageData.begriffsbestimmungen.text" />
-    <TextElement :title="pageData.verarbeitung.title" :text="pageData.verarbeitung.text" />
-    <TextElement :title="pageData.informationen.title" :text="pageData.informationen.text" />
-    <TextElement :title="pageData.cookies.title" :text="pageData.cookies.text" />
-    <TextElement :title="pageData.funktionen.title" :text="pageData.funktionen.text" />
-    <TextElement :title="pageData.kinder.title" :text="pageData.kinder.text" />
-    <TextElement :title="pageData.rechte.title" :text="pageData.rechte.text" />
-    <TextElement :title="pageData.googleanalytics.title" :text="pageData.googleanalytics.text" />
-    <TextElement :title="pageData.googleadwords.title" :text="pageData.googleadwords.text" />
-    <TextElement :title="pageData.youtube.title" :text="pageData.youtube.text" />
-    <TextElement :title="pageData.googletagmanager.title" :text="pageData.googletagmanager.text" />
-    <TextElement :title="pageData.newsletter.title" :text="pageData.newsletter.text" />
-    <TextElement :title="pageData.facebook.title" :text="pageData.facebook.text" />
-    <TextElement :title="pageData.datenschutz.title" :text="pageData.datenschutz.text" />
+    <TextElement :title="pageData.verantwortlicher" />
+    <TextElement :title="pageData.sicherheit" />
+    <TextElement :title="pageData.begriffsbestimmungen" />
+    <TextElement :title="pageData.verarbeitung" />
+    <TextElement :title="pageData.informationen" />
+    <TextElement :title="pageData.cookies" />
+    <TextElement :title="pageData.funktionen" />
+    <TextElement :title="pageData.kinder" />
+    <TextElement :title="pageData.rechte" />
+    <TextElement :title="pageData.googleanalytics" />
+    <TextElement :title="pageData.googleadwords" />
+    <TextElement :title="pageData.youtube" />
+    <TextElement :title="pageData.googletagmanager" />
+    <TextElement :title="pageData.newsletter" />
+    <TextElement :title="pageData.facebook" />
+    <TextElement :title="pageData.datenschutz" />
 </template>
 
 <script lang="ts" setup>
 const pageData = ref<any>({
+    hero: {
+        title: "Privacy",
+    },
     verantwortlicher: {
         title: "Name und Kontakt des Verantwortlichen gemäß Artikel 4, Abs. 7, DSGVO",
         text: String.raw`

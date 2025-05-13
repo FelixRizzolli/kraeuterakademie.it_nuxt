@@ -1,8 +1,8 @@
 <template>
     <section class="contentelement_textelement grid-container">
-        <h2 v-if="title" class="title" ref="titleElement">{{ title }}</h2>
-        <div v-if="text" class="content" v-html="text" ref="contentElement"></div>
-        <NuxtLink v-if="link" class="link-button" :to="link.href" ref="linkElement">{{ link.text }}</NuxtLink>
+        <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
+        <div v-if="data.content" class="content" v-html="data.content" ref="contentElement"></div>
+        <NuxtLink v-if="data.link" class="link-button" :to="data.link.href" ref="linkElement">{{ data.link.text }}</NuxtLink>
     </section>
 </template>
 
@@ -14,10 +14,17 @@ interface Link {
     text: string;
 }
 
-export interface TextElementProps {
+interface TextElementData {
     title?: string;
-    text?: string;
+    content?: string;
     link?: Link;
+}
+
+interface TextElementSettings {}
+
+export interface TextElementProps {
+    data: TextElementData;
+    settings?: TextElementSettings;
 }
 
 const props = defineProps<TextElementProps>();

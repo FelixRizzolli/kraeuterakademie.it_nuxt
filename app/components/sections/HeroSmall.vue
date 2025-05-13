@@ -1,11 +1,11 @@
 <template>
     <section class="contentelement_herosmall grid-container">
-        <div v-if="title || link" class="content" ref="contentElement">
-            <h1 v-if="title" class="title">{{ title }}</h1>
-            <NuxtLink v-if="link" class="link-button" :to="link.href">{{ link.text }}</NuxtLink>
+        <div v-if="data.title || data.link" class="content" ref="contentElement">
+            <h1 v-if="data.title" class="title">{{ data.title }}</h1>
+            <NuxtLink v-if="data.link" class="link-button" :to="data.link.href">{{ data.link.text }}</NuxtLink>
         </div>
-        <div v-if="image" class="image scale-animation" ref="imageElement" :class="{ 'scale-active': showImageElement }">
-            <img :src="image?.src" :alt="image?.alt" class="hero-image" />
+        <div v-if="data.image" class="image scale-animation" ref="imageElement" :class="{ 'scale-active': showImageElement }">
+            <img :src="data.image?.src" :alt="data.image?.alt" class="hero-image" />
         </div>
     </section>
 </template>
@@ -23,10 +23,17 @@ interface Image {
     alt: string;
 }
 
-interface HeroSmallProps {
+interface HeroSmallData {
     title?: string;
     link?: Link;
     image?: Image;
+}
+
+interface HeroSmallSettings {}
+
+export interface HeroSmallProps {
+    data: HeroSmallData;
+    settings?: HeroSmallSettings;
 }
 
 const props = defineProps<HeroSmallProps>();

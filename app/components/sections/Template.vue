@@ -5,7 +5,14 @@
 <script lang="ts" setup>
 import { gsap } from "gsap";
 
-export interface TemplateProps {}
+interface TemplateData {}
+
+interface TemplateSettings {}
+
+export interface TemplateProps {
+    data: TemplateData;
+    settings?: TemplateSettings;
+}
 
 const props = defineProps<TemplateProps>();
 

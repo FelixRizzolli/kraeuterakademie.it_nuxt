@@ -1,25 +1,36 @@
 <template>
     <section class="contentelement_infos grid-container">
-        <div class="info" v-for="(info, index) in infos" :key="index" ref="infoElements">
+        <div class="info" v-for="(info, index) in data.infos" :key="index" ref="infoElements">
             <h3 v-if="info.title" class="title">{{ info.title }}</h3>
             <p v-if="info.text" class="text">{{ info.text }}</p>
         </div>
-        <NuxtLink v-if="link" class="link-button" :to="link.href" ref="linkElement">{{ link.text }}</NuxtLink>
+        <NuxtLink v-if="data.link" class="link-button" :to="data.link.href" ref="linkElement">{{ data.link.text }}</NuxtLink>
     </section>
 </template>
 
 <script lang="ts" setup>
 import { gsap } from "gsap";
 
+interface Link {
+    href: string;
+    text: string;
+}
+
+interface Info {
+    title?: string;
+    text?: string;
+}
+
+interface InfosData {
+    infos: Array<Info>;
+    link?: Link;
+}
+
+interface InfosSettings {}
+
 export interface InfosProps {
-    infos: Array<{
-        title?: string;
-        text?: string;
-    }>;
-    link?: {
-        href: string;
-        text: string;
-    };
+    data: InfosData;
+    settings?: InfosSettings;
 }
 
 const props = defineProps<InfosProps>();

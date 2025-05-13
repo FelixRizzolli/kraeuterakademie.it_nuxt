@@ -1,9 +1,9 @@
 <template>
     <section class="contentelement_accordions grid-container">
-        <h2 class="title" ref="titleElement">{{ title }}</h2>
+        <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
 
         <div class="accordions-container">
-            <div v-for="(accordion, index) in accordions" class="accordion-wrapper" ref="accordionList">
+            <div v-for="(accordion, index) in data.accordions" class="accordion-wrapper" ref="accordionList">
                 <details class="accordion" @click.prevent="toggleAccordion(index)">
                     <summary class="accordion-title accordion-grid">
                         <div class="safari-fix">
@@ -31,9 +31,16 @@ interface Accordion {
     content: string;
 }
 
-export interface AccordionsProps {
+interface AccordionsData {
     title: string;
     accordions: Array<Accordion>;
+}
+
+interface AccordionsSettings {}
+
+export interface AccordionsProps {
+    data: AccordionsData;
+    settings?: AccordionsSettings;
 }
 
 const props = defineProps<AccordionsProps>();

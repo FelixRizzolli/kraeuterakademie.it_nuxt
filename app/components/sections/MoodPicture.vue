@@ -1,7 +1,7 @@
 <template>
     <section class="contentelement_moodpicture">
         <div class="image-container">
-            <img :src="image?.src" :alt="image?.alt" class="image" />
+            <img :src="data.image?.src" :alt="data.image?.alt" class="image" />
         </div>
     </section>
 </template>
@@ -14,8 +14,15 @@ interface Image {
     alt: string;
 }
 
-export interface MoodPictureProps {
+interface MoodPictureData {
     image: Image;
+}
+
+interface MoodPictureSettings {}
+
+export interface MoodPictureProps {
+    data: MoodPictureData;
+    settings?: MoodPictureSettings;
 }
 
 const props = defineProps<MoodPictureProps>();

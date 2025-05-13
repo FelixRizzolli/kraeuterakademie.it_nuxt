@@ -1,9 +1,9 @@
 <template>
-    <HeroBig :title="pageData.herobig.title" :image="pageData.herobig.image" />
-    <Accordions :title="pageData.accordions.title" :accordions="pageData.accordions.accordions" />
-    <CourseList :title="pageData.nextdates.title" :courses="pageData.nextdates.courses" />
-    <Infos :infos="pageData.infos" />
-    <CourseList :title="pageData.courselist.title" :courses="pageData.courselist.courses" />
+    <HeroBig :data="pageData.herobig" />
+    <Accordions :data="pageData.accordions" />
+    <CourseList :data="pageData.nextdates" />
+    <Infos :data="pageData.infos" />
+    <CourseList :data="pageData.courselist" />
 </template>
 
 <script lang="ts" setup>
@@ -122,20 +122,22 @@ const pageData = ref<any>({
             },
         ],
     },
-    infos: [
-        {
-            title: "Kosten € 2080 + Mwst",
-            text: "Im Preis inbegriffen sind umfangreiche Unterlagen, Verwaltungskosten, der FNL Mitgliedsbeitrag und die Prüfungsgebühr.",
-        },
-        {
-            title: "Teilnehmerzahl ist begrenzt",
-            text: "Bei Fragen oder Infos: 338 269 8477 oder sigrid.thaler@gmail.com",
-        },
-        {
-            title: "Referentin Sigrid Thaler",
-            text: "Referentin der FNL Kräuterakademie",
-        },
-    ],
+    infos: {
+        infos: [
+            {
+                title: "Kosten € 2080 + Mwst",
+                text: "Im Preis inbegriffen sind umfangreiche Unterlagen, Verwaltungskosten, der FNL Mitgliedsbeitrag und die Prüfungsgebühr.",
+            },
+            {
+                title: "Teilnehmerzahl ist begrenzt",
+                text: "Bei Fragen oder Infos: 338 269 8477 oder sigrid.thaler@gmail.com",
+            },
+            {
+                title: "Referentin Sigrid Thaler",
+                text: "Referentin der FNL Kräuterakademie",
+            },
+        ],
+    },
     courselist: {
         title: "Aktuelle Kurse",
         courses: [

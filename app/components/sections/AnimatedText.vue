@@ -1,6 +1,6 @@
 <template>
     <section class="contentelement_animatedtext grid-container">
-        <p class="text" ref="textElement">{{ text }}</p>
+        <p class="text" ref="textElement">{{ data.text }}</p>
     </section>
 </template>
 
@@ -9,8 +9,15 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 
-interface AnimatedTextProps {
+interface AnimatedTextData {
     text: string;
+}
+
+interface AnimatedTextSettings {}
+
+export interface AnimatedTextProps {
+    data: AnimatedTextData;
+    settings?: AnimatedTextSettings;
 }
 
 const props = defineProps<AnimatedTextProps>();

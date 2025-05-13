@@ -1,12 +1,12 @@
 <template>
     <section class="contentelement_imagetext grid-container">
-        <div v-if="image" class="image scale-animation" ref="imageElement" :class="{ 'scale-active': showImageElement }">
-            <img :src="image.src" :alt="image.alt" />
+        <div v-if="data.image" class="image scale-animation" ref="imageElement" :class="{ 'scale-active': showImageElement }">
+            <img :src="data.image.src" :alt="data.image.alt" />
         </div>
-        <div v-if="text1" class="text" v-html="text1" ref="text1Element"></div>
-        <div v-if="infos" class="infos" v-html="infos" ref="infosElement"></div>
-        <div v-if="text2" class="text" v-html="text2" ref="text2Element"></div>
-        <NuxtLink v-if="link" class="link-button" :to="link.href" ref="linkElement">{{ link.text }}</NuxtLink>
+        <div v-if="data.text1" class="text" v-html="data.text1" ref="text1Element"></div>
+        <div v-if="data.infos" class="infos" v-html="data.infos" ref="infosElement"></div>
+        <div v-if="data.text2" class="text" v-html="data.text2" ref="text2Element"></div>
+        <NuxtLink v-if="data.link" class="link-button" :to="data.link.href" ref="linkElement">{{ data.link.text }}</NuxtLink>
     </section>
 </template>
 
@@ -23,12 +23,19 @@ interface Link {
     text: string;
 }
 
-interface ImageTextProps {
+interface ImageTextData {
     image?: Image;
     text1?: string;
     infos?: string;
     text2?: string;
     link?: Link;
+}
+
+interface ImageTextSettings {}
+
+export interface ImageTextProps {
+    data: ImageTextData;
+    settings?: ImageTextSettings;
 }
 
 const props = defineProps<ImageTextProps>();

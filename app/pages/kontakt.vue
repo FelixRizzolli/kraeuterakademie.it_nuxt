@@ -1,6 +1,6 @@
 <template>
-    <HeroBig :title="pageData.herobig.title" />
-    <ImageText :image="pageData.contact.image" :text1="pageData.contact.text1" />
+    <HeroBig :data="pageData.herobig" />
+    <ImageText :data="pageData.contact" />
 </template>
 
 <script lang="ts" setup>

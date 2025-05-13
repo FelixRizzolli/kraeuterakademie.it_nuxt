@@ -1,14 +1,17 @@
 <template>
-    <HeroBig title="Impressum" />
+    <HeroBig :data="pageData.hero" />
     <div class="spacer" />
-    <TextElement :title="pageData.eigentuemer.title" :text="pageData.eigentuemer.text" />
-    <TextElement :title="pageData.haftungsausschluss.title" :text="pageData.haftungsausschluss.text" />
-    <TextElement :title="pageData.webdesign.title" :text="pageData.webdesign.text" />
-    <TextElement :title="pageData.programmierung.title" :text="pageData.programmierung.text" :link="pageData.programmierung.link" />
+    <TextElement :data="pageData.eigentuemer" />
+    <TextElement :data="pageData.haftungsausschluss" />
+    <TextElement :data="pageData.webdesign" />
+    <TextElement :data="pageData.programmierung" />
 </template>
 
 <script lang="ts" setup>
 const pageData = ref<any>({
+    hero: {
+        title: "Impressum",
+    },
     eigentuemer: {
         title: "Eigentümer und verantwortlich für den Inhalt",
         text: String.raw`

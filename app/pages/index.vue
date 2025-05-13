@@ -1,6 +1,6 @@
 <template>
-    <HeroSmall :title="pageData.herosmall.title" :image="pageData.herosmall.image" :link="pageData.herosmall.link" />
-    <AnimatedText :text="pageData.animatedtext.text" />
+    <HeroSmall :data="pageData.herosmall" />
+    <AnimatedText :data="pageData.animatedtext" />
 </template>
 
 <script lang="ts" setup>

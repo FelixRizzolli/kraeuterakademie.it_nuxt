@@ -1,17 +1,20 @@
 <template>
-    <HeroBig title="Cookies" />
+    <HeroBig :data="pageData.hero" />
     <div class="spacer" />
-    <TextElement :title="pageData.verwendung.title" :text="pageData.verwendung.text" />
-    <TextElement :title="pageData.arten.title" :text="pageData.arten.text" />
-    <TextElement :title="pageData.erforderlich.title" :text="pageData.erforderlich.text" />
-    <TextElement :title="pageData.leisgung.title" :text="pageData.leisgung.text" />
-    <TextElement :title="pageData.funktionalitaet.title" :text="pageData.funktionalitaet.text" />
-    <TextElement :title="pageData.verwendet.title" :text="pageData.verwendet.text" />
-    <TextElement :title="pageData.datenschutz.title" :text="pageData.datenschutz.text" />
+    <TextElement :data="pageData.verwendung" />
+    <TextElement :data="pageData.arten" />
+    <TextElement :data="pageData.erforderlich" />
+    <TextElement :data="pageData.leisgung" />
+    <TextElement :data="pageData.funktionalitaet" />
+    <TextElement :data="pageData.verwendet" />
+    <TextElement :data="pageData.datenschutz" />
 </template>
 
 <script lang="ts" setup>
 const pageData = ref<any>({
+    hero: {
+        title: "Cookies",
+    },
     verwendung: {
         title: "Verwendung von Cookies",
         text: String.raw`
