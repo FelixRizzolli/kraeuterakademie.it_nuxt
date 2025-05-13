@@ -104,7 +104,7 @@ const pageData = ref<any>({
                 description: "Der Kurs läuft in Montan, im Unterland von Oktober 2025 bis August 2027. Die Kurstage sind immer am Samstag und finden in der Zeit von 9:00 bis 17:00 Uhr statt.",
                 link: {
                     text: "Kräuterkurs Anmelden",
-                    href: "/kurse/unterland-k25",
+                    href: "mailto:sigrid.thaler@gmail.com?subject=Anmeldung zum Kräuterkurs (Unterland K25)",
                 },
                 dates: ["2025-10-04", "2025-11-08", "2025-11-22", "2026-01-10", "2026-01-31", "2026-02-14", "2026-03-21", "2026-04-04", "2026-05-16", "2026-05-30", "2026-06-13", "2026-07-11", "2026-08-01", "2026-08-22", "2026-09-12", "2026-09-26", "2026-10-10", "2026-11-14", "2026-12-05", "2027-01-16", "2027-02-13", "2027-02-27", "2027-03-13", "2027-04-03", "2027-04-24", "2027-05-08", "2027-05-29", "2027-06-19", "2027-07-03", "2027-07-17", "2027-08-07"],
             },
@@ -116,7 +116,7 @@ const pageData = ref<any>({
                 description: "Der Kurs läuft im Pustertal von Oktober 2025 bis August 2027. Die Kurstage sind immer am Donnerstag und finden in der Zeit von 9:00 bis 17:00 Uhr statt.",
                 link: {
                     text: "Kräuterkurs Anmelden",
-                    href: "/kurse/pustertal-k26",
+                    href: "mailto:sigrid.thaler@gmail.com?subject=Anmeldung zum Kräuterkurs (Pustertal K26)",
                 },
                 dates: ["2025-10-09", "2025-11-06", "2025-11-27", "2026-01-15", "2026-01-29", "2026-02-19", "2026-03-19", "2026-04-09", "2026-05-09", "2026-05-14", "2026-06-18", "2026-07-09", "2026-07-30", "2026-08-20", "2026-09-17", "2026-10-01", "2026-10-15", "2026-11-12", "2026-12-03", "2027-01-14", "2027-02-11", "2027-03-04", "2027-03-18", "2027-04-08", "2027-04-18", "2027-05-08", "2027-05-29", "2027-06-03", "2027-06-24", "2027-07-08", "2027-07-22", "2027-08-05"],
             },
@@ -147,10 +147,6 @@ const pageData = ref<any>({
                 fromDate: "2023-10-28",
                 toDate: "2025-08-17",
                 description: "Im Pustertal wird der Volksheilkundliche Kräuterkurs nach Ignaz Schlifni bei Bergila in der Gemeinde Pfalzen abgehalten. Es werden auch mehrere Exkursionen in andere Landesteile von Südtirol unternommen.",
-                link: {
-                    text: "Kräuterkurs Anmelden",
-                    href: "/kurse/pustertal-k20",
-                },
             },
             {
                 title: "Vinschgau K23",
@@ -158,10 +154,6 @@ const pageData = ref<any>({
                 fromDate: "2023-10-28",
                 toDate: "2025-08-17",
                 description: "Ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben. Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet.",
-                link: {
-                    text: "Kräuterkurs Anmelden",
-                    href: "/kurse/pustertal-k20",
-                },
             },
             {
                 title: "Unterland K21",
@@ -169,10 +161,6 @@ const pageData = ref<any>({
                 fromDate: "2023-10-28",
                 toDate: "2025-08-17",
                 description: "DIch bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben.",
-                link: {
-                    text: "Kräuterkurs Anmelden",
-                    href: "/kurse/pustertal-k20",
-                },
             },
         ],
     },
