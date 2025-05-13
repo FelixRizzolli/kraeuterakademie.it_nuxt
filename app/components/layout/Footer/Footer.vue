@@ -1,21 +1,27 @@
 <template>
     <footer class="grid-container">
-        <FooterAddress />
-        <FooterContact />
-        <div class="text1" ref="text1Element">
-            <p>Natürliche Entscheidungen.</p>
-            <p>Gesundes Leben.</p>
-        </div>
-        <div class="text2" ref="text2Element">Kräuterakademie Südtirol</div>
-        <FooterSocials />
-        <FooterLinks />
-        <FooterPartner />
+        <FooterAddress :name="address.name" :street="address.street" :place="address.place" />
+        <FooterContact :tel-link="contact.telLink" :mail-link="contact.mailLink" />
+        <div class="text1" ref="text1Element" v-html="text1"></div>
+        <div class="text2" ref="text2Element" v-html="text2"></div>
+        <FooterSocials :socials="socials.socials" />
+        <FooterLinks :links="links.links" />
+        <FooterPartner :partners="partner.partners" />
     </footer>
 </template>
 
 <script lang="ts" setup>
 import { gsap } from "gsap";
-export interface FooterProps {}
+
+export interface FooterProps {
+    address: FooterAddressProps;
+    contact: FooterContactProps;
+    text1: string;
+    text2: string;
+    socials: FooterSocialsProps;
+    links: FooterLinksProps;
+    partner: FooterPartnerProps;
+}
 
 const props = defineProps<FooterProps>();
 

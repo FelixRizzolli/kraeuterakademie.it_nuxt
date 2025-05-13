@@ -1,7 +1,7 @@
 <template>
     <div class="contact" ref="containerElement">
-        <a href="tel:+39 3382 698 477" class="link">+39 3382 698 477</a>
-        <a href="mailto:sigrid.thaler@gmail.com" class="link">sigrid.thaler@gmail.com</a>
+        <a :href="telLink.href" class="link">{{ telLink.text }}</a>
+        <a :href="mailLink.href" class="link">{{ mailLink.text }}</a>
     </div>
 </template>
 
@@ -9,6 +9,18 @@
 import { gsap } from "gsap";
 
 const containerElement = ref<HTMLElement>();
+
+interface Link {
+    href: string;
+    text: string;
+}
+
+export interface FooterContactProps {
+    telLink: Link;
+    mailLink: Link;
+}
+
+const props = defineProps<FooterContactProps>();
 
 onMounted(() => {
     if (containerElement.value) {

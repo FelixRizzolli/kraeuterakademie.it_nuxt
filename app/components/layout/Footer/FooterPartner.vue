@@ -1,6 +1,6 @@
 <template>
     <div class="partner">
-        <NuxtLink :to="partner.href" v-for="(partner, index) in data" :key="index">
+        <NuxtLink :to="partner.href" v-for="(partner, index) in partners" :key="index">
             <img :src="partner.src" :alt="partner.alt" class="scale-animation" ref="partnerElements" :class="{ 'scale-active': showPartnerElements[index] }" />
         </NuxtLink>
     </div>
@@ -9,23 +9,17 @@
 <script lang="ts" setup>
 import { gsap } from "gsap";
 
-const data = ref<Array<any>>([
-    {
-        href: "https://fnl-kraeuterakademie.at/",
-        src: "/images/partner/fnl_akademie_logo.png",
-        alt: "FML Kräuterakademie nach Ignaz Schlifni",
-    },
-    {
-        href: "https://fnl.at/",
-        src: "/images/partner/fnl_experte_logo.png",
-        alt: "FML Kräuterexperte*in nach Ignaz Schlifni",
-    },
-    {
-        href: "http://www.suedtiroler-kraeuterpaedagogen.it/",
-        src: "/images/partner/skp_logo.png",
-        alt: "Südtiroler Kräuterpädagogen",
-    },
-]);
+interface Partner {
+    href: string;
+    src: string;
+    alt: string;
+}
+
+export interface PartnerProps {
+    partners: Array<Partner>;
+}
+
+const props = defineProps<PartnerProps>();
 
 const partnerElements = ref<HTMLElement[]>([]);
 const showPartnerElements = ref<boolean[]>([]);

@@ -1,8 +1,8 @@
 <template>
     <address class="address" ref="containerElement">
-        <p class="name">Sigrid Thaler Rizzolli</p>
-        <p class="street">Weingütl Nr. 6</p>
-        <p class="place">39040 Montan, Italien</p>
+        <p class="name">{{ name }}</p>
+        <p class="street">{{ street }}</p>
+        <p class="place">{{ place }}</p>
     </address>
 </template>
 
@@ -10,6 +10,14 @@
 import { gsap } from "gsap";
 
 const containerElement = ref<HTMLElement>();
+
+export interface FooterAddressProps {
+    name?: string;
+    street?: string;
+    place?: string;
+}
+
+const props = defineProps<FooterAddressProps>();
 
 onMounted(() => {
     if (containerElement.value) {

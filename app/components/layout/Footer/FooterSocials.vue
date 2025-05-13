@@ -1,6 +1,6 @@
 <template>
     <div class="socials">
-        <div class="scale-animation" v-for="(social, index) in data" :key="index" ref="socialElements" :class="{ 'scale-active': showSocialElements[index] }">
+        <div class="scale-animation" v-for="(social, index) in socials" :key="index" ref="socialElements" :class="{ 'scale-active': showSocialElements[index] }">
             <NuxtLink class="social" :to="social.href">
                 <img :src="social.src" :alt="social.alt" />
                 <component :is="'i-' + social.icon" />
@@ -12,20 +12,18 @@
 <script lang="ts" setup>
 import { gsap } from "gsap";
 
-const data = ref<Array<any>>([
-    {
-        icon: "facebook",
-        href: "https://www.facebook.com/sigrid.thaler.73",
-        src: "/images/socials/facebook.png",
-        alt: "Facebook",
-    },
-    {
-        icon: "instagram",
-        href: "https://www.instagram.com/thalersigrid/",
-        src: "/images/socials/instagram.png",
-        alt: "Instagram",
-    },
-]);
+interface Social {
+    icon: string;
+    href: string;
+    src: string;
+    alt: string;
+}
+
+export interface SocialProps {
+    socials: Array<Social>;
+}
+
+const props = defineProps<SocialProps>();
 
 const socialElements = ref<HTMLElement[]>([]);
 const showSocialElements = ref<boolean[]>([]);

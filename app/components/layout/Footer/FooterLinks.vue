@@ -1,10 +1,9 @@
 <template>
     <nav class="footer-links" ref="containerElement">
-        <NuxtLink class="link" to="/impressum">Impressum</NuxtLink>
-        <span class="sep">.</span>
-        <NuxtLink class="link" to="/privacy">Privacy</NuxtLink>
-        <span class="sep">.</span>
-        <NuxtLink class="link" to="/cookies">Cookies</NuxtLink>
+        <span v-for="(link, index) in links" :key="index" class="link-wrapper">
+            <NuxtLink class="link" :to="link.href">{{ link.text }}</NuxtLink>
+            <span v-if="index < links.length - 1" class="sep">.</span>
+        </span>
     </nav>
 </template>
 
@@ -12,6 +11,17 @@
 import { gsap } from "gsap";
 
 const containerElement = ref<HTMLElement>();
+
+interface Link {
+    href: string;
+    text: string;
+}
+
+export interface FooterLinksProps {
+    links: Array<Link>;
+}
+
+const props = defineProps<FooterLinksProps>();
 
 onMounted(() => {
     if (containerElement.value) {
