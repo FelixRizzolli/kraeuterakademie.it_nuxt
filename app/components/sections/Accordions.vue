@@ -5,7 +5,7 @@
         <div class="accordions-container">
             <div v-for="(accordion, index) in accordions" class="accordion-wrapper" ref="accordionList">
                 <details class="accordion" @click.prevent="toggleAccordion(index)">
-                    <summary class="accordion-title">
+                    <summary class="accordion-title accordion-grid">
                         <div class="safari-fix">
                             <h3 v-html="accordion.title" class="inner"></h3>
                             <div class="toggle">
@@ -13,7 +13,7 @@
                             </div>
                         </div>
                     </summary>
-                    <section class="accordion-content">
+                    <section class="accordion-content accordion-grid">
                         <div v-html="accordion.content" class="inner"></div>
                     </section>
                 </details>
@@ -114,10 +114,12 @@ const closeAccordion = (accordionWrapper: HTMLDivElement) => {
 }
 
 .title {
-    margin-bottom: 7.5rem;
-
     @include col-start(3);
     @include col(6);
+
+    & {
+        margin-bottom: 7.5rem;
+    }
 }
 
 details summary::-webkit-details-marker {
@@ -145,19 +147,23 @@ details > summary {
     width: 100%;
 }
 
+.accordion-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-column-gap: 4.5rem;
+}
+
 .accordion-title {
     cursor: pointer;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-column-gap: 4.5rem;
 
     .safari-fix {
         @include col-start(4);
         @include col(8);
 
-        display: flex;
-        justify-content: space-between;
+        & {
+            display: flex;
+            justify-content: space-between;
+        }
 
         .toggle {
             display: flex;
@@ -186,15 +192,13 @@ details > summary {
 .accordion-content {
     overflow: hidden;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-column-gap: 4.5rem;
-
     .inner {
         @include col-start(4);
         @include col(8);
 
-        padding: 3rem 13.7rem 1.5rem 0;
+        & {
+            padding: 3rem 13.7rem 1.5rem 0;
+        }
 
         :deep(p:not(:first-of-type)) {
             margin-top: 3rem;
@@ -205,6 +209,59 @@ details > summary {
 .accordion-wrapper:last-of-type {
     .accordion {
         border-bottom: $colorFontLight solid 0.3rem;
+    }
+}
+
+@media (max-width: 1023px) {
+    .contentelement_accordions {
+        margin-bottom: 7.5rem;
+    }
+
+    .accordion {
+        padding: 2rem 0;
+    }
+
+    .accordion-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-column-gap: 1rem;
+    }
+
+    .title {
+        @include col-start(3);
+        @include col(11);
+
+        & {
+            margin-bottom: 4.5rem;
+        }
+    }
+
+    .accordions-container {
+        @include col-start(2);
+        @include col(12);
+    }
+
+    .accordion-title {
+        .safari-fix {
+            @include col-start(1);
+            @include col(12);
+
+            svg {
+                width: 2rem;
+                height: auto;
+            }
+        }
+    }
+
+    .accordion-content {
+        .inner {
+            @include col-start(1);
+            @include col(12);
+
+            & {
+                padding: 2.5rem 0 2.5rem 0;
+            }
+        }
     }
 }
 </style>
