@@ -35,7 +35,7 @@ const pageData = ref<PageData>({
         ctaButtons: {
             link: {
                 text: "Kurs anfragen",
-                link: "/kraeuterkurse",
+                href: "mailto:sigrid.thaler@gmail.com?subject=Anmeldung zum Kräuterkurs",
             },
             menu: "Menü",
         },
