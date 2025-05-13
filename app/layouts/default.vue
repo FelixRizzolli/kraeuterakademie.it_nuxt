@@ -7,6 +7,9 @@
 </template>
 
 <script lang="ts" setup>
+import type { FooterProps } from '~/components/layout/Footer/Footer.vue';
+import type { HeaderProps } from '~/components/layout/Header/Header.vue';
+
 interface PageData {
     header: HeaderProps;
     footer: FooterProps;
