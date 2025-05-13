@@ -9,7 +9,7 @@
                 {{ formatDate2(date) }}
             </p>
         </div>
-        <NuxtLink class="link-button" :to="course.link?.href">{{ course.link?.text }}</NuxtLink>
+        <NuxtLink v-if="course.link" class="link-button" :to="course.link?.href">{{ course.link?.text }}</NuxtLink>
     </section>
 </template>
 
