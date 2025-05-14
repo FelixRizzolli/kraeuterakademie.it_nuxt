@@ -1,22 +1,22 @@
 <template>
     <HeroBig :data="pageData.hero" />
     <div class="spacer" />
-    <TextElement :title="pageData.verantwortlicher" />
-    <TextElement :title="pageData.sicherheit" />
-    <TextElement :title="pageData.begriffsbestimmungen" />
-    <TextElement :title="pageData.verarbeitung" />
-    <TextElement :title="pageData.informationen" />
-    <TextElement :title="pageData.cookies" />
-    <TextElement :title="pageData.funktionen" />
-    <TextElement :title="pageData.kinder" />
-    <TextElement :title="pageData.rechte" />
-    <TextElement :title="pageData.googleanalytics" />
-    <TextElement :title="pageData.googleadwords" />
-    <TextElement :title="pageData.youtube" />
-    <TextElement :title="pageData.googletagmanager" />
-    <TextElement :title="pageData.newsletter" />
-    <TextElement :title="pageData.facebook" />
-    <TextElement :title="pageData.datenschutz" />
+    <TextElement :data="pageData.verantwortlicher" />
+    <TextElement :data="pageData.sicherheit" />
+    <TextElement :data="pageData.begriffsbestimmungen" />
+    <TextElement :data="pageData.verarbeitung" />
+    <TextElement :data="pageData.informationen" />
+    <TextElement :data="pageData.cookies" />
+    <TextElement :data="pageData.funktionen" />
+    <TextElement :data="pageData.kinder" />
+    <TextElement :data="pageData.rechte" />
+    <TextElement :data="pageData.googleanalytics" />
+    <TextElement :data="pageData.googleadwords" />
+    <TextElement :data="pageData.youtube" />
+    <TextElement :data="pageData.googletagmanager" />
+    <TextElement :data="pageData.newsletter" />
+    <TextElement :data="pageData.facebook" />
+    <TextElement :data="pageData.datenschutz" />
 </template>
 
 <script lang="ts" setup>
