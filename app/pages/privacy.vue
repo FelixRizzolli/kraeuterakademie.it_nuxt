@@ -51,11 +51,6 @@ const pageData = ref<any>({
             (DSGVO 2016/679). Wir haben technische und organisatorische Maßnahmen getroffen, die sicherstellen, dass die 
             Vorschriften über den Datenschutz sowohl von uns, als auch von unseren externen Dienstleistern beachtet werden.
           </p>
-
-          <ul style="margin-top: 3rem;">
-            <li>
-            </li>
-          <ul>
         `,
     },
     begriffsbestimmungen: {
