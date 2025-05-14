@@ -57,10 +57,6 @@ const pageData = ref<any>({
             </li>
           <ul>
         `,
-        link: {
-            text: "Linkedin",
-            href: "https://www.linkedin.com/in/felix-rizzolli/",
-        },
     },
     begriffsbestimmungen: {
         title: "Begriffsbestimmungen",
@@ -155,10 +151,6 @@ const pageData = ref<any>({
             </li>
           <ol>
         `,
-        link: {
-            text: "Linkedin",
-            href: "https://www.linkedin.com/in/felix-rizzolli/",
-        },
     },
     verarbeitung: {
         title: "Rechtmäßigkeit der Verarbeitung",
@@ -197,10 +189,6 @@ const pageData = ref<any>({
             </li>
           <ol>
         `,
-        link: {
-            text: "Linkedin",
-            href: "https://www.linkedin.com/in/felix-rizzolli/",
-        },
     },
     informationen: {
         title: "Information über die Erhebung personenbezogener Daten",
@@ -238,10 +226,6 @@ const pageData = ref<any>({
             <li>Sprache und Version der Browsersoftware</li>
           <ul>
         `,
-        link: {
-            text: "Linkedin",
-            href: "https://www.linkedin.com/in/felix-rizzolli/",
-        },
     },
     cookies: {
         title: "Einsatz von Cookies",
@@ -255,10 +239,6 @@ const pageData = ref<any>({
             und effektiver zu machen.
           </p>
         `,
-        link: {
-            text: "Linkedin",
-            href: "https://www.linkedin.com/in/felix-rizzolli/",
-        },
     },
     funktionen: {
         title: "Weitere Funktionen und Angebote unserer Website",
@@ -288,10 +268,6 @@ const pageData = ref<any>({
             </li>
           <ol>
         `,
-        link: {
-            text: "Linkedin",
-            href: "https://www.linkedin.com/in/felix-rizzolli/",
-        },
     },
     kinder: {
         title: "Kinder",
@@ -301,10 +277,6 @@ const pageData = ref<any>({
             der Eltern oder Erziehungsberechtigten keine personenbezogenen Daten an uns übermitteln.
           </p>
         `,
-        link: {
-            text: "Linkedin",
-            href: "https://www.linkedin.com/in/felix-rizzolli/",
-        },
     },
     rechte: {
         title: "Rechte der betroffenen Person",
@@ -564,10 +536,6 @@ const pageData = ref<any>({
             </li>
           <ol>
         `,
-        link: {
-            text: "Linkedin",
-            href: "https://www.linkedin.com/in/felix-rizzolli/",
-        },
     },
     googleanalytics: {
         title: "Einsatz von Google Analytics",
@@ -609,10 +577,6 @@ const pageData = ref<any>({
             </li>
           <ol>
         `,
-        link: {
-            text: "Linkedin",
-            href: "https://www.linkedin.com/in/felix-rizzolli/",
-        },
     },
     googleadwords: {
         title: "Google AdWords und Google Conversion-Tracking",
@@ -624,10 +588,6 @@ const pageData = ref<any>({
             <a href="https://www.google.de/policies/privacy/">https://www.google.de/policies/privacy/</a>.
           </p>
         `,
-        link: {
-            text: "Linkedin",
-            href: "https://www.linkedin.com/in/felix-rizzolli/",
-        },
     },
     youtube: {
         title: "YouTube Video",
@@ -638,10 +598,6 @@ const pageData = ref<any>({
             <a href="https://www.google.de/policies/privacy/">https://www.google.de/policies/privacy/</a>.
           </p>
         `,
-        link: {
-            text: "Linkedin",
-            href: "https://www.linkedin.com/in/felix-rizzolli/",
-        },
     },
     googletagmanager: {
         title: "Google Tag Manager",
@@ -651,10 +607,6 @@ const pageData = ref<any>({
             von Google: <a href="https://www.google.de/policies/privacy/">https://www.google.de/policies/privacy/</a>.
           </p>
         `,
-        link: {
-            text: "Linkedin",
-            href: "https://www.linkedin.com/in/felix-rizzolli/",
-        },
     },
     newsletter: {
         title: "Newsletter",
@@ -667,10 +619,6 @@ const pageData = ref<any>({
             verwenden wir ausschließlich für den Versand der angeforderten Informationen und geben sie nicht an Dritte weiter.
           </p>
         `,
-        link: {
-            text: "Linkedin",
-            href: "https://www.linkedin.com/in/felix-rizzolli/",
-        },
     },
     facebook: {
         title: "Facebook Pixel",
@@ -712,10 +660,6 @@ const pageData = ref<any>({
             <a href="www.youronlinechoices.com/de/praferenzmanagement">www.youronlinechoices.com/de/praferenzmanagement</a>.
           </p>
         `,
-        link: {
-            text: "Linkedin",
-            href: "https://www.linkedin.com/in/felix-rizzolli/",
-        },
     },
     datenschutz: {
         title: "Datenschutzrichtlinie Google",
