@@ -1,11 +1,11 @@
 <template>
     <section class="course" ref="courseElement">
         <h3 class="title">{{ course.title }}</h3>
-        <span class="key-infos">{{ course.place }} | {{ formatDate(course.dates[0]) }} - {{ formatDate(course.dates[course.dates.length - 1]) }}</span>
+        <span v-if="sortedDates" class="key-infos">{{ course.place }} | {{ formatDate(sortedDates[0]) }} - {{ formatDate(sortedDates[sortedDates.length - 1]) }}</span>
         <p class="description">{{ course.description }}</p>
-        <a v-if="dates" class="open-close" @click="toggleDates">Alle Termine ansehen</a>
+        <a v-if="sortedDates" class="open-close" @click="toggleDates">Alle Termine ansehen</a>
         <div class="dates" ref="dates">
-            <p class="date" v-for="(date, index) in course.dates" :key="index">
+            <p class="date" v-for="(date, index) in sortedDates" :key="index">
                 {{ formatDate2(date) }}
             </p>
         </div>
@@ -34,6 +34,11 @@ export interface CourseProps {
 const props = defineProps<CourseProps>();
 
 const dates = ref<HTMLDivElement | null>(null);
+
+const sortedDates = computed(() => {
+    return props.course.dates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
+});
+
 const courseElement = ref<HTMLElement>();
 
 const toggleDates = () => {
