@@ -14,7 +14,7 @@ const pageData = ref<any>({
     },
     eigentuemer: {
         title: "Eigentümer und verantwortlich für den Inhalt",
-        text: String.raw`
+        content: String.raw`
         <p>
           <strong>Sigrid Thaler Rizzolli</strong><br />
           Weingütl 6<br />
@@ -28,7 +28,7 @@ const pageData = ref<any>({
     },
     haftungsausschluss: {
         title: "Haftungsausschluss",
-        text: String.raw`
+        content: String.raw`
           <p>
             In dieser Homepage werden Hinweise zu naturheilkundlichen Anwendungen gegeben. Die Empfehlungen sind aufgrund wissenschaftlicher
             Untersuchungen und Erfahrungen mit größter Sorgfalt ausgewählt worden. Einen Arztbesuch können und wollen diese Ratschläge auf
@@ -59,7 +59,7 @@ const pageData = ref<any>({
     },
     webdesign: {
         title: "Webdesign",
-        text: String.raw`
+        content: String.raw`
           <p>
             <strong>hantha. Web Performance Experts</strong><br />
             Dick 48/B - 39058 Sarntal<br />
@@ -74,7 +74,7 @@ const pageData = ref<any>({
     },
     programmierung: {
         title: "Programmierung",
-        text: String.raw`
+        content: String.raw`
           <p>
             <strong>Felix Rizzolli</strong><br />
             Weingütl 6<br />

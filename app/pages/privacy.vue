@@ -26,7 +26,7 @@ const pageData = ref<any>({
     },
     verantwortlicher: {
         title: "Name und Kontakt des Verantwortlichen gemäß Artikel 4, Abs. 7, DSGVO",
-        text: String.raw`
+        content: String.raw`
         <p>
           <strong>Sigrid Thaler Rizzolli</strong><br />
           Weingütl 6<br />
@@ -40,7 +40,7 @@ const pageData = ref<any>({
     },
     sicherheit: {
         title: "Sicherheit und Schutz Ihrer personenbezogenen Daten",
-        text: String.raw`
+        content: String.raw`
           <p>
             Wir betrachten es als unsere vorrangige Aufgabe, die Vertraulichkeit der von Ihnen bereitgestellten personenbezogenen 
             Daten zu wahren und diese vor unbefugten Zugriffen zu schützen. Deshalb wenden wir äußerste Sorgfalt und modernste 
@@ -64,7 +64,7 @@ const pageData = ref<any>({
     },
     begriffsbestimmungen: {
         title: "Begriffsbestimmungen",
-        text: String.raw`
+        content: String.raw`
           <p>
             Der Gesetzgeber fordert, dass personenbezogene Daten auf rechtmäßige Weise, nach Treu und Glauben und 
             in einer für die betroffene Person nachvollziehbaren Weise verarbeitet werden („Rechtmäßigkeit, 
@@ -162,7 +162,7 @@ const pageData = ref<any>({
     },
     verarbeitung: {
         title: "Rechtmäßigkeit der Verarbeitung",
-        text: String.raw`
+        content: String.raw`
           <p>
             Die Verarbeitung personenbezogener Daten ist nur rechtmäßig, wenn für die Verarbeitung eine Rechtsgrundlage 
             besteht. Rechtsgrundlage für die Verarbeitung können gemäß Artikel 6 Abs. 1 lit. a - f DSGVO insbesondere 
@@ -204,7 +204,7 @@ const pageData = ref<any>({
     },
     informationen: {
         title: "Information über die Erhebung personenbezogener Daten",
-        text: String.raw`
+        content: String.raw`
           <ol>
             <li>
               Im Folgenden informieren wir über die Erhebung personenbezogener Daten bei Nutzung unserer Website. 
@@ -245,7 +245,7 @@ const pageData = ref<any>({
     },
     cookies: {
         title: "Einsatz von Cookies",
-        text: String.raw`
+        content: String.raw`
           <p>
             Zusätzlich zu den zuvor genannten Daten werden bei der Nutzung unserer Website Cookies auf Ihrem 
             Rechner gespeichert. Bei Cookies handelt es sich um kleine Textdateien, die auf Ihrer Festplatte 
@@ -262,7 +262,7 @@ const pageData = ref<any>({
     },
     funktionen: {
         title: "Weitere Funktionen und Angebote unserer Website",
-        text: String.raw`
+        content: String.raw`
           <ol style="margin-top: 3rem;">
             <li>
               Neben der rein informatorischen Nutzung unserer Website bieten wir verschiedene Leistungen an, 
@@ -295,7 +295,7 @@ const pageData = ref<any>({
     },
     kinder: {
         title: "Kinder",
-        text: String.raw`
+        content: String.raw`
           <p>
             Unser Angebot richtet sich grundsätzlich an Erwachsene. Personen unter 18 Jahren sollten ohne Zustimmung 
             der Eltern oder Erziehungsberechtigten keine personenbezogenen Daten an uns übermitteln.
@@ -308,7 +308,7 @@ const pageData = ref<any>({
     },
     rechte: {
         title: "Rechte der betroffenen Person",
-        text: String.raw`
+        content: String.raw`
           <ol>
             <li>
               <strong>Widerruf der Einwilligung</strong><br />
@@ -571,7 +571,7 @@ const pageData = ref<any>({
     },
     googleanalytics: {
         title: "Einsatz von Google Analytics",
-        text: String.raw`
+        content: String.raw`
           <ol>
             <li>
               Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. („Google“). Google Analytics 
@@ -616,7 +616,7 @@ const pageData = ref<any>({
     },
     googleadwords: {
         title: "Google AdWords und Google Conversion-Tracking",
-        text: String.raw`
+        content: String.raw`
           <p>
             Conversion-Tracking von AdWords ist ein Analysedienst von Google Inc., der die Daten vom Google AdWords-Werbenetzwerk 
             mit den durch diese Anwendung getätigten Aktionen verbindet. Mehr Informationen zu Google AdWords und Google 
@@ -631,7 +631,7 @@ const pageData = ref<any>({
     },
     youtube: {
         title: "YouTube Video",
-        text: String.raw`
+        content: String.raw`
           <p>
             YouTube ist ein von Google Inc. bereitgestellter Service zur Visualisierung von Videoinhalten, mit dem diese Anwendung 
             entsprechende Inhalte auf ihren Seiten einbinden kann. Datenschutzbestimmungen von Google:
@@ -645,7 +645,7 @@ const pageData = ref<any>({
     },
     googletagmanager: {
         title: "Google Tag Manager",
-        text: String.raw`
+        content: String.raw`
           <p>
             Google Tag Manager ist ein von Google LLC bereitgestellter Dienst zur Verwaltung von Tags. Datenschutzbestimmungen 
             von Google: <a href="https://www.google.de/policies/privacy/">https://www.google.de/policies/privacy/</a>.
@@ -658,7 +658,7 @@ const pageData = ref<any>({
     },
     newsletter: {
         title: "Newsletter",
-        text: String.raw`
+        content: String.raw`
           <p>
             Mit der Registrierung in unserem Newsletter-System stimmen Sie zu, regelmäßig Informationen mittels Newsletter 
             zugesendet zu bekommen. Sie können Ihre Zustimmung zur Nutzung Ihrer persönlichen Daten jederzeit widerrufen. Dieser 
@@ -674,7 +674,7 @@ const pageData = ref<any>({
     },
     facebook: {
         title: "Facebook Pixel",
-        text: String.raw`
+        content: String.raw`
           <p>
             Unsere Website nutzt zur Konversionsmessung das Besucheraktions-Pixel von Facebook, Facebook Inc., 1601 S. 
             California Ave, Palo Alto, CA 94304, USA (“Facebook”).
@@ -719,7 +719,7 @@ const pageData = ref<any>({
     },
     datenschutz: {
         title: "Datenschutzrichtlinie Google",
-        text: String.raw`
+        content: String.raw`
           <ul>
             <li>
               <a href="https://policies.google.com/privacy?hl=de">Datenschutz und den Nutzungsbedingungen von Google</a>

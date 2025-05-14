@@ -17,7 +17,7 @@ const pageData = ref<any>({
     },
     verwendung: {
         title: "Verwendung von Cookies",
-        text: String.raw`
+        content: String.raw`
           <p>
             Auf dieser Webseite werden so genannte „Cookies“ verwendet, das sind kleine Informationsdateien, 
             die vom Server einer Webseite über den Browser vorübergehend oder ständig auf Ihrem Computer oder 
@@ -58,7 +58,7 @@ const pageData = ref<any>({
     },
     arten: {
         title: "Welche Cookies verwenden wir und warum?",
-        text: String.raw`
+        content: String.raw`
           <p>
             Im Allgemeinen nutzt unsere Webseite Cookies, um Sie von anderen Nutzern auf unserer Webseite zu 
             unterscheiden. Dies hilft uns dabei, Ihre Nutzererfahrung zu verbessern, wenn Sie auf unserer Seite 
@@ -81,7 +81,7 @@ const pageData = ref<any>({
     },
     erforderlich: {
         title: "Unbedingt erforderliche Cookies",
-        text: String.raw`
+        content: String.raw`
           <p>
             „Unbedingt erforderliche“ Cookies ermöglichen es Ihnen, sich auf der Webseite zu bewegen und 
             wesentliche Funktionen wie sichere Bereiche und Einkaufskörbe zu nutzen. Ohne diese Cookies 
@@ -118,7 +118,7 @@ const pageData = ref<any>({
     },
     leisgung: {
         title: "Leistungs-Cookies",
-        text: String.raw`
+        content: String.raw`
           <p>
             „Leistungs“-Cookies erfassen Informationen darüber, wie Sie unsere Webseite nutzen, z. B. 
             welche Seiten Sie besuchen und ob Fehler auftreten. Diese Cookies erfassen keine Informationen, 
@@ -159,7 +159,7 @@ const pageData = ref<any>({
     },
     funktionalitaet: {
         title: "Funktionalität",
-        text: String.raw`
+        content: String.raw`
           <p>
             „Funktionalitäts“-Cookies werden dafür verwendet, Dienstleistungen zur Verfügung zu stellen oder 
             Einstellungen zu speichern, um Ihren Besuch zu verbessern.
@@ -197,7 +197,7 @@ const pageData = ref<any>({
     },
     verwendet: {
         title: "Wir verwenden folgende Cookies",
-        text: String.raw`
+        content: String.raw`
           <ul>
             <li>
               <strong>__utma</strong>, Google, Performance, Lebensdauer: unbegrenzt. Dieser Cookie beinhaltet die 
@@ -259,7 +259,7 @@ const pageData = ref<any>({
     },
     datenschutz: {
         title: "Datenschutzrichtlinie Google",
-        text: String.raw`
+        content: String.raw`
           <ul>
             <li>
               <a href="https://policies.google.com/privacy?hl=de">Datenschutz und den Nutzungsbedingungen von Google</a>
