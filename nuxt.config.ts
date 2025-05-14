@@ -15,6 +15,8 @@ export default defineNuxtConfig({
 
     css: ["@/assets/styles/base.scss", "@/assets/styles/layout.scss", "@/assets/styles/grid-layout.scss"],
 
+    plugins: ["~/plugins/pinia.ts"],
+
     modules: ["@nuxt/image", "nuxt-svgo"],
 
     vite: {

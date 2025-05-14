@@ -1,7 +1,7 @@
 <template>
     <header>
         <HeaderHighlight :logo="highlight.logo" :links="highlight.links" :menuOpen="showNavigation" />
-        <HeaderNavigation :links="navigation.links" :menuOpen="showNavigation" />
+        <HeaderNavigation :links="navigation.links" :menuOpen="showNavigation" @toggleNavigation="toggleNavigation" />
         <HeaderCtaButtons :menu="ctaButtons.menu" :link="ctaButtons.link" @toggleNavigation="toggleNavigation" />
     </header>
 </template>

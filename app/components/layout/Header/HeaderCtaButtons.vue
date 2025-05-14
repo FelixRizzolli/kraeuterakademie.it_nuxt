@@ -2,12 +2,14 @@
     <section class="cta-buttons-container">
         <div class="cta-buttons grid-container">
             <NuxtLink class="link link-button" :to="link?.href">{{ link?.text }}</NuxtLink>
-            <div class="menu link-button" @click="$emit('toggleNavigation')">{{ menu }}</div>
+            <div class="menu link-button" @click="menuStore.toggleMenu">{{ menu }}</div>
         </div>
     </section>
 </template>
 
 <script lang="ts" setup>
+import { useMenuStore } from "~/stores/menuStore";
+
 export interface HeaderCtaButtonsProps {
     link: {
         href: string;
@@ -17,6 +19,7 @@ export interface HeaderCtaButtonsProps {
 }
 
 const props = defineProps<HeaderCtaButtonsProps>();
+const menuStore = useMenuStore();
 </script>
 
 <style lang="scss" scoped>

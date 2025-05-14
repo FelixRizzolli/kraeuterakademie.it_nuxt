@@ -1,22 +1,26 @@
 <template>
-    <nav class="navigation" :class="{ 'menu-open': menuOpen }">
-        <NuxtLink class="logo" to="/">
+    <nav class="navigation" :class="{ 'menu-open': menuStore.isOpen }">
+        <NuxtLink class="logo" to="/" @click="menuStore.closeMenu">
             <i-logo />
         </NuxtLink>
-        <NuxtLink v-for="(link, index) in links" :key="index" class="link" :to="link.href">{{ link.text }}</NuxtLink>
+        <NuxtLink v-for="(link, index) in links" :key="index" class="link" :to="link.href" @click="menuStore.closeMenu">
+            {{ link.text }}
+        </NuxtLink>
     </nav>
 </template>
 
 <script lang="ts" setup>
+import { useMenuStore } from "~/stores/menuStore";
+
 export interface HeaderNavigationProps {
     links: Array<{
         text: string;
         href: string;
     }>;
-    menuOpen: boolean;
 }
 
 const props = defineProps<HeaderNavigationProps>();
+const menuStore = useMenuStore();
 </script>
 
 <style lang="scss" scoped>
