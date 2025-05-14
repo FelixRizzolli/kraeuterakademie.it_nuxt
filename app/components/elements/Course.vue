@@ -3,7 +3,7 @@
         <h3 class="title">{{ course.title }}</h3>
         <span class="key-infos">{{ course.place }} | {{ formatDate(course.fromDate) }} - {{ formatDate(course.toDate) }}</span>
         <p class="description">{{ course.description }}</p>
-        <a class="open-close" @click="toggleDates">Alle Termine ansehen</a>
+        <a v-if="dates" class="open-close" @click="toggleDates">Alle Termine ansehen</a>
         <div class="dates" ref="dates">
             <p class="date" v-for="(date, index) in course.dates" :key="index">
                 {{ formatDate2(date) }}
