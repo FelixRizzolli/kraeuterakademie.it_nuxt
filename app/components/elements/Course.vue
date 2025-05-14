@@ -1,7 +1,7 @@
 <template>
     <section class="course" ref="courseElement">
         <h3 class="title">{{ course.title }}</h3>
-        <span class="key-infos">{{ course.place }} | {{ formatDate(course.fromDate) }} - {{ formatDate(course.toDate) }}</span>
+        <span class="key-infos">{{ course.place }} | {{ formatDate(course.dates[0]) }} - {{ formatDate(course.dates[course.dates.length - 1]) }}</span>
         <p class="description">{{ course.description }}</p>
         <a v-if="dates" class="open-close" @click="toggleDates">Alle Termine ansehen</a>
         <div class="dates" ref="dates">
@@ -19,8 +19,6 @@ import { gsap } from "gsap";
 export interface Course {
     title: string;
     place: string;
-    fromDate: string;
-    toDate: string;
     description: string;
     dates: Array<string>;
     link?: {
