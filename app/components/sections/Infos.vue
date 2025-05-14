@@ -39,6 +39,7 @@ const infoElements = ref<HTMLElement[]>([]);
 
 onMounted(() => {
     infoElements.value.forEach((element) => {
+        if (!(element instanceof HTMLElement)) return;
         const opacityEffect = getOpacityEffect(gsap);
         opacityEffect(ref(element));
     });

@@ -55,7 +55,7 @@ onMounted(() => {
     gsap.registerPlugin(ScrollTrigger);
     ctx = gsap.context(() => {});
 
-    if (titleElement.value) {
+    if (titleElement.value instanceof HTMLElement) {
         const opacityEffect = getOpacityEffect(gsap);
         opacityEffect(titleElement);
     }

@@ -30,7 +30,7 @@ const props = defineProps<MoodPictureProps>();
 const imageElement = ref<HTMLElement>();
 
 onMounted(() => {
-    if (imageElement.value) {
+    if (imageElement.value instanceof HTMLElement) {
         const opacityEffect = getOpacityEffect(gsap);
         opacityEffect(imageElement);
     }

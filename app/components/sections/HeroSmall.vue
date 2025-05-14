@@ -43,12 +43,12 @@ const imageElement = ref<HTMLElement>();
 const showImageElement = ref(false);
 
 onMounted(() => {
-    if (imageElement.value) {
+    if (imageElement.value instanceof HTMLElement) {
         const effectForImage = getScaleEffect(gsap);
         effectForImage(imageElement, showImageElement);
     }
 
-    if (contentElement.value) {
+    if (contentElement.value instanceof HTMLElement) {
         const opacityEffect = getOpacityEffect(gsap);
         opacityEffect(contentElement);
     }

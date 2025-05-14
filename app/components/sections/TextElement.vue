@@ -34,17 +34,17 @@ const contentElement = ref<HTMLElement>();
 const linkElement = ref<HTMLElement>();
 
 onMounted(() => {
-    if (titleElement.value) {
+    if (titleElement.value instanceof HTMLElement) {
         const opacityEffect = getOpacityEffect(gsap);
         opacityEffect(titleElement);
     }
 
-    if (contentElement.value) {
+    if (contentElement.value instanceof HTMLElement) {
         const opacityEffect = getOpacityEffect(gsap);
         opacityEffect(contentElement);
     }
 
-    if (linkElement.value) {
+    if (linkElement.value instanceof HTMLElement) {
         const opacityEffect = getOpacityEffect(gsap);
         opacityEffect(linkElement);
     }

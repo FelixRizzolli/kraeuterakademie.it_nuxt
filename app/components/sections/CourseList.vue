@@ -26,7 +26,7 @@ const props = defineProps<CourseListProps>();
 const titleElement = ref<HTMLElement>();
 
 onMounted(() => {
-    if (titleElement.value) {
+    if (titleElement.value instanceof HTMLElement) {
         const opacityEffect = getOpacityEffect(gsap);
         opacityEffect(titleElement);
     }

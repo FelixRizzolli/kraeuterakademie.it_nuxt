@@ -34,7 +34,7 @@ const props = defineProps<HeroBigProps>();
 const heroBig = ref<HTMLElement>();
 
 onMounted(() => {
-    if (heroBig.value) {
+    if (heroBig.value instanceof HTMLElement) {
         const opacityEffect = getOpacityEffect(gsap);
         opacityEffect(heroBig);
     }

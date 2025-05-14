@@ -49,27 +49,27 @@ const text2Element = ref<HTMLElement>();
 const linkElement = ref<HTMLElement>();
 
 onMounted(() => {
-    if (imageElement.value) {
+    if (imageElement.value instanceof HTMLElement) {
         const effectForImage = getScaleEffect(gsap);
         effectForImage(imageElement, showImageElement);
     }
 
-    if (text1Element.value) {
+    if (text1Element.value instanceof HTMLElement) {
         const opacityEffect = getOpacityEffect(gsap);
         opacityEffect(text1Element);
     }
 
-    if (infosElement.value) {
+    if (infosElement.value instanceof HTMLElement) {
         const opacityEffect = getOpacityEffect(gsap);
         opacityEffect(text1Element);
     }
 
-    if (text2Element.value) {
+    if (text2Element.value instanceof HTMLElement) {
         const opacityEffect = getOpacityEffect(gsap);
         opacityEffect(text2Element);
     }
 
-    if (linkElement.value) {
+    if (linkElement.value instanceof HTMLElement) {
         const opacityEffect = getOpacityEffect(gsap);
         opacityEffect(linkElement);
     }
