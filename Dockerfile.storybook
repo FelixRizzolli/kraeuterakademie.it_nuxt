@@ -30,4 +30,4 @@ EXPOSE $PORT
 
 # Serve the built Storybook files using a lightweight HTTP server
 RUN pnpm add -g http-server
-CMD ["http-server", "storybook-static", "-p", "$PORT", "-a", "$HOST"]
+CMD ["sh", "-c", "http-server storybook-static -p $PORT -a $HOST"]
