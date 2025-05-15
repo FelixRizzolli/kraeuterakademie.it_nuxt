@@ -1,0 +1,50 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
+
+import CourseList from "./CourseList.vue";
+
+const meta: Meta<typeof CourseList> = {
+    component: CourseList,
+};
+
+export default meta;
+type Story = StoryObj<typeof CourseList>;
+
+/*
+ *👇 Render functions are a framework specific feature to allow you control on how the component renders.
+ * See https://storybook.js.org/docs/api/csf
+ * to learn how to use render functions.
+ */
+export const Default: Story = {
+    render: (args) => ({
+        components: { CourseList },
+        setup() {
+            return { args };
+        },
+        template: '<CourseList v-bind="args" />',
+    }),
+    args: {
+        data: {
+            title: "Aktuelle Kurse",
+            courses: [
+                {
+                    title: "Pustertal K20",
+                    place: "Pustertal",
+                    description: "Der Kurs findet von Oktober 2023 bis August 2025 im Pustertal, statt. Die Kurstage sind jeweils samstags und dauern von 9:00 bis 17:00 Uhr.",
+                    dates: ["2023-10-28", "2023-11-11", "2023-12-09", "2024-01-20", "2024-02-10", "2024-03-23", "2024-04-27", "2024-05-11", "2024-06-08", "2024-07-06", "2024-08-03", "2024-08-31", "2024-09-14", "2024-09-28", "2024-10-12", "2024-11-09", "2024-11-23", "2024-12-07", "2025-01-18", "2025-02-08", "2025-02-22", "2025-03-15", "2025-03-23", "2025-04-12", "2025-04-26", "2025-05-10", "2025-05-24", "2025-06-28", "2025-06-29", "2025-07-12", "2025-08-09", "2025-08-16", "2025-08-17", "2024-07-09", "2024-07-10", "2024-07-13", "2024-07-14"],
+                },
+                {
+                    title: "Unterland K21",
+                    place: "Unterland",
+                    description: "Der Kurs findet von Oktober 2023 bis August 2025 im Unterland, statt. Die Kurstage sind jeweils samstags und dauern von 9:00 bis 17:00 Uhr.",
+                    dates: ["2023-10-24", "2023-11-21", "2023-12-12", "2024-01-23", "2024-02-13", "2024-03-26", "2024-04-30", "2024-05-14", "2024-06-11", "2024-07-09", "2024-08-06", "2024-09-03", "2024-09-17", "2024-10-01", "2024-10-15", "2024-11-12", "2024-11-26", "2024-12-10", "2025-01-21", "2025-02-11", "2025-02-23", "2025-03-16", "2025-04-08", "2025-04-29", "2025-05-13", "2025-05-27", "2025-06-17", "2025-07-01", "2025-07-15", "2025-08-06", "2025-08-12", "2025-08-16", "2025-08-17", "2024-07-20", "2024-07-21", "2024-07-30", "2024-07-31"],
+                },
+                {
+                    title: "Unterland K22",
+                    place: "Unterland",
+                    description: "Der Kurs findet von Oktober 2023 bis August 2025 im Unterland, statt. Die Kurstage sind jeweils samstags und dauern von 9:00 bis 17:00 Uhr.",
+                    dates: ["2023-10-29", "2023-11-19", "2023-12-10", "2024-01-21", "2024-02-11", "2024-03-03", "2024-04-28", "2024-05-19", "2024-06-09", "2024-07-07", "2024-08-04", "2024-09-01", "2024-09-15", "2024-10-13", "2024-10-27", "2024-11-10", "2024-11-24", "2024-12-08", "2025-01-19", "2025-02-09", "2025-02-23", "2025-03-16", "2025-04-13", "2025-04-27", "2025-05-18", "2025-06-01", "2025-06-15", "2025-07-06", "2025-07-20", "2025-08-03", "2025-08-10", "2025-08-16", "2025-08-17", "2024-07-20", "2024-07-21", "2024-07-30", "2024-07-31"],
+                },
+            ],
+        },
+    },
+};
