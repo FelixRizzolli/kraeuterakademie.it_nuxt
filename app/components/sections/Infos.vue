@@ -86,6 +86,15 @@ onMounted(() => {
     @include font-24-39-5-L();
 }
 
+.link-button {
+    @include col-start(2);
+    @include col(12);
+
+    & {
+        margin: 5.2rem auto 0 auto;
+    }
+}
+
 @media (max-width: 1023px) {
     .contentelement_infos {
         padding: 7.5rem 0;
@@ -118,12 +127,7 @@ onMounted(() => {
     }
 
     .link-button {
-        @include col-start(2);
-        @include col(12);
-
-        & {
-            margin: 6rem auto 0 auto;
-        }
+        margin: 6rem auto 0 auto;
     }
 }
 </style>
