@@ -26,3 +26,4 @@ logs
 # pnpm
 .pnpm-debug.log
 .pnpm-store
+*storybook.log

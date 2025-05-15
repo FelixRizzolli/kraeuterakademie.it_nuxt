@@ -17,7 +17,7 @@ export default defineNuxtConfig({
 
     plugins: ["~/plugins/pinia.ts"],
 
-    modules: ["@nuxt/image", "nuxt-svgo"],
+    modules: ["@nuxt/image", "nuxt-svgo", "@nuxtjs/storybook"],
 
     vite: {
         css: {
