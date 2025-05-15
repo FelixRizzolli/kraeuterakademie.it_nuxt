@@ -14,7 +14,7 @@ COPY . ./
 # Install dependencies & build the storybook project
 RUN corepack enable && \
     rm -rf node_modules && \
-    pnpm install --prod && \
+    pnpm install && \
     rm -rf storybook-static && \
     pnpm add -g http-server && \
     pnpm run build-storybook
