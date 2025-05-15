@@ -1,5 +1,6 @@
 <template>
     <section class="contentelement_imagetext grid-container">
+        <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
         <div v-if="data.image" class="image scale-animation" ref="imageElement" :class="{ 'scale-active': showImageElement }">
             <img :src="data.image.src" :alt="data.image.alt" />
         </div>
@@ -24,6 +25,7 @@ interface Link {
 }
 
 interface ImageTextData {
+    title?: string;
     image?: Image;
     text1?: string;
     infos?: string;
@@ -43,12 +45,18 @@ const props = defineProps<ImageTextProps>();
 const imageElement = ref<HTMLElement>();
 const showImageElement = ref(false);
 
+const titleElement = ref<HTMLElement>();
 const text1Element = ref<HTMLElement>();
 const infosElement = ref<HTMLElement>();
 const text2Element = ref<HTMLElement>();
 const linkElement = ref<HTMLElement>();
 
 onMounted(() => {
+    if (titleElement.value instanceof HTMLElement) {
+        const opacityEffect = getOpacityEffect(gsap);
+        opacityEffect(titleElement);
+    }
+
     if (imageElement.value instanceof HTMLElement) {
         const effectForImage = getScaleEffect(gsap);
         effectForImage(imageElement, showImageElement);
@@ -81,6 +89,15 @@ onMounted(() => {
     margin-bottom: 15rem;
 }
 
+.title {
+    @include col-start(3);
+    @include col(5);
+
+    & {
+        margin-bottom: 7.5rem;
+    }
+}
+
 .image {
     @include col-start(3);
     @include col(4);
@@ -95,6 +112,7 @@ onMounted(() => {
 .text {
     @include col-start(9);
     @include col(4);
+    @include font-19-30-5-L();
 
     &:first-of-type {
         margin-top: 12rem;
@@ -147,6 +165,14 @@ onMounted(() => {
 @media (max-width: 1023px) {
     .contentelement_imagetext {
         margin-bottom: 7.5rem;
+    }
+
+    .title {
+        @include col(11);
+
+        & {
+            margin-bottom: 4.5rem;
+        }
     }
 
     .image {
