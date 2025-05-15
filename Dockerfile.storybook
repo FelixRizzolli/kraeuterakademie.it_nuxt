@@ -21,6 +21,8 @@ RUN corepack enable && \
     pnpm add -g http-server && \
     pnpm run build-storybook
 
+COPY ./public ./storybook-static
+
 # Change the port and host
 ENV PORT=$PORT
 ENV HOST=$HOST
