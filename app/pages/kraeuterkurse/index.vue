@@ -110,7 +110,7 @@ const pageData = ref<any>({
             {
                 title: "Pustertal K26",
                 place: "Pustertal",
-                description: "Der Kurs findet von Oktober 2025 bis August 2027 im Pustertal, statt. Die Kurstage sind jeweils samstags und dauern von 9:00 bis 17:00 Uhr",
+                description: "Der Kurs findet von Oktober 2025 bis August 2027 im Pustertal, statt. Die Kurstage sind jeweils donnerstags und dauern von 9:00 bis 17:00 Uhr",
                 link: {
                     text: "Kräuterkurs Anmelden",
                     href: "mailto:sigrid.thaler@gmail.com?subject=Anmeldung zum Kräuterkurs (Pustertal K26)",
@@ -147,13 +147,13 @@ const pageData = ref<any>({
             {
                 title: "Unterland K21",
                 place: "Unterland",
-                description: "Der Kurs findet von Oktober 2023 bis August 2025 im Unterland, statt. Die Kurstage sind jeweils samstags und dauern von 9:00 bis 17:00 Uhr.",
+                description: "Der Kurs findet von Oktober 2023 bis August 2025 im Unterland, statt. Die Kurstage sind jeweils dienstags und dauern von 9:00 bis 17:00 Uhr.",
                 dates: ["2023-10-24", "2023-11-21", "2023-12-12", "2024-01-23", "2024-02-13", "2024-03-26", "2024-04-30", "2024-05-14", "2024-06-11", "2024-07-09", "2024-08-06", "2024-09-03", "2024-09-17", "2024-10-01", "2024-10-15", "2024-11-12", "2024-11-26", "2024-12-10", "2025-01-21", "2025-02-11", "2025-02-23", "2025-03-16", "2025-04-08", "2025-04-29", "2025-05-13", "2025-05-27", "2025-06-17", "2025-07-01", "2025-07-15", "2025-08-06", "2025-08-12", "2025-08-16", "2025-08-17", "2024-07-20", "2024-07-21", "2024-07-30", "2024-07-31"],
             },
             {
                 title: "Unterland K22",
                 place: "Unterland",
-                description: "Der Kurs findet von Oktober 2023 bis August 2025 im Unterland, statt. Die Kurstage sind jeweils samstags und dauern von 9:00 bis 17:00 Uhr.",
+                description: "Der Kurs findet von Oktober 2023 bis August 2025 im Unterland, statt. Die Kurstage sind jeweils sonntags und dauern von 9:00 bis 17:00 Uhr.",
                 dates: ["2023-10-29", "2023-11-19", "2023-12-10", "2024-01-21", "2024-02-11", "2024-03-03", "2024-04-28", "2024-05-19", "2024-06-09", "2024-07-07", "2024-08-04", "2024-09-01", "2024-09-15", "2024-10-13", "2024-10-27", "2024-11-10", "2024-11-24", "2024-12-08", "2025-01-19", "2025-02-09", "2025-02-23", "2025-03-16", "2025-04-13", "2025-04-27", "2025-05-18", "2025-06-01", "2025-06-15", "2025-07-06", "2025-07-20", "2025-08-03", "2025-08-10", "2025-08-16", "2025-08-17", "2024-07-20", "2024-07-21", "2024-07-30", "2024-07-31"],
             },
         ],
@@ -164,7 +164,7 @@ const pageData = ref<any>({
             {
                 title: "Unterland K23",
                 place: "Unterland",
-                description: "Der Kurs findet von Oktober 2024 bis August 2026 im Unterland, statt. Die Kurstage sind jeweils samstags und dauern von 9:00 bis 17:00 Uhr.",
+                description: "Der Kurs findet von Oktober 2024 bis August 2026 im Unterland, statt. Die Kurstage sind jeweils dienstags und dauern von 9:00 bis 17:00 Uhr.",
                 dates: ["2024-10-29", "2024-11-19", "2024-12-03", "2025-01-28", "2025-02-18", "2025-03-18", "2025-04-15", "2025-05-06", "2025-06-03", "2025-07-08", "2025-08-05", "2025-08-26", "2025-09-16", "2025-09-30", "2025-10-21", "2025-11-04", "2025-11-25", "2025-12-09", "2026-01-13", "2026-02-03", "2026-02-24", "2026-03-10", "2026-03-24", "2026-04-14", "2026-05-05", "2026-05-26", "2026-06-09", "2026-06-23", "2026-07-07", "2026-07-21", "2026-08-04", "2026-08-16", "2026-08-17", "2025-07-29", "2025-07-30"],
             },
             {
