@@ -14,7 +14,7 @@ COPY . ./
 # Install dependencies & build the project
 RUN corepack enable && \
     rm -rf node_modules && \
-    pnpm install --prod && \
+    pnpm install && \
     rm -rf .output && \
     pnpm run build
 
