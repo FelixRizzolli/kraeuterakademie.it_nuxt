@@ -17,20 +17,23 @@ export default defineNuxtConfig({
 
     plugins: ["~/plugins/pinia.ts"],
 
-    modules: ["@nuxt/image", "nuxt-svgo", "@nuxtjs/storybook"],
+    modules: ["@nuxt/image", "nuxt-svgo", "@nuxtjs/storybook", "@nuxtjs/strapi"],
 
     vite: {
         css: {
             preprocessorOptions: {
                 scss: {
                     additionalData: `
-            @use "~/assets/styles/colors.scss" as *;
-            @use "~/assets/styles/fonts.scss" as *;
-            @use "~/assets/styles/mixins.scss" as *;
-            @use "~/assets/styles/prefixer.scss" as *;
-          `,
+                        @use "~/assets/styles/colors.scss" as *;
+                        @use "~/assets/styles/fonts.scss" as *;
+                        @use "~/assets/styles/mixins.scss" as *;
+                        @use "~/assets/styles/prefixer.scss" as *;
+                    `,
                 },
             },
+        },
+        optimizeDeps: {
+            include: ["qs"],
         },
     },
 
@@ -81,5 +84,14 @@ export default defineNuxtConfig({
                 "removeXMLNS",
             ],
         },
+    },
+
+    strapi: {
+        url: "http://localhost:1337",
+        prefix: "/api",
+        admin: "/admin",
+        version: "v5",
+        cookie: {},
+        cookieName: "strapi_jwt",
     },
 });
