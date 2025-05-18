@@ -14,7 +14,9 @@
                         </div>
                     </summary>
                     <section class="accordion-content accordion-grid">
-                        <div v-html="accordion.content" class="inner"></div>
+                        <div class="inner">
+                            <StrapiBlocksText :nodes="accordion.content" />
+                        </div>
                     </section>
                 </details>
             </div>

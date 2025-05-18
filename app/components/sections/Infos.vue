@@ -2,7 +2,9 @@
     <section class="contentelement_infos grid-container">
         <div class="info" v-for="(info, index) in data.infos" :key="index" ref="infoElements">
             <h3 v-if="info.title" class="title">{{ info.title }}</h3>
-            <p v-if="info.text" class="text">{{ info.text }}</p>
+            <div v-if="info.text" class="text">
+                <StrapiBlocksText :nodes="info.text" />
+            </div>
         </div>
         <NuxtLink v-if="data.link" class="link-button" :to="data.link.href" ref="linkElement">{{ data.link.text }}</NuxtLink>
     </section>

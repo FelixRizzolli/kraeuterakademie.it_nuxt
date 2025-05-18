@@ -1,7 +1,9 @@
 <template>
     <section class="contentelement_textelement grid-container">
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
-        <div v-if="data.content" class="content" v-html="data.content" ref="contentElement"></div>
+        <div v-if="data.content" class="content" ref="contentElement">
+            <StrapiBlocksText :nodes="data.content" />
+        </div>
         <NuxtLink v-if="data.link" class="link-button" :to="data.link.href" ref="linkElement">{{ data.link.text }}</NuxtLink>
     </section>
 </template>

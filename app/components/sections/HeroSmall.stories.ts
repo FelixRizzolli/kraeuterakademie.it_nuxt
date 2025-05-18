@@ -26,8 +26,8 @@ export const Default: Story = {
         data: {
             title: "Kurse zu Wildpflanzen und Heilkräuter",
             image: {
-                src: "/images/herosmall_2.png",
-                alt: "Kräuterakademie",
+                url: "/images/herosmall_2.png",
+                alternativeText: "Kräuterakademie",
             },
             link: {
                 href: "/kraeuterkurse",

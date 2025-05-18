@@ -1,24 +1,32 @@
 <template>
-    <HeroSmall :data="pageData.herosmall" />
-    <AnimatedText :data="pageData.animatedtext" />
+    <HeroSmall v-if="heroData" :data="heroData" />
+    <AnimatedText v-if="textData.text" :data="textData" />
 </template>
 
 <script lang="ts" setup>
-const pageData = ref<any>({
-    herosmall: {
-        title: "Kurse zu Wildpflanzen und Heilkräuter",
-        image: {
-            src: "/images/herosmall_2.png",
-            alt: "Kräuterakademie",
+const heroData = ref<any>({});
+const textData = ref<any>({});
+
+const { find } = useStrapi();
+
+onMounted(async () => {
+    const response: any = await find("home", {
+        populate: {
+            hero: {
+                populate: "*",
+            },
+            text: {
+                populate: "*",
+            },
         },
-        link: {
-            href: "/kraeuterkurse",
-            text: "Kräuterakademie",
-        },
-    },
-    animatedtext: {
-        text: "Alles was wir brauchen, um gesund zu bleiben, hat uns die Natur reichlich geschenkt. ~ Sebastian Kneipp",
-    },
+    });
+
+    if (response) {
+        heroData.value = response.data?.hero;
+        textData.value = response.data?.text;
+    } else {
+        console.error("Failed to fetch data from Strapi");
+    }
 });
 </script>
 

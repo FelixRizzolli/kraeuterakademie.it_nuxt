@@ -26,8 +26,8 @@ export const Default: Story = {
         data: {
             title: "Aufbaulehrgang Knospenexpert*in",
             image: {
-                src: "/images/herobig_1.png",
-                alt: "Kräuterkurs Bild",
+                url: "/images/herobig_1.png",
+                alternativeText: "Kräuterkurs Bild",
             },
         },
     },

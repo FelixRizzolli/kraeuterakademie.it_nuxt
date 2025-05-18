@@ -3,14 +3,13 @@
         <div v-if="data.title" class="content-container grid-container">
             <h1 class="title">{{ data.title }}</h1>
         </div>
-        <div v-if="data.image" class="image-container">
-            <img :src="data.image.src" :alt="data.image.alt" class="image" />
-        </div>
+        <StrapiImage v-if="data.image" :image="data.image" scale-animation />
     </section>
 </template>
 
 <script lang="ts" setup>
 import { gsap } from "gsap";
+import type { StrapiImage } from "../elements/StrapiImage.vue";
 
 interface Image {
     src: string;
@@ -19,7 +18,7 @@ interface Image {
 
 interface HeroBigData {
     title?: string;
-    image?: Image;
+    image?: StrapiImage;
 }
 
 interface HeroBigSettings {}
@@ -64,11 +63,11 @@ onMounted(() => {
 
 .image-container {
     margin-left: 21rem;
-}
 
-.image {
-    width: 100%;
-    height: auto;
+    :deep(.image) {
+        width: 100%;
+        height: auto;
+    }
 }
 
 @media (max-width: 1023px) {

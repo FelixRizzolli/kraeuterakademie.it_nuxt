@@ -4,29 +4,23 @@
             <h1 v-if="data.title" class="title">{{ data.title }}</h1>
             <NuxtLink v-if="data.link" class="link-button" :to="data.link.href">{{ data.link.text }}</NuxtLink>
         </div>
-        <div v-if="data.image" class="image scale-animation" ref="imageElement" :class="{ 'scale-active': showImageElement }">
-            <img :src="data.image?.src" :alt="data.image?.alt" class="hero-image" />
-        </div>
+        <StrapiImage v-if="data.image" :image="data.image" scale-animation />
     </section>
 </template>
 
 <script lang="ts" setup>
 import { gsap } from "gsap";
+import type { StrapiImage } from "../elements/StrapiImage.vue";
 
 interface Link {
     href: string;
     text: string;
 }
 
-interface Image {
-    src: string;
-    alt: string;
-}
-
 interface HeroSmallData {
     title?: string;
     link?: Link;
-    image?: Image;
+    image?: StrapiImage;
 }
 
 interface HeroSmallSettings {}
@@ -39,15 +33,8 @@ export interface HeroSmallProps {
 const props = defineProps<HeroSmallProps>();
 
 const contentElement = ref<HTMLElement>();
-const imageElement = ref<HTMLElement>();
-const showImageElement = ref(false);
 
 onMounted(() => {
-    if (imageElement.value instanceof HTMLElement) {
-        const effectForImage = getScaleEffect(gsap);
-        effectForImage(imageElement, showImageElement);
-    }
-
     if (contentElement.value instanceof HTMLElement) {
         const opacityEffect = getOpacityEffect(gsap);
         opacityEffect(contentElement);
@@ -85,7 +72,7 @@ onMounted(() => {
     align-self: flex-end;
 }
 
-.image {
+.image-container {
     @include col-start(6);
     @include col(6);
 
@@ -95,7 +82,7 @@ onMounted(() => {
         z-index: 0;
     }
 
-    img {
+    :deep(.image) {
         width: 100%;
         height: auto;
     }
@@ -123,7 +110,7 @@ onMounted(() => {
         margin-top: 3.5rem;
     }
 
-    .image {
+    .image-container {
         @include col-start(2);
         @include col(10);
 

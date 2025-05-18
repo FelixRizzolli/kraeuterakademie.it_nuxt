@@ -1,23 +1,21 @@
 <template>
     <section class="contentelement_imagetext grid-container">
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
-        <div v-if="data.image" class="image scale-animation" ref="imageElement" :class="{ 'scale-active': showImageElement }">
-            <img :src="data.image.src" :alt="data.image.alt" />
+        <StrapiImage v-if="data.image" :image="data.image" scale-animation ref="imageElement" />
+        <div v-if="data.text1" class="text" ref="text1Element">
+            <StrapiBlocksText :nodes="data.text1" />
         </div>
-        <div v-if="data.text1" class="text" v-html="data.text1" ref="text1Element"></div>
         <div v-if="data.infos" class="infos" v-html="data.infos" ref="infosElement"></div>
-        <div v-if="data.text2" class="text" v-html="data.text2" ref="text2Element"></div>
+        <div v-if="data.text2" class="text" ref="text2Element">
+            <StrapiBlocksText :nodes="data.text2" />
+        </div>
         <NuxtLink v-if="data.link" class="link-button" :to="data.link.href" ref="linkElement">{{ data.link.text }}</NuxtLink>
     </section>
 </template>
 
 <script lang="ts" setup>
 import { gsap } from "gsap";
-
-interface Image {
-    src: string;
-    alt: string;
-}
+import type { StrapiImage } from "../elements/StrapiImage.vue";
 
 interface Link {
     href: string;
@@ -26,7 +24,7 @@ interface Link {
 
 interface ImageTextData {
     title?: string;
-    image?: Image;
+    image?: StrapiImage;
     text1?: string;
     infos?: string;
     text2?: string;
@@ -42,9 +40,6 @@ export interface ImageTextProps {
 
 const props = defineProps<ImageTextProps>();
 
-const imageElement = ref<HTMLElement>();
-const showImageElement = ref(false);
-
 const titleElement = ref<HTMLElement>();
 const text1Element = ref<HTMLElement>();
 const infosElement = ref<HTMLElement>();
@@ -55,11 +50,6 @@ onMounted(() => {
     if (titleElement.value instanceof HTMLElement) {
         const opacityEffect = getOpacityEffect(gsap);
         opacityEffect(titleElement);
-    }
-
-    if (imageElement.value instanceof HTMLElement) {
-        const effectForImage = getScaleEffect(gsap);
-        effectForImage(imageElement, showImageElement);
     }
 
     if (text1Element.value instanceof HTMLElement) {
@@ -98,12 +88,12 @@ onMounted(() => {
     }
 }
 
-.image {
+.image-container {
     @include col-start(3);
     @include col(4);
     @include row(4);
 
-    img {
+    :deep(.image) {
         width: 100%;
         height: auto;
     }
@@ -175,7 +165,7 @@ onMounted(() => {
         }
     }
 
-    .image {
+    .image-container {
         @include col-start(2);
         @include col(10);
     }

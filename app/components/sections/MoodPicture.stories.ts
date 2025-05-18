@@ -25,8 +25,8 @@ export const Default: Story = {
     args: {
         data: {
             image: {
-                src: "/images/herobig_2.png",
-                alt: "Kräuterkurs Bild",
+                url: "/images/herobig_2.png",
+                alternativeText: "Kräuterkurs Bild",
             },
         },
     },

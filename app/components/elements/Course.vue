@@ -1,12 +1,14 @@
 <template>
     <section class="course" ref="courseElement">
         <h3 class="title">{{ course.title }}</h3>
-        <span v-if="sortedDates" class="key-infos">{{ course.place }} | {{ formatDate(sortedDates[0]) }} - {{ formatDate(sortedDates[sortedDates.length - 1]) }}</span>
-        <p class="description">{{ course.description }}</p>
+        <span v-if="sortedDates" class="key-infos">{{ course.place }} | {{ formatDate(sortedDates[0].date) }} - {{ formatDate(sortedDates[sortedDates.length - 1].date) }}</span>
+        <div class="description">
+            <StrapiBlocksText :nodes="course.description" />
+        </div>
         <a v-if="sortedDates" class="open-close" @click="toggleDates">Alle Termine ansehen</a>
         <div class="dates" ref="dates">
             <p class="date" v-for="(date, index) in sortedDates" :key="index">
-                {{ formatDate2(date) }}
+                {{ formatDate2(date.date) }}
             </p>
         </div>
         <NuxtLink v-if="course.link" class="link-button" :to="course.link?.href">{{ course.link?.text }}</NuxtLink>
@@ -16,11 +18,16 @@
 <script lang="ts" setup>
 import { gsap } from "gsap";
 
+interface CourseDate {
+    id: number;
+    date: string;
+}
+
 export interface Course {
     title: string;
     place: string;
     description: string;
-    dates: Array<string>;
+    dates: Array<CourseDate>;
     link?: {
         href: string;
         text: string;
@@ -36,7 +43,8 @@ const props = defineProps<CourseProps>();
 const dates = ref<HTMLDivElement | null>(null);
 
 const sortedDates = computed(() => {
-    return props.course.dates.sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
+    if (!props.course.dates || props.course.dates.length === 0) return null;
+    return props.course.dates.sort((a: CourseDate, b: CourseDate) => new Date(a.date).getTime() - new Date(b.date).getTime());
 });
 
 const courseElement = ref<HTMLElement>();

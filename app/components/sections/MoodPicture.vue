@@ -1,13 +1,11 @@
 <template>
     <section class="contentelement_moodpicture">
-        <div class="image-container">
-            <img :src="data.image?.src" :alt="data.image?.alt" class="image" />
-        </div>
+        <StapiImage v-if="data.image" :image="data.image" scale-animation />
     </section>
 </template>
 
 <script lang="ts" setup>
-import { gsap } from "gsap";
+import type { StrapiImage } from "../elements/StrapiImage.vue";
 
 interface Image {
     src: string;
@@ -15,7 +13,7 @@ interface Image {
 }
 
 interface MoodPictureData {
-    image: Image;
+    image: StrapiImage;
 }
 
 interface MoodPictureSettings {}
@@ -26,26 +24,17 @@ export interface MoodPictureProps {
 }
 
 const props = defineProps<MoodPictureProps>();
-
-const imageElement = ref<HTMLElement>();
-
-onMounted(() => {
-    if (imageElement.value instanceof HTMLElement) {
-        const opacityEffect = getOpacityEffect(gsap);
-        opacityEffect(imageElement);
-    }
-});
 </script>
 
 <style lang="scss" scoped>
 .image-container {
     margin-bottom: 15rem;
     margin-left: 21rem;
-}
 
-.image {
-    width: 100%;
-    height: auto;
+    :deep(.image) {
+        width: 100%;
+        height: auto;
+    }
 }
 
 @media (max-width: 1023px) {
