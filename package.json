@@ -17,7 +17,7 @@
         "@nuxt/image": "1.10.0",
         "@nuxtjs/strapi": "2.0.0",
         "gsap": "^3.13.0",
-        "nuxt": "^3.17.3",
+        "nuxt": "^3.17.4",
         "nuxt-strapi-blocks-renderer": "^1.0.17",
         "nuxt-svgo": "4.1.2",
         "pinia": "^3.0.2",
