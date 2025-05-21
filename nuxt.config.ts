@@ -93,7 +93,7 @@ export default defineNuxtConfig({
     },
 
     strapi: {
-        url: "http://localhost:1337",
+        url: process.env.NODE_ENV === "production" ? "https://api.kraeuterakademie.it" : "http://localhost:1337",
         prefix: "/api",
         admin: "/admin",
         version: "v5",
