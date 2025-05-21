@@ -24,8 +24,8 @@ importers:
         specifier: ^1.0.18
         version: 1.0.18(magicast@0.3.5)
       nuxt-svgo:
-        specifier: 4.1.2
-        version: 4.1.2(magicast@0.3.5)(vue@3.5.14(typescript@5.8.3))
+        specifier: 4.2.1
+        version: 4.2.1(magicast@0.3.5)(vue@3.5.14(typescript@5.8.3))
       pinia:
         specifier: ^3.0.2
         version: 3.0.2(typescript@5.8.3)(vue@3.5.14(typescript@5.8.3))
@@ -3411,8 +3411,8 @@ packages:
     resolution: {integrity: sha512-V45YU9J7AqupUONbVNtSW8QsqaRHLa0pR43gaPxTM5V39OHfLjZ+OWFs0vfY+RPfwSSQ1CI/7VR+LxhJzU/JlQ==}
     engines: {node: ^18.x || ^20.x || ^22.x}
 
-  nuxt-svgo@4.1.2:
-    resolution: {integrity: sha512-r7/cRYQMQQsMK6mml/EM/8Q+r40V73YqG0U+M2KY3M8v2ssxaH3jGUgVCXZv+nqHjIRmWosqhc3djRdRRoQqpg==}
+  nuxt-svgo@4.2.1:
+    resolution: {integrity: sha512-3l4Q0wRZbZCpOKEMe7fbfmLY2y7CUdWEFFKovXdTqTuwI94h5dSAfe2BEp3zJkS68gO/NwqXsL0Uoa6UZiywIQ==}
     peerDependencies:
       svgo-loader: ^4.0.0
       vue: '>=3.2.13'
@@ -8753,7 +8753,7 @@ snapshots:
     transitivePeerDependencies:
       - magicast
 
-  nuxt-svgo@4.1.2(magicast@0.3.5)(vue@3.5.14(typescript@5.8.3)):
+  nuxt-svgo@4.2.1(magicast@0.3.5)(vue@3.5.14(typescript@5.8.3)):
     dependencies:
       '@nuxt/kit': 3.17.4(magicast@0.3.5)
       mini-svg-data-uri: 1.4.4
