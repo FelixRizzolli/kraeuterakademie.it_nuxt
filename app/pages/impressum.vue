@@ -7,6 +7,7 @@
 <script lang="ts" setup>
 const heroData = ref<any>({});
 const textData = ref<Array<any>>([]);
+const seoData = ref<any>({});
 
 const { find } = useStrapi();
 

@@ -12,6 +12,7 @@ const accordionsData = ref<any>({});
 const nextcoursesData = ref<any>({});
 const infosData = ref<any>({});
 const runningcoursesData = ref<Array<any>>([]);
+const seoData = ref<any>({});
 
 const { find } = useStrapi();
 
