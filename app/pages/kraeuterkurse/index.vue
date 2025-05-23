@@ -44,8 +44,6 @@ onMounted(async () => {
         },
     });
 
-    console.log(response);
-
     if (response) {
         seoData.value = response.data?.seo;
         heroData.value = response.data?.hero;
