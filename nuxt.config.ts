@@ -1,5 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    app: {
+        head: {
+            titleTemplate: "%s | Sigrid Thaler Rizzolli",
+            htmlAttrs: {
+                lang: "de",
+            },
+        }
+    },
+
     runtimeConfig: {
         public: {
             strapiApiUrl: process.env.NODE_ENV === "production" ? process.env.STRAPI_API_URL : "http://localhost:1337",
