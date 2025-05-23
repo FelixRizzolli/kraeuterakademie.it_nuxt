@@ -2,7 +2,9 @@
 export default defineNuxtConfig({
     runtimeConfig: {
         public: {
-            strapiApiUrl: process.env.STRAPI_API_URL || "http://localhost:1337",
+            strapiApiUrl: (process.env.NODE_ENV === "production") 
+                            ? process.env.STRAPI_API_URL 
+                            : "http://localhost:1337",
         },
     },
 
@@ -93,7 +95,9 @@ export default defineNuxtConfig({
     },
 
     strapi: {
-        url: process.env.STRAPI_API_URL || "http://localhost:1337",
+        url: (process.env.NODE_ENV === "production") 
+                ? process.env.STRAPI_API_URL 
+                : "http://localhost:1337",
         prefix: "/api",
         admin: "/admin",
         version: "v5",
