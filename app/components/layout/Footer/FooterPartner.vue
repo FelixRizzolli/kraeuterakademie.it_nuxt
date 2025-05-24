@@ -1,7 +1,13 @@
 <template>
     <div class="partner">
         <NuxtLink :to="partner.href" v-for="(partner, index) in partners" :key="index">
-            <img :src="partner.src" :alt="partner.alt" class="scale-animation" ref="partnerElements" :class="{ 'scale-active': showPartnerElements[index] }" />
+            <img
+                :src="partner.src"
+                :alt="partner.alt"
+                class="scale-animation"
+                ref="partnerElements"
+                :class="{ 'scale-active': showPartnerElements[index] }"
+            />
         </NuxtLink>
     </div>
 </template>
@@ -50,12 +56,14 @@ onMounted(() => {
     @include col-start(1);
     @include col(14);
 
-    padding: 5.5rem;
-    background-color: $colorBackgroundCream;
+    & {
+        padding: 5.5rem;
+        background-color: $colorBackgroundCream;
 
-    display: flex;
-    justify-content: end;
-    gap: 4.5rem;
+        display: flex;
+        justify-content: end;
+        gap: 4.5rem;
+    }
 
     img {
         height: 9rem;

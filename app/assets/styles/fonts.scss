@@ -62,7 +62,10 @@ $fontFamilyHeading: "roca", sans-serif;
 @mixin font-70-72-1-BL() {
     // Titel
     @include font(70, 72, 1);
-    font-weight: 900;
+
+    & {
+        font-weight: 900;
+    }
 
     // LAYOUT mobile
     @media (max-width: 1023px) {
@@ -73,7 +76,10 @@ $fontFamilyHeading: "roca", sans-serif;
 @mixin font-30-30-5-BL() {
     // Title Small
     @include font(30, 30, 5);
-    font-weight: 900;
+
+    & {
+        font-weight: 900;
+    }
 
     // LAYOUT mobile
     @media (max-width: 1023px) {
@@ -84,7 +90,10 @@ $fontFamilyHeading: "roca", sans-serif;
 @mixin font-24-39-5-L() {
     // Text
     @include font(24, 39, 5);
-    font-weight: 300;
+
+    & {
+        font-weight: 300;
+    }
 
     // LAYOUT mobile
     @media (max-width: 1023px) {
@@ -95,7 +104,10 @@ $fontFamilyHeading: "roca", sans-serif;
 @mixin font-19-30-5-L() {
     // Body Text
     @include font(19, 30, 5);
-    font-weight: 300;
+
+    & {
+        font-weight: 300;
+    }
 
     // LAYOUT mobile
     @media (max-width: 1023px) {
@@ -106,7 +118,10 @@ $fontFamilyHeading: "roca", sans-serif;
 @mixin font-50-63-1-BL() {
     // Paragraph
     @include font(50, 63, 1);
-    font-weight: 900;
+
+    & {
+        font-weight: 900;
+    }
 
     // LAYOUT mobile
     @media (max-width: 1023px) {
@@ -117,8 +132,11 @@ $fontFamilyHeading: "roca", sans-serif;
 @mixin font-17-17-10-M-U() {
     // Link
     @include font(17, 17, 10);
-    font-weight: 500;
-    text-transform: uppercase;
+
+    & {
+        font-weight: 500;
+        text-transform: uppercase;
+    }
 
     // LAYOUT mobile
     @media (max-width: 1023px) {
@@ -129,14 +147,20 @@ $fontFamilyHeading: "roca", sans-serif;
 @mixin font-17-29-5-L-U() {
     // Footer Text
     @include font(17, 29, 5);
-    font-weight: 300;
-    text-transform: uppercase;
+
+    & {
+        font-weight: 300;
+        text-transform: uppercase;
+    }
 }
 
 @mixin font-50-63-1-BL() {
     // Infos
     @include font(50, 63, 1);
-    font-weight: 900;
+
+    & {
+        font-weight: 900;
+    }
 
     // LAYOUT mobile
     @media (max-width: 1023px) {
@@ -147,7 +171,10 @@ $fontFamilyHeading: "roca", sans-serif;
 @mixin font-50-63-1-B() {
     // Infos
     @include font(50, 63, 1);
-    font-weight: 700;
+
+    & {
+        font-weight: 700;
+    }
 
     // LAYOUT mobile
     @media (max-width: 1023px) {

@@ -44,10 +44,9 @@ onMounted(() => {
 footer {
     @include font-17-29-5-L-U();
 
-    row-gap: 3rem;
-
     & {
         padding-top: 6rem;
+        row-gap: 3rem;
     }
 }
 

@@ -24,9 +24,11 @@
     @include col(12);
     @include col-start(2);
 
-    display: grid;
-    grid-column-gap: 4.5rem;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    & {
+        display: grid;
+        grid-column-gap: 4.5rem;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
 
     // LAYOUT mobile
     @media (max-width: 1023px) {

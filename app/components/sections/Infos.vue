@@ -6,7 +6,9 @@
                 <StrapiBlocksText :nodes="info.text" />
             </div>
         </div>
-        <NuxtLink v-if="data.link" class="link-button" :to="data.link.href" ref="linkElement">{{ data.link.text }}</NuxtLink>
+        <NuxtLink v-if="data.link" class="link-button" :to="data.link.href" ref="linkElement">{{
+            data.link.text
+        }}</NuxtLink>
     </section>
 </template>
 
@@ -66,12 +68,18 @@ onMounted(() => {
 
     &:nth-child(3n + 2) {
         @include col-start(6);
-        margin-top: 13.5rem;
+
+        & {
+            margin-top: 13.5rem;
+        }
     }
 
     &:nth-child(3n) {
         @include col-start(10);
-        margin-top: 6rem;
+
+        & {
+            margin-top: 6rem;
+        }
     }
 }
 
@@ -114,13 +122,19 @@ onMounted(() => {
         &:nth-child(3n + 2) {
             @include col-start(2);
             @include col(12);
-            margin-top: 0;
+
+            & {
+                margin-top: 0;
+            }
         }
 
         &:nth-child(3n) {
             @include col-start(2);
             @include col(12);
-            margin-top: 0;
+
+            & {
+                margin-top: 0;
+            }
         }
 
         &:not(:first-of-type) {
