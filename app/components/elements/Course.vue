@@ -1,7 +1,10 @@
 <template>
     <section class="course" ref="courseElement">
         <h3 class="title">{{ course.title }}</h3>
-        <span v-if="sortedDates" class="key-infos">{{ course.place }} | {{ formatDate(sortedDates[0].date) }} - {{ formatDate(sortedDates[sortedDates.length - 1].date) }}</span>
+        <span v-if="sortedDates" class="key-infos"
+            >{{ course.place }} | {{ formatDate(sortedDates[0].date) }} -
+            {{ formatDate(sortedDates[sortedDates.length - 1].date) }}</span
+        >
         <div class="description">
             <StrapiBlocksText :nodes="course.description" />
         </div>
@@ -16,150 +19,152 @@
 </template>
 
 <script lang="ts" setup>
-import { gsap } from "gsap";
+    import { gsap } from 'gsap';
 
-interface CourseDate {
-    id: number;
-    date: string;
-}
+    interface CourseDate {
+        id: number;
+        date: string;
+    }
 
-export interface Course {
-    title: string;
-    place: string;
-    description: string;
-    dates: Array<CourseDate>;
-    link?: {
-        href: string;
-        text: string;
+    export interface Course {
+        title: string;
+        place: string;
+        description: string;
+        dates: Array<CourseDate>;
+        link?: {
+            href: string;
+            text: string;
+        };
+    }
+
+    export interface CourseProps {
+        course: Course;
+    }
+
+    const props = defineProps<CourseProps>();
+
+    const dates = ref<HTMLDivElement | null>(null);
+
+    const sortedDates = computed(() => {
+        if (!props.course.dates || props.course.dates.length === 0) return null;
+        return props.course.dates.sort(
+            (a: CourseDate, b: CourseDate) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+        );
+    });
+
+    const courseElement = ref<HTMLElement>();
+
+    const toggleDates = () => {
+        if (dates.value) {
+            dates.value.style.height = dates.value.style.height === '0px' ? 'auto' : '0px';
+            dates.value.style.paddingTop = dates.value.style.paddingTop === '0px' ? '2.5rem' : '0px';
+        }
     };
-}
 
-export interface CourseProps {
-    course: Course;
-}
+    // Function to format ISO date YYYY-MM-DD to DD.MM.YYYY
+    const formatDate = (isoDate: string): string => {
+        const date = new Date(isoDate);
+        return new Intl.DateTimeFormat('de-DE', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+        }).format(date);
+    };
 
-const props = defineProps<CourseProps>();
+    // Function to format ISO date YYYY-MM-DD to DD.MM.YYYY WD with weekday
+    const formatDate2 = (isoDate: string): string => {
+        const date = new Date(isoDate);
+        const formattedDate = new Intl.DateTimeFormat('de-DE', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+        }).format(date);
+        const weekday = new Intl.DateTimeFormat('de-DE', {
+            weekday: 'short',
+        }).format(date);
+        return `${formattedDate} ${weekday}`;
+    };
 
-const dates = ref<HTMLDivElement | null>(null);
-
-const sortedDates = computed(() => {
-    if (!props.course.dates || props.course.dates.length === 0) return null;
-    return props.course.dates.sort((a: CourseDate, b: CourseDate) => new Date(a.date).getTime() - new Date(b.date).getTime());
-});
-
-const courseElement = ref<HTMLElement>();
-
-const toggleDates = () => {
-    if (dates.value) {
-        dates.value.style.height = dates.value.style.height === "0px" ? "auto" : "0px";
-        dates.value.style.paddingTop = dates.value.style.paddingTop === "0px" ? "2.5rem" : "0px";
-    }
-};
-
-// Function to format ISO date YYYY-MM-DD to DD.MM.YYYY
-const formatDate = (isoDate: string): string => {
-    const date = new Date(isoDate);
-    return new Intl.DateTimeFormat("de-DE", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-    }).format(date);
-};
-
-// Function to format ISO date YYYY-MM-DD to DD.MM.YYYY WD with weekday
-const formatDate2 = (isoDate: string): string => {
-    const date = new Date(isoDate);
-    const formattedDate = new Intl.DateTimeFormat("de-DE", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-    }).format(date);
-    const weekday = new Intl.DateTimeFormat("de-DE", {
-        weekday: "short",
-    }).format(date);
-    return `${formattedDate} ${weekday}`;
-};
-
-onMounted(() => {
-    if (courseElement.value) {
-        const opacityEffect = getOpacityEffect(gsap);
-        opacityEffect(courseElement);
-    }
-});
+    onMounted(() => {
+        if (courseElement.value) {
+            const opacityEffect = getOpacityEffect(gsap);
+            opacityEffect(courseElement);
+        }
+    });
 </script>
 
 <style lang="scss" scoped>
-.course {
-    display: grid;
-    height: fit-content;
-}
-
-.title {
-    order: 2;
-    margin-top: 4.5rem;
-}
-
-.key-infos {
-    @include font-19-30-5-L();
-
-    & {
-        order: 1;
-
-        text-transform: uppercase;
+    .course {
+        display: grid;
+        height: fit-content;
     }
-}
 
-.description {
-    order: 3;
-    margin-top: 2.5rem;
-}
-
-.dates {
-    order: 4;
-    padding-top: 0px;
-
-    height: 0px;
-    overflow: hidden;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    text-transform: uppercase;
-}
-
-.open-close {
-    order: 5;
-    margin-top: 2.5rem;
-
-    text-align: right;
-    text-decoration: underline;
-
-    &:hover {
-        cursor: pointer;
-        color: $colorCta;
-    }
-}
-
-.link-button {
-    order: 6;
-    margin-top: 4.5rem;
-}
-
-@media (max-width: 1023px) {
     .title {
-        margin-top: 2.5rem;
+        order: 2;
+        margin-top: 4.5rem;
+    }
+
+    .key-infos {
+        @include font-19-30-5-L();
+
+        & {
+            order: 1;
+
+            text-transform: uppercase;
+        }
     }
 
     .description {
-        margin-top: 1rem;
+        order: 3;
+        margin-top: 2.5rem;
+    }
+
+    .dates {
+        order: 4;
+        padding-top: 0px;
+
+        height: 0px;
+        overflow: hidden;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        text-transform: uppercase;
     }
 
     .open-close {
-        margin-top: 1.5rem;
+        order: 5;
+        margin-top: 2.5rem;
+
+        text-align: right;
+        text-decoration: underline;
+
+        &:hover {
+            cursor: pointer;
+            color: $colorCta;
+        }
     }
 
     .link-button {
-        margin-top: 3rem;
+        order: 6;
+        margin-top: 4.5rem;
     }
-}
+
+    @media (max-width: 1023px) {
+        .title {
+            margin-top: 2.5rem;
+        }
+
+        .description {
+            margin-top: 1rem;
+        }
+
+        .open-close {
+            margin-top: 1.5rem;
+        }
+
+        .link-button {
+            margin-top: 3rem;
+        }
+    }
 </style>

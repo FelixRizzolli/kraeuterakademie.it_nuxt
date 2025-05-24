@@ -1,6 +1,6 @@
 export default (element: HTMLElement, callback: () => void): ResizeObserver | undefined => {
     if (!element) {
-        console.error("Element is null:");
+        console.error('Element is null:');
         return;
     }
 

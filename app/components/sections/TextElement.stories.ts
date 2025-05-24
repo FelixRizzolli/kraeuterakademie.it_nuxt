@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
+import type { Meta, StoryObj } from '@storybook/vue3';
 
-import TextElement from "./TextElement.vue";
+import TextElement from './TextElement.vue';
 
 const meta: Meta<typeof TextElement> = {
     component: TextElement,
@@ -24,7 +24,7 @@ export const Default: Story = {
     }),
     args: {
         data: {
-            title: "Titel zu Zertifikat und Datum",
+            title: 'Titel zu Zertifikat und Datum',
             content: String.raw`
                 <p>
                     Das Zertifikat zur/m Knospenexpert*in erhält man nach der Prüfung, bei der man das Gelernte präsentieren kann.

@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
+import type { Meta, StoryObj } from '@storybook/vue3';
 
-import Infos from "./Infos.vue";
+import Infos from './Infos.vue';
 
 const meta: Meta<typeof Infos> = {
     component: Infos,
@@ -26,21 +26,21 @@ export const Default: Story = {
         data: {
             infos: [
                 {
-                    title: "Lehrgangskosten € 270 + Mwst",
-                    text: "Im Preis inbegriffen sind umfangreiche Unterlagen und Bestimmungshilfen",
+                    title: 'Lehrgangskosten € 270 + Mwst',
+                    text: 'Im Preis inbegriffen sind umfangreiche Unterlagen und Bestimmungshilfen',
                 },
                 {
-                    title: "Teilnehmerzahl ist begrenzt",
-                    text: "Bei Fragen oder Infos: 338 269 8477 oder sigrid.thaler@gmail.com",
+                    title: 'Teilnehmerzahl ist begrenzt',
+                    text: 'Bei Fragen oder Infos: 338 269 8477 oder sigrid.thaler@gmail.com',
                 },
                 {
-                    title: "Referentin Sigrid Thaler",
-                    text: "Referentin der FNL Kräuterakademie",
+                    title: 'Referentin Sigrid Thaler',
+                    text: 'Referentin der FNL Kräuterakademie',
                 },
             ],
             link: {
-                href: "/kraeuterkurse",
-                text: "Zum Seminar anmelden",
+                href: '/kraeuterkurse',
+                text: 'Zum Seminar anmelden',
             },
         },
     },

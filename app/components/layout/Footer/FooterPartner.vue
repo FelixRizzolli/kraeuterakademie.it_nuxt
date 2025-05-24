@@ -13,74 +13,74 @@
 </template>
 
 <script lang="ts" setup>
-import { gsap } from "gsap";
+    import { gsap } from 'gsap';
 
-interface Partner {
-    href: string;
-    src: string;
-    alt: string;
-}
+    interface Partner {
+        href: string;
+        src: string;
+        alt: string;
+    }
 
-export interface PartnerProps {
-    partners: Array<Partner>;
-}
+    export interface PartnerProps {
+        partners: Array<Partner>;
+    }
 
-const props = defineProps<PartnerProps>();
+    const props = defineProps<PartnerProps>();
 
-const partnerElements = ref<HTMLElement[]>([]);
-const showPartnerElements = ref<boolean[]>([]);
+    const partnerElements = ref<HTMLElement[]>([]);
+    const showPartnerElements = ref<boolean[]>([]);
 
-onMounted(() => {
-    // Initialize visibility array with false values
-    showPartnerElements.value = Array(partnerElements.value.length).fill(false);
+    onMounted(() => {
+        // Initialize visibility array with false values
+        showPartnerElements.value = Array(partnerElements.value.length).fill(false);
 
-    // Set up scale effect for each element
-    partnerElements.value.forEach((element, index) => {
-        const scaleEffect = getScaleEffect(gsap);
-        const elementRef = ref(element);
+        // Set up scale effect for each element
+        partnerElements.value.forEach((element, index) => {
+            const scaleEffect = getScaleEffect(gsap);
+            const elementRef = ref(element);
 
-        const elementShowRef = computed({
-            get: () => showPartnerElements.value[index],
-            set: (value) => {
-                showPartnerElements.value[index] = value;
-            },
+            const elementShowRef = computed({
+                get: () => showPartnerElements.value[index],
+                set: (value) => {
+                    showPartnerElements.value[index] = value;
+                },
+            });
+
+            scaleEffect(elementRef, elementShowRef);
         });
-
-        scaleEffect(elementRef, elementShowRef);
     });
-});
 </script>
 
 <style lang="scss" scoped>
-.partner {
-    @include col-start(1);
-    @include col(14);
-
-    & {
-        padding: 5.5rem;
-        background-color: $colorBackgroundCream;
-
-        display: flex;
-        justify-content: end;
-        gap: 4.5rem;
-    }
-
-    img {
-        height: 9rem;
-        width: auto;
-    }
-}
-
-@media (max-width: 1023px) {
     .partner {
-        padding: 2.5rem;
+        @include col-start(1);
+        @include col(14);
 
-        justify-content: start;
-        gap: 2rem;
+        & {
+            padding: 5.5rem;
+            background-color: $colorBackgroundCream;
+
+            display: flex;
+            justify-content: end;
+            gap: 4.5rem;
+        }
 
         img {
-            height: 4.4rem;
+            height: 9rem;
+            width: auto;
         }
     }
-}
+
+    @media (max-width: 1023px) {
+        .partner {
+            padding: 2.5rem;
+
+            justify-content: start;
+            gap: 2rem;
+
+            img {
+                height: 4.4rem;
+            }
+        }
+    }
 </style>

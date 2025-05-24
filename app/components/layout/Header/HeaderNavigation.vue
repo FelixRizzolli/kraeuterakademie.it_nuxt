@@ -10,81 +10,81 @@
 </template>
 
 <script lang="ts" setup>
-import { useMenuStore } from "~/stores/menuStore";
+    import { useMenuStore } from '~/stores/menuStore';
 
-export interface HeaderNavigationProps {
-    links: Array<{
-        text: string;
-        href: string;
-    }>;
-}
+    export interface HeaderNavigationProps {
+        links: Array<{
+            text: string;
+            href: string;
+        }>;
+    }
 
-const props = defineProps<HeaderNavigationProps>();
-const menuStore = useMenuStore();
+    const props = defineProps<HeaderNavigationProps>();
+    const menuStore = useMenuStore();
 </script>
 
 <style lang="scss" scoped>
-.logo {
-    margin: 2rem auto 6rem auto;
-    width: 11rem;
-    height: auto;
-
-    display: none;
-
-    :deep(svg) {
+    .logo {
+        margin: 2rem auto 6rem auto;
         width: 11rem;
         height: auto;
-    }
-}
 
-.navigation {
-    margin: 4.5rem 9rem 0 0;
+        display: none;
 
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    display: flex;
-    gap: 4.5rem;
-
-    transition: transform 0.5s ease-in-out;
-
-    &.menu-open {
-        transform: translateY(0);
-    }
-}
-
-.link {
-    text-decoration: none;
-    cursor: pointer;
-
-    color: $colorFontLight;
-}
-
-.link:hover {
-    color: $colorCta;
-}
-
-@media (max-width: 1023px) {
-    .logo {
-        display: block;
+        :deep(svg) {
+            width: 11rem;
+            height: auto;
+        }
     }
 
     .navigation {
-        margin: 0;
-        z-index: 10;
-        position: fixed;
+        margin: 4.5rem 9rem 0 0;
 
-        align-items: center;
-        flex-direction: column;
-        gap: 3rem;
+        position: absolute;
+        top: 0;
+        right: 0;
 
-        height: 100vh;
-        width: 100vw;
+        display: flex;
+        gap: 4.5rem;
 
-        background-color: $colorBackgroundCream;
+        transition: transform 0.5s ease-in-out;
 
-        transform: translateY(+100%);
+        &.menu-open {
+            transform: translateY(0);
+        }
     }
-}
+
+    .link {
+        text-decoration: none;
+        cursor: pointer;
+
+        color: $colorFontLight;
+    }
+
+    .link:hover {
+        color: $colorCta;
+    }
+
+    @media (max-width: 1023px) {
+        .logo {
+            display: block;
+        }
+
+        .navigation {
+            margin: 0;
+            z-index: 10;
+            position: fixed;
+
+            align-items: center;
+            flex-direction: column;
+            gap: 3rem;
+
+            height: 100vh;
+            width: 100vw;
+
+            background-color: $colorBackgroundCream;
+
+            transform: translateY(+100%);
+        }
+    }
 </style>

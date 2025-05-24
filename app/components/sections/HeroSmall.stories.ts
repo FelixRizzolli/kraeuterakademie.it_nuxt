@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
+import type { Meta, StoryObj } from '@storybook/vue3';
 
-import HeroSmall from "./HeroSmall.vue";
+import HeroSmall from './HeroSmall.vue';
 
 const meta: Meta<typeof HeroSmall> = {
     component: HeroSmall,
@@ -24,14 +24,14 @@ export const Default: Story = {
     }),
     args: {
         data: {
-            title: "Kurse zu Wildpflanzen und Heilkräuter",
+            title: 'Kurse zu Wildpflanzen und Heilkräuter',
             image: {
-                url: "/images/herosmall_2.png",
-                alternativeText: "Kräuterakademie",
+                url: '/images/herosmall_2.png',
+                alternativeText: 'Kräuterakademie',
             },
             link: {
-                href: "/kraeuterkurse",
-                text: "Kräuterakademie",
+                href: '/kraeuterkurse',
+                text: 'Kräuterakademie',
             },
         },
     },

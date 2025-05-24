@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
+import type { Meta, StoryObj } from '@storybook/vue3';
 
-import HeroBig from "./HeroBig.vue";
+import HeroBig from './HeroBig.vue';
 
 const meta: Meta<typeof HeroBig> = {
     component: HeroBig,
@@ -24,10 +24,10 @@ export const Default: Story = {
     }),
     args: {
         data: {
-            title: "Aufbaulehrgang Knospenexpert*in",
+            title: 'Aufbaulehrgang Knospenexpert*in',
             image: {
-                url: "/images/herobig_1.png",
-                alternativeText: "Kräuterkurs Bild",
+                url: '/images/herobig_1.png',
+                alternativeText: 'Kräuterkurs Bild',
             },
         },
     },

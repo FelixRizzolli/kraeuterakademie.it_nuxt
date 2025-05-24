@@ -2,37 +2,44 @@
 export default defineNuxtConfig({
     app: {
         head: {
-            titleTemplate: "%s | Sigrid Thaler Rizzolli",
+            titleTemplate: '%s | Sigrid Thaler Rizzolli',
             htmlAttrs: {
-                lang: "de",
+                lang: 'de',
             },
-        }
+        },
     },
 
     runtimeConfig: {
         public: {
-            strapiApiUrl: process.env.NODE_ENV === "production" ? process.env.STRAPI_API_URL : "http://localhost:1337",
+            strapiApiUrl: process.env.NODE_ENV === 'production' ? process.env.STRAPI_API_URL : 'http://localhost:1337',
         },
     },
 
     components: [
-        { path: "~/components/elements", pathPrefix: false },
-        { path: "~/components/layout", pathPrefix: false },
-        { path: "~/components/sections", pathPrefix: false },
+        { path: '~/components/elements', pathPrefix: false },
+        { path: '~/components/layout', pathPrefix: false },
+        { path: '~/components/sections', pathPrefix: false },
     ],
 
     future: {
         compatibilityVersion: 4,
     },
 
-    compatibilityDate: "2024-11-01",
+    compatibilityDate: '2024-11-01',
     devtools: { enabled: true },
 
-    css: ["@/assets/styles/base.scss", "@/assets/styles/layout.scss", "@/assets/styles/grid-layout.scss"],
+    css: ['@/assets/styles/base.scss', '@/assets/styles/layout.scss', '@/assets/styles/grid-layout.scss'],
 
-    plugins: ["~/plugins/pinia.ts"],
+    plugins: ['~/plugins/pinia.ts'],
 
-    modules: ["@nuxt/image", "nuxt-svgo", "@nuxtjs/storybook", "@nuxtjs/strapi", "nuxt-strapi-blocks-renderer", "@nuxtjs/seo"],
+    modules: [
+        '@nuxt/image',
+        'nuxt-svgo',
+        '@nuxtjs/storybook',
+        '@nuxtjs/strapi',
+        'nuxt-strapi-blocks-renderer',
+        '@nuxtjs/seo',
+    ],
 
     vite: {
         css: {
@@ -48,23 +55,23 @@ export default defineNuxtConfig({
             },
         },
         optimizeDeps: {
-            include: ["qs"],
+            include: ['qs'],
         },
     },
 
     nitro: {
         output: {
-            dir: ".output",
+            dir: '.output',
         },
     },
 
     svgo: {
         // https://www.npmjs.com/package/nuxt-svgo
-        componentPrefix: "i",
+        componentPrefix: 'i',
 
-        autoImportPath: "~/assets/icons/",
+        autoImportPath: '~/assets/icons/',
 
-        customComponent: "Icon",
+        customComponent: 'Icon',
 
         // if many icons, maybe set to false for better performance (currently generates chunks for each icon)
         // global: false,
@@ -76,7 +83,7 @@ export default defineNuxtConfig({
             plugins: [
                 {
                     // default set of plugins, https://svgo.dev/docs/preset-default/#plugins-list
-                    name: "preset-default",
+                    name: 'preset-default',
                     params: {
                         overrides: {
                             // viewbox is required for svg to scale properly
@@ -93,20 +100,20 @@ export default defineNuxtConfig({
                 // additional plugins, https://svgo.dev/docs/plugins/
 
                 // remove width and height attributes,
-                "removeDimensions",
+                'removeDimensions',
 
                 // remove xmlns attributes
-                "removeXMLNS",
+                'removeXMLNS',
             ],
         },
     },
 
     strapi: {
-        url: process.env.NODE_ENV === "production" ? process.env.STRAPI_API_URL : "http://localhost:1337",
-        prefix: "/api",
-        admin: "/admin",
-        version: "v5",
+        url: process.env.NODE_ENV === 'production' ? process.env.STRAPI_API_URL : 'http://localhost:1337',
+        prefix: '/api',
+        admin: '/admin',
+        version: 'v5',
         cookie: {},
-        cookieName: "strapi_jwt",
+        cookieName: 'strapi_jwt',
     },
 });

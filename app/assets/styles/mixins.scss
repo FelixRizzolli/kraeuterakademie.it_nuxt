@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 
 ////////////////////////////////////////////////////////////
 // transitions
@@ -128,7 +128,7 @@
     }
 }
 
-@mixin content($content: "") {
+@mixin content($content: '') {
     & {
         content: $content;
     }

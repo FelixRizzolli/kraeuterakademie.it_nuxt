@@ -5,41 +5,41 @@
 </template>
 
 <script lang="ts" setup>
-import type { StrapiImage } from "../elements/StrapiImage.vue";
+    import type { StrapiImage } from '../elements/StrapiImage.vue';
 
-interface Image {
-    src: string;
-    alt: string;
-}
+    interface Image {
+        src: string;
+        alt: string;
+    }
 
-interface MoodPictureData {
-    image: StrapiImage;
-}
+    interface MoodPictureData {
+        image: StrapiImage;
+    }
 
-interface MoodPictureSettings {}
+    interface MoodPictureSettings {}
 
-export interface MoodPictureProps {
-    data: MoodPictureData;
-    settings?: MoodPictureSettings;
-}
+    export interface MoodPictureProps {
+        data: MoodPictureData;
+        settings?: MoodPictureSettings;
+    }
 
-const props = defineProps<MoodPictureProps>();
+    const props = defineProps<MoodPictureProps>();
 </script>
 
 <style lang="scss" scoped>
-.image-container {
-    margin-bottom: 15rem;
-    margin-left: 21rem;
-
-    :deep(.image) {
-        width: 100%;
-        height: auto;
-    }
-}
-
-@media (max-width: 1023px) {
     .image-container {
-        margin: 0;
+        margin-bottom: 15rem;
+        margin-left: 21rem;
+
+        :deep(.image) {
+            width: 100%;
+            height: auto;
+        }
     }
-}
+
+    @media (max-width: 1023px) {
+        .image-container {
+            margin: 0;
+        }
+    }
 </style>

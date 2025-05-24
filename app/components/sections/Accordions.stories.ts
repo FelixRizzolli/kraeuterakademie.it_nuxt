@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
+import type { Meta, StoryObj } from '@storybook/vue3';
 
-import Accordions from "./Accordions.vue";
+import Accordions from './Accordions.vue';
 
 const meta: Meta<typeof Accordions> = {
     component: Accordions,
@@ -24,19 +24,22 @@ export const Default: Story = {
     }),
     args: {
         data: {
-            title: "Accordions",
+            title: 'Accordions',
             accordions: [
                 {
-                    title: "Accordion 1",
-                    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    title: 'Accordion 1',
+                    content:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 },
                 {
-                    title: "Accordion 2",
-                    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    title: 'Accordion 2',
+                    content:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 },
                 {
-                    title: "Accordion 3",
-                    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    title: 'Accordion 3',
+                    content:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 },
             ],
         },

@@ -6,101 +6,101 @@
 </template>
 
 <script lang="ts" setup>
-import { gsap } from "gsap";
-import type { Course } from "../elements/Course.vue";
+    import { gsap } from 'gsap';
+    import type { Course } from '../elements/Course.vue';
 
-interface CourseListData {
-    title?: string;
-    courses: Array<Course>;
-}
-
-interface CourseListSettings {}
-
-export interface CourseListProps {
-    data: CourseListData;
-    settings?: CourseListSettings;
-}
-
-const props = defineProps<CourseListProps>();
-
-const titleElement = ref<HTMLElement>();
-
-onMounted(() => {
-    if (titleElement.value instanceof HTMLElement) {
-        const opacityEffect = getOpacityEffect(gsap);
-        opacityEffect(titleElement);
+    interface CourseListData {
+        title?: string;
+        courses: Array<Course>;
     }
-});
+
+    interface CourseListSettings {}
+
+    export interface CourseListProps {
+        data: CourseListData;
+        settings?: CourseListSettings;
+    }
+
+    const props = defineProps<CourseListProps>();
+
+    const titleElement = ref<HTMLElement>();
+
+    onMounted(() => {
+        if (titleElement.value instanceof HTMLElement) {
+            const opacityEffect = getOpacityEffect(gsap);
+            opacityEffect(titleElement);
+        }
+    });
 </script>
 
 <style lang="scss" scoped>
-.contentelement_courselist {
-    margin-bottom: 15rem;
-}
-
-.title {
-    @include col-start(3);
-    @include col(6);
-
-    & {
-        margin-bottom: 18rem;
-    }
-}
-
-.course:nth-child(3n + 2) {
-    @include col-start(3);
-    @include col(4);
-
-    & {
-        margin-top: 12rem;
-    }
-}
-
-.course:nth-child(3n) {
-    @include col-start(10);
-    @include col(4);
-}
-
-.course:nth-child(3n + 1) {
-    @include col-start(8);
-    @include col(4);
-}
-
-@media (max-width: 1023px) {
     .contentelement_courselist {
-        margin-bottom: 7.5rem;
+        margin-bottom: 15rem;
     }
 
     .title {
         @include col-start(3);
-        @include col(11);
+        @include col(6);
 
         & {
-            margin-bottom: 4.5rem;
+            margin-bottom: 18rem;
         }
     }
 
     .course:nth-child(3n + 2) {
-        @include col-start(2);
-        @include col(10);
+        @include col-start(3);
+        @include col(4);
 
         & {
-            margin-top: 0;
+            margin-top: 12rem;
         }
     }
 
     .course:nth-child(3n) {
-        @include col-start(3);
-        @include col(10);
+        @include col-start(10);
+        @include col(4);
     }
 
     .course:nth-child(3n + 1) {
-        @include col-start(2);
-        @include col(10);
+        @include col-start(8);
+        @include col(4);
     }
 
-    .course:not(:last-of-type) {
-        margin-bottom: 6rem;
+    @media (max-width: 1023px) {
+        .contentelement_courselist {
+            margin-bottom: 7.5rem;
+        }
+
+        .title {
+            @include col-start(3);
+            @include col(11);
+
+            & {
+                margin-bottom: 4.5rem;
+            }
+        }
+
+        .course:nth-child(3n + 2) {
+            @include col-start(2);
+            @include col(10);
+
+            & {
+                margin-top: 0;
+            }
+        }
+
+        .course:nth-child(3n) {
+            @include col-start(3);
+            @include col(10);
+        }
+
+        .course:nth-child(3n + 1) {
+            @include col-start(2);
+            @include col(10);
+        }
+
+        .course:not(:last-of-type) {
+            margin-bottom: 6rem;
+        }
     }
-}
 </style>

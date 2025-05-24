@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
+import type { Meta, StoryObj } from '@storybook/vue3';
 
-import MoodPicture from "./MoodPicture.vue";
+import MoodPicture from './MoodPicture.vue';
 
 const meta: Meta<typeof MoodPicture> = {
     component: MoodPicture,
@@ -25,8 +25,8 @@ export const Default: Story = {
     args: {
         data: {
             image: {
-                url: "/images/herobig_2.png",
-                alternativeText: "Kräuterkurs Bild",
+                url: '/images/herobig_2.png',
+                alternativeText: 'Kräuterkurs Bild',
             },
         },
     },

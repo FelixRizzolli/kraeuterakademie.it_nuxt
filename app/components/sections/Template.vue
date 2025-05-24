@@ -3,30 +3,30 @@
 </template>
 
 <script lang="ts" setup>
-import { gsap } from "gsap";
+    import { gsap } from 'gsap';
 
-interface TemplateData {}
+    interface TemplateData {}
 
-interface TemplateSettings {}
+    interface TemplateSettings {}
 
-export interface TemplateProps {
-    data: TemplateData;
-    settings?: TemplateSettings;
-}
+    export interface TemplateProps {
+        data: TemplateData;
+        settings?: TemplateSettings;
+    }
 
-const props = defineProps<TemplateProps>();
+    const props = defineProps<TemplateProps>();
 
-onMounted(() => {});
+    onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>
-.contentelement_template {
-    margin-bottom: 15rem;
-}
-
-@media (max-width: 1023px) {
     .contentelement_template {
-        margin: 7.5rem;
+        margin-bottom: 15rem;
     }
-}
+
+    @media (max-width: 1023px) {
+        .contentelement_template {
+            margin: 7.5rem;
+        }
+    }
 </style>

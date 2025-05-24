@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
+import type { Meta, StoryObj } from '@storybook/vue3';
 
-import ImageText from "./ImageText.vue";
+import ImageText from './ImageText.vue';
 
 const meta: Meta<typeof ImageText> = {
     component: ImageText,
@@ -24,17 +24,17 @@ export const Default: Story = {
     }),
     args: {
         data: {
-            title: "Hier ein passender Titel zum Thema Kräuter und Kurse",
+            title: 'Hier ein passender Titel zum Thema Kräuter und Kurse',
             image: {
-                url: "/images/imgtext_2.png",
-                alternativeText: "Kräuterakademie",
+                url: '/images/imgtext_2.png',
+                alternativeText: 'Kräuterakademie',
             },
-            text1: "Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht - und oftmals gar nicht erst gelesen. Aber bin ich allein deshalb ein schlechterer Text als andere? Na gut, ich werde nie in den Bestsellerlisten stehen.",
-            infos: "In den kleinsten Dingen zeigt die Natur ihre größten Wunder.",
-            text2: "Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht - und oftmals gar nicht erst gelesen. Aber bin ich allein deshalb ein schlechterer Text als andere? Na gut, ich werde nie in den Bestsellerlisten stehen.",
+            text1: 'Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht - und oftmals gar nicht erst gelesen. Aber bin ich allein deshalb ein schlechterer Text als andere? Na gut, ich werde nie in den Bestsellerlisten stehen.',
+            infos: 'In den kleinsten Dingen zeigt die Natur ihre größten Wunder.',
+            text2: 'Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht - und oftmals gar nicht erst gelesen. Aber bin ich allein deshalb ein schlechterer Text als andere? Na gut, ich werde nie in den Bestsellerlisten stehen.',
             link: {
-                href: "/kraeuterkurse",
-                text: "Kräuterakademie",
+                href: '/kraeuterkurse',
+                text: 'Kräuterakademie',
             },
         },
     },

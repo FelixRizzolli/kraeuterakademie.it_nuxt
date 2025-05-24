@@ -10,7 +10,7 @@ export default (gsap: globalThis.GSAP) => {
             },
             {
                 threshold: 0.5,
-            }
+            },
         );
     };
 };
