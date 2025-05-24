@@ -1,52 +1,34 @@
 <template>
-    <HeroSmall v-if="heroData" :data="heroData" />
-    <AnimatedText v-if="textData.text" :data="textData" />
+    <ContentComponentRenderer :name="cc.name" :data="cc.data" v-for="(cc, index) in contentComponents" />
 </template>
 
 <script lang="ts" setup>
-    const heroData = ref<any>({});
-    const textData = ref<any>({});
-    const seoData = ref<any>({});
+    import { ref, onMounted } from 'vue';
+    import { CONTENT_PAGE_QUERY } from '~/graphql/queries/contentPageQuery';
 
-    const { find } = useStrapi();
+    const contentComponents = ref<any[]>([]);
+
+    const graphql = useStrapiGraphQL();
 
     onMounted(async () => {
-        const response: any = await find('home', {
-            populate: {
-                seo: {
-                    populate: '*',
-                },
-                hero: {
-                    populate: '*',
-                },
-                text: {
-                    populate: '*',
+        const response: any = await graphql(CONTENT_PAGE_QUERY, {
+            filters: {
+                url: {
+                    eq: 'index',
                 },
             },
         });
+        console.log('response', response);
 
-        if (response) {
-            seoData.value = response.data?.seo;
-            heroData.value = response.data?.hero;
-            textData.value = response.data?.text;
-
-            // Set SEO meta tags
-            useSeoMeta({
-                title: seoData.value?.metaTitle ?? '',
-                description: seoData.value?.metaDescription ?? '',
-                keywords: seoData.value?.keywords ?? '',
-                robots: seoData.value?.preventIndexing ? 'noindex, nofollow' : 'index, follow',
-                ogTitle: seoData.value?.metaTitle ?? '',
-                ogDescription: seoData.value?.metaDescription ?? '',
-                ogImage: seoData.value?.sharedImage?.media?.url ?? '',
-                ogImageAlt: seoData.value?.sharedImage?.alt ?? '',
-                twitterTitle: seoData.value?.metaTitle ?? '',
-                twitterDescription: seoData.value?.metaDescription ?? '',
-                twitterImage: seoData.value?.sharedImage?.media?.url ?? '',
+        response?.data?.pages?.[0]?.components?.forEach((component: any) => {
+            const componentName = component.__typename.replace('ComponentContent', '')
+            contentComponents.value.push({
+                name: componentName,
+                data: component,
             });
-        } else {
-            console.error('Failed to fetch data from Strapi');
-        }
+        });
+
+        console.log('contentComponents', contentComponents.value);
     });
 </script>
 
