@@ -1,0 +1,13 @@
+fragment InfosAttributes on ComponentContentInfos {
+    data {
+        infos {
+            ...InfoAttributes
+        }
+        link {
+            ...LinkAttributes
+        }
+    }
+    settings {
+        default
+    }
+}

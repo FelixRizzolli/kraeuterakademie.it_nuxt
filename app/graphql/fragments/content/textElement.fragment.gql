@@ -1,0 +1,12 @@
+fragment TextElementAttributes on ComponentContentTextElement {
+    data {
+        title
+        content
+        link {
+            ...LinkAttributes
+        }
+    }
+    settings {
+        default
+    }
+}

@@ -1,0 +1,10 @@
+fragment CourseAttributes on ComponentElementsCourse {
+    title
+    description
+    link {
+        ...LinkAttributes
+    }
+    dates {
+        ...SimpleDateAttributes
+    }
+}

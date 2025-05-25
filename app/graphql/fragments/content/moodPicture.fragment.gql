@@ -1,0 +1,10 @@
+fragment MoodPictureAttributes on ComponentContentMoodPicture {
+    data {
+        image {
+            ...UploadFileAttributes
+        }
+    }
+    settings {
+        default
+    }
+}

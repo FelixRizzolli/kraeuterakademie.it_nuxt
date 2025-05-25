@@ -1,0 +1,17 @@
+fragment ImageTextAttributes on ComponentContentImageText {
+    data {
+        title
+        image {
+            ...UploadFileAttributes
+        }
+        textTop
+        textHighlight
+        textBottom
+        link {
+            ...LinkAttributes
+        }
+    }
+    settings {
+        default
+    }
+}

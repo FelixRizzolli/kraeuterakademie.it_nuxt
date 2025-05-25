@@ -1,0 +1,11 @@
+fragment AccordionsAttributes on ComponentContentAccordions {
+    data {
+        title
+        accordions {
+            ...AccordionAttributes
+        }
+    }
+    settings {
+        default
+    }
+}

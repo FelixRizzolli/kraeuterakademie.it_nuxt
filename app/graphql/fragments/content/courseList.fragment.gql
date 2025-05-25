@@ -1,0 +1,11 @@
+fragment CourseListAttributes on ComponentContentCourseList {
+    data {
+        title
+        courses {
+            ...CourseAttributes
+        }
+    }
+    settings {
+        default
+    }
+}

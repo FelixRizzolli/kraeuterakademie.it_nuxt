@@ -1,51 +1,40 @@
 query findPages($filters: PageFiltersInput) {
     pages: pages(filters: $filters) {
         seo {
-            id
-            metaTitle
-            metaDescription
-            sharedImage {
-                alt
-                media {
-                    alternativeText
-                    url
-                }
-            }
-            keywords
-            preventIndexing
+            ...SeoAttributes
         }
         components {
             __typename
-            ... on ComponentContentHeroSmall {
-                data {
-                    id
-                    title
-                    link {
-                        id
-                        href
-                        text
-                    }
-                    image {
-                        alternativeText
-                        url
-                    }
-                }
-                settings {
-                    default
-                }
+            ... on ComponentContentAccordions {
+                ...AccordionsAttributes
             }
             ... on ComponentContentAnimatedText {
-                data {
-                    id
-                    text
-                }
-                settings {
-                    default
-                }
+                ...AnimatedTextAttributes
             }
+            ... on ComponentContentCourseList {
+                ...CourseListAttributes
+            }
+            ... on ComponentContentHeroBig {
+                ...HeroBigAttributes
+            }
+            ... on ComponentContentHeroSmall {
+                ...HeroSmallAttributes
+            }
+            ... on ComponentContentImageText {
+                ...ImageTextAttributes
+            }
+            ... on ComponentContentInfos {
+                ...InfosAttributes
+            }
+            ... on ComponentContentMoodPicture {
+                ...MoodPictureAttributes
+            }
+            ... on ComponentContentTextElement {
+                ...TextElementAttributes
+            }
+
             ... on Error {
-                code
-                message
+                ...ErrorAttributes
             }
         }
     }

@@ -1,0 +1,17 @@
+fragment HeroSmallAttributes on ComponentContentHeroSmall {
+    data {
+        id
+        title
+        link {
+            id
+            href
+            text
+        }
+        image {
+            ...UploadFileAttributes
+        }
+    }
+    settings {
+        default
+    }
+}

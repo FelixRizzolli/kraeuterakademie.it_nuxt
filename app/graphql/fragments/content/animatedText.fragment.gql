@@ -1,0 +1,9 @@
+fragment AnimatedTextAttributes on ComponentContentAnimatedText {
+    data {
+        id
+        text
+    }
+    settings {
+        default
+    }
+}

@@ -1,4 +1,27 @@
-import findPages from '~/graphql/queries/findPages.gql';
+import STRAPI_ERROR_FRAGMENT from '~/graphql/fragments/strapi/error.fragment.gql';
+import STRAPO_UPLOAD_FILE_FRAGMENT from '~/graphql/fragments/strapi/uploadFile.fragment.gql';
+
+import SHARED_SEO_FRAGMENT from '~/graphql/fragments/shared/seo.fragment.gql';
+
+import ELEMENT_ACCORDION_FRAGMENT from '~/graphql/fragments/elements/accordion.fragment.gql';
+import ELEMENT_COURSE_FRAGMENT from '~/graphql/fragments/elements/course.fragment.gql';
+import ELEMENT_INFO_FRAGMENT from '~/graphql/fragments/elements/info.fragment.gql';
+import ELEMENT_LINK_FRAGMENT from '~/graphql/fragments/elements/link.fragment.gql';
+import ELEMENT_SIMPLE_DATE_FRAMENT from '~/graphql/fragments/elements/simpleDate.fragment.gql';
+
+import CONTENT_ACCORDIONS_FRAGMENT from '~/graphql/fragments/content/accordions.fragment.gql';
+import CONTENT_ANIMATED_TEXT_FRAGMENT from '~/graphql/fragments/content/animatedText.fragment.gql';
+import CONTENT_COURSE_LIST_FRAGMENT from '~/graphql/fragments/content/courseList.fragment.gql';
+import CONTENT_HERO_BIG_FRAGMENT from '~/graphql/fragments/content/heroBig.fragment.gql';
+import CONTENT_HERO_SMALL_FRAGMENT from '~/graphql/fragments/content/heroSmall.fragment.gql';
+import CONTENT_IMAGE_TEXT_FRAGMENT from '~/graphql/fragments/content/imageText.fragment.gql';
+import CONTENT_INFOS_FRAGMENT from '~/graphql/fragments/content/infos.fragment.gql';
+import CONTENT_MOOD_PICTURE_FRAGMENT from '~/graphql/fragments/content/moodPicture.fragment.gql';
+import CONTENT_TEXT_ELEMENT_FRAGMENT from '~/graphql/fragments/content/textElement.fragment.gql';
+
+import FIND_PAGES_QUERY from '~/graphql/queries/findPages.gql';
+
+import { parse } from 'graphql';
 
 interface ContentComponent {
     name: string;
@@ -10,6 +33,31 @@ interface PageData {
     seo: any;
     contentComponents: ContentComponent[];
 }
+
+const findPagesQuery = `
+    ${STRAPI_ERROR_FRAGMENT.loc.source.body}
+    ${STRAPO_UPLOAD_FILE_FRAGMENT.loc.source.body}
+
+    ${SHARED_SEO_FRAGMENT.loc.source.body}
+
+    ${ELEMENT_ACCORDION_FRAGMENT.loc.source.body}
+    ${ELEMENT_COURSE_FRAGMENT.loc.source.body}
+    ${ELEMENT_INFO_FRAGMENT.loc.source.body}
+    ${ELEMENT_LINK_FRAGMENT.loc.source.body}
+    ${ELEMENT_SIMPLE_DATE_FRAMENT.loc.source.body}
+
+    ${CONTENT_ACCORDIONS_FRAGMENT.loc.source.body}
+    ${CONTENT_ANIMATED_TEXT_FRAGMENT.loc.source.body}
+    ${CONTENT_COURSE_LIST_FRAGMENT.loc.source.body}
+    ${CONTENT_HERO_BIG_FRAGMENT.loc.source.body}
+    ${CONTENT_HERO_SMALL_FRAGMENT.loc.source.body}
+    ${CONTENT_IMAGE_TEXT_FRAGMENT.loc.source.body}
+    ${CONTENT_INFOS_FRAGMENT.loc.source.body}
+    ${CONTENT_MOOD_PICTURE_FRAGMENT.loc.source.body}
+    ${CONTENT_TEXT_ELEMENT_FRAGMENT.loc.source.body}
+
+    ${FIND_PAGES_QUERY.loc.source.body}
+`;
 
 export const usePage = () => {
     const gqlQuery = useStrapiGraphQL();
@@ -48,7 +96,9 @@ export const usePage = () => {
                 throw new Error('URL parameter is required');
             }
 
-            const response = await gqlQuery<any>(findPages, {
+            console.log(findPagesQuery);
+
+            const response = await gqlQuery<any>(findPagesQuery, {
                 filters: {
                     url: { eq: url },
                 },
