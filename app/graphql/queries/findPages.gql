@@ -14,8 +14,8 @@ query findPages($filters: PageFiltersInput) {
             ... on ComponentContentCourseList {
                 ...CourseListAttributes
             }
-            ... on ComponentContentHeroBig {
-                ...HeroBigAttributes
+            ... on ComponentContentHeroLarge {
+                ...HeroLargeAttributes
             }
             ... on ComponentContentHeroSmall {
                 ...HeroSmallAttributes

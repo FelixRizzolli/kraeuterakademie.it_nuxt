@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 
-import HeroBig from './HeroBig.vue';
+import HeroLarge from './HeroLarge.vue';
 
-const meta: Meta<typeof HeroBig> = {
-    component: HeroBig,
+const meta: Meta<typeof HeroLarge> = {
+    component: HeroLarge,
 };
 
 export default meta;
-type Story = StoryObj<typeof HeroBig>;
+type Story = StoryObj<typeof HeroLarge>;
 
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
@@ -16,11 +16,11 @@ type Story = StoryObj<typeof HeroBig>;
  */
 export const Default: Story = {
     render: (args) => ({
-        components: { HeroBig },
+        components: { HeroLarge },
         setup() {
             return { args };
         },
-        template: '<HeroBig v-bind="args" />',
+        template: '<HeroLarge v-bind="args" />',
     }),
     args: {
         data: {

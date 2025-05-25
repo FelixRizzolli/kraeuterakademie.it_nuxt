@@ -12,7 +12,7 @@ import ELEMENT_SIMPLE_DATE_FRAMENT from '~/graphql/fragments/elements/simpleDate
 import CONTENT_ACCORDIONS_FRAGMENT from '~/graphql/fragments/content/accordions.fragment.gql';
 import CONTENT_ANIMATED_TEXT_FRAGMENT from '~/graphql/fragments/content/animatedText.fragment.gql';
 import CONTENT_COURSE_LIST_FRAGMENT from '~/graphql/fragments/content/courseList.fragment.gql';
-import CONTENT_HERO_BIG_FRAGMENT from '~/graphql/fragments/content/heroBig.fragment.gql';
+import CONTENT_HERO_BIG_FRAGMENT from '~/graphql/fragments/content/heroLarge.fragment.gql';
 import CONTENT_HERO_SMALL_FRAGMENT from '~/graphql/fragments/content/heroSmall.fragment.gql';
 import CONTENT_IMAGE_TEXT_FRAGMENT from '~/graphql/fragments/content/imageText.fragment.gql';
 import CONTENT_INFOS_FRAGMENT from '~/graphql/fragments/content/infos.fragment.gql';

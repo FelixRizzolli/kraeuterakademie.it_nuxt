@@ -1,5 +1,5 @@
 <template>
-    <section class="contentelement_herobig" ref="heroBig">
+    <section class="contentelement_herobig" ref="heroLarge">
         <div v-if="data.title" class="content-container grid-container">
             <h1 class="title">{{ data.title }}</h1>
         </div>
@@ -16,26 +16,26 @@
         alt: string;
     }
 
-    interface HeroBigData {
+    interface HeroLargeData {
         title?: string;
         image?: StrapiImage;
     }
 
-    interface HeroBigSettings {}
+    interface HeroLargeSettings {}
 
-    export interface HeroBigProps {
-        data: HeroBigData;
-        settings?: HeroBigSettings;
+    export interface HeroLargeProps {
+        data: HeroLargeData;
+        settings?: HeroLargeSettings;
     }
 
-    const props = defineProps<HeroBigProps>();
+    const props = defineProps<HeroLargeProps>();
 
-    const heroBig = ref<HTMLElement>();
+    const heroLarge = ref<HTMLElement>();
 
     onMounted(() => {
-        if (heroBig.value instanceof HTMLElement) {
+        if (heroLarge.value instanceof HTMLElement) {
             const opacityEffect = getOpacityEffect(gsap);
-            opacityEffect(heroBig);
+            opacityEffect(heroLarge);
         }
     });
 </script>

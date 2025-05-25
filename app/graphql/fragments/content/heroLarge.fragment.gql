@@ -1,4 +1,4 @@
-fragment HeroBigAttributes on ComponentContentHeroBig {
+fragment HeroLargeAttributes on ComponentContentHeroLarge {
     data {
         title
         image {
