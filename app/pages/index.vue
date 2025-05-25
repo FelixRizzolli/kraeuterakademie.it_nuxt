@@ -56,19 +56,7 @@
         (seo) => {
             if (!seo) return;
 
-            useSeoMeta({
-                title: pageData.value?.seo?.metaTitle ?? '',
-                description: pageData.value?.seo?.metaDescription ?? '',
-                keywords: pageData.value?.seo?.keywords ?? '',
-                robots: pageData.value?.seo?.preventIndexing ? 'noindex, nofollow' : 'index, follow',
-                ogTitle: pageData.value?.seo?.metaTitle ?? '',
-                ogDescription: pageData.value?.seo?.metaDescription ?? '',
-                ogImage: pageData.value?.seo?.sharedImage?.media?.url ?? '',
-                ogImageAlt: pageData.value?.seo?.sharedImage?.alt ?? '',
-                twitterTitle: pageData.value?.seo?.metaTitle ?? '',
-                twitterDescription: pageData.value?.seo?.metaDescription ?? '',
-                twitterImage: pageData.value?.seo?.sharedImage?.media?.url ?? '',
-            });
+            useSeoConfig(pageData?.value?.seo ?? {});
         },
         { immediate: true },
     );
