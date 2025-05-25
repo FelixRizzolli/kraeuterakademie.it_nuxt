@@ -1,0 +1,52 @@
+query findPages($filters: PageFiltersInput) {
+    pages: pages(filters: $filters) {
+        seo {
+            id
+            metaTitle
+            metaDescription
+            sharedImage {
+                alt
+                media {
+                    alternativeText
+                    url
+                }
+            }
+            keywords
+            preventIndexing
+        }
+        components {
+            __typename
+            ... on ComponentContentHeroSmall {
+                data {
+                    id
+                    title
+                    link {
+                        id
+                        href
+                        text
+                    }
+                    image {
+                        alternativeText
+                        url
+                    }
+                }
+                settings {
+                    default
+                }
+            }
+            ... on ComponentContentAnimatedText {
+                data {
+                    id
+                    text
+                }
+                settings {
+                    default
+                }
+            }
+            ... on Error {
+                code
+                message
+            }
+        }
+    }
+}

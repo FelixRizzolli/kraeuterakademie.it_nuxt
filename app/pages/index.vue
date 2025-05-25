@@ -4,30 +4,18 @@
 
 <script lang="ts" setup>
     import { ref, onMounted } from 'vue';
-    import { CONTENT_PAGE_QUERY } from '~/graphql/queries/contentPageQuery';
 
     const contentComponents = ref<any[]>([]);
 
     const graphql = useStrapiGraphQL();
 
     onMounted(async () => {
-        const response: any = await graphql(CONTENT_PAGE_QUERY, {
-            filters: {
-                url: {
-                    eq: 'index',
-                },
-            },
-        });
-        console.log('response', response);
+        const findPage = usePage();
+        const pageData = await findPage('index');
 
-        response?.data?.pages?.[0]?.components?.forEach((component: any) => {
-            const componentName = component.__typename.replace('ComponentContent', '');
-            contentComponents.value.push({
-                name: componentName,
-                data: component.data,
-                settings: component.settings,
-            });
-        });
+        console.log('pageData', pageData);
+
+        contentComponents.value = pageData?.contentComponents || [];
 
         console.log('contentComponents', contentComponents.value);
     });

@@ -1,4 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+import graphqlLoader from 'vite-plugin-graphql-loader';
+
 export default defineNuxtConfig({
     app: {
         head: {
@@ -57,6 +60,7 @@ export default defineNuxtConfig({
         optimizeDeps: {
             include: ['qs'],
         },
+        plugins: [graphqlLoader()],
     },
 
     nitro: {
