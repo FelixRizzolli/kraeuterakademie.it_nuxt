@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-    import { ref, onMounted } from 'vue';
+    const route = useRoute();
 
     interface PageData {
         seo: any;
@@ -41,8 +41,13 @@
         error.value = null;
 
         try {
+            let pageSlug: string = 'index';
+            if (route.params.slug && route.params.slug?.length > 0) {
+                pageSlug = route.params.slug[0] ?? 'index';
+            }
+
             const findPage = usePage();
-            pageData.value = await findPage('index');
+            pageData.value = await findPage(pageSlug);
         } catch (err) {
             error.value = err instanceof Error ? err.message : 'Unknown error';
             console.error('Error loading page:', err);
