@@ -18,21 +18,31 @@ export const CONTENT_PAGE_QUERY = `
             components {
                 __typename
                 ... on ComponentContentHeroSmall {
-                    id
-                    title
-                    link {
+                    data {
                         id
-                        href
-                        text
+                        title
+                        link {
+                            id
+                            href
+                            text
+                        }
+                        image {
+                            alternativeText
+                            url
+                        }
                     }
-                    image {
-                        alternativeText
-                        url
+                    settings {
+                        default
                     }
                 }
                 ... on ComponentContentAnimatedText {
-                    id
-                    text
+                    data {
+                        id
+                        text
+                    }
+                    settings {
+                        default
+                    }
                 }
                 ... on Error {
                     code

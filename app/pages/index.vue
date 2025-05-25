@@ -21,10 +21,11 @@
         console.log('response', response);
 
         response?.data?.pages?.[0]?.components?.forEach((component: any) => {
-            const componentName = component.__typename.replace('ComponentContent', '')
+            const componentName = component.__typename.replace('ComponentContent', '');
             contentComponents.value.push({
                 name: componentName,
-                data: component,
+                data: component.data,
+                settings: component.settings,
             });
         });
 
