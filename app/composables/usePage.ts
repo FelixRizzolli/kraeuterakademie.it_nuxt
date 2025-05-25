@@ -96,8 +96,6 @@ export const usePage = () => {
                 throw new Error('URL parameter is required');
             }
 
-            console.log(findPagesQuery);
-
             const response = await gqlQuery<any>(findPagesQuery, {
                 filters: {
                     url: { eq: url },
