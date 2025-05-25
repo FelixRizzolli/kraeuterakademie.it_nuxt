@@ -1,23 +1,81 @@
 <template>
-    <ContentComponentRenderer :name="cc.name" :data="cc.data" v-for="(cc, index) in contentComponents" />
+    <div>
+        <div v-if="loading" class="loading-state">
+            <p>Loading content...</p>
+        </div>
+
+        <div v-else-if="error" class="error-state">
+            <p>Something went wrong: {{ error }}</p>
+            <button @click="loadPage">Try again</button>
+        </div>
+
+        <template v-else-if="pageData?.contentComponents?.length">
+            <ContentComponentRenderer
+                v-for="(cc, index) in pageData.contentComponents"
+                :key="index"
+                :name="cc.name"
+                :data="cc.data"
+            />
+        </template>
+
+        <div v-else class="no-content">
+            <p>No content available</p>
+        </div>
+    </div>
 </template>
 
 <script lang="ts" setup>
     import { ref, onMounted } from 'vue';
 
-    const contentComponents = ref<any[]>([]);
+    interface PageData {
+        seo: any;
+        contentComponents?: Array<any>;
+    }
 
-    const graphql = useStrapiGraphQL();
+    const pageData = ref<any>({});
+    const loading = ref(true);
+    const error = ref<string | null>(null);
 
-    onMounted(async () => {
-        const findPage = usePage();
-        const pageData = await findPage('index');
+    const loadPage = async () => {
+        loading.value = true;
+        error.value = null;
 
-        console.log('pageData', pageData);
+        try {
+            const findPage = usePage();
+            pageData.value = await findPage('index');
+        } catch (err) {
+            error.value = err instanceof Error ? err.message : 'Unknown error';
+            console.error('Error loading page:', err);
+        } finally {
+            loading.value = false;
+        }
+    };
 
-        contentComponents.value = pageData?.contentComponents || [];
+    watch(
+        () => pageData.value?.seo,
+        (seo) => {
+            if (!seo) return;
 
-        console.log('contentComponents', contentComponents.value);
+            useSeoMeta({
+                title: pageData.value?.seo?.metaTitle ?? '',
+                description: pageData.value?.seo?.metaDescription ?? '',
+                keywords: pageData.value?.seo?.keywords ?? '',
+                robots: pageData.value?.seo?.preventIndexing ? 'noindex, nofollow' : 'index, follow',
+                ogTitle: pageData.value?.seo?.metaTitle ?? '',
+                ogDescription: pageData.value?.seo?.metaDescription ?? '',
+                ogImage: pageData.value?.seo?.sharedImage?.media?.url ?? '',
+                ogImageAlt: pageData.value?.seo?.sharedImage?.alt ?? '',
+                twitterTitle: pageData.value?.seo?.metaTitle ?? '',
+                twitterDescription: pageData.value?.seo?.metaDescription ?? '',
+                twitterImage: pageData.value?.seo?.sharedImage?.media?.url ?? '',
+            });
+        },
+        { immediate: true },
+    );
+
+    // Load page data on component mount
+    onMounted(() => {
+        loadPage();
     });
 </script>
 

@@ -17,10 +17,6 @@
     }
 
     const props = defineProps<ContentComponentRendererProps>();
-
-    onMounted(() => {
-        console.log('ContentComponentRenderer mounted with props:', props);
-    });
 </script>
 
 <style></style>
