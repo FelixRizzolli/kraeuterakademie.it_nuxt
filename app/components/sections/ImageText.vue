@@ -2,12 +2,17 @@
     <section class="contentelement_imagetext grid-container">
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
         <StrapiImage v-if="data.image" :image="data.image" scale-animation ref="imageElement" />
-        <div v-if="data.text1" class="text" ref="text1Element">
-            <StrapiBlocksText :nodes="data.text1" />
+        <div v-if="data.textTop" class="text" ref="textTopElement">
+            <StrapiBlocksText :nodes="data.textTop" />
         </div>
-        <div v-if="data.infos" class="infos" v-html="data.infos" ref="infosElement"></div>
-        <div v-if="data.text2" class="text" ref="text2Element">
-            <StrapiBlocksText :nodes="data.text2" />
+        <div
+            v-if="data.textHighlight"
+            class="text-highlight"
+            v-html="data.textHighlight"
+            ref="textHighlightElement"
+        ></div>
+        <div v-if="data.textBottom" class="text" ref="textBottomElement">
+            <StrapiBlocksText :nodes="data.textBottom" />
         </div>
         <NuxtLink v-if="data.link" class="link-button" :to="data.link.href" ref="linkElement">{{
             data.link.text
@@ -27,9 +32,9 @@
     interface ImageTextData {
         title?: string;
         image?: StrapiImage;
-        text1?: string;
-        infos?: string;
-        text2?: string;
+        textTop?: string;
+        textHighlight?: string;
+        textBottom?: string;
         link?: Link;
     }
 
@@ -43,9 +48,9 @@
     const props = defineProps<ImageTextProps>();
 
     const titleElement = ref<HTMLElement>();
-    const text1Element = ref<HTMLElement>();
-    const infosElement = ref<HTMLElement>();
-    const text2Element = ref<HTMLElement>();
+    const textTopElement = ref<HTMLElement>();
+    const textHighlightElement = ref<HTMLElement>();
+    const textBottomElement = ref<HTMLElement>();
     const linkElement = ref<HTMLElement>();
 
     onMounted(() => {
@@ -54,19 +59,19 @@
             opacityEffect(titleElement);
         }
 
-        if (text1Element.value instanceof HTMLElement) {
+        if (textTopElement.value instanceof HTMLElement) {
             const opacityEffect = getOpacityEffect(gsap);
-            opacityEffect(text1Element);
+            opacityEffect(textTopElement);
         }
 
-        if (infosElement.value instanceof HTMLElement) {
+        if (textHighlightElement.value instanceof HTMLElement) {
             const opacityEffect = getOpacityEffect(gsap);
-            opacityEffect(text1Element);
+            opacityEffect(textHighlightElement);
         }
 
-        if (text2Element.value instanceof HTMLElement) {
+        if (textBottomElement.value instanceof HTMLElement) {
             const opacityEffect = getOpacityEffect(gsap);
-            opacityEffect(text2Element);
+            opacityEffect(textBottomElement);
         }
 
         if (linkElement.value instanceof HTMLElement) {
@@ -111,7 +116,7 @@
         }
     }
 
-    .infos {
+    .text-highlight {
         @include col-start(10);
         @include col(4);
         @include font-50-63-1-BL();
@@ -172,7 +177,7 @@
             @include col(10);
         }
 
-        .infos {
+        .text-highlight {
             @include col-start(3);
             @include col(11);
 
