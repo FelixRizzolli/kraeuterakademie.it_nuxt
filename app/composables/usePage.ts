@@ -1,5 +1,5 @@
 import STRAPI_ERROR_FRAGMENT from '~/graphql/fragments/strapi/error.fragment.gql';
-import STRAPO_UPLOAD_FILE_FRAGMENT from '~/graphql/fragments/strapi/uploadFile.fragment.gql';
+import STRAPI_UPLOAD_FILE_FRAGMENT from '~/graphql/fragments/strapi/uploadFile.fragment.gql';
 
 import SHARED_SEO_FRAGMENT from '~/graphql/fragments/shared/seo.fragment.gql';
 
@@ -21,8 +21,6 @@ import CONTENT_TEXT_ELEMENT_FRAGMENT from '~/graphql/fragments/content/textEleme
 
 import FIND_PAGES_QUERY from '~/graphql/queries/findPages.gql';
 
-import { parse } from 'graphql';
-
 interface ContentComponent {
     name: string;
     data: any;
@@ -36,7 +34,7 @@ interface PageData {
 
 const findPagesQuery = `
     ${STRAPI_ERROR_FRAGMENT.loc.source.body}
-    ${STRAPO_UPLOAD_FILE_FRAGMENT.loc.source.body}
+    ${STRAPI_UPLOAD_FILE_FRAGMENT.loc.source.body}
 
     ${SHARED_SEO_FRAGMENT.loc.source.body}
 
@@ -61,7 +59,6 @@ const findPagesQuery = `
 
 export const usePage = () => {
     const gqlQuery = useStrapiGraphQL();
-    const { $logger } = useNuxtApp();
 
     /**
      * Transforms component data from API format to application format

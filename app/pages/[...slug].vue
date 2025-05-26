@@ -27,11 +27,6 @@
 <script lang="ts" setup>
     const route = useRoute();
 
-    interface PageData {
-        seo: any;
-        contentComponents?: Array<any>;
-    }
-
     const pageData = ref<any>({});
     const loading = ref(true);
     const error = ref<string | null>(null);
@@ -58,7 +53,7 @@
 
     watch(
         () => pageData.value?.seo,
-        (seo) => {
+        (seo: any) => {
             if (!seo) return;
 
             useSeoConfig(pageData?.value?.seo ?? {});
