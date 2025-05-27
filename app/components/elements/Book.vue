@@ -1,9 +1,13 @@
 <template>
     <div class="book">
         <StrapiImage :image="book.image" />
-        <StrapiBlocksText :nodes="book.infos" />
-        <h3 class="title"></h3>
-        <StrapiBlocksText :nodes="book.description" />
+        <div class="infos-container">
+            <StrapiBlocksText class="infos" :nodes="book.infos" />
+        </div>
+        <h3 class="title">{{ book.title }}</h3>
+        <div class="description-container">
+            <StrapiBlocksText class="description" :nodes="book.description" />
+        </div>
         <NuxtLink v-if="book.link" class="link-button" :to="book.link.href">{{ book.link.text }}</NuxtLink>
     </div>
 </template>
@@ -34,4 +38,20 @@
     const props = defineProps<BookProps>();
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+    .infos-container {
+        margin-top: 2.5rem;
+    }
+
+    .title {
+        margin-top: 4.5rem;
+    }
+
+    .description-container {
+        margin-top: 1.5rem;
+    }
+
+    .link-button {
+        margin-top: 4.5rem;
+    }
+</style>
