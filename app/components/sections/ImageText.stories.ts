@@ -26,14 +26,86 @@ export const Default: Story = {
         data: {
             title: 'Hier ein passender Titel zum Thema Kräuter und Kurse',
             image: {
-                url: '/images/imgtext_2.png',
+                url: '/images/sigrid/sigrid_thaler_rizzolli_01.png',
                 alternativeText: 'Kräuterakademie',
             },
-            textTop:
-                'Ich bin ein kleiner Blindtext. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein blinder Text zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht - und oftmals gar nicht erst gelesen. Aber bin ich allein deshalb ein schlechterer Text als andere? Na gut, ich werde nie in den Bestsellerlisten stehen.',
+            textTop: [
+                {
+                    type: 'paragraph',
+                    children: [
+                        {
+                            text: 'Ich bin ein kleiner ',
+                            type: 'text',
+                        },
+                        {
+                            text: 'Blindtext',
+                            type: 'text',
+                            bold: true,
+                        },
+                        {
+                            text: '. Und zwar schon so lange ich denken kann. Es war nicht leicht zu verstehen, was es bedeutet, ein ',
+                            type: 'text',
+                        },
+                        {
+                            text: 'blinder Text',
+                            type: 'text',
+                            bold: true,
+                        },
+                        {
+                            text: ' zu sein: Man ergibt keinen Sinn. Wirklich keinen Sinn. Man wird ',
+                            type: 'text',
+                        },
+                        {
+                            text: 'zusammenhangslos',
+                            type: 'text',
+                            bold: true,
+                        },
+                        {
+                            text: ' eingeschoben und rumgedreht - und oftmals gar nicht erst gelesen. Aber bin ich allein deshalb ein ',
+                            type: 'text',
+                        },
+                        {
+                            text: 'schlechterer Text',
+                            type: 'text',
+                            bold: true,
+                        },
+                        {
+                            text: ' als andere? Na gut, ich werde nie in den Bestsellerlisten stehen.',
+                            type: 'text',
+                        },
+                    ],
+                },
+            ],
             textHighlight: 'In den kleinsten Dingen zeigt die Natur ihre größten Wunder.',
-            textBottom:
-                'Wirklich keinen Sinn. Man wird zusammenhangslos eingeschoben und rumgedreht - und oftmals gar nicht erst gelesen. Aber bin ich allein deshalb ein schlechterer Text als andere? Na gut, ich werde nie in den Bestsellerlisten stehen.',
+            textBottom: [
+                {
+                    type: 'paragraph',
+                    children: [
+                        {
+                            text: 'Wirklich keinen Sinn. Man wird ',
+                            type: 'text',
+                        },
+                        {
+                            text: 'zusammenhangslos',
+                            type: 'text',
+                            bold: true,
+                        },
+                        {
+                            text: ' eingeschoben und rumgedreht - und oftmals gar nicht erst gelesen. Aber bin ich allein deshalb ein ',
+                            type: 'text',
+                        },
+                        {
+                            text: 'schlechterer Text',
+                            type: 'text',
+                            bold: true,
+                        },
+                        {
+                            text: ' als andere? Na gut, ich werde nie in den Bestsellerlisten stehen.',
+                            type: 'text',
+                        },
+                    ],
+                },
+            ],
             link: {
                 href: '/kraeuterkurse',
                 text: 'Kräuterakademie',

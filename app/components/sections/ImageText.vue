@@ -32,9 +32,9 @@
     interface ImageTextData {
         title?: string;
         image?: StrapiImage;
-        textTop?: string;
+        textTop?: any;
         textHighlight?: string;
-        textBottom?: string;
+        textBottom?: any;
         link?: Link;
     }
 
