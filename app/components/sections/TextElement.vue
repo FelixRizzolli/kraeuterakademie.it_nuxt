@@ -20,7 +20,7 @@
 
     interface TextElementData {
         title?: string;
-        content?: string;
+        content?: any;
         link?: Link;
     }
 

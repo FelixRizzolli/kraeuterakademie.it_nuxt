@@ -25,18 +25,50 @@ export const Default: Story = {
     args: {
         data: {
             title: 'Titel zu Zertifikat und Datum',
-            content: String.raw`
-                <p>
-                    Das Zertifikat zur/m Knospenexpert*in erhält man nach der Prüfung, bei der man das Gelernte präsentieren kann.
-                </p>
-                <p>
-                    Der dreitägige Lehrgang wird in Südtirol 2025 zweimal angeboten, und die Uhrzeiten sind jeweils von 8.30 bis 17.30 Uhr:
-                </p>
-                <ul>
-                    <li>Freitag: 28. Februar, 07. März, 21. März bei Bergila</li>
-                    <li>Samstag: 01. März, 08. März, 22. März in Montan</li>
-                </ul>
-            `,
+            content: [
+                {
+                    type: 'paragraph',
+                    children: [
+                        {
+                            text: 'Das Zertifikat zur/m Knospenexpert*in erhält man nach der Prüfung, bei der man das Gelernte präsentieren kann.',
+                            type: 'text',
+                        },
+                    ],
+                },
+                {
+                    type: 'paragraph',
+                    children: [
+                        {
+                            text: 'Der dreitägige Lehrgang wird in Südtirol 2025 zweimal angeboten, und die Uhrzeiten sind jeweils von 8.30 bis 17.30 Uhr:',
+                            type: 'text',
+                        },
+                    ],
+                },
+                {
+                    type: 'list',
+                    format: 'unordered',
+                    children: [
+                        {
+                            type: 'list-item',
+                            children: [
+                                {
+                                    text: 'Freitag: 28. Februar, 07. März, 21. März bei Bergila',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                        {
+                            type: 'list-item',
+                            children: [
+                                {
+                                    text: 'Samstag: 01. März, 08. März, 22. März in Montan',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
         },
     },
 };
