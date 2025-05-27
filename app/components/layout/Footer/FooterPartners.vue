@@ -27,10 +27,6 @@
     }
 
     const props = defineProps<FooterPartnerProps>();
-
-    onMounted(() => {
-        console.log('FooterPartner mounted with data:', props);
-    });
 </script>
 
 <style lang="scss" scoped>

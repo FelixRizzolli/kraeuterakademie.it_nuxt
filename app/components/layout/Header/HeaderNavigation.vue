@@ -22,11 +22,6 @@
 
     const props = defineProps<HeaderNavigationProps>();
     const menuStore = useMenuStore();
-
-    onMounted(() => {
-        console.log('HeaderNavigation mounted');
-        console.log('props:', props);
-    });
 </script>
 
 <style lang="scss" scoped>

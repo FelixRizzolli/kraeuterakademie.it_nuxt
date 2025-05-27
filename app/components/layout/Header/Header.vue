@@ -24,11 +24,6 @@
     function toggleNavigation() {
         showNavigation.value = !showNavigation.value;
     }
-
-    onMounted(() => {
-        console.log('Header mounted');
-        console.log('props:', props);
-    });
 </script>
 
 <style lang="scss" scoped>

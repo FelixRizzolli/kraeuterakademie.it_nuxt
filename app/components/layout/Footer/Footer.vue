@@ -37,8 +37,6 @@
     const text2Element = ref<HTMLElement>();
 
     onMounted(() => {
-        console.log('Footer mounted with data:', props);
-
         if (text1Element.value) {
             const opacityEffect = getOpacityEffect(gsap);
             opacityEffect(text1Element);

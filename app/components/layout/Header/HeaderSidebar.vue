@@ -31,11 +31,6 @@
     }
 
     const props = defineProps<HeaderHighlightProps>();
-
-    onMounted(() => {
-        console.log('HeaderSidebar mounted');
-        console.log('props:', props);
-    });
 </script>
 
 <style lang="scss" scoped>

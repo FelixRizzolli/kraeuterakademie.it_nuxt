@@ -18,16 +18,11 @@
         try {
             const findGlobal = useGlobal();
             globalData.value = await findGlobal();
-            console.log('Global data loaded:', globalData.value);
-            console.log('Footer data:', globalData.value?.footer);
-            console.log('Loading state:', loading.value);
         } catch (err) {
             error.value = err instanceof Error ? err.message : 'Unknown error';
-            console.error('Error loading global data:', err);
+            console.debug('Error loading global data:', err);
         } finally {
             loading.value = false;
-            console.log('Loading finished, loading state:', loading.value);
-            console.log('Will footer render?', !loading.value && !!globalData.value?.footer);
         }
     };
 

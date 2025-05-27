@@ -26,11 +26,6 @@
 
     const props = defineProps<HeaderCtaButtonsProps>();
     const menuStore = useMenuStore();
-
-    onMounted(() => {
-        console.log('HeaderCtaButtons mounted');
-        console.log('props:', props);
-    });
 </script>
 
 <style lang="scss" scoped>
