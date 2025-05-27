@@ -26,7 +26,7 @@ export const Default: Story = {
         data: {
             title: 'Kurse zu Wildpflanzen und Heilkräuter',
             image: {
-                url: '/images/herosmall_2.png',
+                url: '/images/sigrid/sigrid_thaler_rizzolli_01.png',
                 alternativeText: 'Kräuterakademie',
             },
             link: {
