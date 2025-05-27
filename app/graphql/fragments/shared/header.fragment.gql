@@ -1,0 +1,11 @@
+fragment HeaderAttributes on ComponentSharedHeader {
+    links {
+        ...LinkAttributes
+    }
+    sidebar {
+        ...SidebarAttributes
+    }
+    ctaButtons {
+        ...HeaderCtaButtonsAttributes
+    }
+}

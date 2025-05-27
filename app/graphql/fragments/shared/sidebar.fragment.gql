@@ -1,0 +1,8 @@
+fragment SidebarAttributes on ComponentSharedSidebar {
+    logoLink {
+        ...LinkAttributes
+    }
+    links {
+        ...LinkAttributes
+    }
+}

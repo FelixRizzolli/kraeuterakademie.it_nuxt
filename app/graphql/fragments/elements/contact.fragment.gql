@@ -1,0 +1,9 @@
+fragment ContactAttributes on ComponentElementsContact {
+    name
+    phone {
+        ...LinkAttributes
+    }
+    mail {
+        ...LinkAttributes
+    }
+}

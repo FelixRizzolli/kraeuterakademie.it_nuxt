@@ -1,20 +1,20 @@
 <template>
-    <header>
-        <HeaderHighlight :logo="highlight.logo" :links="highlight.links" :menuOpen="showNavigation" />
-        <HeaderNavigation :links="navigation.links" :menuOpen="showNavigation" @toggleNavigation="toggleNavigation" />
-        <HeaderCtaButtons :menu="ctaButtons.menu" :link="ctaButtons.link" @toggleNavigation="toggleNavigation" />
+    <header v-if="props.data">
+        <HeaderSidebar v-if="data.sidebar" :data="data.sidebar" />
+        <HeaderNavigation v-if="data.links" :links="data.links" />
+        <HeaderCtaButtons v-if="data.ctaButtons" :data="data.ctaButtons" @toggleNavigation="toggleNavigation" />
     </header>
 </template>
 
 <script lang="ts" setup>
-    import type { HeaderHighlightProps } from './HeaderHighlight.vue';
-    import type { HeaderNavigationProps } from './HeaderNavigation.vue';
-    import type { HeaderCtaButtonsProps } from './HeaderCtaButtons.vue';
+    interface HeaderData {
+        sidebar: any;
+        links: Array<any>;
+        ctaButtons: any;
+    }
 
-    export interface HeaderProps {
-        highlight: HeaderHighlightProps;
-        navigation: HeaderNavigationProps;
-        ctaButtons: HeaderCtaButtonsProps;
+    interface HeaderProps {
+        data: HeaderData;
     }
 
     const props = defineProps<HeaderProps>();
@@ -24,6 +24,11 @@
     function toggleNavigation() {
         showNavigation.value = !showNavigation.value;
     }
+
+    onMounted(() => {
+        console.log('Header mounted');
+        console.log('props:', props);
+    });
 </script>
 
 <style lang="scss" scoped>

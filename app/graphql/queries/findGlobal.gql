@@ -1,0 +1,10 @@
+query findGlobal {
+    global {
+        header {
+            ...HeaderAttributes
+        }
+        footer {
+            ...FooterAttributes
+        }
+    }
+}

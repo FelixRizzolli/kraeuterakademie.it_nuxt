@@ -17,7 +17,7 @@
         text: string;
     }
 
-    export interface FooterLinksProps {
+    interface FooterLinksProps {
         links: Array<Link>;
     }
 

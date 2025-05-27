@@ -1,0 +1,19 @@
+fragment FooterAttributes on ComponentSharedFooter {
+    address {
+        ...AddressAttributes
+    }
+    contact {
+        ...ContactAttributes
+    }
+    text1 
+    text2
+    socials {
+        ...SocialAttributes
+    }
+    links {
+        ...LinkAttributes
+    }
+    partners {
+        ...PartnerAttributes
+    }
+}

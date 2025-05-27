@@ -1,11 +1,11 @@
 <template>
     <section class="highlight">
-        <NuxtLink class="logo" to="/">
+        <NuxtLink class="logo" :to="data.logoLink.href">
             <i-logo />
         </NuxtLink>
 
         <nav class="links">
-            <NuxtLink class="link" :to="link.href" v-for="(link, index) in links" :key="index">
+            <NuxtLink class="link" :to="link.href" v-for="(link, index) in data.links" :key="index">
                 <component :is="'i-' + link.icon" class="link-icon" />
                 <span class="link-text">{{ link.text }}</span>
             </NuxtLink>
@@ -14,17 +14,28 @@
 </template>
 
 <script lang="ts" setup>
-    export interface HeaderHighlightProps {
-        logo: string;
-        links: Array<{
-            icon: string;
-            href: string;
-            text: string;
-        }>;
+    interface Link {
+        icon: string;
+        href: string;
+        text: string;
+    }
+
+    interface HeaderHighlightData {
+        logoLink: Link;
+        links: Array<Link>;
         menuOpen: boolean;
     }
 
-    const porps = defineProps<HeaderHighlightProps>();
+    interface HeaderHighlightProps {
+        data: HeaderHighlightData;
+    }
+
+    const props = defineProps<HeaderHighlightProps>();
+
+    onMounted(() => {
+        console.log('HeaderSidebar mounted');
+        console.log('props:', props);
+    });
 </script>
 
 <style lang="scss" scoped>

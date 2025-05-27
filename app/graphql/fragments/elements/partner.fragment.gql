@@ -1,0 +1,8 @@
+fragment PartnerAttributes on ComponentElementsPartner {
+    link {
+        ...LinkAttributes
+    }
+    image {
+        ...UploadFileAttributes
+    }
+}

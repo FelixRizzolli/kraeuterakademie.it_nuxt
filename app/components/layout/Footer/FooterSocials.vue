@@ -7,8 +7,8 @@
             ref="socialElements"
             :class="{ 'scale-active': showSocialElements[index] }"
         >
-            <NuxtLink class="social" :to="social.href">
-                <img :src="social.src" :alt="social.alt" />
+            <NuxtLink class="social" :to="social.link.href">
+                <StrapiImage v-if="social.backgroundImage" :image="social.backgroundImage" />
                 <component :is="'i-' + social.icon" />
             </NuxtLink>
         </div>
@@ -18,14 +18,18 @@
 <script lang="ts" setup>
     import { gsap } from 'gsap';
 
-    interface Social {
-        icon: string;
+    interface Link {
         href: string;
-        src: string;
-        alt: string;
+        text: string;
     }
 
-    export interface SocialProps {
+    interface Social {
+        icon: string;
+        link: Link;
+        backgroundImage: any;
+    }
+
+    interface SocialProps {
         socials: Array<Social>;
     }
 
@@ -71,7 +75,7 @@
         .social {
             position: relative;
 
-            img {
+            :deep(img) {
                 height: 7.5rem;
                 width: 7.5rem;
             }
@@ -100,7 +104,7 @@
             }
 
             .social {
-                img {
+                :deep(img) {
                     height: 6rem;
                     width: 6rem;
                 }

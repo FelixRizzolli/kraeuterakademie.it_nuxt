@@ -1,0 +1,9 @@
+fragment SocialAttributes on ComponentElementsSocial {
+    link {
+        ...LinkAttributes
+    }
+    icon
+    backgroundImage {
+        ...UploadFileAttributes
+    }
+}

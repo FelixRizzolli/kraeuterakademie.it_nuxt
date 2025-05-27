@@ -11,16 +11,22 @@
 
 <script lang="ts" setup>
     import { useMenuStore } from '~/stores/menuStore';
+    interface Link {
+        href: string;
+        text: string;
+    }
 
-    export interface HeaderNavigationProps {
-        links: Array<{
-            text: string;
-            href: string;
-        }>;
+    interface HeaderNavigationProps {
+        links: Array<Link>;
     }
 
     const props = defineProps<HeaderNavigationProps>();
     const menuStore = useMenuStore();
+
+    onMounted(() => {
+        console.log('HeaderNavigation mounted');
+        console.log('props:', props);
+    });
 </script>
 
 <style lang="scss" scoped>

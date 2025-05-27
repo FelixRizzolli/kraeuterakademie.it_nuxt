@@ -1,26 +1,34 @@
 <template>
-    <footer class="grid-container">
-        <FooterAddress :name="address.name" :street="address.street" :place="address.place" />
-        <FooterContact :tel-link="contact.telLink" :mail-link="contact.mailLink" />
-        <div class="text1" ref="text1Element" v-html="text1"></div>
-        <div class="text2" ref="text2Element" v-html="text2"></div>
-        <FooterSocials :socials="socials.socials" />
-        <FooterLinks :links="links.links" />
-        <FooterPartner :partners="partner.partners" />
+    <footer v-if="props.data" class="grid-container">
+        <FooterAddress v-if="data.address" :data="data.address" />
+        <FooterContact v-if="data.contact" :data="data.contact" />
+        <div v-if="data.text1" class="text1" ref="text1Element">
+            <StrapiBlocksText :nodes="data.text1" />
+        </div>
+        <div v-if="data.text2" class="text2" ref="text2Element">
+            <StrapiBlocksText :nodes="data.text2" />
+        </div>
+        <FooterSocials v-if="data?.socials" :socials="data.socials" />
+        <FooterLinks v-if="data?.links" :links="data.links" />
+        <FooterPartners v-if="data?.partners" :partners="data.partners" />
     </footer>
 </template>
 
 <script lang="ts" setup>
     import { gsap } from 'gsap';
 
-    export interface FooterProps {
-        address: FooterAddressProps;
-        contact: FooterContactProps;
-        text1: string;
-        text2: string;
-        socials: FooterSocialsProps;
-        links: FooterLinksProps;
-        partner: FooterPartnerProps;
+    export interface FooterData {
+        address: any;
+        contact: any;
+        text1: any;
+        text2: any;
+        socials: any;
+        links: any;
+        partners: any;
+    }
+
+    interface FooterProps {
+        data: FooterData;
     }
 
     const props = defineProps<FooterProps>();
@@ -29,6 +37,8 @@
     const text2Element = ref<HTMLElement>();
 
     onMounted(() => {
+        console.log('Footer mounted with data:', props);
+
         if (text1Element.value) {
             const opacityEffect = getOpacityEffect(gsap);
             opacityEffect(text1Element);

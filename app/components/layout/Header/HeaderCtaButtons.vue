@@ -1,8 +1,8 @@
 <template>
     <section class="cta-buttons-container">
         <div class="cta-buttons grid-container">
-            <NuxtLink class="link link-button" :to="link?.href">{{ link?.text }}</NuxtLink>
-            <div class="menu link-button" @click="menuStore.toggleMenu">{{ menu }}</div>
+            <NuxtLink class="link link-button" :to="data.link?.href">{{ data.link?.text }}</NuxtLink>
+            <div class="menu link-button" @click="menuStore.toggleMenu">{{ data.menu }}</div>
         </div>
     </section>
 </template>
@@ -10,16 +10,27 @@
 <script lang="ts" setup>
     import { useMenuStore } from '~/stores/menuStore';
 
-    export interface HeaderCtaButtonsProps {
-        link: {
-            href: string;
-            text: string;
-        };
+    interface Link {
+        href: string;
+        text: string;
+    }
+
+    interface HeaderCtaButtonsData {
+        link: Link;
         menu: string;
+    }
+
+    interface HeaderCtaButtonsProps {
+        data: HeaderCtaButtonsData;
     }
 
     const props = defineProps<HeaderCtaButtonsProps>();
     const menuStore = useMenuStore();
+
+    onMounted(() => {
+        console.log('HeaderCtaButtons mounted');
+        console.log('props:', props);
+    });
 </script>
 
 <style lang="scss" scoped>

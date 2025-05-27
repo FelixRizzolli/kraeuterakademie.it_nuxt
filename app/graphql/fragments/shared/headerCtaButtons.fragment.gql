@@ -1,0 +1,6 @@
+fragment HeaderCtaButtonsAttributes on ComponentSharedHeaderCtaButtons {
+    link {
+        ...LinkAttributes
+    }
+    menu
+}

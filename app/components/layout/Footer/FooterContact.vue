@@ -1,7 +1,7 @@
 <template>
     <div class="contact" ref="containerElement">
-        <a :href="telLink.href" class="link">{{ telLink.text }}</a>
-        <a :href="mailLink.href" class="link">{{ mailLink.text }}</a>
+        <a :href="data.phone.href" class="link">{{ data.phone.text }}</a>
+        <a :href="data.mail.href" class="link">{{ data.mail.text }}</a>
     </div>
 </template>
 
@@ -15,9 +15,13 @@
         text: string;
     }
 
+    interface FooterContactData {
+        phone: Link;
+        mail: Link;
+    }
+
     export interface FooterContactProps {
-        telLink: Link;
-        mailLink: Link;
+        data: FooterContactData;
     }
 
     const props = defineProps<FooterContactProps>();
