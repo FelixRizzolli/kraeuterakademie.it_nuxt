@@ -54,4 +54,22 @@
     .link-button {
         margin-top: 4.5rem;
     }
+
+    @media (max-width: 1023px) {
+        .infos-container {
+            margin-top: 1rem;
+        }
+
+        .title {
+            margin-top: 2.5rem;
+        }
+
+        .description-container {
+            margin-top: 1rem;
+        }
+
+        .link-button {
+            margin-top: 2.5rem;
+        }
+    }
 </style>
