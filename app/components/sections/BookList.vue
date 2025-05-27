@@ -1,7 +1,7 @@
 <template>
     <section class="contentelement_booklist grid-container">
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
-        <div class="books">
+        <div class="books grid-container">
             <Book v-for="(book, index) in data.books" :key="index" :book="book" />
         </div>
     </section>
@@ -29,4 +29,54 @@
     });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+    .contentelement_booklist {
+        padding-bottom: 15rem;
+
+        background-color: $colorBackgroundBrown;
+        color: $colorFontWhite;
+    }
+
+    .title {
+        @include col-start(3);
+        @include col(6);
+    }
+
+    .books {
+        @include col-start(1);
+        @include col(14);
+
+        & {
+            padding-top: 6rem;
+            row-gap: 9rem;
+        }
+
+        .book:nth-child(4n + 1) {
+            @include col-start(5);
+            @include col(4);
+
+            & {
+                padding-top: 15rem;
+            }
+        }
+
+        .book:nth-child(4n + 2) {
+            @include col-start(10);
+            @include col(4);
+        }
+
+        .book:nth-child(4n + 3) {
+            @include col-start(3);
+            @include col(4);
+        }
+
+        .book:nth-child(4n) {
+            @include col-start(9);
+            @include col(4);
+
+            & {
+                padding-top: 15rem;
+            }
+        }
+    }
+</style>
