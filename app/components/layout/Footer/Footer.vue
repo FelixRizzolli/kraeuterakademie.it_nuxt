@@ -64,7 +64,7 @@
         @include col-start(11);
         @include col(3);
 
-        p {
+        :deep(p) {
             text-align: right;
         }
     }
