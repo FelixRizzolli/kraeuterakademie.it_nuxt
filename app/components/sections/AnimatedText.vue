@@ -72,7 +72,6 @@
     @media (max-width: 1023px) {
         .contentelement_animatedtext {
             padding: 7.5rem 0;
-            margin-bottom: 7.5rem;
         }
 
         .text {

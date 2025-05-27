@@ -79,4 +79,48 @@
             }
         }
     }
+
+    @media (max-width: 1023px) {
+        .contentelement_booklist {
+            margin-bottom: 7.5rem;
+        }
+
+        .title {
+            @include col-start(3);
+            @include col(11);
+        }
+
+        .books {
+            padding-top: 4.5rem;
+            row-gap: 6rem;
+
+            .book:nth-child(4n + 1) {
+                @include col-start(2);
+                @include col(10);
+
+                & {
+                    padding-top: 0;
+                }
+            }
+
+            .book:nth-child(4n + 2) {
+                @include col-start(3);
+                @include col(10);
+            }
+
+            .book:nth-child(4n + 3) {
+                @include col-start(2);
+                @include col(10);
+            }
+
+            .book:nth-child(4n) {
+                @include col-start(4);
+                @include col(10);
+
+                & {
+                    padding-top: 0;
+                }
+            }
+        }
+    }
 </style>
