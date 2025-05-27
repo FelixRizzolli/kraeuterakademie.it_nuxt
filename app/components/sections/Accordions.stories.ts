@@ -28,18 +28,72 @@ export const Default: Story = {
             accordions: [
                 {
                     title: 'Accordion 1',
-                    content:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                    content: [
+                        {
+                            type: 'paragraph',
+                            children: [
+                                {
+                                    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
+                                    type: 'text',
+                                },
+                                {
+                                    text: 'elit',
+                                    type: 'text',
+                                    bold: true,
+                                },
+                                {
+                                    text: '. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    ],
                 },
                 {
                     title: 'Accordion 2',
-                    content:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                    content: [
+                        {
+                            type: 'paragraph',
+                            children: [
+                                {
+                                    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
+                                    type: 'text',
+                                },
+                                {
+                                    text: 'elit',
+                                    type: 'text',
+                                    bold: true,
+                                },
+                                {
+                                    text: '. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    ],
                 },
                 {
                     title: 'Accordion 3',
-                    content:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                    content: [
+                        {
+                            type: 'paragraph',
+                            children: [
+                                {
+                                    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
+                                    type: 'text',
+                                },
+                                {
+                                    text: 'elit',
+                                    type: 'text',
+                                    bold: true,
+                                },
+                                {
+                                    text: '. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    ],
                 },
             ],
         },

@@ -30,7 +30,7 @@
 
     interface Accordion {
         title: string;
-        content: string;
+        content: any;
     }
 
     interface AccordionsData {
