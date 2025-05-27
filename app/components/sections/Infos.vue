@@ -22,7 +22,7 @@
 
     interface Info {
         title?: string;
-        text?: string;
+        text?: any;
     }
 
     interface InfosData {

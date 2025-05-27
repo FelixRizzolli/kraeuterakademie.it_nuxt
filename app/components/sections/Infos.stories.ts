@@ -27,15 +27,45 @@ export const Default: Story = {
             infos: [
                 {
                     title: 'Lehrgangskosten € 270 + Mwst',
-                    text: 'Im Preis inbegriffen sind umfangreiche Unterlagen und Bestimmungshilfen',
+                    text: [
+                        {
+                            type: 'paragraph',
+                            children: [
+                                {
+                                    text: 'Im Preis inbegriffen sind umfangreiche Unterlagen und Bestimmungshilfen',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    ],
                 },
                 {
                     title: 'Teilnehmerzahl ist begrenzt',
-                    text: 'Bei Fragen oder Infos: 338 269 8477 oder sigrid.thaler@gmail.com',
+                    text: [
+                        {
+                            type: 'paragraph',
+                            children: [
+                                {
+                                    text: 'Bei Fragen oder Infos: 338 269 8477 oder sigrid.thaler@gmail.com',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    ],
                 },
                 {
                     title: 'Referentin Sigrid Thaler',
-                    text: 'Referentin der FNL Kräuterakademie',
+                    text: [
+                        {
+                            type: 'paragraph',
+                            children: [
+                                {
+                                    text: 'Referentin der FNL Kräuterakademie',
+                                    type: 'text',
+                                },
+                            ],
+                        },
+                    ],
                 },
             ],
             link: {
