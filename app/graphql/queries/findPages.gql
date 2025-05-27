@@ -11,6 +11,9 @@ query findPages($filters: PageFiltersInput) {
             ... on ComponentContentAnimatedText {
                 ...AnimatedTextAttributes
             }
+            ... on ComponentContentBookList {
+                ...BookListAttributes
+            }
             ... on ComponentContentCourseList {
                 ...CourseListAttributes
             }

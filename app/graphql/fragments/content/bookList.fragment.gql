@@ -1,0 +1,11 @@
+fragment BookListAttributes on ComponentContentBookList {
+    data {
+        title
+        books {
+            ...BookAttributes
+        }
+    }
+    settings {
+        default
+    }
+}

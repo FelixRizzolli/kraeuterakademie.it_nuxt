@@ -43,6 +43,7 @@
 
             const findPage = usePage();
             pageData.value = await findPage(pageSlug);
+            console.log('Page data loaded:', pageData.value);
         } catch (err) {
             error.value = err instanceof Error ? err.message : 'Unknown error';
             console.error('Error loading page:', err);

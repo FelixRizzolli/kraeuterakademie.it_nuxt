@@ -1,0 +1,11 @@
+fragment BookAttributes on ComponentElementsBook {
+    image {
+        ...UploadFileAttributes
+    }
+    infos
+    title
+    description
+    link {
+        ...LinkAttributes
+    }
+}
