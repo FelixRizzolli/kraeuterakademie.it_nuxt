@@ -5,7 +5,7 @@
             <StrapiBlocksText class="infos" :nodes="book.infos" />
         </div>
         <h3 class="title">{{ book.title }}</h3>
-        <div class="description-container">
+        <div class="description-container truncate">
             <StrapiBlocksText class="description" :nodes="book.description" />
         </div>
         <NuxtLink v-if="book.link" class="link-button" :to="book.link.href">{{ book.link.text }}</NuxtLink>
@@ -55,6 +55,15 @@
         margin-top: 4.5rem;
     }
 
+    .truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-clamp: 3;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
     @media (max-width: 1023px) {
         .infos-container {
             margin-top: 1rem;
@@ -70,6 +79,11 @@
 
         .link-button {
             margin-top: 2.5rem;
+        }
+
+        .truncate {
+            line-clamp: 4;
+            -webkit-line-clamp: 4;
         }
     }
 </style>
