@@ -9,7 +9,7 @@
             <StrapiBlocksText :nodes="course.description" />
         </div>
         <a v-if="sortedDates" class="open-close" @click="toggleDates">Alle Termine ansehen</a>
-        <div class="dates" ref="dates">
+        <div class="dates" ref="datesContainer">
             <p class="date" v-for="(date, index) in sortedDates" :key="index">
                 {{ formatDate2(date.date) }}
             </p>
@@ -20,6 +20,8 @@
 
 <script lang="ts" setup>
     import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    const { isMobile } = useDevice();
 
     interface CourseDate {
         id: number;
@@ -43,8 +45,6 @@
 
     const props = defineProps<CourseProps>();
 
-    const dates = ref<HTMLDivElement | null>(null);
-
     const sortedDates = computed(() => {
         if (!props.course.dates || props.course.dates.length === 0) return null;
         return props.course.dates.sort(
@@ -54,11 +54,66 @@
 
     const courseElement = ref<HTMLElement>();
 
+    const datesContainer = ref<HTMLDivElement | null>(null);
+    const showDates = ref(false);
     const toggleDates = () => {
-        if (dates.value) {
-            dates.value.style.height = dates.value.style.height === '0px' ? 'auto' : '0px';
-            dates.value.style.paddingTop = dates.value.style.paddingTop === '0px' ? '2.5rem' : '0px';
+        if (showDates.value) {
+            closeDatesContainer();
+        } else {
+            openDatesContainer();
         }
+    };
+
+    const openDatesContainer = () => {
+        showDates.value = true;
+
+        // Temporarily set the target styles to measure the full height
+        gsap.set(datesContainer.value, {
+            height: 'auto',
+            paddingTop: '2.5rem',
+            visibility: 'hidden',
+        });
+        const fullHeight = datesContainer.value?.offsetHeight || 0;
+        gsap.set(datesContainer.value, {
+            height: 0,
+            paddingTop: 0,
+            visibility: 'visible',
+        });
+
+        // Animate to the full height + padding
+        gsap.fromTo(
+            datesContainer.value,
+            {
+                height: 0,
+                paddingTop: 0,
+            },
+            {
+                height: fullHeight,
+                paddingTop: '2.5rem',
+                duration: 0.8,
+                ease: 'power2.out',
+                autoRound: false,
+                onComplete: () => {
+                    gsap.set(datesContainer.value, { height: 'auto' });
+                    ScrollTrigger.refresh();
+                },
+            },
+        );
+    };
+
+    const closeDatesContainer = () => {
+        showDates.value = false;
+
+        // Animate to height 0 and padding 0
+        gsap.to(datesContainer.value, {
+            height: 0,
+            paddingTop: 0,
+            duration: 0.8,
+            ease: 'power2.out',
+            onComplete: () => {
+                ScrollTrigger.refresh();
+            },
+        });
     };
 
     // Function to format ISO date YYYY-MM-DD to DD.MM.YYYY
