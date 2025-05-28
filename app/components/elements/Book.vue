@@ -53,7 +53,6 @@
     const truncated = ref(true);
     const descriptionElement = ref<HTMLElement | null>(null);
     const toggleTruncate = () => {
-        descriptionElement.value.classList.toggle('truncate', truncated.value);
         if (truncated.value) {
             openDescription();
         } else {
@@ -66,12 +65,15 @@
         gsap.fromTo(
             descriptionElement.value,
             {
-                height: isMobile ? '9rem' : '6rem',
+                height: isMobile ? '10.8rem' : '9rem',
             },
             {
                 height: descriptionElement.value?.scrollHeight + 'px',
                 duration: 0.8,
                 ease: 'power2.out',
+                onStart: () => {
+                    descriptionElement.value.classList.remove('truncate');
+                },
                 onComplete: () => {
                     ScrollTrigger.refresh();
                 },
@@ -82,11 +84,12 @@
     const closeDescription = () => {
         truncated.value = true;
         gsap.to(descriptionElement.value, {
-            height: isMobile ? '9rem' : '6rem',
+            height: isMobile ? '10.8rem' : '9rem',
             duration: 0.8,
             ease: 'power2.out',
             onComplete: () => {
                 ScrollTrigger.refresh();
+                descriptionElement.value.classList.add('truncate');
             },
         });
     };
@@ -105,7 +108,7 @@
         margin-top: 1.5rem;
 
         .description {
-            height: 6rem;
+            height: 9rem;
             overflow: hidden;
         }
 
@@ -155,7 +158,7 @@
             }
 
             .description {
-                height: 9rem;
+                height: 10.8rem;
             }
         }
 
