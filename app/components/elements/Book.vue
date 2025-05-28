@@ -6,7 +6,7 @@
         </div>
         <h3 class="title">{{ book.title }}</h3>
         <div class="description-container">
-            <div class="description truncate">
+            <div class="description truncate" ref="descriptionElement">
                 <StrapiBlocksText class="description" :nodes="book.description" />
             </div>
             <button class="more" @click="toggleTruncate">weiterlesen</button>
@@ -38,15 +38,14 @@
         book: Book;
     }
 
-
     const props = defineProps<BookProps>();
 
     const truncated = ref(true);
+    const descriptionElement = ref<HTMLElement | null>(null);
     const toggleTruncate = () => {
         truncated.value = !truncated.value;
-        const descriptionElement = document.querySelector('.description');
-        if (descriptionElement) {
-            descriptionElement.classList.toggle('truncate', truncated.value);
+        if (descriptionElement?.value) {
+            descriptionElement.value.classList.toggle('truncate', truncated.value);
         }
     };
 </script>
