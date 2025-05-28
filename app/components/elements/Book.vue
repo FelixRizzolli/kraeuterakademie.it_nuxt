@@ -5,8 +5,11 @@
             <StrapiBlocksText class="infos" :nodes="book.infos" />
         </div>
         <h3 class="title">{{ book.title }}</h3>
-        <div class="description-container truncate">
-            <StrapiBlocksText class="description" :nodes="book.description" />
+        <div class="description-container">
+            <div class="description truncate">
+                <StrapiBlocksText class="description" :nodes="book.description" />
+            </div>
+            <button class="more" @click="toggleTruncate">weiterlesen</button>
         </div>
         <NuxtLink v-if="book.link" class="link-button" :to="book.link.href">{{ book.link.text }}</NuxtLink>
     </div>
@@ -35,7 +38,17 @@
         book: Book;
     }
 
+
     const props = defineProps<BookProps>();
+
+    const truncated = ref(true);
+    const toggleTruncate = () => {
+        truncated.value = !truncated.value;
+        const descriptionElement = document.querySelector('.description');
+        if (descriptionElement) {
+            descriptionElement.classList.toggle('truncate', truncated.value);
+        }
+    };
 </script>
 
 <style lang="scss" scoped>
@@ -62,6 +75,21 @@
         line-clamp: 3;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
+    }
+
+    .more {
+        @include fontSizeText();
+
+        & {
+            display: inline;
+            border: 0;
+
+            color: $colorFontWhite;
+            background-color: transparent;
+
+            cursor: pointer;
+            text-decoration: underline;
+        }
     }
 
     @media (max-width: 1023px) {
