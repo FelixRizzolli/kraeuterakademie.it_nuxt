@@ -36,12 +36,13 @@ export default defineNuxtConfig({
     plugins: ['~/plugins/pinia.ts'],
 
     modules: [
-        '@nuxt/image',
-        'nuxt-svgo',
-        '@nuxtjs/storybook',
-        '@nuxtjs/strapi',
-        'nuxt-strapi-blocks-renderer',
-        '@nuxtjs/seo',
+      '@nuxt/image',
+      'nuxt-svgo',
+      '@nuxtjs/storybook',
+      '@nuxtjs/strapi',
+      'nuxt-strapi-blocks-renderer',
+      '@nuxtjs/seo',
+      '@nuxtjs/device',
     ],
 
     vite: {

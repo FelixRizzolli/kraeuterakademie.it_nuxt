@@ -16,6 +16,10 @@
 </template>
 
 <script lang="ts" setup>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    const { isMobile } = useDevice();
+
     interface StrapiImage {
         alternativeText: string | null;
         url: string;
@@ -40,13 +44,51 @@
 
     const props = defineProps<BookProps>();
 
+    let ctx: any;
+    onMounted(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        ctx = gsap.context(() => {});
+    });
+
     const truncated = ref(true);
     const descriptionElement = ref<HTMLElement | null>(null);
     const toggleTruncate = () => {
-        truncated.value = !truncated.value;
-        if (descriptionElement?.value) {
-            descriptionElement.value.classList.toggle('truncate', truncated.value);
+        descriptionElement.value.classList.toggle('truncate', truncated.value);
+        if (truncated.value) {
+            openDescription();
+        } else {
+            closeDescription();
         }
+    };
+
+    const openDescription = () => {
+        truncated.value = false;
+        gsap.fromTo(
+            descriptionElement.value,
+            {
+                height: descriptionElement.value?.style.height,
+            },
+            {
+                height: descriptionElement.value?.scrollHeight + 'px',
+                duration: 0.8,
+                ease: 'power2.out',
+                onComplete: () => {
+                    ScrollTrigger.refresh();
+                },
+            },
+        );
+    };
+
+    const closeDescription = () => {
+        truncated.value = true;
+        gsap.to(descriptionElement.value, {
+            height: isMobile ? '9rem' : '6rem',
+            duration: 0.8,
+            ease: 'power2.out',
+            onComplete: () => {
+                ScrollTrigger.refresh();
+            },
+        });
     };
 </script>
 
@@ -61,19 +103,23 @@
 
     .description-container {
         margin-top: 1.5rem;
+
+        .description {
+            height: 6rem;
+            overflow: hidden;
+        }
+
+        .truncate {
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            line-clamp: 3;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
     }
 
     .link-button {
         margin-top: 4.5rem;
-    }
-
-    .truncate {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        line-clamp: 3;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
     }
 
     .more {
@@ -102,15 +148,19 @@
 
         .description-container {
             margin-top: 1rem;
+
+            .truncate {
+                line-clamp: 4;
+                -webkit-line-clamp: 4;
+            }
+
+            .description {
+                height: 9rem;
+            }
         }
 
         .link-button {
             margin-top: 2.5rem;
-        }
-
-        .truncate {
-            line-clamp: 4;
-            -webkit-line-clamp: 4;
         }
     }
 </style>
