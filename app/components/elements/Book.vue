@@ -66,7 +66,7 @@
         gsap.fromTo(
             descriptionElement.value,
             {
-                height: descriptionElement.value?.style.height,
+                height: isMobile ? '9rem' : '6rem',
             },
             {
                 height: descriptionElement.value?.scrollHeight + 'px',
