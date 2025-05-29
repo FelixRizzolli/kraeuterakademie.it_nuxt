@@ -10,13 +10,14 @@ import SHARED_FOOTER_FRAGMENT from '~/graphql/fragments/shared/footer.fragment.g
 import SHARED_HEADER_FRAGMENT from '~/graphql/fragments/shared/header.fragment.gql';
 import SHARED_HEADER_CTA_BUTTONS_FRAGMENT from '~/graphql/fragments/shared/headerCtaButtons.fragment.gql';
 import SHARED_SIDEBAR_FRAGMENT from '~/graphql/fragments/shared/sidebar.fragment.gql';
+import SHARED_TEXT_BLOCK_FRAGMENT from '~/graphql/fragments/shared/textBlock.fragment.gql';
 
 import FIND_GLOBAL_QUERY from '~/graphql/queries/findGlobal.gql';
 
 interface GlobalData {
     header: any;
-    sidebar: any;
     footer: any;
+    textblocks: Array<any>;
 }
 
 const findGlobalQuery = `
@@ -32,6 +33,7 @@ const findGlobalQuery = `
     ${SHARED_HEADER_FRAGMENT.loc.source.body}
     ${SHARED_HEADER_CTA_BUTTONS_FRAGMENT.loc.source.body}
     ${SHARED_SIDEBAR_FRAGMENT.loc.source.body}
+    ${SHARED_TEXT_BLOCK_FRAGMENT.loc.source.body}
 
     ${FIND_GLOBAL_QUERY.loc.source.body}
 `;

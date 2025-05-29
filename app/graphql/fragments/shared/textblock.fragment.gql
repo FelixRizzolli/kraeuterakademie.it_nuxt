@@ -1,0 +1,4 @@
+fragment TextBlockAttributes on ComponentSharedTextBlock {
+    slug
+    value
+}

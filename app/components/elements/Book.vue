@@ -9,7 +9,7 @@
             <div class="description truncate" ref="descriptionElement">
                 <StrapiBlocksText class="description" :nodes="book.description" />
             </div>
-            <button class="more" @click="toggleTruncate">weiterlesen</button>
+            <button class="more" @click="toggleTruncate">{{ linkMoreTextBlock }}</button>
         </div>
         <NuxtLink v-if="book.link" class="link-button" :to="book.link.href">{{ book.link.text }}</NuxtLink>
     </div>
@@ -93,6 +93,11 @@
             },
         });
     };
+
+    const linkMoreTextBlock = ref<string | undefined | null>();
+    onMounted(() => {
+        linkMoreTextBlock.value = useTextBlock('link-more');
+    });
 </script>
 
 <style lang="scss" scoped>

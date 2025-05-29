@@ -8,7 +8,7 @@
         <div class="description">
             <StrapiBlocksText :nodes="course.description" />
         </div>
-        <a v-if="sortedDates" class="open-close" @click="toggleDates">Alle Termine ansehen</a>
+        <a v-if="sortedDates" class="open-close" @click="toggleDates">{{ toggleDatesTextBlock }}</a>
         <div class="dates" ref="datesContainer">
             <p class="date" v-for="(date, index) in sortedDates" :key="index">
                 {{ formatDate2(date.date) }}
@@ -140,7 +140,15 @@
         return `${formattedDate} ${weekday}`;
     };
 
+    const openDatesTextBlock = ref<string | undefined | null>(null);
+    const closedDatesTextBlock = ref<string | undefined | null>(null);
+    const toggleDatesTextBlock = computed(() => {
+        return showDates.value ? openDatesTextBlock.value : closedDatesTextBlock.value;
+    });
     onMounted(() => {
+        openDatesTextBlock.value = useTextBlock('link-dates-open');
+        closedDatesTextBlock.value = useTextBlock('link-dates-closed');
+
         if (courseElement.value) {
             const opacityEffect = getOpacityEffect(gsap);
             opacityEffect(courseElement);
