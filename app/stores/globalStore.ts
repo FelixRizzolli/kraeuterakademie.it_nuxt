@@ -11,8 +11,8 @@ export const useGlobalStore = defineStore('global', () => {
     const error = ref<string | null>(null);
 
     const loadGlobalData = async () => {
-        // Don't reload if we already have data
-        if (data.value) return;
+        // Don't reload if we already have data or are currently loading
+        if (data.value || loading.value) return;
 
         loading.value = true;
         error.value = null;

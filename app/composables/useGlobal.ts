@@ -60,7 +60,7 @@ export const useGlobal = () => {
 
             return globalData;
         } catch (error) {
-            console.error('Error fetching page data:', error);
+            console.error('Error fetching global data:', error);
             throw error; // Re-throw error for further handling
         }
     };
