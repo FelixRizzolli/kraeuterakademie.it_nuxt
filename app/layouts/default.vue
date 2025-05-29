@@ -1,35 +1,15 @@
 <template>
-    <Header v-if="globalData?.header" :data="globalData?.header" />
+    <Header v-if="globalStore.data?.header" :data="globalStore.data.header" />
     <main>
         <slot />
     </main>
-    <Footer v-if="!loading && globalData?.footer" :data="globalData.footer" />
+    <Footer v-if="!globalStore.loading && globalStore.data?.footer" :data="globalStore.data.footer" />
 </template>
 
 <script lang="ts" setup>
-    const globalData = ref<any>(null);
-    const loading = ref(true);
-    const error = ref<string | null>(null);
+    import { useGlobalStore } from '~/stores/globalStore';
 
-    const loadGlobalData = async () => {
-        loading.value = true;
-        error.value = null;
-
-        try {
-            const findGlobal = useGlobal();
-            globalData.value = await findGlobal();
-        } catch (err) {
-            error.value = err instanceof Error ? err.message : 'Unknown error';
-            console.debug('Error loading global data:', err);
-        } finally {
-            loading.value = false;
-        }
-    };
-
-    // Load page data on component mount
-    onMounted(() => {
-        loadGlobalData();
-    });
+    const globalStore = useGlobalStore();
 </script>
 
 <style lang="scss" scoped></style>
