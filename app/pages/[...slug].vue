@@ -1,12 +1,11 @@
 <template>
     <div>
         <div v-if="loading" class="loading-state">
-            <p>Loading content...</p>
+            <p>Inhalte werden geladen...</p>
         </div>
 
         <div v-else-if="error" class="error-state">
-            <p>Something went wrong: {{ error }}</p>
-            <button @click="loadPage">Try again</button>
+            <NuxtErrorBoundary :error="error" />
         </div>
 
         <template v-else-if="pageData?.contentComponents?.length">
@@ -26,6 +25,7 @@
 
 <script lang="ts" setup>
     const route = useRoute();
+    import { showError } from '#app';
 
     const pageData = ref<any>({});
     const loading = ref(true);
@@ -43,10 +43,23 @@
 
             const findPage = usePage();
             pageData.value = await findPage(pageSlug);
-            console.log('Page data loaded:', pageData.value);
+
+            if (!pageData.value) {
+                showError({
+                    statusCode: 404,
+                    statusMessage: 'Page Not Found',
+                    data: {
+                        myCustomField: true,
+                    },
+                });
+            }
         } catch (err) {
             error.value = err instanceof Error ? err.message : 'Unknown error';
             console.error('Error loading page:', err);
+            showError({
+                statusCode: 500,
+                statusMessage: error.value,
+            });
         } finally {
             loading.value = false;
         }
