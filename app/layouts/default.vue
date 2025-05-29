@@ -1,9 +1,13 @@
 <template>
-    <Header v-if="globalStore.data?.header" :data="globalStore.data.header" />
+    <ClientOnly>
+        <Header v-if="globalStore.data?.header" :data="globalStore.data.header" />
+    </ClientOnly>
     <main>
         <slot />
     </main>
-    <Footer v-if="!globalStore.loading && globalStore.data?.footer" :data="globalStore.data.footer" />
+    <ClientOnly>
+        <Footer v-if="!globalStore.loading && globalStore.data?.footer" :data="globalStore.data.footer" />
+    </ClientOnly>
 </template>
 
 <script lang="ts" setup>
