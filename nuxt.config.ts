@@ -9,6 +9,13 @@ export default defineNuxtConfig({
             htmlAttrs: {
                 lang: 'de',
             },
+            link: [
+                { rel: 'icon', type: 'image/x-icon', sizes: '16x16', href: '/favicon_x16.ico' },
+                { rel: 'icon', type: 'image/x-icon', sizes: '32x32', href: '/favicon_x32.ico' },
+                { rel: 'icon', type: 'image/x-icon', sizes: '48x48', href: '/favicon_x48.ico' },
+                { rel: 'apple-touch-icon', type: 'image/png', href: '/favicon.png' },
+                { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+            ],
         },
     },
 
@@ -36,13 +43,13 @@ export default defineNuxtConfig({
     plugins: ['~/plugins/pinia.ts'],
 
     modules: [
-      '@nuxt/image',
-      'nuxt-svgo',
-      '@nuxtjs/storybook',
-      '@nuxtjs/strapi',
-      'nuxt-strapi-blocks-renderer',
-      '@nuxtjs/seo',
-      '@nuxtjs/device',
+        '@nuxt/image',
+        'nuxt-svgo',
+        '@nuxtjs/storybook',
+        '@nuxtjs/strapi',
+        'nuxt-strapi-blocks-renderer',
+        '@nuxtjs/seo',
+        '@nuxtjs/device',
     ],
 
     vite: {
