@@ -1,12 +1,16 @@
 <template>
     <div class="item-container">
         <StrapiImage v-if="data.image" :image="data.image" ref="imageElement" />
-        <p v-if="data.infos">{{ data.infos }}</p>
-        <h3 v-if="data.title">{{ data.title }}</h3>
-        <div class="description-container">
-            <StrapiBlocksText class="description" :nodes="data.description" />
+        <div class="content-container">
+            <p v-if="data.infos" class="infos">{{ data.infos }}</p>
+            <h3 v-if="data.title" class="title">{{ data.title }}</h3>
+            <div class="description-container">
+                <StrapiBlocksText class="description" :nodes="data.description" />
+            </div>
+            <div class="links-container">
+                <NuxtLink class="link-button" :to="link.href" v-for="link in data.links">{{ link.text }}</NuxtLink>
+            </div>
         </div>
-        <NuxtLink class="link-button" :to="link.href" v-for="link in data.links">{{ link.text }}</NuxtLink>
     </div>
 </template>
 
@@ -40,8 +44,51 @@
     });
 </script>
 
-<style>
+<style lang="scss" scoped>
     .item-container {
-        max-width: 40rem;
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        column-gap: 4.5rem;
+    }
+
+    .image-container {
+        @include col-start(1);
+        @include col(5);
+    }
+
+    .content-container {
+        @include col-start(7);
+        @include col(4);
+
+        & {
+            padding-top: 10rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    .title {
+        @include font-30-30-5-BL();
+
+        & {
+            margin-top: 4.5rem;
+        }
+    }
+
+    .description-container {
+        margin-top: 2.5rem;
+    }
+
+    .links-container {
+        margin-top: 4.5rem;
+
+        display: flex;
+        gap: 1rem;
+    }
+
+    @media (max-width: 1023px) {
     }
 </style>
