@@ -1,0 +1,11 @@
+fragment SwiperLargeItemAttributes on ComponentElementsSwiperLargeItem {
+    image {
+        ...UploadFileAttributes
+    }
+    infos
+    title
+    description
+    links {
+        ...LinkAttributes
+    }
+}

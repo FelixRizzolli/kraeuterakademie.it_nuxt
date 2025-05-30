@@ -35,6 +35,9 @@ query findPages($filters: PageFiltersInput) {
             ... on ComponentContentSwiperCard {
                 ...SwiperCardAttributes
             }
+            ... on ComponentContentSwiperLarge {
+                ...SwiperLargeAttributes
+            }
             ... on ComponentContentSwiperSimple {
                 ...SwiperSimpleAttributes
             }

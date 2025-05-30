@@ -9,6 +9,7 @@
     <Infos v-else-if="name === 'Infos' && data" :data="data" />
     <MoodPicture v-else-if="name === 'MoodPicture' && data" :data="data" />
     <SwiperCard v-else-if="name === 'SwiperCard' && data" :data="data" />
+    <SwiperLarge v-else-if="name === 'SwiperLarge' && data" :data="data" />
     <SwiperSimple v-else-if="name === 'SwiperSimple' && data" :data="data" />
     <TextElement v-else-if="name === 'TextElement' && data" :data="data" />
 </template>

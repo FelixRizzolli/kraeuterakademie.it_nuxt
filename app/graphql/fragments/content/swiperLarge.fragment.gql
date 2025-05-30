@@ -1,0 +1,11 @@
+fragment SwiperLargeAttributes on ComponentContentSwiperLarge {
+    data {
+        title
+        items {
+            ...SwiperLargeItemAttributes
+        }
+    }
+    settings {
+        default
+    }
+}

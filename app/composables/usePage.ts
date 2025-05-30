@@ -10,6 +10,7 @@ import ELEMENT_INFO_FRAGMENT from '~/graphql/fragments/elements/info.fragment.gq
 import ELEMENT_LINK_FRAGMENT from '~/graphql/fragments/elements/link.fragment.gql';
 import ELEMENT_SIMPLE_DATE_FRAMENT from '~/graphql/fragments/elements/simpleDate.fragment.gql';
 import ELEMENT_SWIPER_CARD_ITEM_FRAGMENT from '~/graphql/fragments/elements/swiperCardItem.fragment.gql';
+import ELEMENT_SWIPER_LARGE_ITEM_FRAGMENT from '~/graphql/fragments/elements/swiperLargeItem.fragment.gql';
 
 import CONTENT_ACCORDIONS_FRAGMENT from '~/graphql/fragments/content/accordions.fragment.gql';
 import CONTENT_ANIMATED_TEXT_FRAGMENT from '~/graphql/fragments/content/animatedText.fragment.gql';
@@ -21,6 +22,7 @@ import CONTENT_IMAGE_TEXT_FRAGMENT from '~/graphql/fragments/content/imageText.f
 import CONTENT_INFOS_FRAGMENT from '~/graphql/fragments/content/infos.fragment.gql';
 import CONTENT_MOOD_PICTURE_FRAGMENT from '~/graphql/fragments/content/moodPicture.fragment.gql';
 import CONTENT_SWIPER_CARD_FRAGMENT from '~/graphql/fragments/content/swiperCard.fragment.gql';
+import CONTENT_SWIPER_LARGE_FRAGMENT from '~/graphql/fragments/content/swiperLarge.fragment.gql';
 import CONTENT_SWIPER_SIMPLE_FRAGMENT from '~/graphql/fragments/content/swiperSimple.fragment.gql';
 import CONTENT_TEXT_ELEMENT_FRAGMENT from '~/graphql/fragments/content/textElement.fragment.gql';
 
@@ -50,6 +52,7 @@ const findPagesQuery = `
     ${ELEMENT_LINK_FRAGMENT.loc.source.body}
     ${ELEMENT_SIMPLE_DATE_FRAMENT.loc.source.body}
     ${ELEMENT_SWIPER_CARD_ITEM_FRAGMENT.loc.source.body}
+    ${ELEMENT_SWIPER_LARGE_ITEM_FRAGMENT.loc.source.body}
 
     ${CONTENT_ACCORDIONS_FRAGMENT.loc.source.body}
     ${CONTENT_ANIMATED_TEXT_FRAGMENT.loc.source.body}
@@ -61,6 +64,7 @@ const findPagesQuery = `
     ${CONTENT_INFOS_FRAGMENT.loc.source.body}
     ${CONTENT_MOOD_PICTURE_FRAGMENT.loc.source.body}
     ${CONTENT_SWIPER_CARD_FRAGMENT.loc.source.body}
+    ${CONTENT_SWIPER_LARGE_FRAGMENT.loc.source.body}
     ${CONTENT_SWIPER_SIMPLE_FRAGMENT.loc.source.body}
     ${CONTENT_TEXT_ELEMENT_FRAGMENT.loc.source.body}
 
