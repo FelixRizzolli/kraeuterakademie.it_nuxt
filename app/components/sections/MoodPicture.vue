@@ -39,7 +39,7 @@
 
     @media (max-width: 1023px) {
         .image-container {
-            margin: 0;
+            margin-bottom: 7.5rem;
         }
     }
 </style>

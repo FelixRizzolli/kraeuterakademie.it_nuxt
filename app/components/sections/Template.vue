@@ -26,7 +26,7 @@
 
     @media (max-width: 1023px) {
         .contentelement_template {
-            margin: 7.5rem;
+            margin-bottom: 7.5rem;
         }
     }
 </style>

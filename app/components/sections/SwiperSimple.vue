@@ -67,7 +67,7 @@
 
 <style lang="scss" scoped>
     .contentelement_swipersimple {
-        padding: 15rem 0;
+        margin-bottom: 15rem;
     }
 
     .title {
@@ -109,7 +109,7 @@
 
     @media (max-width: 1023px) {
         .contentelement_swipersimple {
-            padding: 7.5rem 0;
+            margin-bottom: 7.5rem;
         }
 
         .title {
