@@ -1,31 +1,24 @@
 <template>
     <section class="cta-buttons-container">
         <div class="cta-buttons grid-container">
-            <NuxtLink class="link link-button" :to="data.link?.href">{{ data.link?.text }}</NuxtLink>
-            <div class="menu link-button" @click="menuStore.toggleMenu">{{ data.menu }}</div>
+            <NuxtLink class="link link-button" :to="ctaLinkTextBlock ?? '/error'">{{ ctaLinktextTextBlock }}</NuxtLink>
+            <div class="menu link-button" @click="menuStore.toggleMenu">{{ menuTextBlock }}</div>
         </div>
     </section>
 </template>
 
 <script lang="ts" setup>
     import { useMenuStore } from '~/stores/menuStore';
-
-    interface Link {
-        href: string;
-        text: string;
-    }
-
-    interface HeaderCtaButtonsData {
-        link: Link;
-        menu: string;
-    }
-
-    interface HeaderCtaButtonsProps {
-        data: HeaderCtaButtonsData;
-    }
-
-    const props = defineProps<HeaderCtaButtonsProps>();
     const menuStore = useMenuStore();
+
+    const menuTextBlock = ref<string | undefined | null>(null);
+    const ctaLinkTextBlock = ref<string | undefined | null>(null);
+    const ctaLinktextTextBlock = ref<string | undefined | null>(null);
+    onMounted(() => {
+        menuTextBlock.value = useTextBlock('menu-button');
+        ctaLinkTextBlock.value = useTextBlock('cta-link');
+        ctaLinktextTextBlock.value = useTextBlock('cta-linktext');
+    });
 </script>
 
 <style lang="scss" scoped>

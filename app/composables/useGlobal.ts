@@ -8,7 +8,6 @@ import ELEMENTS_SOCIAL_FRAGMENT from '~/graphql/fragments/elements/social.fragme
 
 import SHARED_FOOTER_FRAGMENT from '~/graphql/fragments/shared/footer.fragment.gql';
 import SHARED_HEADER_FRAGMENT from '~/graphql/fragments/shared/header.fragment.gql';
-import SHARED_HEADER_CTA_BUTTONS_FRAGMENT from '~/graphql/fragments/shared/headerCtaButtons.fragment.gql';
 import SHARED_SIDEBAR_FRAGMENT from '~/graphql/fragments/shared/sidebar.fragment.gql';
 import SHARED_TEXT_BLOCK_FRAGMENT from '~/graphql/fragments/shared/textBlock.fragment.gql';
 
@@ -31,7 +30,6 @@ const findGlobalQuery = `
 
     ${SHARED_FOOTER_FRAGMENT.loc.source.body}
     ${SHARED_HEADER_FRAGMENT.loc.source.body}
-    ${SHARED_HEADER_CTA_BUTTONS_FRAGMENT.loc.source.body}
     ${SHARED_SIDEBAR_FRAGMENT.loc.source.body}
     ${SHARED_TEXT_BLOCK_FRAGMENT.loc.source.body}
 

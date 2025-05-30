@@ -5,7 +5,4 @@ fragment HeaderAttributes on ComponentSharedHeader {
     sidebar {
         ...SidebarAttributes
     }
-    ctaButtons {
-        ...HeaderCtaButtonsAttributes
-    }
 }

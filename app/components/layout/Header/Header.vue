@@ -2,7 +2,7 @@
     <header v-if="props.data">
         <HeaderSidebar v-if="data.sidebar" :data="data.sidebar" />
         <HeaderNavigation v-if="data.links" :links="data.links" />
-        <HeaderCtaButtons v-if="data.ctaButtons" :data="data.ctaButtons" @toggleNavigation="toggleNavigation" />
+        <HeaderCtaButtons @toggleNavigation="toggleNavigation" />
     </header>
 </template>
 
@@ -10,7 +10,6 @@
     interface HeaderData {
         sidebar: any;
         links: Array<any>;
-        ctaButtons: any;
     }
 
     interface HeaderProps {
