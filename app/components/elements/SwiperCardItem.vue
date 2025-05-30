@@ -1,9 +1,9 @@
 <template>
     <div class="card-container">
         <StrapiImage v-if="data.image" :image="data.image" ref="imageElement" />
-        <p v-if="data.info">{{ data.info }}</p>
-        <p v-if="data.date">{{ data.date }}</p>
-        <h3 v-if="data.title">{{ data.title }}</h3>
+        <p v-if="data.info" class="info">{{ data.info }}</p>
+        <p v-else-if="data.date" class="date">{{ data.date }}</p>
+        <h3 v-if="data.title" class="title">{{ data.title }}</h3>
         <NuxtLink v-if="data.link" class="link-button" :to="data.link.href">{{ data.link.text }}</NuxtLink>
     </div>
 </template>
@@ -33,13 +33,27 @@
 
     const props = defineProps<SwiperCardItemProps>();
 
-    onMounted(() => {
-        console.log('SwiperCardItem mounted with data:', props.data);
-    });
+    onMounted(() => {});
 </script>
 
-<style>
+<style lang="scss" scoped>
     .card-container {
-        max-width: 40rem;
+        width: 100%;
+    }
+
+    .info {
+        margin-top: 2.5rem;
+    }
+
+    .date {
+        margin-top: 2.5rem;
+    }
+
+    .title {
+        margin-top: 1.5rem;
+    }
+
+    .link-button {
+        margin-top: 4rem;
     }
 </style>
