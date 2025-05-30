@@ -19,6 +19,7 @@ import CONTENT_HERO_SMALL_FRAGMENT from '~/graphql/fragments/content/heroSmall.f
 import CONTENT_IMAGE_TEXT_FRAGMENT from '~/graphql/fragments/content/imageText.fragment.gql';
 import CONTENT_INFOS_FRAGMENT from '~/graphql/fragments/content/infos.fragment.gql';
 import CONTENT_MOOD_PICTURE_FRAGMENT from '~/graphql/fragments/content/moodPicture.fragment.gql';
+import CONTENT_SWIPER_SIMPLE_FRAGMENT from '~/graphql/fragments/content/swiperSimple.fragment.gql';
 import CONTENT_TEXT_ELEMENT_FRAGMENT from '~/graphql/fragments/content/textElement.fragment.gql';
 
 import FIND_PAGES_QUERY from '~/graphql/queries/findPages.gql';
@@ -56,6 +57,7 @@ const findPagesQuery = `
     ${CONTENT_IMAGE_TEXT_FRAGMENT.loc.source.body}
     ${CONTENT_INFOS_FRAGMENT.loc.source.body}
     ${CONTENT_MOOD_PICTURE_FRAGMENT.loc.source.body}
+    ${CONTENT_SWIPER_SIMPLE_FRAGMENT.loc.source.body}
     ${CONTENT_TEXT_ELEMENT_FRAGMENT.loc.source.body}
 
     ${FIND_PAGES_QUERY.loc.source.body}

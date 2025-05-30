@@ -1,0 +1,11 @@
+fragment SwiperSimpleAttributes on ComponentContentSwiperSimple {
+    data {
+        title
+        images {
+            ...UploadFileAttributes
+        }
+    }
+    settings {
+        default
+    }
+}
