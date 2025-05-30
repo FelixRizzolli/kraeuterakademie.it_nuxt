@@ -90,5 +90,36 @@
     }
 
     @media (max-width: 1023px) {
+        .image-container {
+            @include col-start(1);
+            @include col(10);
+        }
+
+        .content-container {
+            @include col-start(1);
+            @include col(10);
+
+            & {
+                padding: 0;
+            }
+        }
+
+        .infos {
+            margin-top: 1rem;
+        }
+
+        .title {
+            margin-top: 2.5rem;
+        }
+
+        .description-container {
+            margin-top: 1rem;
+        }
+
+        .links-container {
+            margin-top: 2.5rem;
+
+            flex-direction: column;
+        }
     }
 </style>
