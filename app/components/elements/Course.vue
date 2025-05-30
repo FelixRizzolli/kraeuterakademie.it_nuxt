@@ -146,8 +146,8 @@
         return showDates.value ? openDatesTextBlock.value : closedDatesTextBlock.value;
     });
     onMounted(() => {
-        openDatesTextBlock.value = useTextBlock('link-dates-open');
-        closedDatesTextBlock.value = useTextBlock('link-dates-closed');
+        openDatesTextBlock.value = useTextBlock('course-dates-open-linktext');
+        closedDatesTextBlock.value = useTextBlock('course-dates-closed-linktext');
 
         if (courseElement.value) {
             const opacityEffect = getOpacityEffect(gsap);
