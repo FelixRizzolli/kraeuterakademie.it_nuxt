@@ -39,9 +39,7 @@
 
     const props = defineProps<SwiperLargeItemProps>();
 
-    onMounted(() => {
-        console.log('SwiperLargeItem mounted with data:', props.data);
-    });
+    onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>

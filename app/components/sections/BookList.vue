@@ -24,9 +24,7 @@
 
     const props = defineProps<BookListProps>();
 
-    onMounted(() => {
-        console.log('BookList mounted with data:', props.data);
-    });
+    onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>

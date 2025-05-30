@@ -49,8 +49,6 @@ export const useGlobal = () => {
         try {
             const response = await gqlQuery<any>(findGlobalQuery);
 
-            console.log('Global data response:', response);
-
             const globalData = response?.data?.global;
 
             if (!globalData) {
