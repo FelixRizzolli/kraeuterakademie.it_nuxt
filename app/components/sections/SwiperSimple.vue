@@ -1,17 +1,25 @@
 <template>
-    <h2>{{ data.title }}</h2>
-    <ClientOnly>
-        <swiper-container ref="swiperContainer">
-            <swiper-slide v-for="(image, idx) in data.images" :key="idx">
-                <StrapiImage v-if="image" :image="image" ref="imageElement" />
-            </swiper-slide>
-        </swiper-container>
-    </ClientOnly>
+    <section class="contentelement_swipersimple grid-container">
+        <h2 class="title">{{ data.title }}</h2>
+        <ClientOnly>
+            <swiper-container ref="swiperContainer" class="swiper-container">
+                <swiper-slide v-for="(image, idx) in data.images" :key="idx" class="swiper-slide">
+                    <StrapiImage v-if="image" :image="image" ref="imageElement" />
+                </swiper-slide>
+            </swiper-container>
+        </ClientOnly>
 
-    <!-- Go back one slide -->
-    <button @click="swiper.prev()">Prev</button>
-    <!-- Go forward one slide -->
-    <button @click="swiper.next()">Next</button>
+        <div class="swiper-pagination">
+            <!-- Go back one slide -->
+            <button @click="swiper.prev()" class="prev-button">
+                <i-arrow-prev class="icon" />
+            </button>
+            <!-- Go forward one slide -->
+            <button @click="swiper.next()" class="next-button">
+                <i-arrow-next class="icon" />
+            </button>
+        </div>
+    </section>
 </template>
 
 <script lang="ts" setup>
@@ -40,18 +48,65 @@
 
     const imageElement = ref<HTMLElement | null>(null);
     const swiperContainer = ref(null);
-    const swiper = useSwiper(swiperContainer);
+    const swiper = useSwiper(swiperContainer, {
+        loop: true,
+        slidesPerView: 1.5,
+        spaceBetween: 10,
+        breakpoints: {
+            1024: {
+                slidesPerView: 2.11,
+                spaceBetween: 45,
+            },
+        },
+    });
     onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>
     .contentelement_swipersimple {
-        margin-bottom: 15rem;
+        padding: 15rem 0;
+    }
+
+    .title {
+        @include col-start(3);
+        @include col(6);
+    }
+
+    .swiper-container {
+        @include col-start(2);
+        @include col(13);
+
+        & {
+            margin-top: 7.5rem;
+        }
+    }
+
+    .swiper-pagination {
+        @include col-start(2);
+        @include col(12);
+
+        & {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    .prev-button,
+    .next-button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .icon {
+        height: 2rem;
+        width: auto;
     }
 
     @media (max-width: 1023px) {
         .contentelement_swipersimple {
-            margin: 7.5rem;
+            padding: 7.5rem 0;
         }
     }
 </style>
