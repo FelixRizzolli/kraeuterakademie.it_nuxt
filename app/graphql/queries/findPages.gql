@@ -32,6 +32,9 @@ query findPages($filters: PageFiltersInput) {
             ... on ComponentContentMoodPicture {
                 ...MoodPictureAttributes
             }
+            ... on ComponentContentSwiperCard {
+                ...SwiperCardAttributes
+            }
             ... on ComponentContentSwiperSimple {
                 ...SwiperSimpleAttributes
             }

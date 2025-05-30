@@ -1,0 +1,11 @@
+fragment SwiperCardItemAttributes on ComponentElementsSwiperCardItem {
+    image {
+        ...UploadFileAttributes
+    }
+    info
+    date
+    title
+    link {
+        ...LinkAttributes
+    }
+}

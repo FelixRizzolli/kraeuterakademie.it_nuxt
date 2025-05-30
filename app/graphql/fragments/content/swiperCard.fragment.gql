@@ -1,0 +1,11 @@
+fragment SwiperCardAttributes on ComponentContentSwiperCard {
+    data {
+        title
+        cards {
+            ...SwiperCardItemAttributes
+        }
+    }
+    settings {
+        default
+    }
+}
