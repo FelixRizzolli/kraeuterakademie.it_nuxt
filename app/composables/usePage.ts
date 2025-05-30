@@ -6,6 +6,7 @@ import SHARED_SEO_FRAGMENT from '~/graphql/fragments/shared/seo.fragment.gql';
 import ELEMENT_ACCORDION_FRAGMENT from '~/graphql/fragments/elements/accordion.fragment.gql';
 import ELEMENT_BOOK_FRAGMENT from '~/graphql/fragments/elements/book.fragment.gql';
 import ELEMENT_COURSE_FRAGMENT from '~/graphql/fragments/elements/course.fragment.gql';
+import ELEMENT_IMAGE_LINK_FRAGMENT from '~/graphql/fragments/elements/imageLink.fragment.gql';
 import ELEMENT_INFO_FRAGMENT from '~/graphql/fragments/elements/info.fragment.gql';
 import ELEMENT_LINK_FRAGMENT from '~/graphql/fragments/elements/link.fragment.gql';
 import ELEMENT_SIMPLE_DATE_FRAMENT from '~/graphql/fragments/elements/simpleDate.fragment.gql';
@@ -18,6 +19,7 @@ import CONTENT_BOOK_LIST_FRAGMENT from '~/graphql/fragments/content/bookList.fra
 import CONTENT_COURSE_LIST_FRAGMENT from '~/graphql/fragments/content/courseList.fragment.gql';
 import CONTENT_HERO_BIG_FRAGMENT from '~/graphql/fragments/content/heroLarge.fragment.gql';
 import CONTENT_HERO_SMALL_FRAGMENT from '~/graphql/fragments/content/heroSmall.fragment.gql';
+import CONTENT_HIGHLIGHTED_LINKS_FRAGMENT from '~/graphql/fragments/content/highlightedLinks.fragment.gql';
 import CONTENT_IMAGE_TEXT_FRAGMENT from '~/graphql/fragments/content/imageText.fragment.gql';
 import CONTENT_INFOS_FRAGMENT from '~/graphql/fragments/content/infos.fragment.gql';
 import CONTENT_MOOD_PICTURE_FRAGMENT from '~/graphql/fragments/content/moodPicture.fragment.gql';
@@ -48,6 +50,7 @@ const findPagesQuery = `
     ${ELEMENT_ACCORDION_FRAGMENT.loc.source.body}
     ${ELEMENT_BOOK_FRAGMENT.loc.source.body}
     ${ELEMENT_COURSE_FRAGMENT.loc.source.body}
+    ${ELEMENT_IMAGE_LINK_FRAGMENT.loc.source.body}
     ${ELEMENT_INFO_FRAGMENT.loc.source.body}
     ${ELEMENT_LINK_FRAGMENT.loc.source.body}
     ${ELEMENT_SIMPLE_DATE_FRAMENT.loc.source.body}
@@ -60,6 +63,7 @@ const findPagesQuery = `
     ${CONTENT_COURSE_LIST_FRAGMENT.loc.source.body}
     ${CONTENT_HERO_BIG_FRAGMENT.loc.source.body}
     ${CONTENT_HERO_SMALL_FRAGMENT.loc.source.body}
+    ${CONTENT_HIGHLIGHTED_LINKS_FRAGMENT.loc.source.body}
     ${CONTENT_IMAGE_TEXT_FRAGMENT.loc.source.body}
     ${CONTENT_INFOS_FRAGMENT.loc.source.body}
     ${CONTENT_MOOD_PICTURE_FRAGMENT.loc.source.body}

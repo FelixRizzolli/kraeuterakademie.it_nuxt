@@ -3,8 +3,9 @@
     <AnimatedText v-else-if="name === 'AnimatedText' && data" :data="data" />
     <BookList v-else-if="name === 'BookList' && data" :data="data" />
     <CourseList v-else-if="name === 'CourseList' && data" :data="data" />
-    <HeroSmall v-else-if="name === 'HeroSmall' && data" :data="data" />
     <HeroLarge v-else-if="name === 'HeroLarge' && data" :data="data" />
+    <HeroSmall v-else-if="name === 'HeroSmall' && data" :data="data" />
+    <HighlightedLinks v-else-if="name === 'HighlightedLinks' && data" :data="data" />
     <ImageText v-else-if="name === 'ImageText' && data" :data="data" />
     <Infos v-else-if="name === 'Infos' && data" :data="data" />
     <MoodPicture v-else-if="name === 'MoodPicture' && data" :data="data" />

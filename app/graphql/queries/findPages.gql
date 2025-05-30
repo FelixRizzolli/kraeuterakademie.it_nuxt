@@ -23,6 +23,9 @@ query findPages($filters: PageFiltersInput) {
             ... on ComponentContentHeroSmall {
                 ...HeroSmallAttributes
             }
+            ... on ComponentContentHighlightedLinks {
+                ...HighlightedLinksAttributes
+            }
             ... on ComponentContentImageText {
                 ...ImageTextAttributes
             }

@@ -1,0 +1,8 @@
+fragment ImageLinkAttributes on ComponentElementsImageLink {
+    image {
+        ...UploadFileAttributes
+    }
+    link {
+        ...LinkAttributes
+    }
+}

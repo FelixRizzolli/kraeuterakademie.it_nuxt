@@ -1,0 +1,10 @@
+fragment HighlightedLinksAttributes on ComponentContentHighlightedLinks {
+    data {
+        imageLinks {
+            ...ImageLinkAttributes
+        }
+    }
+    settings {
+        default
+    }
+}
