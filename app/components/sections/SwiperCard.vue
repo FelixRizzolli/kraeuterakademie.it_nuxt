@@ -60,6 +60,10 @@
 <style lang="scss" scoped>
     .contentelement_swipercard {
         margin-bottom: 15rem;
+        padding: 15rem 0;
+
+        background-color: $colorBackgroundBrown;
+        color: $colorFontWhite;
     }
 
     .title {
@@ -110,6 +114,12 @@
     .icon {
         height: 2rem;
         width: auto;
+    }
+
+    :deep(svg) {
+        path {
+            stroke: $colorFontWhite;
+        }
     }
 
     @media (max-width: 1023px) {
