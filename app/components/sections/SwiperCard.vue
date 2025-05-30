@@ -54,9 +54,7 @@
     });
     const props = defineProps<SwiperCardProps>();
 
-    onMounted(() => {
-        console.log('SwiperCard mounted with data:', props.data);
-    });
+    onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>
@@ -93,16 +91,20 @@
         @include col-start(2);
         @include col(1);
 
-        justify-content: flex-start;
-        align-items: end;
+        & {
+            justify-content: flex-start;
+            align-items: end;
+        }
     }
 
     .next-button {
         @include col-start(13);
         @include col(1);
 
-        justify-content: flex-end;
-        align-items: end;
+        & {
+            justify-content: flex-end;
+            align-items: end;
+        }
     }
 
     .icon {
