@@ -3,7 +3,7 @@
         <section class="error grid-container">
             <h1 class="code">{{ error?.statusCode }}</h1>
             <h2 class="message">{{ error?.statusMessage }}</h2>
-            <NuxtLink to="/" class="link-button">Zurück zur Startseite</NuxtLink>
+            <NuxtLink :to="errorLink ?? '/'" class="link-button">{{ errorLinktext }}</NuxtLink>
         </section>
     </NuxtLayout>
 </template>
@@ -13,6 +13,13 @@
 
     const props = defineProps({
         error: Object as () => NuxtError,
+    });
+
+    const errorLinktext = ref<string | undefined | null>(null);
+    const errorLink = ref<string | undefined | null>(null);
+    onMounted(() => {
+        errorLinktext.value = useTextBlock('error-linktext');
+        errorLink.value = useTextBlock('error-link');
     });
 </script>
 
