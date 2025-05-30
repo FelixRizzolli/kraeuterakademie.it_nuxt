@@ -50,10 +50,28 @@
     }
 
     .title {
-        margin-top: 1.5rem;
+        @include font-30-30-5-BL();
+
+        & {
+            margin-top: 1.5rem;
+        }
     }
 
     .link-button {
         margin-top: 4rem;
+    }
+
+    @media (max-width: 1023px) {
+        .info {
+            margin-top: 1rem;
+        }
+
+        .date {
+            margin-top: 1rem;
+        }
+
+        .link-button {
+            margin-top: 4.5rem;
+        }
     }
 </style>
