@@ -1,13 +1,16 @@
 <template>
     <section class="contentelement_swipersimple grid-container">
         <h2 class="title">{{ data.title }}</h2>
-        <ClientOnly>
-            <swiper-container ref="swiperContainer" class="swiper-container">
-                <swiper-slide v-for="(image, idx) in data.images" :key="idx" class="swiper-slide">
-                    <StrapiImage v-if="image" :image="image" ref="imageElement" />
-                </swiper-slide>
-            </swiper-container>
-        </ClientOnly>
+
+        <div class="swiper-wrapper">
+            <ClientOnly>
+                <swiper-container ref="swiperContainer" class="swiper-container">
+                    <swiper-slide v-for="(image, idx) in data.images" :key="idx" class="swiper-slide">
+                        <StrapiImage v-if="image" :image="image" ref="imageElement" />
+                    </swiper-slide>
+                </swiper-container>
+            </ClientOnly>
+        </div>
 
         <div class="swiper-pagination">
             <!-- Go back one slide -->
@@ -72,7 +75,7 @@
         @include col(6);
     }
 
-    .swiper-container {
+    .swiper-wrapper {
         @include col-start(2);
         @include col(13);
 
@@ -107,6 +110,19 @@
     @media (max-width: 1023px) {
         .contentelement_swipersimple {
             padding: 7.5rem 0;
+        }
+
+        .title {
+            @include col-start(3);
+            @include col(11);
+        }
+
+        .swiper-wrapper {
+            margin-top: 4.5rem;
+        }
+
+        .swiper-pagination {
+            margin-top: 1rem;
         }
     }
 </style>
