@@ -114,7 +114,42 @@
 
     @media (max-width: 1023px) {
         .contentelement_swipercard {
-            margin: 7.5rem;
+            margin-bottom: 7.5rem;
+        }
+
+        .title {
+            @include col-start(3);
+            @include col(11);
+        }
+
+        .swiper-wrapper {
+            @include col-start(2);
+            @include col(12);
+
+            & {
+                order: 1;
+                margin: 4.5rem 0 0 0;
+            }
+        }
+
+        .prev-button {
+            @include col-start(2);
+            @include col(6);
+
+            & {
+                order: 2;
+                margin: 1rem 0 0 0;
+            }
+        }
+
+        .next-button {
+            @include col-start(8);
+            @include col(6);
+
+            & {
+                order: 3;
+                margin: 1rem 0 0 0;
+            }
         }
     }
 </style>
