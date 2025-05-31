@@ -50,10 +50,6 @@
     .courselist-container {
         @include col-start(1);
         @include col(14);
-
-        & {
-            margin-top: 7.5rem;
-        }
     }
 
     .course:nth-child(3n + 1) {
@@ -61,13 +57,17 @@
         @include col(4);
 
         & {
-            margin-top: 12rem;
+            margin-top: 19.5rem;
         }
     }
 
     .course:nth-child(3n + 2) {
         @include col-start(10);
         @include col(4);
+
+        & {
+            margin-top: 7.5rem;
+        }
     }
 
     .course:nth-child(3n) {
