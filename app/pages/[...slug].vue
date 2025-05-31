@@ -1,8 +1,6 @@
 <template>
     <div>
-        <div v-if="loading" class="loading-state">
-            <p>Inhalte werden geladen...</p>
-        </div>
+        <div v-if="loading" class="loading-state"></div>
 
         <div v-else-if="error" class="error-state">
             <NuxtErrorBoundary :error="error" />
