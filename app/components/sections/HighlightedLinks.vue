@@ -6,14 +6,21 @@
             v-for="(imageLink, index) in data.imageLinks"
             :key="index"
         >
-            <span class="title">{{ imageLink.link.text }}</span>
-            <StrapiImage :image="imageLink.image" />
+            <div
+                class="inner-container scale-animation"
+                ref="highlightedLinkElements"
+                :class="{ 'scale-active': showHighlightedLinkElements[index] }"
+            >
+                <span class="title">{{ imageLink.link.text }}</span>
+                <StrapiImage :image="imageLink.image" />
+            </div>
         </NuxtLink>
     </section>
 </template>
 
 <script lang="ts" setup>
     import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
     interface StrapiImage {
         alternativeText: string | null;
@@ -45,7 +52,27 @@
 
     const props = defineProps<HighlightedLinksProps>();
 
-    onMounted(() => {});
+    const highlightedLinkElements = ref<Array<HTMLElement>>([]);
+    const showHighlightedLinkElements = ref<Array<boolean>>([]);
+    onMounted(() => {
+        // Initialize visibility array with false values
+        showHighlightedLinkElements.value = Array(highlightedLinkElements?.value?.length).fill(false);
+
+        // Set up scale effect for each element
+        highlightedLinkElements?.value?.forEach((element, index) => {
+            const scaleEffect = getScaleEffect(gsap);
+            const elementRef = ref(element);
+
+            const elementShowRef = computed({
+                get: () => showHighlightedLinkElements.value[index],
+                set: (value) => {
+                    showHighlightedLinkElements.value[index] = value;
+                },
+            });
+
+            scaleEffect(elementRef, elementShowRef);
+        });
+    });
 </script>
 
 <style lang="scss" scoped>
@@ -54,18 +81,11 @@
     }
 
     .link-container {
-        display: grid;
-        column-gap: 4.5rem;
-
         text-decoration: none;
 
-        &:nth-child(3n + 1) {
+        & {
             @include col-start(2);
             @include col(6);
-
-            & {
-                grid-template-columns: repeat(6, 1fr);
-            }
         }
 
         &:nth-child(3n + 2) {
@@ -74,8 +94,6 @@
 
             & {
                 margin-top: 35rem;
-
-                grid-template-columns: repeat(5, 1fr);
             }
         }
 
@@ -85,9 +103,24 @@
 
             & {
                 margin-top: -20rem;
-
-                grid-template-columns: repeat(6, 1fr);
             }
+        }
+    }
+
+    .inner-container {
+        display: grid;
+        column-gap: 4.5rem;
+
+        &:nth-child(3n + 1) {
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        &:nth-child(3n + 2) {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        &:nth-child(3n) {
+            grid-template-columns: repeat(6, 1fr);
         }
     }
 
@@ -151,17 +184,11 @@
         }
 
         .link-container {
-            column-gap: 1rem;
-
             text-decoration: none;
 
             &:nth-child(3n + 1) {
                 @include col-start(2);
                 @include col(12);
-
-                & {
-                    grid-template-columns: repeat(12, 1fr);
-                }
             }
 
             &:nth-child(3n + 2) {
@@ -170,8 +197,6 @@
 
                 & {
                     margin: 0;
-
-                    grid-template-columns: repeat(12, 1fr);
                 }
             }
 
@@ -181,9 +206,23 @@
 
                 & {
                     margin: 0;
-
-                    grid-template-columns: repeat(12, 1fr);
                 }
+            }
+        }
+
+        .inner-container {
+            column-gap: 1rem;
+
+            &:nth-child(3n + 1) {
+                grid-template-columns: repeat(12, 1fr);
+            }
+
+            &:nth-child(3n + 2) {
+                grid-template-columns: repeat(12, 1fr);
+            }
+
+            &:nth-child(3n) {
+                grid-template-columns: repeat(12, 1fr);
             }
         }
 
