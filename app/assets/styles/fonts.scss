@@ -9,10 +9,12 @@ $fontFamilyHeading: 'roca', sans-serif;
 
 @mixin fontFamilyDefault() {
     @include fontFamily($fontFamilyDefault);
+    @include wordbreak();
 }
 
 @mixin fontFamilyHeading() {
     @include fontFamily($fontFamilyHeading);
+    @include wordbreak();
 }
 
 @mixin fontSizeText() {
