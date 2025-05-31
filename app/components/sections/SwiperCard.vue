@@ -96,6 +96,8 @@
     .title {
         @include col-start(6);
         @include col(7);
+
+        @include wordbreak();
     }
 
     .swiper-wrapper {

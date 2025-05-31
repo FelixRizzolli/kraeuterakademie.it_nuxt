@@ -54,6 +54,8 @@
         @include col-start(3);
         @include col(6);
 
+        @include wordbreak();
+
         & {
             z-index: 1;
 

@@ -100,6 +100,8 @@
     .title {
         @include col-start(3);
         @include col(6);
+
+        @include wordbreak();
     }
 
     .swiper-wrapper {

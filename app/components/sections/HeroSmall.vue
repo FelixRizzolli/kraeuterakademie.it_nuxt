@@ -64,7 +64,11 @@
     }
 
     .title {
-        text-align: right;
+        @include wordbreak();
+
+        & {
+            text-align: right;
+        }
     }
 
     .link-button {

@@ -42,6 +42,8 @@
         @include col-start(3);
         @include col(6);
 
+        @include wordbreak();
+
         & {
             margin-bottom: 18rem;
         }
