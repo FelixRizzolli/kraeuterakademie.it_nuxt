@@ -1,13 +1,13 @@
 <template>
     <section class="contentelement_swiperlarge grid-container">
-        <h2 class="title">{{ data.title }}</h2>
+        <h2 class="title" ref="titleElement">{{ data.title }}</h2>
 
         <!-- Go back one slide -->
-        <button @click="swiper.prev()" class="prev-button">
+        <button @click="swiper.prev()" class="prev-button" ref="prevButtonElement">
             <i-arrow-prev class="icon" />
         </button>
 
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" ref="swiperWrapperElement">
             <ClientOnly>
                 <swiper-container ref="swiperContainer" class="swiper-container">
                     <swiper-slide v-for="(item, idx) in data.items" :key="idx" class="swiper-slide">
@@ -18,7 +18,7 @@
         </div>
 
         <!-- Go forward one slide -->
-        <button @click="swiper.next()" class="next-button">
+        <button @click="swiper.next()" class="next-button" ref="nextButtonElement">
             <i-arrow-next class="icon" />
         </button>
     </section>
@@ -26,6 +26,7 @@
 
 <script lang="ts" setup>
     import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
     interface SwiperLargeData {
         title?: string;
@@ -48,7 +49,33 @@
     });
     const props = defineProps<SwiperLargeProps>();
 
-    onMounted(() => {});
+    const titleElement = ref<HTMLElement | null>(null);
+    const swiperWrapperElement = ref<HTMLElement | null>(null);
+    const prevButtonElement = ref<HTMLElement | null>(null);
+    const nextButtonElement = ref<HTMLElement | null>(null);
+    onMounted(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        if (titleElement.value instanceof HTMLElement) {
+            const opacityEffect = getOpacityEffect(gsap);
+            opacityEffect(titleElement);
+        }
+
+        if (swiperWrapperElement.value instanceof HTMLElement) {
+            const opacityEffect = getOpacityEffect(gsap);
+            opacityEffect(swiperWrapperElement);
+        }
+
+        if (prevButtonElement.value instanceof HTMLElement) {
+            const opacityEffect = getOpacityEffect(gsap);
+            opacityEffect(prevButtonElement);
+        }
+
+        if (nextButtonElement.value instanceof HTMLElement) {
+            const opacityEffect = getOpacityEffect(gsap);
+            opacityEffect(nextButtonElement);
+        }
+    });
 </script>
 
 <style lang="scss" scoped>

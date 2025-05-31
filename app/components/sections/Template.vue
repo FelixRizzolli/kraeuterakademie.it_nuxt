@@ -4,6 +4,7 @@
 
 <script lang="ts" setup>
     import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
     interface TemplateData {}
 
