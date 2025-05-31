@@ -6,8 +6,8 @@
             v-for="(imageLink, index) in data.imageLinks"
             :key="index"
         >
-            <StrapiImage :image="imageLink.image" />
             <span class="title">{{ imageLink.link.text }}</span>
+            <StrapiImage :image="imageLink.image" />
         </NuxtLink>
     </section>
 </template>
@@ -51,6 +51,99 @@
 <style lang="scss" scoped>
     .contentelement_highlightedlinks {
         margin-bottom: 15rem;
+    }
+
+    .link-container {
+        display: grid;
+        column-gap: 4.5rem;
+
+        text-decoration: none;
+
+        &:nth-child(3n + 1) {
+            @include col-start(2);
+            @include col(6);
+
+            & {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        &:nth-child(3n + 2) {
+            @include col-start(10);
+            @include col(4);
+
+            & {
+                margin-top: 35rem;
+
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        &:nth-child(3n) {
+            @include col-start(5);
+            @include col(4);
+
+            & {
+                margin-top: -20rem;
+
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+    }
+
+    .title {
+        @include font-50-63-1-B();
+        @include fontFamilyHeading();
+
+        & {
+            z-index: 1;
+
+            display: block;
+            grid-row: 1;
+
+            text-align: right;
+        }
+    }
+
+    .link-container:nth-child(3n + 1) .title {
+        @include col-start(2);
+        @include col(4);
+    }
+
+    .link-container:nth-child(3n + 2) .title {
+        @include col-start(1);
+        @include col(4);
+    }
+
+    .link-container:nth-child(3n) .title {
+        @include col-start(1);
+        @include col(5);
+    }
+
+    .image-container {
+        & {
+            margin-top: 3rem;
+
+            width: 100%;
+            height: auto;
+
+            grid-row: 1;
+        }
+    }
+
+    .link-container:nth-child(3n + 1) .image-container {
+        @include col-start(1);
+        @include col(6);
+    }
+
+    .link-container:nth-child(3n + 2) .image-container {
+        @include col-start(2);
+        @include col(4);
+    }
+
+    .link-container:nth-child(3n) .image-container {
+        @include col-start(3);
+        @include col(4);
     }
 
     @media (max-width: 1023px) {
