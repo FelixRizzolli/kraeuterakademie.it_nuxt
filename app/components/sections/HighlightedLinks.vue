@@ -121,14 +121,12 @@
     }
 
     .image-container {
-        & {
-            margin-top: 3rem;
+        margin-top: 3rem;
 
-            width: 100%;
-            height: auto;
+        width: 100%;
+        height: auto;
 
-            grid-row: 1;
-        }
+        grid-row: 1;
     }
 
     .link-container:nth-child(3n + 1) .image-container {
@@ -149,6 +147,78 @@
     @media (max-width: 1023px) {
         .contentelement_highlightedlinks {
             margin-bottom: 7.5rem;
+            row-gap: 4rem;
+        }
+
+        .link-container {
+            column-gap: 1rem;
+
+            text-decoration: none;
+
+            &:nth-child(3n + 1) {
+                @include col-start(2);
+                @include col(12);
+
+                & {
+                    grid-template-columns: repeat(12, 1fr);
+                }
+            }
+
+            &:nth-child(3n + 2) {
+                @include col-start(2);
+                @include col(12);
+
+                & {
+                    margin: 0;
+
+                    grid-template-columns: repeat(12, 1fr);
+                }
+            }
+
+            &:nth-child(3n) {
+                @include col-start(2);
+                @include col(12);
+
+                & {
+                    margin: 0;
+
+                    grid-template-columns: repeat(12, 1fr);
+                }
+            }
+        }
+
+        .link-container:nth-child(3n + 1) .title {
+            @include col-start(2);
+            @include col(9);
+        }
+
+        .link-container:nth-child(3n + 2) .title {
+            @include col-start(3);
+            @include col(9);
+        }
+
+        .link-container:nth-child(3n) .title {
+            @include col-start(1);
+            @include col(5);
+        }
+
+        .image-container {
+            margin-top: 1.6rem;
+        }
+
+        .link-container:nth-child(3n + 1) .image-container {
+            @include col-start(1);
+            @include col(11);
+        }
+
+        .link-container:nth-child(3n + 2) .image-container {
+            @include col-start(4);
+            @include col(9);
+        }
+
+        .link-container:nth-child(3n) .image-container {
+            @include col-start(2);
+            @include col(10);
         }
     }
 </style>
