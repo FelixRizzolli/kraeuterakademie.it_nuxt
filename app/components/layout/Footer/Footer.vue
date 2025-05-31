@@ -62,7 +62,7 @@
         @include col-start(11);
         @include col(3);
 
-        :deep(p) {
+        & {
             text-align: right;
         }
     }
@@ -90,9 +90,6 @@
 
             & {
                 padding-bottom: 1.5rem;
-            }
-
-            p {
                 text-align: left;
             }
         }
@@ -103,6 +100,7 @@
 
             & {
                 padding-bottom: 4.5rem;
+                text-align: left;
             }
         }
     }
