@@ -8,6 +8,9 @@
 </template>
 
 <script lang="ts" setup>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
     interface BookListData {
         title: string;
         books: Array<any>;
@@ -24,7 +27,15 @@
 
     const props = defineProps<BookListProps>();
 
-    onMounted(() => {});
+    const titleElement = ref<HTMLElement | null>(null);
+    onMounted(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        if (titleElement.value instanceof HTMLElement) {
+            const opacityEffect = getOpacityEffect(gsap);
+            opacityEffect(titleElement);
+        }
+    });
 </script>
 
 <style lang="scss" scoped>
