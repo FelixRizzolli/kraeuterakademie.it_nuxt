@@ -29,7 +29,8 @@
 
 <style lang="scss" scoped>
     .contentelement_booklist {
-        padding-bottom: 15rem;
+        margin-bottom: 15rem;
+        padding: 15rem 0;
 
         background-color: $colorBackgroundBrown;
         color: $colorFontWhite;
@@ -81,6 +82,7 @@
     @media (max-width: 1023px) {
         .contentelement_booklist {
             margin-bottom: 7.5rem;
+            padding: 7.5rem 0;
         }
 
         .title {
