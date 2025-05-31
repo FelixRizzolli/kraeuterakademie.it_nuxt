@@ -9,7 +9,8 @@ export default (gsap: globalThis.GSAP) => {
                 observeElement?.disconnect();
             },
             {
-                threshold: 0.5,
+                threshold: 0,
+                rootMargin: `-30% 0px -30% 0px`, // Triggers when element is in middle 30% of viewport
             },
         );
     };
