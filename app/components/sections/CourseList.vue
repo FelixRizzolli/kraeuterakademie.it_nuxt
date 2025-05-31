@@ -1,7 +1,9 @@
 <template>
     <section class="contentelement_courselist grid-container">
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
-        <Course v-for="(course, index) in data.courses" :key="index" :course="course" />
+        <div class="courselist-container grid-container">
+            <Course v-for="(course, index) in data.courses" :key="index" :course="course" />
+        </div>
     </section>
 </template>
 
@@ -43,13 +45,18 @@
         @include col(6);
 
         @include wordbreak();
+    }
+
+    .courselist-container {
+        @include col-start(1);
+        @include col(14);
 
         & {
-            margin-bottom: 18rem;
+            margin-top: 7.5rem;
         }
     }
 
-    .course:nth-child(3n + 2) {
+    .course:nth-child(3n + 1) {
         @include col-start(3);
         @include col(4);
 
@@ -58,12 +65,12 @@
         }
     }
 
-    .course:nth-child(3n) {
+    .course:nth-child(3n + 2) {
         @include col-start(10);
         @include col(4);
     }
 
-    .course:nth-child(3n + 1) {
+    .course:nth-child(3n) {
         @include col-start(8);
         @include col(4);
     }
@@ -76,13 +83,15 @@
         .title {
             @include col-start(3);
             @include col(11);
-
-            & {
-                margin-bottom: 4.5rem;
-            }
         }
 
-        .course:nth-child(3n + 2) {
+        .courselist-container {
+            margin-top: 4.5rem;
+
+            row-gap: 6rem;
+        }
+
+        .course:nth-child(3n + 1) {
             @include col-start(2);
             @include col(10);
 
@@ -91,18 +100,14 @@
             }
         }
 
-        .course:nth-child(3n) {
+        .course:nth-child(3n + 2) {
             @include col-start(3);
             @include col(10);
         }
 
-        .course:nth-child(3n + 1) {
+        .course:nth-child(3n) {
             @include col-start(2);
             @include col(10);
-        }
-
-        .course:not(:last-of-type) {
-            margin-bottom: 6rem;
         }
     }
 </style>
