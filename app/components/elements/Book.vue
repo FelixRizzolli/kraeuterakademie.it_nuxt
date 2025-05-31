@@ -1,5 +1,5 @@
 <template>
-    <div class="book">
+    <div class="book scale-animation" :class="{ 'scale-active': showBookElement }" ref="bookElement">
         <StrapiImage :image="book.image" />
         <div class="infos-container">
             <StrapiBlocksText class="infos" :nodes="book.infos" />
@@ -44,10 +44,18 @@
 
     const props = defineProps<BookProps>();
 
+    const bookElement = ref<HTMLElement | null>(null);
+    const showBookElement = ref(false);
+
     let ctx: any;
     onMounted(() => {
         gsap.registerPlugin(ScrollTrigger);
         ctx = gsap.context(() => {});
+
+        if (bookElement.value instanceof HTMLElement) {
+            const effectForBook = getScaleEffect(gsap);
+            effectForBook(bookElement, showBookElement);
+        }
     });
 
     const truncated = ref(true);
