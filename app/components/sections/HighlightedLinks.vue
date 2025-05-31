@@ -83,14 +83,14 @@
     .link-container {
         text-decoration: none;
 
-        & {
+        &:nth-child(3n + 1) {
             @include col-start(2);
             @include col(6);
         }
 
         &:nth-child(3n + 2) {
-            @include col-start(10);
-            @include col(4);
+            @include col-start(9);
+            @include col(5);
 
             & {
                 margin-top: 35rem;
@@ -98,8 +98,8 @@
         }
 
         &:nth-child(3n) {
-            @include col-start(5);
-            @include col(4);
+            @include col-start(3);
+            @include col(6);
 
             & {
                 margin-top: -20rem;
@@ -108,20 +108,28 @@
     }
 
     .inner-container {
+        height: fit-content;
+
         display: grid;
         column-gap: 4.5rem;
 
-        &:nth-child(3n + 1) {
-            grid-template-columns: repeat(6, 1fr);
+        &:hover {
+            :deep(img) {
+                scale: 1.2;
+            }
         }
+    }
 
-        &:nth-child(3n + 2) {
-            grid-template-columns: repeat(5, 1fr);
-        }
+    .link-container:nth-child(3n + 1) .inner-container {
+        grid-template-columns: repeat(6, 1fr);
+    }
 
-        &:nth-child(3n) {
-            grid-template-columns: repeat(6, 1fr);
-        }
+    .link-container:nth-child(3n + 2) .inner-container {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .link-container:nth-child(3n) .inner-container {
+        grid-template-columns: repeat(6, 1fr);
     }
 
     .title {
@@ -160,6 +168,8 @@
         height: auto;
 
         grid-row: 1;
+
+        overflow: hidden;
     }
 
     .link-container:nth-child(3n + 1) .image-container {
@@ -212,18 +222,18 @@
 
         .inner-container {
             column-gap: 1rem;
+        }
 
-            &:nth-child(3n + 1) {
-                grid-template-columns: repeat(12, 1fr);
-            }
+        .link-container:nth-child(3n + 1) .inner-container {
+            grid-template-columns: repeat(12, 1fr);
+        }
 
-            &:nth-child(3n + 2) {
-                grid-template-columns: repeat(12, 1fr);
-            }
+        .link-container:nth-child(3n + 2) .inner-container {
+            grid-template-columns: repeat(12, 1fr);
+        }
 
-            &:nth-child(3n) {
-                grid-template-columns: repeat(12, 1fr);
-            }
+        .link-container:nth-child(3n) .inner-container {
+            grid-template-columns: repeat(12, 1fr);
         }
 
         .link-container:nth-child(3n + 1) .title {

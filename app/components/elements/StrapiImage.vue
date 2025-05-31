@@ -42,7 +42,11 @@
 
 <style lang="scss" scoped>
     .image {
-        width: 100%;
-        height: auto;
+        @include transition();
+
+        & {
+            width: 100%;
+            height: auto;
+        }
     }
 </style>
