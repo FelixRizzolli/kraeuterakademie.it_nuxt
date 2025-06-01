@@ -4,7 +4,7 @@ fragment CourseAttributes on ComponentElementsCourse {
     link {
         ...LinkAttributes
     }
-    dates {
+    dates(pagination: { limit: -1 }) {
         ...SimpleDateAttributes
     }
 }
