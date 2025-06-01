@@ -80,7 +80,7 @@
                 duration: 0.8,
                 ease: 'power2.out',
                 onStart: () => {
-                    descriptionElement.value.classList.remove('truncate');
+                    descriptionElement.value?.classList.remove('truncate');
                 },
                 onComplete: () => {
                     ScrollTrigger.refresh();
@@ -97,7 +97,7 @@
             ease: 'power2.out',
             onComplete: () => {
                 ScrollTrigger.refresh();
-                descriptionElement.value.classList.add('truncate');
+                descriptionElement.value?.classList.add('truncate');
             },
         });
     };
