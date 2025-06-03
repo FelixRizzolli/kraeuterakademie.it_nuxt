@@ -14,9 +14,15 @@
         <div v-if="data.textBottom" class="text" ref="textBottomElement">
             <StrapiBlocksText :nodes="data.textBottom" />
         </div>
-        <NuxtLink v-if="data.link" class="link-button" :to="data.link.href" ref="linkElement">{{
-            data.link.text
-        }}</NuxtLink>
+        <NuxtLink
+            v-if="data.link"
+            class="link-button"
+            :to="data.link.href"
+            ref="linkElement"
+            :target="data.link.target ?? '_self'"
+        >
+            {{ data.link.text }}
+        </NuxtLink>
     </section>
 </template>
 
@@ -27,6 +33,7 @@
     interface Link {
         href: string;
         text: string;
+        target?: string;
     }
 
     interface ImageTextData {

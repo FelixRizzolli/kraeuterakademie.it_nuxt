@@ -1,11 +1,17 @@
 <template>
     <section class="highlight">
-        <NuxtLink class="logo" :to="data.logoLink.href">
+        <NuxtLink class="logo" :to="data.logoLink.href" :target="data.logoLink.target ?? '_self'">
             <i-logo />
         </NuxtLink>
 
         <nav class="links">
-            <NuxtLink class="link" :to="link.href" v-for="(link, index) in data.links" :key="index">
+            <NuxtLink
+                class="link"
+                :to="link.href"
+                v-for="(link, index) in data.links"
+                :key="index"
+                :target="link.target ?? '_self'"
+            >
                 <component :is="'i-' + link.icon" class="link-icon" />
                 <span class="link-text">{{ link.text }}</span>
             </NuxtLink>
@@ -18,6 +24,7 @@
         icon: string;
         href: string;
         text: string;
+        target?: string;
     }
 
     interface HeaderHighlightData {

@@ -1,6 +1,11 @@
 <template>
     <div class="partner">
-        <NuxtLink :to="partner.link.href" v-for="(partner, index) in partners" :key="index">
+        <NuxtLink
+            :to="partner.link.href"
+            v-for="(partner, index) in partners"
+            :key="index"
+            :target="partner.link.target ?? '_self'"
+        >
             <StrapiImage v-if="partner.image" :image="partner.image" scale-animation />
         </NuxtLink>
     </div>
@@ -15,6 +20,7 @@
     interface Link {
         href: string;
         text: string;
+        target?: string;
     }
 
     interface Partner {

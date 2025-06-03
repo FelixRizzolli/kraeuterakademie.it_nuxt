@@ -2,7 +2,9 @@
     <section class="contentelement_herosmall grid-container">
         <div v-if="data.title || data.link" class="content" ref="contentElement">
             <h1 v-if="data.title" class="title">{{ data.title }}</h1>
-            <NuxtLink v-if="data.link" class="link-button" :to="data.link.href">{{ data.link.text }}</NuxtLink>
+            <NuxtLink v-if="data.link" class="link-button" :to="data.link.href" :target="data.link.target ?? '_self'">
+                {{ data.link.text }}
+            </NuxtLink>
         </div>
         <StrapiImage v-if="data.image" :image="data.image" scale-animation />
     </section>
@@ -15,6 +17,7 @@
     interface Link {
         href: string;
         text: string;
+        target?: string;
     }
 
     interface HeroSmallData {

@@ -5,6 +5,7 @@
             class="link-container"
             v-for="(imageLink, index) in data.imageLinks"
             :key="index"
+            :target="imageLink.link.target ?? '_self'"
         >
             <div
                 class="inner-container scale-animation"
@@ -30,6 +31,7 @@
     interface Link {
         href: string;
         text: string;
+        target?: string;
     }
 
     interface ImageLink {

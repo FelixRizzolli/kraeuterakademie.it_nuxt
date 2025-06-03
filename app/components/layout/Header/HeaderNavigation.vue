@@ -3,7 +3,14 @@
         <NuxtLink class="logo" to="/" @click="menuStore.closeMenu">
             <i-logo />
         </NuxtLink>
-        <NuxtLink v-for="(link, index) in links" :key="index" class="link" :to="link.href" @click="menuStore.closeMenu">
+        <NuxtLink
+            v-for="(link, index) in links"
+            :key="index"
+            class="link"
+            :to="link.href"
+            @click="menuStore.closeMenu"
+            :target="link.target ?? '_self'"
+        >
             {{ link.text }}
         </NuxtLink>
     </nav>
@@ -14,6 +21,7 @@
     interface Link {
         href: string;
         text: string;
+        target?: string;
     }
 
     interface HeaderNavigationProps {

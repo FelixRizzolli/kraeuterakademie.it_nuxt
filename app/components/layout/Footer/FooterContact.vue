@@ -1,7 +1,7 @@
 <template>
     <div class="contact" ref="containerElement">
-        <a :href="data.phone.href" class="link">{{ data.phone.text }}</a>
-        <a :href="data.mail.href" class="link">{{ data.mail.text }}</a>
+        <a :href="data.phone.href" class="link" :target="data.phone.target ?? '_self'">{{ data.phone.text }}</a>
+        <a :href="data.mail.href" class="link" :target="data.phone.target ?? '_self'">{{ data.mail.text }}</a>
     </div>
 </template>
 
@@ -13,6 +13,7 @@
     interface Link {
         href: string;
         text: string;
+        target?: string;
     }
 
     interface FooterContactData {

@@ -1,4 +1,5 @@
 fragment LinkAttributes on ComponentElementsLink {
     href
     text
+    target
 }

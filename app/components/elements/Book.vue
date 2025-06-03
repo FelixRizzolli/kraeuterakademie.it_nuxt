@@ -11,7 +11,7 @@
             </div>
             <button class="more" @click="toggleTruncate">{{ moreTextBlock }}</button>
         </div>
-        <NuxtLink v-if="book.link" class="link-button" :to="book.link.href">{{ book.link.text }}</NuxtLink>
+        <NuxtLink v-if="book.link" class="link-button" :to="book.link.href" :target="book.link.target ?? '_self'">{{ book.link.text }}</NuxtLink>
     </div>
 </template>
 
@@ -28,6 +28,7 @@
     interface Link {
         href: string;
         text: string;
+        target?: string;
     }
 
     interface Book {

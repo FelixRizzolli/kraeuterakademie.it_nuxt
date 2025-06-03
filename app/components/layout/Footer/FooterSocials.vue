@@ -7,7 +7,7 @@
             ref="socialElements"
             :class="{ 'scale-active': showSocialElements[index] }"
         >
-            <NuxtLink class="social" :to="social.link.href">
+            <NuxtLink class="social" :to="social.link.href" :target="social.link.target ?? '_self'">
                 <StrapiImage v-if="social.backgroundImage" :image="social.backgroundImage" />
                 <component :is="'i-' + social.icon" />
             </NuxtLink>
@@ -21,6 +21,7 @@
     interface Link {
         href: string;
         text: string;
+        target?: string;
     }
 
     interface Social {
