@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
+import devtoolsJson from 'vite-plugin-devtools-json';
 import graphqlLoader from 'vite-plugin-graphql-loader';
 
 export default defineNuxtConfig({
@@ -43,14 +44,14 @@ export default defineNuxtConfig({
     plugins: ['~/plugins/pinia.ts'],
 
     modules: [
-      '@nuxt/image',
-      'nuxt-svgo',
-      '@nuxtjs/storybook',
-      '@nuxtjs/strapi',
-      'nuxt-strapi-blocks-renderer',
-      '@nuxtjs/seo',
-      '@nuxtjs/device',
-      'nuxt-swiper',
+        '@nuxt/image',
+        'nuxt-svgo',
+        '@nuxtjs/storybook',
+        '@nuxtjs/strapi',
+        'nuxt-strapi-blocks-renderer',
+        '@nuxtjs/seo',
+        '@nuxtjs/device',
+        'nuxt-swiper',
     ],
 
     vite: {
@@ -69,7 +70,7 @@ export default defineNuxtConfig({
         optimizeDeps: {
             include: ['qs'],
         },
-        plugins: [graphqlLoader()],
+        plugins: [devtoolsJson(), graphqlLoader()],
     },
 
     nitro: {
