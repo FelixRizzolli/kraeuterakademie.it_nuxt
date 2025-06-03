@@ -1,10 +1,10 @@
 <template>
-    <section class="contentelement_booklist grid-container">
+    <SectionElement class="contentelement_booklist grid-container" :spacing="settings?.spacing">
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
         <div class="books grid-container">
             <Book v-for="(book, index) in data.books" :key="index" :book="book" />
         </div>
-    </section>
+    </SectionElement>
 </template>
 
 <script lang="ts" setup>
@@ -17,7 +17,7 @@
     }
 
     interface BookListSettings {
-        default: string;
+        spacing: any;
     }
 
     export interface BookListProps {
@@ -40,9 +40,6 @@
 
 <style lang="scss" scoped>
     .contentelement_booklist {
-        margin-bottom: 15rem;
-        padding: 15rem 0;
-
         background-color: $colorBackgroundBrown;
         color: $colorFontWhite;
     }
@@ -93,11 +90,6 @@
     }
 
     @media (max-width: 1023px) {
-        .contentelement_booklist {
-            margin-bottom: 7.5rem;
-            padding: 7.5rem 0;
-        }
-
         .title {
             @include col-start(3);
             @include col(11);

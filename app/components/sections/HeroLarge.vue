@@ -1,10 +1,10 @@
 <template>
-    <section class="contentelement_herobig" ref="heroLarge">
+    <SectionElement class="contentelement_herobig" ref="heroLarge" :spacing="settings?.spacing">
         <div v-if="data.title" class="content-container grid-container">
             <h1 class="title">{{ data.title }}</h1>
         </div>
         <StrapiImage v-if="data.image" :image="data.image" scale-animation />
-    </section>
+    </SectionElement>
 </template>
 
 <script lang="ts" setup>
@@ -21,7 +21,9 @@
         image?: StrapiImage;
     }
 
-    interface HeroLargeSettings {}
+    interface HeroLargeSettings {
+        spacing?: any;
+    }
 
     export interface HeroLargeProps {
         data: HeroLargeData;
@@ -42,7 +44,6 @@
 
 <style lang="scss" scoped>
     .contentelement_herobig {
-        margin-bottom: 15rem;
         padding-top: 30rem;
     }
 
@@ -74,7 +75,6 @@
 
     @media (max-width: 1023px) {
         .contentelement_herobig {
-            margin-bottom: 7.5rem;
             padding: 0;
         }
 

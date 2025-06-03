@@ -7,6 +7,11 @@ fragment TextElementAttributes on ComponentContentTextElement {
         }
     }
     settings {
-        default
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
     }
 }

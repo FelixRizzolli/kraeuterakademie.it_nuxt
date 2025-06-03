@@ -6,6 +6,11 @@ fragment SwiperSimpleAttributes on ComponentContentSwiperSimple {
         }
     }
     settings {
-        default
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
     }
 }

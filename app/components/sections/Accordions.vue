@@ -1,5 +1,5 @@
 <template>
-    <section class="contentelement_accordions grid-container">
+    <SectionElement class="contentelement_accordions grid-container" :spacing="settings?.spacing">
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
 
         <div class="accordions-container">
@@ -21,7 +21,7 @@
                 </details>
             </div>
         </div>
-    </section>
+    </SectionElement>
 </template>
 
 <script lang="ts" setup>
@@ -38,7 +38,9 @@
         accordions: Array<Accordion>;
     }
 
-    interface AccordionsSettings {}
+    interface AccordionsSettings {
+        spacing: any;
+    }
 
     export interface AccordionsProps {
         data: AccordionsData;
@@ -124,10 +126,6 @@
 </script>
 
 <style lang="scss" scoped>
-    .contentelement_accordions {
-        margin-bottom: 15rem;
-    }
-
     .title {
         @include col-start(3);
         @include col(6);
@@ -230,10 +228,6 @@
     }
 
     @media (max-width: 1023px) {
-        .contentelement_accordions {
-            margin-bottom: 7.5rem;
-        }
-
         .accordion {
             padding: 2rem 0;
         }

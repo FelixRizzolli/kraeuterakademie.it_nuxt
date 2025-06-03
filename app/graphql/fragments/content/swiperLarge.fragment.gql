@@ -6,6 +6,11 @@ fragment SwiperLargeAttributes on ComponentContentSwiperLarge {
         }
     }
     settings {
-        default
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
     }
 }

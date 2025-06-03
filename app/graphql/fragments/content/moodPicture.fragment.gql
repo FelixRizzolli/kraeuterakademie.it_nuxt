@@ -5,6 +5,11 @@ fragment MoodPictureAttributes on ComponentContentMoodPicture {
         }
     }
     settings {
-        default
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
     }
 }

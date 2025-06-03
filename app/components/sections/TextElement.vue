@@ -1,5 +1,5 @@
 <template>
-    <section class="contentelement_textelement grid-container">
+    <SectionElement class="contentelement_textelement grid-container" :spacing="settings?.spacing">
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
         <div v-if="data.content" class="content" ref="contentElement">
             <StrapiBlocksText :nodes="data.content" />
@@ -13,7 +13,7 @@
         >
             {{ data.link.text }}
         </NuxtLink>
-    </section>
+    </SectionElement>
 </template>
 
 <script lang="ts" setup>
@@ -31,7 +31,9 @@
         link?: Link;
     }
 
-    interface TextElementSettings {}
+    interface TextElementSettings {
+        spacing?: any;
+    }
 
     export interface TextElementProps {
         data: TextElementData;
@@ -63,10 +65,6 @@
 </script>
 
 <style lang="scss" scoped>
-    .contentelement_textelement {
-        margin-bottom: 15rem;
-    }
-
     .title {
         @include col-start(3);
         @include col(6);
@@ -101,10 +99,6 @@
     }
 
     @media (max-width: 1023px) {
-        .contentelement_textelement {
-            margin-bottom: 7.5rem;
-        }
-
         .title {
             @include col-start(3);
             @include col(11);

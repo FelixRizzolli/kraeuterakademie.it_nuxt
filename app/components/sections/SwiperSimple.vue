@@ -1,5 +1,5 @@
 <template>
-    <section class="contentelement_swipersimple grid-container">
+    <SectionElement class="contentelement_swipersimple grid-container" :spacing="settings?.default">
         <h2 class="title" ref="titleElement">{{ data.title }}</h2>
 
         <div class="swiper-wrapper" ref="swiperWrapperElement">
@@ -22,7 +22,7 @@
                 <i-arrow-next class="icon" />
             </button>
         </div>
-    </section>
+    </SectionElement>
 </template>
 
 <script lang="ts" setup>
@@ -40,7 +40,7 @@
     }
 
     interface SwiperSimpleSettings {
-        default: string;
+        spacing?: any;
     }
 
     export interface SwiperSimpleProps {
@@ -93,10 +93,6 @@
 </script>
 
 <style lang="scss" scoped>
-    .contentelement_swipersimple {
-        margin-bottom: 15rem;
-    }
-
     .title {
         @include col-start(3);
         @include col(6);
@@ -137,10 +133,6 @@
     }
 
     @media (max-width: 1023px) {
-        .contentelement_swipersimple {
-            margin-bottom: 7.5rem;
-        }
-
         .title {
             @include col-start(3);
             @include col(11);

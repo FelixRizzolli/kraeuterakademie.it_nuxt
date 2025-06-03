@@ -1,10 +1,10 @@
 <template>
-    <section class="contentelement_courselist grid-container">
+    <SectionElement class="contentelement_courselist grid-container" :spacing="settings?.spacing">
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
         <div class="courselist-container grid-container">
             <Course v-for="(course, index) in data.courses" :key="index" :course="course" />
         </div>
-    </section>
+    </SectionElement>
 </template>
 
 <script lang="ts" setup>
@@ -16,7 +16,9 @@
         courses: Array<Course>;
     }
 
-    interface CourseListSettings {}
+    interface CourseListSettings {
+        spacing?: any;
+    }
 
     export interface CourseListProps {
         data: CourseListData;

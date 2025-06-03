@@ -1,7 +1,7 @@
 <template>
-    <section class="contentelement_animatedtext grid-container">
+    <SectionElement class="contentelement_animatedtext grid-container" :spacing="settings?.spacing">
         <p v-if="data.text" class="text" ref="textElement">{{ data.text }}</p>
-    </section>
+    </SectionElement>
 </template>
 
 <script lang="ts" setup>
@@ -13,7 +13,9 @@
         text: string;
     }
 
-    interface AnimatedTextSettings {}
+    interface AnimatedTextSettings {
+        spacing: any;
+    }
 
     export interface AnimatedTextProps {
         data: AnimatedTextData;
@@ -25,6 +27,8 @@
     const textElement = ref<HTMLElement | null>(null);
 
     onMounted(async () => {
+        console.log('AnimatedText mounted', props);
+
         if (textElement.value instanceof HTMLParagraphElement) {
             gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -56,9 +60,6 @@
 
 <style lang="scss" scoped>
     .contentelement_animatedtext {
-        margin-bottom: 15rem;
-        padding: 15rem 0;
-
         background-color: $colorBackgroundBrown;
         color: $colorFontWhite;
     }
@@ -71,11 +72,6 @@
     }
 
     @media (max-width: 1023px) {
-        .contentelement_animatedtext {
-            margin-bottom: 7.5rem;
-            padding: 7.5rem 0;
-        }
-
         .text {
             @include col-start(2);
             @include col(12);

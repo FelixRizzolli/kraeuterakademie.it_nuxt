@@ -6,6 +6,11 @@ fragment SwiperCardAttributes on ComponentContentSwiperCard {
         }
     }
     settings {
-        default
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
     }
 }

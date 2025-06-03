@@ -1,5 +1,5 @@
 <template>
-    <section class="contentelement_highlightedlinks grid-container">
+    <SectionElement class="contentelement_highlightedlinks grid-container" :spacing="settings?.spacing">
         <NuxtLink
             :to="imageLink.link.href"
             class="link-container"
@@ -16,7 +16,7 @@
                 <StrapiImage :image="imageLink.image" />
             </div>
         </NuxtLink>
-    </section>
+    </SectionElement>
 </template>
 
 <script lang="ts" setup>
@@ -44,7 +44,7 @@
     }
 
     interface HighlightedLinksSettings {
-        default?: string;
+        spacing?: any;
     }
 
     export interface HighlightedLinksProps {
@@ -78,10 +78,6 @@
 </script>
 
 <style lang="scss" scoped>
-    .contentelement_highlightedlinks {
-        margin-bottom: 15rem;
-    }
-
     .link-container {
         text-decoration: none;
 
@@ -191,7 +187,6 @@
 
     @media (max-width: 1023px) {
         .contentelement_highlightedlinks {
-            margin-bottom: 7.5rem;
             row-gap: 4rem;
         }
 

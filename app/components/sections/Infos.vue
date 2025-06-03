@@ -1,5 +1,5 @@
 <template>
-    <section class="contentelement_infos grid-container">
+    <SectionElement class="contentelement_infos grid-container" :spacing="settings?.spacing">
         <div class="info" v-for="(info, index) in data.infos" :key="index" ref="infoElements">
             <h3 v-if="info.title" class="title">{{ info.title }}</h3>
             <div v-if="info.text" class="text">
@@ -15,7 +15,7 @@
         >
             {{ data.link.text }}
         </NuxtLink>
-    </section>
+    </SectionElement>
 </template>
 
 <script lang="ts" setup>
@@ -37,7 +37,9 @@
         link?: Link;
     }
 
-    interface InfosSettings {}
+    interface InfosSettings {
+        spacing?: any;
+    }
 
     export interface InfosProps {
         data: InfosData;
@@ -59,9 +61,6 @@
 
 <style lang="scss" scoped>
     .contentelement_infos {
-        margin-bottom: 15rem;
-        padding: 15rem 0;
-
         background-color: $colorBackgroundBrown;
         color: $colorFontWhite;
     }
@@ -113,11 +112,6 @@
     }
 
     @media (max-width: 1023px) {
-        .contentelement_infos {
-            padding: 7.5rem 0;
-            margin-bottom: 7.5rem;
-        }
-
         .info {
             @include col(12);
 

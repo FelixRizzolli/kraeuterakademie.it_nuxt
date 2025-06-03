@@ -12,6 +12,11 @@ fragment HeroSmallAttributes on ComponentContentHeroSmall {
         }
     }
     settings {
-        default
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
     }
 }

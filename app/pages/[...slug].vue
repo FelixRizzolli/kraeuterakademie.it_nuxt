@@ -12,6 +12,7 @@
                 :key="index"
                 :name="cc.name"
                 :data="cc.data"
+                :settings="cc.settings"
             />
         </template>
 

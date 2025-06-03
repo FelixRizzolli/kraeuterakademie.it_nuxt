@@ -4,6 +4,11 @@ fragment AnimatedTextAttributes on ComponentContentAnimatedText {
         text
     }
     settings {
-        default
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
     }
 }

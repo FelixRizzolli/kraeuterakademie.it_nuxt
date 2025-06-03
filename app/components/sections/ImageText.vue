@@ -1,5 +1,5 @@
 <template>
-    <section class="contentelement_imagetext grid-container">
+    <SectionElement class="contentelement_imagetext grid-container" :spacing="settings?.spacing">
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
         <StrapiImage v-if="data.image" :image="data.image" scale-animation ref="imageElement" />
         <div v-if="data.textTop" class="text" ref="textTopElement">
@@ -23,7 +23,7 @@
         >
             {{ data.link.text }}
         </NuxtLink>
-    </section>
+    </SectionElement>
 </template>
 
 <script lang="ts" setup>
@@ -45,7 +45,9 @@
         link?: Link;
     }
 
-    interface ImageTextSettings {}
+    interface ImageTextSettings {
+        spacing?: any;
+    }
 
     export interface ImageTextProps {
         data: ImageTextData;
@@ -89,10 +91,6 @@
 </script>
 
 <style lang="scss" scoped>
-    .contentelement_imagetext {
-        margin-bottom: 15rem;
-    }
-
     .title {
         @include col-start(3);
         @include col(5);
@@ -169,10 +167,6 @@
     }
 
     @media (max-width: 1023px) {
-        .contentelement_imagetext {
-            margin-bottom: 7.5rem;
-        }
-
         .title {
             @include col(11);
 

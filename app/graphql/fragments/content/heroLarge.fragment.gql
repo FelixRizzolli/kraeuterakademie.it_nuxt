@@ -6,6 +6,11 @@ fragment HeroLargeAttributes on ComponentContentHeroLarge {
         }
     }
     settings {
-        default
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
     }
 }

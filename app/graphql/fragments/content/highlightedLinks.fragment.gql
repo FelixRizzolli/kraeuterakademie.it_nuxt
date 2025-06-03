@@ -5,6 +5,11 @@ fragment HighlightedLinksAttributes on ComponentContentHighlightedLinks {
         }
     }
     settings {
-        default
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
     }
 }

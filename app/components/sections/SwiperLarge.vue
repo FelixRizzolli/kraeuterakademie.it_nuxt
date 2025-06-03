@@ -1,5 +1,5 @@
 <template>
-    <section class="contentelement_swiperlarge grid-container">
+    <SectionElement class="contentelement_swiperlarge grid-container" :spacing="settings?.spacing">
         <h2 class="title" ref="titleElement">{{ data.title }}</h2>
 
         <!-- Go back one slide -->
@@ -21,7 +21,7 @@
         <button @click="swiper.next()" class="next-button" ref="nextButtonElement">
             <i-arrow-next class="icon" />
         </button>
-    </section>
+    </SectionElement>
 </template>
 
 <script lang="ts" setup>
@@ -80,9 +80,6 @@
 
 <style lang="scss" scoped>
     .contentelement_swiperlarge {
-        margin-bottom: 15rem;
-        padding: 15rem 0;
-
         background-color: $colorBackgroundBrown;
         color: $colorFontWhite;
     }
@@ -146,10 +143,6 @@
     }
 
     @media (max-width: 1023px) {
-        .contentelement_swiperlarge {
-            margin-bottom: 7.5rem;
-        }
-
         .title {
             @include col-start(3);
             @include col(11);

@@ -1,7 +1,7 @@
 <template>
-    <section class="contentelement_moodpicture">
+    <SectionElement class="contentelement_moodpicture" :spacing="settings?.spacing">
         <StapiImage v-if="data.image" :image="data.image" scale-animation />
-    </section>
+    </SectionElement>
 </template>
 
 <script lang="ts" setup>
@@ -16,7 +16,9 @@
         image: StrapiImage;
     }
 
-    interface MoodPictureSettings {}
+    interface MoodPictureSettings {
+        spacing?: any;
+    }
 
     export interface MoodPictureProps {
         data: MoodPictureData;
@@ -28,7 +30,6 @@
 
 <style lang="scss" scoped>
     .image-container {
-        margin-bottom: 15rem;
         margin-left: 21rem;
 
         :deep(.image) {
@@ -38,8 +39,5 @@
     }
 
     @media (max-width: 1023px) {
-        .image-container {
-            margin-bottom: 7.5rem;
-        }
     }
 </style>

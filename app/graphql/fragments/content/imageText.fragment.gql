@@ -12,6 +12,11 @@ fragment ImageTextAttributes on ComponentContentImageText {
         }
     }
     settings {
-        default
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
     }
 }

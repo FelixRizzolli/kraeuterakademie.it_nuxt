@@ -6,6 +6,11 @@ fragment AccordionsAttributes on ComponentContentAccordions {
         }
     }
     settings {
-        default
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
     }
 }

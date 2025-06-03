@@ -1,5 +1,7 @@
 <template>
-    <section class="contentelement_template grid-container"></section>
+    <SectionElement class="contentelement_template grid-container" :spacing="settings?.spacing">
+        <div></div>
+    </SectionElement>
 </template>
 
 <script lang="ts" setup>
@@ -8,7 +10,9 @@
 
     interface TemplateData {}
 
-    interface TemplateSettings {}
+    interface TemplateSettings {
+        spacing?: any;
+    }
 
     export interface TemplateProps {
         data: TemplateData;
@@ -21,13 +25,6 @@
 </script>
 
 <style lang="scss" scoped>
-    .contentelement_template {
-        margin-bottom: 15rem;
-    }
-
     @media (max-width: 1023px) {
-        .contentelement_template {
-            margin-bottom: 7.5rem;
-        }
     }
 </style>

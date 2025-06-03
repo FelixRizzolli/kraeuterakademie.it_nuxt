@@ -1,5 +1,5 @@
 <template>
-    <section class="contentelement_herosmall grid-container">
+    <SectionElement class="contentelement_herosmall grid-container" :spacing="settings?.spacing">
         <div v-if="data.title || data.link" class="content" ref="contentElement">
             <h1 v-if="data.title" class="title">{{ data.title }}</h1>
             <NuxtLink v-if="data.link" class="link-button" :to="data.link.href" :target="data.link.target ?? '_self'">
@@ -7,7 +7,7 @@
             </NuxtLink>
         </div>
         <StrapiImage v-if="data.image" :image="data.image" scale-animation />
-    </section>
+    </SectionElement>
 </template>
 
 <script lang="ts" setup>
@@ -26,7 +26,9 @@
         image?: StrapiImage;
     }
 
-    interface HeroSmallSettings {}
+    interface HeroSmallSettings {
+        spacing?: any;
+    }
 
     export interface HeroSmallProps {
         data: HeroSmallData;
@@ -47,7 +49,6 @@
 
 <style lang="scss" scoped>
     .contentelement_herosmall {
-        margin-bottom: 15rem;
         padding-top: 30rem;
 
         position: relative;
@@ -97,7 +98,6 @@
 
     @media (max-width: 1023px) {
         .contentelement_herosmall {
-            margin-bottom: 7.5rem;
             padding-top: 0;
         }
 

@@ -6,6 +6,11 @@ fragment CourseListAttributes on ComponentContentCourseList {
         }
     }
     settings {
-        default
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
     }
 }

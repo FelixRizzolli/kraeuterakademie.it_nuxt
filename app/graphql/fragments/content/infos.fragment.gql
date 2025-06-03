@@ -8,6 +8,11 @@ fragment InfosAttributes on ComponentContentInfos {
         }
     }
     settings {
-        default
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
     }
 }
