@@ -20,7 +20,7 @@
         "@nuxtjs/seo": "^3.0.3",
         "@nuxtjs/strapi": "2.0.0",
         "gsap": "^3.13.0",
-        "nuxt": "^3.17.4",
+        "nuxt": "^3.17.5",
         "nuxt-strapi-blocks-renderer": "^1.0.18",
         "nuxt-svgo": "4.2.1",
         "nuxt-swiper": "2.0.1",
