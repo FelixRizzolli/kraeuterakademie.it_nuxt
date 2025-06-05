@@ -24,7 +24,7 @@
         "nuxt-strapi-blocks-renderer": "^1.0.18",
         "nuxt-svgo": "4.2.1",
         "nuxt-swiper": "2.0.1",
-        "pinia": "^3.0.2",
+        "pinia": "^3.0.3",
         "prettier": "^3.5.3",
         "qs": "^6.14.0",
         "vue": "^3.5.16",
