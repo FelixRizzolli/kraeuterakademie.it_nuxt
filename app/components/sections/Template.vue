@@ -1,5 +1,9 @@
 <template>
-    <SectionElement class="contentelement_template grid-container" :spacing="settings?.spacing">
+    <SectionElement
+        class="contentelement_template grid-container"
+        :spacing="settings?.spacing"
+        :style="settings?.templateStyle"
+    >
         <div></div>
     </SectionElement>
 </template>
@@ -11,12 +15,13 @@
     interface TemplateData {}
 
     interface TemplateSettings {
-        spacing?: any;
+        spacing: any;
+        templateStyle: string;
     }
 
     export interface TemplateProps {
         data: TemplateData;
-        settings?: TemplateSettings;
+        settings: TemplateSettings;
     }
 
     const props = defineProps<TemplateProps>();

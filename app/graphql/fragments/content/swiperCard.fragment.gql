@@ -12,5 +12,6 @@ fragment SwiperCardAttributes on ComponentContentSwiperCard {
             paddingTop
             paddingBottom
         }
+        swiperCardStyle: style
     }
 }

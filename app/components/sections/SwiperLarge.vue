@@ -1,5 +1,9 @@
 <template>
-    <SectionElement class="contentelement_swiperlarge grid-container" :spacing="settings?.spacing">
+    <SectionElement
+        class="contentelement_swiperlarge grid-container"
+        :spacing="settings?.spacing"
+        :style="settings?.swiperLargeStyle"
+    >
         <h2 class="title" ref="titleElement">{{ data.title }}</h2>
 
         <!-- Go back one slide -->
@@ -34,12 +38,13 @@
     }
 
     interface SwiperLargeSettings {
-        default?: string;
+        spacing: any;
+        swiperLargeStyle: string;
     }
 
     export interface SwiperLargeProps {
         data: SwiperLargeData;
-        settings?: SwiperLargeSettings;
+        settings: SwiperLargeSettings;
     }
 
     const swiperContainer = ref(null);

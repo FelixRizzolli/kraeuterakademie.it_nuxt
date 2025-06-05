@@ -12,5 +12,6 @@ fragment BookListAttributes on ComponentContentBookList {
             paddingTop
             paddingBottom
         }
+        bookListStyle: style
     }
 }

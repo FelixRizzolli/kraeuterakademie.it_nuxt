@@ -1,5 +1,9 @@
 <template>
-    <SectionElement class="contentelement_textelement grid-container" :spacing="settings?.spacing">
+    <SectionElement
+        class="contentelement_textelement grid-container"
+        :spacing="settings?.spacing"
+        :style="settings?.textElementStyle"
+    >
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
         <div v-if="data.content" class="content" ref="contentElement">
             <StrapiBlocksText :nodes="data.content" />
@@ -32,12 +36,13 @@
     }
 
     interface TextElementSettings {
-        spacing?: any;
+        spacing: any;
+        textElementStyle: string;
     }
 
     export interface TextElementProps {
         data: TextElementData;
-        settings?: TextElementSettings;
+        settings: TextElementSettings;
     }
 
     const props = defineProps<TextElementProps>();

@@ -12,5 +12,6 @@ fragment CourseListAttributes on ComponentContentCourseList {
             paddingTop
             paddingBottom
         }
+        courseListStyle: style
     }
 }

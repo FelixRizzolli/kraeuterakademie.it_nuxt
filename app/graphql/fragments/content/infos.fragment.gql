@@ -14,5 +14,6 @@ fragment InfosAttributes on ComponentContentInfos {
             paddingTop
             paddingBottom
         }
+        infosStyle: style
     }
 }

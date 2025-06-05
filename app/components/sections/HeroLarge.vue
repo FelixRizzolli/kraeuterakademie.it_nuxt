@@ -22,12 +22,12 @@
     }
 
     interface HeroLargeSettings {
-        spacing?: any;
+        spacing: any;
     }
 
     export interface HeroLargeProps {
         data: HeroLargeData;
-        settings?: HeroLargeSettings;
+        settings: HeroLargeSettings;
     }
 
     const props = defineProps<HeroLargeProps>();

@@ -17,12 +17,12 @@
     }
 
     interface MoodPictureSettings {
-        spacing?: any;
+        spacing: any;
     }
 
     export interface MoodPictureProps {
         data: MoodPictureData;
-        settings?: MoodPictureSettings;
+        settings: MoodPictureSettings;
     }
 
     const props = defineProps<MoodPictureProps>();

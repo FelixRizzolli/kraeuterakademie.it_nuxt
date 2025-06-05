@@ -1,5 +1,9 @@
 <template>
-    <SectionElement class="contentelement_booklist grid-container" :spacing="settings?.spacing">
+    <SectionElement
+        class="contentelement_booklist grid-container"
+        :spacing="settings?.spacing"
+        :style="settings?.bookListStyle"
+    >
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
         <div class="books grid-container">
             <Book v-for="(book, index) in data.books" :key="index" :book="book" />
@@ -18,11 +22,12 @@
 
     interface BookListSettings {
         spacing: any;
+        bookListStyle: string;
     }
 
     export interface BookListProps {
         data: BookListData;
-        settings?: BookListSettings;
+        settings: BookListSettings;
     }
 
     const props = defineProps<BookListProps>();

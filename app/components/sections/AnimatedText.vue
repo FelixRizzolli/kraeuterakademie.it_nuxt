@@ -1,5 +1,9 @@
 <template>
-    <SectionElement class="contentelement_animatedtext grid-container" :spacing="settings?.spacing">
+    <SectionElement
+        class="contentelement_animatedtext grid-container"
+        :spacing="settings?.spacing"
+        :style="settings?.animatedTextStyle"
+    >
         <p v-if="data.text" class="text" ref="textElement">{{ data.text }}</p>
     </SectionElement>
 </template>
@@ -15,11 +19,12 @@
 
     interface AnimatedTextSettings {
         spacing: any;
+        animatedTextStyle: string;
     }
 
     export interface AnimatedTextProps {
         data: AnimatedTextData;
-        settings?: AnimatedTextSettings;
+        settings: AnimatedTextSettings;
     }
 
     const props = defineProps<AnimatedTextProps>();

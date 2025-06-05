@@ -1,5 +1,9 @@
 <template>
-    <SectionElement class="contentelement_accordions grid-container" :spacing="settings?.spacing">
+    <SectionElement
+        class="contentelement_accordions grid-container"
+        :spacing="settings?.spacing"
+        :style="settings?.accordionsStyle"
+    >
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
 
         <div class="accordions-container">
@@ -40,11 +44,12 @@
 
     interface AccordionsSettings {
         spacing: any;
+        accordionsStyle: string;
     }
 
     export interface AccordionsProps {
         data: AccordionsData;
-        settings?: AccordionsSettings;
+        settings: AccordionsSettings;
     }
 
     const props = defineProps<AccordionsProps>();

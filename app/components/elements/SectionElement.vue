@@ -6,6 +6,7 @@
             'pb-' + (spacing?.paddingBottom ?? 'none'),
             'mt' + (spacing?.marginTop ?? 'none'),
             'mb-' + (spacing?.marginBottom ?? 'large'),
+            'style-' + (style ?? 'light'),
         ]"
     >
         <slot />
@@ -21,13 +22,27 @@
     }
 
     interface SectionElementProps {
-        spacing?: Spacing;
+        spacing: Spacing;
+        style?: 'light' | 'gray' | 'dark';
     }
 
     const props = defineProps<SectionElementProps>();
 </script>
 
 <style lang="scss" scoped>
+    .section-element.style-light {
+        background-color: $colorBackgroundWhite;
+        color: $colorFont;
+    }
+    .section-element.style-gray {
+        background-color: $colorBackgroundCream;
+        color: $colorFont;
+    }
+    .section-element.style-dark {
+        background-color: $colorBackgroundBrown;
+        color: $colorFontWhite;
+    }
+
     .pt-small {
         padding-top: 4.5rem;
     }

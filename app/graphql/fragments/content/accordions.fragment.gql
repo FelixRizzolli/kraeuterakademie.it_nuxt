@@ -12,5 +12,6 @@ fragment AccordionsAttributes on ComponentContentAccordions {
             paddingTop
             paddingBottom
         }
+        accordionsStyle: style
     }
 }

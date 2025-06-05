@@ -12,5 +12,6 @@ fragment SwiperLargeAttributes on ComponentContentSwiperLarge {
             paddingTop
             paddingBottom
         }
+        swiperLargeStyle: style
     }
 }

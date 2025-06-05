@@ -13,5 +13,6 @@ fragment TextElementAttributes on ComponentContentTextElement {
             paddingTop
             paddingBottom
         }
+        textElementStyle: style
     }
 }

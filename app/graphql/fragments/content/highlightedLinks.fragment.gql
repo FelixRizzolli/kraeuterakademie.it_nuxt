@@ -11,5 +11,6 @@ fragment HighlightedLinksAttributes on ComponentContentHighlightedLinks {
             paddingTop
             paddingBottom
         }
+        highlightedLinsStyle: style
     }
 }

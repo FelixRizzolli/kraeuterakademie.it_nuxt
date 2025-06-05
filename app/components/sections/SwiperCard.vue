@@ -1,5 +1,9 @@
 <template>
-    <SectionElement class="contentelement_swipercard grid-container" :spacing="settings?.spacing">
+    <SectionElement
+        class="contentelement_swipercard grid-container"
+        :spacing="settings?.spacing"
+        :style="settings?.swiperCardStyle"
+    >
         <h2 class="title" ref="titleElement">{{ data.title }}</h2>
 
         <!-- Go back one slide -->
@@ -34,12 +38,13 @@
     }
 
     interface SwiperCardSettings {
-        spacing?: any;
+        spacing: any;
+        swiperCardStyle: string;
     }
 
     export interface SwiperCardProps {
         data: SwiperCardData;
-        settings?: SwiperCardSettings;
+        settings: SwiperCardSettings;
     }
 
     const cardElement = ref<HTMLElement | null>(null);

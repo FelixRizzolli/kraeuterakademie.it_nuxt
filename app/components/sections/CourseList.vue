@@ -1,5 +1,9 @@
 <template>
-    <SectionElement class="contentelement_courselist grid-container" :spacing="settings?.spacing">
+    <SectionElement
+        class="contentelement_courselist grid-container"
+        :spacing="settings?.spacing"
+        :style="settings?.courseListStyle"
+    >
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
         <div class="courselist-container grid-container">
             <Course v-for="(course, index) in data.courses" :key="index" :course="course" />
@@ -17,12 +21,13 @@
     }
 
     interface CourseListSettings {
-        spacing?: any;
+        spacing: any;
+        courseListStyle: string;
     }
 
     export interface CourseListProps {
         data: CourseListData;
-        settings?: CourseListSettings;
+        settings: CourseListSettings;
     }
 
     const props = defineProps<CourseListProps>();

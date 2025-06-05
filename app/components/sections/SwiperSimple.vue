@@ -1,5 +1,9 @@
 <template>
-    <SectionElement class="contentelement_swipersimple grid-container" :spacing="settings?.default">
+    <SectionElement
+        class="contentelement_swipersimple grid-container"
+        :spacing="settings?.spacing"
+        :style="settings?.swiperSimpleStyle"
+    >
         <h2 class="title" ref="titleElement">{{ data.title }}</h2>
 
         <div class="swiper-wrapper" ref="swiperWrapperElement">
@@ -40,12 +44,13 @@
     }
 
     interface SwiperSimpleSettings {
-        spacing?: any;
+        spacing: any;
+        swiperSimpleStyle: string;
     }
 
     export interface SwiperSimpleProps {
         data: SwiperSimpleData;
-        settings?: SwiperSimpleSettings;
+        settings: SwiperSimpleSettings;
     }
 
     const props = defineProps<SwiperSimpleProps>();

@@ -1,5 +1,9 @@
 <template>
-    <SectionElement class="contentelement_highlightedlinks grid-container" :spacing="settings?.spacing">
+    <SectionElement
+        class="contentelement_highlightedlinks grid-container"
+        :spacing="settings?.spacing"
+        :style="settings?.highlightedLinksStyle"
+    >
         <NuxtLink
             :to="imageLink.link.href"
             class="link-container"
@@ -44,12 +48,13 @@
     }
 
     interface HighlightedLinksSettings {
-        spacing?: any;
+        spacing: any;
+        highlightedLinksStyle: string;
     }
 
     export interface HighlightedLinksProps {
         data: HighlightedLinksData;
-        settings?: HighlightedLinksSettings;
+        settings: HighlightedLinksSettings;
     }
 
     const props = defineProps<HighlightedLinksProps>();

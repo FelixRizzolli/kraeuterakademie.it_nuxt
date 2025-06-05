@@ -27,12 +27,12 @@
     }
 
     interface HeroSmallSettings {
-        spacing?: any;
+        spacing: any;
     }
 
     export interface HeroSmallProps {
         data: HeroSmallData;
-        settings?: HeroSmallSettings;
+        settings: HeroSmallSettings;
     }
 
     const props = defineProps<HeroSmallProps>();

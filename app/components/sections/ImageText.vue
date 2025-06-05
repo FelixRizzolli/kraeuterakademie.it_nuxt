@@ -1,5 +1,9 @@
 <template>
-    <SectionElement class="contentelement_imagetext grid-container" :spacing="settings?.spacing">
+    <SectionElement
+        class="contentelement_imagetext grid-container"
+        :spacing="settings?.spacing"
+        :style="settings?.imageTextStyle"
+    >
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
         <StrapiImage v-if="data.image" :image="data.image" scale-animation ref="imageElement" />
         <div v-if="data.textTop" class="text" ref="textTopElement">
@@ -46,12 +50,13 @@
     }
 
     interface ImageTextSettings {
-        spacing?: any;
+        spacing: any;
+        imageTextStyle: string;
     }
 
     export interface ImageTextProps {
         data: ImageTextData;
-        settings?: ImageTextSettings;
+        settings: ImageTextSettings;
     }
 
     const props = defineProps<ImageTextProps>();

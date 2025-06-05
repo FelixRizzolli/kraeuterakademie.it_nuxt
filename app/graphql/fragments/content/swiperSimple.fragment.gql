@@ -12,5 +12,6 @@ fragment SwiperSimpleAttributes on ComponentContentSwiperSimple {
             paddingTop
             paddingBottom
         }
+        swiperSimpleStyle: style
     }
 }
