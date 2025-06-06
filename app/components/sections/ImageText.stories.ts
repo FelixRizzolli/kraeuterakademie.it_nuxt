@@ -111,5 +111,14 @@ export const Default: Story = {
                 text: 'Kräuterakademie',
             },
         },
+        settings: {
+            spacing: {
+                marginTop: 'none',
+                marginBottom: 'large',
+                paddingTop: 'none',
+                paddingBottom: 'none',
+            },
+            imageTextStyle: 'light',
+        },
     },
 };
