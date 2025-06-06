@@ -15,7 +15,7 @@ type Story = StoryObj<typeof Accordions>;
  * to learn how to use render functions.
  */
 export const Default: Story = {
-    render: (args) => ({
+    render: (args: any) => ({
         components: { Accordions },
         setup() {
             return { args };
@@ -96,6 +96,15 @@ export const Default: Story = {
                     ],
                 },
             ],
+        },
+        settings: {
+            spacing: {
+                marginTop: 'none',
+                marginBottom: 'large',
+                paddingTop: 'none',
+                paddingBottom: 'none',
+            },
+            accordionsStyle: 'light',
         },
     },
 };
