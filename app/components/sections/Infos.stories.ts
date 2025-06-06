@@ -77,8 +77,8 @@ export const Default: Story = {
             spacing: {
                 marginTop: 'none',
                 marginBottom: 'large',
-                paddingTop: 'none',
-                paddingBottom: 'none',
+                paddingTop: 'large',
+                paddingBottom: 'large',
             },
             infosStyle: 'dark',
         },
