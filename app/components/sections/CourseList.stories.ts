@@ -190,5 +190,14 @@ export const Default: Story = {
                 },
             ],
         },
+        settings: {
+            spacing: {
+                marginTop: 'none',
+                marginBottom: 'large',
+                paddingTop: 'large',
+                paddingBottom: 'large',
+            },
+            courseListStyle: 'light',
+        },
     },
 };
