@@ -29,5 +29,13 @@ export const Default: Story = {
                 alternativeText: 'Kräuterkurs Bild',
             },
         },
+        settings: {
+            spacing: {
+                marginTop: 'none',
+                marginBottom: 'large',
+                paddingTop: 'none',
+                paddingBottom: 'none',
+            },
+        },
     },
 };
