@@ -73,5 +73,14 @@ export const Default: Story = {
                 text: 'Zum Seminar anmelden',
             },
         },
+        settings: {
+            spacing: {
+                marginTop: 'none',
+                marginBottom: 'large',
+                paddingTop: 'none',
+                paddingBottom: 'none',
+            },
+            infosStyle: 'dark',
+        },
     },
 };
