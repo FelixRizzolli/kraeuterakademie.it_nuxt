@@ -70,5 +70,14 @@ export const Default: Story = {
                 },
             ],
         },
+        settings: {
+            spacing: {
+                marginTop: 'none',
+                marginBottom: 'large',
+                paddingTop: 'none',
+                paddingBottom: 'none',
+            },
+            textElementStyle: 'light',
+        },
     },
 };
