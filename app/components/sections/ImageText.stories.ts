@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 
 import ImageText from './ImageText.vue';
+import StorybookStoryWrapper from './StorybookStoryWrapper.vue';
 
 const meta: Meta<typeof ImageText> = {
     component: ImageText,
@@ -16,11 +17,11 @@ type Story = StoryObj<typeof ImageText>;
  */
 export const Default: Story = {
     render: (args: any) => ({
-        components: { ImageText },
+        components: { ImageText, StorybookStoryWrapper },
         setup() {
             return { args };
         },
-        template: '<ImageText v-bind="args" />',
+        template: '<StorybookStoryWrapper><ImageText v-bind="args" /></StorybookStoryWrapper>',
     }),
     args: {
         data: {

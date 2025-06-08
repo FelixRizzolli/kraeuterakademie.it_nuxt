@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 
 import TextElement from './TextElement.vue';
+import StorybookStoryWrapper from './StorybookStoryWrapper.vue';
 
 const meta: Meta<typeof TextElement> = {
     component: TextElement,
@@ -16,11 +17,11 @@ type Story = StoryObj<typeof TextElement>;
  */
 export const Default: Story = {
     render: (args) => ({
-        components: { TextElement },
+        components: { TextElement, StorybookStoryWrapper },
         setup() {
             return { args };
         },
-        template: '<TextElement v-bind="args" />',
+        template: '<StorybookStoryWrapper><TextElement v-bind="args" /></StorybookStoryWrapper>',
     }),
     args: {
         data: {

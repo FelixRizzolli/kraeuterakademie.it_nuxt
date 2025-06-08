@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 
 import CourseList from './CourseList.vue';
+import StorybookStoryWrapper from './StorybookStoryWrapper.vue';
 
 const meta: Meta<typeof CourseList> = {
     component: CourseList,
@@ -16,11 +17,11 @@ type Story = StoryObj<typeof CourseList>;
  */
 export const Default: Story = {
     render: (args) => ({
-        components: { CourseList },
+        components: { CourseList, StorybookStoryWrapper },
         setup() {
             return { args };
         },
-        template: '<CourseList v-bind="args" />',
+        template: '<StorybookStoryWrapper><CourseList v-bind="args" /></StorybookStoryWrapper>',
     }),
     args: {
         data: {

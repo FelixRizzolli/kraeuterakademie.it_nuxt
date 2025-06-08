@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 
 import MoodPicture from './MoodPicture.vue';
+import StorybookStoryWrapper from './StorybookStoryWrapper.vue';
 
 const meta: Meta<typeof MoodPicture> = {
     component: MoodPicture,
@@ -16,11 +17,11 @@ type Story = StoryObj<typeof MoodPicture>;
  */
 export const Default: Story = {
     render: (args) => ({
-        components: { MoodPicture },
+        components: { MoodPicture, StorybookStoryWrapper },
         setup() {
             return { args };
         },
-        template: '<MoodPicture v-bind="args" />',
+        template: '<StorybookStoryWrapper><MoodPicture v-bind="args" /></StorybookStoryWrapper>',
     }),
     args: {
         data: {

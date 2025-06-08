@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 
 import HeroLarge from './HeroLarge.vue';
+import StorybookStoryWrapper from './StorybookStoryWrapper.vue';
 
 const meta: Meta<typeof HeroLarge> = {
     component: HeroLarge,
@@ -16,11 +17,11 @@ type Story = StoryObj<typeof HeroLarge>;
  */
 export const Default: Story = {
     render: (args) => ({
-        components: { HeroLarge },
+        components: { HeroLarge, StorybookStoryWrapper },
         setup() {
             return { args };
         },
-        template: '<HeroLarge v-bind="args" />',
+        template: '<StorybookStoryWrapper><HeroLarge v-bind="args" /></StorybookStoryWrapper>',
     }),
     args: {
         data: {

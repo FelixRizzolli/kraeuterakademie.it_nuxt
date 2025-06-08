@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 
 import AnimatedText from './AnimatedText.vue';
+import StorybookStoryWrapper from './StorybookStoryWrapper.vue';
 
 const meta: Meta<typeof AnimatedText> = {
     component: AnimatedText,
@@ -16,11 +17,11 @@ type Story = StoryObj<typeof AnimatedText>;
  */
 export const Default: Story = {
     render: (args) => ({
-        components: { AnimatedText },
+        components: { AnimatedText, StorybookStoryWrapper },
         setup() {
             return { args };
         },
-        template: '<AnimatedText v-bind="args" />',
+        template: '<StorybookStoryWrapper><AnimatedText v-bind="args" /></StorybookStoryWrapper>',
     }),
     args: {
         data: {

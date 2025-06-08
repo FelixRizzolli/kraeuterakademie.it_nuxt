@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 
 import Accordions from './Accordions.vue';
+import StorybookStoryWrapper from './StorybookStoryWrapper.vue';
 
 const meta: Meta<typeof Accordions> = {
     component: Accordions,
@@ -16,11 +17,11 @@ type Story = StoryObj<typeof Accordions>;
  */
 export const Default: Story = {
     render: (args: any) => ({
-        components: { Accordions },
+        components: { Accordions, StorybookStoryWrapper },
         setup() {
             return { args };
         },
-        template: '<Accordions v-bind="args" />',
+        template: '<StorybookStoryWrapper><Accordions v-bind="args" /></StorybookStoryWrapper>',
     }),
     args: {
         data: {
