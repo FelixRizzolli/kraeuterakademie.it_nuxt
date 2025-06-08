@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 
 import BookList from './BookList.vue';
 import StorybookStoryWrapper from './StorybookStoryWrapper.vue';
+import getImagePath from '../../utils/getStorybookImagePath';
 
 const meta: Meta<typeof BookList> = {
     component: BookList,
@@ -9,13 +10,6 @@ const meta: Meta<typeof BookList> = {
 
 export default meta;
 type Story = StoryObj<typeof BookList>;
-
-const getImagePath = (imagePath: string): string => {
-    if (process.env.NODE_ENV === 'production') {
-        return imagePath;
-    }
-    return `http://localhost:3000${imagePath}`;
-};
 
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
@@ -37,7 +31,7 @@ export const Default: Story = {
                 {
                     image: {
                         alternativeText: null,
-                        url: getImagePath('/images/mein_kraeuterbuechlein.png'),
+                        url: getImagePath('/images/books/mein_kraeuterbuechlein.png'),
                     },
                     infos: [
                         {
@@ -71,7 +65,7 @@ export const Default: Story = {
                 {
                     image: {
                         alternativeText: null,
-                        url: getImagePath('/images/die_zirbe.png'),
+                        url: getImagePath('/images/books/die_zirbe.png'),
                     },
                     infos: [
                         {
@@ -105,7 +99,7 @@ export const Default: Story = {
                 {
                     image: {
                         alternativeText: null,
-                        url: getImagePath('/images/mein_kraeuterbuechlein.png'),
+                        url: getImagePath('/images/books/mein_kraeuterbuechlein.png'),
                     },
                     infos: [
                         {
@@ -139,7 +133,7 @@ export const Default: Story = {
                 {
                     image: {
                         alternativeText: null,
-                        url: getImagePath('/images/die_zirbe.png'),
+                        url: getImagePath('/images/books/die_zirbe.png'),
                     },
                     infos: [
                         {

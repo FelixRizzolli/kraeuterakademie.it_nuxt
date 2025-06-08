@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 
 import HeroLarge from './HeroLarge.vue';
 import StorybookStoryWrapper from './StorybookStoryWrapper.vue';
+import getImagePath from '../../utils/getStorybookImagePath';
 
 const meta: Meta<typeof HeroLarge> = {
     component: HeroLarge,
@@ -9,13 +10,6 @@ const meta: Meta<typeof HeroLarge> = {
 
 export default meta;
 type Story = StoryObj<typeof HeroLarge>;
-
-const getImagePath = (imagePath: string): string => {
-    if (process.env.NODE_ENV === 'production') {
-        return imagePath;
-    }
-    return `http://localhost:3000${imagePath}`;
-};
 
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
