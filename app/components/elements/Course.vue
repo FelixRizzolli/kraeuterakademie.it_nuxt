@@ -31,7 +31,7 @@
     export interface Course {
         title: string;
         place: string;
-        description: string;
+        description: any;
         dates: Array<CourseDate>;
         link?: {
             href: string;
