@@ -26,6 +26,9 @@
     const props = defineProps<StrapiImageProps>();
 
     const fileURL = computed(() => {
+        if (props.image.url.startsWith('http')) {
+            return props.image.url;
+        }
         return runtimeConfig.public.strapiApiUrl + props.image.url;
     });
 

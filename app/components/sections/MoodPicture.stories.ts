@@ -10,6 +10,13 @@ const meta: Meta<typeof MoodPicture> = {
 export default meta;
 type Story = StoryObj<typeof MoodPicture>;
 
+const getImagePath = (imagePath: string): string => {
+    if (process.env.NODE_ENV === 'production') {
+        return imagePath;
+    }
+    return `http://localhost:3000${imagePath}`;
+};
+
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
  * See https://storybook.js.org/docs/api/csf
@@ -26,7 +33,7 @@ export const Default: Story = {
     args: {
         data: {
             image: {
-                url: '/images/knospe.png',
+                url: getImagePath('/images/knospe.png'),
                 alternativeText: 'Kräuterkurs Bild',
             },
         },

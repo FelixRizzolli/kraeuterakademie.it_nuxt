@@ -10,6 +10,13 @@ const meta: Meta<typeof BookList> = {
 export default meta;
 type Story = StoryObj<typeof BookList>;
 
+const getImagePath = (imagePath: string): string => {
+    if (process.env.NODE_ENV === 'production') {
+        return imagePath;
+    }
+    return `http://localhost:3000${imagePath}`;
+};
+
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
  * See https://storybook.js.org/docs/api/csf
@@ -30,7 +37,7 @@ export const Default: Story = {
                 {
                     image: {
                         alternativeText: null,
-                        url: '/images/mein_kraeuterbuechlein.png',
+                        url: getImagePath('/images/mein_kraeuterbuechlein.png'),
                     },
                     infos: [
                         {
@@ -64,7 +71,7 @@ export const Default: Story = {
                 {
                     image: {
                         alternativeText: null,
-                        url: '/images/die_zirbe.png',
+                        url: getImagePath('/images/die_zirbe.png'),
                     },
                     infos: [
                         {
@@ -98,7 +105,7 @@ export const Default: Story = {
                 {
                     image: {
                         alternativeText: null,
-                        url: '/images/mein_kraeuterbuechlein.png',
+                        url: getImagePath('/images/mein_kraeuterbuechlein.png'),
                     },
                     infos: [
                         {
@@ -132,7 +139,7 @@ export const Default: Story = {
                 {
                     image: {
                         alternativeText: null,
-                        url: '/images/die_zirbe.png',
+                        url: getImagePath('/images/die_zirbe.png'),
                     },
                     infos: [
                         {

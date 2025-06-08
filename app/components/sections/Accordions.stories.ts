@@ -10,6 +10,13 @@ const meta: Meta<typeof Accordions> = {
 export default meta;
 type Story = StoryObj<typeof Accordions>;
 
+const getImagePath = (imagePath: string): string => {
+    if (process.env.NODE_ENV === 'production') {
+        return imagePath;
+    }
+    return `http://localhost:3000${imagePath}`;
+};
+
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
  * See https://storybook.js.org/docs/api/csf

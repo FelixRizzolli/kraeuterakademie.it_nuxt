@@ -10,6 +10,13 @@ const meta: Meta<typeof ImageText> = {
 export default meta;
 type Story = StoryObj<typeof ImageText>;
 
+const getImagePath = (imagePath: string): string => {
+    if (process.env.NODE_ENV === 'production') {
+        return imagePath;
+    }
+    return `http://localhost:3000${imagePath}`;
+};
+
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
  * See https://storybook.js.org/docs/api/csf
@@ -27,7 +34,7 @@ export const Default: Story = {
         data: {
             title: 'Hier ein passender Titel zum Thema Kräuter und Kurse',
             image: {
-                url: '/images/sigrid/sigrid_thaler_rizzolli_01.png',
+                url: getImagePath('/images/sigrid/sigrid_thaler_rizzolli_01.png'),
                 alternativeText: 'Kräuterakademie',
             },
             textTop: [

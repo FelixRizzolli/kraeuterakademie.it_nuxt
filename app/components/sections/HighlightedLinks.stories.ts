@@ -10,6 +10,13 @@ const meta: Meta<typeof HighlightedLinks> = {
 export default meta;
 type Story = StoryObj<typeof HighlightedLinks>;
 
+const getImagePath = (imagePath: string): string => {
+    if (process.env.NODE_ENV === 'production') {
+        return imagePath;
+    }
+    return `http://localhost:3000${imagePath}`;
+};
+
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
  * See https://storybook.js.org/docs/api/csf
@@ -28,7 +35,7 @@ export const Default: Story = {
             imageLinks: [
                 {
                     image: {
-                        url: 'images/herbatio.jpg',
+                        url: getImagePath('images/herbatio.jpg'),
                         alternativeText: 'Herbatio',
                     },
                     link: {
@@ -38,7 +45,7 @@ export const Default: Story = {
                 },
                 {
                     image: {
-                        url: 'images/kraeutervitaltage.jpg',
+                        url: getImagePath('images/kraeutervitaltage.jpg'),
                         alternativeText: 'Kräuter Vital Tage',
                     },
                     link: {
@@ -48,7 +55,7 @@ export const Default: Story = {
                 },
                 {
                     image: {
-                        url: 'images/knospe.png',
+                        url: getImagePath('images/knospe.png'),
                         alternativeText: 'Knospe',
                     },
                     link: {

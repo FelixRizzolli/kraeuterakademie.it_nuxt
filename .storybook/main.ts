@@ -7,5 +7,6 @@ const config: StorybookConfig = {
         name: '@storybook-vue/nuxt',
         options: {},
     },
+    staticDirs: ['../public'],
 };
 export default config;

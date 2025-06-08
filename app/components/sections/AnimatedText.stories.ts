@@ -10,6 +10,13 @@ const meta: Meta<typeof AnimatedText> = {
 export default meta;
 type Story = StoryObj<typeof AnimatedText>;
 
+const getImagePath = (imagePath: string): string => {
+    if (process.env.NODE_ENV === 'production') {
+        return imagePath;
+    }
+    return `http://localhost:3000${imagePath}`;
+};
+
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
  * See https://storybook.js.org/docs/api/csf
