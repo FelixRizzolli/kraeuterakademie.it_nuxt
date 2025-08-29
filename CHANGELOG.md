@@ -1,4 +1,23 @@
-# v1.0.0 (2025-05-30)
+# v0.5.0 (2025-05-30)
+
+## Dependencies
+
+    - nuxt 3.17.5 -> 4.0.3
+    - @nuxt/image 1.10.0 -> 1.11.0
+    - @nuxtjs/seo 3.0.3 -> 3.1.0
+    - nuxt-svgo 4.2.1 -> 4.2.6
+    - vue 3.5.16 -> 3.5.20
+    - @vitest/* 3.1.4 -> 3.2.4
+    - sass 1.89.1 -> 1.91
+    - @nuxtjs/strapi 2.0.0 -> 2.1.1
+    - nuxt-strapi-blocks-renderer 1.0.18 -> 1.1.0
+    - prettier 3.5.3 -> 3.6.2
+    - vite-plugin-devtools-json 0.1.0 -> 1.0.0
+    - @nuxtjs/storybook 8.3.5 -> 9.0.1
+    - @storybook/* 8.6.14 -> 9.1.3
+    - playwright 1.52.0 -> 1.55.0
+
+# v0.4.0 (2025-05-30)
 
 ## Features
 
