@@ -32,11 +32,6 @@ export default defineNuxtConfig({
         { path: '~/components/sections', pathPrefix: false },
     ],
 
-    future: {
-        compatibilityVersion: 4,
-    },
-
-    compatibilityDate: '2024-11-01',
     devtools: { enabled: true },
 
     css: ['@/assets/styles/base.scss', '@/assets/styles/layout.scss', '@/assets/styles/grid-layout.scss'],
