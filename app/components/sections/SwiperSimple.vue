@@ -80,11 +80,6 @@
             opacityEffect(titleElement);
         }
 
-        if (titleElement.value instanceof HTMLElement) {
-            const opacityEffect = getOpacityEffect(gsap);
-            opacityEffect(titleElement);
-        }
-
         if (swiperWrapperElement.value instanceof HTMLElement) {
             const opacityEffect = getOpacityEffect(gsap);
             opacityEffect(swiperWrapperElement);
