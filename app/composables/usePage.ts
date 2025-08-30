@@ -85,12 +85,12 @@ export const usePage = () => {
      */
     const transformComponents = (components: any[] = []): any[] => {
         return components
-            .filter((component) => component.__typename && !component.code) // Filter out error components
-            .map((component) => {
+            .filter((component) => component?.__typename && !component.code) // Filter out error components
+            .map((component: any) => {
                 // Extract component name by removing the prefix, handling different formats
-                const componentName = component.__typename.startsWith('ComponentContent')
-                    ? component.__typename.replace('ComponentContent', '')
-                    : component.__typename;
+                const componentName = component?.__typename.startsWith('ComponentContent')
+                    ? (component?.__typename?.replace('ComponentContent', '') || 'unknown')
+                    : (component?.__typename || 'unknown');
 
                 return {
                     name: componentName,
