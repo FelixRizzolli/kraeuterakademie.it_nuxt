@@ -29,8 +29,8 @@ jobs:
       - name: Check version change
         id: check
         run: |
-          # Get current version from package.json (shell-safe, avoids needing Node)
-          CURRENT_VERSION=$(grep -m1 '"version"' nuxt/package.json | sed -E 's/.*"version"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/')
+          # Get current version from package.json via helper script
+          CURRENT_VERSION=$(./scripts/get-current-version.sh $(pwd))
           echo "Current version: $CURRENT_VERSION"
           
           # Get the latest tag for nuxt (filter tags starting with 'nuxt-v')
