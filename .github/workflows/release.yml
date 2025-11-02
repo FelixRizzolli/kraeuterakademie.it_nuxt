@@ -5,8 +5,9 @@ on:
     branches:
       - main
     paths:
-      - 'nuxt/package.json'
-      - 'nuxt/CHANGELOG.md'
+      - 'package.json'
+      - 'CHANGELOG.md'
+  workflow_dispatch: {}
 
 permissions:
   contents: write
@@ -79,7 +80,7 @@ jobs:
           cd nuxt
           chmod +x scripts/extract-changelog.sh
           CHANGELOG=$(./scripts/extract-changelog.sh ${{ needs.check-version.outputs.new_version }})
-          
+
           # Save to file to preserve multiline content
           echo "$CHANGELOG" > /tmp/changelog.txt
 
