@@ -33,8 +33,8 @@ jobs:
           CURRENT_VERSION=$(./scripts/get-current-version.sh $(pwd))
           echo "Current version: $CURRENT_VERSION"
           
-          # Get the latest tag for nuxt (filter tags starting with 'nuxt-v')
-          LATEST_TAG=$(git tag -l "nuxt-v*" --sort=-v:refname | head -n 1)
+          # Get the latest tag (tags like 'v0.0.5')
+          LATEST_TAG=$(git tag -l "v*" --sort=-v:refname | head -n 1)
           
           if [ -z "$LATEST_TAG" ]; then
             echo "No previous nuxt tags found, this is the first release"
@@ -42,8 +42,8 @@ jobs:
             echo "version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
             echo "tag_exists=false" >> $GITHUB_OUTPUT
           else
-            # Extract version from tag (remove 'nuxt-v' prefix)
-            LATEST_VERSION="${LATEST_TAG#nuxt-v}"
+            # Extract version from tag (remove leading 'v' prefix)
+            LATEST_VERSION="${LATEST_TAG#v}"
             echo "Latest tagged version: $LATEST_VERSION"
             
             if [ "$CURRENT_VERSION" != "$LATEST_VERSION" ]; then
@@ -52,7 +52,7 @@ jobs:
               echo "version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
               
               # Check if tag already exists
-              if git rev-parse "nuxt-v$CURRENT_VERSION" >/dev/null 2>&1; then
+              if git rev-parse "v$CURRENT_VERSION" >/dev/null 2>&1; then
                 echo "tag_exists=true" >> $GITHUB_OUTPUT
               else
                 echo "tag_exists=false" >> $GITHUB_OUTPUT
@@ -94,16 +94,16 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git tag -a "nuxt-v${{ needs.check-version.outputs.new_version }}" -m "Release nuxt v${{ needs.check-version.outputs.new_version }}"
-          git push origin "nuxt-v${{ needs.check-version.outputs.new_version }}"
+          git tag -a "v${{ needs.check-version.outputs.new_version }}" -m "Release v${{ needs.check-version.outputs.new_version }}"
+          git push origin "v${{ needs.check-version.outputs.new_version }}"
       
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: nuxt-v${{ needs.check-version.outputs.new_version }}
-          release_name: Nuxt v${{ needs.check-version.outputs.new_version }}
+          tag_name: v${{ needs.check-version.outputs.new_version }}
+          release_name: v${{ needs.check-version.outputs.new_version }}
           body: ${{ steps.changelog.outputs.content }}
           draft: false
           prerelease: false
