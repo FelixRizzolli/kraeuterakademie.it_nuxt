@@ -77,7 +77,6 @@ jobs:
       - name: Extract changelog
         id: changelog
         run: |
-          cd nuxt
           chmod +x scripts/extract-changelog.sh
           CHANGELOG=$(./scripts/extract-changelog.sh ${{ needs.check-version.outputs.new_version }})
 
