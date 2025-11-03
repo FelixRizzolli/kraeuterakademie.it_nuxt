@@ -42,7 +42,7 @@ export default defineNuxtConfig({
     modules: [
         '@nuxt/image',
         'nuxt-svgo',
-        '@nuxtjs/storybook',
+        ...(process.env.STORYBOOK === 'true' ? ['@nuxtjs/storybook'] : []),
         '@nuxtjs/strapi',
         'nuxt-strapi-blocks-renderer',
         '@nuxtjs/seo',
@@ -65,8 +65,16 @@ export default defineNuxtConfig({
         },
         optimizeDeps: {
             include: ['qs'],
+            esbuildOptions: {
+                target: 'esnext',
+            },
         },
         plugins: [devtoolsJson(), graphqlLoader()],
+        resolve: {
+            alias: {
+                qs: 'qs/lib/index.js',
+            },
+        },
     },
 
     nitro: {

@@ -27,6 +27,7 @@ COPY ./public ./storybook-static
 ENV PORT=$PORT
 ENV HOST=$HOST
 ENV NODE_ENV=$EVN
+ENV STORYBOOK=true
 
 EXPOSE $PORT
 
