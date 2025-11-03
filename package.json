@@ -12,7 +12,8 @@
     "postinstall": "nuxt prepare",
     "format": "prettier --write . --ignore-path .prettierignore",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "changed-deps": "./scripts/compare-dependencies.sh"
   },
   "dependencies": {
     "@nuxt/image": "1.11.0",
