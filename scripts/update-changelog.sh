@@ -93,14 +93,29 @@ if grep -q "## \[$VERSION\]" "$CHANGELOG"; then
       { if (!skip) print }
     ' "$TMPDIR/changed-section.txt" > "$TMPDIR/changed-cleaned.txt"
     
-    # Rebuild the CHANGELOG
-    {
-      head -n "$CHANGED_LINE" "$CHANGELOG"
-      echo ""
-      echo "$FORMATTED_DEPS"
-      cat "$TMPDIR/changed-cleaned.txt"
-      tail -n +$((CHANGED_END + 1)) "$CHANGELOG"
-    } > "$TMPDIR/new-changelog.md"
+    # Remove trailing empty lines from cleaned content but keep content
+    sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' "$TMPDIR/changed-cleaned.txt"
+    
+    # Check if there's any non-dependency content
+    if [ -s "$TMPDIR/changed-cleaned.txt" ]; then
+      # Rebuild the CHANGELOG with dependencies at the end
+      {
+        head -n "$CHANGED_LINE" "$CHANGELOG"
+        cat "$TMPDIR/changed-cleaned.txt"
+        echo "$FORMATTED_DEPS"
+        echo ""
+        tail -n +$((CHANGED_END + 1)) "$CHANGELOG"
+      } > "$TMPDIR/new-changelog.md"
+    else
+      # No other content, just add dependencies
+      {
+        head -n "$CHANGED_LINE" "$CHANGELOG"
+        echo ""
+        echo "$FORMATTED_DEPS"
+        echo ""
+        tail -n +$((CHANGED_END + 1)) "$CHANGELOG"
+      } > "$TMPDIR/new-changelog.md"
+    fi
   else
     # No ### Changed section, find where to insert it (after version line and any ### Added section)
     NEXT_SECTION=$(awk -v start="$VERSION_LINE" 'NR > start && /^###/ {print NR; exit}' "$CHANGELOG")

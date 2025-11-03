@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+   - This is a test
    - updated dependencies
       - @nuxtjs/seo 3.1.0 → 3.2.2
       - nuxt 4.0.3 → 4.2.0
@@ -31,8 +32,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
       - sass 1.91.0 → 1.93.3
       - storybook 9.1.3 → 9.1.16
       - vitest 3.2.4 → 4.0.6
-
-   - This is a test
 
 ## [0.6.0] - 2025-XX-XX
 
