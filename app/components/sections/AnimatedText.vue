@@ -32,8 +32,6 @@
     const textElement = ref<HTMLElement | null>(null);
 
     onMounted(async () => {
-        console.log('AnimatedText mounted', props);
-
         if (textElement.value instanceof HTMLParagraphElement) {
             gsap.registerPlugin(ScrollTrigger, SplitText);
 
