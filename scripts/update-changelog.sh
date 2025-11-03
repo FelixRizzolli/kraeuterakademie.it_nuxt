@@ -70,13 +70,36 @@ if grep -q "## \[$VERSION\]" "$CHANGELOG"; then
   CHANGED_LINE=$(awk -v start="$VERSION_LINE" 'NR > start && /^### Changed/ {print NR; exit}' "$CHANGELOG")
   
   if [ -n "$CHANGED_LINE" ]; then
-    # Insert after ### Changed line
+    # Insert after ### Changed line, removing existing dependency entries
     echo "Updating existing ### Changed section..."
+    
+    # Find the end of the Changed section (next ### or ## header)
+    CHANGED_END=$(awk -v start="$CHANGED_LINE" 'NR > start && /^###/ {print NR-1; exit} NR > start && /^## \[/ {print NR-1; exit}' "$CHANGELOG")
+    
+    if [ -z "$CHANGED_END" ]; then
+      # No next section found, go to end of file
+      CHANGED_END=$(wc -l < "$CHANGELOG")
+    fi
+    
+    # Extract the Changed section content
+    awk -v start="$CHANGED_LINE" -v end="$CHANGED_END" 'NR > start && NR <= end' "$CHANGELOG" > "$TMPDIR/changed-section.txt"
+    
+    # Remove existing dependency-related entries (lines starting with "   - updated/added/removed" and their subpoints)
+    # This filters out the dependency blocks and their subpoints (which start with "      -")
+    awk '
+      /^   - (updated|added|removed) (dependencies|devDependencies|peerDependencies|optionalDependencies)/ { skip=1; next }
+      /^      -/ { if (skip) next }
+      /^   -/ { skip=0 }
+      { if (!skip) print }
+    ' "$TMPDIR/changed-section.txt" > "$TMPDIR/changed-cleaned.txt"
+    
+    # Rebuild the CHANGELOG
     {
       head -n "$CHANGED_LINE" "$CHANGELOG"
       echo ""
       echo "$FORMATTED_DEPS"
-      tail -n +$((CHANGED_LINE + 1)) "$CHANGELOG"
+      cat "$TMPDIR/changed-cleaned.txt"
+      tail -n +$((CHANGED_END + 1)) "$CHANGELOG"
     } > "$TMPDIR/new-changelog.md"
   else
     # No ### Changed section, find where to insert it (after version line and any ### Added section)
