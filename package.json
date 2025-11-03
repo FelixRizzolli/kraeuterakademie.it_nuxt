@@ -13,7 +13,8 @@
     "format": "prettier --write . --ignore-path .prettierignore",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "changed-deps": "./scripts/compare-dependencies.sh"
+    "changed-deps": "./scripts/compare-dependencies.sh",
+    "update-changelog": "./scripts/update-changelog.sh"
   },
   "dependencies": {
     "@nuxt/image": "1.11.0",

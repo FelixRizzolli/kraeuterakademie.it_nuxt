@@ -13,6 +13,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+   - updated dependencies
+      - @nuxtjs/seo 3.1.0 → 3.2.2
+      - nuxt 4.0.3 → 4.2.0
+      - nuxt-strapi-blocks-renderer 1.1.0 → 1.1.1
+      - vue 3.5.20 → 3.5.22
+      - vue-router 4.5.1 → 4.6.3
+   - updated devDependencies
+      - @chromatic-com/storybook 4.1.1 → 4.1.2
+      - @storybook/addon-docs 9.1.3 → 9.1.16
+      - @storybook/addon-vitest 9.1.3 → 9.1.16
+      - @storybook/vue3 9.1.3 → 9.1.16
+      - @vitest/browser 3.2.4 → 4.0.6
+      - @vitest/coverage-v8 3.2.4 → 4.0.6
+      - graphql 16.11.0 → 16.12.0
+      - playwright 1.55.0 → 1.56.1
+      - sass 1.91.0 → 1.93.3
+      - storybook 9.1.3 → 9.1.16
+      - vitest 3.2.4 → 4.0.6
+
    - This is a test
 
 ## [0.6.0] - 2025-XX-XX
