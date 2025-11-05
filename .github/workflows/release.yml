@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run auto release
-        uses: FelixRizzolli/auto-release-action@v1.1.0
+        uses: FelixRizzolli/auto-release-action@v1
         with:
           release_token: ${{ secrets.GITHUB_TOKEN }}
           package_json_path: 'package.json'
