@@ -5,12 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.6.0] - 2025-XX-XX
+
+## [0.6.0-beta.1] - 2025-11-03
 
 ### Added
 
     - GitHub Actions workflow for building and pushing Docker images (Nuxt and Storybook) to GitHub Container Registry
-    - GitHub Actions workflow for automatic release creation when version changes in package.json
+    - GitHub Actions workflow for automatic release creation when version changes in package.json - FelixRizzolli/auto-release-action
     - update-changelog script: automatically updates CHANGELOG.md with dependency changes from last git tag
     - changed-deps script: compares current dependencies with last tagged version and displays changes
 
