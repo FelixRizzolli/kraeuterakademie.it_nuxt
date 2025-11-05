@@ -17,7 +17,7 @@
     "update-changelog": "./scripts/update-changelog.sh"
   },
   "dependencies": {
-    "@nuxt/image": "1.11.0",
+    "@nuxt/image": "2.0.0",
     "@nuxtjs/device": "3.2.4",
     "@nuxtjs/seo": "3.2.2",
     "@nuxtjs/strapi": "2.1.1",
