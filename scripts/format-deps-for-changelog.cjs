@@ -77,25 +77,25 @@ function formatForChangelog(changes) {
     
     // Add updated dependencies
     if (sectionChanges.updated.length > 0) {
-      output.push(`    - updated ${formatSectionName(sectionName)}`);
+      output.push(`- updated ${formatSectionName(sectionName)}`);
       sectionChanges.updated.forEach(dep => {
-        output.push(`        - ${dep.name} ${dep.oldVersion} → ${dep.newVersion}`);
+        output.push(`    - ${dep.name} ${dep.oldVersion} → ${dep.newVersion}`);
       });
     }
     
     // Add added dependencies
     if (sectionChanges.added.length > 0) {
-      output.push(`    - added ${formatSectionName(sectionName)}`);
+      output.push(`- added ${formatSectionName(sectionName)}`);
       sectionChanges.added.forEach(dep => {
-        output.push(`        - ${dep.name}@${dep.version}`);
+        output.push(`    - ${dep.name}@${dep.version}`);
       });
     }
     
     // Add removed dependencies
     if (sectionChanges.removed.length > 0) {
-      output.push(`    - removed ${formatSectionName(sectionName)}`);
+      output.push(`- removed ${formatSectionName(sectionName)}`);
       sectionChanges.removed.forEach(dep => {
-        output.push(`        - ${dep.name}@${dep.version}`);
+        output.push(`    - ${dep.name}@${dep.version}`);
       });
     }
   }

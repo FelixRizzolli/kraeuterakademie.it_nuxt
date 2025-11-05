@@ -87,7 +87,7 @@ if grep -q "## \[$VERSION\]" "$CHANGELOG"; then
     # Remove existing dependency-related entries (lines starting with "   - updated/added/removed" and their subpoints)
     # This filters out the dependency blocks and their subpoints (which start with "      -")
     awk '
-      /^   - (updated|added|removed) (dependencies|devDependencies|peerDependencies|optionalDependencies)/ { skip=1; next }
+      /^- (updated|added|removed) (dependencies|devDependencies|peerDependencies|optionalDependencies)/ { skip=1; next }
       /^      -/ { if (skip) next }
       /^   -/ { skip=0 }
       { if (!skip) print }
