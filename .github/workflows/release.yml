@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
 
       - name: Update CHANGELOG
-        uses: ./
+        uses: FelixRizzolli/update-changelog-deps-action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           package-json-path: 'package.json'
