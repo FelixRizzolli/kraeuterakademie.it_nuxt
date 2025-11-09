@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 
+
 - Rewrote and reformatted the project changelog to follow the "Keep a Changelog" format.
     - Standardized section headings (Added, Changed, Deprecated, Removed, Fixed, Security).
     - Filled in missing dates and details for past releases where available.
@@ -24,23 +25,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - updated dependencies
     - @nuxt/image 1.11.0 → 2.0.0
     - @nuxtjs/seo 3.1.0 → 3.2.2
-    - nuxt 4.0.3 → 4.2.0
+    - nuxt 4.0.3 → 4.2.1
     - nuxt-strapi-blocks-renderer 1.1.0 → 1.1.1
     - pinia 3.0.3 → 3.0.4
-    - vue 3.5.20 → 3.5.23
+    - vue 3.5.20 → 3.5.24
     - vue-router 4.5.1 → 4.6.3
 - updated devDependencies
     - @chromatic-com/storybook 4.1.1 → 4.1.2
     - @storybook/addon-docs 9.1.3 → 9.1.16
     - @storybook/addon-vitest 9.1.3 → 9.1.16
     - @storybook/vue3 9.1.3 → 9.1.16
-    - @vitest/browser 3.2.4 → 4.0.7
-    - @vitest/coverage-v8 3.2.4 → 4.0.7
+    - @vitest/browser 3.2.4 → 4.0.8
+    - @vitest/coverage-v8 3.2.4 → 4.0.8
     - graphql 16.11.0 → 16.12.0
     - playwright 1.55.0 → 1.56.1
     - sass 1.91.0 → 1.93.3
     - storybook 9.1.3 → 9.1.16
-    - vitest 3.2.4 → 4.0.7
+    - vitest 3.2.4 → 4.0.8
 
 ## [0.5.0] - 2025-08-29
 
