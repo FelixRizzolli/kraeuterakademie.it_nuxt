@@ -29,19 +29,19 @@ export const Default: Story = {
             title: 'Meine Gallerie',
             images: [
                 {
-                    alternativeText: "",
+                    alternativeText: '',
                     url: getImagePath('/images/knospe.png'),
                 },
                 {
-                    alternativeText: "",
+                    alternativeText: '',
                     url: getImagePath('/images/knospe.png'),
                 },
                 {
-                    alternativeText: "",
+                    alternativeText: '',
                     url: getImagePath('/images/knospe.png'),
                 },
                 {
-                    alternativeText: "",
+                    alternativeText: '',
                     url: getImagePath('/images/knospe.png'),
                 },
             ],

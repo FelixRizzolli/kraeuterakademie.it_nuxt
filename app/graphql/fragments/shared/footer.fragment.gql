@@ -5,7 +5,7 @@ fragment FooterAttributes on ComponentSharedFooter {
     contact {
         ...ContactAttributes
     }
-    text1 
+    text1
     text2
     socials {
         ...SocialAttributes

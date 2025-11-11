@@ -89,8 +89,8 @@ export const usePage = () => {
             .map((component: any) => {
                 // Extract component name by removing the prefix, handling different formats
                 const componentName = component?.__typename.startsWith('ComponentContent')
-                    ? (component?.__typename?.replace('ComponentContent', '') || 'unknown')
-                    : (component?.__typename || 'unknown');
+                    ? component?.__typename?.replace('ComponentContent', '') || 'unknown'
+                    : component?.__typename || 'unknown';
 
                 return {
                     name: componentName,

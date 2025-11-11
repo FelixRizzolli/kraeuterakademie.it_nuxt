@@ -25,8 +25,7 @@ export const Default: Story = {
         template: '<StorybookStoryWrapper><SwiperCard v-bind="args" /></StorybookStoryWrapper>',
     }),
     args: {
-        data: {
-        },
+        data: {},
         settings: {
             spacing: {
                 marginTop: 'none',

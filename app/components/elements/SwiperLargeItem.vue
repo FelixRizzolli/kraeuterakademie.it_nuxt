@@ -8,7 +8,13 @@
                 <StrapiBlocksText class="description" :nodes="data.description" />
             </div>
             <div class="links-container">
-                <NuxtLink class="link-button" :to="link.href" v-for="link in data.links" :target="link.target ?? '_self'">{{ link.text }}</NuxtLink>
+                <NuxtLink
+                    class="link-button"
+                    :to="link.href"
+                    v-for="link in data.links"
+                    :target="link.target ?? '_self'"
+                    >{{ link.text }}</NuxtLink
+                >
             </div>
         </div>
     </div>

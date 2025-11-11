@@ -5,7 +5,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-
 ## [0.6.0] - 2025-11-09
 
 ### Added
@@ -15,8 +14,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub Actions step "Update CHANGELOG" (in .github/workflows/release.yml) that automatically updates CHANGELOG.md with dependency changes
 
 ### Changed
-
-
 
 - Rewrote and reformatted the project changelog to follow the "Keep a Changelog" format.
     - Standardized section headings (Added, Changed, Deprecated, Removed, Fixed, Security).
@@ -52,14 +49,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - @nuxtjs/seo 3.0.3 → 3.1.0
 - nuxt-svgo 4.2.1 → 4.2.6
 - vue 3.5.16 → 3.5.20
-- @vitest/* 3.1.4 → 3.2.4
+- @vitest/\* 3.1.4 → 3.2.4
 - sass 1.89.1 → 1.91
 - @nuxtjs/strapi 2.0.0 → 2.1.1
 - nuxt-strapi-blocks-renderer 1.0.18 → 1.1.0
 - prettier 3.5.3 → 3.6.2
 - vite-plugin-devtools-json 0.1.0 → 1.0.0
 - @nuxtjs/storybook 8.3.5 → 9.0.1
-- @storybook/* 8.6.14 → 9.1.3
+- @storybook/\* 8.6.14 → 9.1.3
 - playwright 1.52.0 → 1.55.0
 
 ## [0.4.0] - 2025-06-08
