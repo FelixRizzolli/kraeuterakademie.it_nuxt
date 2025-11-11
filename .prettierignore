@@ -6,4 +6,5 @@ coverage
 .pnpm-store
 public
 node_modules
+node-compile-cache
 .pnpm-lock.yaml
