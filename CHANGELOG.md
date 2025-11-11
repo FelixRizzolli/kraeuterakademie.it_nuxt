@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.1] - 2025-11-11
+
+### Fixed
+
+- Added linux/arm64 and linux/amd64 platforms to the Docker build and push GitHub Actions workflows for Nuxt and Storybook
+- Added node-compile-cache to .prettierignore
+- use RELEASE_TOKEN instead of GITHUB_TOKEN for the auto-release-action to trigger subsequent workflows
+
+
 ## [0.6.0] - 2025-11-09
 
 ### Added
