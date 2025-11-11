@@ -24,14 +24,14 @@ jobs:
             - name: Update CHANGELOG
               uses: FelixRizzolli/update-changelog-deps-action@v1
               with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  github-token: ${{ secrets.RELEASE_TOKEN }}
                   package-json-path: 'package.json'
                   changelog-path: 'CHANGELOG.md'
 
             - name: Run auto release
               uses: FelixRizzolli/auto-release-action@v1
               with:
-                  release_token: ${{ secrets.GITHUB_TOKEN }}
+                  release_token: ${{ secrets.RELEASE_TOKEN }}
                   package_json_path: 'package.json'
                   changelog_path: 'CHANGELOG.md'
                   tag_prefix: 'v'
