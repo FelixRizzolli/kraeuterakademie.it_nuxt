@@ -34,7 +34,8 @@ jobs:
                   images: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}-nuxt
                   tags: |
                       type=raw,value=latest
-                      type=sha
+                      type=ref,event=tag
+                      type=sha,enable=${{ github.event_name != 'release' }}
 
             - name: Set up Docker Buildx
               uses: docker/setup-buildx-action@v3
@@ -81,7 +82,8 @@ jobs:
                   images: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}-storybook
                   tags: |
                       type=raw,value=latest
-                      type=sha
+                      type=ref,event=tag
+                      type=sha,enable=${{ github.event_name != 'release' }}
 
             - name: Set up Docker Buildx
               uses: docker/setup-buildx-action@v3
