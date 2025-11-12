@@ -29,6 +29,7 @@ jobs:
                   changelog-path: 'CHANGELOG.md'
 
             - name: Run auto release
+              id: release
               uses: FelixRizzolli/auto-release-action@v1
               with:
                   release_token: ${{ secrets.RELEASE_TOKEN }}
@@ -37,3 +38,10 @@ jobs:
                   tag_prefix: 'v'
                   create_tag: 'true'
                   create_release: 'true'
+
+            - name: Trigger build and push
+              uses: peter-evans/repository-dispatch@v4
+              with:
+                  token: ${{ secrets.RELEASE_TOKEN }}
+                  event-type: release-published
+                  client-payload: '{"tag": "${{ steps.release.outputs.tag }}"}'
