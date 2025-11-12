@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.2] - 2025-11-12
+
+### Changed
+
+- Updated Dockerfile to use the Node 24 base image (switched from node:22-alpine to node:24-alpine).
+- Added a repository_dispatch trigger to the build-and-push GitHub Actions workflow so the release workflow can programmatically trigger Docker image builds.
+- Ensure Docker images pushed by the build-and-push workflow are tagged with the release version (added explicit version tagging to image pushes).
+
 ## [0.6.1] - 2025-11-11
 
 ### Fixed
@@ -12,7 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added linux/arm64 and linux/amd64 platforms to the Docker build and push GitHub Actions workflows for Nuxt and Storybook
 - Added node-compile-cache to .prettierignore
 - use RELEASE_TOKEN instead of GITHUB_TOKEN for the auto-release-action to trigger subsequent workflows
-
 
 ## [0.6.0] - 2025-11-09
 
