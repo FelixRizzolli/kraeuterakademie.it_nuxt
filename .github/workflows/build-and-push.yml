@@ -23,6 +23,21 @@ jobs:
               uses: actions/checkout@v5
               with:
                   ref: ${{ github.event.client_payload.tag || github.ref }}
+                  fetch-depth: 0
+
+            - name: Set tag for metadata
+              id: set-tag
+              run: |
+                  if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+                    TAG="${{ github.event.client_payload.tag }}"
+                    if [ -z "$TAG" ]; then
+                      TAG=$(git describe --tags --abbrev=0)
+                    fi
+                  else
+                    TAG="${{ github.ref }}"
+                  fi
+                  echo "tag=$TAG" >> $GITHUB_OUTPUT
+                  echo "Using tag: $TAG"
 
             - name: Log in to GitHub Container Registry
               uses: docker/login-action@v3
@@ -43,6 +58,9 @@ jobs:
                       type=semver,pattern={{major}}
                       type=ref,event=tag
                       type=sha,enable=${{ github.event_name != 'release' }}
+              env:
+                  DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
+                  DOCKER_METADATA_PR_HEAD_SHA: true
 
             - name: Set up Docker Buildx
               uses: docker/setup-buildx-action@v3
@@ -56,6 +74,8 @@ jobs:
                   push: true
                   tags: ${{ steps.meta.outputs.tags }}
                   labels: ${{ steps.meta.outputs.labels }}
+                  cache-from: type=gha
+                  cache-to: type=gha,mode=max
 
             - name: Trigger deployment
               uses: peter-evans/repository-dispatch@v4
@@ -76,6 +96,21 @@ jobs:
               uses: actions/checkout@v5
               with:
                   ref: ${{ github.event.client_payload.tag || github.ref }}
+                  fetch-depth: 0
+
+            - name: Set tag for metadata
+              id: set-tag
+              run: |
+                  if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+                    TAG="${{ github.event.client_payload.tag }}"
+                    if [ -z "$TAG" ]; then
+                      TAG=$(git describe --tags --abbrev=0)
+                    fi
+                  else
+                    TAG="${{ github.ref }}"
+                  fi
+                  echo "tag=$TAG" >> $GITHUB_OUTPUT
+                  echo "Using tag: $TAG"
 
             - name: Log in to GitHub Container Registry
               uses: docker/login-action@v3
@@ -96,6 +131,9 @@ jobs:
                       type=semver,pattern={{major}}
                       type=ref,event=tag
                       type=sha,enable=${{ github.event_name != 'release' }}
+              env:
+                  DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
+                  DOCKER_METADATA_PR_HEAD_SHA: true
 
             - name: Set up Docker Buildx
               uses: docker/setup-buildx-action@v3
@@ -109,3 +147,5 @@ jobs:
                   push: true
                   tags: ${{ steps.meta.outputs.tags }}
                   labels: ${{ steps.meta.outputs.labels }}
+                  cache-from: type=gha
+                  cache-to: type=gha,mode=max
