@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - fixed migration issue from Vitest 3 to Vitest 4
 
+
+### Changed
+
+- updated devDependencies
+    - @chromatic-com/storybook 4.1.2 → 4.1.3
+    - @vitest/browser 4.0.8 → 4.0.10
+    - @vitest/coverage-v8 4.0.8 → 4.0.10
+    - sass 1.93.3 → 1.94.1
+    - vitest 4.0.8 → 4.0.10
+- added devDependencies
+    - @vitest/browser-playwright@4.0.10
+
 ## [0.6.2] - 2025-11-12
 
 ### Changed
