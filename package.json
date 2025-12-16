@@ -16,7 +16,7 @@
     },
     "dependencies": {
         "@nuxt/image": "2.0.0",
-        "@nuxtjs/device": "3.2.4",
+        "@nuxtjs/device": "4.0.0",
         "@nuxtjs/seo": "3.2.2",
         "@nuxtjs/strapi": "2.1.1",
         "gsap": "3.13.0",
