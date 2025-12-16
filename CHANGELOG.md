@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.6.4] - 2025-12-16
 
+
+### Changed
+
+- updated dependencies
+    - @nuxtjs/device 3.2.4 → 4.0.0
+    - @nuxtjs/seo 3.2.2 → 3.3.0
+    - gsap 3.13.0 → 3.14.2
+    - nuxt 4.2.1 → 4.2.2
+    - prettier 3.6.2 → 3.7.4
+    - vue 3.5.24 → 3.5.25
+    - vue-router 4.6.3 → 4.6.4
+- updated devDependencies
+    - @vitest/browser 4.0.10 → 4.0.15
+    - @vitest/browser-playwright 4.0.10 → 4.0.15
+    - @vitest/coverage-v8 4.0.10 → 4.0.15
+    - playwright 1.56.1 → 1.57.0
+    - sass 1.94.1 → 1.97.0
+    - vitest 4.0.10 → 4.0.15
+
 ## [0.6.3] - 2025-11-18
 
 ### Fixed
