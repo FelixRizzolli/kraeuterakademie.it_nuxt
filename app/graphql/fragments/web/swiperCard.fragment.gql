@@ -1,0 +1,30 @@
+fragment SwiperCardAttributes on WebSwiperCard {
+    id
+    blockName
+    blockType
+    webSwiperCardData: data {
+        cards {
+            id
+            image {
+                ...MediaAttributes
+            }
+            info
+            date
+            title
+            link {
+                label
+                url
+                target
+            }
+        }
+    }
+    webSwiperCardSettings: settings {
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
+        style
+    }
+}

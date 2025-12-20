@@ -1,0 +1,27 @@
+fragment ImageTextAttributes on WebImageText {
+    id
+    blockName
+    blockType
+    webImageTextData: data {
+        title
+        textTop
+        textHighlight
+        textBottom
+        link {
+            label
+            url
+            target
+        }
+        image {
+            ...MediaAttributes
+        }
+    }
+    webImageTextSettings: settings {
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
+    }
+}

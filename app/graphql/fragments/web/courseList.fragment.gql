@@ -1,0 +1,28 @@
+fragment CourseListAttributes on WebCourseList {
+    id
+    blockName
+    blockType
+    webCourseListData: data {
+        title
+        courses {
+            id
+            title
+            description
+            place
+            link {
+                label
+                url
+                target
+            }
+        }
+    }
+    webCourseListSettings: settings {
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
+        style
+    }
+}

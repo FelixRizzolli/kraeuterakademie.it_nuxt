@@ -1,0 +1,19 @@
+fragment MoodPictureAttributes on WebMoodPicture {
+    id
+    blockName
+    blockType
+    webMoodPictureData: data {
+        image {
+            ...MediaAttributes
+        }
+    }
+    webMoodPictureSettings: settings {
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
+        style
+    }
+}

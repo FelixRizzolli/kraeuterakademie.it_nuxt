@@ -1,0 +1,31 @@
+fragment SwiperLargeAttributes on WebSwiperLarge {
+    id
+    blockName
+    blockType
+    webSwiperLargeData: data {
+        title
+        items {
+            id
+            title
+            infos
+            description
+            link {
+                label
+                url
+                target
+            }
+            image {
+                ...MediaAttributes
+            }
+        }
+    }
+    webSwiperLargeSettings: settings {
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
+        style
+    }
+}

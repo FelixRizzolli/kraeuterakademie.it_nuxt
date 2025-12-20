@@ -1,0 +1,31 @@
+fragment BookListAttributes on WebBookList {
+    id
+    blockName
+    blockType
+    webBookListData: data {
+        title
+        books {
+            id
+            title
+            infos
+            description
+            cover {
+                ...MediaAttributes
+            }
+            link {
+                label
+                url
+                target
+            }
+        }
+    }
+    webBookListSettings: settings {
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
+        style
+    }
+}

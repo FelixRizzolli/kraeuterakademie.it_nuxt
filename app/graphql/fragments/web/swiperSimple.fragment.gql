@@ -1,0 +1,26 @@
+fragment SwiperSimpleAttributes on WebSwiperSimple {
+    id
+    blockName
+    blockType
+    webSwiperSimpleData: data {
+        slides {
+            id
+            title
+            images {
+                id
+                image {
+                    ...MediaAttributes
+                }
+            }
+        }
+    }
+    webSwiperSimpleSettings: settings {
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
+        style
+    }
+}

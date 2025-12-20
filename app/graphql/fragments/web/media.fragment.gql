@@ -1,0 +1,15 @@
+fragment MediaAttributes on WebMedia {
+    id
+    alt
+    updatedAt
+    createdAt
+    url
+    thumbnailURL
+    filename
+    mimeType
+    filesize
+    width
+    height
+    focalX
+    focalY
+}

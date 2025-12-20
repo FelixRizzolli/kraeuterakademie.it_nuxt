@@ -1,0 +1,24 @@
+fragment HighlightedLinksAttributes on WebHighlightedLinks {
+    id
+    blockName
+    blockType
+    webHighlightedLinksData: data {
+        links {
+            id
+            label
+            url
+            target
+            image {
+                ...MediaAttributes
+            }
+        }
+    }
+    webHighlightedLinksSettings: settings {
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
+    }
+}

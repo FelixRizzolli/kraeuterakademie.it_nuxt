@@ -1,0 +1,24 @@
+fragment HeroSmallAttributes on WebHeroSmall {
+    id
+    blockName
+    blockType
+    webHeroSmallData: data {
+        title
+        image {
+            ...MediaAttributes
+        }
+        link {
+            label
+            url
+            target
+        }
+    }
+    webHeroSmallSettings: settings {
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
+    }
+}

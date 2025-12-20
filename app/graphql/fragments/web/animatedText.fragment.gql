@@ -1,0 +1,17 @@
+fragment AnimatedTextAttributes on WebAnimatedText {
+    id
+    blockName
+    blockType
+    webAnimatedTextData: data {
+        text
+    }
+    webAnimatedTextSettings: settings {
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
+        style
+    }
+}

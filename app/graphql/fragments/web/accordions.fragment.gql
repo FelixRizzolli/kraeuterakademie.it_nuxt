@@ -1,0 +1,19 @@
+fragment AccordionsAttributes on WebAccordions {
+    data {
+        title
+        AccordionItems {
+            id
+            title
+            content
+        }
+    }
+    settings {
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
+        accordionsStyle: style
+    }
+}

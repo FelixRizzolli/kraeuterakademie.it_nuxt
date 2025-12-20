@@ -1,0 +1,27 @@
+fragment InfosAttributes on WebInfos {
+    id
+    blockName
+    blockType
+    webInfosData: data {
+        infos {
+            id
+            infos {
+                title
+                text
+            }
+            link {
+                label
+                url
+                target
+            }
+        }
+    }
+    webInfosSettings: settings {
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
+    }
+}

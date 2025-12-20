@@ -1,0 +1,23 @@
+fragment TextElementAttributes on WebTextElement {
+    id
+    blockName
+    blockType
+    webTextElementData: data {
+        title
+        content
+        link {
+            label
+            url
+            target
+        }
+    }
+    webTextElementSettings: settings {
+        spacing {
+            marginTop
+            marginBottom
+            paddingTop
+            paddingBottom
+        }
+        style
+    }
+}

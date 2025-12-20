@@ -1,0 +1,65 @@
+query findWebPages($where: WebPage_where) {
+    WebPages: WebPages(where: $where) {
+        docs {
+            id
+            title
+            updatedAt
+            createdAt
+            blocks {
+                __typename
+                ... on WebAccordions {
+                    ...AccordionsAttributes
+                }
+                ... on WebAnimatedText {
+                    ...AnimatedTextAttributes
+                }
+                ... on WebBookList {
+                    ...BookListAttributes
+                }
+                ... on WebCourseList {
+                    ...CourseListAttributes
+                }
+                ... on WebHeroLarge {
+                    ...HeroLargeAttributes
+                }
+                ... on WebHeroSmall {
+                    ...HeroSmallAttributes
+                }
+                ... on WebHighlightedLinks {
+                    ...HighlightedLinksAttributes
+                }
+                ... on WebImageText {
+                    ...ImageTextAttributes
+                }
+                ... on WebInfos {
+                    ...InfosAttributes
+                }
+                ... on WebMoodPicture {
+                    ...MoodPictureAttributes
+                }
+                ... on WebSwiperCard {
+                    ...SwiperCardAttributes
+                }
+                ... on WebSwiperLarge {
+                    ...SwiperLargeAttributes
+                }
+                ... on WebSwiperSimple {
+                    ...SwiperSimpleAttributes
+                }
+                ... on WebTextElement {
+                    ...TextElementAttributes
+                }
+            }
+        }
+        hasNextPage
+        hasPrevPage
+        limit
+        nextPage
+        offset
+        page
+        pagingCounter
+        prevPage
+        totalDocs
+        totalPages
+    }
+}
