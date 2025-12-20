@@ -2,7 +2,7 @@ fragment SwiperCardAttributes on WebSwiperCard {
     id
     blockName
     blockType
-    webSwiperCardData: data {
+    webSwiperCardContent: content {
         cards {
             id
             image {

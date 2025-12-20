@@ -2,7 +2,7 @@ fragment MoodPictureAttributes on WebMoodPicture {
     id
     blockName
     blockType
-    webMoodPictureData: data {
+    webMoodPictureContent: content {
         image {
             ...MediaAttributes
         }

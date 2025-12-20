@@ -2,7 +2,7 @@ fragment HeroLargeAttributes on WebHeroLarge {
     id
     blockName
     blockType
-    webHeroSmallData: data {
+    webHeroLargeContent: content {
         title
         image {
             ...MediaAttributes

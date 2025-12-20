@@ -2,7 +2,7 @@ fragment ImageTextAttributes on WebImageText {
     id
     blockName
     blockType
-    webImageTextData: data {
+    webImageTextContent: content {
         title
         textTop
         textHighlight

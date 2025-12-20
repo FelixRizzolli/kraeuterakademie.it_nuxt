@@ -2,7 +2,7 @@ fragment SwiperSimpleAttributes on WebSwiperSimple {
     id
     blockName
     blockType
-    webSwiperSimpleData: data {
+    webSwiperSimpleContent: content {
         slides {
             id
             title

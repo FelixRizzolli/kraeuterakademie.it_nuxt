@@ -2,7 +2,7 @@ fragment SwiperLargeAttributes on WebSwiperLarge {
     id
     blockName
     blockType
-    webSwiperLargeData: data {
+    webSwiperLargeContent: content {
         title
         items {
             id

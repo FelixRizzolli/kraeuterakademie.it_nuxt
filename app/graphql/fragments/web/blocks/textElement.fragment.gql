@@ -2,7 +2,7 @@ fragment TextElementAttributes on WebTextElement {
     id
     blockName
     blockType
-    webTextElementData: data {
+    webTextElementContent: content {
         title
         content
         link {

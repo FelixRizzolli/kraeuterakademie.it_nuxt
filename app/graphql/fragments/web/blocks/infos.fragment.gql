@@ -2,7 +2,7 @@ fragment InfosAttributes on WebInfos {
     id
     blockName
     blockType
-    webInfosData: data {
+    webInfosContent: content {
         infos {
             id
             infos {

@@ -2,7 +2,7 @@ fragment BookListAttributes on WebBookList {
     id
     blockName
     blockType
-    webBookListData: data {
+    webBookListContent: content {
         title
         books {
             id

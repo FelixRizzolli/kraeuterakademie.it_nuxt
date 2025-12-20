@@ -1,13 +1,16 @@
 fragment AccordionsAttributes on WebAccordions {
-    data {
+    id
+    blockName
+    blockType
+    webAccordionsContent: content {
         title
-        AccordionItems {
+        items {
             id
             title
             content
         }
     }
-    settings {
+    webAccordionsSettings: settings {
         spacing {
             marginTop
             marginBottom

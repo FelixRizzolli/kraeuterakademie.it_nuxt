@@ -2,7 +2,7 @@ fragment CourseListAttributes on WebCourseList {
     id
     blockName
     blockType
-    webCourseListData: data {
+    webCourseListContent: content {
         title
         courses {
             id

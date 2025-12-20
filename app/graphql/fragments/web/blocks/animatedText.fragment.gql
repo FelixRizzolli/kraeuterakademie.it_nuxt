@@ -2,7 +2,7 @@ fragment AnimatedTextAttributes on WebAnimatedText {
     id
     blockName
     blockType
-    webAnimatedTextData: data {
+    webAnimatedTextContent: content {
         text
     }
     webAnimatedTextSettings: settings {

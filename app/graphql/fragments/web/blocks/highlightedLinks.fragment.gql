@@ -2,7 +2,7 @@ fragment HighlightedLinksAttributes on WebHighlightedLinks {
     id
     blockName
     blockType
-    webHighlightedLinksData: data {
+    webHighlightedLinksContent: content {
         links {
             id
             label
