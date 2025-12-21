@@ -8,8 +8,8 @@ fragment ImageTextAttributes on WebImageText {
         textHighlight
         textBottom
         link {
-            label
-            url
+            text
+            href
             target
         }
         image {

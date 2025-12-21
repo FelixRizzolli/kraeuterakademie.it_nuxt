@@ -10,8 +10,8 @@ fragment InfosAttributes on WebInfos {
                 text
             }
             link {
-                label
-                url
+                text
+                href
                 target
             }
         }

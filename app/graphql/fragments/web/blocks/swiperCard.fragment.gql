@@ -12,8 +12,8 @@ fragment SwiperCardAttributes on WebSwiperCard {
             date
             title
             link {
-                label
-                url
+                text
+                href
                 target
             }
         }

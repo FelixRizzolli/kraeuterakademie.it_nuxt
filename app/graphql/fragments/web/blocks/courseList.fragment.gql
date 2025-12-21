@@ -10,8 +10,8 @@ fragment CourseListAttributes on WebCourseList {
             description
             place
             link {
-                label
-                url
+                text
+                href
                 target
             }
         }

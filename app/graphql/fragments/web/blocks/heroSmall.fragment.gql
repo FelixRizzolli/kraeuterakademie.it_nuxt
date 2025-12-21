@@ -8,8 +8,8 @@ fragment HeroSmallAttributes on WebHeroSmall {
             ...MediaAttributes
         }
         link {
-            label
-            url
+            text
+            href
             target
         }
     }

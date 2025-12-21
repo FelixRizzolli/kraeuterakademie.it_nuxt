@@ -10,8 +10,8 @@ fragment SwiperLargeAttributes on WebSwiperLarge {
             infos
             description
             link {
-                label
-                url
+                text
+                href
                 target
             }
             image {

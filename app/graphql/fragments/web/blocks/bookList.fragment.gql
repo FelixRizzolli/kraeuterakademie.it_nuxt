@@ -13,8 +13,8 @@ fragment BookListAttributes on WebBookList {
                 ...MediaAttributes
             }
             link {
-                label
-                url
+                text
+                href
                 target
             }
         }

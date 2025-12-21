@@ -6,8 +6,8 @@ fragment TextElementAttributes on WebTextElement {
         title
         content
         link {
-            label
-            url
+            text
+            href
             target
         }
     }
