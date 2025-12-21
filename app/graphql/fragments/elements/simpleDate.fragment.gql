@@ -1,4 +1,0 @@
-fragment SimpleDateAttributes on ComponentElementsSimpleDate {
-    id
-    date
-}

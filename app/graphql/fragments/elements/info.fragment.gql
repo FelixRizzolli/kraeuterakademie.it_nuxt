@@ -1,5 +1,0 @@
-fragment InfoAttributes on ComponentElementsInfo {
-    id
-    title
-    text
-}

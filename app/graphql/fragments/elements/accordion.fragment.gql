@@ -1,5 +1,0 @@
-fragment AccordionAttributes on ComponentElementsAccordion {
-    id
-    title
-    content
-}
