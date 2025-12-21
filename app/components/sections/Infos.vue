@@ -25,12 +25,6 @@
 <script lang="ts" setup>
     import { gsap } from 'gsap';
 
-    interface Link {
-        href: string;
-        text: string;
-        target?: string;
-    }
-
     interface Info {
         title?: string;
         text?: any;

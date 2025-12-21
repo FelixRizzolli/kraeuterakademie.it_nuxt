@@ -6,19 +6,12 @@
                 {{ data.link.text }}
             </NuxtLink>
         </div>
-        <StrapiImage v-if="data.image" :image="data.image" scale-animation />
+        <MediaElement v-if="data.image" :media="data.image" scale-animation />
     </SectionElement>
 </template>
 
 <script lang="ts" setup>
     import { gsap } from 'gsap';
-    import type { StrapiImage } from '../elements/StrapiImage.vue';
-
-    interface Link {
-        href: string;
-        text: string;
-        target?: string;
-    }
 
     interface HeroSmallData {
         title?: string;

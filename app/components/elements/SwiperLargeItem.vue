@@ -1,6 +1,6 @@
 <template>
     <div class="item-container">
-        <StrapiImage v-if="data.image" :image="data.image" ref="imageElement" />
+        <MediaElement v-if="data.image" :media="data.image" ref="imageElement" />
         <div class="content-container">
             <p v-if="data.infos" class="infos">{{ data.infos }}</p>
             <h3 v-if="data.title" class="title">{{ data.title }}</h3>
@@ -21,17 +21,6 @@
 </template>
 
 <script lang="ts" setup>
-    interface StrapiImage {
-        alternativeText: string | null;
-        url: string;
-    }
-
-    interface Link {
-        href: string;
-        text: string;
-        target?: string;
-    }
-
     export interface SwiperLargeItem {
         image: StrapiImage;
         infos?: string;

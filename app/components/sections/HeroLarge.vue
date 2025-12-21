@@ -3,13 +3,12 @@
         <div v-if="data.title" class="content-container grid-container">
             <h1 class="title">{{ data.title }}</h1>
         </div>
-        <StrapiImage v-if="data.image" :image="data.image" scale-animation />
+        <MediaElement v-if="data.image" :media="data.image" scale-animation />
     </SectionElement>
 </template>
 
 <script lang="ts" setup>
     import { gsap } from 'gsap';
-    import type { StrapiImage } from '../elements/StrapiImage.vue';
 
     interface Image {
         src: string;

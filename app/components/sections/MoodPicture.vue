@@ -1,12 +1,10 @@
 <template>
     <SectionElement class="contentelement_moodpicture" :spacing="settings?.spacing">
-        <StapiImage v-if="data.image" :image="data.image" scale-animation />
+        <MediaElement v-if="data.image" :media="data.image" scale-animation />
     </SectionElement>
 </template>
 
 <script lang="ts" setup>
-    import type { StrapiImage } from '../elements/StrapiImage.vue';
-
     interface Image {
         src: string;
         alt: string;

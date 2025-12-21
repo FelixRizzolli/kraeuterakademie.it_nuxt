@@ -10,7 +10,7 @@
             <ClientOnly>
                 <swiper-container ref="swiperContainer" class="swiper-container">
                     <swiper-slide v-for="(image, idx) in data.images" :key="idx" class="swiper-slide">
-                        <StrapiImage v-if="image" :image="image" ref="imageElement" />
+                        <MediaElement v-if="image" :media="image" ref="imageElement" />
                     </swiper-slide>
                 </swiper-container>
             </ClientOnly>
@@ -32,11 +32,6 @@
 <script lang="ts" setup>
     import { gsap } from 'gsap';
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-    interface StrapiImage {
-        alternativeText: string | null;
-        url: string;
-    }
 
     interface SwiperSimpleData {
         title?: string;

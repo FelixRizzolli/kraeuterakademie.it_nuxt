@@ -17,7 +17,7 @@
                 :class="{ 'scale-active': showHighlightedLinkElements[index] }"
             >
                 <span class="title">{{ imageLink.link.text }}</span>
-                <StrapiImage :image="imageLink.image" />
+                <MediaElement :media="imageLink.image" />
             </div>
         </NuxtLink>
     </SectionElement>
@@ -26,17 +26,6 @@
 <script lang="ts" setup>
     import { gsap } from 'gsap';
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-    interface StrapiImage {
-        alternativeText: string | null;
-        url: string;
-    }
-
-    interface Link {
-        href: string;
-        text: string;
-        target?: string;
-    }
 
     interface ImageLink {
         image: StrapiImage;

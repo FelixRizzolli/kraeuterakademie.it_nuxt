@@ -1,6 +1,6 @@
 <template>
     <div class="book scale-animation" :class="{ 'scale-active': showBookElement }" ref="bookElement">
-        <StrapiImage :image="book.image" />
+        <MediaElement :media="book.image" />
         <div class="infos-container">
             <LexicalRenderer class="infos" :nodes="book.infos" />
         </div>
@@ -21,17 +21,6 @@
     import { gsap } from 'gsap';
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
     const { isMobile } = useDevice();
-
-    interface StrapiImage {
-        alternativeText: string | null;
-        url: string;
-    }
-
-    interface Link {
-        href: string;
-        text: string;
-        target?: string;
-    }
 
     interface Book {
         image: StrapiImage;

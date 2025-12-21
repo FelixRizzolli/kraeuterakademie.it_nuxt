@@ -1,6 +1,6 @@
 <template>
     <div class="card-container">
-        <StrapiImage v-if="data.image" :image="data.image" ref="imageElement" />
+        <MediaElement v-if="data.image" :media="data.image" ref="imageElement" />
         <p v-if="data.info" class="info">{{ data.info }}</p>
         <p v-else-if="data.date" class="date">{{ data.date }}</p>
         <h3 v-if="data.title" class="title">{{ data.title }}</h3>
@@ -11,17 +11,6 @@
 </template>
 
 <script lang="ts" setup>
-    interface StrapiImage {
-        alternativeText: string | null;
-        url: string;
-    }
-
-    interface Link {
-        href: string;
-        text: string;
-        target?: string;
-    }
-
     export interface SwiperCardItem {
         image: StrapiImage;
         info?: string;

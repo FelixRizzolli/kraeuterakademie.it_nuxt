@@ -5,7 +5,7 @@
         :style="settings?.imageTextStyle"
     >
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
-        <StrapiImage v-if="data.image" :image="data.image" scale-animation ref="imageElement" />
+        <MediaElement v-if="data.image" :media="data.image" scale-animation ref="imageElement" />
         <div v-if="data.textTop" class="text" ref="textTopElement">
             <LexicalRenderer :nodes="data.textTop" />
         </div>
@@ -32,13 +32,6 @@
 
 <script lang="ts" setup>
     import { gsap } from 'gsap';
-    import type { StrapiImage } from '../elements/StrapiImage.vue';
-
-    interface Link {
-        href: string;
-        text: string;
-        target?: string;
-    }
 
     interface ImageTextData {
         title?: string;
