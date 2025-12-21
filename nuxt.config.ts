@@ -23,6 +23,8 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             strapiApiUrl: process.env.NODE_ENV === 'production' ? process.env.STRAPI_API_URL : 'http://localhost:1337',
+            payloadApiUrl:
+                process.env.NODE_ENV === 'production' ? process.env.PAYLOAD_API_URL : 'http://localhost:3001',
         },
     },
 

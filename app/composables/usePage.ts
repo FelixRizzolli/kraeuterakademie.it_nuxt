@@ -1,34 +1,23 @@
-import STRAPI_ERROR_FRAGMENT from '~/graphql/fragments/strapi/error.fragment.gql';
-import STRAPI_UPLOAD_FILE_FRAGMENT from '~/graphql/fragments/strapi/uploadFile.fragment.gql';
+import PAYLOAD_SEO_FRAGMENT from '~/graphql/fragments/payload/seo.fragment.gql';
 
-import SHARED_SEO_FRAGMENT from '~/graphql/fragments/shared/seo.fragment.gql';
+import MEDIA_FRAGMENT from '~/graphql/fragments/web/collections/media.fragment.gql';
 
-import ELEMENT_ACCORDION_FRAGMENT from '~/graphql/fragments/elements/accordion.fragment.gql';
-import ELEMENT_BOOK_FRAGMENT from '~/graphql/fragments/elements/book.fragment.gql';
-import ELEMENT_COURSE_FRAGMENT from '~/graphql/fragments/elements/course.fragment.gql';
-import ELEMENT_IMAGE_LINK_FRAGMENT from '~/graphql/fragments/elements/imageLink.fragment.gql';
-import ELEMENT_INFO_FRAGMENT from '~/graphql/fragments/elements/info.fragment.gql';
-import ELEMENT_LINK_FRAGMENT from '~/graphql/fragments/elements/link.fragment.gql';
-import ELEMENT_SIMPLE_DATE_FRAMENT from '~/graphql/fragments/elements/simpleDate.fragment.gql';
-import ELEMENT_SWIPER_CARD_ITEM_FRAGMENT from '~/graphql/fragments/elements/swiperCardItem.fragment.gql';
-import ELEMENT_SWIPER_LARGE_ITEM_FRAGMENT from '~/graphql/fragments/elements/swiperLargeItem.fragment.gql';
+import WEB_ACCORDIONS_FRAGMENT from '~/graphql/fragments/web/blocks/accordions.fragment.gql';
+import WEB_ANIMATED_TEXT_FRAGMENT from '~/graphql/fragments/web/blocks/animatedText.fragment.gql';
+import WEB_BOOK_LIST_FRAGMENT from '~/graphql/fragments/web/blocks/bookList.fragment.gql';
+import WEB_COURSE_LIST_FRAGMENT from '~/graphql/fragments/web/blocks/courseList.fragment.gql';
+import WEB_HERO_LARGE_FRAGMENT from '~/graphql/fragments/web/blocks/heroLarge.fragment.gql';
+import WEB_HERO_SMALL_FRAGMENT from '~/graphql/fragments/web/blocks/heroSmall.fragment.gql';
+import WEB_HIGHLIGHTED_LINKS_FRAGMENT from '~/graphql/fragments/web/blocks/highlightedLinks.fragment.gql';
+import WEB_IMAGE_TEXT_FRAGMENT from '~/graphql/fragments/web/blocks/imageText.fragment.gql';
+import WEB_INFOS_FRAGMENT from '~/graphql/fragments/web/blocks/infos.fragment.gql';
+import WEB_MOOD_PICTURE_FRAGMENT from '~/graphql/fragments/web/blocks/moodPicture.fragment.gql';
+import WEB_SWIPER_CARD_FRAGMENT from '~/graphql/fragments/web/blocks/swiperCard.fragment.gql';
+import WEB_SWIPER_LARGE_FRAGMENT from '~/graphql/fragments/web/blocks/swiperLarge.fragment.gql';
+import WEB_SWIPER_SIMPLE_FRAGMENT from '~/graphql/fragments/web/blocks/swiperSimple.fragment.gql';
+import WEB_TEXT_ELEMENT_FRAGMENT from '~/graphql/fragments/web/blocks/textElement.fragment.gql';
 
-import CONTENT_ACCORDIONS_FRAGMENT from '~/graphql/fragments/content/accordions.fragment.gql';
-import CONTENT_ANIMATED_TEXT_FRAGMENT from '~/graphql/fragments/content/animatedText.fragment.gql';
-import CONTENT_BOOK_LIST_FRAGMENT from '~/graphql/fragments/content/bookList.fragment.gql';
-import CONTENT_COURSE_LIST_FRAGMENT from '~/graphql/fragments/content/courseList.fragment.gql';
-import CONTENT_HERO_BIG_FRAGMENT from '~/graphql/fragments/content/heroLarge.fragment.gql';
-import CONTENT_HERO_SMALL_FRAGMENT from '~/graphql/fragments/content/heroSmall.fragment.gql';
-import CONTENT_HIGHLIGHTED_LINKS_FRAGMENT from '~/graphql/fragments/content/highlightedLinks.fragment.gql';
-import CONTENT_IMAGE_TEXT_FRAGMENT from '~/graphql/fragments/content/imageText.fragment.gql';
-import CONTENT_INFOS_FRAGMENT from '~/graphql/fragments/content/infos.fragment.gql';
-import CONTENT_MOOD_PICTURE_FRAGMENT from '~/graphql/fragments/content/moodPicture.fragment.gql';
-import CONTENT_SWIPER_CARD_FRAGMENT from '~/graphql/fragments/content/swiperCard.fragment.gql';
-import CONTENT_SWIPER_LARGE_FRAGMENT from '~/graphql/fragments/content/swiperLarge.fragment.gql';
-import CONTENT_SWIPER_SIMPLE_FRAGMENT from '~/graphql/fragments/content/swiperSimple.fragment.gql';
-import CONTENT_TEXT_ELEMENT_FRAGMENT from '~/graphql/fragments/content/textElement.fragment.gql';
-
-import FIND_PAGES_QUERY from '~/graphql/queries/findPages.gql';
+import FIND_WEB_PAGES_QUERY from '~/graphql/queries/findWebPages.gql';
 
 interface ContentComponent {
     name: string;
@@ -41,95 +30,108 @@ interface PageData {
     contentComponents: ContentComponent[];
 }
 
-const findPagesQuery = `
-    ${STRAPI_ERROR_FRAGMENT.loc.source.body}
-    ${STRAPI_UPLOAD_FILE_FRAGMENT.loc.source.body}
+const findWebPagesQuery = `
+    ${PAYLOAD_SEO_FRAGMENT.loc.source.body}
 
-    ${SHARED_SEO_FRAGMENT.loc.source.body}
+    ${MEDIA_FRAGMENT.loc.source.body}
 
-    ${ELEMENT_ACCORDION_FRAGMENT.loc.source.body}
-    ${ELEMENT_BOOK_FRAGMENT.loc.source.body}
-    ${ELEMENT_COURSE_FRAGMENT.loc.source.body}
-    ${ELEMENT_IMAGE_LINK_FRAGMENT.loc.source.body}
-    ${ELEMENT_INFO_FRAGMENT.loc.source.body}
-    ${ELEMENT_LINK_FRAGMENT.loc.source.body}
-    ${ELEMENT_SIMPLE_DATE_FRAMENT.loc.source.body}
-    ${ELEMENT_SWIPER_CARD_ITEM_FRAGMENT.loc.source.body}
-    ${ELEMENT_SWIPER_LARGE_ITEM_FRAGMENT.loc.source.body}
+    ${WEB_ACCORDIONS_FRAGMENT.loc.source.body}
+    ${WEB_ANIMATED_TEXT_FRAGMENT.loc.source.body}
+    ${WEB_BOOK_LIST_FRAGMENT.loc.source.body}
+    ${WEB_COURSE_LIST_FRAGMENT.loc.source.body}
+    ${WEB_HERO_LARGE_FRAGMENT.loc.source.body}
+    ${WEB_HERO_SMALL_FRAGMENT.loc.source.body}
+    ${WEB_HIGHLIGHTED_LINKS_FRAGMENT.loc.source.body}
+    ${WEB_IMAGE_TEXT_FRAGMENT.loc.source.body}
+    ${WEB_INFOS_FRAGMENT.loc.source.body}
+    ${WEB_MOOD_PICTURE_FRAGMENT.loc.source.body}
+    ${WEB_SWIPER_CARD_FRAGMENT.loc.source.body}
+    ${WEB_SWIPER_LARGE_FRAGMENT.loc.source.body}
+    ${WEB_SWIPER_SIMPLE_FRAGMENT.loc.source.body}
+    ${WEB_TEXT_ELEMENT_FRAGMENT.loc.source.body}
 
-    ${CONTENT_ACCORDIONS_FRAGMENT.loc.source.body}
-    ${CONTENT_ANIMATED_TEXT_FRAGMENT.loc.source.body}
-    ${CONTENT_BOOK_LIST_FRAGMENT.loc.source.body}
-    ${CONTENT_COURSE_LIST_FRAGMENT.loc.source.body}
-    ${CONTENT_HERO_BIG_FRAGMENT.loc.source.body}
-    ${CONTENT_HERO_SMALL_FRAGMENT.loc.source.body}
-    ${CONTENT_HIGHLIGHTED_LINKS_FRAGMENT.loc.source.body}
-    ${CONTENT_IMAGE_TEXT_FRAGMENT.loc.source.body}
-    ${CONTENT_INFOS_FRAGMENT.loc.source.body}
-    ${CONTENT_MOOD_PICTURE_FRAGMENT.loc.source.body}
-    ${CONTENT_SWIPER_CARD_FRAGMENT.loc.source.body}
-    ${CONTENT_SWIPER_LARGE_FRAGMENT.loc.source.body}
-    ${CONTENT_SWIPER_SIMPLE_FRAGMENT.loc.source.body}
-    ${CONTENT_TEXT_ELEMENT_FRAGMENT.loc.source.body}
-
-    ${FIND_PAGES_QUERY.loc.source.body}
+    ${FIND_WEB_PAGES_QUERY.loc.source.body}
 `;
 
 export const usePage = () => {
-    const gqlQuery = useStrapiGraphQL();
+    const gqlQuery = usePayloadGraphQL();
 
     /**
-     * Transforms component data from API format to application format
-     * @param components - Raw components from API response
+     * Transforms PayloadCMS block data to application format
+     * @param blocks - Raw blocks from PayloadCMS API response
      * @returns Transformed content components
      */
-    const transformComponents = (components: any[] = []): any[] => {
-        return components
-            .filter((component) => component?.__typename && !component.code) // Filter out error components
-            .map((component: any) => {
-                // Extract component name by removing the prefix, handling different formats
-                const componentName = component?.__typename.startsWith('ComponentContent')
-                    ? component?.__typename?.replace('ComponentContent', '') || 'unknown'
-                    : component?.__typename || 'unknown';
+    const transformBlocks = (blocks: any[] = []): ContentComponent[] => {
+        return blocks
+            .filter((block) => block?.__typename) // Filter out invalid blocks
+            .map((block: any) => {
+                // Extract component name by removing 'Web' prefix from PayloadCMS block types
+                // e.g., 'WebHeroLarge' -> 'HeroLarge'
+                const componentName = block?.__typename?.startsWith('Web')
+                    ? block.__typename.replace('Web', '')
+                    : block.__typename || 'unknown';
+
+                // PayloadCMS blocks structure: { webHeroLargeContent, webHeroLargeSettings, etc. }
+                // Find the content and settings fields dynamically
+                const blockPrefix = block.__typename.charAt(0).toLowerCase() + block.__typename.slice(1);
+                const contentKey = `${blockPrefix}Content`;
+                const settingsKey = `${blockPrefix}Settings`;
 
                 return {
                     name: componentName,
-                    data: component.data || {},
-                    settings: component.settings || {},
+                    data: block[contentKey] || block.content || {},
+                    settings: block[settingsKey] || block.settings || {},
                 };
             });
     };
 
     /**
-     * Fetches page data by URL
-     * @param url - The page URL to fetch
+     * Fetches page data by slug
+     * @param slug - The page slug to fetch
      * @returns Promise with the page data or null if not found
      */
-    const fetchPage = async (url: string): Promise<PageData | null> => {
+    const fetchPage = async (slug: string): Promise<PageData | null> => {
         try {
-            if (!url) {
-                throw new Error('URL parameter is required');
+            if (!slug) {
+                throw new Error('Slug parameter is required');
             }
 
-            const response = await gqlQuery<any>(findPagesQuery, {
-                filters: {
-                    url: { eq: url },
+            console.log('Fetching page with slug:', slug);
+
+            const response = await gqlQuery<any>(findWebPagesQuery, {
+                where: {
+                    slug: { equals: slug },
                 },
             });
 
-            const page = response?.data?.pages?.[0];
+            console.log('GraphQL Response:', response);
+
+            const page = response?.data?.WebPages?.docs?.[0];
 
             if (!page) {
-                console.warn(`Page with URL "${url}" not found`);
+                console.warn(`Page with slug "${slug}" not found`);
+                console.log('Available pages:', response?.data?.WebPages?.docs);
                 return null;
             }
 
+            console.log('Found page:', page);
+
             return {
-                seo: page.seo || {},
-                contentComponents: transformComponents(page.components),
+                seo: {
+                    title: page.title || '',
+                    description: page.description || '',
+                    image: page.image || null,
+                },
+                contentComponents: transformBlocks(page.blocks || []),
             };
         } catch (error) {
             console.error('Error fetching page data:', error);
+            if (error instanceof Error) {
+                console.error('Error details:', {
+                    message: error.message,
+                    stack: error.stack,
+                });
+            }
             throw error; // Re-throw error for further handling
         }
     };
