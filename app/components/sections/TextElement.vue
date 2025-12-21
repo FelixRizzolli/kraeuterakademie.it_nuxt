@@ -6,7 +6,7 @@
     >
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
         <div v-if="data.content" class="content" ref="contentElement">
-            <StrapiBlocksText :nodes="data.content" />
+            <LexicalRenderer :nodes="data.content" />
         </div>
         <NuxtLink
             v-if="data.link"

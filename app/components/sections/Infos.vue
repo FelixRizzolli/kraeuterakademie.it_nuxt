@@ -7,7 +7,7 @@
         <div class="info" v-for="(info, index) in data.infos" :key="index" ref="infoElements">
             <h3 v-if="info.title" class="title">{{ info.title }}</h3>
             <div v-if="info.text" class="text">
-                <StrapiBlocksText :nodes="info.text" />
+                <LexicalRenderer :nodes="info.text" />
             </div>
         </div>
         <NuxtLink

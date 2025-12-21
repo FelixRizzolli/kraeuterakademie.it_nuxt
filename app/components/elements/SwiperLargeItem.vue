@@ -5,7 +5,7 @@
             <p v-if="data.infos" class="infos">{{ data.infos }}</p>
             <h3 v-if="data.title" class="title">{{ data.title }}</h3>
             <div class="description-container">
-                <StrapiBlocksText class="description" :nodes="data.description" />
+                <LexicalRenderer class="description" :nodes="data.description" />
             </div>
             <div class="links-container">
                 <NuxtLink

@@ -7,7 +7,7 @@
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
         <StrapiImage v-if="data.image" :image="data.image" scale-animation ref="imageElement" />
         <div v-if="data.textTop" class="text" ref="textTopElement">
-            <StrapiBlocksText :nodes="data.textTop" />
+            <LexicalRenderer :nodes="data.textTop" />
         </div>
         <div
             v-if="data.textHighlight"
@@ -16,7 +16,7 @@
             ref="textHighlightElement"
         ></div>
         <div v-if="data.textBottom" class="text" ref="textBottomElement">
-            <StrapiBlocksText :nodes="data.textBottom" />
+            <LexicalRenderer :nodes="data.textBottom" />
         </div>
         <NuxtLink
             v-if="data.link"

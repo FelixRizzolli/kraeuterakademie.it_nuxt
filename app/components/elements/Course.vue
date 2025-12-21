@@ -6,7 +6,7 @@
             {{ formatDate(sortedDates[sortedDates.length - 1].date) }}</span
         >
         <div class="description">
-            <StrapiBlocksText :nodes="course.description" />
+            <LexicalRenderer :nodes="course.description" />
         </div>
         <a v-if="sortedDates" class="open-close" @click="toggleDates">{{ toggleDatesTextBlock }}</a>
         <div class="dates" ref="datesContainer">

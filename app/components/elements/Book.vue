@@ -2,12 +2,12 @@
     <div class="book scale-animation" :class="{ 'scale-active': showBookElement }" ref="bookElement">
         <StrapiImage :image="book.image" />
         <div class="infos-container">
-            <StrapiBlocksText class="infos" :nodes="book.infos" />
+            <LexicalRenderer class="infos" :nodes="book.infos" />
         </div>
         <h3 class="title">{{ book.title }}</h3>
         <div class="description-container">
             <div class="description truncate" ref="descriptionElement">
-                <StrapiBlocksText class="description" :nodes="book.description" />
+                <LexicalRenderer class="description" :nodes="book.description" />
             </div>
             <button class="more" @click="toggleTruncate">{{ moreTextBlock }}</button>
         </div>

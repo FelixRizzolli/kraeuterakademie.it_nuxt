@@ -19,7 +19,7 @@
                     </summary>
                     <section class="accordion-content accordion-grid">
                         <div class="inner">
-                            <StrapiBlocksText :nodes="accordion.content" />
+                            <LexicalRenderer :nodes="accordion.content" />
                         </div>
                     </section>
                 </details>
