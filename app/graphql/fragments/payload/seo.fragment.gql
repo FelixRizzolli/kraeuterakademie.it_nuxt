@@ -1,0 +1,7 @@
+fragment PayloadSeoAttributes on WebPage {
+    title
+    description
+    image {
+        ...MediaAttributes
+    }
+}

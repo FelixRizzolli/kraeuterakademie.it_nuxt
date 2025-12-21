@@ -2,9 +2,10 @@ query findWebPages($where: WebPage_where) {
     WebPages: WebPages(where: $where) {
         docs {
             id
-            title
+            slug
             updatedAt
             createdAt
+            ...PayloadSeoAttributes
             blocks {
                 __typename
                 ... on WebAccordions {
