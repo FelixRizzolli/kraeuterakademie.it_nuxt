@@ -1,62 +1,83 @@
-import STRAPI_UPLOAD_FILE_FRAGMENT from '~/graphql/fragments/strapi/uploadFile.fragment.gql';
+import MEDIA_FRAGMENT from '~/graphql/fragments/web/collections/media.fragment.gql';
 
-import ELEMENTS_ADDRESS_FRAGMENT from '~/graphql/fragments/elements/address.fragment.gql';
-import ELEMENTS_CONTACT_FRAGMENT from '~/graphql/fragments/elements/contact.fragment.gql';
-import ELEMENTS_LINK_FRAGMENT from '~/graphql/fragments/elements/link.fragment.gql';
-import ELEMENTS_PARTNER_FRAGMENT from '~/graphql/fragments/elements/partner.fragment.gql';
-import ELEMENTS_SOCIAL_FRAGMENT from '~/graphql/fragments/elements/social.fragment.gql';
+import HEADER_FRAGMENT from '~/graphql/fragments/globals/header.fragment.gql';
+import FOOTER_FRAGMENT from '~/graphql/fragments/globals/footer.fragment.gql';
+import SIDEBAR_FRAGMENT from '~/graphql/fragments/globals/sidebar.fragment.gql';
+import CONTACT_FRAGMENT from '~/graphql/fragments/globals/contact.fragment.gql';
 
-import SHARED_FOOTER_FRAGMENT from '~/graphql/fragments/shared/footer.fragment.gql';
-import SHARED_HEADER_FRAGMENT from '~/graphql/fragments/shared/header.fragment.gql';
-import SHARED_SIDEBAR_FRAGMENT from '~/graphql/fragments/shared/sidebar.fragment.gql';
-import SHARED_TEXT_BLOCK_FRAGMENT from '~/graphql/fragments/shared/textBlock.fragment.gql';
-
-import FIND_GLOBAL_QUERY from '~/graphql/queries/findGlobal.gql';
+import FIND_GLOBALS_QUERY from '~/graphql/queries/findGlobals.gql';
 
 interface GlobalData {
     header: any;
     footer: any;
     textblocks: Array<any>;
+    partners: Array<any>;
+    socials: Array<any>;
 }
 
-const findGlobalQuery = `
-    ${STRAPI_UPLOAD_FILE_FRAGMENT.loc.source.body}
+const findGlobalsQuery = `
+    ${MEDIA_FRAGMENT.loc.source.body}
 
-    ${ELEMENTS_ADDRESS_FRAGMENT.loc.source.body}
-    ${ELEMENTS_CONTACT_FRAGMENT.loc.source.body}
-    ${ELEMENTS_LINK_FRAGMENT.loc.source.body}
-    ${ELEMENTS_PARTNER_FRAGMENT.loc.source.body}
-    ${ELEMENTS_SOCIAL_FRAGMENT.loc.source.body}
+    ${HEADER_FRAGMENT.loc.source.body}
+    ${FOOTER_FRAGMENT.loc.source.body}
+    ${SIDEBAR_FRAGMENT.loc.source.body}
+    ${CONTACT_FRAGMENT.loc.source.body}
 
-    ${SHARED_FOOTER_FRAGMENT.loc.source.body}
-    ${SHARED_HEADER_FRAGMENT.loc.source.body}
-    ${SHARED_SIDEBAR_FRAGMENT.loc.source.body}
-    ${SHARED_TEXT_BLOCK_FRAGMENT.loc.source.body}
-
-    ${FIND_GLOBAL_QUERY.loc.source.body}
+    ${FIND_GLOBALS_QUERY.loc.source.body}
 `;
 
 export const useGlobal = () => {
-    const gqlQuery = useStrapiGraphQL();
+    const gqlQuery = usePayloadGraphQL();
 
     /**
-     * Fetch global data from Strapi.
-     * This includes header, sidebar, and footer information.
+     * Fetch global data from PayloadCMS.
+     * This includes header, sidebar, footer, contact, partners, socials, and textblocks.
      * @return {Promise<GlobalData | null>} The global data or null if not found.
      * @throws {Error} If there is an error during the fetch operation.
      **/
     const fetchGlobal = async (): Promise<GlobalData | null> => {
         try {
-            const response = await gqlQuery<any>(findGlobalQuery);
+            // Fetch globals (Header, Footer, Sidebar, Contact)
+            const response = await gqlQuery<any>(findGlobalsQuery);
 
-            const globalData = response?.data?.global;
+            const header = response?.data?.Header;
+            const footer = response?.data?.Footer;
+            const sidebar = response?.data?.Sidebar;
+            const contact = response?.data?.Contact;
+            const partners = response?.data?.WebPartners?.docs || [];
+            const socials = response?.data?.WebSocials?.docs || [];
+            const textblocks = response?.data?.WebTextBlocks?.docs || [];
 
-            if (!globalData) {
+            if (!header || !footer) {
                 console.warn('Global data not found');
                 return null;
             }
 
-            return globalData;
+            // Restructure the footer to match the expected component structure
+            const restructuredFooter = {
+                ...footer,
+                address: contact?.address,
+                contact: {
+                    phone: contact?.phone,
+                    mail: contact?.mail,
+                },
+                partners,
+                socials,
+            };
+
+            // Add sidebar to header if it exists
+            const restructuredHeader = {
+                ...header,
+                sidebar,
+            };
+
+            return {
+                header: restructuredHeader,
+                footer: restructuredFooter,
+                textblocks,
+                partners,
+                socials,
+            };
         } catch (error) {
             console.error('Error fetching global data:', error);
             throw error; // Re-throw error for further handling

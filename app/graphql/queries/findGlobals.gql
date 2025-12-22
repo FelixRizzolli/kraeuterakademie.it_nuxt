@@ -1,0 +1,23 @@
+query findGlobals {
+    Header {
+        ...HeaderAttributes
+    }
+    Footer {
+        ...FooterAttributes
+    }
+    Sidebar {
+        ...SidebarAttributes
+    }
+    Contact {
+        ...ContactAttributes
+    }
+    WebPartners {
+        ...PartnersAttributes
+    }
+    WebSocials {
+        ...SocialsAttributes
+    }
+    WebTextBlocks {
+        ...TextBlocksAttributes
+    }
+}

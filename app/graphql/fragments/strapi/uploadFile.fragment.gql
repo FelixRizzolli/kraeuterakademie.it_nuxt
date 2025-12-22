@@ -1,4 +1,0 @@
-fragment UploadFileAttributes on UploadFile {
-    alternativeText
-    url
-}

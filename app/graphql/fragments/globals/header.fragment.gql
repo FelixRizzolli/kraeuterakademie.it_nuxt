@@ -1,0 +1,8 @@
+fragment HeaderAttributes on Header {
+    links {
+        href
+        text
+        target
+        id
+    }
+}

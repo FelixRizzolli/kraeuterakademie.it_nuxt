@@ -1,4 +1,0 @@
-fragment ErrorAttributes on Error {
-    code
-    message
-}

@@ -1,0 +1,7 @@
+fragment TextBlocksAttributes on WebTextBlocks {
+    docs {
+        id
+        slug
+        value
+    }
+}

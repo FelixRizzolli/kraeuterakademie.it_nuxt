@@ -6,26 +6,15 @@
             :key="index"
             :target="partner.link.target ?? '_self'"
         >
-            <StrapiImage v-if="partner.image" :image="partner.image" scale-animation />
+            <MediaElement v-if="partner.image" :media="partner.image" scale-animation />
         </NuxtLink>
     </div>
 </template>
 
 <script lang="ts" setup>
-    interface StrapiImage {
-        alternativeText: string | null;
-        url: string;
-    }
-
-    interface Link {
-        href: string;
-        text: string;
-        target?: string;
-    }
-
     interface Partner {
         link: Link;
-        image: StrapiImage;
+        image: WebMedia;
     }
 
     interface FooterPartnerProps {

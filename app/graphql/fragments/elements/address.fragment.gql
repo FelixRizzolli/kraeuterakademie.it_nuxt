@@ -1,5 +1,0 @@
-fragment AddressAttributes on ComponentElementsAddress {
-    name
-    street
-    place
-}

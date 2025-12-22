@@ -1,0 +1,14 @@
+fragment SocialAttributes on WebSocials {
+    docs {
+        id
+        link {
+            href
+            text
+            target
+        }
+        icon
+        backgroundImage {
+            ...MediaAttributes
+        }
+    }
+}

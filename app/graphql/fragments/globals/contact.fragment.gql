@@ -1,0 +1,15 @@
+fragment ContactAttributes on Contact {
+    name
+    phone {
+        href
+        text
+    }
+    mail {
+        href
+        text
+    }
+    address {
+        street
+        place
+    }
+}

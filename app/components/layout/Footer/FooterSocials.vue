@@ -8,7 +8,7 @@
             :class="{ 'scale-active': showSocialElements[index] }"
         >
             <NuxtLink class="social" :to="social.link.href" :target="social.link.target ?? '_self'">
-                <StrapiImage v-if="social.backgroundImage" :image="social.backgroundImage" />
+                <MediaElement v-if="social.backgroundImage" :media="social.backgroundImage" />
                 <component :is="'i-' + social.icon" />
             </NuxtLink>
         </div>
@@ -18,16 +18,10 @@
 <script lang="ts" setup>
     import { gsap } from 'gsap';
 
-    interface Link {
-        href: string;
-        text: string;
-        target?: string;
-    }
-
     interface Social {
         icon: string;
         link: Link;
-        backgroundImage: any;
+        backgroundImage: WebMedia;
     }
 
     interface SocialProps {

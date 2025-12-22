@@ -1,0 +1,10 @@
+fragment FooterAttributes on Footer {
+    text1
+    text2
+    links {
+        href
+        text
+        target
+        id
+    }
+}

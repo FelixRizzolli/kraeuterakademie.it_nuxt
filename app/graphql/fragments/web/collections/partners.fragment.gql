@@ -1,0 +1,14 @@
+fragment PartnerAttributes on WebPartners {
+    docs {
+        id
+        name
+        link {
+            href
+            text
+            target
+        }
+        image {
+            ...MediaAttributes
+        }
+    }
+}

@@ -1,0 +1,13 @@
+fragment SidebarAttributes on Sidebar {
+    logoLink {
+        href
+        text
+        target
+    }
+    links {
+        href
+        text
+        target
+        id
+    }
+}

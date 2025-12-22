@@ -3,10 +3,10 @@
         <FooterAddress v-if="data.address" :data="data.address" />
         <FooterContact v-if="data.contact" :data="data.contact" />
         <div v-if="data.text1" class="text1" ref="text1Element">
-            <StrapiBlocksText :nodes="data.text1" />
+            <LexicalRenderer :nodes="data.text1" />
         </div>
         <div v-if="data.text2" class="text2" ref="text2Element">
-            <StrapiBlocksText :nodes="data.text2" />
+            <LexicalRenderer :nodes="data.text2" />
         </div>
         <FooterSocials v-if="data?.socials" :socials="data.socials" />
         <FooterLinks v-if="data?.links" :links="data.links" />
