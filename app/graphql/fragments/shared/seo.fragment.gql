@@ -1,8 +1,0 @@
-fragment SeoAttributes on ComponentSharedSeo {
-    id
-    metaTitle
-    metaDescription
-    metaKeywords
-    index
-    follow
-}

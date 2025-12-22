@@ -5,7 +5,11 @@ query findWebPages($where: WebPage_where) {
             slug
             updatedAt
             createdAt
-            ...PayloadSeoAttributes
+            title
+            description
+            image {
+                ...MediaAttributes
+            }
             blocks {
                 __typename
                 ... on WebAccordions {
