@@ -1,6 +1,6 @@
 <template>
     <section class="course" ref="courseElement">
-        <h3 class="title">{{ course.title }}</h3>
+        <h3 class="title">{{ course.name }}</h3>
         <span v-if="sortedDates" class="key-infos"
             >{{ course.place }} | {{ formatDate(sortedDates[0].date) }} -
             {{ formatDate(sortedDates[sortedDates.length - 1].date) }}</span
@@ -14,7 +14,7 @@
                 {{ formatDate2(date.date) }}
             </p>
         </div>
-        <NuxtLink v-if="course.link" class="link-button" :to="course.link?.href">{{ course.link?.text }}</NuxtLink>
+        <!-- <NuxtLink v-if="course.link" class="link-button" :to="course.link?.href">{{ course.link?.text }}</NuxtLink> -->
     </section>
 </template>
 
@@ -29,14 +29,15 @@
     }
 
     export interface Course {
-        title: string;
+        name: string;
         place: string;
         description: any;
         dates: Array<CourseDate>;
-        link?: {
-            href: string;
-            text: string;
-        };
+        // TODO: use textblock
+        // link?: {
+        //     href: string;
+        //     text: string;
+        // };
     }
 
     export interface CourseProps {

@@ -6,14 +6,9 @@ fragment CourseListAttributes on WebCourseList {
         title
         courses {
             id
-            title
+            name
             description
             place
-            link {
-                text
-                href
-                target
-            }
         }
     }
     webCourseListSettings: settings {
