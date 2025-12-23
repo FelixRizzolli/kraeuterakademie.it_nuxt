@@ -1,5 +1,3 @@
-import PAYLOAD_SEO_FRAGMENT from '~/graphql/fragments/payload/seo.fragment.gql';
-
 import MEDIA_FRAGMENT from '~/graphql/fragments/web/collections/media.fragment.gql';
 
 import WEB_ACCORDIONS_FRAGMENT from '~/graphql/fragments/web/blocks/accordions.fragment.gql';
@@ -31,8 +29,6 @@ interface PageData {
 }
 
 const findWebPagesQuery = `
-    ${PAYLOAD_SEO_FRAGMENT.loc.source.body}
-
     ${MEDIA_FRAGMENT.loc.source.body}
 
     ${WEB_ACCORDIONS_FRAGMENT.loc.source.body}
