@@ -53,16 +53,3 @@ export type {
     WebSwiperSimple,
     WebTextElement,
 } from './collections';
-
-// Legacy types (kept for backward compatibility during migration)
-export interface StrapiImage {
-    alternativeText: string | null;
-    url: string;
-}
-
-export interface WebMedia {
-    id: string;
-    url: string;
-    alt?: string | null;
-    mimeType?: string;
-}
