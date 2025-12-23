@@ -1,0 +1,45 @@
+overwrite: true
+schema: 'http://localhost:3001/api/graphql'
+documents: 'app/graphql/**/*.gql'
+generates:
+    shared/types/graphql.d.ts:
+        plugins:
+            - 'typescript'
+            - 'typescript-operations'
+            - 'typed-document-node'
+        config:
+            # Type generation options
+            skipTypename: false
+            enumsAsTypes: true
+            futureProofEnums: true
+
+            # Naming conventions
+            namingConvention:
+                typeNames: pascal-case#pascalCase
+                enumValues: keep
+                transformUnderscore: true
+
+            # Scalars
+            scalars:
+                DateTime: string
+                JSON: '{ [key: string]: any }'
+                EmailAddress: string
+
+            # Type safety
+            avoidOptionals:
+                field: false
+                inputValue: false
+                object: false
+
+            # Make all fields possibly null (matches GraphQL behavior)
+            maybeValue: T | null
+
+            # Generate both types and document nodes
+            documentMode: documentNodeString
+
+            # Add useful utility types
+            addUnderscoreToArgsType: true
+
+hooks:
+    afterAllFileWrite:
+        - prettier --write
