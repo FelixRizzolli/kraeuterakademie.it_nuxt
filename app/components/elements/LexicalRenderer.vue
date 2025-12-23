@@ -5,13 +5,7 @@
 <script lang="ts" setup>
     import { h, type VNode } from 'vue';
 
-    // Lexical Node Types
-    interface LexicalNode {
-        type: string;
-        version?: number;
-        [key: string]: any;
-    }
-
+    // Lexical Node Types - keeping local definitions for specifics
     interface TextNode extends LexicalNode {
         type: 'text';
         text: string;
@@ -102,7 +96,7 @@
     } as const;
 
     interface LexicalRendererProps {
-        nodes: LexicalNode[] | { root: RootNode };
+        nodes: RichText;
     }
 
     const props = defineProps<LexicalRendererProps>();

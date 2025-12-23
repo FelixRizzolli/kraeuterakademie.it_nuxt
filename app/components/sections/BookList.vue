@@ -21,7 +21,7 @@
     }
 
     interface BookListSettings {
-        spacing: any;
+        spacing: Spacing;
         bookListStyle: string;
     }
 

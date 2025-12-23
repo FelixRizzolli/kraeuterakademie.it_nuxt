@@ -31,7 +31,7 @@
     export interface Course {
         name: string;
         place: string;
-        description: any;
+        description: RichText;
         dates: Array<CourseDate>;
         // TODO: use textblock
         // link?: {

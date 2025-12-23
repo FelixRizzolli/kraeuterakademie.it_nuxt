@@ -27,7 +27,7 @@
 
     interface Info {
         title?: string;
-        text?: any;
+        text?: RichText;
     }
 
     interface InfosData {
@@ -36,7 +36,7 @@
     }
 
     interface InfosSettings {
-        spacing: any;
+        spacing: Spacing;
         infosStyle: string;
     }
 

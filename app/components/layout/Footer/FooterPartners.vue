@@ -1,22 +1,22 @@
 <template>
     <div class="partner">
         <NuxtLink
-            :to="partner.link.href"
             v-for="(partner, index) in partners"
             :key="index"
+            v-if="partner.link"
+            :to="partner.link.href || '#'"
             :target="partner.link.target ?? '_self'"
         >
-            <MediaElement v-if="partner.image" :media="partner.image" scale-animation />
+            <MediaElement
+                v-if="partner.image && typeof partner.image === 'object'"
+                :media="partner.image"
+                scale-animation
+            />
         </NuxtLink>
     </div>
 </template>
 
 <script lang="ts" setup>
-    interface Partner {
-        link: Link;
-        image: WebMedia;
-    }
-
     interface FooterPartnerProps {
         partners: Array<Partner>;
     }

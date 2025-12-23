@@ -56,7 +56,12 @@ export const useGlobal = () => {
             // Restructure the footer to match the expected component structure
             const restructuredFooter = {
                 ...footer,
-                address: contact?.address,
+                address: contact?.address
+                    ? {
+                          ...contact.address,
+                          name: contact.name,
+                      }
+                    : null,
                 contact: {
                     phone: contact?.phone,
                     mail: contact?.mail,

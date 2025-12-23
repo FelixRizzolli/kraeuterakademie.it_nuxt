@@ -16,11 +16,11 @@
     interface HeroSmallData {
         title?: string;
         link?: Link;
-        image?: StrapiImage;
+        image?: Media;
     }
 
     interface HeroSmallSettings {
-        spacing: any;
+        spacing: Spacing;
     }
 
     export interface HeroSmallProps {

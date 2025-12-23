@@ -1,7 +1,7 @@
 <template>
     <nav class="footer-links" ref="containerElement">
         <span v-for="(link, index) in links" :key="index" class="link-wrapper">
-            <NuxtLink class="link" :to="link.href" :target="link.target ?? '_self'">{{ link.text }}</NuxtLink>
+            <NuxtLink class="link" :to="link.href || '#'" :target="link.target ?? '_self'">{{ link.text }}</NuxtLink>
             <span v-if="index < links.length - 1" class="sep">.</span>
         </span>
     </nav>
@@ -12,14 +12,8 @@
 
     const containerElement = ref<HTMLElement>();
 
-    interface Link {
-        href: string;
-        text: string;
-        target?: string;
-    }
-
     interface FooterLinksProps {
-        links: Array<Link>;
+        links: Array<NavigationLink>;
     }
 
     const props = defineProps<FooterLinksProps>();

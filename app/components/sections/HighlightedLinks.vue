@@ -28,7 +28,7 @@
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
     interface ImageLink {
-        image: StrapiImage;
+        image: Media;
         link: Link;
     }
 
@@ -37,7 +37,7 @@
     }
 
     interface HighlightedLinksSettings {
-        spacing: any;
+        spacing: Spacing;
         highlightedLinksStyle: string;
     }
 

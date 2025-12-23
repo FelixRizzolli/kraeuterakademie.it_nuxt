@@ -1,7 +1,11 @@
 <template>
     <div class="contact" ref="containerElement">
-        <a :href="data.phone.href" class="link" :target="data.phone.target ?? '_self'">{{ data.phone.text }}</a>
-        <a :href="data.mail.href" class="link" :target="data.phone.target ?? '_self'">{{ data.mail.text }}</a>
+        <a v-if="data.phone" :href="data.phone.href || '#'" class="link" :target="data.phone.target ?? '_self'">{{
+            data.phone.text
+        }}</a>
+        <a v-if="data.mail" :href="data.mail.href || '#'" class="link" :target="data.mail.target ?? '_self'">{{
+            data.mail.text
+        }}</a>
     </div>
 </template>
 
@@ -10,19 +14,8 @@
 
     const containerElement = ref<HTMLElement>();
 
-    interface Link {
-        href: string;
-        text: string;
-        target?: string;
-    }
-
-    interface FooterContactData {
-        phone: Link;
-        mail: Link;
-    }
-
     export interface FooterContactProps {
-        data: FooterContactData;
+        data: ContactData;
     }
 
     const props = defineProps<FooterContactProps>();

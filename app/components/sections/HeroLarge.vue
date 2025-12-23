@@ -17,11 +17,11 @@
 
     interface HeroLargeData {
         title?: string;
-        image?: StrapiImage;
+        image?: Media;
     }
 
     interface HeroLargeSettings {
-        spacing: any;
+        spacing: Spacing;
     }
 
     export interface HeroLargeProps {

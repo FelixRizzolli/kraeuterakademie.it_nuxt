@@ -37,6 +37,10 @@ export default defineNuxtConfig({
     compatibilityDate: '2025-08-29',
     devtools: { enabled: true },
 
+    imports: {
+        dirs: ['shared/types'],
+    },
+
     css: ['@/assets/styles/base.scss', '@/assets/styles/layout.scss', '@/assets/styles/grid-layout.scss'],
 
     plugins: ['~/plugins/pinia.ts'],

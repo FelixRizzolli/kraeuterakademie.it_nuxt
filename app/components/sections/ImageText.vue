@@ -35,15 +35,15 @@
 
     interface ImageTextData {
         title?: string;
-        image?: StrapiImage;
-        textTop?: any;
+        image?: Media;
+        textTop?: RichText;
         textHighlight?: string;
-        textBottom?: any;
+        textBottom?: RichText;
         link?: Link;
     }
 
     interface ImageTextSettings {
-        spacing: any;
+        spacing: Spacing;
         imageTextStyle: string;
     }
 

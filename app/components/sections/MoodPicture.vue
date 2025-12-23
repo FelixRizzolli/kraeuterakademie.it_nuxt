@@ -11,11 +11,11 @@
     }
 
     interface MoodPictureData {
-        image: StrapiImage;
+        image: Media;
     }
 
     interface MoodPictureSettings {
-        spacing: any;
+        spacing: Spacing;
     }
 
     export interface MoodPictureProps {

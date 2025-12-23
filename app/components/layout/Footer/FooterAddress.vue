@@ -11,14 +11,8 @@
 
     const containerElement = ref<HTMLElement>();
 
-    export interface FooterAddressData {
-        name?: string;
-        street?: string;
-        place?: string;
-    }
-
     interface FooterAddressProps {
-        data: FooterAddressData;
+        data: AddressData;
     }
 
     const props = defineProps<FooterAddressProps>();

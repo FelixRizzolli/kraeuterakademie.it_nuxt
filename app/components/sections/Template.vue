@@ -15,7 +15,7 @@
     interface TemplateData {}
 
     interface TemplateSettings {
-        spacing: any;
+        spacing: Spacing;
         templateStyle: string;
     }
 

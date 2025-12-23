@@ -18,7 +18,7 @@
     }
 
     interface AnimatedTextSettings {
-        spacing: any;
+        spacing: Spacing;
         animatedTextStyle: string;
     }
 

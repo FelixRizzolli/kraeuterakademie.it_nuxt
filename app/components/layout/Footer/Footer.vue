@@ -18,13 +18,13 @@
     import { gsap } from 'gsap';
 
     export interface FooterData {
-        address: any;
-        contact: any;
-        text1: any;
-        text2: any;
-        socials: any;
-        links: any;
-        partners: any;
+        address?: AddressData | null;
+        contact?: ContactData | null;
+        text1?: RichText | null;
+        text2?: RichText | null;
+        socials?: Array<Social> | null;
+        links?: Array<NavigationLink> | null;
+        partners?: Array<Partner> | null;
     }
 
     interface FooterProps {

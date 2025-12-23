@@ -25,12 +25,12 @@
 
     interface TextElementData {
         title?: string;
-        content?: any;
+        content?: RichText;
         link?: Link;
     }
 
     interface TextElementSettings {
-        spacing: any;
+        spacing: Spacing;
         textElementStyle: string;
     }
 

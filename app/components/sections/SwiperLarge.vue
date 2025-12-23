@@ -38,7 +38,7 @@
     }
 
     interface SwiperLargeSettings {
-        spacing: any;
+        spacing: Spacing;
         swiperLargeStyle: string;
     }
 

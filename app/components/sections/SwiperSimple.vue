@@ -35,11 +35,11 @@
 
     interface SwiperSimpleData {
         title?: string;
-        images: Array<StrapiImage>;
+        images: Array<Media>;
     }
 
     interface SwiperSimpleSettings {
-        spacing: any;
+        spacing: Spacing;
         swiperSimpleStyle: string;
     }
 

@@ -21,7 +21,7 @@
     }
 
     interface CourseListSettings {
-        spacing: any;
+        spacing: Spacing;
         courseListStyle: string;
     }
 

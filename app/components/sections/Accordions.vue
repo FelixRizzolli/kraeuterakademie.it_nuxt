@@ -34,7 +34,7 @@
 
     interface Accordion {
         title: string;
-        content: any;
+        content: RichText;
     }
 
     interface AccordionsData {
@@ -43,7 +43,7 @@
     }
 
     interface AccordionsSettings {
-        spacing: any;
+        spacing: Spacing;
         accordionsStyle: string;
     }
 

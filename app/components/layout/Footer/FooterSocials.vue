@@ -7,9 +7,17 @@
             ref="socialElements"
             :class="{ 'scale-active': showSocialElements[index] }"
         >
-            <NuxtLink class="social" :to="social.link.href" :target="social.link.target ?? '_self'">
-                <MediaElement v-if="social.backgroundImage" :media="social.backgroundImage" />
-                <component :is="'i-' + social.icon" />
+            <NuxtLink
+                v-if="social.link"
+                class="social"
+                :to="social.link.href || '#'"
+                :target="social.link.target ?? '_self'"
+            >
+                <MediaElement
+                    v-if="social.backgroundImage && typeof social.backgroundImage === 'object'"
+                    :media="social.backgroundImage"
+                />
+                <component v-if="social.icon" :is="'i-' + social.icon" />
             </NuxtLink>
         </div>
     </div>
@@ -17,12 +25,6 @@
 
 <script lang="ts" setup>
     import { gsap } from 'gsap';
-
-    interface Social {
-        icon: string;
-        link: Link;
-        backgroundImage: WebMedia;
-    }
 
     interface SocialProps {
         socials: Array<Social>;

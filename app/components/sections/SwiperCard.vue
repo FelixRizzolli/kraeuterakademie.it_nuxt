@@ -38,7 +38,7 @@
     }
 
     interface SwiperCardSettings {
-        spacing: any;
+        spacing: Spacing;
         swiperCardStyle: string;
     }
 
