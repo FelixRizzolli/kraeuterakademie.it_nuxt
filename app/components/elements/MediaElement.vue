@@ -5,8 +5,8 @@
         ref="mediaElement"
         :class="{ 'scale-active': showMediaElement && scaleAnimation, 'scale-animation': scaleAnimation }"
     >
-        <img v-if="isImage" class="media" :src="fileURL" :alt="media.alt || 'Media'" />
-        <video v-else-if="isVideo" class="media" :src="fileURL" controls />
+        <img v-if="isImage" class="image" :src="fileURL" :alt="media.alt || 'Media'" />
+        <video v-else-if="isVideo" class="video" :src="fileURL" controls />
         <!-- Extend for audio or other types if needed -->
     </div>
 </template>
@@ -44,9 +44,13 @@
 </script>
 
 <style lang="scss" scoped>
-    .media {
+    .video,
+    .image {
         @include transition();
-        width: 100%;
-        height: auto;
+
+        & {
+            width: 100%;
+            height: auto;
+        }
     }
 </style>
