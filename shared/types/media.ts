@@ -4,45 +4,23 @@
  */
 
 /**
- * Full media object from PayloadCMS WebMedia collection
- */
-export interface Media {
-    id: number;
-    alt?: string | null;
-    url?: string | null;
-    thumbnailURL?: string | null;
-    filename?: string | null;
-    mimeType?: string | null;
-    filesize?: number | null;
-    width?: number | null;
-    height?: number | null;
-    focalX?: number | null;
-    focalY?: number | null;
-    updatedAt?: string | null;
-    createdAt?: string | null;
-}
-
-/**
  * Simplified media object for common use cases
  */
-export interface SimpleMedia {
-    id: number;
+export interface SimpleWebMedia {
     alt?: string | null;
     url?: string | null;
-    width?: number | null;
-    height?: number | null;
 }
 
 /**
  * Media relationship - can be either an ID or full Media object
  */
-export type MediaRelation = number | Media | null;
+export type MediaRelation = number | WebMedia | null;
 
 /**
  * Props for image/media components
  */
 export interface MediaProps {
-    media: Media | SimpleMedia;
+    media: WebMedia | SimpleWebMedia;
     loading?: 'lazy' | 'eager';
     scaleAnimation?: boolean;
     sizes?: string;

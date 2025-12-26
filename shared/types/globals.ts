@@ -3,56 +3,13 @@
  * Used for Header, Footer, Sidebar, Contact, and other global configurations
  */
 
-import type { Link, NavigationLink } from './links';
-import type { Media } from './media';
-import type { RichText } from './richtext';
-
-/**
- * Header Global
- */
-export interface Header {
-    id: number;
-    links?: NavigationLink[] | null;
-    updatedAt?: string | null;
-    createdAt?: string | null;
-}
-
-/**
- * Sidebar Global
- */
-export interface Sidebar {
-    id: number;
-    links?: NavigationLink[] | null;
-    logoLink?: {
-        href?: string | null;
-        text?: string | null;
-        target?: ('_self' | '_blank') | null;
-    } | null;
-    updatedAt?: string | null;
-    createdAt?: string | null;
-}
+import type { Link } from './links';
 
 /**
  * Header with Sidebar (combined structure used in app)
  */
 export interface HeaderWithSidebar extends Header {
     sidebar?: Sidebar | null;
-}
-
-/**
- * Contact Global
- */
-export interface Contact {
-    id: number;
-    name?: string | null;
-    phone?: Link | null;
-    mail?: Link | null;
-    address?: {
-        street?: string | null;
-        place?: string | null;
-    } | null;
-    updatedAt?: string | null;
-    createdAt?: string | null;
 }
 
 /**
@@ -70,18 +27,6 @@ export interface AddressData {
     name?: string | null;
     street?: string | null;
     place?: string | null;
-}
-
-/**
- * Footer Global
- */
-export interface Footer {
-    id: number;
-    text1?: RichText;
-    text2?: RichText;
-    links?: NavigationLink[] | null;
-    updatedAt?: string | null;
-    createdAt?: string | null;
 }
 
 /**
