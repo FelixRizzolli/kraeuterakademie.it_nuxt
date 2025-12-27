@@ -31,6 +31,3 @@ logs
 
 # storybook
 storybook-static
-
-# Generated types
-shared/types/graphql.d.ts

@@ -2,7 +2,7 @@ overwrite: true
 schema: 'http://localhost:3001/api/graphql'
 documents: 'app/graphql/**/*.gql'
 generates:
-    shared/types/graphql.d.ts:
+    shared/types/graphql.ts:
         plugins:
             - 'typescript'
             - 'typescript-operations'
@@ -15,9 +15,8 @@ generates:
 
             # Naming conventions
             namingConvention:
-                typeNames: pascal-case#pascalCase
+                typeNames: keep
                 enumValues: keep
-                transformUnderscore: true
 
             # Scalars
             scalars:
