@@ -1,11 +1,13 @@
 import { defineStore } from 'pinia';
+import type { Contact, Footer, Header } from '~~/shared/types/graphql';
 
 interface GlobalData {
-    header?: any;
-    footer?: any;
-    textblocks?: Array<any>;
-    partners?: Array<any>;
-    socials?: Array<any>;
+    header?: Header;
+    footer?: Footer;
+    contact?: Contact;
+    textblocks?: Array<TextBlock>;
+    partners?: Array<Partner>;
+    socials?: Array<Social>;
 }
 
 export const useGlobalStore = defineStore('global', () => {

@@ -46,7 +46,7 @@ export interface Partner {
     id: number;
     name?: string | null;
     link?: Link | null;
-    image?: Media | number | null;
+    image?: WebMedia | number | null;
     updatedAt?: string | null;
     createdAt?: string | null;
 }
@@ -58,7 +58,7 @@ export interface Social {
     id: number;
     link?: Link | null;
     icon?: ('facebook' | 'instagram') | null;
-    backgroundImage?: Media | number | null;
+    backgroundImage?: WebMedia | number | null;
     updatedAt?: string | null;
     createdAt?: string | null;
 }

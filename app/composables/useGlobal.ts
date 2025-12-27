@@ -10,12 +10,16 @@ import CONTACT_FRAGMENT from '~/graphql/fragments/globals/contact.fragment.gql';
 
 import FIND_GLOBALS_QUERY from '~/graphql/queries/findGlobals.gql';
 
+import type { Contact, Footer, Header, Sidebar } from '~~/shared/types/graphql';
+
 interface GlobalData {
-    header: any;
-    footer: any;
-    textblocks: Array<any>;
-    partners: Array<any>;
-    socials: Array<any>;
+    header: Header;
+    footer: Footer;
+    sidebar: Sidebar;
+    contact: Contact;
+    textblocks: Array<TextBlock>;
+    partners: Array<Partner>;
+    socials: Array<Social>;
 }
 
 const findGlobalsQuery = `
@@ -54,37 +58,16 @@ export const useGlobal = () => {
             const socials = response?.data?.WebSocials?.docs || [];
             const textblocks = response?.data?.WebTextBlocks?.docs || [];
 
-            if (!header || !footer) {
+            if (!header || !footer || !sidebar || !contact || !partners || !socials || !textblocks) {
                 console.warn('Global data not found');
                 return null;
             }
 
-            // Restructure the footer to match the expected component structure
-            const restructuredFooter = {
-                ...footer,
-                address: contact?.address
-                    ? {
-                          ...contact.address,
-                          name: contact.name,
-                      }
-                    : null,
-                contact: {
-                    phone: contact?.phone,
-                    mail: contact?.mail,
-                },
-                partners,
-                socials,
-            };
-
-            // Add sidebar to header if it exists
-            const restructuredHeader = {
-                ...header,
-                sidebar,
-            };
-
             return {
-                header: restructuredHeader,
-                footer: restructuredFooter,
+                header,
+                footer,
+                sidebar,
+                contact,
                 textblocks,
                 partners,
                 socials,

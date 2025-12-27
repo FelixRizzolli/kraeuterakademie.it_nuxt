@@ -1,19 +1,15 @@
 <template>
-    <header v-if="props.data">
-        <HeaderSidebar v-if="data.sidebar" :data="data.sidebar" />
-        <HeaderNavigation v-if="data.links" :links="data.links" />
+    <header v-if="props.header && props.sidebar">
+        <HeaderSidebar v-if="sidebar" :data="sidebar" />
+        <HeaderNavigation v-if="header.links" :links="header.links" />
         <HeaderCtaButtons @toggleNavigation="toggleNavigation" />
     </header>
 </template>
 
 <script lang="ts" setup>
-    interface HeaderData {
-        sidebar: any;
-        links: Array<any>;
-    }
-
     interface HeaderProps {
-        data: HeaderData;
+        header: Header;
+        sidebar: Sidebar;
     }
 
     const props = defineProps<HeaderProps>();

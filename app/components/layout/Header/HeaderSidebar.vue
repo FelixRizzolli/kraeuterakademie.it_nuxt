@@ -1,14 +1,14 @@
 <template>
     <section class="highlight">
-        <NuxtLink class="logo" :to="data.logoLink.href" :target="data.logoLink.target ?? '_self'">
+        <NuxtLink class="logo" :to="logoLink?.href || '/'" :target="logoLink?.target ?? '_self'">
             <i-logo />
         </NuxtLink>
 
         <nav class="links">
             <NuxtLink
                 class="link"
-                :to="link.href"
-                v-for="(link, index) in data.links"
+                :to="link.href || '/'"
+                v-for="(link, index) in links"
                 :key="index"
                 :target="link.target ?? '_self'"
             >
@@ -20,24 +20,9 @@
 </template>
 
 <script lang="ts" setup>
-    interface Link {
-        icon: string;
-        href: string;
-        text: string;
-        target?: string;
-    }
+    import type { Sidebar } from '~~/shared/types/graphql';
 
-    interface HeaderHighlightData {
-        logoLink: Link;
-        links: Array<Link>;
-        menuOpen: boolean;
-    }
-
-    interface HeaderHighlightProps {
-        data: HeaderHighlightData;
-    }
-
-    const props = defineProps<HeaderHighlightProps>();
+    const props = defineProps<Sidebar>();
 </script>
 
 <style lang="scss" scoped>

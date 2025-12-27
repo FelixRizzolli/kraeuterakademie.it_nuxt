@@ -1,8 +1,8 @@
 <template>
     <address class="address" ref="containerElement">
         <p class="name">{{ data.name }}</p>
-        <p class="street">{{ data.street }}</p>
-        <p class="place">{{ data.place }}</p>
+        <p class="street">{{ data?.address?.street }}</p>
+        <p class="place">{{ data?.address?.place }}</p>
     </address>
 </template>
 
@@ -12,7 +12,7 @@
     const containerElement = ref<HTMLElement>();
 
     interface FooterAddressProps {
-        data: AddressData;
+        data: Contact;
     }
 
     const props = defineProps<FooterAddressProps>();

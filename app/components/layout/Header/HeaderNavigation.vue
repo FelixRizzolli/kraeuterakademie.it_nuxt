@@ -7,7 +7,7 @@
             v-for="(link, index) in links"
             :key="index"
             class="link"
-            :to="link.href"
+            :to="link.href || '/'"
             @click="menuStore.closeMenu"
             :target="link.target ?? '_self'"
         >
@@ -18,14 +18,10 @@
 
 <script lang="ts" setup>
     import { useMenuStore } from '~/stores/menuStore';
-    interface Link {
-        href: string;
-        text: string;
-        target?: string;
-    }
+    import type { HeaderLinks } from '~~/shared/types/graphql';
 
     interface HeaderNavigationProps {
-        links: Array<Link>;
+        links: Array<HeaderLinks>;
     }
 
     const props = defineProps<HeaderNavigationProps>();

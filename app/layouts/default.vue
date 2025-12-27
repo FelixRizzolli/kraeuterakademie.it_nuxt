@@ -1,12 +1,18 @@
 <template>
     <ClientOnly>
-        <Header v-if="globalStore.data?.header" :data="globalStore.data.header" />
+        <Header v-if="globalStore.data?.header" :header="globalStore.data.header" :sidebar="globalStore.data.sidebar" />
     </ClientOnly>
     <main>
         <slot />
     </main>
     <ClientOnly>
-        <Footer v-if="!globalStore.loading && globalStore.data?.footer" :data="globalStore.data.footer" />
+        <Footer
+            v-if="!globalStore.loading && globalStore.data?.footer"
+            :footer="globalStore.data.footer"
+            :contact="globalStore.data.contact"
+            :socials="globalStore.data.socials"
+            :partners="globalStore.data.partners"
+        />
     </ClientOnly>
 </template>
 

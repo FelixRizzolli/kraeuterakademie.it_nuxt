@@ -1,34 +1,28 @@
 <template>
-    <footer v-if="props.data" class="grid-container">
-        <FooterAddress v-if="data.address" :data="data.address" />
-        <FooterContact v-if="data.contact" :data="data.contact" />
-        <div v-if="data.text1" class="text1" ref="text1Element">
-            <LexicalRenderer :nodes="data.text1" />
+    <footer class="grid-container">
+        <FooterAddress v-if="contact" :data="contact" />
+        <FooterContact v-if="contact" :data="contact" />
+        <div v-if="footer.text1" class="text1" ref="text1Element">
+            <LexicalRenderer :nodes="footer.text1 as RichText" />
         </div>
-        <div v-if="data.text2" class="text2" ref="text2Element">
-            <LexicalRenderer :nodes="data.text2" />
+        <div v-if="footer.text2" class="text2" ref="text2Element">
+            <LexicalRenderer :nodes="footer.text2 as RichText" />
         </div>
-        <FooterSocials v-if="data?.socials" :socials="data.socials" />
-        <FooterLinks v-if="data?.links" :links="data.links" />
-        <FooterPartners v-if="data?.partners" :partners="data.partners" />
+        <FooterSocials v-if="socials" :socials="socials" />
+        <FooterLinks v-if="footer.links" :links="footer.links" />
+        <FooterPartners v-if="partners" :partners="partners" />
     </footer>
 </template>
 
 <script lang="ts" setup>
     import { gsap } from 'gsap';
-
-    export interface FooterData {
-        address?: AddressData | null;
-        contact?: ContactData | null;
-        text1?: RichText | null;
-        text2?: RichText | null;
-        socials?: Array<Social> | null;
-        links?: Array<NavigationLink> | null;
-        partners?: Array<Partner> | null;
-    }
+    import type { Contact } from '~~/shared/types/graphql';
 
     interface FooterProps {
-        data: FooterData;
+        footer: Footer;
+        contact?: Contact | null;
+        socials?: Array<Social> | null;
+        partners?: Array<Partner> | null;
     }
 
     const props = defineProps<FooterProps>();
