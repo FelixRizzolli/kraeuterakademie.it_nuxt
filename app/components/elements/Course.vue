@@ -2,8 +2,8 @@
     <section class="course" ref="courseElement">
         <h3 class="title">{{ course.name }}</h3>
         <span v-if="sortedDates" class="key-infos"
-            >{{ course.place }} | {{ formatDate(sortedDates[0].date) }} -
-            {{ formatDate(sortedDates[sortedDates.length - 1].date) }}</span
+            >{{ course.place }} | {{ formatDate(sortedDates?.[0]?.date) }} -
+            {{ formatDate(sortedDates?.[sortedDates.length - 1]?.date) }}</span
         >
         <div class="description">
             <LexicalRenderer :nodes="course.description" />
@@ -118,7 +118,8 @@
     };
 
     // Function to format ISO date YYYY-MM-DD to DD.MM.YYYY
-    const formatDate = (isoDate: string): string => {
+    const formatDate = (isoDate?: string): string => {
+        if (!isoDate) return '';
         const date = new Date(isoDate);
         return new Intl.DateTimeFormat('de-DE', {
             day: '2-digit',
