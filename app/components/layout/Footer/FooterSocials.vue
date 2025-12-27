@@ -1,36 +1,34 @@
 <template>
     <div class="socials">
-        <div
-            class="scale-animation"
-            v-for="(social, index) in socials"
-            :key="index"
-            ref="socialElements"
-            :class="{ 'scale-active': showSocialElements[index] }"
-        >
-            <NuxtLink
-                v-if="social.link"
-                class="social"
-                :to="social.link.href || '#'"
-                :target="social.link.target ?? '_self'"
-            >
-                <MediaElement
-                    v-if="social.backgroundImage && typeof social.backgroundImage === 'object'"
-                    :media="social.backgroundImage"
-                />
-                <component v-if="social.icon" :is="'i-' + social.icon" />
-            </NuxtLink>
-        </div>
+        <template v-for="(social, index) in socials" :key="social.id">
+            <div class="scale-animation" ref="socialElements" :class="{ 'scale-active': showSocialElements[index] }">
+                <NuxtLink
+                    v-if="social.link"
+                    class="social"
+                    :to="social.link.href || '#'"
+                    :target="social.link.target ?? '_self'"
+                >
+                    <MediaElement
+                        v-if="social.backgroundImage && typeof social.backgroundImage === 'object'"
+                        :media="social.backgroundImage"
+                    />
+                    <component v-if="social.icon" :is="'i-' + social.icon" />
+                </NuxtLink>
+            </div>
+        </template>
     </div>
 </template>
 
 <script lang="ts" setup>
     import { gsap } from 'gsap';
 
-    interface SocialProps {
-        socials: Array<Social>;
+    interface FooterSocialsProps {
+        data: WebSocial[];
     }
 
-    const props = defineProps<SocialProps>();
+    const props = defineProps<FooterSocialsProps>();
+
+    const socials = computed(() => props.data || []);
 
     const socialElements = ref<HTMLElement[]>([]);
     const showSocialElements = ref<boolean[]>([]);

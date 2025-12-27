@@ -3,27 +3,29 @@
         <FooterAddress v-if="contact" :data="contact" />
         <FooterContact v-if="contact" :data="contact" />
         <div v-if="footer.text1" class="text1" ref="text1Element">
-            <LexicalRenderer :nodes="footer.text1 as RichText" />
+            <LexicalRenderer :nodes="text1Data" />
         </div>
         <div v-if="footer.text2" class="text2" ref="text2Element">
-            <LexicalRenderer :nodes="footer.text2 as RichText" />
+            <LexicalRenderer :nodes="text2Data" />
         </div>
-        <FooterSocials v-if="socials" :socials="socials" />
+        <FooterSocials v-if="socials" :data="socials" />
         <FooterLinks v-if="footer.links" :links="footer.links" />
-        <FooterPartners v-if="partners" :partners="partners" />
+        <FooterPartners v-if="partners" :data="partners" />
     </footer>
 </template>
 
 <script lang="ts" setup>
     import { gsap } from 'gsap';
-    import type { Contact } from '~~/shared/types/graphql';
 
     interface FooterProps {
         footer: Footer;
         contact?: Contact | null;
-        socials?: Array<Social> | null;
-        partners?: Array<Partner> | null;
+        socials?: WebSocial[] | null;
+        partners?: WebPartner[] | null;
     }
+
+    const text1Data = computed(() => (props.footer.text1 as RichText) || null);
+    const text2Data = computed(() => (props.footer.text2 as RichText) || null);
 
     const props = defineProps<FooterProps>();
 

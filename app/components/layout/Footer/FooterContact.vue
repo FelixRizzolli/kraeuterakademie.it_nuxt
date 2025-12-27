@@ -1,11 +1,7 @@
 <template>
     <div class="contact" ref="containerElement">
-        <a v-if="data.phone" :href="data.phone.href || '#'" class="link" :target="data.phone.target ?? '_self'">{{
-            data.phone.text
-        }}</a>
-        <a v-if="data.mail" :href="data.mail.href || '#'" class="link" :target="data.mail.target ?? '_self'">{{
-            data.mail.text
-        }}</a>
+        <a v-if="data.phone" :href="data.phone.href || '#'" class="link" target="_self">{{ data.phone.text }}</a>
+        <a v-if="data.mail" :href="data.mail.href || '#'" class="link" target="_self">{{ data.mail.text }}</a>
     </div>
 </template>
 
@@ -15,7 +11,7 @@
     const containerElement = ref<HTMLElement>();
 
     export interface FooterContactProps {
-        data: ContactData;
+        data: Contact;
     }
 
     const props = defineProps<FooterContactProps>();

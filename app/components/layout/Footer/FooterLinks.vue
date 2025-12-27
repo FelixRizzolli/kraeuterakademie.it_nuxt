@@ -9,12 +9,11 @@
 
 <script lang="ts" setup>
     import { gsap } from 'gsap';
-    import type { FooterLinks } from '~~/shared/types/graphql';
 
     const containerElement = ref<HTMLElement>();
 
     interface FooterLinksProps {
-        links: Array<FooterLinks>;
+        links: Array<Footer_Links>;
     }
 
     const props = defineProps<FooterLinksProps>();

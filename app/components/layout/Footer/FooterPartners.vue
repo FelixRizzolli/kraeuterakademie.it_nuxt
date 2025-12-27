@@ -1,27 +1,30 @@
 <template>
     <div class="partner">
-        <NuxtLink
-            v-for="(partner, index) in partners"
-            :key="index"
-            v-if="partner.link"
-            :to="partner.link.href || '#'"
-            :target="partner.link.target ?? '_self'"
-        >
-            <MediaElement
-                v-if="partner.image && typeof partner.image === 'object'"
-                :media="partner.image"
-                scale-animation
-            />
-        </NuxtLink>
+        <template v-for="partner in partners">
+            <NuxtLink
+                :key="partner.id"
+                v-if="partner.link"
+                :to="partner.link.href || '#'"
+                :target="partner.link.target ?? '_self'"
+            >
+                <MediaElement
+                    v-if="partner.image && typeof partner.image === 'object'"
+                    :media="partner.image"
+                    scale-animation
+                />
+            </NuxtLink>
+        </template>
     </div>
 </template>
 
 <script lang="ts" setup>
     interface FooterPartnerProps {
-        partners: Array<Partner>;
+        data: WebPartner[];
     }
 
     const props = defineProps<FooterPartnerProps>();
+
+    const partners = computed(() => props.data || []);
 </script>
 
 <style lang="scss" scoped>

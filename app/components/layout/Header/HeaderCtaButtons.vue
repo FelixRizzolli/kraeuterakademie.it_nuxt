@@ -14,6 +14,7 @@
     const menuTextBlock = ref<string | undefined | null>(null);
     const ctaLinkTextBlock = ref<string | undefined | null>(null);
     const ctaLinktextTextBlock = ref<string | undefined | null>(null);
+        
     onMounted(() => {
         menuTextBlock.value = useTextBlock('menu-button');
         ctaLinkTextBlock.value = useTextBlock('cta-link');

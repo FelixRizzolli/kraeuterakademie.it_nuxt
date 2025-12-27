@@ -18,10 +18,9 @@
 
 <script lang="ts" setup>
     import { useMenuStore } from '~/stores/menuStore';
-    import type { HeaderLinks } from '~~/shared/types/graphql';
 
     interface HeaderNavigationProps {
-        links: Array<HeaderLinks>;
+        links: Array<Header_Links>;
     }
 
     const props = defineProps<HeaderNavigationProps>();
