@@ -1,4 +1,7 @@
 import MEDIA_FRAGMENT from '~/graphql/fragments/web/collections/media.fragment.gql';
+import PARTNERS_FRAGMENT from '~/graphql/fragments/web/collections/partners.fragment.gql';
+import SOCIALS_FRAGMENT from '~/graphql/fragments/web/collections/socials.fragment.gql';
+import TEXTBLOCKS_FRAGMENT from '~/graphql/fragments/web/collections/textblocks.fragment.gql';
 
 import HEADER_FRAGMENT from '~/graphql/fragments/globals/header.fragment.gql';
 import FOOTER_FRAGMENT from '~/graphql/fragments/globals/footer.fragment.gql';
@@ -17,6 +20,9 @@ interface GlobalData {
 
 const findGlobalsQuery = `
     ${MEDIA_FRAGMENT.loc.source.body}
+    ${PARTNERS_FRAGMENT.loc.source.body}
+    ${SOCIALS_FRAGMENT.loc.source.body}
+    ${TEXTBLOCKS_FRAGMENT.loc.source.body}
 
     ${HEADER_FRAGMENT.loc.source.body}
     ${FOOTER_FRAGMENT.loc.source.body}

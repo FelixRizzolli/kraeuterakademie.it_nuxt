@@ -1,4 +1,4 @@
-fragment SocialAttributes on WebSocials {
+fragment SocialsAttributes on WebSocials {
     docs {
         id
         link {

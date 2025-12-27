@@ -1,4 +1,4 @@
-fragment PartnerAttributes on WebPartners {
+fragment PartnersAttributes on WebPartners {
     docs {
         id
         name
