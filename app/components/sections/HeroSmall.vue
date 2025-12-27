@@ -2,7 +2,12 @@
     <SectionElement class="contentelement_herosmall grid-container" :spacing="settings?.spacing">
         <div v-if="data.title || data.link" class="content" ref="contentElement">
             <h1 v-if="data.title" class="title">{{ data.title }}</h1>
-            <NuxtLink v-if="data.link" class="link-button" :to="data.link.href" :target="data.link.target ?? '_self'">
+            <NuxtLink
+                v-if="data.link"
+                class="link-button"
+                :to="data.link.href || '/'"
+                :target="data.link.target ?? '_self'"
+            >
                 {{ data.link.text }}
             </NuxtLink>
         </div>
@@ -16,7 +21,7 @@
     interface HeroSmallData {
         title?: string;
         link?: Link;
-        image?: Media;
+        image?: WebMedia;
     }
 
     interface HeroSmallSettings {

@@ -11,7 +11,7 @@
         <NuxtLink
             v-if="data.link"
             class="link-button"
-            :to="data.link.href"
+            :to="data.link.href || '/'"
             :target="data.link.target ?? '_self'"
             ref="linkElement"
         >

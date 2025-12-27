@@ -5,7 +5,7 @@
         :style="settings?.highlightedLinksStyle"
     >
         <NuxtLink
-            :to="imageLink.link.href"
+            :to="imageLink.link.href || '/'"
             class="link-container"
             v-for="(imageLink, index) in data.imageLinks"
             :key="index"
@@ -28,7 +28,7 @@
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
     interface ImageLink {
-        image: Media;
+        image: WebMedia;
         link: Link;
     }
 

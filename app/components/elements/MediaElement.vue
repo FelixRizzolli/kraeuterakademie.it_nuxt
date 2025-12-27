@@ -5,8 +5,8 @@
         ref="mediaElement"
         :class="{ 'scale-active': showMediaElement && scaleAnimation, 'scale-animation': scaleAnimation }"
     >
-        <img v-if="isImage" class="image" :src="fileURL" :alt="media.alt || 'Media'" />
-        <video v-else-if="isVideo" class="video" :src="fileURL" controls />
+        <img v-if="isImage" class="image" :src="fileURL || ''" :alt="media.alt || 'Media'" />
+        <video v-else-if="isVideo" class="video" :src="fileURL || ''" controls />
         <!-- Extend for audio or other types if needed -->
     </div>
 </template>
@@ -23,7 +23,7 @@
     const props = defineProps<MediaElementProps>();
 
     const fileURL = computed(() => {
-        if (props.media.url.startsWith('http')) {
+        if (props?.media?.url?.startsWith('http')) {
             return props.media.url;
         }
         return runtimeConfig.public.payloadApiUrl + props.media.url;

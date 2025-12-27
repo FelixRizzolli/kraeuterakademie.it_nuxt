@@ -10,7 +10,7 @@
             <div class="links-container">
                 <NuxtLink
                     class="link-button"
-                    :to="link.href"
+                    :to="link.href || '/'"
                     v-for="link in data.links"
                     :target="link.target ?? '_self'"
                     >{{ link.text }}</NuxtLink
@@ -22,7 +22,7 @@
 
 <script lang="ts" setup>
     export interface SwiperLargeItem {
-        image: StrapiImage;
+        image: WebMedia;
         infos?: string;
         title?: string;
         description?: any;

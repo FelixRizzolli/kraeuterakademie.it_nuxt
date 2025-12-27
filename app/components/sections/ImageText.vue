@@ -21,7 +21,7 @@
         <NuxtLink
             v-if="data.link"
             class="link-button"
-            :to="data.link.href"
+            :to="data.link.href || '/'"
             ref="linkElement"
             :target="data.link.target ?? '_self'"
         >
@@ -35,7 +35,7 @@
 
     interface ImageTextData {
         title?: string;
-        image?: Media;
+        image?: WebMedia;
         textTop?: RichText;
         textHighlight?: string;
         textBottom?: RichText;

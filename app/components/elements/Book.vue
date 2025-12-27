@@ -11,9 +11,13 @@
             </div>
             <button class="more" @click="toggleTruncate">{{ moreTextBlock }}</button>
         </div>
-        <NuxtLink v-if="book.link" class="link-button" :to="book.link.href" :target="book.link.target ?? '_self'">{{
-            book.link.text
-        }}</NuxtLink>
+        <NuxtLink
+            v-if="book.link"
+            class="link-button"
+            :to="book.link.href || '/'"
+            :target="book.link.target ?? '_self'"
+            >{{ book.link.text }}</NuxtLink
+        >
     </div>
 </template>
 
@@ -23,7 +27,7 @@
     const { isMobile } = useDevice();
 
     interface Book {
-        image: StrapiImage;
+        image: WebMedia;
         infos: any;
         title: string;
         description: any;

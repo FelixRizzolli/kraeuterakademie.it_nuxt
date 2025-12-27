@@ -17,7 +17,7 @@
 
     interface HeroLargeData {
         title?: string;
-        image?: Media;
+        image?: WebMedia;
     }
 
     interface HeroLargeSettings {

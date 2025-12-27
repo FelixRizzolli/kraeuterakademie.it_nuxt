@@ -4,15 +4,19 @@
         <p v-if="data.info" class="info">{{ data.info }}</p>
         <p v-else-if="data.date" class="date">{{ data.date }}</p>
         <h3 v-if="data.title" class="title">{{ data.title }}</h3>
-        <NuxtLink v-if="data.link" class="link-button" :to="data.link.href" :target="data.link.target ?? '_self'">{{
-            data.link.text
-        }}</NuxtLink>
+        <NuxtLink
+            v-if="data.link"
+            class="link-button"
+            :to="data.link.href || '/'"
+            :target="data.link.target ?? '_self'"
+            >{{ data.link.text }}</NuxtLink
+        >
     </div>
 </template>
 
 <script lang="ts" setup>
     export interface SwiperCardItem {
-        image: StrapiImage;
+        image: WebMedia;
         info?: string;
         date?: string;
         title?: string;
