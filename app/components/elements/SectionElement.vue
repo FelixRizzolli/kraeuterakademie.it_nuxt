@@ -14,16 +14,9 @@
 </template>
 
 <script lang="ts" setup>
-    interface Spacing {
-        paddingTop?: string;
-        paddingBottom?: string;
-        marginTop?: string;
-        marginBottom?: string;
-    }
-
     interface SectionElementProps {
         spacing: Spacing;
-        style?: 'light' | 'gray' | 'dark';
+        style?: string; // e.g., 'light', 'dark', 'gray'
     }
 
     const props = defineProps<SectionElementProps>();
