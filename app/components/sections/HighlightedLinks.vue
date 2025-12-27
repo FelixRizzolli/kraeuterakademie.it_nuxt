@@ -62,7 +62,7 @@
             const elementShowRef = computed({
                 get: () => showHighlightedLinkElements.value[index],
                 set: (value) => {
-                    showHighlightedLinkElements.value[index] = value;
+                    showHighlightedLinkElements.value[index] = value as boolean;
                 },
             });
 
