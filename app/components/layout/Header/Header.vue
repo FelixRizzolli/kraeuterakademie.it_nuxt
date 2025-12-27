@@ -1,6 +1,6 @@
 <template>
-    <header v-if="props.header && props.sidebar">
-        <HeaderSidebar v-if="sidebar" :data="sidebar" />
+    <header>
+        <HeaderSidebar :data="sidebar" />
         <HeaderNavigation v-if="header.links" :links="header.links" />
         <HeaderCtaButtons @toggleNavigation="toggleNavigation" />
     </header>

@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia';
-import type { Contact, Footer, Header } from '~~/shared/types/graphql';
 
 interface GlobalData {
-    header?: Header;
-    footer?: Footer;
-    contact?: Contact;
-    textblocks?: Array<TextBlock>;
-    partners?: Array<Partner>;
-    socials?: Array<Social>;
+    header: Header;
+    sidebar: Sidebar;
+    footer: Footer;
+    contact: Contact;
+    textblocks: Array<WebTextBlock>;
+    partners: Array<WebPartner>;
+    socials: Array<WebSocial>;
 }
 
 export const useGlobalStore = defineStore('global', () => {
@@ -39,9 +39,9 @@ export const useGlobalStore = defineStore('global', () => {
     };
 
     return {
-        data: readonly(data),
-        loading: readonly(loading),
-        error: readonly(error),
+        data,
+        loading,
+        error,
         loadGlobalData,
         clearData,
     };

@@ -12,6 +12,7 @@ generates:
             skipTypename: false
             enumsAsTypes: true
             futureProofEnums: true
+            immutableTypes: false
 
             # Naming conventions
             namingConvention:

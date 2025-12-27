@@ -1,16 +1,16 @@
 <template>
     <footer class="grid-container">
-        <FooterAddress v-if="contact" :data="contact" />
-        <FooterContact v-if="contact" :data="contact" />
+        <FooterAddress :data="contact" />
+        <FooterContact :data="contact" />
         <div v-if="footer.text1" class="text1" ref="text1Element">
             <LexicalRenderer :nodes="text1Data" />
         </div>
         <div v-if="footer.text2" class="text2" ref="text2Element">
             <LexicalRenderer :nodes="text2Data" />
         </div>
-        <FooterSocials v-if="socials" :data="socials" />
+        <FooterSocials :data="socials" />
         <FooterLinks v-if="footer.links" :links="footer.links" />
-        <FooterPartners v-if="partners" :data="partners" />
+        <FooterPartners :data="partners" />
     </footer>
 </template>
 
@@ -19,9 +19,9 @@
 
     interface FooterProps {
         footer: Footer;
-        contact?: Contact | null;
-        socials?: WebSocial[] | null;
-        partners?: WebPartner[] | null;
+        contact: Contact;
+        socials: Array<WebSocial>;
+        partners: Array<WebPartner>;
     }
 
     const text1Data = computed(() => (props.footer.text1 as RichText) || null);
