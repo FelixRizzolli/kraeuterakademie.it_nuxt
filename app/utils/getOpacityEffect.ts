@@ -1,5 +1,5 @@
 export default (gsap: globalThis.GSAP) => {
-    return (element: globalThis.Ref<HTMLElement, HTMLElement>) => {
+    return (element: globalThis.Ref<HTMLElement, HTMLElement, HTMLElement | undefined>) => {
         gsap.set(element.value, { opacity: 0 });
 
         const observeElement = observe(

@@ -1,7 +1,7 @@
 export default (gsap: globalThis.GSAP) => {
     return (
         element: globalThis.Ref<HTMLElement, HTMLElement>,
-        showText: globalThis.Ref<boolean, boolean>,
+        showText: globalThis.Ref<boolean, boolean> | WritableComputedRef<boolean | undefined, boolean | undefined>,
         threshold: number = 0.5,
     ) => {
         const observeElement = observe(

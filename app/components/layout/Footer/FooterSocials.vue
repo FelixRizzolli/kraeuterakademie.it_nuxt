@@ -45,7 +45,7 @@
             const elementShowRef = computed({
                 get: () => showSocialElements.value[index],
                 set: (value) => {
-                    showSocialElements.value[index] = value;
+                    showSocialElements.value[index] = value as boolean;
                 },
             });
 
