@@ -10,30 +10,28 @@ import CONTACT_FRAGMENT from '~/graphql/fragments/globals/contact.fragment.gql';
 
 import FIND_GLOBALS_QUERY from '~/graphql/queries/findGlobals.gql';
 
-import type { Contact, Footer, Header, Sidebar } from '~~/shared/types/graphql';
-
 interface GlobalData {
     header: Header;
     footer: Footer;
     sidebar: Sidebar;
     contact: Contact;
-    textblocks: Array<TextBlock>;
-    partners: Array<Partner>;
-    socials: Array<Social>;
+    textblocks: Array<WebTextBlock>;
+    partners: Array<WebPartner>;
+    socials: Array<WebSocial>;
 }
 
 const findGlobalsQuery = `
-    ${MEDIA_FRAGMENT.loc.source.body}
-    ${PARTNERS_FRAGMENT.loc.source.body}
-    ${SOCIALS_FRAGMENT.loc.source.body}
-    ${TEXTBLOCKS_FRAGMENT.loc.source.body}
+    ${MEDIA_FRAGMENT?.loc?.source?.body}
+    ${PARTNERS_FRAGMENT?.loc?.source?.body}
+    ${SOCIALS_FRAGMENT?.loc?.source?.body}
+    ${TEXTBLOCKS_FRAGMENT?.loc?.source?.body}
 
-    ${HEADER_FRAGMENT.loc.source.body}
-    ${FOOTER_FRAGMENT.loc.source.body}
-    ${SIDEBAR_FRAGMENT.loc.source.body}
-    ${CONTACT_FRAGMENT.loc.source.body}
+    ${HEADER_FRAGMENT?.loc?.source?.body}
+    ${FOOTER_FRAGMENT?.loc?.source?.body}
+    ${SIDEBAR_FRAGMENT?.loc?.source?.body}
+    ${CONTACT_FRAGMENT?.loc?.source?.body}
 
-    ${FIND_GLOBALS_QUERY.loc.source.body}
+    ${FIND_GLOBALS_QUERY?.loc?.source?.body}
 `;
 
 export const useGlobal = () => {

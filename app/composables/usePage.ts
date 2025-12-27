@@ -29,24 +29,24 @@ interface PageData {
 }
 
 const findWebPagesQuery = `
-    ${MEDIA_FRAGMENT.loc.source.body}
+    ${MEDIA_FRAGMENT?.loc?.source?.body}
 
-    ${WEB_ACCORDIONS_FRAGMENT.loc.source.body}
-    ${WEB_ANIMATED_TEXT_FRAGMENT.loc.source.body}
-    ${WEB_BOOK_LIST_FRAGMENT.loc.source.body}
-    ${WEB_COURSE_LIST_FRAGMENT.loc.source.body}
-    ${WEB_HERO_LARGE_FRAGMENT.loc.source.body}
-    ${WEB_HERO_SMALL_FRAGMENT.loc.source.body}
-    ${WEB_HIGHLIGHTED_LINKS_FRAGMENT.loc.source.body}
-    ${WEB_IMAGE_TEXT_FRAGMENT.loc.source.body}
-    ${WEB_INFOS_FRAGMENT.loc.source.body}
-    ${WEB_MOOD_PICTURE_FRAGMENT.loc.source.body}
-    ${WEB_SWIPER_CARD_FRAGMENT.loc.source.body}
-    ${WEB_SWIPER_LARGE_FRAGMENT.loc.source.body}
-    ${WEB_SWIPER_SIMPLE_FRAGMENT.loc.source.body}
-    ${WEB_TEXT_ELEMENT_FRAGMENT.loc.source.body}
+    ${WEB_ACCORDIONS_FRAGMENT?.loc?.source?.body}
+    ${WEB_ANIMATED_TEXT_FRAGMENT?.loc?.source?.body}
+    ${WEB_BOOK_LIST_FRAGMENT?.loc?.source?.body}
+    ${WEB_COURSE_LIST_FRAGMENT?.loc?.source?.body}
+    ${WEB_HERO_LARGE_FRAGMENT?.loc?.source?.body}
+    ${WEB_HERO_SMALL_FRAGMENT?.loc?.source?.body}
+    ${WEB_HIGHLIGHTED_LINKS_FRAGMENT?.loc?.source?.body}
+    ${WEB_IMAGE_TEXT_FRAGMENT?.loc?.source?.body}
+    ${WEB_INFOS_FRAGMENT?.loc?.source?.body}
+    ${WEB_MOOD_PICTURE_FRAGMENT?.loc?.source?.body}
+    ${WEB_SWIPER_CARD_FRAGMENT?.loc?.source?.body}
+    ${WEB_SWIPER_LARGE_FRAGMENT?.loc?.source?.body}
+    ${WEB_SWIPER_SIMPLE_FRAGMENT?.loc?.source?.body}
+    ${WEB_TEXT_ELEMENT_FRAGMENT?.loc?.source?.body}
 
-    ${FIND_WEB_PAGES_QUERY.loc.source.body}
+    ${FIND_WEB_PAGES_QUERY?.loc?.source?.body}
 `;
 
 export const usePage = () => {
