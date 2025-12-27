@@ -100,7 +100,7 @@
         }
     }
 
-    .image-container {
+    .media-container {
         @include col-start(3);
         @include col(4);
         @include row(4);
@@ -173,7 +173,7 @@
             }
         }
 
-        .image-container {
+        .media-container {
             @include col-start(2);
             @include col(10);
         }

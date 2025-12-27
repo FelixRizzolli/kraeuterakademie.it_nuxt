@@ -27,7 +27,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .image-container {
+    .media-container {
         margin-left: 21rem;
 
         :deep(.image) {

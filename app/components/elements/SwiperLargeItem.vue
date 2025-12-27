@@ -47,7 +47,7 @@
         column-gap: 4.5rem;
     }
 
-    .image-container {
+    .media-container {
         @include col-start(1);
         @include col(5);
     }
@@ -84,7 +84,7 @@
     }
 
     @media (max-width: 1023px) {
-        .image-container {
+        .media-container {
             @include col-start(1);
             @include col(10);
         }

@@ -63,7 +63,7 @@
         }
     }
 
-    .image-container {
+    .media-container {
         margin-left: 21rem;
 
         :deep(.image) {
@@ -86,7 +86,7 @@
             @include col(12);
         }
 
-        .image-container {
+        .media-container {
             margin: 0;
         }
     }
