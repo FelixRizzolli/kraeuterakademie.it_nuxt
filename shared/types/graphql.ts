@@ -33512,7 +33512,8 @@ export type WebPage_Blocks =
     | WebSwiperCard
     | WebSwiperLarge
     | WebSwiperSimple
-    | WebTextElement;
+    | WebTextElement
+    | WebTitleElement;
 
 export type WebPage_canonical_operator = {
     all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -37500,7 +37501,7 @@ export type WebTextElement_Content = {
     __typename?: 'WebTextElement_Content';
     content: Scalars['JSON']['output'];
     link?: Maybe<WebTextElement_Content_Link>;
-    title: Scalars['String']['output'];
+    title?: Maybe<Scalars['String']['output']>;
 };
 
 export type WebTextElement_Content_contentArgs = {
@@ -37570,6 +37571,65 @@ export type WebTextElement_Settings_Spacing_paddingTop =
     | '%future added value';
 
 export type WebTextElement_Settings_style = 'dark' | 'gray' | 'light' | '%future added value';
+
+export type WebTitleElement = {
+    __typename?: 'WebTitleElement';
+    blockName?: Maybe<Scalars['String']['output']>;
+    blockType?: Maybe<Scalars['String']['output']>;
+    content?: Maybe<WebTitleElement_Content>;
+    id?: Maybe<Scalars['String']['output']>;
+    settings?: Maybe<WebTitleElement_Settings>;
+};
+
+export type WebTitleElement_Content = {
+    __typename?: 'WebTitleElement_Content';
+    title: Scalars['String']['output'];
+};
+
+export type WebTitleElement_Settings = {
+    __typename?: 'WebTitleElement_Settings';
+    spacing?: Maybe<WebTitleElement_Settings_Spacing>;
+};
+
+export type WebTitleElement_Settings_Spacing = {
+    __typename?: 'WebTitleElement_Settings_Spacing';
+    marginBottom?: Maybe<WebTitleElement_Settings_Spacing_marginBottom>;
+    marginTop?: Maybe<WebTitleElement_Settings_Spacing_marginTop>;
+    paddingBottom?: Maybe<WebTitleElement_Settings_Spacing_paddingBottom>;
+    paddingTop?: Maybe<WebTitleElement_Settings_Spacing_paddingTop>;
+};
+
+export type WebTitleElement_Settings_Spacing_marginBottom =
+    | 'large'
+    | 'medium'
+    | 'none'
+    | 'small'
+    | 'xlarge'
+    | '%future added value';
+
+export type WebTitleElement_Settings_Spacing_marginTop =
+    | 'large'
+    | 'medium'
+    | 'none'
+    | 'small'
+    | 'xlarge'
+    | '%future added value';
+
+export type WebTitleElement_Settings_Spacing_paddingBottom =
+    | 'large'
+    | 'medium'
+    | 'none'
+    | 'small'
+    | 'xlarge'
+    | '%future added value';
+
+export type WebTitleElement_Settings_Spacing_paddingTop =
+    | 'large'
+    | 'medium'
+    | 'none'
+    | 'small'
+    | 'xlarge'
+    | '%future added value';
 
 export type contactAccess = {
     __typename?: 'contactAccess';
@@ -41119,7 +41179,7 @@ export type TextElementAttributesFragment = {
     blockType?: string | null;
     webTextElementContent?: {
         __typename?: 'WebTextElement_Content';
-        title: string;
+        title?: string | null;
         content: { [key: string]: any };
         link?: {
             __typename?: 'WebTextElement_Content_Link';
@@ -41137,6 +41197,24 @@ export type TextElementAttributesFragment = {
             marginBottom?: WebTextElement_Settings_Spacing_marginBottom | null;
             paddingTop?: WebTextElement_Settings_Spacing_paddingTop | null;
             paddingBottom?: WebTextElement_Settings_Spacing_paddingBottom | null;
+        } | null;
+    } | null;
+};
+
+export type TitleElementAttributesFragment = {
+    __typename?: 'WebTitleElement';
+    id?: string | null;
+    blockName?: string | null;
+    blockType?: string | null;
+    webTitleElementContent?: { __typename?: 'WebTitleElement_Content'; title: string } | null;
+    webTitleElementSettings?: {
+        __typename?: 'WebTitleElement_Settings';
+        spacing?: {
+            __typename?: 'WebTitleElement_Settings_Spacing';
+            marginTop?: WebTitleElement_Settings_Spacing_marginTop | null;
+            marginBottom?: WebTitleElement_Settings_Spacing_marginBottom | null;
+            paddingTop?: WebTitleElement_Settings_Spacing_paddingTop | null;
+            paddingBottom?: WebTitleElement_Settings_Spacing_paddingBottom | null;
         } | null;
     } | null;
 };
@@ -43600,7 +43678,7 @@ export type findWebPagesQuery = {
                       blockType?: string | null;
                       webTextElementContent?: {
                           __typename?: 'WebTextElement_Content';
-                          title: string;
+                          title?: string | null;
                           content: { [key: string]: any };
                           link?: {
                               __typename?: 'WebTextElement_Content_Link';
@@ -43618,6 +43696,23 @@ export type findWebPagesQuery = {
                               marginBottom?: WebTextElement_Settings_Spacing_marginBottom | null;
                               paddingTop?: WebTextElement_Settings_Spacing_paddingTop | null;
                               paddingBottom?: WebTextElement_Settings_Spacing_paddingBottom | null;
+                          } | null;
+                      } | null;
+                  }
+                | {
+                      __typename: 'WebTitleElement';
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType?: string | null;
+                      webTitleElementContent?: { __typename?: 'WebTitleElement_Content'; title: string } | null;
+                      webTitleElementSettings?: {
+                          __typename?: 'WebTitleElement_Settings';
+                          spacing?: {
+                              __typename?: 'WebTitleElement_Settings_Spacing';
+                              marginTop?: WebTitleElement_Settings_Spacing_marginTop | null;
+                              marginBottom?: WebTitleElement_Settings_Spacing_marginBottom | null;
+                              paddingTop?: WebTitleElement_Settings_Spacing_paddingTop | null;
+                              paddingBottom?: WebTitleElement_Settings_Spacing_paddingBottom | null;
                           } | null;
                       } | null;
                   }
@@ -44138,6 +44233,24 @@ export const TextElementAttributesFragmentDoc = gql`
         }
     }
 `;
+export const TitleElementAttributesFragmentDoc = gql`
+    fragment TitleElementAttributes on WebTitleElement {
+        id
+        blockName
+        blockType
+        webTitleElementContent: content {
+            title
+        }
+        webTitleElementSettings: settings {
+            spacing {
+                marginTop
+                marginBottom
+                paddingTop
+                paddingBottom
+            }
+        }
+    }
+`;
 export const WebImageCategoryAttributesFragmentDoc = gql`
     fragment WebImageCategoryAttributes on WebImageCategory {
         id
@@ -44318,6 +44431,9 @@ export const findWebPagesDocument = gql`
                     ... on WebTextElement {
                         ...TextElementAttributes
                     }
+                    ... on WebTitleElement {
+                        ...TitleElementAttributes
+                    }
                 }
             }
             hasNextPage
@@ -44347,4 +44463,5 @@ export const findWebPagesDocument = gql`
     ${SwiperLargeAttributesFragmentDoc}
     ${SwiperSimpleAttributesFragmentDoc}
     ${TextElementAttributesFragmentDoc}
+    ${TitleElementAttributesFragmentDoc}
 `;

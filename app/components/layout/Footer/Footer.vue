@@ -18,7 +18,7 @@
     import { gsap } from 'gsap';
 
     interface FooterProps {
-        footer: Footer;
+        footer: WebFooter;
         contact: Contact;
         socials: Array<WebSocial>;
         partners: Array<WebPartner>;

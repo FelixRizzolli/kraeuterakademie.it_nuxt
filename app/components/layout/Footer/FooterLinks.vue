@@ -13,7 +13,7 @@
     const containerElement = ref<HTMLElement>();
 
     interface FooterLinksProps {
-        links: Array<Footer_Links>;
+        links: Array<WebFooter_Links>;
     }
 
     const props = defineProps<FooterLinksProps>();

@@ -20,7 +20,7 @@
     import { useMenuStore } from '~/stores/menuStore';
 
     interface HeaderNavigationProps {
-        links: Array<Header_Links>;
+        links: Array<WebHeader_Links>;
     }
 
     const props = defineProps<HeaderNavigationProps>();
