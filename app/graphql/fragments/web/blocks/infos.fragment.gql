@@ -5,15 +5,13 @@ fragment InfosAttributes on WebInfos {
     webInfosContent: content {
         infos {
             id
-            infos {
-                title
-                text
-            }
-            link {
-                text
-                href
-                target
-            }
+            title
+            text
+        }
+        link {
+            text
+            href
+            target
         }
     }
     webInfosSettings: settings {
