@@ -27,8 +27,9 @@ export const Default: Story = {
     args: {
         data: {
             image: {
+                id: 0,
                 url: getImagePath('/images/knospe.png'),
-                alternativeText: 'Kräuterkurs Bild',
+                alt: 'Kräuterkurs Bild',
             },
         },
         settings: {

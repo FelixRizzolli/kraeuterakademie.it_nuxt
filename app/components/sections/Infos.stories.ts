@@ -28,45 +28,81 @@ export const Default: Story = {
             infos: [
                 {
                     title: 'Lehrgangskosten € 270 + Mwst',
-                    text: [
-                        {
-                            type: 'paragraph',
+                    text: {
+                        root: {
+                            type: 'root',
                             children: [
                                 {
-                                    text: 'Im Preis inbegriffen sind umfangreiche Unterlagen und Bestimmungshilfen',
-                                    type: 'text',
+                                    type: 'paragraph',
+                                    children: [
+                                        {
+                                            type: 'text',
+                                            text: 'Im Preis inbegriffen sind umfangreiche Unterlagen und Bestimmungshilfen',
+                                            format: 0,
+                                            version: 1,
+                                        },
+                                    ],
+                                    version: 1,
                                 },
                             ],
+                            direction: 'ltr',
+                            format: '',
+                            indent: 0,
+                            version: 1,
                         },
-                    ],
+                    },
                 },
                 {
                     title: 'Teilnehmerzahl ist begrenzt',
-                    text: [
-                        {
-                            type: 'paragraph',
+                    text: {
+                        root: {
+                            type: 'root',
                             children: [
                                 {
-                                    text: 'Bei Fragen oder Infos: 338 269 8477 oder sigrid.thaler@gmail.com',
-                                    type: 'text',
+                                    type: 'paragraph',
+                                    children: [
+                                        {
+                                            type: 'text',
+                                            text: 'Bei Fragen oder Infos: 338 269 8477 oder sigrid.thaler@gmail.com',
+                                            format: 0,
+                                            version: 1,
+                                        },
+                                    ],
+                                    version: 1,
                                 },
                             ],
+                            direction: 'ltr',
+                            format: '',
+                            indent: 0,
+                            version: 1,
                         },
-                    ],
+                    },
                 },
                 {
                     title: 'Referentin Sigrid Thaler',
-                    text: [
-                        {
-                            type: 'paragraph',
+                    text: {
+                        root: {
+                            type: 'root',
                             children: [
                                 {
-                                    text: 'Referentin der FNL Kräuterakademie',
-                                    type: 'text',
+                                    type: 'paragraph',
+                                    children: [
+                                        {
+                                            type: 'text',
+                                            text: 'Referentin der FNL Kräuterakademie',
+                                            format: 0,
+                                            version: 1,
+                                        },
+                                    ],
+                                    version: 1,
                                 },
                             ],
+                            direction: 'ltr',
+                            format: '',
+                            indent: 0,
+                            version: 1,
                         },
-                    ],
+                    },
                 },
             ],
             link: {

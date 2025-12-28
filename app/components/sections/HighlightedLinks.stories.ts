@@ -29,8 +29,9 @@ export const Default: Story = {
             imageLinks: [
                 {
                     image: {
+                        id: 0,
                         url: getImagePath('images/herbatio.jpg'),
-                        alternativeText: 'Herbatio',
+                        alt: 'Herbatio',
                     },
                     link: {
                         href: '/',
@@ -39,8 +40,9 @@ export const Default: Story = {
                 },
                 {
                     image: {
+                        id: 0,
                         url: getImagePath('images/kraeutervitaltage.jpg'),
-                        alternativeText: 'Kräuter Vital Tage',
+                        alt: 'Kräuter Vital Tage',
                     },
                     link: {
                         href: '/',
@@ -49,8 +51,9 @@ export const Default: Story = {
                 },
                 {
                     image: {
+                        id: 0,
                         url: getImagePath('images/knospe.png'),
-                        alternativeText: 'Knospe',
+                        alt: 'Knospe',
                     },
                     link: {
                         href: '/',

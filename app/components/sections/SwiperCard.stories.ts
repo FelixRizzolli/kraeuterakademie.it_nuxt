@@ -25,7 +25,67 @@ export const Default: Story = {
         template: '<StorybookStoryWrapper><SwiperCard v-bind="args" /></StorybookStoryWrapper>',
     }),
     args: {
-        data: {},
+        data: {
+            title: 'Aktuelle Kurse',
+            cards: [
+                {
+                    image: {
+                        id: 1,
+                        url: getImagePath('/images/sigrid/sigrid_thaler_rizzolli_01.png'),
+                        alt: 'Kräuterkurs',
+                    },
+                    info: 'Knospen',
+                    date: '2025-03-15',
+                    title: 'Knospenexperte werden',
+                    link: {
+                        href: '/kraeuterkurse',
+                        text: 'Zum Kurs',
+                    },
+                },
+                {
+                    image: {
+                        id: 2,
+                        url: getImagePath('/images/sigrid/sigrid_thaler_rizzolli_01.png'),
+                        alt: 'Wildkräuterkurs',
+                    },
+                    info: 'Wildkräuter',
+                    date: '2025-04-20',
+                    title: 'Wildkräuter Basiskurs',
+                    link: {
+                        href: '/kraeuterkurse',
+                        text: 'Zum Kurs',
+                    },
+                },
+                {
+                    image: {
+                        id: 3,
+                        url: getImagePath('/images/sigrid/sigrid_thaler_rizzolli_01.png'),
+                        alt: 'Heilpflanzenkurs',
+                    },
+                    info: 'Heilpflanzen',
+                    date: '2025-05-10',
+                    title: 'Heilpflanzen Intensivkurs',
+                    link: {
+                        href: '/kraeuterkurse',
+                        text: 'Zum Kurs',
+                    },
+                },
+                {
+                    image: {
+                        id: 4,
+                        url: getImagePath('/images/sigrid/sigrid_thaler_rizzolli_01.png'),
+                        alt: 'Teemischungen',
+                    },
+                    info: 'Teekunde',
+                    date: '2025-06-05',
+                    title: 'Teemischungen selbst herstellen',
+                    link: {
+                        href: '/kraeuterkurse',
+                        text: 'Zum Kurs',
+                    },
+                },
+            ],
+        },
         settings: {
             spacing: {
                 marginTop: 'none',

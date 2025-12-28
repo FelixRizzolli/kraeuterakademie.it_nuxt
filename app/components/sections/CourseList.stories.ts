@@ -28,19 +28,31 @@ export const Default: Story = {
             title: 'Aktuelle Kurse',
             courses: [
                 {
-                    title: 'Pustertal K20',
+                    name: 'Pustertal K20',
                     place: 'Pustertal',
-                    description: [
-                        {
-                            type: 'paragraph',
+                    description: {
+                        root: {
+                            type: 'root',
                             children: [
                                 {
-                                    text: 'Der Kurs findet von Oktober 2023 bis August 2025 im Pustertal, statt. Die Kurstage sind jeweils samstags und dauern von 9:00 bis 17:00 Uhr.',
-                                    type: 'text',
+                                    type: 'paragraph',
+                                    children: [
+                                        {
+                                            type: 'text',
+                                            text: 'Der Kurs findet von Oktober 2023 bis August 2025 im Pustertal, statt. Die Kurstage sind jeweils samstags und dauern von 9:00 bis 17:00 Uhr.',
+                                            format: 0,
+                                            version: 1,
+                                        },
+                                    ],
+                                    version: 1,
                                 },
                             ],
+                            direction: 'ltr',
+                            format: '',
+                            indent: 0,
+                            version: 1,
                         },
-                    ],
+                    },
                     dates: [
                         { id: 0, date: '2023-10-28' },
                         { id: 0, date: '2023-11-11' },
@@ -82,19 +94,31 @@ export const Default: Story = {
                     ],
                 },
                 {
-                    title: 'Unterland K21',
+                    name: 'Unterland K21',
                     place: 'Unterland',
-                    description: [
-                        {
-                            type: 'paragraph',
+                    description: {
+                        root: {
+                            type: 'root',
                             children: [
                                 {
-                                    text: 'Der Kurs findet von Oktober 2023 bis August 2025 im Unterland, statt. Die Kurstage sind jeweils samstags und dauern von 9:00 bis 17:00 Uhr.',
-                                    type: 'text',
+                                    type: 'paragraph',
+                                    children: [
+                                        {
+                                            type: 'text',
+                                            text: 'Der Kurs findet von Oktober 2023 bis August 2025 im Unterland, statt. Die Kurstage sind jeweils samstags und dauern von 9:00 bis 17:00 Uhr.',
+                                            format: 0,
+                                            version: 1,
+                                        },
+                                    ],
+                                    version: 1,
                                 },
                             ],
+                            direction: 'ltr',
+                            format: '',
+                            indent: 0,
+                            version: 1,
                         },
-                    ],
+                    },
                     dates: [
                         { id: 0, date: '2023-10-24' },
                         { id: 0, date: '2023-11-21' },
@@ -136,19 +160,31 @@ export const Default: Story = {
                     ],
                 },
                 {
-                    title: 'Unterland K22',
+                    name: 'Unterland K22',
                     place: 'Unterland',
-                    description: [
-                        {
-                            type: 'paragraph',
+                    description: {
+                        root: {
+                            type: 'root',
                             children: [
                                 {
-                                    text: 'Der Kurs findet von Oktober 2023 bis August 2025 im Unterland, statt. Die Kurstage sind jeweils samstags und dauern von 9:00 bis 17:00 Uhr.',
-                                    type: 'text',
+                                    type: 'paragraph',
+                                    children: [
+                                        {
+                                            type: 'text',
+                                            text: 'Der Kurs findet von Oktober 2023 bis August 2025 im Unterland, statt. Die Kurstage sind jeweils samstags und dauern von 9:00 bis 17:00 Uhr.',
+                                            format: 0,
+                                            version: 1,
+                                        },
+                                    ],
+                                    version: 1,
                                 },
                             ],
+                            direction: 'ltr',
+                            format: '',
+                            indent: 0,
+                            version: 1,
                         },
-                    ],
+                    },
                     dates: [
                         { id: 0, date: '2023-10-29' },
                         { id: 0, date: '2023-11-19' },

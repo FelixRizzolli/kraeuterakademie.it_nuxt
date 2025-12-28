@@ -29,72 +29,117 @@ export const Default: Story = {
             accordions: [
                 {
                     title: 'Accordion 1',
-                    content: [
-                        {
-                            type: 'paragraph',
+                    content: {
+                        root: {
+                            type: 'root',
                             children: [
                                 {
-                                    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
-                                    type: 'text',
-                                },
-                                {
-                                    text: 'elit',
-                                    type: 'text',
-                                    bold: true,
-                                },
-                                {
-                                    text: '. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                    type: 'text',
+                                    type: 'paragraph',
+                                    children: [
+                                        {
+                                            type: 'text',
+                                            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
+                                            format: 0,
+                                            version: 1,
+                                        },
+                                        {
+                                            type: 'text',
+                                            text: 'elit',
+                                            format: 1,
+                                            version: 1,
+                                        },
+                                        {
+                                            type: 'text',
+                                            text: '. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                            format: 0,
+                                            version: 1,
+                                        },
+                                    ],
+                                    version: 1,
                                 },
                             ],
+                            direction: 'ltr',
+                            format: '',
+                            indent: 0,
+                            version: 1,
                         },
-                    ],
+                    },
                 },
                 {
                     title: 'Accordion 2',
-                    content: [
-                        {
-                            type: 'paragraph',
+                    content: {
+                        root: {
+                            type: 'root',
                             children: [
                                 {
-                                    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
-                                    type: 'text',
-                                },
-                                {
-                                    text: 'elit',
-                                    type: 'text',
-                                    bold: true,
-                                },
-                                {
-                                    text: '. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                    type: 'text',
+                                    type: 'paragraph',
+                                    children: [
+                                        {
+                                            type: 'text',
+                                            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
+                                            format: 0,
+                                            version: 1,
+                                        },
+                                        {
+                                            type: 'text',
+                                            text: 'elit',
+                                            format: 1,
+                                            version: 1,
+                                        },
+                                        {
+                                            type: 'text',
+                                            text: '. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                            format: 0,
+                                            version: 1,
+                                        },
+                                    ],
+                                    version: 1,
                                 },
                             ],
+                            direction: 'ltr',
+                            format: '',
+                            indent: 0,
+                            version: 1,
                         },
-                    ],
+                    },
                 },
                 {
                     title: 'Accordion 3',
-                    content: [
-                        {
-                            type: 'paragraph',
+                    content: {
+                        root: {
+                            type: 'root',
                             children: [
                                 {
-                                    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
-                                    type: 'text',
-                                },
-                                {
-                                    text: 'elit',
-                                    type: 'text',
-                                    bold: true,
-                                },
-                                {
-                                    text: '. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                    type: 'text',
+                                    type: 'paragraph',
+                                    children: [
+                                        {
+                                            type: 'text',
+                                            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
+                                            format: 0,
+                                            version: 1,
+                                        },
+                                        {
+                                            type: 'text',
+                                            text: 'elit',
+                                            format: 1,
+                                            version: 1,
+                                        },
+                                        {
+                                            type: 'text',
+                                            text: '. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                            format: 0,
+                                            version: 1,
+                                        },
+                                    ],
+                                    version: 1,
                                 },
                             ],
+                            direction: 'ltr',
+                            format: '',
+                            indent: 0,
+                            version: 1,
                         },
-                    ],
+                    },
                 },
             ],
         },

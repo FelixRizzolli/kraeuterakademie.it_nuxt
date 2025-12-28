@@ -30,7 +30,8 @@ export const Default: Story = {
             books: [
                 {
                     image: {
-                        alternativeText: null,
+                        id: 0,
+                        alt: null,
                         url: getImagePath('/images/books/mein_kraeuterbuechlein.png'),
                     },
                     infos: [
@@ -64,7 +65,8 @@ export const Default: Story = {
                 },
                 {
                     image: {
-                        alternativeText: null,
+                        id: 0,
+                        alt: null,
                         url: getImagePath('/images/books/die_zirbe.png'),
                     },
                     infos: [
@@ -98,7 +100,8 @@ export const Default: Story = {
                 },
                 {
                     image: {
-                        alternativeText: null,
+                        id: 0,
+                        alt: null,
                         url: getImagePath('/images/books/mein_kraeuterbuechlein.png'),
                     },
                     infos: [
@@ -132,7 +135,8 @@ export const Default: Story = {
                 },
                 {
                     image: {
-                        alternativeText: null,
+                        id: 0,
+                        alt: null,
                         url: getImagePath('/images/books/die_zirbe.png'),
                     },
                     infos: [
