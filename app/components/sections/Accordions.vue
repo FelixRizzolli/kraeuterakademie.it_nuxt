@@ -7,7 +7,7 @@
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
 
         <div class="accordions-container">
-            <div v-for="(accordion, index) in data.accordions" class="accordion-wrapper" ref="accordionList">
+            <div v-for="(accordion, index) in data.items" class="accordion-wrapper" ref="accordionList">
                 <details class="accordion" @click.prevent="toggleAccordion(index)">
                     <summary class="accordion-title accordion-grid">
                         <div class="safari-fix">
@@ -39,7 +39,7 @@
 
     interface AccordionsData {
         title: string;
-        accordions: Array<Accordion>;
+        items: Array<Accordion>;
     }
 
     interface AccordionsSettings {
@@ -63,6 +63,8 @@
     onMounted(() => {
         gsap.registerPlugin(ScrollTrigger);
         ctx = gsap.context(() => {});
+
+        console.log(props);
 
         if (titleElement.value instanceof HTMLElement) {
             const opacityEffect = getOpacityEffect(gsap);
