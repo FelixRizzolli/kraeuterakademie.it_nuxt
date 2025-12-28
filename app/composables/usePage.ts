@@ -28,6 +28,12 @@ interface PageData {
         title?: string;
         description?: string;
         image?: any;
+        keywords?: string[];
+        noIndex?: boolean;
+        canonical?: string;
+        schemaType?: string;
+        publishedTime?: string;
+        modifiedTime?: string;
     };
     contentComponents: ContentComponent[];
 }
@@ -121,6 +127,12 @@ export const usePage = () => {
                     title: page.title || '',
                     description: page.description || '',
                     image: page.image || null,
+                    keywords: page.keywords || [],
+                    noIndex: page.noIndex || false,
+                    canonical: page.canonical || '',
+                    schemaType: page.schemaType || 'WebPage',
+                    publishedTime: page.createdAt || '',
+                    modifiedTime: page.updatedAt || '',
                 },
                 contentComponents: transformBlocks(page.blocks || []),
             };

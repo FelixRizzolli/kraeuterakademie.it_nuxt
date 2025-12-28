@@ -24,6 +24,8 @@ export default defineNuxtConfig({
         public: {
             payloadApiUrl:
                 process.env.NODE_ENV === 'production' ? process.env.PAYLOAD_API_URL : 'http://localhost:3001',
+            siteUrl: process.env.SITE_URL || 'https://kraeuterakademie.it',
+            siteName: process.env.SITE_NAME || 'Sigrid Thaler Rizzolli',
         },
     },
 

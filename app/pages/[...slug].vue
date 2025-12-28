@@ -70,6 +70,16 @@
             if (!meta) return;
 
             useSeoConfig(pageData?.value?.meta);
+            
+            // Add structured data
+            useStructuredData({
+                type: meta.schemaType || 'WebPage',
+                title: meta.title,
+                description: meta.description,
+                image: meta.image,
+                publishedTime: meta.publishedTime,
+                modifiedTime: meta.modifiedTime,
+            });
         },
         { immediate: true },
     );
