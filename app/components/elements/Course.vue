@@ -1,6 +1,6 @@
 <template>
     <section class="course" ref="courseElement">
-        <h3 class="title">{{ course.name }}</h3>
+        <h3 class="title">{{ course.place }} {{ course.name }}</h3>
         <span v-if="sortedDates" class="key-infos"
             >{{ course.place }} | {{ formatDate(sortedDates?.[0]?.date) }} -
             {{ formatDate(sortedDates?.[sortedDates.length - 1]?.date) }}</span
@@ -24,7 +24,6 @@
     const { isMobile } = useDevice();
 
     interface CourseDate {
-        id: number;
         date: string;
     }
 
@@ -32,12 +31,8 @@
         name: string;
         place: string;
         description: RichText;
-        dates: Array<CourseDate>;
+        modules?: CourseModules;
         // TODO: use textblock
-        // link?: {
-        //     href: string;
-        //     text: string;
-        // };
     }
 
     export interface CourseProps {
@@ -46,11 +41,17 @@
 
     const props = defineProps<CourseProps>();
 
-    const sortedDates = computed(() => {
-        if (!props.course.dates || props.course.dates.length === 0) return null;
-        return props.course.dates.sort(
-            (a: CourseDate, b: CourseDate) => new Date(a.date).getTime() - new Date(b.date).getTime(),
-        );
+    const courseModuleDates = computed<CourseDate[] | null>(() => {
+        if (!props.course || !props.course.modules?.docs) return null;
+        return props.course.modules.docs.map((doc: any) => ({ date: doc.date }));
+    });
+
+    const sortedDates = computed<CourseDate[] | null>(() => {
+        if (!courseModuleDates.value || courseModuleDates.value.length === 0) return null;
+
+        const dates = [...courseModuleDates.value];
+
+        return dates.sort((a: CourseDate, b: CourseDate) => new Date(a.date).getTime() - new Date(b.date).getTime());
     });
 
     const courseElement = ref<HTMLElement>();
@@ -117,7 +118,7 @@
         });
     };
 
-    // Function to format ISO date YYYY-MM-DD to DD.MM.YYYY
+    // Function to format ISO date to DD.MM.YYYY in Europe/Rome timezone
     const formatDate = (isoDate?: string): string => {
         if (!isoDate) return '';
         const date = new Date(isoDate);
@@ -125,19 +126,22 @@
             day: '2-digit',
             month: '2-digit',
             year: 'numeric',
+            timeZone: 'Europe/Rome',
         }).format(date);
     };
 
-    // Function to format ISO date YYYY-MM-DD to DD.MM.YYYY WD with weekday
+    // Function to format ISO date to DD.MM.YYYY WD with weekday in Europe/Rome timezone
     const formatDate2 = (isoDate: string): string => {
         const date = new Date(isoDate);
         const formattedDate = new Intl.DateTimeFormat('de-DE', {
             day: '2-digit',
             month: '2-digit',
             year: 'numeric',
+            timeZone: 'Europe/Rome',
         }).format(date);
         const weekday = new Intl.DateTimeFormat('de-DE', {
             weekday: 'short',
+            timeZone: 'Europe/Rome',
         }).format(date);
         return `${formattedDate} ${weekday}`;
     };
@@ -167,6 +171,7 @@
     .title {
         order: 2;
         margin-top: 4.5rem;
+        text-transform: capitalize;
     }
 
     .key-infos {

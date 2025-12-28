@@ -9,6 +9,11 @@ fragment CourseListAttributes on WebCourseList {
             name
             description
             place
+            modules {
+                docs {
+                    date
+                }
+            }
         }
     }
     webCourseListSettings: settings {

@@ -39881,6 +39881,10 @@ export type CourseListAttributesFragment = {
             name: string;
             description?: { [key: string]: any } | null;
             place: Course_place;
+            modules?: {
+                __typename?: 'Course_Modules';
+                docs: Array<{ __typename?: 'CourseModule'; date: string }>;
+            } | null;
         }> | null;
     } | null;
     webCourseListSettings?: {
@@ -42390,6 +42394,10 @@ export type findWebPagesQuery = {
                               name: string;
                               description?: { [key: string]: any } | null;
                               place: Course_place;
+                              modules?: {
+                                  __typename?: 'Course_Modules';
+                                  docs: Array<{ __typename?: 'CourseModule'; date: string }>;
+                              } | null;
                           }> | null;
                       } | null;
                       webCourseListSettings?: {
@@ -43942,6 +43950,11 @@ export const CourseListAttributesFragmentDoc = gql`
                 name
                 description
                 place
+                modules {
+                    docs {
+                        date
+                    }
+                }
             }
         }
         webCourseListSettings: settings {
