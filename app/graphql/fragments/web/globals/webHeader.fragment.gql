@@ -1,6 +1,4 @@
-fragment FooterAttributes on Footer {
-    text1
-    text2
+fragment WebHeaderAttributes on WebHeader {
     links {
         href
         text

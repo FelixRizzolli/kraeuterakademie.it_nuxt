@@ -1,4 +1,6 @@
-fragment HeaderAttributes on Header {
+fragment WebFooterAttributes on WebFooter {
+    text1
+    text2
     links {
         href
         text

@@ -1,4 +1,4 @@
-fragment SidebarAttributes on Sidebar {
+fragment WebSidebarAttributes on WebSidebar {
     logoLink {
         href
         text

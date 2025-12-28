@@ -30,8 +30,6 @@ export type Access = {
     course_speakers?: Maybe<course_speakersAccess>;
     course_video_lessons?: Maybe<course_video_lessonsAccess>;
     courses?: Maybe<coursesAccess>;
-    footer?: Maybe<footerAccess>;
-    header?: Maybe<headerAccess>;
     payload_kv?: Maybe<payload_kvAccess>;
     payload_locked_documents?: Maybe<payload_locked_documentsAccess>;
     payload_preferences?: Maybe<payload_preferencesAccess>;
@@ -45,13 +43,15 @@ export type Access = {
     plant_toxicity_levels?: Maybe<plant_toxicity_levelsAccess>;
     plants?: Maybe<plantsAccess>;
     roles?: Maybe<rolesAccess>;
-    sidebar?: Maybe<sidebarAccess>;
     users?: Maybe<usersAccess>;
     web_books?: Maybe<web_booksAccess>;
+    web_footer?: Maybe<web_footerAccess>;
+    web_header?: Maybe<web_headerAccess>;
     web_image_categories?: Maybe<web_image_categoriesAccess>;
     web_images?: Maybe<web_imagesAccess>;
     web_pages?: Maybe<web_pagesAccess>;
     web_partners?: Maybe<web_partnersAccess>;
+    web_sidebar?: Maybe<web_sidebarAccess>;
     web_socials?: Maybe<web_socialsAccess>;
     web_text_blocks?: Maybe<web_text_blocksAccess>;
 };
@@ -5007,1078 +5007,6 @@ export type CoursesUpdateDocAccess = {
     where?: Maybe<Scalars['JSONObject']['output']>;
 };
 
-export type Footer = {
-    __typename?: 'Footer';
-    createdAt?: Maybe<Scalars['DateTime']['output']>;
-    links?: Maybe<Array<Footer_Links>>;
-    text1?: Maybe<Scalars['JSON']['output']>;
-    text2?: Maybe<Scalars['JSON']['output']>;
-    updatedAt?: Maybe<Scalars['DateTime']['output']>;
-};
-
-export type Footer_text1Args = {
-    depth?: InputMaybe<Scalars['Int']['input']>;
-};
-
-export type Footer_text2Args = {
-    depth?: InputMaybe<Scalars['Int']['input']>;
-};
-
-export type FooterDocAccessFields = {
-    __typename?: 'FooterDocAccessFields';
-    createdAt?: Maybe<FooterDocAccessFields_createdAt>;
-    links?: Maybe<FooterDocAccessFields_links>;
-    text1?: Maybe<FooterDocAccessFields_text1>;
-    text2?: Maybe<FooterDocAccessFields_text2>;
-    updatedAt?: Maybe<FooterDocAccessFields_updatedAt>;
-};
-
-export type FooterDocAccessFields_createdAt = {
-    __typename?: 'FooterDocAccessFields_createdAt';
-    create?: Maybe<FooterDocAccessFields_createdAt_Create>;
-    delete?: Maybe<FooterDocAccessFields_createdAt_Delete>;
-    read?: Maybe<FooterDocAccessFields_createdAt_Read>;
-    update?: Maybe<FooterDocAccessFields_createdAt_Update>;
-};
-
-export type FooterDocAccessFields_createdAt_Create = {
-    __typename?: 'FooterDocAccessFields_createdAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_createdAt_Delete = {
-    __typename?: 'FooterDocAccessFields_createdAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_createdAt_Read = {
-    __typename?: 'FooterDocAccessFields_createdAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_createdAt_Update = {
-    __typename?: 'FooterDocAccessFields_createdAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links = {
-    __typename?: 'FooterDocAccessFields_links';
-    create?: Maybe<FooterDocAccessFields_links_Create>;
-    delete?: Maybe<FooterDocAccessFields_links_Delete>;
-    fields?: Maybe<FooterDocAccessFields_links_Fields>;
-    read?: Maybe<FooterDocAccessFields_links_Read>;
-    update?: Maybe<FooterDocAccessFields_links_Update>;
-};
-
-export type FooterDocAccessFields_links_Create = {
-    __typename?: 'FooterDocAccessFields_links_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_Delete = {
-    __typename?: 'FooterDocAccessFields_links_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_Fields = {
-    __typename?: 'FooterDocAccessFields_links_Fields';
-    href?: Maybe<FooterDocAccessFields_links_href>;
-    id?: Maybe<FooterDocAccessFields_links_id>;
-    target?: Maybe<FooterDocAccessFields_links_target>;
-    text?: Maybe<FooterDocAccessFields_links_text>;
-};
-
-export type FooterDocAccessFields_links_Read = {
-    __typename?: 'FooterDocAccessFields_links_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_Update = {
-    __typename?: 'FooterDocAccessFields_links_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_href = {
-    __typename?: 'FooterDocAccessFields_links_href';
-    create?: Maybe<FooterDocAccessFields_links_href_Create>;
-    delete?: Maybe<FooterDocAccessFields_links_href_Delete>;
-    read?: Maybe<FooterDocAccessFields_links_href_Read>;
-    update?: Maybe<FooterDocAccessFields_links_href_Update>;
-};
-
-export type FooterDocAccessFields_links_href_Create = {
-    __typename?: 'FooterDocAccessFields_links_href_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_href_Delete = {
-    __typename?: 'FooterDocAccessFields_links_href_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_href_Read = {
-    __typename?: 'FooterDocAccessFields_links_href_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_href_Update = {
-    __typename?: 'FooterDocAccessFields_links_href_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_id = {
-    __typename?: 'FooterDocAccessFields_links_id';
-    create?: Maybe<FooterDocAccessFields_links_id_Create>;
-    delete?: Maybe<FooterDocAccessFields_links_id_Delete>;
-    read?: Maybe<FooterDocAccessFields_links_id_Read>;
-    update?: Maybe<FooterDocAccessFields_links_id_Update>;
-};
-
-export type FooterDocAccessFields_links_id_Create = {
-    __typename?: 'FooterDocAccessFields_links_id_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_id_Delete = {
-    __typename?: 'FooterDocAccessFields_links_id_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_id_Read = {
-    __typename?: 'FooterDocAccessFields_links_id_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_id_Update = {
-    __typename?: 'FooterDocAccessFields_links_id_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_target = {
-    __typename?: 'FooterDocAccessFields_links_target';
-    create?: Maybe<FooterDocAccessFields_links_target_Create>;
-    delete?: Maybe<FooterDocAccessFields_links_target_Delete>;
-    read?: Maybe<FooterDocAccessFields_links_target_Read>;
-    update?: Maybe<FooterDocAccessFields_links_target_Update>;
-};
-
-export type FooterDocAccessFields_links_target_Create = {
-    __typename?: 'FooterDocAccessFields_links_target_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_target_Delete = {
-    __typename?: 'FooterDocAccessFields_links_target_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_target_Read = {
-    __typename?: 'FooterDocAccessFields_links_target_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_target_Update = {
-    __typename?: 'FooterDocAccessFields_links_target_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_text = {
-    __typename?: 'FooterDocAccessFields_links_text';
-    create?: Maybe<FooterDocAccessFields_links_text_Create>;
-    delete?: Maybe<FooterDocAccessFields_links_text_Delete>;
-    read?: Maybe<FooterDocAccessFields_links_text_Read>;
-    update?: Maybe<FooterDocAccessFields_links_text_Update>;
-};
-
-export type FooterDocAccessFields_links_text_Create = {
-    __typename?: 'FooterDocAccessFields_links_text_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_text_Delete = {
-    __typename?: 'FooterDocAccessFields_links_text_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_text_Read = {
-    __typename?: 'FooterDocAccessFields_links_text_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_links_text_Update = {
-    __typename?: 'FooterDocAccessFields_links_text_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_text1 = {
-    __typename?: 'FooterDocAccessFields_text1';
-    create?: Maybe<FooterDocAccessFields_text1_Create>;
-    delete?: Maybe<FooterDocAccessFields_text1_Delete>;
-    read?: Maybe<FooterDocAccessFields_text1_Read>;
-    update?: Maybe<FooterDocAccessFields_text1_Update>;
-};
-
-export type FooterDocAccessFields_text1_Create = {
-    __typename?: 'FooterDocAccessFields_text1_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_text1_Delete = {
-    __typename?: 'FooterDocAccessFields_text1_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_text1_Read = {
-    __typename?: 'FooterDocAccessFields_text1_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_text1_Update = {
-    __typename?: 'FooterDocAccessFields_text1_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_text2 = {
-    __typename?: 'FooterDocAccessFields_text2';
-    create?: Maybe<FooterDocAccessFields_text2_Create>;
-    delete?: Maybe<FooterDocAccessFields_text2_Delete>;
-    read?: Maybe<FooterDocAccessFields_text2_Read>;
-    update?: Maybe<FooterDocAccessFields_text2_Update>;
-};
-
-export type FooterDocAccessFields_text2_Create = {
-    __typename?: 'FooterDocAccessFields_text2_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_text2_Delete = {
-    __typename?: 'FooterDocAccessFields_text2_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_text2_Read = {
-    __typename?: 'FooterDocAccessFields_text2_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_text2_Update = {
-    __typename?: 'FooterDocAccessFields_text2_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_updatedAt = {
-    __typename?: 'FooterDocAccessFields_updatedAt';
-    create?: Maybe<FooterDocAccessFields_updatedAt_Create>;
-    delete?: Maybe<FooterDocAccessFields_updatedAt_Delete>;
-    read?: Maybe<FooterDocAccessFields_updatedAt_Read>;
-    update?: Maybe<FooterDocAccessFields_updatedAt_Update>;
-};
-
-export type FooterDocAccessFields_updatedAt_Create = {
-    __typename?: 'FooterDocAccessFields_updatedAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_updatedAt_Delete = {
-    __typename?: 'FooterDocAccessFields_updatedAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_updatedAt_Read = {
-    __typename?: 'FooterDocAccessFields_updatedAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterDocAccessFields_updatedAt_Update = {
-    __typename?: 'FooterDocAccessFields_updatedAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields = {
-    __typename?: 'FooterFields';
-    createdAt?: Maybe<FooterFields_createdAt>;
-    links?: Maybe<FooterFields_links>;
-    text1?: Maybe<FooterFields_text1>;
-    text2?: Maybe<FooterFields_text2>;
-    updatedAt?: Maybe<FooterFields_updatedAt>;
-};
-
-export type FooterFields_createdAt = {
-    __typename?: 'FooterFields_createdAt';
-    create?: Maybe<FooterFields_createdAt_Create>;
-    delete?: Maybe<FooterFields_createdAt_Delete>;
-    read?: Maybe<FooterFields_createdAt_Read>;
-    update?: Maybe<FooterFields_createdAt_Update>;
-};
-
-export type FooterFields_createdAt_Create = {
-    __typename?: 'FooterFields_createdAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_createdAt_Delete = {
-    __typename?: 'FooterFields_createdAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_createdAt_Read = {
-    __typename?: 'FooterFields_createdAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_createdAt_Update = {
-    __typename?: 'FooterFields_createdAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links = {
-    __typename?: 'FooterFields_links';
-    create?: Maybe<FooterFields_links_Create>;
-    delete?: Maybe<FooterFields_links_Delete>;
-    fields?: Maybe<FooterFields_links_Fields>;
-    read?: Maybe<FooterFields_links_Read>;
-    update?: Maybe<FooterFields_links_Update>;
-};
-
-export type FooterFields_links_Create = {
-    __typename?: 'FooterFields_links_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_Delete = {
-    __typename?: 'FooterFields_links_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_Fields = {
-    __typename?: 'FooterFields_links_Fields';
-    href?: Maybe<FooterFields_links_href>;
-    id?: Maybe<FooterFields_links_id>;
-    target?: Maybe<FooterFields_links_target>;
-    text?: Maybe<FooterFields_links_text>;
-};
-
-export type FooterFields_links_Read = {
-    __typename?: 'FooterFields_links_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_Update = {
-    __typename?: 'FooterFields_links_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_href = {
-    __typename?: 'FooterFields_links_href';
-    create?: Maybe<FooterFields_links_href_Create>;
-    delete?: Maybe<FooterFields_links_href_Delete>;
-    read?: Maybe<FooterFields_links_href_Read>;
-    update?: Maybe<FooterFields_links_href_Update>;
-};
-
-export type FooterFields_links_href_Create = {
-    __typename?: 'FooterFields_links_href_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_href_Delete = {
-    __typename?: 'FooterFields_links_href_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_href_Read = {
-    __typename?: 'FooterFields_links_href_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_href_Update = {
-    __typename?: 'FooterFields_links_href_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_id = {
-    __typename?: 'FooterFields_links_id';
-    create?: Maybe<FooterFields_links_id_Create>;
-    delete?: Maybe<FooterFields_links_id_Delete>;
-    read?: Maybe<FooterFields_links_id_Read>;
-    update?: Maybe<FooterFields_links_id_Update>;
-};
-
-export type FooterFields_links_id_Create = {
-    __typename?: 'FooterFields_links_id_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_id_Delete = {
-    __typename?: 'FooterFields_links_id_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_id_Read = {
-    __typename?: 'FooterFields_links_id_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_id_Update = {
-    __typename?: 'FooterFields_links_id_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_target = {
-    __typename?: 'FooterFields_links_target';
-    create?: Maybe<FooterFields_links_target_Create>;
-    delete?: Maybe<FooterFields_links_target_Delete>;
-    read?: Maybe<FooterFields_links_target_Read>;
-    update?: Maybe<FooterFields_links_target_Update>;
-};
-
-export type FooterFields_links_target_Create = {
-    __typename?: 'FooterFields_links_target_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_target_Delete = {
-    __typename?: 'FooterFields_links_target_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_target_Read = {
-    __typename?: 'FooterFields_links_target_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_target_Update = {
-    __typename?: 'FooterFields_links_target_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_text = {
-    __typename?: 'FooterFields_links_text';
-    create?: Maybe<FooterFields_links_text_Create>;
-    delete?: Maybe<FooterFields_links_text_Delete>;
-    read?: Maybe<FooterFields_links_text_Read>;
-    update?: Maybe<FooterFields_links_text_Update>;
-};
-
-export type FooterFields_links_text_Create = {
-    __typename?: 'FooterFields_links_text_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_text_Delete = {
-    __typename?: 'FooterFields_links_text_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_text_Read = {
-    __typename?: 'FooterFields_links_text_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_links_text_Update = {
-    __typename?: 'FooterFields_links_text_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_text1 = {
-    __typename?: 'FooterFields_text1';
-    create?: Maybe<FooterFields_text1_Create>;
-    delete?: Maybe<FooterFields_text1_Delete>;
-    read?: Maybe<FooterFields_text1_Read>;
-    update?: Maybe<FooterFields_text1_Update>;
-};
-
-export type FooterFields_text1_Create = {
-    __typename?: 'FooterFields_text1_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_text1_Delete = {
-    __typename?: 'FooterFields_text1_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_text1_Read = {
-    __typename?: 'FooterFields_text1_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_text1_Update = {
-    __typename?: 'FooterFields_text1_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_text2 = {
-    __typename?: 'FooterFields_text2';
-    create?: Maybe<FooterFields_text2_Create>;
-    delete?: Maybe<FooterFields_text2_Delete>;
-    read?: Maybe<FooterFields_text2_Read>;
-    update?: Maybe<FooterFields_text2_Update>;
-};
-
-export type FooterFields_text2_Create = {
-    __typename?: 'FooterFields_text2_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_text2_Delete = {
-    __typename?: 'FooterFields_text2_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_text2_Read = {
-    __typename?: 'FooterFields_text2_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_text2_Update = {
-    __typename?: 'FooterFields_text2_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_updatedAt = {
-    __typename?: 'FooterFields_updatedAt';
-    create?: Maybe<FooterFields_updatedAt_Create>;
-    delete?: Maybe<FooterFields_updatedAt_Delete>;
-    read?: Maybe<FooterFields_updatedAt_Read>;
-    update?: Maybe<FooterFields_updatedAt_Update>;
-};
-
-export type FooterFields_updatedAt_Create = {
-    __typename?: 'FooterFields_updatedAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_updatedAt_Delete = {
-    __typename?: 'FooterFields_updatedAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_updatedAt_Read = {
-    __typename?: 'FooterFields_updatedAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterFields_updatedAt_Update = {
-    __typename?: 'FooterFields_updatedAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type FooterReadAccess = {
-    __typename?: 'FooterReadAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type FooterReadDocAccess = {
-    __typename?: 'FooterReadDocAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type FooterUpdateAccess = {
-    __typename?: 'FooterUpdateAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type FooterUpdateDocAccess = {
-    __typename?: 'FooterUpdateDocAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type Footer_Links = {
-    __typename?: 'Footer_Links';
-    href?: Maybe<Scalars['String']['output']>;
-    id?: Maybe<Scalars['String']['output']>;
-    target?: Maybe<Footer_Links_target>;
-    text?: Maybe<Scalars['String']['output']>;
-};
-
-export type Footer_Links_target = '_blank' | '_parent' | '_self' | '_top' | '_unfencedTop' | '%future added value';
-
-export type Footer_Links_target_MutationInput =
-    | '_blank'
-    | '_parent'
-    | '_self'
-    | '_top'
-    | '_unfencedTop'
-    | '%future added value';
-
-export type Header = {
-    __typename?: 'Header';
-    createdAt?: Maybe<Scalars['DateTime']['output']>;
-    links?: Maybe<Array<Header_Links>>;
-    updatedAt?: Maybe<Scalars['DateTime']['output']>;
-};
-
-export type HeaderDocAccessFields = {
-    __typename?: 'HeaderDocAccessFields';
-    createdAt?: Maybe<HeaderDocAccessFields_createdAt>;
-    links?: Maybe<HeaderDocAccessFields_links>;
-    updatedAt?: Maybe<HeaderDocAccessFields_updatedAt>;
-};
-
-export type HeaderDocAccessFields_createdAt = {
-    __typename?: 'HeaderDocAccessFields_createdAt';
-    create?: Maybe<HeaderDocAccessFields_createdAt_Create>;
-    delete?: Maybe<HeaderDocAccessFields_createdAt_Delete>;
-    read?: Maybe<HeaderDocAccessFields_createdAt_Read>;
-    update?: Maybe<HeaderDocAccessFields_createdAt_Update>;
-};
-
-export type HeaderDocAccessFields_createdAt_Create = {
-    __typename?: 'HeaderDocAccessFields_createdAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_createdAt_Delete = {
-    __typename?: 'HeaderDocAccessFields_createdAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_createdAt_Read = {
-    __typename?: 'HeaderDocAccessFields_createdAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_createdAt_Update = {
-    __typename?: 'HeaderDocAccessFields_createdAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links = {
-    __typename?: 'HeaderDocAccessFields_links';
-    create?: Maybe<HeaderDocAccessFields_links_Create>;
-    delete?: Maybe<HeaderDocAccessFields_links_Delete>;
-    fields?: Maybe<HeaderDocAccessFields_links_Fields>;
-    read?: Maybe<HeaderDocAccessFields_links_Read>;
-    update?: Maybe<HeaderDocAccessFields_links_Update>;
-};
-
-export type HeaderDocAccessFields_links_Create = {
-    __typename?: 'HeaderDocAccessFields_links_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_Delete = {
-    __typename?: 'HeaderDocAccessFields_links_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_Fields = {
-    __typename?: 'HeaderDocAccessFields_links_Fields';
-    href?: Maybe<HeaderDocAccessFields_links_href>;
-    id?: Maybe<HeaderDocAccessFields_links_id>;
-    target?: Maybe<HeaderDocAccessFields_links_target>;
-    text?: Maybe<HeaderDocAccessFields_links_text>;
-};
-
-export type HeaderDocAccessFields_links_Read = {
-    __typename?: 'HeaderDocAccessFields_links_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_Update = {
-    __typename?: 'HeaderDocAccessFields_links_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_href = {
-    __typename?: 'HeaderDocAccessFields_links_href';
-    create?: Maybe<HeaderDocAccessFields_links_href_Create>;
-    delete?: Maybe<HeaderDocAccessFields_links_href_Delete>;
-    read?: Maybe<HeaderDocAccessFields_links_href_Read>;
-    update?: Maybe<HeaderDocAccessFields_links_href_Update>;
-};
-
-export type HeaderDocAccessFields_links_href_Create = {
-    __typename?: 'HeaderDocAccessFields_links_href_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_href_Delete = {
-    __typename?: 'HeaderDocAccessFields_links_href_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_href_Read = {
-    __typename?: 'HeaderDocAccessFields_links_href_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_href_Update = {
-    __typename?: 'HeaderDocAccessFields_links_href_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_id = {
-    __typename?: 'HeaderDocAccessFields_links_id';
-    create?: Maybe<HeaderDocAccessFields_links_id_Create>;
-    delete?: Maybe<HeaderDocAccessFields_links_id_Delete>;
-    read?: Maybe<HeaderDocAccessFields_links_id_Read>;
-    update?: Maybe<HeaderDocAccessFields_links_id_Update>;
-};
-
-export type HeaderDocAccessFields_links_id_Create = {
-    __typename?: 'HeaderDocAccessFields_links_id_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_id_Delete = {
-    __typename?: 'HeaderDocAccessFields_links_id_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_id_Read = {
-    __typename?: 'HeaderDocAccessFields_links_id_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_id_Update = {
-    __typename?: 'HeaderDocAccessFields_links_id_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_target = {
-    __typename?: 'HeaderDocAccessFields_links_target';
-    create?: Maybe<HeaderDocAccessFields_links_target_Create>;
-    delete?: Maybe<HeaderDocAccessFields_links_target_Delete>;
-    read?: Maybe<HeaderDocAccessFields_links_target_Read>;
-    update?: Maybe<HeaderDocAccessFields_links_target_Update>;
-};
-
-export type HeaderDocAccessFields_links_target_Create = {
-    __typename?: 'HeaderDocAccessFields_links_target_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_target_Delete = {
-    __typename?: 'HeaderDocAccessFields_links_target_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_target_Read = {
-    __typename?: 'HeaderDocAccessFields_links_target_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_target_Update = {
-    __typename?: 'HeaderDocAccessFields_links_target_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_text = {
-    __typename?: 'HeaderDocAccessFields_links_text';
-    create?: Maybe<HeaderDocAccessFields_links_text_Create>;
-    delete?: Maybe<HeaderDocAccessFields_links_text_Delete>;
-    read?: Maybe<HeaderDocAccessFields_links_text_Read>;
-    update?: Maybe<HeaderDocAccessFields_links_text_Update>;
-};
-
-export type HeaderDocAccessFields_links_text_Create = {
-    __typename?: 'HeaderDocAccessFields_links_text_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_text_Delete = {
-    __typename?: 'HeaderDocAccessFields_links_text_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_text_Read = {
-    __typename?: 'HeaderDocAccessFields_links_text_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_links_text_Update = {
-    __typename?: 'HeaderDocAccessFields_links_text_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_updatedAt = {
-    __typename?: 'HeaderDocAccessFields_updatedAt';
-    create?: Maybe<HeaderDocAccessFields_updatedAt_Create>;
-    delete?: Maybe<HeaderDocAccessFields_updatedAt_Delete>;
-    read?: Maybe<HeaderDocAccessFields_updatedAt_Read>;
-    update?: Maybe<HeaderDocAccessFields_updatedAt_Update>;
-};
-
-export type HeaderDocAccessFields_updatedAt_Create = {
-    __typename?: 'HeaderDocAccessFields_updatedAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_updatedAt_Delete = {
-    __typename?: 'HeaderDocAccessFields_updatedAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_updatedAt_Read = {
-    __typename?: 'HeaderDocAccessFields_updatedAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderDocAccessFields_updatedAt_Update = {
-    __typename?: 'HeaderDocAccessFields_updatedAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields = {
-    __typename?: 'HeaderFields';
-    createdAt?: Maybe<HeaderFields_createdAt>;
-    links?: Maybe<HeaderFields_links>;
-    updatedAt?: Maybe<HeaderFields_updatedAt>;
-};
-
-export type HeaderFields_createdAt = {
-    __typename?: 'HeaderFields_createdAt';
-    create?: Maybe<HeaderFields_createdAt_Create>;
-    delete?: Maybe<HeaderFields_createdAt_Delete>;
-    read?: Maybe<HeaderFields_createdAt_Read>;
-    update?: Maybe<HeaderFields_createdAt_Update>;
-};
-
-export type HeaderFields_createdAt_Create = {
-    __typename?: 'HeaderFields_createdAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_createdAt_Delete = {
-    __typename?: 'HeaderFields_createdAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_createdAt_Read = {
-    __typename?: 'HeaderFields_createdAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_createdAt_Update = {
-    __typename?: 'HeaderFields_createdAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links = {
-    __typename?: 'HeaderFields_links';
-    create?: Maybe<HeaderFields_links_Create>;
-    delete?: Maybe<HeaderFields_links_Delete>;
-    fields?: Maybe<HeaderFields_links_Fields>;
-    read?: Maybe<HeaderFields_links_Read>;
-    update?: Maybe<HeaderFields_links_Update>;
-};
-
-export type HeaderFields_links_Create = {
-    __typename?: 'HeaderFields_links_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_Delete = {
-    __typename?: 'HeaderFields_links_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_Fields = {
-    __typename?: 'HeaderFields_links_Fields';
-    href?: Maybe<HeaderFields_links_href>;
-    id?: Maybe<HeaderFields_links_id>;
-    target?: Maybe<HeaderFields_links_target>;
-    text?: Maybe<HeaderFields_links_text>;
-};
-
-export type HeaderFields_links_Read = {
-    __typename?: 'HeaderFields_links_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_Update = {
-    __typename?: 'HeaderFields_links_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_href = {
-    __typename?: 'HeaderFields_links_href';
-    create?: Maybe<HeaderFields_links_href_Create>;
-    delete?: Maybe<HeaderFields_links_href_Delete>;
-    read?: Maybe<HeaderFields_links_href_Read>;
-    update?: Maybe<HeaderFields_links_href_Update>;
-};
-
-export type HeaderFields_links_href_Create = {
-    __typename?: 'HeaderFields_links_href_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_href_Delete = {
-    __typename?: 'HeaderFields_links_href_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_href_Read = {
-    __typename?: 'HeaderFields_links_href_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_href_Update = {
-    __typename?: 'HeaderFields_links_href_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_id = {
-    __typename?: 'HeaderFields_links_id';
-    create?: Maybe<HeaderFields_links_id_Create>;
-    delete?: Maybe<HeaderFields_links_id_Delete>;
-    read?: Maybe<HeaderFields_links_id_Read>;
-    update?: Maybe<HeaderFields_links_id_Update>;
-};
-
-export type HeaderFields_links_id_Create = {
-    __typename?: 'HeaderFields_links_id_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_id_Delete = {
-    __typename?: 'HeaderFields_links_id_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_id_Read = {
-    __typename?: 'HeaderFields_links_id_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_id_Update = {
-    __typename?: 'HeaderFields_links_id_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_target = {
-    __typename?: 'HeaderFields_links_target';
-    create?: Maybe<HeaderFields_links_target_Create>;
-    delete?: Maybe<HeaderFields_links_target_Delete>;
-    read?: Maybe<HeaderFields_links_target_Read>;
-    update?: Maybe<HeaderFields_links_target_Update>;
-};
-
-export type HeaderFields_links_target_Create = {
-    __typename?: 'HeaderFields_links_target_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_target_Delete = {
-    __typename?: 'HeaderFields_links_target_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_target_Read = {
-    __typename?: 'HeaderFields_links_target_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_target_Update = {
-    __typename?: 'HeaderFields_links_target_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_text = {
-    __typename?: 'HeaderFields_links_text';
-    create?: Maybe<HeaderFields_links_text_Create>;
-    delete?: Maybe<HeaderFields_links_text_Delete>;
-    read?: Maybe<HeaderFields_links_text_Read>;
-    update?: Maybe<HeaderFields_links_text_Update>;
-};
-
-export type HeaderFields_links_text_Create = {
-    __typename?: 'HeaderFields_links_text_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_text_Delete = {
-    __typename?: 'HeaderFields_links_text_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_text_Read = {
-    __typename?: 'HeaderFields_links_text_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_links_text_Update = {
-    __typename?: 'HeaderFields_links_text_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_updatedAt = {
-    __typename?: 'HeaderFields_updatedAt';
-    create?: Maybe<HeaderFields_updatedAt_Create>;
-    delete?: Maybe<HeaderFields_updatedAt_Delete>;
-    read?: Maybe<HeaderFields_updatedAt_Read>;
-    update?: Maybe<HeaderFields_updatedAt_Update>;
-};
-
-export type HeaderFields_updatedAt_Create = {
-    __typename?: 'HeaderFields_updatedAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_updatedAt_Delete = {
-    __typename?: 'HeaderFields_updatedAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_updatedAt_Read = {
-    __typename?: 'HeaderFields_updatedAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderFields_updatedAt_Update = {
-    __typename?: 'HeaderFields_updatedAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type HeaderReadAccess = {
-    __typename?: 'HeaderReadAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type HeaderReadDocAccess = {
-    __typename?: 'HeaderReadDocAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type HeaderUpdateAccess = {
-    __typename?: 'HeaderUpdateAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type HeaderUpdateDocAccess = {
-    __typename?: 'HeaderUpdateDocAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type Header_Links = {
-    __typename?: 'Header_Links';
-    href?: Maybe<Scalars['String']['output']>;
-    id?: Maybe<Scalars['String']['output']>;
-    target?: Maybe<Header_Links_target>;
-    text?: Maybe<Scalars['String']['output']>;
-};
-
-export type Header_Links_target = '_blank' | '_parent' | '_self' | '_top' | '_unfencedTop' | '%future added value';
-
-export type Header_Links_target_MutationInput =
-    | '_blank'
-    | '_parent'
-    | '_self'
-    | '_top'
-    | '_unfencedTop'
-    | '%future added value';
-
 export type Mutation = {
     __typename?: 'Mutation';
     createCourse?: Maybe<Course>;
@@ -6182,8 +5110,6 @@ export type Mutation = {
     updateCourseSharedDocument?: Maybe<CourseSharedDocument>;
     updateCourseSpeaker?: Maybe<CourseSpeaker>;
     updateCourseVideoLesson?: Maybe<CourseVideoLesson>;
-    updateFooter?: Maybe<Footer>;
-    updateHeader?: Maybe<Header>;
     updatePayloadKv?: Maybe<PayloadKv>;
     updatePayloadLockedDocument?: Maybe<PayloadLockedDocument>;
     updatePayloadPreference?: Maybe<PayloadPreference>;
@@ -6197,13 +5123,15 @@ export type Mutation = {
     updatePlantSubstance?: Maybe<PlantSubstance>;
     updatePlantToxicityLevel?: Maybe<PlantToxicityLevel>;
     updateRole?: Maybe<Role>;
-    updateSidebar?: Maybe<Sidebar>;
     updateUser?: Maybe<User>;
     updateWebBook?: Maybe<WebBook>;
+    updateWebFooter?: Maybe<WebFooter>;
+    updateWebHeader?: Maybe<WebHeader>;
     updateWebImage?: Maybe<WebImage>;
     updateWebImageCategory?: Maybe<WebImageCategory>;
     updateWebPage?: Maybe<WebPage>;
     updateWebPartner?: Maybe<WebPartner>;
+    updateWebSidebar?: Maybe<WebSidebar>;
     updateWebSocial?: Maybe<WebSocial>;
     updateWebTextBlock?: Maybe<WebTextBlock>;
     verifyEmailUser?: Maybe<Scalars['Boolean']['output']>;
@@ -6732,16 +5660,6 @@ export type Mutation_updateCourseVideoLessonArgs = {
     trash?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type Mutation_updateFooterArgs = {
-    data: mutationFooterInput;
-    draft?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-export type Mutation_updateHeaderArgs = {
-    data: mutationHeaderInput;
-    draft?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
 export type Mutation_updatePayloadKvArgs = {
     autosave?: InputMaybe<Scalars['Boolean']['input']>;
     data: mutationPayloadKvUpdateInput;
@@ -6846,11 +5764,6 @@ export type Mutation_updateRoleArgs = {
     trash?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type Mutation_updateSidebarArgs = {
-    data: mutationSidebarInput;
-    draft?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
 export type Mutation_updateUserArgs = {
     autosave?: InputMaybe<Scalars['Boolean']['input']>;
     data: mutationUserUpdateInput;
@@ -6865,6 +5778,16 @@ export type Mutation_updateWebBookArgs = {
     draft?: InputMaybe<Scalars['Boolean']['input']>;
     id: Scalars['Int']['input'];
     trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_updateWebFooterArgs = {
+    data: mutationWebFooterInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_updateWebHeaderArgs = {
+    data: mutationWebHeaderInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type Mutation_updateWebImageArgs = {
@@ -6897,6 +5820,11 @@ export type Mutation_updateWebPartnerArgs = {
     draft?: InputMaybe<Scalars['Boolean']['input']>;
     id: Scalars['Int']['input'];
     trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_updateWebSidebarArgs = {
+    data: mutationWebSidebarInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type Mutation_updateWebSocialArgs = {
@@ -20049,8 +18977,6 @@ export type Query = {
     CourseVideoLesson?: Maybe<CourseVideoLesson>;
     CourseVideoLessons?: Maybe<CourseVideoLessons>;
     Courses?: Maybe<Courses>;
-    Footer?: Maybe<Footer>;
-    Header?: Maybe<Header>;
     PayloadKv?: Maybe<PayloadKv>;
     PayloadKvs?: Maybe<PayloadKvs>;
     PayloadLockedDocument?: Maybe<PayloadLockedDocument>;
@@ -20077,11 +19003,12 @@ export type Query = {
     Plants?: Maybe<Plants>;
     Role?: Maybe<Role>;
     Roles?: Maybe<Roles>;
-    Sidebar?: Maybe<Sidebar>;
     User?: Maybe<User>;
     Users?: Maybe<Users>;
     WebBook?: Maybe<WebBook>;
     WebBooks?: Maybe<WebBooks>;
+    WebFooter?: Maybe<WebFooter>;
+    WebHeader?: Maybe<WebHeader>;
     WebImage?: Maybe<WebImage>;
     WebImageCategories?: Maybe<WebImageCategories>;
     WebImageCategory?: Maybe<WebImageCategory>;
@@ -20090,6 +19017,7 @@ export type Query = {
     WebPages?: Maybe<WebPages>;
     WebPartner?: Maybe<WebPartner>;
     WebPartners?: Maybe<WebPartners>;
+    WebSidebar?: Maybe<WebSidebar>;
     WebSocial?: Maybe<WebSocial>;
     WebSocials?: Maybe<WebSocials>;
     WebTextBlock?: Maybe<WebTextBlock>;
@@ -20132,8 +19060,6 @@ export type Query = {
     docAccessCourseSharedDocument?: Maybe<course_shared_documentsDocAccess>;
     docAccessCourseSpeaker?: Maybe<course_speakersDocAccess>;
     docAccessCourseVideoLesson?: Maybe<course_video_lessonsDocAccess>;
-    docAccessFooter?: Maybe<footerDocAccess>;
-    docAccessHeader?: Maybe<headerDocAccess>;
     docAccessPayloadKv?: Maybe<payload_kvDocAccess>;
     docAccessPayloadLockedDocument?: Maybe<payload_locked_documentsDocAccess>;
     docAccessPayloadPreference?: Maybe<payload_preferencesDocAccess>;
@@ -20147,13 +19073,15 @@ export type Query = {
     docAccessPlantSubstance?: Maybe<plant_substancesDocAccess>;
     docAccessPlantToxicityLevel?: Maybe<plant_toxicity_levelsDocAccess>;
     docAccessRole?: Maybe<rolesDocAccess>;
-    docAccessSidebar?: Maybe<sidebarDocAccess>;
     docAccessUser?: Maybe<usersDocAccess>;
     docAccessWebBook?: Maybe<web_booksDocAccess>;
+    docAccessWebFooter?: Maybe<web_footerDocAccess>;
+    docAccessWebHeader?: Maybe<web_headerDocAccess>;
     docAccessWebImage?: Maybe<web_imagesDocAccess>;
     docAccessWebImageCategory?: Maybe<web_image_categoriesDocAccess>;
     docAccessWebPage?: Maybe<web_pagesDocAccess>;
     docAccessWebPartner?: Maybe<web_partnersDocAccess>;
+    docAccessWebSidebar?: Maybe<web_sidebarDocAccess>;
     docAccessWebSocial?: Maybe<web_socialsDocAccess>;
     docAccessWebTextBlock?: Maybe<web_text_blocksDocAccess>;
     initializedUser?: Maybe<Scalars['Boolean']['output']>;
@@ -20307,16 +19235,6 @@ export type Query_CoursesArgs = {
     sort?: InputMaybe<Scalars['String']['input']>;
     trash?: InputMaybe<Scalars['Boolean']['input']>;
     where?: InputMaybe<Course_where>;
-};
-
-export type Query_FooterArgs = {
-    draft?: InputMaybe<Scalars['Boolean']['input']>;
-    select?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-export type Query_HeaderArgs = {
-    draft?: InputMaybe<Scalars['Boolean']['input']>;
-    select?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type Query_PayloadKvArgs = {
@@ -20553,11 +19471,6 @@ export type Query_RolesArgs = {
     where?: InputMaybe<Role_where>;
 };
 
-export type Query_SidebarArgs = {
-    draft?: InputMaybe<Scalars['Boolean']['input']>;
-    select?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
 export type Query_UserArgs = {
     draft?: InputMaybe<Scalars['Boolean']['input']>;
     id: Scalars['Int']['input'];
@@ -20592,6 +19505,16 @@ export type Query_WebBooksArgs = {
     sort?: InputMaybe<Scalars['String']['input']>;
     trash?: InputMaybe<Scalars['Boolean']['input']>;
     where?: InputMaybe<WebBook_where>;
+};
+
+export type Query_WebFooterArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Query_WebHeaderArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    select?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type Query_WebImageArgs = {
@@ -20664,6 +19587,11 @@ export type Query_WebPartnersArgs = {
     sort?: InputMaybe<Scalars['String']['input']>;
     trash?: InputMaybe<Scalars['Boolean']['input']>;
     where?: InputMaybe<WebPartner_where>;
+};
+
+export type Query_WebSidebarArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    select?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type Query_WebSocialArgs = {
@@ -21493,857 +20421,6 @@ export type RolesUpdateDocAccess = {
     permission: Scalars['Boolean']['output'];
     where?: Maybe<Scalars['JSONObject']['output']>;
 };
-
-export type Sidebar = {
-    __typename?: 'Sidebar';
-    createdAt?: Maybe<Scalars['DateTime']['output']>;
-    links?: Maybe<Array<Sidebar_Links>>;
-    logoLink?: Maybe<Sidebar_LogoLink>;
-    updatedAt?: Maybe<Scalars['DateTime']['output']>;
-};
-
-export type SidebarDocAccessFields = {
-    __typename?: 'SidebarDocAccessFields';
-    createdAt?: Maybe<SidebarDocAccessFields_createdAt>;
-    links?: Maybe<SidebarDocAccessFields_links>;
-    logoLink?: Maybe<SidebarDocAccessFields_logoLink>;
-    updatedAt?: Maybe<SidebarDocAccessFields_updatedAt>;
-};
-
-export type SidebarDocAccessFields_createdAt = {
-    __typename?: 'SidebarDocAccessFields_createdAt';
-    create?: Maybe<SidebarDocAccessFields_createdAt_Create>;
-    delete?: Maybe<SidebarDocAccessFields_createdAt_Delete>;
-    read?: Maybe<SidebarDocAccessFields_createdAt_Read>;
-    update?: Maybe<SidebarDocAccessFields_createdAt_Update>;
-};
-
-export type SidebarDocAccessFields_createdAt_Create = {
-    __typename?: 'SidebarDocAccessFields_createdAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_createdAt_Delete = {
-    __typename?: 'SidebarDocAccessFields_createdAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_createdAt_Read = {
-    __typename?: 'SidebarDocAccessFields_createdAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_createdAt_Update = {
-    __typename?: 'SidebarDocAccessFields_createdAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links = {
-    __typename?: 'SidebarDocAccessFields_links';
-    create?: Maybe<SidebarDocAccessFields_links_Create>;
-    delete?: Maybe<SidebarDocAccessFields_links_Delete>;
-    fields?: Maybe<SidebarDocAccessFields_links_Fields>;
-    read?: Maybe<SidebarDocAccessFields_links_Read>;
-    update?: Maybe<SidebarDocAccessFields_links_Update>;
-};
-
-export type SidebarDocAccessFields_links_Create = {
-    __typename?: 'SidebarDocAccessFields_links_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_Delete = {
-    __typename?: 'SidebarDocAccessFields_links_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_Fields = {
-    __typename?: 'SidebarDocAccessFields_links_Fields';
-    href?: Maybe<SidebarDocAccessFields_links_href>;
-    icon?: Maybe<SidebarDocAccessFields_links_icon>;
-    id?: Maybe<SidebarDocAccessFields_links_id>;
-    target?: Maybe<SidebarDocAccessFields_links_target>;
-    text?: Maybe<SidebarDocAccessFields_links_text>;
-};
-
-export type SidebarDocAccessFields_links_Read = {
-    __typename?: 'SidebarDocAccessFields_links_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_Update = {
-    __typename?: 'SidebarDocAccessFields_links_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_href = {
-    __typename?: 'SidebarDocAccessFields_links_href';
-    create?: Maybe<SidebarDocAccessFields_links_href_Create>;
-    delete?: Maybe<SidebarDocAccessFields_links_href_Delete>;
-    read?: Maybe<SidebarDocAccessFields_links_href_Read>;
-    update?: Maybe<SidebarDocAccessFields_links_href_Update>;
-};
-
-export type SidebarDocAccessFields_links_href_Create = {
-    __typename?: 'SidebarDocAccessFields_links_href_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_href_Delete = {
-    __typename?: 'SidebarDocAccessFields_links_href_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_href_Read = {
-    __typename?: 'SidebarDocAccessFields_links_href_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_href_Update = {
-    __typename?: 'SidebarDocAccessFields_links_href_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_icon = {
-    __typename?: 'SidebarDocAccessFields_links_icon';
-    create?: Maybe<SidebarDocAccessFields_links_icon_Create>;
-    delete?: Maybe<SidebarDocAccessFields_links_icon_Delete>;
-    read?: Maybe<SidebarDocAccessFields_links_icon_Read>;
-    update?: Maybe<SidebarDocAccessFields_links_icon_Update>;
-};
-
-export type SidebarDocAccessFields_links_icon_Create = {
-    __typename?: 'SidebarDocAccessFields_links_icon_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_icon_Delete = {
-    __typename?: 'SidebarDocAccessFields_links_icon_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_icon_Read = {
-    __typename?: 'SidebarDocAccessFields_links_icon_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_icon_Update = {
-    __typename?: 'SidebarDocAccessFields_links_icon_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_id = {
-    __typename?: 'SidebarDocAccessFields_links_id';
-    create?: Maybe<SidebarDocAccessFields_links_id_Create>;
-    delete?: Maybe<SidebarDocAccessFields_links_id_Delete>;
-    read?: Maybe<SidebarDocAccessFields_links_id_Read>;
-    update?: Maybe<SidebarDocAccessFields_links_id_Update>;
-};
-
-export type SidebarDocAccessFields_links_id_Create = {
-    __typename?: 'SidebarDocAccessFields_links_id_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_id_Delete = {
-    __typename?: 'SidebarDocAccessFields_links_id_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_id_Read = {
-    __typename?: 'SidebarDocAccessFields_links_id_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_id_Update = {
-    __typename?: 'SidebarDocAccessFields_links_id_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_target = {
-    __typename?: 'SidebarDocAccessFields_links_target';
-    create?: Maybe<SidebarDocAccessFields_links_target_Create>;
-    delete?: Maybe<SidebarDocAccessFields_links_target_Delete>;
-    read?: Maybe<SidebarDocAccessFields_links_target_Read>;
-    update?: Maybe<SidebarDocAccessFields_links_target_Update>;
-};
-
-export type SidebarDocAccessFields_links_target_Create = {
-    __typename?: 'SidebarDocAccessFields_links_target_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_target_Delete = {
-    __typename?: 'SidebarDocAccessFields_links_target_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_target_Read = {
-    __typename?: 'SidebarDocAccessFields_links_target_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_target_Update = {
-    __typename?: 'SidebarDocAccessFields_links_target_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_text = {
-    __typename?: 'SidebarDocAccessFields_links_text';
-    create?: Maybe<SidebarDocAccessFields_links_text_Create>;
-    delete?: Maybe<SidebarDocAccessFields_links_text_Delete>;
-    read?: Maybe<SidebarDocAccessFields_links_text_Read>;
-    update?: Maybe<SidebarDocAccessFields_links_text_Update>;
-};
-
-export type SidebarDocAccessFields_links_text_Create = {
-    __typename?: 'SidebarDocAccessFields_links_text_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_text_Delete = {
-    __typename?: 'SidebarDocAccessFields_links_text_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_text_Read = {
-    __typename?: 'SidebarDocAccessFields_links_text_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_links_text_Update = {
-    __typename?: 'SidebarDocAccessFields_links_text_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink = {
-    __typename?: 'SidebarDocAccessFields_logoLink';
-    create?: Maybe<SidebarDocAccessFields_logoLink_Create>;
-    delete?: Maybe<SidebarDocAccessFields_logoLink_Delete>;
-    fields?: Maybe<SidebarDocAccessFields_logoLink_Fields>;
-    read?: Maybe<SidebarDocAccessFields_logoLink_Read>;
-    update?: Maybe<SidebarDocAccessFields_logoLink_Update>;
-};
-
-export type SidebarDocAccessFields_logoLink_Create = {
-    __typename?: 'SidebarDocAccessFields_logoLink_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_Delete = {
-    __typename?: 'SidebarDocAccessFields_logoLink_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_Fields = {
-    __typename?: 'SidebarDocAccessFields_logoLink_Fields';
-    href?: Maybe<SidebarDocAccessFields_logoLink_href>;
-    id?: Maybe<SidebarDocAccessFields_logoLink_id>;
-    target?: Maybe<SidebarDocAccessFields_logoLink_target>;
-    text?: Maybe<SidebarDocAccessFields_logoLink_text>;
-};
-
-export type SidebarDocAccessFields_logoLink_Read = {
-    __typename?: 'SidebarDocAccessFields_logoLink_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_Update = {
-    __typename?: 'SidebarDocAccessFields_logoLink_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_href = {
-    __typename?: 'SidebarDocAccessFields_logoLink_href';
-    create?: Maybe<SidebarDocAccessFields_logoLink_href_Create>;
-    delete?: Maybe<SidebarDocAccessFields_logoLink_href_Delete>;
-    read?: Maybe<SidebarDocAccessFields_logoLink_href_Read>;
-    update?: Maybe<SidebarDocAccessFields_logoLink_href_Update>;
-};
-
-export type SidebarDocAccessFields_logoLink_href_Create = {
-    __typename?: 'SidebarDocAccessFields_logoLink_href_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_href_Delete = {
-    __typename?: 'SidebarDocAccessFields_logoLink_href_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_href_Read = {
-    __typename?: 'SidebarDocAccessFields_logoLink_href_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_href_Update = {
-    __typename?: 'SidebarDocAccessFields_logoLink_href_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_id = {
-    __typename?: 'SidebarDocAccessFields_logoLink_id';
-    create?: Maybe<SidebarDocAccessFields_logoLink_id_Create>;
-    delete?: Maybe<SidebarDocAccessFields_logoLink_id_Delete>;
-    read?: Maybe<SidebarDocAccessFields_logoLink_id_Read>;
-    update?: Maybe<SidebarDocAccessFields_logoLink_id_Update>;
-};
-
-export type SidebarDocAccessFields_logoLink_id_Create = {
-    __typename?: 'SidebarDocAccessFields_logoLink_id_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_id_Delete = {
-    __typename?: 'SidebarDocAccessFields_logoLink_id_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_id_Read = {
-    __typename?: 'SidebarDocAccessFields_logoLink_id_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_id_Update = {
-    __typename?: 'SidebarDocAccessFields_logoLink_id_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_target = {
-    __typename?: 'SidebarDocAccessFields_logoLink_target';
-    create?: Maybe<SidebarDocAccessFields_logoLink_target_Create>;
-    delete?: Maybe<SidebarDocAccessFields_logoLink_target_Delete>;
-    read?: Maybe<SidebarDocAccessFields_logoLink_target_Read>;
-    update?: Maybe<SidebarDocAccessFields_logoLink_target_Update>;
-};
-
-export type SidebarDocAccessFields_logoLink_target_Create = {
-    __typename?: 'SidebarDocAccessFields_logoLink_target_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_target_Delete = {
-    __typename?: 'SidebarDocAccessFields_logoLink_target_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_target_Read = {
-    __typename?: 'SidebarDocAccessFields_logoLink_target_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_target_Update = {
-    __typename?: 'SidebarDocAccessFields_logoLink_target_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_text = {
-    __typename?: 'SidebarDocAccessFields_logoLink_text';
-    create?: Maybe<SidebarDocAccessFields_logoLink_text_Create>;
-    delete?: Maybe<SidebarDocAccessFields_logoLink_text_Delete>;
-    read?: Maybe<SidebarDocAccessFields_logoLink_text_Read>;
-    update?: Maybe<SidebarDocAccessFields_logoLink_text_Update>;
-};
-
-export type SidebarDocAccessFields_logoLink_text_Create = {
-    __typename?: 'SidebarDocAccessFields_logoLink_text_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_text_Delete = {
-    __typename?: 'SidebarDocAccessFields_logoLink_text_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_text_Read = {
-    __typename?: 'SidebarDocAccessFields_logoLink_text_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_logoLink_text_Update = {
-    __typename?: 'SidebarDocAccessFields_logoLink_text_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_updatedAt = {
-    __typename?: 'SidebarDocAccessFields_updatedAt';
-    create?: Maybe<SidebarDocAccessFields_updatedAt_Create>;
-    delete?: Maybe<SidebarDocAccessFields_updatedAt_Delete>;
-    read?: Maybe<SidebarDocAccessFields_updatedAt_Read>;
-    update?: Maybe<SidebarDocAccessFields_updatedAt_Update>;
-};
-
-export type SidebarDocAccessFields_updatedAt_Create = {
-    __typename?: 'SidebarDocAccessFields_updatedAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_updatedAt_Delete = {
-    __typename?: 'SidebarDocAccessFields_updatedAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_updatedAt_Read = {
-    __typename?: 'SidebarDocAccessFields_updatedAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarDocAccessFields_updatedAt_Update = {
-    __typename?: 'SidebarDocAccessFields_updatedAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields = {
-    __typename?: 'SidebarFields';
-    createdAt?: Maybe<SidebarFields_createdAt>;
-    links?: Maybe<SidebarFields_links>;
-    logoLink?: Maybe<SidebarFields_logoLink>;
-    updatedAt?: Maybe<SidebarFields_updatedAt>;
-};
-
-export type SidebarFields_createdAt = {
-    __typename?: 'SidebarFields_createdAt';
-    create?: Maybe<SidebarFields_createdAt_Create>;
-    delete?: Maybe<SidebarFields_createdAt_Delete>;
-    read?: Maybe<SidebarFields_createdAt_Read>;
-    update?: Maybe<SidebarFields_createdAt_Update>;
-};
-
-export type SidebarFields_createdAt_Create = {
-    __typename?: 'SidebarFields_createdAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_createdAt_Delete = {
-    __typename?: 'SidebarFields_createdAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_createdAt_Read = {
-    __typename?: 'SidebarFields_createdAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_createdAt_Update = {
-    __typename?: 'SidebarFields_createdAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links = {
-    __typename?: 'SidebarFields_links';
-    create?: Maybe<SidebarFields_links_Create>;
-    delete?: Maybe<SidebarFields_links_Delete>;
-    fields?: Maybe<SidebarFields_links_Fields>;
-    read?: Maybe<SidebarFields_links_Read>;
-    update?: Maybe<SidebarFields_links_Update>;
-};
-
-export type SidebarFields_links_Create = {
-    __typename?: 'SidebarFields_links_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_Delete = {
-    __typename?: 'SidebarFields_links_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_Fields = {
-    __typename?: 'SidebarFields_links_Fields';
-    href?: Maybe<SidebarFields_links_href>;
-    icon?: Maybe<SidebarFields_links_icon>;
-    id?: Maybe<SidebarFields_links_id>;
-    target?: Maybe<SidebarFields_links_target>;
-    text?: Maybe<SidebarFields_links_text>;
-};
-
-export type SidebarFields_links_Read = {
-    __typename?: 'SidebarFields_links_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_Update = {
-    __typename?: 'SidebarFields_links_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_href = {
-    __typename?: 'SidebarFields_links_href';
-    create?: Maybe<SidebarFields_links_href_Create>;
-    delete?: Maybe<SidebarFields_links_href_Delete>;
-    read?: Maybe<SidebarFields_links_href_Read>;
-    update?: Maybe<SidebarFields_links_href_Update>;
-};
-
-export type SidebarFields_links_href_Create = {
-    __typename?: 'SidebarFields_links_href_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_href_Delete = {
-    __typename?: 'SidebarFields_links_href_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_href_Read = {
-    __typename?: 'SidebarFields_links_href_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_href_Update = {
-    __typename?: 'SidebarFields_links_href_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_icon = {
-    __typename?: 'SidebarFields_links_icon';
-    create?: Maybe<SidebarFields_links_icon_Create>;
-    delete?: Maybe<SidebarFields_links_icon_Delete>;
-    read?: Maybe<SidebarFields_links_icon_Read>;
-    update?: Maybe<SidebarFields_links_icon_Update>;
-};
-
-export type SidebarFields_links_icon_Create = {
-    __typename?: 'SidebarFields_links_icon_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_icon_Delete = {
-    __typename?: 'SidebarFields_links_icon_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_icon_Read = {
-    __typename?: 'SidebarFields_links_icon_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_icon_Update = {
-    __typename?: 'SidebarFields_links_icon_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_id = {
-    __typename?: 'SidebarFields_links_id';
-    create?: Maybe<SidebarFields_links_id_Create>;
-    delete?: Maybe<SidebarFields_links_id_Delete>;
-    read?: Maybe<SidebarFields_links_id_Read>;
-    update?: Maybe<SidebarFields_links_id_Update>;
-};
-
-export type SidebarFields_links_id_Create = {
-    __typename?: 'SidebarFields_links_id_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_id_Delete = {
-    __typename?: 'SidebarFields_links_id_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_id_Read = {
-    __typename?: 'SidebarFields_links_id_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_id_Update = {
-    __typename?: 'SidebarFields_links_id_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_target = {
-    __typename?: 'SidebarFields_links_target';
-    create?: Maybe<SidebarFields_links_target_Create>;
-    delete?: Maybe<SidebarFields_links_target_Delete>;
-    read?: Maybe<SidebarFields_links_target_Read>;
-    update?: Maybe<SidebarFields_links_target_Update>;
-};
-
-export type SidebarFields_links_target_Create = {
-    __typename?: 'SidebarFields_links_target_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_target_Delete = {
-    __typename?: 'SidebarFields_links_target_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_target_Read = {
-    __typename?: 'SidebarFields_links_target_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_target_Update = {
-    __typename?: 'SidebarFields_links_target_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_text = {
-    __typename?: 'SidebarFields_links_text';
-    create?: Maybe<SidebarFields_links_text_Create>;
-    delete?: Maybe<SidebarFields_links_text_Delete>;
-    read?: Maybe<SidebarFields_links_text_Read>;
-    update?: Maybe<SidebarFields_links_text_Update>;
-};
-
-export type SidebarFields_links_text_Create = {
-    __typename?: 'SidebarFields_links_text_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_text_Delete = {
-    __typename?: 'SidebarFields_links_text_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_text_Read = {
-    __typename?: 'SidebarFields_links_text_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_links_text_Update = {
-    __typename?: 'SidebarFields_links_text_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink = {
-    __typename?: 'SidebarFields_logoLink';
-    create?: Maybe<SidebarFields_logoLink_Create>;
-    delete?: Maybe<SidebarFields_logoLink_Delete>;
-    fields?: Maybe<SidebarFields_logoLink_Fields>;
-    read?: Maybe<SidebarFields_logoLink_Read>;
-    update?: Maybe<SidebarFields_logoLink_Update>;
-};
-
-export type SidebarFields_logoLink_Create = {
-    __typename?: 'SidebarFields_logoLink_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_Delete = {
-    __typename?: 'SidebarFields_logoLink_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_Fields = {
-    __typename?: 'SidebarFields_logoLink_Fields';
-    href?: Maybe<SidebarFields_logoLink_href>;
-    id?: Maybe<SidebarFields_logoLink_id>;
-    target?: Maybe<SidebarFields_logoLink_target>;
-    text?: Maybe<SidebarFields_logoLink_text>;
-};
-
-export type SidebarFields_logoLink_Read = {
-    __typename?: 'SidebarFields_logoLink_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_Update = {
-    __typename?: 'SidebarFields_logoLink_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_href = {
-    __typename?: 'SidebarFields_logoLink_href';
-    create?: Maybe<SidebarFields_logoLink_href_Create>;
-    delete?: Maybe<SidebarFields_logoLink_href_Delete>;
-    read?: Maybe<SidebarFields_logoLink_href_Read>;
-    update?: Maybe<SidebarFields_logoLink_href_Update>;
-};
-
-export type SidebarFields_logoLink_href_Create = {
-    __typename?: 'SidebarFields_logoLink_href_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_href_Delete = {
-    __typename?: 'SidebarFields_logoLink_href_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_href_Read = {
-    __typename?: 'SidebarFields_logoLink_href_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_href_Update = {
-    __typename?: 'SidebarFields_logoLink_href_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_id = {
-    __typename?: 'SidebarFields_logoLink_id';
-    create?: Maybe<SidebarFields_logoLink_id_Create>;
-    delete?: Maybe<SidebarFields_logoLink_id_Delete>;
-    read?: Maybe<SidebarFields_logoLink_id_Read>;
-    update?: Maybe<SidebarFields_logoLink_id_Update>;
-};
-
-export type SidebarFields_logoLink_id_Create = {
-    __typename?: 'SidebarFields_logoLink_id_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_id_Delete = {
-    __typename?: 'SidebarFields_logoLink_id_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_id_Read = {
-    __typename?: 'SidebarFields_logoLink_id_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_id_Update = {
-    __typename?: 'SidebarFields_logoLink_id_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_target = {
-    __typename?: 'SidebarFields_logoLink_target';
-    create?: Maybe<SidebarFields_logoLink_target_Create>;
-    delete?: Maybe<SidebarFields_logoLink_target_Delete>;
-    read?: Maybe<SidebarFields_logoLink_target_Read>;
-    update?: Maybe<SidebarFields_logoLink_target_Update>;
-};
-
-export type SidebarFields_logoLink_target_Create = {
-    __typename?: 'SidebarFields_logoLink_target_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_target_Delete = {
-    __typename?: 'SidebarFields_logoLink_target_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_target_Read = {
-    __typename?: 'SidebarFields_logoLink_target_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_target_Update = {
-    __typename?: 'SidebarFields_logoLink_target_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_text = {
-    __typename?: 'SidebarFields_logoLink_text';
-    create?: Maybe<SidebarFields_logoLink_text_Create>;
-    delete?: Maybe<SidebarFields_logoLink_text_Delete>;
-    read?: Maybe<SidebarFields_logoLink_text_Read>;
-    update?: Maybe<SidebarFields_logoLink_text_Update>;
-};
-
-export type SidebarFields_logoLink_text_Create = {
-    __typename?: 'SidebarFields_logoLink_text_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_text_Delete = {
-    __typename?: 'SidebarFields_logoLink_text_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_text_Read = {
-    __typename?: 'SidebarFields_logoLink_text_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_logoLink_text_Update = {
-    __typename?: 'SidebarFields_logoLink_text_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_updatedAt = {
-    __typename?: 'SidebarFields_updatedAt';
-    create?: Maybe<SidebarFields_updatedAt_Create>;
-    delete?: Maybe<SidebarFields_updatedAt_Delete>;
-    read?: Maybe<SidebarFields_updatedAt_Read>;
-    update?: Maybe<SidebarFields_updatedAt_Update>;
-};
-
-export type SidebarFields_updatedAt_Create = {
-    __typename?: 'SidebarFields_updatedAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_updatedAt_Delete = {
-    __typename?: 'SidebarFields_updatedAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_updatedAt_Read = {
-    __typename?: 'SidebarFields_updatedAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarFields_updatedAt_Update = {
-    __typename?: 'SidebarFields_updatedAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type SidebarReadAccess = {
-    __typename?: 'SidebarReadAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type SidebarReadDocAccess = {
-    __typename?: 'SidebarReadDocAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type SidebarUpdateAccess = {
-    __typename?: 'SidebarUpdateAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type SidebarUpdateDocAccess = {
-    __typename?: 'SidebarUpdateDocAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type Sidebar_Links = {
-    __typename?: 'Sidebar_Links';
-    href?: Maybe<Scalars['String']['output']>;
-    icon?: Maybe<Scalars['String']['output']>;
-    id?: Maybe<Scalars['String']['output']>;
-    target?: Maybe<Sidebar_Links_target>;
-    text?: Maybe<Scalars['String']['output']>;
-};
-
-export type Sidebar_Links_target = '_blank' | '_parent' | '_self' | '_top' | '_unfencedTop' | '%future added value';
-
-export type Sidebar_Links_target_MutationInput =
-    | '_blank'
-    | '_parent'
-    | '_self'
-    | '_top'
-    | '_unfencedTop'
-    | '%future added value';
-
-export type Sidebar_LogoLink = {
-    __typename?: 'Sidebar_LogoLink';
-    href?: Maybe<Scalars['String']['output']>;
-    id?: Maybe<Scalars['String']['output']>;
-    target?: Maybe<Sidebar_LogoLink_target>;
-    text?: Maybe<Scalars['String']['output']>;
-};
-
-export type Sidebar_LogoLink_target = '_blank' | '_parent' | '_self' | '_top' | '_unfencedTop' | '%future added value';
-
-export type Sidebar_LogoLink_target_MutationInput =
-    | '_blank'
-    | '_parent'
-    | '_self'
-    | '_top'
-    | '_unfencedTop'
-    | '%future added value';
 
 export type User = {
     __typename?: 'User';
@@ -26196,6 +24273,1078 @@ export type WebCourseList_Settings_Spacing_paddingTop =
     | '%future added value';
 
 export type WebCourseList_Settings_style = 'dark' | 'gray' | 'light' | '%future added value';
+
+export type WebFooter = {
+    __typename?: 'WebFooter';
+    createdAt?: Maybe<Scalars['DateTime']['output']>;
+    links?: Maybe<Array<WebFooter_Links>>;
+    text1?: Maybe<Scalars['JSON']['output']>;
+    text2?: Maybe<Scalars['JSON']['output']>;
+    updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type WebFooter_text1Args = {
+    depth?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type WebFooter_text2Args = {
+    depth?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type WebFooterDocAccessFields = {
+    __typename?: 'WebFooterDocAccessFields';
+    createdAt?: Maybe<WebFooterDocAccessFields_createdAt>;
+    links?: Maybe<WebFooterDocAccessFields_links>;
+    text1?: Maybe<WebFooterDocAccessFields_text1>;
+    text2?: Maybe<WebFooterDocAccessFields_text2>;
+    updatedAt?: Maybe<WebFooterDocAccessFields_updatedAt>;
+};
+
+export type WebFooterDocAccessFields_createdAt = {
+    __typename?: 'WebFooterDocAccessFields_createdAt';
+    create?: Maybe<WebFooterDocAccessFields_createdAt_Create>;
+    delete?: Maybe<WebFooterDocAccessFields_createdAt_Delete>;
+    read?: Maybe<WebFooterDocAccessFields_createdAt_Read>;
+    update?: Maybe<WebFooterDocAccessFields_createdAt_Update>;
+};
+
+export type WebFooterDocAccessFields_createdAt_Create = {
+    __typename?: 'WebFooterDocAccessFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_createdAt_Delete = {
+    __typename?: 'WebFooterDocAccessFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_createdAt_Read = {
+    __typename?: 'WebFooterDocAccessFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_createdAt_Update = {
+    __typename?: 'WebFooterDocAccessFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links = {
+    __typename?: 'WebFooterDocAccessFields_links';
+    create?: Maybe<WebFooterDocAccessFields_links_Create>;
+    delete?: Maybe<WebFooterDocAccessFields_links_Delete>;
+    fields?: Maybe<WebFooterDocAccessFields_links_Fields>;
+    read?: Maybe<WebFooterDocAccessFields_links_Read>;
+    update?: Maybe<WebFooterDocAccessFields_links_Update>;
+};
+
+export type WebFooterDocAccessFields_links_Create = {
+    __typename?: 'WebFooterDocAccessFields_links_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_Delete = {
+    __typename?: 'WebFooterDocAccessFields_links_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_Fields = {
+    __typename?: 'WebFooterDocAccessFields_links_Fields';
+    href?: Maybe<WebFooterDocAccessFields_links_href>;
+    id?: Maybe<WebFooterDocAccessFields_links_id>;
+    target?: Maybe<WebFooterDocAccessFields_links_target>;
+    text?: Maybe<WebFooterDocAccessFields_links_text>;
+};
+
+export type WebFooterDocAccessFields_links_Read = {
+    __typename?: 'WebFooterDocAccessFields_links_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_Update = {
+    __typename?: 'WebFooterDocAccessFields_links_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_href = {
+    __typename?: 'WebFooterDocAccessFields_links_href';
+    create?: Maybe<WebFooterDocAccessFields_links_href_Create>;
+    delete?: Maybe<WebFooterDocAccessFields_links_href_Delete>;
+    read?: Maybe<WebFooterDocAccessFields_links_href_Read>;
+    update?: Maybe<WebFooterDocAccessFields_links_href_Update>;
+};
+
+export type WebFooterDocAccessFields_links_href_Create = {
+    __typename?: 'WebFooterDocAccessFields_links_href_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_href_Delete = {
+    __typename?: 'WebFooterDocAccessFields_links_href_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_href_Read = {
+    __typename?: 'WebFooterDocAccessFields_links_href_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_href_Update = {
+    __typename?: 'WebFooterDocAccessFields_links_href_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_id = {
+    __typename?: 'WebFooterDocAccessFields_links_id';
+    create?: Maybe<WebFooterDocAccessFields_links_id_Create>;
+    delete?: Maybe<WebFooterDocAccessFields_links_id_Delete>;
+    read?: Maybe<WebFooterDocAccessFields_links_id_Read>;
+    update?: Maybe<WebFooterDocAccessFields_links_id_Update>;
+};
+
+export type WebFooterDocAccessFields_links_id_Create = {
+    __typename?: 'WebFooterDocAccessFields_links_id_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_id_Delete = {
+    __typename?: 'WebFooterDocAccessFields_links_id_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_id_Read = {
+    __typename?: 'WebFooterDocAccessFields_links_id_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_id_Update = {
+    __typename?: 'WebFooterDocAccessFields_links_id_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_target = {
+    __typename?: 'WebFooterDocAccessFields_links_target';
+    create?: Maybe<WebFooterDocAccessFields_links_target_Create>;
+    delete?: Maybe<WebFooterDocAccessFields_links_target_Delete>;
+    read?: Maybe<WebFooterDocAccessFields_links_target_Read>;
+    update?: Maybe<WebFooterDocAccessFields_links_target_Update>;
+};
+
+export type WebFooterDocAccessFields_links_target_Create = {
+    __typename?: 'WebFooterDocAccessFields_links_target_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_target_Delete = {
+    __typename?: 'WebFooterDocAccessFields_links_target_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_target_Read = {
+    __typename?: 'WebFooterDocAccessFields_links_target_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_target_Update = {
+    __typename?: 'WebFooterDocAccessFields_links_target_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_text = {
+    __typename?: 'WebFooterDocAccessFields_links_text';
+    create?: Maybe<WebFooterDocAccessFields_links_text_Create>;
+    delete?: Maybe<WebFooterDocAccessFields_links_text_Delete>;
+    read?: Maybe<WebFooterDocAccessFields_links_text_Read>;
+    update?: Maybe<WebFooterDocAccessFields_links_text_Update>;
+};
+
+export type WebFooterDocAccessFields_links_text_Create = {
+    __typename?: 'WebFooterDocAccessFields_links_text_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_text_Delete = {
+    __typename?: 'WebFooterDocAccessFields_links_text_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_text_Read = {
+    __typename?: 'WebFooterDocAccessFields_links_text_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_links_text_Update = {
+    __typename?: 'WebFooterDocAccessFields_links_text_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_text1 = {
+    __typename?: 'WebFooterDocAccessFields_text1';
+    create?: Maybe<WebFooterDocAccessFields_text1_Create>;
+    delete?: Maybe<WebFooterDocAccessFields_text1_Delete>;
+    read?: Maybe<WebFooterDocAccessFields_text1_Read>;
+    update?: Maybe<WebFooterDocAccessFields_text1_Update>;
+};
+
+export type WebFooterDocAccessFields_text1_Create = {
+    __typename?: 'WebFooterDocAccessFields_text1_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_text1_Delete = {
+    __typename?: 'WebFooterDocAccessFields_text1_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_text1_Read = {
+    __typename?: 'WebFooterDocAccessFields_text1_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_text1_Update = {
+    __typename?: 'WebFooterDocAccessFields_text1_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_text2 = {
+    __typename?: 'WebFooterDocAccessFields_text2';
+    create?: Maybe<WebFooterDocAccessFields_text2_Create>;
+    delete?: Maybe<WebFooterDocAccessFields_text2_Delete>;
+    read?: Maybe<WebFooterDocAccessFields_text2_Read>;
+    update?: Maybe<WebFooterDocAccessFields_text2_Update>;
+};
+
+export type WebFooterDocAccessFields_text2_Create = {
+    __typename?: 'WebFooterDocAccessFields_text2_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_text2_Delete = {
+    __typename?: 'WebFooterDocAccessFields_text2_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_text2_Read = {
+    __typename?: 'WebFooterDocAccessFields_text2_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_text2_Update = {
+    __typename?: 'WebFooterDocAccessFields_text2_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_updatedAt = {
+    __typename?: 'WebFooterDocAccessFields_updatedAt';
+    create?: Maybe<WebFooterDocAccessFields_updatedAt_Create>;
+    delete?: Maybe<WebFooterDocAccessFields_updatedAt_Delete>;
+    read?: Maybe<WebFooterDocAccessFields_updatedAt_Read>;
+    update?: Maybe<WebFooterDocAccessFields_updatedAt_Update>;
+};
+
+export type WebFooterDocAccessFields_updatedAt_Create = {
+    __typename?: 'WebFooterDocAccessFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_updatedAt_Delete = {
+    __typename?: 'WebFooterDocAccessFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_updatedAt_Read = {
+    __typename?: 'WebFooterDocAccessFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterDocAccessFields_updatedAt_Update = {
+    __typename?: 'WebFooterDocAccessFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields = {
+    __typename?: 'WebFooterFields';
+    createdAt?: Maybe<WebFooterFields_createdAt>;
+    links?: Maybe<WebFooterFields_links>;
+    text1?: Maybe<WebFooterFields_text1>;
+    text2?: Maybe<WebFooterFields_text2>;
+    updatedAt?: Maybe<WebFooterFields_updatedAt>;
+};
+
+export type WebFooterFields_createdAt = {
+    __typename?: 'WebFooterFields_createdAt';
+    create?: Maybe<WebFooterFields_createdAt_Create>;
+    delete?: Maybe<WebFooterFields_createdAt_Delete>;
+    read?: Maybe<WebFooterFields_createdAt_Read>;
+    update?: Maybe<WebFooterFields_createdAt_Update>;
+};
+
+export type WebFooterFields_createdAt_Create = {
+    __typename?: 'WebFooterFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_createdAt_Delete = {
+    __typename?: 'WebFooterFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_createdAt_Read = {
+    __typename?: 'WebFooterFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_createdAt_Update = {
+    __typename?: 'WebFooterFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links = {
+    __typename?: 'WebFooterFields_links';
+    create?: Maybe<WebFooterFields_links_Create>;
+    delete?: Maybe<WebFooterFields_links_Delete>;
+    fields?: Maybe<WebFooterFields_links_Fields>;
+    read?: Maybe<WebFooterFields_links_Read>;
+    update?: Maybe<WebFooterFields_links_Update>;
+};
+
+export type WebFooterFields_links_Create = {
+    __typename?: 'WebFooterFields_links_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_Delete = {
+    __typename?: 'WebFooterFields_links_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_Fields = {
+    __typename?: 'WebFooterFields_links_Fields';
+    href?: Maybe<WebFooterFields_links_href>;
+    id?: Maybe<WebFooterFields_links_id>;
+    target?: Maybe<WebFooterFields_links_target>;
+    text?: Maybe<WebFooterFields_links_text>;
+};
+
+export type WebFooterFields_links_Read = {
+    __typename?: 'WebFooterFields_links_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_Update = {
+    __typename?: 'WebFooterFields_links_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_href = {
+    __typename?: 'WebFooterFields_links_href';
+    create?: Maybe<WebFooterFields_links_href_Create>;
+    delete?: Maybe<WebFooterFields_links_href_Delete>;
+    read?: Maybe<WebFooterFields_links_href_Read>;
+    update?: Maybe<WebFooterFields_links_href_Update>;
+};
+
+export type WebFooterFields_links_href_Create = {
+    __typename?: 'WebFooterFields_links_href_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_href_Delete = {
+    __typename?: 'WebFooterFields_links_href_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_href_Read = {
+    __typename?: 'WebFooterFields_links_href_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_href_Update = {
+    __typename?: 'WebFooterFields_links_href_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_id = {
+    __typename?: 'WebFooterFields_links_id';
+    create?: Maybe<WebFooterFields_links_id_Create>;
+    delete?: Maybe<WebFooterFields_links_id_Delete>;
+    read?: Maybe<WebFooterFields_links_id_Read>;
+    update?: Maybe<WebFooterFields_links_id_Update>;
+};
+
+export type WebFooterFields_links_id_Create = {
+    __typename?: 'WebFooterFields_links_id_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_id_Delete = {
+    __typename?: 'WebFooterFields_links_id_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_id_Read = {
+    __typename?: 'WebFooterFields_links_id_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_id_Update = {
+    __typename?: 'WebFooterFields_links_id_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_target = {
+    __typename?: 'WebFooterFields_links_target';
+    create?: Maybe<WebFooterFields_links_target_Create>;
+    delete?: Maybe<WebFooterFields_links_target_Delete>;
+    read?: Maybe<WebFooterFields_links_target_Read>;
+    update?: Maybe<WebFooterFields_links_target_Update>;
+};
+
+export type WebFooterFields_links_target_Create = {
+    __typename?: 'WebFooterFields_links_target_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_target_Delete = {
+    __typename?: 'WebFooterFields_links_target_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_target_Read = {
+    __typename?: 'WebFooterFields_links_target_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_target_Update = {
+    __typename?: 'WebFooterFields_links_target_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_text = {
+    __typename?: 'WebFooterFields_links_text';
+    create?: Maybe<WebFooterFields_links_text_Create>;
+    delete?: Maybe<WebFooterFields_links_text_Delete>;
+    read?: Maybe<WebFooterFields_links_text_Read>;
+    update?: Maybe<WebFooterFields_links_text_Update>;
+};
+
+export type WebFooterFields_links_text_Create = {
+    __typename?: 'WebFooterFields_links_text_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_text_Delete = {
+    __typename?: 'WebFooterFields_links_text_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_text_Read = {
+    __typename?: 'WebFooterFields_links_text_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_links_text_Update = {
+    __typename?: 'WebFooterFields_links_text_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_text1 = {
+    __typename?: 'WebFooterFields_text1';
+    create?: Maybe<WebFooterFields_text1_Create>;
+    delete?: Maybe<WebFooterFields_text1_Delete>;
+    read?: Maybe<WebFooterFields_text1_Read>;
+    update?: Maybe<WebFooterFields_text1_Update>;
+};
+
+export type WebFooterFields_text1_Create = {
+    __typename?: 'WebFooterFields_text1_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_text1_Delete = {
+    __typename?: 'WebFooterFields_text1_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_text1_Read = {
+    __typename?: 'WebFooterFields_text1_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_text1_Update = {
+    __typename?: 'WebFooterFields_text1_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_text2 = {
+    __typename?: 'WebFooterFields_text2';
+    create?: Maybe<WebFooterFields_text2_Create>;
+    delete?: Maybe<WebFooterFields_text2_Delete>;
+    read?: Maybe<WebFooterFields_text2_Read>;
+    update?: Maybe<WebFooterFields_text2_Update>;
+};
+
+export type WebFooterFields_text2_Create = {
+    __typename?: 'WebFooterFields_text2_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_text2_Delete = {
+    __typename?: 'WebFooterFields_text2_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_text2_Read = {
+    __typename?: 'WebFooterFields_text2_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_text2_Update = {
+    __typename?: 'WebFooterFields_text2_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_updatedAt = {
+    __typename?: 'WebFooterFields_updatedAt';
+    create?: Maybe<WebFooterFields_updatedAt_Create>;
+    delete?: Maybe<WebFooterFields_updatedAt_Delete>;
+    read?: Maybe<WebFooterFields_updatedAt_Read>;
+    update?: Maybe<WebFooterFields_updatedAt_Update>;
+};
+
+export type WebFooterFields_updatedAt_Create = {
+    __typename?: 'WebFooterFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_updatedAt_Delete = {
+    __typename?: 'WebFooterFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_updatedAt_Read = {
+    __typename?: 'WebFooterFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterFields_updatedAt_Update = {
+    __typename?: 'WebFooterFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebFooterReadAccess = {
+    __typename?: 'WebFooterReadAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebFooterReadDocAccess = {
+    __typename?: 'WebFooterReadDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebFooterUpdateAccess = {
+    __typename?: 'WebFooterUpdateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebFooterUpdateDocAccess = {
+    __typename?: 'WebFooterUpdateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebFooter_Links = {
+    __typename?: 'WebFooter_Links';
+    href?: Maybe<Scalars['String']['output']>;
+    id?: Maybe<Scalars['String']['output']>;
+    target?: Maybe<WebFooter_Links_target>;
+    text?: Maybe<Scalars['String']['output']>;
+};
+
+export type WebFooter_Links_target = '_blank' | '_parent' | '_self' | '_top' | '_unfencedTop' | '%future added value';
+
+export type WebFooter_Links_target_MutationInput =
+    | '_blank'
+    | '_parent'
+    | '_self'
+    | '_top'
+    | '_unfencedTop'
+    | '%future added value';
+
+export type WebHeader = {
+    __typename?: 'WebHeader';
+    createdAt?: Maybe<Scalars['DateTime']['output']>;
+    links?: Maybe<Array<WebHeader_Links>>;
+    updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type WebHeaderDocAccessFields = {
+    __typename?: 'WebHeaderDocAccessFields';
+    createdAt?: Maybe<WebHeaderDocAccessFields_createdAt>;
+    links?: Maybe<WebHeaderDocAccessFields_links>;
+    updatedAt?: Maybe<WebHeaderDocAccessFields_updatedAt>;
+};
+
+export type WebHeaderDocAccessFields_createdAt = {
+    __typename?: 'WebHeaderDocAccessFields_createdAt';
+    create?: Maybe<WebHeaderDocAccessFields_createdAt_Create>;
+    delete?: Maybe<WebHeaderDocAccessFields_createdAt_Delete>;
+    read?: Maybe<WebHeaderDocAccessFields_createdAt_Read>;
+    update?: Maybe<WebHeaderDocAccessFields_createdAt_Update>;
+};
+
+export type WebHeaderDocAccessFields_createdAt_Create = {
+    __typename?: 'WebHeaderDocAccessFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_createdAt_Delete = {
+    __typename?: 'WebHeaderDocAccessFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_createdAt_Read = {
+    __typename?: 'WebHeaderDocAccessFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_createdAt_Update = {
+    __typename?: 'WebHeaderDocAccessFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links = {
+    __typename?: 'WebHeaderDocAccessFields_links';
+    create?: Maybe<WebHeaderDocAccessFields_links_Create>;
+    delete?: Maybe<WebHeaderDocAccessFields_links_Delete>;
+    fields?: Maybe<WebHeaderDocAccessFields_links_Fields>;
+    read?: Maybe<WebHeaderDocAccessFields_links_Read>;
+    update?: Maybe<WebHeaderDocAccessFields_links_Update>;
+};
+
+export type WebHeaderDocAccessFields_links_Create = {
+    __typename?: 'WebHeaderDocAccessFields_links_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_Delete = {
+    __typename?: 'WebHeaderDocAccessFields_links_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_Fields = {
+    __typename?: 'WebHeaderDocAccessFields_links_Fields';
+    href?: Maybe<WebHeaderDocAccessFields_links_href>;
+    id?: Maybe<WebHeaderDocAccessFields_links_id>;
+    target?: Maybe<WebHeaderDocAccessFields_links_target>;
+    text?: Maybe<WebHeaderDocAccessFields_links_text>;
+};
+
+export type WebHeaderDocAccessFields_links_Read = {
+    __typename?: 'WebHeaderDocAccessFields_links_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_Update = {
+    __typename?: 'WebHeaderDocAccessFields_links_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_href = {
+    __typename?: 'WebHeaderDocAccessFields_links_href';
+    create?: Maybe<WebHeaderDocAccessFields_links_href_Create>;
+    delete?: Maybe<WebHeaderDocAccessFields_links_href_Delete>;
+    read?: Maybe<WebHeaderDocAccessFields_links_href_Read>;
+    update?: Maybe<WebHeaderDocAccessFields_links_href_Update>;
+};
+
+export type WebHeaderDocAccessFields_links_href_Create = {
+    __typename?: 'WebHeaderDocAccessFields_links_href_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_href_Delete = {
+    __typename?: 'WebHeaderDocAccessFields_links_href_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_href_Read = {
+    __typename?: 'WebHeaderDocAccessFields_links_href_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_href_Update = {
+    __typename?: 'WebHeaderDocAccessFields_links_href_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_id = {
+    __typename?: 'WebHeaderDocAccessFields_links_id';
+    create?: Maybe<WebHeaderDocAccessFields_links_id_Create>;
+    delete?: Maybe<WebHeaderDocAccessFields_links_id_Delete>;
+    read?: Maybe<WebHeaderDocAccessFields_links_id_Read>;
+    update?: Maybe<WebHeaderDocAccessFields_links_id_Update>;
+};
+
+export type WebHeaderDocAccessFields_links_id_Create = {
+    __typename?: 'WebHeaderDocAccessFields_links_id_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_id_Delete = {
+    __typename?: 'WebHeaderDocAccessFields_links_id_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_id_Read = {
+    __typename?: 'WebHeaderDocAccessFields_links_id_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_id_Update = {
+    __typename?: 'WebHeaderDocAccessFields_links_id_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_target = {
+    __typename?: 'WebHeaderDocAccessFields_links_target';
+    create?: Maybe<WebHeaderDocAccessFields_links_target_Create>;
+    delete?: Maybe<WebHeaderDocAccessFields_links_target_Delete>;
+    read?: Maybe<WebHeaderDocAccessFields_links_target_Read>;
+    update?: Maybe<WebHeaderDocAccessFields_links_target_Update>;
+};
+
+export type WebHeaderDocAccessFields_links_target_Create = {
+    __typename?: 'WebHeaderDocAccessFields_links_target_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_target_Delete = {
+    __typename?: 'WebHeaderDocAccessFields_links_target_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_target_Read = {
+    __typename?: 'WebHeaderDocAccessFields_links_target_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_target_Update = {
+    __typename?: 'WebHeaderDocAccessFields_links_target_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_text = {
+    __typename?: 'WebHeaderDocAccessFields_links_text';
+    create?: Maybe<WebHeaderDocAccessFields_links_text_Create>;
+    delete?: Maybe<WebHeaderDocAccessFields_links_text_Delete>;
+    read?: Maybe<WebHeaderDocAccessFields_links_text_Read>;
+    update?: Maybe<WebHeaderDocAccessFields_links_text_Update>;
+};
+
+export type WebHeaderDocAccessFields_links_text_Create = {
+    __typename?: 'WebHeaderDocAccessFields_links_text_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_text_Delete = {
+    __typename?: 'WebHeaderDocAccessFields_links_text_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_text_Read = {
+    __typename?: 'WebHeaderDocAccessFields_links_text_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_links_text_Update = {
+    __typename?: 'WebHeaderDocAccessFields_links_text_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_updatedAt = {
+    __typename?: 'WebHeaderDocAccessFields_updatedAt';
+    create?: Maybe<WebHeaderDocAccessFields_updatedAt_Create>;
+    delete?: Maybe<WebHeaderDocAccessFields_updatedAt_Delete>;
+    read?: Maybe<WebHeaderDocAccessFields_updatedAt_Read>;
+    update?: Maybe<WebHeaderDocAccessFields_updatedAt_Update>;
+};
+
+export type WebHeaderDocAccessFields_updatedAt_Create = {
+    __typename?: 'WebHeaderDocAccessFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_updatedAt_Delete = {
+    __typename?: 'WebHeaderDocAccessFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_updatedAt_Read = {
+    __typename?: 'WebHeaderDocAccessFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderDocAccessFields_updatedAt_Update = {
+    __typename?: 'WebHeaderDocAccessFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields = {
+    __typename?: 'WebHeaderFields';
+    createdAt?: Maybe<WebHeaderFields_createdAt>;
+    links?: Maybe<WebHeaderFields_links>;
+    updatedAt?: Maybe<WebHeaderFields_updatedAt>;
+};
+
+export type WebHeaderFields_createdAt = {
+    __typename?: 'WebHeaderFields_createdAt';
+    create?: Maybe<WebHeaderFields_createdAt_Create>;
+    delete?: Maybe<WebHeaderFields_createdAt_Delete>;
+    read?: Maybe<WebHeaderFields_createdAt_Read>;
+    update?: Maybe<WebHeaderFields_createdAt_Update>;
+};
+
+export type WebHeaderFields_createdAt_Create = {
+    __typename?: 'WebHeaderFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_createdAt_Delete = {
+    __typename?: 'WebHeaderFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_createdAt_Read = {
+    __typename?: 'WebHeaderFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_createdAt_Update = {
+    __typename?: 'WebHeaderFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links = {
+    __typename?: 'WebHeaderFields_links';
+    create?: Maybe<WebHeaderFields_links_Create>;
+    delete?: Maybe<WebHeaderFields_links_Delete>;
+    fields?: Maybe<WebHeaderFields_links_Fields>;
+    read?: Maybe<WebHeaderFields_links_Read>;
+    update?: Maybe<WebHeaderFields_links_Update>;
+};
+
+export type WebHeaderFields_links_Create = {
+    __typename?: 'WebHeaderFields_links_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_Delete = {
+    __typename?: 'WebHeaderFields_links_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_Fields = {
+    __typename?: 'WebHeaderFields_links_Fields';
+    href?: Maybe<WebHeaderFields_links_href>;
+    id?: Maybe<WebHeaderFields_links_id>;
+    target?: Maybe<WebHeaderFields_links_target>;
+    text?: Maybe<WebHeaderFields_links_text>;
+};
+
+export type WebHeaderFields_links_Read = {
+    __typename?: 'WebHeaderFields_links_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_Update = {
+    __typename?: 'WebHeaderFields_links_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_href = {
+    __typename?: 'WebHeaderFields_links_href';
+    create?: Maybe<WebHeaderFields_links_href_Create>;
+    delete?: Maybe<WebHeaderFields_links_href_Delete>;
+    read?: Maybe<WebHeaderFields_links_href_Read>;
+    update?: Maybe<WebHeaderFields_links_href_Update>;
+};
+
+export type WebHeaderFields_links_href_Create = {
+    __typename?: 'WebHeaderFields_links_href_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_href_Delete = {
+    __typename?: 'WebHeaderFields_links_href_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_href_Read = {
+    __typename?: 'WebHeaderFields_links_href_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_href_Update = {
+    __typename?: 'WebHeaderFields_links_href_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_id = {
+    __typename?: 'WebHeaderFields_links_id';
+    create?: Maybe<WebHeaderFields_links_id_Create>;
+    delete?: Maybe<WebHeaderFields_links_id_Delete>;
+    read?: Maybe<WebHeaderFields_links_id_Read>;
+    update?: Maybe<WebHeaderFields_links_id_Update>;
+};
+
+export type WebHeaderFields_links_id_Create = {
+    __typename?: 'WebHeaderFields_links_id_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_id_Delete = {
+    __typename?: 'WebHeaderFields_links_id_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_id_Read = {
+    __typename?: 'WebHeaderFields_links_id_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_id_Update = {
+    __typename?: 'WebHeaderFields_links_id_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_target = {
+    __typename?: 'WebHeaderFields_links_target';
+    create?: Maybe<WebHeaderFields_links_target_Create>;
+    delete?: Maybe<WebHeaderFields_links_target_Delete>;
+    read?: Maybe<WebHeaderFields_links_target_Read>;
+    update?: Maybe<WebHeaderFields_links_target_Update>;
+};
+
+export type WebHeaderFields_links_target_Create = {
+    __typename?: 'WebHeaderFields_links_target_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_target_Delete = {
+    __typename?: 'WebHeaderFields_links_target_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_target_Read = {
+    __typename?: 'WebHeaderFields_links_target_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_target_Update = {
+    __typename?: 'WebHeaderFields_links_target_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_text = {
+    __typename?: 'WebHeaderFields_links_text';
+    create?: Maybe<WebHeaderFields_links_text_Create>;
+    delete?: Maybe<WebHeaderFields_links_text_Delete>;
+    read?: Maybe<WebHeaderFields_links_text_Read>;
+    update?: Maybe<WebHeaderFields_links_text_Update>;
+};
+
+export type WebHeaderFields_links_text_Create = {
+    __typename?: 'WebHeaderFields_links_text_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_text_Delete = {
+    __typename?: 'WebHeaderFields_links_text_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_text_Read = {
+    __typename?: 'WebHeaderFields_links_text_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_links_text_Update = {
+    __typename?: 'WebHeaderFields_links_text_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_updatedAt = {
+    __typename?: 'WebHeaderFields_updatedAt';
+    create?: Maybe<WebHeaderFields_updatedAt_Create>;
+    delete?: Maybe<WebHeaderFields_updatedAt_Delete>;
+    read?: Maybe<WebHeaderFields_updatedAt_Read>;
+    update?: Maybe<WebHeaderFields_updatedAt_Update>;
+};
+
+export type WebHeaderFields_updatedAt_Create = {
+    __typename?: 'WebHeaderFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_updatedAt_Delete = {
+    __typename?: 'WebHeaderFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_updatedAt_Read = {
+    __typename?: 'WebHeaderFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderFields_updatedAt_Update = {
+    __typename?: 'WebHeaderFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebHeaderReadAccess = {
+    __typename?: 'WebHeaderReadAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebHeaderReadDocAccess = {
+    __typename?: 'WebHeaderReadDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebHeaderUpdateAccess = {
+    __typename?: 'WebHeaderUpdateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebHeaderUpdateDocAccess = {
+    __typename?: 'WebHeaderUpdateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebHeader_Links = {
+    __typename?: 'WebHeader_Links';
+    href?: Maybe<Scalars['String']['output']>;
+    id?: Maybe<Scalars['String']['output']>;
+    target?: Maybe<WebHeader_Links_target>;
+    text?: Maybe<Scalars['String']['output']>;
+};
+
+export type WebHeader_Links_target = '_blank' | '_parent' | '_self' | '_top' | '_unfencedTop' | '%future added value';
+
+export type WebHeader_Links_target_MutationInput =
+    | '_blank'
+    | '_parent'
+    | '_self'
+    | '_top'
+    | '_unfencedTop'
+    | '%future added value';
 
 export type WebHeroLarge = {
     __typename?: 'WebHeroLarge';
@@ -36042,6 +35191,863 @@ export type WebPartnersUpdateDocAccess = {
     where?: Maybe<Scalars['JSONObject']['output']>;
 };
 
+export type WebSidebar = {
+    __typename?: 'WebSidebar';
+    createdAt?: Maybe<Scalars['DateTime']['output']>;
+    links?: Maybe<Array<WebSidebar_Links>>;
+    logoLink?: Maybe<WebSidebar_LogoLink>;
+    updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type WebSidebarDocAccessFields = {
+    __typename?: 'WebSidebarDocAccessFields';
+    createdAt?: Maybe<WebSidebarDocAccessFields_createdAt>;
+    links?: Maybe<WebSidebarDocAccessFields_links>;
+    logoLink?: Maybe<WebSidebarDocAccessFields_logoLink>;
+    updatedAt?: Maybe<WebSidebarDocAccessFields_updatedAt>;
+};
+
+export type WebSidebarDocAccessFields_createdAt = {
+    __typename?: 'WebSidebarDocAccessFields_createdAt';
+    create?: Maybe<WebSidebarDocAccessFields_createdAt_Create>;
+    delete?: Maybe<WebSidebarDocAccessFields_createdAt_Delete>;
+    read?: Maybe<WebSidebarDocAccessFields_createdAt_Read>;
+    update?: Maybe<WebSidebarDocAccessFields_createdAt_Update>;
+};
+
+export type WebSidebarDocAccessFields_createdAt_Create = {
+    __typename?: 'WebSidebarDocAccessFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_createdAt_Delete = {
+    __typename?: 'WebSidebarDocAccessFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_createdAt_Read = {
+    __typename?: 'WebSidebarDocAccessFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_createdAt_Update = {
+    __typename?: 'WebSidebarDocAccessFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links = {
+    __typename?: 'WebSidebarDocAccessFields_links';
+    create?: Maybe<WebSidebarDocAccessFields_links_Create>;
+    delete?: Maybe<WebSidebarDocAccessFields_links_Delete>;
+    fields?: Maybe<WebSidebarDocAccessFields_links_Fields>;
+    read?: Maybe<WebSidebarDocAccessFields_links_Read>;
+    update?: Maybe<WebSidebarDocAccessFields_links_Update>;
+};
+
+export type WebSidebarDocAccessFields_links_Create = {
+    __typename?: 'WebSidebarDocAccessFields_links_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_Delete = {
+    __typename?: 'WebSidebarDocAccessFields_links_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_Fields = {
+    __typename?: 'WebSidebarDocAccessFields_links_Fields';
+    href?: Maybe<WebSidebarDocAccessFields_links_href>;
+    icon?: Maybe<WebSidebarDocAccessFields_links_icon>;
+    id?: Maybe<WebSidebarDocAccessFields_links_id>;
+    target?: Maybe<WebSidebarDocAccessFields_links_target>;
+    text?: Maybe<WebSidebarDocAccessFields_links_text>;
+};
+
+export type WebSidebarDocAccessFields_links_Read = {
+    __typename?: 'WebSidebarDocAccessFields_links_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_Update = {
+    __typename?: 'WebSidebarDocAccessFields_links_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_href = {
+    __typename?: 'WebSidebarDocAccessFields_links_href';
+    create?: Maybe<WebSidebarDocAccessFields_links_href_Create>;
+    delete?: Maybe<WebSidebarDocAccessFields_links_href_Delete>;
+    read?: Maybe<WebSidebarDocAccessFields_links_href_Read>;
+    update?: Maybe<WebSidebarDocAccessFields_links_href_Update>;
+};
+
+export type WebSidebarDocAccessFields_links_href_Create = {
+    __typename?: 'WebSidebarDocAccessFields_links_href_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_href_Delete = {
+    __typename?: 'WebSidebarDocAccessFields_links_href_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_href_Read = {
+    __typename?: 'WebSidebarDocAccessFields_links_href_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_href_Update = {
+    __typename?: 'WebSidebarDocAccessFields_links_href_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_icon = {
+    __typename?: 'WebSidebarDocAccessFields_links_icon';
+    create?: Maybe<WebSidebarDocAccessFields_links_icon_Create>;
+    delete?: Maybe<WebSidebarDocAccessFields_links_icon_Delete>;
+    read?: Maybe<WebSidebarDocAccessFields_links_icon_Read>;
+    update?: Maybe<WebSidebarDocAccessFields_links_icon_Update>;
+};
+
+export type WebSidebarDocAccessFields_links_icon_Create = {
+    __typename?: 'WebSidebarDocAccessFields_links_icon_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_icon_Delete = {
+    __typename?: 'WebSidebarDocAccessFields_links_icon_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_icon_Read = {
+    __typename?: 'WebSidebarDocAccessFields_links_icon_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_icon_Update = {
+    __typename?: 'WebSidebarDocAccessFields_links_icon_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_id = {
+    __typename?: 'WebSidebarDocAccessFields_links_id';
+    create?: Maybe<WebSidebarDocAccessFields_links_id_Create>;
+    delete?: Maybe<WebSidebarDocAccessFields_links_id_Delete>;
+    read?: Maybe<WebSidebarDocAccessFields_links_id_Read>;
+    update?: Maybe<WebSidebarDocAccessFields_links_id_Update>;
+};
+
+export type WebSidebarDocAccessFields_links_id_Create = {
+    __typename?: 'WebSidebarDocAccessFields_links_id_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_id_Delete = {
+    __typename?: 'WebSidebarDocAccessFields_links_id_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_id_Read = {
+    __typename?: 'WebSidebarDocAccessFields_links_id_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_id_Update = {
+    __typename?: 'WebSidebarDocAccessFields_links_id_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_target = {
+    __typename?: 'WebSidebarDocAccessFields_links_target';
+    create?: Maybe<WebSidebarDocAccessFields_links_target_Create>;
+    delete?: Maybe<WebSidebarDocAccessFields_links_target_Delete>;
+    read?: Maybe<WebSidebarDocAccessFields_links_target_Read>;
+    update?: Maybe<WebSidebarDocAccessFields_links_target_Update>;
+};
+
+export type WebSidebarDocAccessFields_links_target_Create = {
+    __typename?: 'WebSidebarDocAccessFields_links_target_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_target_Delete = {
+    __typename?: 'WebSidebarDocAccessFields_links_target_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_target_Read = {
+    __typename?: 'WebSidebarDocAccessFields_links_target_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_target_Update = {
+    __typename?: 'WebSidebarDocAccessFields_links_target_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_text = {
+    __typename?: 'WebSidebarDocAccessFields_links_text';
+    create?: Maybe<WebSidebarDocAccessFields_links_text_Create>;
+    delete?: Maybe<WebSidebarDocAccessFields_links_text_Delete>;
+    read?: Maybe<WebSidebarDocAccessFields_links_text_Read>;
+    update?: Maybe<WebSidebarDocAccessFields_links_text_Update>;
+};
+
+export type WebSidebarDocAccessFields_links_text_Create = {
+    __typename?: 'WebSidebarDocAccessFields_links_text_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_text_Delete = {
+    __typename?: 'WebSidebarDocAccessFields_links_text_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_text_Read = {
+    __typename?: 'WebSidebarDocAccessFields_links_text_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_links_text_Update = {
+    __typename?: 'WebSidebarDocAccessFields_links_text_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink';
+    create?: Maybe<WebSidebarDocAccessFields_logoLink_Create>;
+    delete?: Maybe<WebSidebarDocAccessFields_logoLink_Delete>;
+    fields?: Maybe<WebSidebarDocAccessFields_logoLink_Fields>;
+    read?: Maybe<WebSidebarDocAccessFields_logoLink_Read>;
+    update?: Maybe<WebSidebarDocAccessFields_logoLink_Update>;
+};
+
+export type WebSidebarDocAccessFields_logoLink_Create = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_Delete = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_Fields = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_Fields';
+    href?: Maybe<WebSidebarDocAccessFields_logoLink_href>;
+    id?: Maybe<WebSidebarDocAccessFields_logoLink_id>;
+    target?: Maybe<WebSidebarDocAccessFields_logoLink_target>;
+    text?: Maybe<WebSidebarDocAccessFields_logoLink_text>;
+};
+
+export type WebSidebarDocAccessFields_logoLink_Read = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_Update = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_href = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_href';
+    create?: Maybe<WebSidebarDocAccessFields_logoLink_href_Create>;
+    delete?: Maybe<WebSidebarDocAccessFields_logoLink_href_Delete>;
+    read?: Maybe<WebSidebarDocAccessFields_logoLink_href_Read>;
+    update?: Maybe<WebSidebarDocAccessFields_logoLink_href_Update>;
+};
+
+export type WebSidebarDocAccessFields_logoLink_href_Create = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_href_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_href_Delete = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_href_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_href_Read = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_href_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_href_Update = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_href_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_id = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_id';
+    create?: Maybe<WebSidebarDocAccessFields_logoLink_id_Create>;
+    delete?: Maybe<WebSidebarDocAccessFields_logoLink_id_Delete>;
+    read?: Maybe<WebSidebarDocAccessFields_logoLink_id_Read>;
+    update?: Maybe<WebSidebarDocAccessFields_logoLink_id_Update>;
+};
+
+export type WebSidebarDocAccessFields_logoLink_id_Create = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_id_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_id_Delete = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_id_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_id_Read = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_id_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_id_Update = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_id_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_target = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_target';
+    create?: Maybe<WebSidebarDocAccessFields_logoLink_target_Create>;
+    delete?: Maybe<WebSidebarDocAccessFields_logoLink_target_Delete>;
+    read?: Maybe<WebSidebarDocAccessFields_logoLink_target_Read>;
+    update?: Maybe<WebSidebarDocAccessFields_logoLink_target_Update>;
+};
+
+export type WebSidebarDocAccessFields_logoLink_target_Create = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_target_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_target_Delete = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_target_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_target_Read = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_target_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_target_Update = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_target_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_text = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_text';
+    create?: Maybe<WebSidebarDocAccessFields_logoLink_text_Create>;
+    delete?: Maybe<WebSidebarDocAccessFields_logoLink_text_Delete>;
+    read?: Maybe<WebSidebarDocAccessFields_logoLink_text_Read>;
+    update?: Maybe<WebSidebarDocAccessFields_logoLink_text_Update>;
+};
+
+export type WebSidebarDocAccessFields_logoLink_text_Create = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_text_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_text_Delete = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_text_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_text_Read = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_text_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_logoLink_text_Update = {
+    __typename?: 'WebSidebarDocAccessFields_logoLink_text_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_updatedAt = {
+    __typename?: 'WebSidebarDocAccessFields_updatedAt';
+    create?: Maybe<WebSidebarDocAccessFields_updatedAt_Create>;
+    delete?: Maybe<WebSidebarDocAccessFields_updatedAt_Delete>;
+    read?: Maybe<WebSidebarDocAccessFields_updatedAt_Read>;
+    update?: Maybe<WebSidebarDocAccessFields_updatedAt_Update>;
+};
+
+export type WebSidebarDocAccessFields_updatedAt_Create = {
+    __typename?: 'WebSidebarDocAccessFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_updatedAt_Delete = {
+    __typename?: 'WebSidebarDocAccessFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_updatedAt_Read = {
+    __typename?: 'WebSidebarDocAccessFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarDocAccessFields_updatedAt_Update = {
+    __typename?: 'WebSidebarDocAccessFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields = {
+    __typename?: 'WebSidebarFields';
+    createdAt?: Maybe<WebSidebarFields_createdAt>;
+    links?: Maybe<WebSidebarFields_links>;
+    logoLink?: Maybe<WebSidebarFields_logoLink>;
+    updatedAt?: Maybe<WebSidebarFields_updatedAt>;
+};
+
+export type WebSidebarFields_createdAt = {
+    __typename?: 'WebSidebarFields_createdAt';
+    create?: Maybe<WebSidebarFields_createdAt_Create>;
+    delete?: Maybe<WebSidebarFields_createdAt_Delete>;
+    read?: Maybe<WebSidebarFields_createdAt_Read>;
+    update?: Maybe<WebSidebarFields_createdAt_Update>;
+};
+
+export type WebSidebarFields_createdAt_Create = {
+    __typename?: 'WebSidebarFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_createdAt_Delete = {
+    __typename?: 'WebSidebarFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_createdAt_Read = {
+    __typename?: 'WebSidebarFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_createdAt_Update = {
+    __typename?: 'WebSidebarFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links = {
+    __typename?: 'WebSidebarFields_links';
+    create?: Maybe<WebSidebarFields_links_Create>;
+    delete?: Maybe<WebSidebarFields_links_Delete>;
+    fields?: Maybe<WebSidebarFields_links_Fields>;
+    read?: Maybe<WebSidebarFields_links_Read>;
+    update?: Maybe<WebSidebarFields_links_Update>;
+};
+
+export type WebSidebarFields_links_Create = {
+    __typename?: 'WebSidebarFields_links_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_Delete = {
+    __typename?: 'WebSidebarFields_links_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_Fields = {
+    __typename?: 'WebSidebarFields_links_Fields';
+    href?: Maybe<WebSidebarFields_links_href>;
+    icon?: Maybe<WebSidebarFields_links_icon>;
+    id?: Maybe<WebSidebarFields_links_id>;
+    target?: Maybe<WebSidebarFields_links_target>;
+    text?: Maybe<WebSidebarFields_links_text>;
+};
+
+export type WebSidebarFields_links_Read = {
+    __typename?: 'WebSidebarFields_links_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_Update = {
+    __typename?: 'WebSidebarFields_links_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_href = {
+    __typename?: 'WebSidebarFields_links_href';
+    create?: Maybe<WebSidebarFields_links_href_Create>;
+    delete?: Maybe<WebSidebarFields_links_href_Delete>;
+    read?: Maybe<WebSidebarFields_links_href_Read>;
+    update?: Maybe<WebSidebarFields_links_href_Update>;
+};
+
+export type WebSidebarFields_links_href_Create = {
+    __typename?: 'WebSidebarFields_links_href_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_href_Delete = {
+    __typename?: 'WebSidebarFields_links_href_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_href_Read = {
+    __typename?: 'WebSidebarFields_links_href_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_href_Update = {
+    __typename?: 'WebSidebarFields_links_href_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_icon = {
+    __typename?: 'WebSidebarFields_links_icon';
+    create?: Maybe<WebSidebarFields_links_icon_Create>;
+    delete?: Maybe<WebSidebarFields_links_icon_Delete>;
+    read?: Maybe<WebSidebarFields_links_icon_Read>;
+    update?: Maybe<WebSidebarFields_links_icon_Update>;
+};
+
+export type WebSidebarFields_links_icon_Create = {
+    __typename?: 'WebSidebarFields_links_icon_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_icon_Delete = {
+    __typename?: 'WebSidebarFields_links_icon_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_icon_Read = {
+    __typename?: 'WebSidebarFields_links_icon_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_icon_Update = {
+    __typename?: 'WebSidebarFields_links_icon_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_id = {
+    __typename?: 'WebSidebarFields_links_id';
+    create?: Maybe<WebSidebarFields_links_id_Create>;
+    delete?: Maybe<WebSidebarFields_links_id_Delete>;
+    read?: Maybe<WebSidebarFields_links_id_Read>;
+    update?: Maybe<WebSidebarFields_links_id_Update>;
+};
+
+export type WebSidebarFields_links_id_Create = {
+    __typename?: 'WebSidebarFields_links_id_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_id_Delete = {
+    __typename?: 'WebSidebarFields_links_id_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_id_Read = {
+    __typename?: 'WebSidebarFields_links_id_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_id_Update = {
+    __typename?: 'WebSidebarFields_links_id_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_target = {
+    __typename?: 'WebSidebarFields_links_target';
+    create?: Maybe<WebSidebarFields_links_target_Create>;
+    delete?: Maybe<WebSidebarFields_links_target_Delete>;
+    read?: Maybe<WebSidebarFields_links_target_Read>;
+    update?: Maybe<WebSidebarFields_links_target_Update>;
+};
+
+export type WebSidebarFields_links_target_Create = {
+    __typename?: 'WebSidebarFields_links_target_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_target_Delete = {
+    __typename?: 'WebSidebarFields_links_target_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_target_Read = {
+    __typename?: 'WebSidebarFields_links_target_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_target_Update = {
+    __typename?: 'WebSidebarFields_links_target_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_text = {
+    __typename?: 'WebSidebarFields_links_text';
+    create?: Maybe<WebSidebarFields_links_text_Create>;
+    delete?: Maybe<WebSidebarFields_links_text_Delete>;
+    read?: Maybe<WebSidebarFields_links_text_Read>;
+    update?: Maybe<WebSidebarFields_links_text_Update>;
+};
+
+export type WebSidebarFields_links_text_Create = {
+    __typename?: 'WebSidebarFields_links_text_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_text_Delete = {
+    __typename?: 'WebSidebarFields_links_text_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_text_Read = {
+    __typename?: 'WebSidebarFields_links_text_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_links_text_Update = {
+    __typename?: 'WebSidebarFields_links_text_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink = {
+    __typename?: 'WebSidebarFields_logoLink';
+    create?: Maybe<WebSidebarFields_logoLink_Create>;
+    delete?: Maybe<WebSidebarFields_logoLink_Delete>;
+    fields?: Maybe<WebSidebarFields_logoLink_Fields>;
+    read?: Maybe<WebSidebarFields_logoLink_Read>;
+    update?: Maybe<WebSidebarFields_logoLink_Update>;
+};
+
+export type WebSidebarFields_logoLink_Create = {
+    __typename?: 'WebSidebarFields_logoLink_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_Delete = {
+    __typename?: 'WebSidebarFields_logoLink_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_Fields = {
+    __typename?: 'WebSidebarFields_logoLink_Fields';
+    href?: Maybe<WebSidebarFields_logoLink_href>;
+    id?: Maybe<WebSidebarFields_logoLink_id>;
+    target?: Maybe<WebSidebarFields_logoLink_target>;
+    text?: Maybe<WebSidebarFields_logoLink_text>;
+};
+
+export type WebSidebarFields_logoLink_Read = {
+    __typename?: 'WebSidebarFields_logoLink_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_Update = {
+    __typename?: 'WebSidebarFields_logoLink_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_href = {
+    __typename?: 'WebSidebarFields_logoLink_href';
+    create?: Maybe<WebSidebarFields_logoLink_href_Create>;
+    delete?: Maybe<WebSidebarFields_logoLink_href_Delete>;
+    read?: Maybe<WebSidebarFields_logoLink_href_Read>;
+    update?: Maybe<WebSidebarFields_logoLink_href_Update>;
+};
+
+export type WebSidebarFields_logoLink_href_Create = {
+    __typename?: 'WebSidebarFields_logoLink_href_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_href_Delete = {
+    __typename?: 'WebSidebarFields_logoLink_href_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_href_Read = {
+    __typename?: 'WebSidebarFields_logoLink_href_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_href_Update = {
+    __typename?: 'WebSidebarFields_logoLink_href_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_id = {
+    __typename?: 'WebSidebarFields_logoLink_id';
+    create?: Maybe<WebSidebarFields_logoLink_id_Create>;
+    delete?: Maybe<WebSidebarFields_logoLink_id_Delete>;
+    read?: Maybe<WebSidebarFields_logoLink_id_Read>;
+    update?: Maybe<WebSidebarFields_logoLink_id_Update>;
+};
+
+export type WebSidebarFields_logoLink_id_Create = {
+    __typename?: 'WebSidebarFields_logoLink_id_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_id_Delete = {
+    __typename?: 'WebSidebarFields_logoLink_id_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_id_Read = {
+    __typename?: 'WebSidebarFields_logoLink_id_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_id_Update = {
+    __typename?: 'WebSidebarFields_logoLink_id_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_target = {
+    __typename?: 'WebSidebarFields_logoLink_target';
+    create?: Maybe<WebSidebarFields_logoLink_target_Create>;
+    delete?: Maybe<WebSidebarFields_logoLink_target_Delete>;
+    read?: Maybe<WebSidebarFields_logoLink_target_Read>;
+    update?: Maybe<WebSidebarFields_logoLink_target_Update>;
+};
+
+export type WebSidebarFields_logoLink_target_Create = {
+    __typename?: 'WebSidebarFields_logoLink_target_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_target_Delete = {
+    __typename?: 'WebSidebarFields_logoLink_target_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_target_Read = {
+    __typename?: 'WebSidebarFields_logoLink_target_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_target_Update = {
+    __typename?: 'WebSidebarFields_logoLink_target_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_text = {
+    __typename?: 'WebSidebarFields_logoLink_text';
+    create?: Maybe<WebSidebarFields_logoLink_text_Create>;
+    delete?: Maybe<WebSidebarFields_logoLink_text_Delete>;
+    read?: Maybe<WebSidebarFields_logoLink_text_Read>;
+    update?: Maybe<WebSidebarFields_logoLink_text_Update>;
+};
+
+export type WebSidebarFields_logoLink_text_Create = {
+    __typename?: 'WebSidebarFields_logoLink_text_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_text_Delete = {
+    __typename?: 'WebSidebarFields_logoLink_text_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_text_Read = {
+    __typename?: 'WebSidebarFields_logoLink_text_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_logoLink_text_Update = {
+    __typename?: 'WebSidebarFields_logoLink_text_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_updatedAt = {
+    __typename?: 'WebSidebarFields_updatedAt';
+    create?: Maybe<WebSidebarFields_updatedAt_Create>;
+    delete?: Maybe<WebSidebarFields_updatedAt_Delete>;
+    read?: Maybe<WebSidebarFields_updatedAt_Read>;
+    update?: Maybe<WebSidebarFields_updatedAt_Update>;
+};
+
+export type WebSidebarFields_updatedAt_Create = {
+    __typename?: 'WebSidebarFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_updatedAt_Delete = {
+    __typename?: 'WebSidebarFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_updatedAt_Read = {
+    __typename?: 'WebSidebarFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarFields_updatedAt_Update = {
+    __typename?: 'WebSidebarFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebSidebarReadAccess = {
+    __typename?: 'WebSidebarReadAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebSidebarReadDocAccess = {
+    __typename?: 'WebSidebarReadDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebSidebarUpdateAccess = {
+    __typename?: 'WebSidebarUpdateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebSidebarUpdateDocAccess = {
+    __typename?: 'WebSidebarUpdateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebSidebar_Links = {
+    __typename?: 'WebSidebar_Links';
+    href?: Maybe<Scalars['String']['output']>;
+    icon?: Maybe<Scalars['String']['output']>;
+    id?: Maybe<Scalars['String']['output']>;
+    target?: Maybe<WebSidebar_Links_target>;
+    text?: Maybe<Scalars['String']['output']>;
+};
+
+export type WebSidebar_Links_target = '_blank' | '_parent' | '_self' | '_top' | '_unfencedTop' | '%future added value';
+
+export type WebSidebar_Links_target_MutationInput =
+    | '_blank'
+    | '_parent'
+    | '_self'
+    | '_top'
+    | '_unfencedTop'
+    | '%future added value';
+
+export type WebSidebar_LogoLink = {
+    __typename?: 'WebSidebar_LogoLink';
+    href?: Maybe<Scalars['String']['output']>;
+    id?: Maybe<Scalars['String']['output']>;
+    target?: Maybe<WebSidebar_LogoLink_target>;
+    text?: Maybe<Scalars['String']['output']>;
+};
+
+export type WebSidebar_LogoLink_target =
+    | '_blank'
+    | '_parent'
+    | '_self'
+    | '_top'
+    | '_unfencedTop'
+    | '%future added value';
+
+export type WebSidebar_LogoLink_target_MutationInput =
+    | '_blank'
+    | '_parent'
+    | '_self'
+    | '_top'
+    | '_unfencedTop'
+    | '%future added value';
+
 export type WebSocial = {
     __typename?: 'WebSocial';
     backgroundImage?: Maybe<WebImage>;
@@ -37868,34 +37874,6 @@ export type coursesDocAccess = {
     update?: Maybe<CoursesUpdateDocAccess>;
 };
 
-export type footerAccess = {
-    __typename?: 'footerAccess';
-    fields?: Maybe<FooterFields>;
-    read?: Maybe<FooterReadAccess>;
-    update?: Maybe<FooterUpdateAccess>;
-};
-
-export type footerDocAccess = {
-    __typename?: 'footerDocAccess';
-    fields?: Maybe<FooterDocAccessFields>;
-    read?: Maybe<FooterReadDocAccess>;
-    update?: Maybe<FooterUpdateDocAccess>;
-};
-
-export type headerAccess = {
-    __typename?: 'headerAccess';
-    fields?: Maybe<HeaderFields>;
-    read?: Maybe<HeaderReadAccess>;
-    update?: Maybe<HeaderUpdateAccess>;
-};
-
-export type headerDocAccess = {
-    __typename?: 'headerDocAccess';
-    fields?: Maybe<HeaderDocAccessFields>;
-    read?: Maybe<HeaderReadDocAccess>;
-    update?: Maybe<HeaderUpdateDocAccess>;
-};
-
 export type mutationContactInput = {
     address?: InputMaybe<mutationContact_AddressInput>;
     createdAt?: InputMaybe<Scalars['String']['input']>;
@@ -38056,34 +38034,6 @@ export type mutationCourseVideoLessonUpdateInput = {
     title?: InputMaybe<Scalars['String']['input']>;
     updatedAt?: InputMaybe<Scalars['String']['input']>;
     youtubeURL?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type mutationFooterInput = {
-    createdAt?: InputMaybe<Scalars['String']['input']>;
-    links?: InputMaybe<Array<InputMaybe<mutationFooter_LinksInput>>>;
-    text1?: InputMaybe<Scalars['JSON']['input']>;
-    text2?: InputMaybe<Scalars['JSON']['input']>;
-    updatedAt?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type mutationFooter_LinksInput = {
-    href?: InputMaybe<Scalars['String']['input']>;
-    id?: InputMaybe<Scalars['String']['input']>;
-    target?: InputMaybe<Footer_Links_target_MutationInput>;
-    text?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type mutationHeaderInput = {
-    createdAt?: InputMaybe<Scalars['String']['input']>;
-    links?: InputMaybe<Array<InputMaybe<mutationHeader_LinksInput>>>;
-    updatedAt?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type mutationHeader_LinksInput = {
-    href?: InputMaybe<Scalars['String']['input']>;
-    id?: InputMaybe<Scalars['String']['input']>;
-    target?: InputMaybe<Header_Links_target_MutationInput>;
-    text?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type mutationPayloadKvInput = {
@@ -38602,28 +38552,6 @@ export type mutationRoleUpdateInput = {
     updatedAt?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type mutationSidebarInput = {
-    createdAt?: InputMaybe<Scalars['String']['input']>;
-    links?: InputMaybe<Array<InputMaybe<mutationSidebar_LinksInput>>>;
-    logoLink?: InputMaybe<mutationSidebar_LogoLinkInput>;
-    updatedAt?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type mutationSidebar_LinksInput = {
-    href?: InputMaybe<Scalars['String']['input']>;
-    icon?: InputMaybe<Scalars['String']['input']>;
-    id?: InputMaybe<Scalars['String']['input']>;
-    target?: InputMaybe<Sidebar_Links_target_MutationInput>;
-    text?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type mutationSidebar_LogoLinkInput = {
-    href?: InputMaybe<Scalars['String']['input']>;
-    id?: InputMaybe<Scalars['String']['input']>;
-    target?: InputMaybe<Sidebar_LogoLink_target_MutationInput>;
-    text?: InputMaybe<Scalars['String']['input']>;
-};
-
 export type mutationUserInput = {
     address?: InputMaybe<mutationUser_AddressInput>;
     birthDate?: InputMaybe<Scalars['String']['input']>;
@@ -38753,6 +38681,34 @@ export type mutationWebBook_LinkInput = {
     href?: InputMaybe<Scalars['String']['input']>;
     id?: InputMaybe<Scalars['String']['input']>;
     target?: InputMaybe<WebBook_Link_target_MutationInput>;
+    text?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationWebFooterInput = {
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    links?: InputMaybe<Array<InputMaybe<mutationWebFooter_LinksInput>>>;
+    text1?: InputMaybe<Scalars['JSON']['input']>;
+    text2?: InputMaybe<Scalars['JSON']['input']>;
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationWebFooter_LinksInput = {
+    href?: InputMaybe<Scalars['String']['input']>;
+    id?: InputMaybe<Scalars['String']['input']>;
+    target?: InputMaybe<WebFooter_Links_target_MutationInput>;
+    text?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationWebHeaderInput = {
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    links?: InputMaybe<Array<InputMaybe<mutationWebHeader_LinksInput>>>;
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationWebHeader_LinksInput = {
+    href?: InputMaybe<Scalars['String']['input']>;
+    id?: InputMaybe<Scalars['String']['input']>;
+    target?: InputMaybe<WebHeader_Links_target_MutationInput>;
     text?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -39110,6 +39066,28 @@ export type mutationWebPartner_LinkInput = {
     text?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type mutationWebSidebarInput = {
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    links?: InputMaybe<Array<InputMaybe<mutationWebSidebar_LinksInput>>>;
+    logoLink?: InputMaybe<mutationWebSidebar_LogoLinkInput>;
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationWebSidebar_LinksInput = {
+    href?: InputMaybe<Scalars['String']['input']>;
+    icon?: InputMaybe<Scalars['String']['input']>;
+    id?: InputMaybe<Scalars['String']['input']>;
+    target?: InputMaybe<WebSidebar_Links_target_MutationInput>;
+    text?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationWebSidebar_LogoLinkInput = {
+    href?: InputMaybe<Scalars['String']['input']>;
+    id?: InputMaybe<Scalars['String']['input']>;
+    target?: InputMaybe<WebSidebar_LogoLink_target_MutationInput>;
+    text?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type mutationWebSocialInput = {
     backgroundImage?: InputMaybe<Scalars['Int']['input']>;
     createdAt?: InputMaybe<Scalars['String']['input']>;
@@ -39388,20 +39366,6 @@ export type rolesDocAccess = {
     update?: Maybe<RolesUpdateDocAccess>;
 };
 
-export type sidebarAccess = {
-    __typename?: 'sidebarAccess';
-    fields?: Maybe<SidebarFields>;
-    read?: Maybe<SidebarReadAccess>;
-    update?: Maybe<SidebarUpdateAccess>;
-};
-
-export type sidebarDocAccess = {
-    __typename?: 'sidebarDocAccess';
-    fields?: Maybe<SidebarDocAccessFields>;
-    read?: Maybe<SidebarReadDocAccess>;
-    update?: Maybe<SidebarUpdateDocAccess>;
-};
-
 export type usersAccess = {
     __typename?: 'usersAccess';
     create?: Maybe<UsersCreateAccess>;
@@ -39476,6 +39440,34 @@ export type web_booksDocAccess = {
     update?: Maybe<WebBooksUpdateDocAccess>;
 };
 
+export type web_footerAccess = {
+    __typename?: 'web_footerAccess';
+    fields?: Maybe<WebFooterFields>;
+    read?: Maybe<WebFooterReadAccess>;
+    update?: Maybe<WebFooterUpdateAccess>;
+};
+
+export type web_footerDocAccess = {
+    __typename?: 'web_footerDocAccess';
+    fields?: Maybe<WebFooterDocAccessFields>;
+    read?: Maybe<WebFooterReadDocAccess>;
+    update?: Maybe<WebFooterUpdateDocAccess>;
+};
+
+export type web_headerAccess = {
+    __typename?: 'web_headerAccess';
+    fields?: Maybe<WebHeaderFields>;
+    read?: Maybe<WebHeaderReadAccess>;
+    update?: Maybe<WebHeaderUpdateAccess>;
+};
+
+export type web_headerDocAccess = {
+    __typename?: 'web_headerDocAccess';
+    fields?: Maybe<WebHeaderDocAccessFields>;
+    read?: Maybe<WebHeaderReadDocAccess>;
+    update?: Maybe<WebHeaderUpdateDocAccess>;
+};
+
 export type web_image_categoriesAccess = {
     __typename?: 'web_image_categoriesAccess';
     create?: Maybe<WebImageCategoriesCreateAccess>;
@@ -39548,6 +39540,20 @@ export type web_partnersDocAccess = {
     update?: Maybe<WebPartnersUpdateDocAccess>;
 };
 
+export type web_sidebarAccess = {
+    __typename?: 'web_sidebarAccess';
+    fields?: Maybe<WebSidebarFields>;
+    read?: Maybe<WebSidebarReadAccess>;
+    update?: Maybe<WebSidebarUpdateAccess>;
+};
+
+export type web_sidebarDocAccess = {
+    __typename?: 'web_sidebarDocAccess';
+    fields?: Maybe<WebSidebarDocAccessFields>;
+    read?: Maybe<WebSidebarReadDocAccess>;
+    update?: Maybe<WebSidebarUpdateDocAccess>;
+};
+
 export type web_socialsAccess = {
     __typename?: 'web_socialsAccess';
     create?: Maybe<WebSocialsCreateAccess>;
@@ -39590,47 +39596,6 @@ export type ContactAttributesFragment = {
     phone?: { __typename?: 'Contact_Phone'; href?: string | null; text?: string | null } | null;
     mail?: { __typename?: 'Contact_Mail'; href?: string | null; text?: string | null } | null;
     address?: { __typename?: 'Contact_Address'; street?: string | null; place?: string | null } | null;
-};
-
-export type FooterAttributesFragment = {
-    __typename?: 'Footer';
-    text1?: { [key: string]: any } | null;
-    text2?: { [key: string]: any } | null;
-    links?: Array<{
-        __typename?: 'Footer_Links';
-        href?: string | null;
-        text?: string | null;
-        target?: Footer_Links_target | null;
-        id?: string | null;
-    }> | null;
-};
-
-export type HeaderAttributesFragment = {
-    __typename?: 'Header';
-    links?: Array<{
-        __typename?: 'Header_Links';
-        href?: string | null;
-        text?: string | null;
-        target?: Header_Links_target | null;
-        id?: string | null;
-    }> | null;
-};
-
-export type SidebarAttributesFragment = {
-    __typename?: 'Sidebar';
-    logoLink?: {
-        __typename?: 'Sidebar_LogoLink';
-        href?: string | null;
-        text?: string | null;
-        target?: Sidebar_LogoLink_target | null;
-    } | null;
-    links?: Array<{
-        __typename?: 'Sidebar_Links';
-        href?: string | null;
-        text?: string | null;
-        target?: Sidebar_Links_target | null;
-        id?: string | null;
-    }> | null;
 };
 
 export type AccordionsAttributesFragment = {
@@ -41176,8 +41141,6 @@ export type TextElementAttributesFragment = {
     } | null;
 };
 
-export type TextBlockAttributesFragment = { __typename?: 'WebTextBlock'; id: number; slug: string; value: string };
-
 export type WebImageAttributesFragment = {
     __typename?: 'WebImage';
     id: number;
@@ -41591,45 +41554,88 @@ export type WebSocialAttributesFragment = {
     } | null;
 };
 
+export type WebTextBlockAttributesFragment = { __typename?: 'WebTextBlock'; id: number; slug: string; value: string };
+
+export type WebFooterAttributesFragment = {
+    __typename?: 'WebFooter';
+    text1?: { [key: string]: any } | null;
+    text2?: { [key: string]: any } | null;
+    links?: Array<{
+        __typename?: 'WebFooter_Links';
+        href?: string | null;
+        text?: string | null;
+        target?: WebFooter_Links_target | null;
+        id?: string | null;
+    }> | null;
+};
+
+export type WebHeaderAttributesFragment = {
+    __typename?: 'WebHeader';
+    links?: Array<{
+        __typename?: 'WebHeader_Links';
+        href?: string | null;
+        text?: string | null;
+        target?: WebHeader_Links_target | null;
+        id?: string | null;
+    }> | null;
+};
+
+export type WebSidebarAttributesFragment = {
+    __typename?: 'WebSidebar';
+    logoLink?: {
+        __typename?: 'WebSidebar_LogoLink';
+        href?: string | null;
+        text?: string | null;
+        target?: WebSidebar_LogoLink_target | null;
+    } | null;
+    links?: Array<{
+        __typename?: 'WebSidebar_Links';
+        href?: string | null;
+        text?: string | null;
+        target?: WebSidebar_Links_target | null;
+        id?: string | null;
+    }> | null;
+};
+
 export type findGlobalsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type findGlobalsQuery = {
     __typename?: 'Query';
-    Header?: {
-        __typename?: 'Header';
+    WebHeader?: {
+        __typename?: 'WebHeader';
         links?: Array<{
-            __typename?: 'Header_Links';
+            __typename?: 'WebHeader_Links';
             href?: string | null;
             text?: string | null;
-            target?: Header_Links_target | null;
+            target?: WebHeader_Links_target | null;
             id?: string | null;
         }> | null;
     } | null;
-    Footer?: {
-        __typename?: 'Footer';
+    WebFooter?: {
+        __typename?: 'WebFooter';
         text1?: { [key: string]: any } | null;
         text2?: { [key: string]: any } | null;
         links?: Array<{
-            __typename?: 'Footer_Links';
+            __typename?: 'WebFooter_Links';
             href?: string | null;
             text?: string | null;
-            target?: Footer_Links_target | null;
+            target?: WebFooter_Links_target | null;
             id?: string | null;
         }> | null;
     } | null;
-    Sidebar?: {
-        __typename?: 'Sidebar';
+    WebSidebar?: {
+        __typename?: 'WebSidebar';
         logoLink?: {
-            __typename?: 'Sidebar_LogoLink';
+            __typename?: 'WebSidebar_LogoLink';
             href?: string | null;
             text?: string | null;
-            target?: Sidebar_LogoLink_target | null;
+            target?: WebSidebar_LogoLink_target | null;
         } | null;
         links?: Array<{
-            __typename?: 'Sidebar_Links';
+            __typename?: 'WebSidebar_Links';
             href?: string | null;
             text?: string | null;
-            target?: Sidebar_Links_target | null;
+            target?: WebSidebar_Links_target | null;
             id?: string | null;
         }> | null;
     } | null;
@@ -43637,43 +43643,6 @@ export const ContactAttributesFragmentDoc = gql`
         }
     }
 `;
-export const FooterAttributesFragmentDoc = gql`
-    fragment FooterAttributes on Footer {
-        text1
-        text2
-        links {
-            href
-            text
-            target
-            id
-        }
-    }
-`;
-export const HeaderAttributesFragmentDoc = gql`
-    fragment HeaderAttributes on Header {
-        links {
-            href
-            text
-            target
-            id
-        }
-    }
-`;
-export const SidebarAttributesFragmentDoc = gql`
-    fragment SidebarAttributes on Sidebar {
-        logoLink {
-            href
-            text
-            target
-        }
-        links {
-            href
-            text
-            target
-            id
-        }
-    }
-`;
 export const AccordionsAttributesFragmentDoc = gql`
     fragment AccordionsAttributes on WebAccordions {
         id
@@ -44169,13 +44138,6 @@ export const TextElementAttributesFragmentDoc = gql`
         }
     }
 `;
-export const TextBlockAttributesFragmentDoc = gql`
-    fragment TextBlockAttributes on WebTextBlock {
-        id
-        slug
-        value
-    }
-`;
 export const WebImageCategoryAttributesFragmentDoc = gql`
     fragment WebImageCategoryAttributes on WebImageCategory {
         id
@@ -44213,16 +44175,60 @@ export const WebSocialAttributesFragmentDoc = gql`
     }
     ${WebImageAttributesFragmentDoc}
 `;
+export const WebTextBlockAttributesFragmentDoc = gql`
+    fragment WebTextBlockAttributes on WebTextBlock {
+        id
+        slug
+        value
+    }
+`;
+export const WebFooterAttributesFragmentDoc = gql`
+    fragment WebFooterAttributes on WebFooter {
+        text1
+        text2
+        links {
+            href
+            text
+            target
+            id
+        }
+    }
+`;
+export const WebHeaderAttributesFragmentDoc = gql`
+    fragment WebHeaderAttributes on WebHeader {
+        links {
+            href
+            text
+            target
+            id
+        }
+    }
+`;
+export const WebSidebarAttributesFragmentDoc = gql`
+    fragment WebSidebarAttributes on WebSidebar {
+        logoLink {
+            href
+            text
+            target
+        }
+        links {
+            href
+            text
+            target
+            id
+        }
+    }
+`;
 export const findGlobalsDocument = gql`
     query findGlobals {
-        Header {
-            ...HeaderAttributes
+        WebHeader {
+            ...WebHeaderAttributes
         }
-        Footer {
-            ...FooterAttributes
+        WebFooter {
+            ...WebFooterAttributes
         }
-        Sidebar {
-            ...SidebarAttributes
+        WebSidebar {
+            ...WebSidebarAttributes
         }
         Contact {
             ...ContactAttributes
@@ -44239,17 +44245,17 @@ export const findGlobalsDocument = gql`
         }
         WebTextBlocks {
             docs {
-                ...TextBlockAttributes
+                ...WebTextBlockAttributes
             }
         }
     }
-    ${HeaderAttributesFragmentDoc}
-    ${FooterAttributesFragmentDoc}
-    ${SidebarAttributesFragmentDoc}
+    ${WebHeaderAttributesFragmentDoc}
+    ${WebFooterAttributesFragmentDoc}
+    ${WebSidebarAttributesFragmentDoc}
     ${ContactAttributesFragmentDoc}
     ${WebPartnerAttributesFragmentDoc}
     ${WebSocialAttributesFragmentDoc}
-    ${TextBlockAttributesFragmentDoc}
+    ${WebTextBlockAttributesFragmentDoc}
 `;
 export const findWebPagesDocument = gql`
     query findWebPages($where: WebPage_where) {

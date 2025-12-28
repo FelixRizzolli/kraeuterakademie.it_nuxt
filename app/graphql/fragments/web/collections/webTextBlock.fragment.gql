@@ -1,0 +1,5 @@
+fragment WebTextBlockAttributes on WebTextBlock {
+    id
+    slug
+    value
+}

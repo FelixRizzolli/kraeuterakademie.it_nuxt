@@ -1,12 +1,12 @@
 query findGlobals {
-    Header {
-        ...HeaderAttributes
+    WebHeader {
+        ...WebHeaderAttributes
     }
-    Footer {
-        ...FooterAttributes
+    WebFooter {
+        ...WebFooterAttributes
     }
-    Sidebar {
-        ...SidebarAttributes
+    WebSidebar {
+        ...WebSidebarAttributes
     }
     Contact {
         ...ContactAttributes
@@ -23,7 +23,7 @@ query findGlobals {
     }
     WebTextBlocks {
         docs {
-            ...TextBlockAttributes
+            ...WebTextBlockAttributes
         }
     }
 }
