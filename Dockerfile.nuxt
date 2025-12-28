@@ -4,7 +4,7 @@ FROM node:24-alpine
 ARG PORT=3000
 ARG HOST=0.0.0.0
 ARG EVN=production
-ARG STRAPI_API_URL=https://api.kraeuterakademie.it
+ARG PAYLOAD_API_URL=https://api.kraeuterakademie.it
 
 # Set the working directory
 WORKDIR /app
@@ -13,7 +13,7 @@ WORKDIR /app
 COPY . ./
 
 # Set environment variables for building the application
-ENV STRAPI_API_URL=$STRAPI_API_URL
+ENV PAYLOAD_API_URL=$PAYLOAD_API_URL
 
 # Install dependencies & build the project
 RUN corepack enable && \
