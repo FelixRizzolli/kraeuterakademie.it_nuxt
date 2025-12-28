@@ -1,7 +1,7 @@
 <template>
     <div
         v-if="media"
-        class="media-container"
+        class="image-container"
         ref="mediaElement"
         :class="{ 'scale-active': showMediaElement && scaleAnimation, 'scale-animation': scaleAnimation }"
     >

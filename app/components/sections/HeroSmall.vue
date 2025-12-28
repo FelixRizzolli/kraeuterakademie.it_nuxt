@@ -78,7 +78,7 @@
         align-self: flex-end;
     }
 
-    .media-container {
+    .image-container {
         @include col-start(6);
         @include col(6);
 
@@ -115,7 +115,7 @@
             margin-top: 3.5rem;
         }
 
-        .media-container {
+        .image-container {
             @include col-start(2);
             @include col(10);
 
