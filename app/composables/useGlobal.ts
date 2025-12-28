@@ -1,4 +1,4 @@
-import WEB_IMAGE_FRAGMENT from '~/graphql/fragments/web/collections/WebImages.fragment.gql';
+import WEB_IMAGE_FRAGMENT from '~/graphql/fragments/web/collections/webImage.fragment.gql';
 import WEB_PARTNER_FRAGMENT from '~/graphql/fragments/web/collections/webPartner.fragment.gql';
 import WEB_SOCIAL_FRAGMENT from '~/graphql/fragments/web/collections/webSocial.fragment.gql';
 import TEXTBLOCK_FRAGMENT from '~/graphql/fragments/web/collections/textblock.fragment.gql';
