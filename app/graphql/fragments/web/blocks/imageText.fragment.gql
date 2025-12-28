@@ -13,7 +13,7 @@ fragment ImageTextAttributes on WebImageText {
             target
         }
         image {
-            ...MediaAttributes
+            ...WebImageAttributes
         }
     }
     webImageTextSettings: settings {

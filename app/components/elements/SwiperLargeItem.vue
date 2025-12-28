@@ -22,7 +22,7 @@
 
 <script lang="ts" setup>
     export interface SwiperLargeItem {
-        image: WebMedia;
+        image: WebImages;
         infos?: string;
         title?: string;
         description?: any;

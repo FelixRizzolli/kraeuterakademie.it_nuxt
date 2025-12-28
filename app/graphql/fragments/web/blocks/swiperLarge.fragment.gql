@@ -15,7 +15,7 @@ fragment SwiperLargeAttributes on WebSwiperLarge {
                 target
             }
             image {
-                ...MediaAttributes
+                ...WebImageAttributes
             }
         }
     }

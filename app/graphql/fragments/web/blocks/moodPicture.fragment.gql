@@ -4,7 +4,7 @@ fragment MoodPictureAttributes on WebMoodPicture {
     blockType
     webMoodPictureContent: content {
         image {
-            ...MediaAttributes
+            ...WebImageAttributes
         }
     }
     webMoodPictureSettings: settings {

@@ -48,7 +48,8 @@ export type Access = {
     sidebar?: Maybe<sidebarAccess>;
     users?: Maybe<usersAccess>;
     web_books?: Maybe<web_booksAccess>;
-    web_media?: Maybe<web_mediaAccess>;
+    web_image_categories?: Maybe<web_image_categoriesAccess>;
+    web_images?: Maybe<web_imagesAccess>;
     web_pages?: Maybe<web_pagesAccess>;
     web_partners?: Maybe<web_partnersAccess>;
     web_socials?: Maybe<web_socialsAccess>;
@@ -6103,7 +6104,8 @@ export type Mutation = {
     createRole?: Maybe<Role>;
     createUser?: Maybe<User>;
     createWebBook?: Maybe<WebBook>;
-    createWebMedia?: Maybe<WebMedia>;
+    createWebImage?: Maybe<WebImage>;
+    createWebImageCategory?: Maybe<WebImageCategory>;
     createWebPage?: Maybe<WebPage>;
     createWebPartner?: Maybe<WebPartner>;
     createWebSocial?: Maybe<WebSocial>;
@@ -6131,7 +6133,8 @@ export type Mutation = {
     deleteRole?: Maybe<Role>;
     deleteUser?: Maybe<User>;
     deleteWebBook?: Maybe<WebBook>;
-    deleteWebMedia?: Maybe<WebMedia>;
+    deleteWebImage?: Maybe<WebImage>;
+    deleteWebImageCategory?: Maybe<WebImageCategory>;
     deleteWebPage?: Maybe<WebPage>;
     deleteWebPartner?: Maybe<WebPartner>;
     deleteWebSocial?: Maybe<WebSocial>;
@@ -6158,7 +6161,8 @@ export type Mutation = {
     duplicatePlantToxicityLevel?: Maybe<PlantToxicityLevel>;
     duplicateRole?: Maybe<Role>;
     duplicateWebBook?: Maybe<WebBook>;
-    duplicateWebMedia?: Maybe<WebMedia>;
+    duplicateWebImage?: Maybe<WebImage>;
+    duplicateWebImageCategory?: Maybe<WebImageCategory>;
     duplicateWebPage?: Maybe<WebPage>;
     duplicateWebPartner?: Maybe<WebPartner>;
     duplicateWebSocial?: Maybe<WebSocial>;
@@ -6196,7 +6200,8 @@ export type Mutation = {
     updateSidebar?: Maybe<Sidebar>;
     updateUser?: Maybe<User>;
     updateWebBook?: Maybe<WebBook>;
-    updateWebMedia?: Maybe<WebMedia>;
+    updateWebImage?: Maybe<WebImage>;
+    updateWebImageCategory?: Maybe<WebImageCategory>;
     updateWebPage?: Maybe<WebPage>;
     updateWebPartner?: Maybe<WebPartner>;
     updateWebSocial?: Maybe<WebSocial>;
@@ -6319,8 +6324,13 @@ export type Mutation_createWebBookArgs = {
     draft?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type Mutation_createWebMediaArgs = {
-    data: mutationWebMediaInput;
+export type Mutation_createWebImageArgs = {
+    data: mutationWebImageInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_createWebImageCategoryArgs = {
+    data: mutationWebImageCategoryInput;
     draft?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
@@ -6459,7 +6469,12 @@ export type Mutation_deleteWebBookArgs = {
     trash?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type Mutation_deleteWebMediaArgs = {
+export type Mutation_deleteWebImageArgs = {
+    id: Scalars['Int']['input'];
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_deleteWebImageCategoryArgs = {
     id: Scalars['Int']['input'];
     trash?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -6594,8 +6609,13 @@ export type Mutation_duplicateWebBookArgs = {
     id: Scalars['Int']['input'];
 };
 
-export type Mutation_duplicateWebMediaArgs = {
-    data: mutationWebMediaInput;
+export type Mutation_duplicateWebImageArgs = {
+    data: mutationWebImageInput;
+    id: Scalars['Int']['input'];
+};
+
+export type Mutation_duplicateWebImageCategoryArgs = {
+    data: mutationWebImageCategoryInput;
     id: Scalars['Int']['input'];
 };
 
@@ -6847,9 +6867,17 @@ export type Mutation_updateWebBookArgs = {
     trash?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type Mutation_updateWebMediaArgs = {
+export type Mutation_updateWebImageArgs = {
     autosave?: InputMaybe<Scalars['Boolean']['input']>;
-    data: mutationWebMediaUpdateInput;
+    data: mutationWebImageUpdateInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    id: Scalars['Int']['input'];
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_updateWebImageCategoryArgs = {
+    autosave?: InputMaybe<Scalars['Boolean']['input']>;
+    data: mutationWebImageCategoryUpdateInput;
     draft?: InputMaybe<Scalars['Boolean']['input']>;
     id: Scalars['Int']['input'];
     trash?: InputMaybe<Scalars['Boolean']['input']>;
@@ -7174,7 +7202,8 @@ export type PayloadLockedDocumentUpdate_DocumentRelationshipInputRelationTo =
     | 'roles'
     | 'users'
     | 'web_books'
-    | 'web_media'
+    | 'web_image_categories'
+    | 'web_images'
     | 'web_pages'
     | 'web_partners'
     | 'web_socials'
@@ -7209,7 +7238,8 @@ export type PayloadLockedDocument_Document =
     | Role
     | User
     | WebBook
-    | WebMedia
+    | WebImage
+    | WebImageCategory
     | WebPage
     | WebPartner
     | WebSocial
@@ -7241,7 +7271,8 @@ export type PayloadLockedDocument_DocumentRelationshipInputRelationTo =
     | 'roles'
     | 'users'
     | 'web_books'
-    | 'web_media'
+    | 'web_image_categories'
+    | 'web_images'
     | 'web_pages'
     | 'web_partners'
     | 'web_socials'
@@ -7269,7 +7300,8 @@ export type PayloadLockedDocument_Document_RelationTo =
     | 'roles'
     | 'users'
     | 'web_books'
-    | 'web_media'
+    | 'web_image_categories'
+    | 'web_images'
     | 'web_pages'
     | 'web_partners'
     | 'web_socials'
@@ -7336,7 +7368,8 @@ export type PayloadLockedDocument_document_Relation_RelationTo =
     | 'roles'
     | 'users'
     | 'web_books'
-    | 'web_media'
+    | 'web_image_categories'
+    | 'web_images'
     | 'web_pages'
     | 'web_partners'
     | 'web_socials'
@@ -9850,8 +9883,145 @@ export type PlantImage = {
     mimeType?: Maybe<Scalars['String']['output']>;
     plant: Plant;
     recognitionFeatures?: Maybe<Array<PlantRecognitionFeature>>;
+    sizes?: Maybe<PlantImage_Sizes>;
     thumbnailURL?: Maybe<Scalars['String']['output']>;
     updatedAt?: Maybe<Scalars['DateTime']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type PlantImage_Sizes = {
+    __typename?: 'PlantImage_Sizes';
+    desktop_avif?: Maybe<PlantImage_Sizes_Desktop_avif>;
+    desktop_jpeg?: Maybe<PlantImage_Sizes_Desktop_jpeg>;
+    desktop_webp?: Maybe<PlantImage_Sizes_Desktop_webp>;
+    mobile_avif?: Maybe<PlantImage_Sizes_Mobile_avif>;
+    mobile_jpeg?: Maybe<PlantImage_Sizes_Mobile_jpeg>;
+    mobile_webp?: Maybe<PlantImage_Sizes_Mobile_webp>;
+    tablet_avif?: Maybe<PlantImage_Sizes_Tablet_avif>;
+    tablet_jpeg?: Maybe<PlantImage_Sizes_Tablet_jpeg>;
+    tablet_webp?: Maybe<PlantImage_Sizes_Tablet_webp>;
+    thumbnail_avif?: Maybe<PlantImage_Sizes_Thumbnail_avif>;
+    thumbnail_jpeg?: Maybe<PlantImage_Sizes_Thumbnail_jpeg>;
+    thumbnail_webp?: Maybe<PlantImage_Sizes_Thumbnail_webp>;
+};
+
+export type PlantImage_Sizes_Desktop_avif = {
+    __typename?: 'PlantImage_Sizes_Desktop_avif';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type PlantImage_Sizes_Desktop_jpeg = {
+    __typename?: 'PlantImage_Sizes_Desktop_jpeg';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type PlantImage_Sizes_Desktop_webp = {
+    __typename?: 'PlantImage_Sizes_Desktop_webp';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type PlantImage_Sizes_Mobile_avif = {
+    __typename?: 'PlantImage_Sizes_Mobile_avif';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type PlantImage_Sizes_Mobile_jpeg = {
+    __typename?: 'PlantImage_Sizes_Mobile_jpeg';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type PlantImage_Sizes_Mobile_webp = {
+    __typename?: 'PlantImage_Sizes_Mobile_webp';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type PlantImage_Sizes_Tablet_avif = {
+    __typename?: 'PlantImage_Sizes_Tablet_avif';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type PlantImage_Sizes_Tablet_jpeg = {
+    __typename?: 'PlantImage_Sizes_Tablet_jpeg';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type PlantImage_Sizes_Tablet_webp = {
+    __typename?: 'PlantImage_Sizes_Tablet_webp';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type PlantImage_Sizes_Thumbnail_avif = {
+    __typename?: 'PlantImage_Sizes_Thumbnail_avif';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type PlantImage_Sizes_Thumbnail_jpeg = {
+    __typename?: 'PlantImage_Sizes_Thumbnail_jpeg';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type PlantImage_Sizes_Thumbnail_webp = {
+    __typename?: 'PlantImage_Sizes_Thumbnail_webp';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
     url?: Maybe<Scalars['String']['output']>;
     width?: Maybe<Scalars['Float']['output']>;
 };
@@ -9964,6 +10134,762 @@ export type PlantImage_recognitionFeatures_operator = {
     not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
 };
 
+export type PlantImage_sizes__desktop_avif__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__desktop_avif__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__desktop_avif__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__desktop_avif__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__desktop_avif__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__desktop_avif__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__desktop_jpeg__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__desktop_jpeg__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__desktop_jpeg__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__desktop_jpeg__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__desktop_jpeg__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__desktop_jpeg__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__desktop_webp__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__desktop_webp__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__desktop_webp__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__desktop_webp__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__desktop_webp__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__desktop_webp__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__mobile_avif__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__mobile_avif__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__mobile_avif__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__mobile_avif__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__mobile_avif__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__mobile_avif__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__mobile_jpeg__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__mobile_jpeg__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__mobile_jpeg__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__mobile_jpeg__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__mobile_jpeg__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__mobile_jpeg__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__mobile_webp__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__mobile_webp__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__mobile_webp__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__mobile_webp__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__mobile_webp__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__mobile_webp__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__tablet_avif__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__tablet_avif__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__tablet_avif__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__tablet_avif__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__tablet_avif__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__tablet_avif__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__tablet_jpeg__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__tablet_jpeg__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__tablet_jpeg__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__tablet_jpeg__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__tablet_jpeg__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__tablet_jpeg__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__tablet_webp__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__tablet_webp__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__tablet_webp__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__tablet_webp__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__tablet_webp__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__tablet_webp__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__thumbnail_avif__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__thumbnail_avif__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__thumbnail_avif__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__thumbnail_avif__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__thumbnail_avif__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__thumbnail_avif__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__thumbnail_jpeg__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__thumbnail_jpeg__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__thumbnail_jpeg__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__thumbnail_jpeg__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__thumbnail_jpeg__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__thumbnail_jpeg__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__thumbnail_webp__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__thumbnail_webp__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__thumbnail_webp__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PlantImage_sizes__thumbnail_webp__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__thumbnail_webp__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PlantImage_sizes__thumbnail_webp__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
 export type PlantImage_thumbnailURL_operator = {
     all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
     contains?: InputMaybe<Scalars['String']['input']>;
@@ -10011,6 +10937,78 @@ export type PlantImage_where = {
     mimeType?: InputMaybe<PlantImage_mimeType_operator>;
     plant?: InputMaybe<PlantImage_plant_operator>;
     recognitionFeatures?: InputMaybe<PlantImage_recognitionFeatures_operator>;
+    sizes__desktop_avif__filename?: InputMaybe<PlantImage_sizes__desktop_avif__filename_operator>;
+    sizes__desktop_avif__filesize?: InputMaybe<PlantImage_sizes__desktop_avif__filesize_operator>;
+    sizes__desktop_avif__height?: InputMaybe<PlantImage_sizes__desktop_avif__height_operator>;
+    sizes__desktop_avif__mimeType?: InputMaybe<PlantImage_sizes__desktop_avif__mimeType_operator>;
+    sizes__desktop_avif__url?: InputMaybe<PlantImage_sizes__desktop_avif__url_operator>;
+    sizes__desktop_avif__width?: InputMaybe<PlantImage_sizes__desktop_avif__width_operator>;
+    sizes__desktop_jpeg__filename?: InputMaybe<PlantImage_sizes__desktop_jpeg__filename_operator>;
+    sizes__desktop_jpeg__filesize?: InputMaybe<PlantImage_sizes__desktop_jpeg__filesize_operator>;
+    sizes__desktop_jpeg__height?: InputMaybe<PlantImage_sizes__desktop_jpeg__height_operator>;
+    sizes__desktop_jpeg__mimeType?: InputMaybe<PlantImage_sizes__desktop_jpeg__mimeType_operator>;
+    sizes__desktop_jpeg__url?: InputMaybe<PlantImage_sizes__desktop_jpeg__url_operator>;
+    sizes__desktop_jpeg__width?: InputMaybe<PlantImage_sizes__desktop_jpeg__width_operator>;
+    sizes__desktop_webp__filename?: InputMaybe<PlantImage_sizes__desktop_webp__filename_operator>;
+    sizes__desktop_webp__filesize?: InputMaybe<PlantImage_sizes__desktop_webp__filesize_operator>;
+    sizes__desktop_webp__height?: InputMaybe<PlantImage_sizes__desktop_webp__height_operator>;
+    sizes__desktop_webp__mimeType?: InputMaybe<PlantImage_sizes__desktop_webp__mimeType_operator>;
+    sizes__desktop_webp__url?: InputMaybe<PlantImage_sizes__desktop_webp__url_operator>;
+    sizes__desktop_webp__width?: InputMaybe<PlantImage_sizes__desktop_webp__width_operator>;
+    sizes__mobile_avif__filename?: InputMaybe<PlantImage_sizes__mobile_avif__filename_operator>;
+    sizes__mobile_avif__filesize?: InputMaybe<PlantImage_sizes__mobile_avif__filesize_operator>;
+    sizes__mobile_avif__height?: InputMaybe<PlantImage_sizes__mobile_avif__height_operator>;
+    sizes__mobile_avif__mimeType?: InputMaybe<PlantImage_sizes__mobile_avif__mimeType_operator>;
+    sizes__mobile_avif__url?: InputMaybe<PlantImage_sizes__mobile_avif__url_operator>;
+    sizes__mobile_avif__width?: InputMaybe<PlantImage_sizes__mobile_avif__width_operator>;
+    sizes__mobile_jpeg__filename?: InputMaybe<PlantImage_sizes__mobile_jpeg__filename_operator>;
+    sizes__mobile_jpeg__filesize?: InputMaybe<PlantImage_sizes__mobile_jpeg__filesize_operator>;
+    sizes__mobile_jpeg__height?: InputMaybe<PlantImage_sizes__mobile_jpeg__height_operator>;
+    sizes__mobile_jpeg__mimeType?: InputMaybe<PlantImage_sizes__mobile_jpeg__mimeType_operator>;
+    sizes__mobile_jpeg__url?: InputMaybe<PlantImage_sizes__mobile_jpeg__url_operator>;
+    sizes__mobile_jpeg__width?: InputMaybe<PlantImage_sizes__mobile_jpeg__width_operator>;
+    sizes__mobile_webp__filename?: InputMaybe<PlantImage_sizes__mobile_webp__filename_operator>;
+    sizes__mobile_webp__filesize?: InputMaybe<PlantImage_sizes__mobile_webp__filesize_operator>;
+    sizes__mobile_webp__height?: InputMaybe<PlantImage_sizes__mobile_webp__height_operator>;
+    sizes__mobile_webp__mimeType?: InputMaybe<PlantImage_sizes__mobile_webp__mimeType_operator>;
+    sizes__mobile_webp__url?: InputMaybe<PlantImage_sizes__mobile_webp__url_operator>;
+    sizes__mobile_webp__width?: InputMaybe<PlantImage_sizes__mobile_webp__width_operator>;
+    sizes__tablet_avif__filename?: InputMaybe<PlantImage_sizes__tablet_avif__filename_operator>;
+    sizes__tablet_avif__filesize?: InputMaybe<PlantImage_sizes__tablet_avif__filesize_operator>;
+    sizes__tablet_avif__height?: InputMaybe<PlantImage_sizes__tablet_avif__height_operator>;
+    sizes__tablet_avif__mimeType?: InputMaybe<PlantImage_sizes__tablet_avif__mimeType_operator>;
+    sizes__tablet_avif__url?: InputMaybe<PlantImage_sizes__tablet_avif__url_operator>;
+    sizes__tablet_avif__width?: InputMaybe<PlantImage_sizes__tablet_avif__width_operator>;
+    sizes__tablet_jpeg__filename?: InputMaybe<PlantImage_sizes__tablet_jpeg__filename_operator>;
+    sizes__tablet_jpeg__filesize?: InputMaybe<PlantImage_sizes__tablet_jpeg__filesize_operator>;
+    sizes__tablet_jpeg__height?: InputMaybe<PlantImage_sizes__tablet_jpeg__height_operator>;
+    sizes__tablet_jpeg__mimeType?: InputMaybe<PlantImage_sizes__tablet_jpeg__mimeType_operator>;
+    sizes__tablet_jpeg__url?: InputMaybe<PlantImage_sizes__tablet_jpeg__url_operator>;
+    sizes__tablet_jpeg__width?: InputMaybe<PlantImage_sizes__tablet_jpeg__width_operator>;
+    sizes__tablet_webp__filename?: InputMaybe<PlantImage_sizes__tablet_webp__filename_operator>;
+    sizes__tablet_webp__filesize?: InputMaybe<PlantImage_sizes__tablet_webp__filesize_operator>;
+    sizes__tablet_webp__height?: InputMaybe<PlantImage_sizes__tablet_webp__height_operator>;
+    sizes__tablet_webp__mimeType?: InputMaybe<PlantImage_sizes__tablet_webp__mimeType_operator>;
+    sizes__tablet_webp__url?: InputMaybe<PlantImage_sizes__tablet_webp__url_operator>;
+    sizes__tablet_webp__width?: InputMaybe<PlantImage_sizes__tablet_webp__width_operator>;
+    sizes__thumbnail_avif__filename?: InputMaybe<PlantImage_sizes__thumbnail_avif__filename_operator>;
+    sizes__thumbnail_avif__filesize?: InputMaybe<PlantImage_sizes__thumbnail_avif__filesize_operator>;
+    sizes__thumbnail_avif__height?: InputMaybe<PlantImage_sizes__thumbnail_avif__height_operator>;
+    sizes__thumbnail_avif__mimeType?: InputMaybe<PlantImage_sizes__thumbnail_avif__mimeType_operator>;
+    sizes__thumbnail_avif__url?: InputMaybe<PlantImage_sizes__thumbnail_avif__url_operator>;
+    sizes__thumbnail_avif__width?: InputMaybe<PlantImage_sizes__thumbnail_avif__width_operator>;
+    sizes__thumbnail_jpeg__filename?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__filename_operator>;
+    sizes__thumbnail_jpeg__filesize?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__filesize_operator>;
+    sizes__thumbnail_jpeg__height?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__height_operator>;
+    sizes__thumbnail_jpeg__mimeType?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__mimeType_operator>;
+    sizes__thumbnail_jpeg__url?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__url_operator>;
+    sizes__thumbnail_jpeg__width?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__width_operator>;
+    sizes__thumbnail_webp__filename?: InputMaybe<PlantImage_sizes__thumbnail_webp__filename_operator>;
+    sizes__thumbnail_webp__filesize?: InputMaybe<PlantImage_sizes__thumbnail_webp__filesize_operator>;
+    sizes__thumbnail_webp__height?: InputMaybe<PlantImage_sizes__thumbnail_webp__height_operator>;
+    sizes__thumbnail_webp__mimeType?: InputMaybe<PlantImage_sizes__thumbnail_webp__mimeType_operator>;
+    sizes__thumbnail_webp__url?: InputMaybe<PlantImage_sizes__thumbnail_webp__url_operator>;
+    sizes__thumbnail_webp__width?: InputMaybe<PlantImage_sizes__thumbnail_webp__width_operator>;
     thumbnailURL?: InputMaybe<PlantImage_thumbnailURL_operator>;
     updatedAt?: InputMaybe<PlantImage_updatedAt_operator>;
     url?: InputMaybe<PlantImage_url_operator>;
@@ -10031,6 +11029,78 @@ export type PlantImage_where_and = {
     mimeType?: InputMaybe<PlantImage_mimeType_operator>;
     plant?: InputMaybe<PlantImage_plant_operator>;
     recognitionFeatures?: InputMaybe<PlantImage_recognitionFeatures_operator>;
+    sizes__desktop_avif__filename?: InputMaybe<PlantImage_sizes__desktop_avif__filename_operator>;
+    sizes__desktop_avif__filesize?: InputMaybe<PlantImage_sizes__desktop_avif__filesize_operator>;
+    sizes__desktop_avif__height?: InputMaybe<PlantImage_sizes__desktop_avif__height_operator>;
+    sizes__desktop_avif__mimeType?: InputMaybe<PlantImage_sizes__desktop_avif__mimeType_operator>;
+    sizes__desktop_avif__url?: InputMaybe<PlantImage_sizes__desktop_avif__url_operator>;
+    sizes__desktop_avif__width?: InputMaybe<PlantImage_sizes__desktop_avif__width_operator>;
+    sizes__desktop_jpeg__filename?: InputMaybe<PlantImage_sizes__desktop_jpeg__filename_operator>;
+    sizes__desktop_jpeg__filesize?: InputMaybe<PlantImage_sizes__desktop_jpeg__filesize_operator>;
+    sizes__desktop_jpeg__height?: InputMaybe<PlantImage_sizes__desktop_jpeg__height_operator>;
+    sizes__desktop_jpeg__mimeType?: InputMaybe<PlantImage_sizes__desktop_jpeg__mimeType_operator>;
+    sizes__desktop_jpeg__url?: InputMaybe<PlantImage_sizes__desktop_jpeg__url_operator>;
+    sizes__desktop_jpeg__width?: InputMaybe<PlantImage_sizes__desktop_jpeg__width_operator>;
+    sizes__desktop_webp__filename?: InputMaybe<PlantImage_sizes__desktop_webp__filename_operator>;
+    sizes__desktop_webp__filesize?: InputMaybe<PlantImage_sizes__desktop_webp__filesize_operator>;
+    sizes__desktop_webp__height?: InputMaybe<PlantImage_sizes__desktop_webp__height_operator>;
+    sizes__desktop_webp__mimeType?: InputMaybe<PlantImage_sizes__desktop_webp__mimeType_operator>;
+    sizes__desktop_webp__url?: InputMaybe<PlantImage_sizes__desktop_webp__url_operator>;
+    sizes__desktop_webp__width?: InputMaybe<PlantImage_sizes__desktop_webp__width_operator>;
+    sizes__mobile_avif__filename?: InputMaybe<PlantImage_sizes__mobile_avif__filename_operator>;
+    sizes__mobile_avif__filesize?: InputMaybe<PlantImage_sizes__mobile_avif__filesize_operator>;
+    sizes__mobile_avif__height?: InputMaybe<PlantImage_sizes__mobile_avif__height_operator>;
+    sizes__mobile_avif__mimeType?: InputMaybe<PlantImage_sizes__mobile_avif__mimeType_operator>;
+    sizes__mobile_avif__url?: InputMaybe<PlantImage_sizes__mobile_avif__url_operator>;
+    sizes__mobile_avif__width?: InputMaybe<PlantImage_sizes__mobile_avif__width_operator>;
+    sizes__mobile_jpeg__filename?: InputMaybe<PlantImage_sizes__mobile_jpeg__filename_operator>;
+    sizes__mobile_jpeg__filesize?: InputMaybe<PlantImage_sizes__mobile_jpeg__filesize_operator>;
+    sizes__mobile_jpeg__height?: InputMaybe<PlantImage_sizes__mobile_jpeg__height_operator>;
+    sizes__mobile_jpeg__mimeType?: InputMaybe<PlantImage_sizes__mobile_jpeg__mimeType_operator>;
+    sizes__mobile_jpeg__url?: InputMaybe<PlantImage_sizes__mobile_jpeg__url_operator>;
+    sizes__mobile_jpeg__width?: InputMaybe<PlantImage_sizes__mobile_jpeg__width_operator>;
+    sizes__mobile_webp__filename?: InputMaybe<PlantImage_sizes__mobile_webp__filename_operator>;
+    sizes__mobile_webp__filesize?: InputMaybe<PlantImage_sizes__mobile_webp__filesize_operator>;
+    sizes__mobile_webp__height?: InputMaybe<PlantImage_sizes__mobile_webp__height_operator>;
+    sizes__mobile_webp__mimeType?: InputMaybe<PlantImage_sizes__mobile_webp__mimeType_operator>;
+    sizes__mobile_webp__url?: InputMaybe<PlantImage_sizes__mobile_webp__url_operator>;
+    sizes__mobile_webp__width?: InputMaybe<PlantImage_sizes__mobile_webp__width_operator>;
+    sizes__tablet_avif__filename?: InputMaybe<PlantImage_sizes__tablet_avif__filename_operator>;
+    sizes__tablet_avif__filesize?: InputMaybe<PlantImage_sizes__tablet_avif__filesize_operator>;
+    sizes__tablet_avif__height?: InputMaybe<PlantImage_sizes__tablet_avif__height_operator>;
+    sizes__tablet_avif__mimeType?: InputMaybe<PlantImage_sizes__tablet_avif__mimeType_operator>;
+    sizes__tablet_avif__url?: InputMaybe<PlantImage_sizes__tablet_avif__url_operator>;
+    sizes__tablet_avif__width?: InputMaybe<PlantImage_sizes__tablet_avif__width_operator>;
+    sizes__tablet_jpeg__filename?: InputMaybe<PlantImage_sizes__tablet_jpeg__filename_operator>;
+    sizes__tablet_jpeg__filesize?: InputMaybe<PlantImage_sizes__tablet_jpeg__filesize_operator>;
+    sizes__tablet_jpeg__height?: InputMaybe<PlantImage_sizes__tablet_jpeg__height_operator>;
+    sizes__tablet_jpeg__mimeType?: InputMaybe<PlantImage_sizes__tablet_jpeg__mimeType_operator>;
+    sizes__tablet_jpeg__url?: InputMaybe<PlantImage_sizes__tablet_jpeg__url_operator>;
+    sizes__tablet_jpeg__width?: InputMaybe<PlantImage_sizes__tablet_jpeg__width_operator>;
+    sizes__tablet_webp__filename?: InputMaybe<PlantImage_sizes__tablet_webp__filename_operator>;
+    sizes__tablet_webp__filesize?: InputMaybe<PlantImage_sizes__tablet_webp__filesize_operator>;
+    sizes__tablet_webp__height?: InputMaybe<PlantImage_sizes__tablet_webp__height_operator>;
+    sizes__tablet_webp__mimeType?: InputMaybe<PlantImage_sizes__tablet_webp__mimeType_operator>;
+    sizes__tablet_webp__url?: InputMaybe<PlantImage_sizes__tablet_webp__url_operator>;
+    sizes__tablet_webp__width?: InputMaybe<PlantImage_sizes__tablet_webp__width_operator>;
+    sizes__thumbnail_avif__filename?: InputMaybe<PlantImage_sizes__thumbnail_avif__filename_operator>;
+    sizes__thumbnail_avif__filesize?: InputMaybe<PlantImage_sizes__thumbnail_avif__filesize_operator>;
+    sizes__thumbnail_avif__height?: InputMaybe<PlantImage_sizes__thumbnail_avif__height_operator>;
+    sizes__thumbnail_avif__mimeType?: InputMaybe<PlantImage_sizes__thumbnail_avif__mimeType_operator>;
+    sizes__thumbnail_avif__url?: InputMaybe<PlantImage_sizes__thumbnail_avif__url_operator>;
+    sizes__thumbnail_avif__width?: InputMaybe<PlantImage_sizes__thumbnail_avif__width_operator>;
+    sizes__thumbnail_jpeg__filename?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__filename_operator>;
+    sizes__thumbnail_jpeg__filesize?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__filesize_operator>;
+    sizes__thumbnail_jpeg__height?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__height_operator>;
+    sizes__thumbnail_jpeg__mimeType?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__mimeType_operator>;
+    sizes__thumbnail_jpeg__url?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__url_operator>;
+    sizes__thumbnail_jpeg__width?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__width_operator>;
+    sizes__thumbnail_webp__filename?: InputMaybe<PlantImage_sizes__thumbnail_webp__filename_operator>;
+    sizes__thumbnail_webp__filesize?: InputMaybe<PlantImage_sizes__thumbnail_webp__filesize_operator>;
+    sizes__thumbnail_webp__height?: InputMaybe<PlantImage_sizes__thumbnail_webp__height_operator>;
+    sizes__thumbnail_webp__mimeType?: InputMaybe<PlantImage_sizes__thumbnail_webp__mimeType_operator>;
+    sizes__thumbnail_webp__url?: InputMaybe<PlantImage_sizes__thumbnail_webp__url_operator>;
+    sizes__thumbnail_webp__width?: InputMaybe<PlantImage_sizes__thumbnail_webp__width_operator>;
     thumbnailURL?: InputMaybe<PlantImage_thumbnailURL_operator>;
     updatedAt?: InputMaybe<PlantImage_updatedAt_operator>;
     url?: InputMaybe<PlantImage_url_operator>;
@@ -10051,6 +11121,78 @@ export type PlantImage_where_or = {
     mimeType?: InputMaybe<PlantImage_mimeType_operator>;
     plant?: InputMaybe<PlantImage_plant_operator>;
     recognitionFeatures?: InputMaybe<PlantImage_recognitionFeatures_operator>;
+    sizes__desktop_avif__filename?: InputMaybe<PlantImage_sizes__desktop_avif__filename_operator>;
+    sizes__desktop_avif__filesize?: InputMaybe<PlantImage_sizes__desktop_avif__filesize_operator>;
+    sizes__desktop_avif__height?: InputMaybe<PlantImage_sizes__desktop_avif__height_operator>;
+    sizes__desktop_avif__mimeType?: InputMaybe<PlantImage_sizes__desktop_avif__mimeType_operator>;
+    sizes__desktop_avif__url?: InputMaybe<PlantImage_sizes__desktop_avif__url_operator>;
+    sizes__desktop_avif__width?: InputMaybe<PlantImage_sizes__desktop_avif__width_operator>;
+    sizes__desktop_jpeg__filename?: InputMaybe<PlantImage_sizes__desktop_jpeg__filename_operator>;
+    sizes__desktop_jpeg__filesize?: InputMaybe<PlantImage_sizes__desktop_jpeg__filesize_operator>;
+    sizes__desktop_jpeg__height?: InputMaybe<PlantImage_sizes__desktop_jpeg__height_operator>;
+    sizes__desktop_jpeg__mimeType?: InputMaybe<PlantImage_sizes__desktop_jpeg__mimeType_operator>;
+    sizes__desktop_jpeg__url?: InputMaybe<PlantImage_sizes__desktop_jpeg__url_operator>;
+    sizes__desktop_jpeg__width?: InputMaybe<PlantImage_sizes__desktop_jpeg__width_operator>;
+    sizes__desktop_webp__filename?: InputMaybe<PlantImage_sizes__desktop_webp__filename_operator>;
+    sizes__desktop_webp__filesize?: InputMaybe<PlantImage_sizes__desktop_webp__filesize_operator>;
+    sizes__desktop_webp__height?: InputMaybe<PlantImage_sizes__desktop_webp__height_operator>;
+    sizes__desktop_webp__mimeType?: InputMaybe<PlantImage_sizes__desktop_webp__mimeType_operator>;
+    sizes__desktop_webp__url?: InputMaybe<PlantImage_sizes__desktop_webp__url_operator>;
+    sizes__desktop_webp__width?: InputMaybe<PlantImage_sizes__desktop_webp__width_operator>;
+    sizes__mobile_avif__filename?: InputMaybe<PlantImage_sizes__mobile_avif__filename_operator>;
+    sizes__mobile_avif__filesize?: InputMaybe<PlantImage_sizes__mobile_avif__filesize_operator>;
+    sizes__mobile_avif__height?: InputMaybe<PlantImage_sizes__mobile_avif__height_operator>;
+    sizes__mobile_avif__mimeType?: InputMaybe<PlantImage_sizes__mobile_avif__mimeType_operator>;
+    sizes__mobile_avif__url?: InputMaybe<PlantImage_sizes__mobile_avif__url_operator>;
+    sizes__mobile_avif__width?: InputMaybe<PlantImage_sizes__mobile_avif__width_operator>;
+    sizes__mobile_jpeg__filename?: InputMaybe<PlantImage_sizes__mobile_jpeg__filename_operator>;
+    sizes__mobile_jpeg__filesize?: InputMaybe<PlantImage_sizes__mobile_jpeg__filesize_operator>;
+    sizes__mobile_jpeg__height?: InputMaybe<PlantImage_sizes__mobile_jpeg__height_operator>;
+    sizes__mobile_jpeg__mimeType?: InputMaybe<PlantImage_sizes__mobile_jpeg__mimeType_operator>;
+    sizes__mobile_jpeg__url?: InputMaybe<PlantImage_sizes__mobile_jpeg__url_operator>;
+    sizes__mobile_jpeg__width?: InputMaybe<PlantImage_sizes__mobile_jpeg__width_operator>;
+    sizes__mobile_webp__filename?: InputMaybe<PlantImage_sizes__mobile_webp__filename_operator>;
+    sizes__mobile_webp__filesize?: InputMaybe<PlantImage_sizes__mobile_webp__filesize_operator>;
+    sizes__mobile_webp__height?: InputMaybe<PlantImage_sizes__mobile_webp__height_operator>;
+    sizes__mobile_webp__mimeType?: InputMaybe<PlantImage_sizes__mobile_webp__mimeType_operator>;
+    sizes__mobile_webp__url?: InputMaybe<PlantImage_sizes__mobile_webp__url_operator>;
+    sizes__mobile_webp__width?: InputMaybe<PlantImage_sizes__mobile_webp__width_operator>;
+    sizes__tablet_avif__filename?: InputMaybe<PlantImage_sizes__tablet_avif__filename_operator>;
+    sizes__tablet_avif__filesize?: InputMaybe<PlantImage_sizes__tablet_avif__filesize_operator>;
+    sizes__tablet_avif__height?: InputMaybe<PlantImage_sizes__tablet_avif__height_operator>;
+    sizes__tablet_avif__mimeType?: InputMaybe<PlantImage_sizes__tablet_avif__mimeType_operator>;
+    sizes__tablet_avif__url?: InputMaybe<PlantImage_sizes__tablet_avif__url_operator>;
+    sizes__tablet_avif__width?: InputMaybe<PlantImage_sizes__tablet_avif__width_operator>;
+    sizes__tablet_jpeg__filename?: InputMaybe<PlantImage_sizes__tablet_jpeg__filename_operator>;
+    sizes__tablet_jpeg__filesize?: InputMaybe<PlantImage_sizes__tablet_jpeg__filesize_operator>;
+    sizes__tablet_jpeg__height?: InputMaybe<PlantImage_sizes__tablet_jpeg__height_operator>;
+    sizes__tablet_jpeg__mimeType?: InputMaybe<PlantImage_sizes__tablet_jpeg__mimeType_operator>;
+    sizes__tablet_jpeg__url?: InputMaybe<PlantImage_sizes__tablet_jpeg__url_operator>;
+    sizes__tablet_jpeg__width?: InputMaybe<PlantImage_sizes__tablet_jpeg__width_operator>;
+    sizes__tablet_webp__filename?: InputMaybe<PlantImage_sizes__tablet_webp__filename_operator>;
+    sizes__tablet_webp__filesize?: InputMaybe<PlantImage_sizes__tablet_webp__filesize_operator>;
+    sizes__tablet_webp__height?: InputMaybe<PlantImage_sizes__tablet_webp__height_operator>;
+    sizes__tablet_webp__mimeType?: InputMaybe<PlantImage_sizes__tablet_webp__mimeType_operator>;
+    sizes__tablet_webp__url?: InputMaybe<PlantImage_sizes__tablet_webp__url_operator>;
+    sizes__tablet_webp__width?: InputMaybe<PlantImage_sizes__tablet_webp__width_operator>;
+    sizes__thumbnail_avif__filename?: InputMaybe<PlantImage_sizes__thumbnail_avif__filename_operator>;
+    sizes__thumbnail_avif__filesize?: InputMaybe<PlantImage_sizes__thumbnail_avif__filesize_operator>;
+    sizes__thumbnail_avif__height?: InputMaybe<PlantImage_sizes__thumbnail_avif__height_operator>;
+    sizes__thumbnail_avif__mimeType?: InputMaybe<PlantImage_sizes__thumbnail_avif__mimeType_operator>;
+    sizes__thumbnail_avif__url?: InputMaybe<PlantImage_sizes__thumbnail_avif__url_operator>;
+    sizes__thumbnail_avif__width?: InputMaybe<PlantImage_sizes__thumbnail_avif__width_operator>;
+    sizes__thumbnail_jpeg__filename?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__filename_operator>;
+    sizes__thumbnail_jpeg__filesize?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__filesize_operator>;
+    sizes__thumbnail_jpeg__height?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__height_operator>;
+    sizes__thumbnail_jpeg__mimeType?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__mimeType_operator>;
+    sizes__thumbnail_jpeg__url?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__url_operator>;
+    sizes__thumbnail_jpeg__width?: InputMaybe<PlantImage_sizes__thumbnail_jpeg__width_operator>;
+    sizes__thumbnail_webp__filename?: InputMaybe<PlantImage_sizes__thumbnail_webp__filename_operator>;
+    sizes__thumbnail_webp__filesize?: InputMaybe<PlantImage_sizes__thumbnail_webp__filesize_operator>;
+    sizes__thumbnail_webp__height?: InputMaybe<PlantImage_sizes__thumbnail_webp__height_operator>;
+    sizes__thumbnail_webp__mimeType?: InputMaybe<PlantImage_sizes__thumbnail_webp__mimeType_operator>;
+    sizes__thumbnail_webp__url?: InputMaybe<PlantImage_sizes__thumbnail_webp__url_operator>;
+    sizes__thumbnail_webp__width?: InputMaybe<PlantImage_sizes__thumbnail_webp__width_operator>;
     thumbnailURL?: InputMaybe<PlantImage_thumbnailURL_operator>;
     updatedAt?: InputMaybe<PlantImage_updatedAt_operator>;
     url?: InputMaybe<PlantImage_url_operator>;
@@ -10118,6 +11260,7 @@ export type PlantImagesDocAccessFields = {
     mimeType?: Maybe<PlantImagesDocAccessFields_mimeType>;
     plant?: Maybe<PlantImagesDocAccessFields_plant>;
     recognitionFeatures?: Maybe<PlantImagesDocAccessFields_recognitionFeatures>;
+    sizes?: Maybe<PlantImagesDocAccessFields_sizes>;
     thumbnailURL?: Maybe<PlantImagesDocAccessFields_thumbnailURL>;
     updatedAt?: Maybe<PlantImagesDocAccessFields_updatedAt>;
     url?: Maybe<PlantImagesDocAccessFields_url>;
@@ -10404,6 +11547,2535 @@ export type PlantImagesDocAccessFields_recognitionFeatures_Update = {
     permission: Scalars['Boolean']['output'];
 };
 
+export type PlantImagesDocAccessFields_sizes = {
+    __typename?: 'PlantImagesDocAccessFields_sizes';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_Delete>;
+    fields?: Maybe<PlantImagesDocAccessFields_sizes_Fields>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_Fields = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_Fields';
+    desktop_avif?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif>;
+    desktop_jpeg?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg>;
+    desktop_webp?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp>;
+    mobile_avif?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif>;
+    mobile_jpeg?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg>;
+    mobile_webp?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp>;
+    tablet_avif?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif>;
+    tablet_jpeg?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg>;
+    tablet_webp?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp>;
+    thumbnail_avif?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif>;
+    thumbnail_jpeg?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg>;
+    thumbnail_webp?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp>;
+};
+
+export type PlantImagesDocAccessFields_sizes_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_Delete>;
+    fields?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_Fields>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_Fields = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_Fields';
+    filename?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_filename>;
+    filesize?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_filesize>;
+    height?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_height>;
+    mimeType?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_mimeType>;
+    url?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_url>;
+    width?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_width>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_filename = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_filename';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_filename_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_filename_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_filename_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_filename_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_filename_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_filename_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_filename_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_filename_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_filesize = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_filesize';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_filesize_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_filesize_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_filesize_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_filesize_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_filesize_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_filesize_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_filesize_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_filesize_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_height = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_height';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_height_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_height_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_height_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_height_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_height_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_height_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_height_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_height_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_mimeType = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_mimeType';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_mimeType_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_mimeType_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_mimeType_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_mimeType_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_mimeType_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_mimeType_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_mimeType_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_mimeType_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_url = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_url';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_url_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_url_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_url_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_url_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_url_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_url_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_url_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_url_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_width = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_width';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_width_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_width_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_width_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_avif_width_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_width_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_width_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_width_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_avif_width_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_Delete>;
+    fields?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_Fields>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_Fields = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_Fields';
+    filename?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_filename>;
+    filesize?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_filesize>;
+    height?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_height>;
+    mimeType?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_mimeType>;
+    url?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_url>;
+    width?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_width>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_filename = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_filename';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_filename_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_filename_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_filename_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_filename_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_filename_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_filename_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_filename_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_filename_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_filesize = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_filesize';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_filesize_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_filesize_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_filesize_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_filesize_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_filesize_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_filesize_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_filesize_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_filesize_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_height = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_height';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_height_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_height_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_height_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_height_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_height_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_height_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_height_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_height_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_mimeType = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_mimeType';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_url = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_url';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_url_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_url_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_url_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_url_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_url_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_url_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_url_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_url_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_width = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_width';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_width_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_width_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_width_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_jpeg_width_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_width_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_width_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_width_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_jpeg_width_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_Delete>;
+    fields?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_Fields>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_Fields = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_Fields';
+    filename?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_filename>;
+    filesize?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_filesize>;
+    height?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_height>;
+    mimeType?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_mimeType>;
+    url?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_url>;
+    width?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_width>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_filename = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_filename';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_filename_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_filename_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_filename_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_filename_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_filename_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_filename_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_filename_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_filename_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_filesize = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_filesize';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_filesize_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_filesize_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_filesize_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_filesize_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_filesize_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_filesize_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_filesize_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_filesize_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_height = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_height';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_height_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_height_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_height_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_height_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_height_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_height_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_height_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_height_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_mimeType = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_mimeType';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_mimeType_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_mimeType_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_mimeType_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_mimeType_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_mimeType_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_mimeType_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_mimeType_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_mimeType_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_url = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_url';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_url_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_url_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_url_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_url_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_url_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_url_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_url_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_url_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_width = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_width';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_width_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_width_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_width_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_desktop_webp_width_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_width_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_width_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_width_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_desktop_webp_width_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_desktop_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_Delete>;
+    fields?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_Fields>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_Fields = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_Fields';
+    filename?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_filename>;
+    filesize?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_filesize>;
+    height?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_height>;
+    mimeType?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_mimeType>;
+    url?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_url>;
+    width?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_width>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_filename = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_filename';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_filename_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_filename_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_filename_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_filename_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_filename_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_filename_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_filename_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_filename_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_filesize = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_filesize';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_filesize_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_filesize_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_filesize_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_filesize_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_filesize_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_filesize_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_filesize_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_filesize_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_height = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_height';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_height_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_height_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_height_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_height_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_height_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_height_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_height_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_height_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_mimeType = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_mimeType';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_mimeType_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_mimeType_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_mimeType_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_mimeType_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_mimeType_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_mimeType_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_mimeType_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_mimeType_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_url = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_url';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_url_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_url_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_url_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_url_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_url_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_url_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_url_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_url_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_width = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_width';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_width_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_width_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_width_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_avif_width_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_width_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_width_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_width_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_avif_width_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_Delete>;
+    fields?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_Fields>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_Fields = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_Fields';
+    filename?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_filename>;
+    filesize?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_filesize>;
+    height?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_height>;
+    mimeType?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_mimeType>;
+    url?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_url>;
+    width?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_width>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_filename = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_filename';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_filename_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_filename_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_filename_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_filename_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_filename_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_filename_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_filename_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_filename_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_filesize = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_filesize';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_filesize_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_filesize_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_filesize_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_filesize_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_filesize_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_filesize_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_filesize_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_filesize_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_height = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_height';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_height_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_height_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_height_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_height_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_height_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_height_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_height_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_height_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_mimeType = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_mimeType';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_url = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_url';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_url_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_url_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_url_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_url_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_url_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_url_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_url_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_url_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_width = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_width';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_width_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_width_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_width_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_jpeg_width_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_width_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_width_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_width_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_jpeg_width_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_Delete>;
+    fields?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_Fields>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_Fields = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_Fields';
+    filename?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_filename>;
+    filesize?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_filesize>;
+    height?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_height>;
+    mimeType?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_mimeType>;
+    url?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_url>;
+    width?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_width>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_filename = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_filename';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_filename_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_filename_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_filename_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_filename_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_filename_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_filename_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_filename_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_filename_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_filesize = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_filesize';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_filesize_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_filesize_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_filesize_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_filesize_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_filesize_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_filesize_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_filesize_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_filesize_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_height = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_height';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_height_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_height_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_height_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_height_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_height_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_height_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_height_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_height_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_mimeType = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_mimeType';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_mimeType_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_mimeType_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_mimeType_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_mimeType_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_mimeType_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_mimeType_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_mimeType_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_mimeType_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_url = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_url';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_url_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_url_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_url_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_url_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_url_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_url_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_url_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_url_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_width = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_width';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_width_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_width_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_width_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_mobile_webp_width_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_width_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_width_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_width_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_mobile_webp_width_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_mobile_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_Delete>;
+    fields?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_Fields>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_Fields = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_Fields';
+    filename?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_filename>;
+    filesize?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_filesize>;
+    height?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_height>;
+    mimeType?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_mimeType>;
+    url?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_url>;
+    width?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_width>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_filename = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_filename';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_filename_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_filename_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_filename_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_filename_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_filename_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_filename_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_filename_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_filename_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_filesize = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_filesize';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_filesize_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_filesize_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_filesize_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_filesize_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_filesize_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_filesize_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_filesize_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_filesize_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_height = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_height';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_height_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_height_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_height_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_height_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_height_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_height_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_height_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_height_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_mimeType = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_mimeType';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_mimeType_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_mimeType_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_mimeType_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_mimeType_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_mimeType_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_mimeType_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_mimeType_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_mimeType_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_url = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_url';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_url_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_url_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_url_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_url_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_url_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_url_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_url_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_url_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_width = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_width';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_width_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_width_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_width_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_avif_width_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_width_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_width_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_width_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_avif_width_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_Delete>;
+    fields?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_Fields>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_Fields = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_Fields';
+    filename?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_filename>;
+    filesize?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_filesize>;
+    height?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_height>;
+    mimeType?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_mimeType>;
+    url?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_url>;
+    width?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_width>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_filename = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_filename';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_filename_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_filename_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_filename_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_filename_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_filename_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_filename_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_filename_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_filename_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_filesize = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_filesize';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_filesize_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_filesize_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_filesize_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_filesize_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_filesize_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_filesize_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_filesize_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_filesize_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_height = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_height';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_height_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_height_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_height_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_height_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_height_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_height_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_height_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_height_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_mimeType = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_mimeType';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_url = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_url';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_url_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_url_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_url_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_url_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_url_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_url_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_url_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_url_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_width = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_width';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_width_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_width_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_width_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_jpeg_width_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_width_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_width_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_width_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_jpeg_width_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_Delete>;
+    fields?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_Fields>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_Fields = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_Fields';
+    filename?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_filename>;
+    filesize?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_filesize>;
+    height?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_height>;
+    mimeType?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_mimeType>;
+    url?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_url>;
+    width?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_width>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_filename = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_filename';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_filename_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_filename_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_filename_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_filename_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_filename_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_filename_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_filename_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_filename_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_filesize = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_filesize';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_filesize_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_filesize_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_filesize_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_filesize_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_filesize_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_filesize_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_filesize_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_filesize_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_height = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_height';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_height_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_height_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_height_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_height_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_height_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_height_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_height_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_height_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_mimeType = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_mimeType';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_mimeType_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_mimeType_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_mimeType_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_mimeType_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_mimeType_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_mimeType_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_mimeType_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_mimeType_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_url = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_url';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_url_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_url_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_url_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_url_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_url_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_url_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_url_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_url_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_width = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_width';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_width_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_width_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_width_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_tablet_webp_width_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_width_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_width_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_width_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_tablet_webp_width_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_tablet_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_Delete>;
+    fields?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_Fields>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_Fields = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_Fields';
+    filename?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_filename>;
+    filesize?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_filesize>;
+    height?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_height>;
+    mimeType?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_mimeType>;
+    url?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_url>;
+    width?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_width>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_filename = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_filename';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_filename_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_filename_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_filename_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_filename_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_filename_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_filename_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_filename_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_filename_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_filesize = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_filesize';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_filesize_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_filesize_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_filesize_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_filesize_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_filesize_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_filesize_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_filesize_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_filesize_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_height = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_height';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_height_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_height_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_height_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_height_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_height_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_height_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_height_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_height_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_mimeType = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_mimeType';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_url = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_url';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_url_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_url_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_url_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_url_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_url_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_url_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_url_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_url_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_width = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_width';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_width_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_width_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_width_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_avif_width_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_width_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_width_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_width_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_avif_width_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_Delete>;
+    fields?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_Fields>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_Fields = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_Fields';
+    filename?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filename>;
+    filesize?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filesize>;
+    height?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_height>;
+    mimeType?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType>;
+    url?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_url>;
+    width?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_width>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filename = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filename';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filesize = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filesize';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_height = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_height';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_height_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_height_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_height_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_height_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_height_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_height_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_height_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_height_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_url = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_url';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_url_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_url_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_url_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_url_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_url_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_url_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_url_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_url_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_width = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_width';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_width_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_width_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_width_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_jpeg_width_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_width_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_width_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_width_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_jpeg_width_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_Delete>;
+    fields?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_Fields>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_Fields = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_Fields';
+    filename?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_filename>;
+    filesize?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_filesize>;
+    height?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_height>;
+    mimeType?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_mimeType>;
+    url?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_url>;
+    width?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_width>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_filename = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_filename';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_filename_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_filename_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_filename_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_filename_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_filename_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_filename_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_filename_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_filename_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_filesize = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_filesize';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_filesize_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_filesize_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_filesize_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_filesize_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_filesize_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_filesize_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_filesize_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_filesize_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_height = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_height';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_height_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_height_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_height_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_height_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_height_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_height_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_height_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_height_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_mimeType = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_mimeType';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_url = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_url';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_url_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_url_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_url_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_url_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_url_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_url_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_url_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_url_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_width = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_width';
+    create?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_width_Create>;
+    delete?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_width_Delete>;
+    read?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_width_Read>;
+    update?: Maybe<PlantImagesDocAccessFields_sizes_thumbnail_webp_width_Update>;
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_width_Create = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_width_Delete = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_width_Read = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesDocAccessFields_sizes_thumbnail_webp_width_Update = {
+    __typename?: 'PlantImagesDocAccessFields_sizes_thumbnail_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
 export type PlantImagesDocAccessFields_thumbnailURL = {
     __typename?: 'PlantImagesDocAccessFields_thumbnailURL';
     create?: Maybe<PlantImagesDocAccessFields_thumbnailURL_Create>;
@@ -10528,6 +14200,7 @@ export type PlantImagesFields = {
     mimeType?: Maybe<PlantImagesFields_mimeType>;
     plant?: Maybe<PlantImagesFields_plant>;
     recognitionFeatures?: Maybe<PlantImagesFields_recognitionFeatures>;
+    sizes?: Maybe<PlantImagesFields_sizes>;
     thumbnailURL?: Maybe<PlantImagesFields_thumbnailURL>;
     updatedAt?: Maybe<PlantImagesFields_updatedAt>;
     url?: Maybe<PlantImagesFields_url>;
@@ -10811,6 +14484,2535 @@ export type PlantImagesFields_recognitionFeatures_Read = {
 
 export type PlantImagesFields_recognitionFeatures_Update = {
     __typename?: 'PlantImagesFields_recognitionFeatures_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes = {
+    __typename?: 'PlantImagesFields_sizes';
+    create?: Maybe<PlantImagesFields_sizes_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_Delete>;
+    fields?: Maybe<PlantImagesFields_sizes_Fields>;
+    read?: Maybe<PlantImagesFields_sizes_Read>;
+    update?: Maybe<PlantImagesFields_sizes_Update>;
+};
+
+export type PlantImagesFields_sizes_Create = {
+    __typename?: 'PlantImagesFields_sizes_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_Delete = {
+    __typename?: 'PlantImagesFields_sizes_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_Fields = {
+    __typename?: 'PlantImagesFields_sizes_Fields';
+    desktop_avif?: Maybe<PlantImagesFields_sizes_desktop_avif>;
+    desktop_jpeg?: Maybe<PlantImagesFields_sizes_desktop_jpeg>;
+    desktop_webp?: Maybe<PlantImagesFields_sizes_desktop_webp>;
+    mobile_avif?: Maybe<PlantImagesFields_sizes_mobile_avif>;
+    mobile_jpeg?: Maybe<PlantImagesFields_sizes_mobile_jpeg>;
+    mobile_webp?: Maybe<PlantImagesFields_sizes_mobile_webp>;
+    tablet_avif?: Maybe<PlantImagesFields_sizes_tablet_avif>;
+    tablet_jpeg?: Maybe<PlantImagesFields_sizes_tablet_jpeg>;
+    tablet_webp?: Maybe<PlantImagesFields_sizes_tablet_webp>;
+    thumbnail_avif?: Maybe<PlantImagesFields_sizes_thumbnail_avif>;
+    thumbnail_jpeg?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg>;
+    thumbnail_webp?: Maybe<PlantImagesFields_sizes_thumbnail_webp>;
+};
+
+export type PlantImagesFields_sizes_Read = {
+    __typename?: 'PlantImagesFields_sizes_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_Update = {
+    __typename?: 'PlantImagesFields_sizes_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif';
+    create?: Maybe<PlantImagesFields_sizes_desktop_avif_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_avif_Delete>;
+    fields?: Maybe<PlantImagesFields_sizes_desktop_avif_Fields>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_avif_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_avif_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_avif_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_Fields = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_Fields';
+    filename?: Maybe<PlantImagesFields_sizes_desktop_avif_filename>;
+    filesize?: Maybe<PlantImagesFields_sizes_desktop_avif_filesize>;
+    height?: Maybe<PlantImagesFields_sizes_desktop_avif_height>;
+    mimeType?: Maybe<PlantImagesFields_sizes_desktop_avif_mimeType>;
+    url?: Maybe<PlantImagesFields_sizes_desktop_avif_url>;
+    width?: Maybe<PlantImagesFields_sizes_desktop_avif_width>;
+};
+
+export type PlantImagesFields_sizes_desktop_avif_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_filename = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_filename';
+    create?: Maybe<PlantImagesFields_sizes_desktop_avif_filename_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_avif_filename_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_avif_filename_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_avif_filename_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_avif_filename_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_filename_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_filename_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_filename_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_filesize = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_filesize';
+    create?: Maybe<PlantImagesFields_sizes_desktop_avif_filesize_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_avif_filesize_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_avif_filesize_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_avif_filesize_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_avif_filesize_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_filesize_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_filesize_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_filesize_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_height = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_height';
+    create?: Maybe<PlantImagesFields_sizes_desktop_avif_height_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_avif_height_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_avif_height_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_avif_height_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_avif_height_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_height_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_height_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_height_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_mimeType = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_mimeType';
+    create?: Maybe<PlantImagesFields_sizes_desktop_avif_mimeType_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_avif_mimeType_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_avif_mimeType_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_avif_mimeType_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_avif_mimeType_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_mimeType_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_mimeType_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_mimeType_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_url = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_url';
+    create?: Maybe<PlantImagesFields_sizes_desktop_avif_url_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_avif_url_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_avif_url_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_avif_url_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_avif_url_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_url_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_url_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_url_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_width = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_width';
+    create?: Maybe<PlantImagesFields_sizes_desktop_avif_width_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_avif_width_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_avif_width_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_avif_width_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_avif_width_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_width_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_width_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_avif_width_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg';
+    create?: Maybe<PlantImagesFields_sizes_desktop_jpeg_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_jpeg_Delete>;
+    fields?: Maybe<PlantImagesFields_sizes_desktop_jpeg_Fields>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_jpeg_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_jpeg_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_Fields = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_Fields';
+    filename?: Maybe<PlantImagesFields_sizes_desktop_jpeg_filename>;
+    filesize?: Maybe<PlantImagesFields_sizes_desktop_jpeg_filesize>;
+    height?: Maybe<PlantImagesFields_sizes_desktop_jpeg_height>;
+    mimeType?: Maybe<PlantImagesFields_sizes_desktop_jpeg_mimeType>;
+    url?: Maybe<PlantImagesFields_sizes_desktop_jpeg_url>;
+    width?: Maybe<PlantImagesFields_sizes_desktop_jpeg_width>;
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_filename = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_filename';
+    create?: Maybe<PlantImagesFields_sizes_desktop_jpeg_filename_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_jpeg_filename_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_jpeg_filename_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_jpeg_filename_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_filename_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_filename_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_filename_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_filename_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_filesize = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_filesize';
+    create?: Maybe<PlantImagesFields_sizes_desktop_jpeg_filesize_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_jpeg_filesize_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_jpeg_filesize_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_jpeg_filesize_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_filesize_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_filesize_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_filesize_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_filesize_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_height = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_height';
+    create?: Maybe<PlantImagesFields_sizes_desktop_jpeg_height_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_jpeg_height_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_jpeg_height_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_jpeg_height_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_height_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_height_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_height_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_height_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_mimeType = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_mimeType';
+    create?: Maybe<PlantImagesFields_sizes_desktop_jpeg_mimeType_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_jpeg_mimeType_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_jpeg_mimeType_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_jpeg_mimeType_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_mimeType_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_mimeType_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_mimeType_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_mimeType_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_url = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_url';
+    create?: Maybe<PlantImagesFields_sizes_desktop_jpeg_url_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_jpeg_url_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_jpeg_url_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_jpeg_url_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_url_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_url_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_url_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_url_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_width = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_width';
+    create?: Maybe<PlantImagesFields_sizes_desktop_jpeg_width_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_jpeg_width_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_jpeg_width_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_jpeg_width_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_width_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_width_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_width_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_jpeg_width_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp';
+    create?: Maybe<PlantImagesFields_sizes_desktop_webp_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_webp_Delete>;
+    fields?: Maybe<PlantImagesFields_sizes_desktop_webp_Fields>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_webp_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_webp_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_webp_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_Fields = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_Fields';
+    filename?: Maybe<PlantImagesFields_sizes_desktop_webp_filename>;
+    filesize?: Maybe<PlantImagesFields_sizes_desktop_webp_filesize>;
+    height?: Maybe<PlantImagesFields_sizes_desktop_webp_height>;
+    mimeType?: Maybe<PlantImagesFields_sizes_desktop_webp_mimeType>;
+    url?: Maybe<PlantImagesFields_sizes_desktop_webp_url>;
+    width?: Maybe<PlantImagesFields_sizes_desktop_webp_width>;
+};
+
+export type PlantImagesFields_sizes_desktop_webp_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_filename = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_filename';
+    create?: Maybe<PlantImagesFields_sizes_desktop_webp_filename_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_webp_filename_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_webp_filename_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_webp_filename_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_webp_filename_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_filename_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_filename_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_filename_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_filesize = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_filesize';
+    create?: Maybe<PlantImagesFields_sizes_desktop_webp_filesize_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_webp_filesize_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_webp_filesize_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_webp_filesize_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_webp_filesize_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_filesize_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_filesize_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_filesize_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_height = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_height';
+    create?: Maybe<PlantImagesFields_sizes_desktop_webp_height_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_webp_height_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_webp_height_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_webp_height_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_webp_height_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_height_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_height_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_height_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_mimeType = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_mimeType';
+    create?: Maybe<PlantImagesFields_sizes_desktop_webp_mimeType_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_webp_mimeType_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_webp_mimeType_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_webp_mimeType_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_webp_mimeType_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_mimeType_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_mimeType_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_mimeType_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_url = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_url';
+    create?: Maybe<PlantImagesFields_sizes_desktop_webp_url_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_webp_url_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_webp_url_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_webp_url_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_webp_url_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_url_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_url_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_url_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_width = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_width';
+    create?: Maybe<PlantImagesFields_sizes_desktop_webp_width_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_desktop_webp_width_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_desktop_webp_width_Read>;
+    update?: Maybe<PlantImagesFields_sizes_desktop_webp_width_Update>;
+};
+
+export type PlantImagesFields_sizes_desktop_webp_width_Create = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_width_Delete = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_width_Read = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_desktop_webp_width_Update = {
+    __typename?: 'PlantImagesFields_sizes_desktop_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif';
+    create?: Maybe<PlantImagesFields_sizes_mobile_avif_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_avif_Delete>;
+    fields?: Maybe<PlantImagesFields_sizes_mobile_avif_Fields>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_avif_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_avif_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_avif_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_Fields = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_Fields';
+    filename?: Maybe<PlantImagesFields_sizes_mobile_avif_filename>;
+    filesize?: Maybe<PlantImagesFields_sizes_mobile_avif_filesize>;
+    height?: Maybe<PlantImagesFields_sizes_mobile_avif_height>;
+    mimeType?: Maybe<PlantImagesFields_sizes_mobile_avif_mimeType>;
+    url?: Maybe<PlantImagesFields_sizes_mobile_avif_url>;
+    width?: Maybe<PlantImagesFields_sizes_mobile_avif_width>;
+};
+
+export type PlantImagesFields_sizes_mobile_avif_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_filename = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_filename';
+    create?: Maybe<PlantImagesFields_sizes_mobile_avif_filename_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_avif_filename_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_avif_filename_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_avif_filename_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_avif_filename_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_filename_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_filename_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_filename_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_filesize = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_filesize';
+    create?: Maybe<PlantImagesFields_sizes_mobile_avif_filesize_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_avif_filesize_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_avif_filesize_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_avif_filesize_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_avif_filesize_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_filesize_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_filesize_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_filesize_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_height = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_height';
+    create?: Maybe<PlantImagesFields_sizes_mobile_avif_height_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_avif_height_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_avif_height_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_avif_height_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_avif_height_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_height_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_height_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_height_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_mimeType = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_mimeType';
+    create?: Maybe<PlantImagesFields_sizes_mobile_avif_mimeType_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_avif_mimeType_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_avif_mimeType_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_avif_mimeType_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_avif_mimeType_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_mimeType_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_mimeType_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_mimeType_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_url = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_url';
+    create?: Maybe<PlantImagesFields_sizes_mobile_avif_url_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_avif_url_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_avif_url_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_avif_url_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_avif_url_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_url_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_url_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_url_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_width = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_width';
+    create?: Maybe<PlantImagesFields_sizes_mobile_avif_width_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_avif_width_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_avif_width_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_avif_width_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_avif_width_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_width_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_width_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_avif_width_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg';
+    create?: Maybe<PlantImagesFields_sizes_mobile_jpeg_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_jpeg_Delete>;
+    fields?: Maybe<PlantImagesFields_sizes_mobile_jpeg_Fields>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_jpeg_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_jpeg_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_Fields = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_Fields';
+    filename?: Maybe<PlantImagesFields_sizes_mobile_jpeg_filename>;
+    filesize?: Maybe<PlantImagesFields_sizes_mobile_jpeg_filesize>;
+    height?: Maybe<PlantImagesFields_sizes_mobile_jpeg_height>;
+    mimeType?: Maybe<PlantImagesFields_sizes_mobile_jpeg_mimeType>;
+    url?: Maybe<PlantImagesFields_sizes_mobile_jpeg_url>;
+    width?: Maybe<PlantImagesFields_sizes_mobile_jpeg_width>;
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_filename = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_filename';
+    create?: Maybe<PlantImagesFields_sizes_mobile_jpeg_filename_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_jpeg_filename_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_jpeg_filename_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_jpeg_filename_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_filename_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_filename_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_filename_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_filename_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_filesize = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_filesize';
+    create?: Maybe<PlantImagesFields_sizes_mobile_jpeg_filesize_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_jpeg_filesize_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_jpeg_filesize_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_jpeg_filesize_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_filesize_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_filesize_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_filesize_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_filesize_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_height = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_height';
+    create?: Maybe<PlantImagesFields_sizes_mobile_jpeg_height_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_jpeg_height_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_jpeg_height_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_jpeg_height_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_height_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_height_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_height_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_height_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_mimeType = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_mimeType';
+    create?: Maybe<PlantImagesFields_sizes_mobile_jpeg_mimeType_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_jpeg_mimeType_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_jpeg_mimeType_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_jpeg_mimeType_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_mimeType_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_mimeType_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_mimeType_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_mimeType_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_url = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_url';
+    create?: Maybe<PlantImagesFields_sizes_mobile_jpeg_url_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_jpeg_url_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_jpeg_url_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_jpeg_url_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_url_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_url_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_url_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_url_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_width = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_width';
+    create?: Maybe<PlantImagesFields_sizes_mobile_jpeg_width_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_jpeg_width_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_jpeg_width_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_jpeg_width_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_width_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_width_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_width_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_jpeg_width_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp';
+    create?: Maybe<PlantImagesFields_sizes_mobile_webp_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_webp_Delete>;
+    fields?: Maybe<PlantImagesFields_sizes_mobile_webp_Fields>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_webp_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_webp_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_webp_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_Fields = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_Fields';
+    filename?: Maybe<PlantImagesFields_sizes_mobile_webp_filename>;
+    filesize?: Maybe<PlantImagesFields_sizes_mobile_webp_filesize>;
+    height?: Maybe<PlantImagesFields_sizes_mobile_webp_height>;
+    mimeType?: Maybe<PlantImagesFields_sizes_mobile_webp_mimeType>;
+    url?: Maybe<PlantImagesFields_sizes_mobile_webp_url>;
+    width?: Maybe<PlantImagesFields_sizes_mobile_webp_width>;
+};
+
+export type PlantImagesFields_sizes_mobile_webp_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_filename = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_filename';
+    create?: Maybe<PlantImagesFields_sizes_mobile_webp_filename_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_webp_filename_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_webp_filename_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_webp_filename_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_webp_filename_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_filename_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_filename_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_filename_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_filesize = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_filesize';
+    create?: Maybe<PlantImagesFields_sizes_mobile_webp_filesize_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_webp_filesize_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_webp_filesize_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_webp_filesize_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_webp_filesize_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_filesize_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_filesize_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_filesize_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_height = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_height';
+    create?: Maybe<PlantImagesFields_sizes_mobile_webp_height_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_webp_height_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_webp_height_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_webp_height_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_webp_height_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_height_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_height_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_height_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_mimeType = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_mimeType';
+    create?: Maybe<PlantImagesFields_sizes_mobile_webp_mimeType_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_webp_mimeType_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_webp_mimeType_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_webp_mimeType_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_webp_mimeType_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_mimeType_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_mimeType_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_mimeType_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_url = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_url';
+    create?: Maybe<PlantImagesFields_sizes_mobile_webp_url_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_webp_url_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_webp_url_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_webp_url_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_webp_url_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_url_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_url_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_url_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_width = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_width';
+    create?: Maybe<PlantImagesFields_sizes_mobile_webp_width_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_mobile_webp_width_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_mobile_webp_width_Read>;
+    update?: Maybe<PlantImagesFields_sizes_mobile_webp_width_Update>;
+};
+
+export type PlantImagesFields_sizes_mobile_webp_width_Create = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_width_Delete = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_width_Read = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_mobile_webp_width_Update = {
+    __typename?: 'PlantImagesFields_sizes_mobile_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif';
+    create?: Maybe<PlantImagesFields_sizes_tablet_avif_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_avif_Delete>;
+    fields?: Maybe<PlantImagesFields_sizes_tablet_avif_Fields>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_avif_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_avif_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_avif_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_Fields = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_Fields';
+    filename?: Maybe<PlantImagesFields_sizes_tablet_avif_filename>;
+    filesize?: Maybe<PlantImagesFields_sizes_tablet_avif_filesize>;
+    height?: Maybe<PlantImagesFields_sizes_tablet_avif_height>;
+    mimeType?: Maybe<PlantImagesFields_sizes_tablet_avif_mimeType>;
+    url?: Maybe<PlantImagesFields_sizes_tablet_avif_url>;
+    width?: Maybe<PlantImagesFields_sizes_tablet_avif_width>;
+};
+
+export type PlantImagesFields_sizes_tablet_avif_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_filename = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_filename';
+    create?: Maybe<PlantImagesFields_sizes_tablet_avif_filename_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_avif_filename_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_avif_filename_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_avif_filename_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_avif_filename_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_filename_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_filename_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_filename_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_filesize = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_filesize';
+    create?: Maybe<PlantImagesFields_sizes_tablet_avif_filesize_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_avif_filesize_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_avif_filesize_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_avif_filesize_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_avif_filesize_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_filesize_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_filesize_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_filesize_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_height = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_height';
+    create?: Maybe<PlantImagesFields_sizes_tablet_avif_height_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_avif_height_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_avif_height_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_avif_height_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_avif_height_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_height_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_height_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_height_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_mimeType = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_mimeType';
+    create?: Maybe<PlantImagesFields_sizes_tablet_avif_mimeType_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_avif_mimeType_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_avif_mimeType_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_avif_mimeType_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_avif_mimeType_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_mimeType_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_mimeType_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_mimeType_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_url = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_url';
+    create?: Maybe<PlantImagesFields_sizes_tablet_avif_url_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_avif_url_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_avif_url_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_avif_url_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_avif_url_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_url_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_url_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_url_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_width = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_width';
+    create?: Maybe<PlantImagesFields_sizes_tablet_avif_width_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_avif_width_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_avif_width_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_avif_width_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_avif_width_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_width_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_width_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_avif_width_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg';
+    create?: Maybe<PlantImagesFields_sizes_tablet_jpeg_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_jpeg_Delete>;
+    fields?: Maybe<PlantImagesFields_sizes_tablet_jpeg_Fields>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_jpeg_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_jpeg_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_Fields = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_Fields';
+    filename?: Maybe<PlantImagesFields_sizes_tablet_jpeg_filename>;
+    filesize?: Maybe<PlantImagesFields_sizes_tablet_jpeg_filesize>;
+    height?: Maybe<PlantImagesFields_sizes_tablet_jpeg_height>;
+    mimeType?: Maybe<PlantImagesFields_sizes_tablet_jpeg_mimeType>;
+    url?: Maybe<PlantImagesFields_sizes_tablet_jpeg_url>;
+    width?: Maybe<PlantImagesFields_sizes_tablet_jpeg_width>;
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_filename = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_filename';
+    create?: Maybe<PlantImagesFields_sizes_tablet_jpeg_filename_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_jpeg_filename_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_jpeg_filename_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_jpeg_filename_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_filename_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_filename_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_filename_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_filename_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_filesize = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_filesize';
+    create?: Maybe<PlantImagesFields_sizes_tablet_jpeg_filesize_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_jpeg_filesize_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_jpeg_filesize_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_jpeg_filesize_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_filesize_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_filesize_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_filesize_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_filesize_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_height = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_height';
+    create?: Maybe<PlantImagesFields_sizes_tablet_jpeg_height_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_jpeg_height_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_jpeg_height_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_jpeg_height_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_height_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_height_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_height_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_height_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_mimeType = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_mimeType';
+    create?: Maybe<PlantImagesFields_sizes_tablet_jpeg_mimeType_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_jpeg_mimeType_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_jpeg_mimeType_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_jpeg_mimeType_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_mimeType_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_mimeType_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_mimeType_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_mimeType_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_url = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_url';
+    create?: Maybe<PlantImagesFields_sizes_tablet_jpeg_url_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_jpeg_url_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_jpeg_url_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_jpeg_url_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_url_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_url_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_url_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_url_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_width = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_width';
+    create?: Maybe<PlantImagesFields_sizes_tablet_jpeg_width_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_jpeg_width_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_jpeg_width_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_jpeg_width_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_width_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_width_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_width_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_jpeg_width_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp';
+    create?: Maybe<PlantImagesFields_sizes_tablet_webp_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_webp_Delete>;
+    fields?: Maybe<PlantImagesFields_sizes_tablet_webp_Fields>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_webp_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_webp_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_webp_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_Fields = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_Fields';
+    filename?: Maybe<PlantImagesFields_sizes_tablet_webp_filename>;
+    filesize?: Maybe<PlantImagesFields_sizes_tablet_webp_filesize>;
+    height?: Maybe<PlantImagesFields_sizes_tablet_webp_height>;
+    mimeType?: Maybe<PlantImagesFields_sizes_tablet_webp_mimeType>;
+    url?: Maybe<PlantImagesFields_sizes_tablet_webp_url>;
+    width?: Maybe<PlantImagesFields_sizes_tablet_webp_width>;
+};
+
+export type PlantImagesFields_sizes_tablet_webp_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_filename = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_filename';
+    create?: Maybe<PlantImagesFields_sizes_tablet_webp_filename_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_webp_filename_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_webp_filename_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_webp_filename_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_webp_filename_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_filename_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_filename_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_filename_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_filesize = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_filesize';
+    create?: Maybe<PlantImagesFields_sizes_tablet_webp_filesize_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_webp_filesize_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_webp_filesize_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_webp_filesize_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_webp_filesize_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_filesize_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_filesize_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_filesize_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_height = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_height';
+    create?: Maybe<PlantImagesFields_sizes_tablet_webp_height_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_webp_height_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_webp_height_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_webp_height_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_webp_height_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_height_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_height_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_height_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_mimeType = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_mimeType';
+    create?: Maybe<PlantImagesFields_sizes_tablet_webp_mimeType_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_webp_mimeType_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_webp_mimeType_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_webp_mimeType_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_webp_mimeType_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_mimeType_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_mimeType_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_mimeType_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_url = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_url';
+    create?: Maybe<PlantImagesFields_sizes_tablet_webp_url_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_webp_url_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_webp_url_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_webp_url_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_webp_url_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_url_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_url_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_url_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_width = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_width';
+    create?: Maybe<PlantImagesFields_sizes_tablet_webp_width_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_tablet_webp_width_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_tablet_webp_width_Read>;
+    update?: Maybe<PlantImagesFields_sizes_tablet_webp_width_Update>;
+};
+
+export type PlantImagesFields_sizes_tablet_webp_width_Create = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_width_Delete = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_width_Read = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_tablet_webp_width_Update = {
+    __typename?: 'PlantImagesFields_sizes_tablet_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_avif_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_avif_Delete>;
+    fields?: Maybe<PlantImagesFields_sizes_thumbnail_avif_Fields>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_avif_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_avif_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_Fields = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_Fields';
+    filename?: Maybe<PlantImagesFields_sizes_thumbnail_avif_filename>;
+    filesize?: Maybe<PlantImagesFields_sizes_thumbnail_avif_filesize>;
+    height?: Maybe<PlantImagesFields_sizes_thumbnail_avif_height>;
+    mimeType?: Maybe<PlantImagesFields_sizes_thumbnail_avif_mimeType>;
+    url?: Maybe<PlantImagesFields_sizes_thumbnail_avif_url>;
+    width?: Maybe<PlantImagesFields_sizes_thumbnail_avif_width>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_filename = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_filename';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_avif_filename_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_avif_filename_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_avif_filename_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_avif_filename_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_filename_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_filename_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_filename_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_filename_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_filesize = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_filesize';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_avif_filesize_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_avif_filesize_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_avif_filesize_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_avif_filesize_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_filesize_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_filesize_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_filesize_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_filesize_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_height = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_height';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_avif_height_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_avif_height_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_avif_height_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_avif_height_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_height_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_height_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_height_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_height_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_mimeType = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_mimeType';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_avif_mimeType_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_avif_mimeType_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_avif_mimeType_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_avif_mimeType_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_mimeType_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_mimeType_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_mimeType_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_mimeType_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_url = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_url';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_avif_url_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_avif_url_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_avif_url_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_avif_url_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_url_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_url_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_url_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_url_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_width = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_width';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_avif_width_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_avif_width_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_avif_width_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_avif_width_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_width_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_width_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_width_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_avif_width_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_Delete>;
+    fields?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_Fields>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_Fields = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_Fields';
+    filename?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_filename>;
+    filesize?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_filesize>;
+    height?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_height>;
+    mimeType?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_mimeType>;
+    url?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_url>;
+    width?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_width>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_filename = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_filename';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_filename_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_filename_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_filename_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_filename_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_filename_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_filename_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_filename_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_filename_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_filesize = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_filesize';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_filesize_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_filesize_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_filesize_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_filesize_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_filesize_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_filesize_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_filesize_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_filesize_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_height = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_height';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_height_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_height_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_height_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_height_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_height_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_height_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_height_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_height_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_mimeType = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_mimeType';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_mimeType_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_mimeType_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_mimeType_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_mimeType_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_mimeType_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_mimeType_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_mimeType_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_mimeType_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_url = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_url';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_url_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_url_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_url_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_url_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_url_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_url_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_url_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_url_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_width = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_width';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_width_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_width_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_width_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_jpeg_width_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_width_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_width_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_width_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_jpeg_width_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_webp_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_webp_Delete>;
+    fields?: Maybe<PlantImagesFields_sizes_thumbnail_webp_Fields>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_webp_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_webp_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_Fields = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_Fields';
+    filename?: Maybe<PlantImagesFields_sizes_thumbnail_webp_filename>;
+    filesize?: Maybe<PlantImagesFields_sizes_thumbnail_webp_filesize>;
+    height?: Maybe<PlantImagesFields_sizes_thumbnail_webp_height>;
+    mimeType?: Maybe<PlantImagesFields_sizes_thumbnail_webp_mimeType>;
+    url?: Maybe<PlantImagesFields_sizes_thumbnail_webp_url>;
+    width?: Maybe<PlantImagesFields_sizes_thumbnail_webp_width>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_filename = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_filename';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_webp_filename_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_webp_filename_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_webp_filename_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_webp_filename_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_filename_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_filename_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_filename_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_filename_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_filesize = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_filesize';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_webp_filesize_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_webp_filesize_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_webp_filesize_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_webp_filesize_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_filesize_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_filesize_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_filesize_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_filesize_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_height = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_height';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_webp_height_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_webp_height_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_webp_height_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_webp_height_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_height_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_height_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_height_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_height_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_mimeType = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_mimeType';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_webp_mimeType_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_webp_mimeType_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_webp_mimeType_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_webp_mimeType_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_mimeType_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_mimeType_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_mimeType_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_mimeType_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_url = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_url';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_webp_url_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_webp_url_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_webp_url_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_webp_url_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_url_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_url_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_url_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_url_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_width = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_width';
+    create?: Maybe<PlantImagesFields_sizes_thumbnail_webp_width_Create>;
+    delete?: Maybe<PlantImagesFields_sizes_thumbnail_webp_width_Delete>;
+    read?: Maybe<PlantImagesFields_sizes_thumbnail_webp_width_Read>;
+    update?: Maybe<PlantImagesFields_sizes_thumbnail_webp_width_Update>;
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_width_Create = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_width_Delete = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_width_Read = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type PlantImagesFields_sizes_thumbnail_webp_width_Update = {
+    __typename?: 'PlantImagesFields_sizes_thumbnail_webp_width_Update';
     permission: Scalars['Boolean']['output'];
 };
 
@@ -13880,8 +20082,10 @@ export type Query = {
     Users?: Maybe<Users>;
     WebBook?: Maybe<WebBook>;
     WebBooks?: Maybe<WebBooks>;
-    WebMedia?: Maybe<WebMedia>;
-    WebMedias?: Maybe<WebMedias>;
+    WebImage?: Maybe<WebImage>;
+    WebImageCategories?: Maybe<WebImageCategories>;
+    WebImageCategory?: Maybe<WebImageCategory>;
+    WebImages?: Maybe<WebImages>;
     WebPage?: Maybe<WebPage>;
     WebPages?: Maybe<WebPages>;
     WebPartner?: Maybe<WebPartner>;
@@ -13913,7 +20117,8 @@ export type Query = {
     countRoles?: Maybe<countRoles>;
     countUsers?: Maybe<countUsers>;
     countWebBooks?: Maybe<countWebBooks>;
-    countWebMedias?: Maybe<countWebMedias>;
+    countWebImageCategories?: Maybe<countWebImageCategories>;
+    countWebImages?: Maybe<countWebImages>;
     countWebPages?: Maybe<countWebPages>;
     countWebPartners?: Maybe<countWebPartners>;
     countWebSocials?: Maybe<countWebSocials>;
@@ -13945,7 +20150,8 @@ export type Query = {
     docAccessSidebar?: Maybe<sidebarDocAccess>;
     docAccessUser?: Maybe<usersDocAccess>;
     docAccessWebBook?: Maybe<web_booksDocAccess>;
-    docAccessWebMedia?: Maybe<web_mediaDocAccess>;
+    docAccessWebImage?: Maybe<web_imagesDocAccess>;
+    docAccessWebImageCategory?: Maybe<web_image_categoriesDocAccess>;
     docAccessWebPage?: Maybe<web_pagesDocAccess>;
     docAccessWebPartner?: Maybe<web_partnersDocAccess>;
     docAccessWebSocial?: Maybe<web_socialsDocAccess>;
@@ -14388,14 +20594,14 @@ export type Query_WebBooksArgs = {
     where?: InputMaybe<WebBook_where>;
 };
 
-export type Query_WebMediaArgs = {
+export type Query_WebImageArgs = {
     draft?: InputMaybe<Scalars['Boolean']['input']>;
     id: Scalars['Int']['input'];
     select?: InputMaybe<Scalars['Boolean']['input']>;
     trash?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type Query_WebMediasArgs = {
+export type Query_WebImageCategoriesArgs = {
     draft?: InputMaybe<Scalars['Boolean']['input']>;
     limit?: InputMaybe<Scalars['Int']['input']>;
     page?: InputMaybe<Scalars['Int']['input']>;
@@ -14403,7 +20609,25 @@ export type Query_WebMediasArgs = {
     select?: InputMaybe<Scalars['Boolean']['input']>;
     sort?: InputMaybe<Scalars['String']['input']>;
     trash?: InputMaybe<Scalars['Boolean']['input']>;
-    where?: InputMaybe<WebMedia_where>;
+    where?: InputMaybe<WebImageCategory_where>;
+};
+
+export type Query_WebImageCategoryArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    id: Scalars['Int']['input'];
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Query_WebImagesArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    page?: InputMaybe<Scalars['Int']['input']>;
+    pagination?: InputMaybe<Scalars['Boolean']['input']>;
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+    sort?: InputMaybe<Scalars['String']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+    where?: InputMaybe<WebImage_where>;
 };
 
 export type Query_WebPageArgs = {
@@ -14616,10 +20840,16 @@ export type Query_countWebBooksArgs = {
     where?: InputMaybe<WebBook_where>;
 };
 
-export type Query_countWebMediasArgs = {
+export type Query_countWebImageCategoriesArgs = {
     draft?: InputMaybe<Scalars['Boolean']['input']>;
     trash?: InputMaybe<Scalars['Boolean']['input']>;
-    where?: InputMaybe<WebMedia_where>;
+    where?: InputMaybe<WebImageCategory_where>;
+};
+
+export type Query_countWebImagesArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+    where?: InputMaybe<WebImage_where>;
 };
 
 export type Query_countWebPagesArgs = {
@@ -14738,7 +20968,11 @@ export type Query_docAccessWebBookArgs = {
     id: Scalars['Int']['input'];
 };
 
-export type Query_docAccessWebMediaArgs = {
+export type Query_docAccessWebImageArgs = {
+    id: Scalars['Int']['input'];
+};
+
+export type Query_docAccessWebImageCategoryArgs = {
     id: Scalars['Int']['input'];
 };
 
@@ -18259,7 +24493,7 @@ export type WebAnimatedText_Settings_style = 'dark' | 'gray' | 'light' | '%futur
 
 export type WebBook = {
     __typename?: 'WebBook';
-    cover?: Maybe<WebMedia>;
+    cover?: Maybe<WebImage>;
     createdAt?: Maybe<Scalars['DateTime']['output']>;
     description?: Maybe<Scalars['JSON']['output']>;
     filename?: Maybe<Scalars['String']['output']>;
@@ -19974,7 +26208,7 @@ export type WebHeroLarge = {
 
 export type WebHeroLarge_Content = {
     __typename?: 'WebHeroLarge_Content';
-    image: WebMedia;
+    image: WebImage;
     title: Scalars['String']['output'];
 };
 
@@ -20034,7 +26268,7 @@ export type WebHeroSmall = {
 
 export type WebHeroSmall_Content = {
     __typename?: 'WebHeroSmall_Content';
-    image?: Maybe<WebMedia>;
+    image?: Maybe<WebImage>;
     link?: Maybe<WebHeroSmall_Content_Link>;
     title: Scalars['String']['output'];
 };
@@ -20117,7 +26351,7 @@ export type WebHighlightedLinks_Content = {
 export type WebHighlightedLinks_Content_Links = {
     __typename?: 'WebHighlightedLinks_Content_Links';
     id?: Maybe<Scalars['String']['output']>;
-    image?: Maybe<WebMedia>;
+    image?: Maybe<WebImage>;
     label?: Maybe<Scalars['String']['output']>;
     target?: Maybe<WebHighlightedLinks_Content_Links_target>;
     url?: Maybe<Scalars['String']['output']>;
@@ -20170,6 +26404,485 @@ export type WebHighlightedLinks_Settings_Spacing_paddingTop =
     | 'xlarge'
     | '%future added value';
 
+export type WebImage = {
+    __typename?: 'WebImage';
+    alt: Scalars['String']['output'];
+    category?: Maybe<Array<WebImageCategory>>;
+    createdAt?: Maybe<Scalars['DateTime']['output']>;
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    focalX?: Maybe<Scalars['Float']['output']>;
+    focalY?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    id: Scalars['Int']['output'];
+    mimeType?: Maybe<Scalars['String']['output']>;
+    sizes?: Maybe<WebImage_Sizes>;
+    thumbnailURL?: Maybe<Scalars['String']['output']>;
+    updatedAt?: Maybe<Scalars['DateTime']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type WebImageCategories = {
+    __typename?: 'WebImageCategories';
+    docs: Array<WebImageCategory>;
+    hasNextPage: Scalars['Boolean']['output'];
+    hasPrevPage: Scalars['Boolean']['output'];
+    limit: Scalars['Int']['output'];
+    nextPage?: Maybe<Scalars['Int']['output']>;
+    offset?: Maybe<Scalars['Int']['output']>;
+    page: Scalars['Int']['output'];
+    pagingCounter: Scalars['Int']['output'];
+    prevPage?: Maybe<Scalars['Int']['output']>;
+    totalDocs: Scalars['Int']['output'];
+    totalPages: Scalars['Int']['output'];
+};
+
+export type WebImageCategoriesCreateAccess = {
+    __typename?: 'WebImageCategoriesCreateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebImageCategoriesCreateDocAccess = {
+    __typename?: 'WebImageCategoriesCreateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebImageCategoriesDeleteAccess = {
+    __typename?: 'WebImageCategoriesDeleteAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebImageCategoriesDeleteDocAccess = {
+    __typename?: 'WebImageCategoriesDeleteDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebImageCategoriesDocAccessFields = {
+    __typename?: 'WebImageCategoriesDocAccessFields';
+    createdAt?: Maybe<WebImageCategoriesDocAccessFields_createdAt>;
+    description?: Maybe<WebImageCategoriesDocAccessFields_description>;
+    showInGallery?: Maybe<WebImageCategoriesDocAccessFields_showInGallery>;
+    title?: Maybe<WebImageCategoriesDocAccessFields_title>;
+    updatedAt?: Maybe<WebImageCategoriesDocAccessFields_updatedAt>;
+};
+
+export type WebImageCategoriesDocAccessFields_createdAt = {
+    __typename?: 'WebImageCategoriesDocAccessFields_createdAt';
+    create?: Maybe<WebImageCategoriesDocAccessFields_createdAt_Create>;
+    delete?: Maybe<WebImageCategoriesDocAccessFields_createdAt_Delete>;
+    read?: Maybe<WebImageCategoriesDocAccessFields_createdAt_Read>;
+    update?: Maybe<WebImageCategoriesDocAccessFields_createdAt_Update>;
+};
+
+export type WebImageCategoriesDocAccessFields_createdAt_Create = {
+    __typename?: 'WebImageCategoriesDocAccessFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_createdAt_Delete = {
+    __typename?: 'WebImageCategoriesDocAccessFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_createdAt_Read = {
+    __typename?: 'WebImageCategoriesDocAccessFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_createdAt_Update = {
+    __typename?: 'WebImageCategoriesDocAccessFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_description = {
+    __typename?: 'WebImageCategoriesDocAccessFields_description';
+    create?: Maybe<WebImageCategoriesDocAccessFields_description_Create>;
+    delete?: Maybe<WebImageCategoriesDocAccessFields_description_Delete>;
+    read?: Maybe<WebImageCategoriesDocAccessFields_description_Read>;
+    update?: Maybe<WebImageCategoriesDocAccessFields_description_Update>;
+};
+
+export type WebImageCategoriesDocAccessFields_description_Create = {
+    __typename?: 'WebImageCategoriesDocAccessFields_description_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_description_Delete = {
+    __typename?: 'WebImageCategoriesDocAccessFields_description_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_description_Read = {
+    __typename?: 'WebImageCategoriesDocAccessFields_description_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_description_Update = {
+    __typename?: 'WebImageCategoriesDocAccessFields_description_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_showInGallery = {
+    __typename?: 'WebImageCategoriesDocAccessFields_showInGallery';
+    create?: Maybe<WebImageCategoriesDocAccessFields_showInGallery_Create>;
+    delete?: Maybe<WebImageCategoriesDocAccessFields_showInGallery_Delete>;
+    read?: Maybe<WebImageCategoriesDocAccessFields_showInGallery_Read>;
+    update?: Maybe<WebImageCategoriesDocAccessFields_showInGallery_Update>;
+};
+
+export type WebImageCategoriesDocAccessFields_showInGallery_Create = {
+    __typename?: 'WebImageCategoriesDocAccessFields_showInGallery_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_showInGallery_Delete = {
+    __typename?: 'WebImageCategoriesDocAccessFields_showInGallery_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_showInGallery_Read = {
+    __typename?: 'WebImageCategoriesDocAccessFields_showInGallery_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_showInGallery_Update = {
+    __typename?: 'WebImageCategoriesDocAccessFields_showInGallery_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_title = {
+    __typename?: 'WebImageCategoriesDocAccessFields_title';
+    create?: Maybe<WebImageCategoriesDocAccessFields_title_Create>;
+    delete?: Maybe<WebImageCategoriesDocAccessFields_title_Delete>;
+    read?: Maybe<WebImageCategoriesDocAccessFields_title_Read>;
+    update?: Maybe<WebImageCategoriesDocAccessFields_title_Update>;
+};
+
+export type WebImageCategoriesDocAccessFields_title_Create = {
+    __typename?: 'WebImageCategoriesDocAccessFields_title_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_title_Delete = {
+    __typename?: 'WebImageCategoriesDocAccessFields_title_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_title_Read = {
+    __typename?: 'WebImageCategoriesDocAccessFields_title_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_title_Update = {
+    __typename?: 'WebImageCategoriesDocAccessFields_title_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_updatedAt = {
+    __typename?: 'WebImageCategoriesDocAccessFields_updatedAt';
+    create?: Maybe<WebImageCategoriesDocAccessFields_updatedAt_Create>;
+    delete?: Maybe<WebImageCategoriesDocAccessFields_updatedAt_Delete>;
+    read?: Maybe<WebImageCategoriesDocAccessFields_updatedAt_Read>;
+    update?: Maybe<WebImageCategoriesDocAccessFields_updatedAt_Update>;
+};
+
+export type WebImageCategoriesDocAccessFields_updatedAt_Create = {
+    __typename?: 'WebImageCategoriesDocAccessFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_updatedAt_Delete = {
+    __typename?: 'WebImageCategoriesDocAccessFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_updatedAt_Read = {
+    __typename?: 'WebImageCategoriesDocAccessFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesDocAccessFields_updatedAt_Update = {
+    __typename?: 'WebImageCategoriesDocAccessFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields = {
+    __typename?: 'WebImageCategoriesFields';
+    createdAt?: Maybe<WebImageCategoriesFields_createdAt>;
+    description?: Maybe<WebImageCategoriesFields_description>;
+    showInGallery?: Maybe<WebImageCategoriesFields_showInGallery>;
+    title?: Maybe<WebImageCategoriesFields_title>;
+    updatedAt?: Maybe<WebImageCategoriesFields_updatedAt>;
+};
+
+export type WebImageCategoriesFields_createdAt = {
+    __typename?: 'WebImageCategoriesFields_createdAt';
+    create?: Maybe<WebImageCategoriesFields_createdAt_Create>;
+    delete?: Maybe<WebImageCategoriesFields_createdAt_Delete>;
+    read?: Maybe<WebImageCategoriesFields_createdAt_Read>;
+    update?: Maybe<WebImageCategoriesFields_createdAt_Update>;
+};
+
+export type WebImageCategoriesFields_createdAt_Create = {
+    __typename?: 'WebImageCategoriesFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_createdAt_Delete = {
+    __typename?: 'WebImageCategoriesFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_createdAt_Read = {
+    __typename?: 'WebImageCategoriesFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_createdAt_Update = {
+    __typename?: 'WebImageCategoriesFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_description = {
+    __typename?: 'WebImageCategoriesFields_description';
+    create?: Maybe<WebImageCategoriesFields_description_Create>;
+    delete?: Maybe<WebImageCategoriesFields_description_Delete>;
+    read?: Maybe<WebImageCategoriesFields_description_Read>;
+    update?: Maybe<WebImageCategoriesFields_description_Update>;
+};
+
+export type WebImageCategoriesFields_description_Create = {
+    __typename?: 'WebImageCategoriesFields_description_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_description_Delete = {
+    __typename?: 'WebImageCategoriesFields_description_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_description_Read = {
+    __typename?: 'WebImageCategoriesFields_description_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_description_Update = {
+    __typename?: 'WebImageCategoriesFields_description_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_showInGallery = {
+    __typename?: 'WebImageCategoriesFields_showInGallery';
+    create?: Maybe<WebImageCategoriesFields_showInGallery_Create>;
+    delete?: Maybe<WebImageCategoriesFields_showInGallery_Delete>;
+    read?: Maybe<WebImageCategoriesFields_showInGallery_Read>;
+    update?: Maybe<WebImageCategoriesFields_showInGallery_Update>;
+};
+
+export type WebImageCategoriesFields_showInGallery_Create = {
+    __typename?: 'WebImageCategoriesFields_showInGallery_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_showInGallery_Delete = {
+    __typename?: 'WebImageCategoriesFields_showInGallery_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_showInGallery_Read = {
+    __typename?: 'WebImageCategoriesFields_showInGallery_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_showInGallery_Update = {
+    __typename?: 'WebImageCategoriesFields_showInGallery_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_title = {
+    __typename?: 'WebImageCategoriesFields_title';
+    create?: Maybe<WebImageCategoriesFields_title_Create>;
+    delete?: Maybe<WebImageCategoriesFields_title_Delete>;
+    read?: Maybe<WebImageCategoriesFields_title_Read>;
+    update?: Maybe<WebImageCategoriesFields_title_Update>;
+};
+
+export type WebImageCategoriesFields_title_Create = {
+    __typename?: 'WebImageCategoriesFields_title_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_title_Delete = {
+    __typename?: 'WebImageCategoriesFields_title_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_title_Read = {
+    __typename?: 'WebImageCategoriesFields_title_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_title_Update = {
+    __typename?: 'WebImageCategoriesFields_title_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_updatedAt = {
+    __typename?: 'WebImageCategoriesFields_updatedAt';
+    create?: Maybe<WebImageCategoriesFields_updatedAt_Create>;
+    delete?: Maybe<WebImageCategoriesFields_updatedAt_Delete>;
+    read?: Maybe<WebImageCategoriesFields_updatedAt_Read>;
+    update?: Maybe<WebImageCategoriesFields_updatedAt_Update>;
+};
+
+export type WebImageCategoriesFields_updatedAt_Create = {
+    __typename?: 'WebImageCategoriesFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_updatedAt_Delete = {
+    __typename?: 'WebImageCategoriesFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_updatedAt_Read = {
+    __typename?: 'WebImageCategoriesFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesFields_updatedAt_Update = {
+    __typename?: 'WebImageCategoriesFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImageCategoriesReadAccess = {
+    __typename?: 'WebImageCategoriesReadAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebImageCategoriesReadDocAccess = {
+    __typename?: 'WebImageCategoriesReadDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebImageCategoriesUpdateAccess = {
+    __typename?: 'WebImageCategoriesUpdateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebImageCategoriesUpdateDocAccess = {
+    __typename?: 'WebImageCategoriesUpdateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebImageCategory = {
+    __typename?: 'WebImageCategory';
+    createdAt?: Maybe<Scalars['DateTime']['output']>;
+    description?: Maybe<Scalars['String']['output']>;
+    id: Scalars['Int']['output'];
+    showInGallery?: Maybe<Scalars['Boolean']['output']>;
+    title: Scalars['String']['output'];
+    updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type WebImageCategory_createdAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type WebImageCategory_description_operator = {
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type WebImageCategory_id_operator = {
+    equals?: InputMaybe<Scalars['Int']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Int']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    less_than?: InputMaybe<Scalars['Int']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    not_equals?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type WebImageCategory_showInGallery_operator = {
+    equals?: InputMaybe<Scalars['Boolean']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    not_equals?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type WebImageCategory_title_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImageCategory_updatedAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type WebImageCategory_where = {
+    AND?: InputMaybe<Array<InputMaybe<WebImageCategory_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<WebImageCategory_where_or>>>;
+    createdAt?: InputMaybe<WebImageCategory_createdAt_operator>;
+    description?: InputMaybe<WebImageCategory_description_operator>;
+    id?: InputMaybe<WebImageCategory_id_operator>;
+    showInGallery?: InputMaybe<WebImageCategory_showInGallery_operator>;
+    title?: InputMaybe<WebImageCategory_title_operator>;
+    updatedAt?: InputMaybe<WebImageCategory_updatedAt_operator>;
+};
+
+export type WebImageCategory_where_and = {
+    AND?: InputMaybe<Array<InputMaybe<WebImageCategory_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<WebImageCategory_where_or>>>;
+    createdAt?: InputMaybe<WebImageCategory_createdAt_operator>;
+    description?: InputMaybe<WebImageCategory_description_operator>;
+    id?: InputMaybe<WebImageCategory_id_operator>;
+    showInGallery?: InputMaybe<WebImageCategory_showInGallery_operator>;
+    title?: InputMaybe<WebImageCategory_title_operator>;
+    updatedAt?: InputMaybe<WebImageCategory_updatedAt_operator>;
+};
+
+export type WebImageCategory_where_or = {
+    AND?: InputMaybe<Array<InputMaybe<WebImageCategory_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<WebImageCategory_where_or>>>;
+    createdAt?: InputMaybe<WebImageCategory_createdAt_operator>;
+    description?: InputMaybe<WebImageCategory_description_operator>;
+    id?: InputMaybe<WebImageCategory_id_operator>;
+    showInGallery?: InputMaybe<WebImageCategory_showInGallery_operator>;
+    title?: InputMaybe<WebImageCategory_title_operator>;
+    updatedAt?: InputMaybe<WebImageCategory_updatedAt_operator>;
+};
+
 export type WebImageText = {
     __typename?: 'WebImageText';
     blockName?: Maybe<Scalars['String']['output']>;
@@ -20181,7 +26894,7 @@ export type WebImageText = {
 
 export type WebImageText_Content = {
     __typename?: 'WebImageText_Content';
-    image?: Maybe<WebMedia>;
+    image?: Maybe<WebImage>;
     link?: Maybe<WebImageText_Content_Link>;
     textBottom?: Maybe<Scalars['JSON']['output']>;
     textHighlight?: Maybe<Scalars['String']['output']>;
@@ -20257,6 +26970,7201 @@ export type WebImageText_Settings_Spacing_paddingTop =
     | 'small'
     | 'xlarge'
     | '%future added value';
+
+export type WebImage_Sizes = {
+    __typename?: 'WebImage_Sizes';
+    desktop_avif?: Maybe<WebImage_Sizes_Desktop_avif>;
+    desktop_jpeg?: Maybe<WebImage_Sizes_Desktop_jpeg>;
+    desktop_webp?: Maybe<WebImage_Sizes_Desktop_webp>;
+    mobile_avif?: Maybe<WebImage_Sizes_Mobile_avif>;
+    mobile_jpeg?: Maybe<WebImage_Sizes_Mobile_jpeg>;
+    mobile_webp?: Maybe<WebImage_Sizes_Mobile_webp>;
+    tablet_avif?: Maybe<WebImage_Sizes_Tablet_avif>;
+    tablet_jpeg?: Maybe<WebImage_Sizes_Tablet_jpeg>;
+    tablet_webp?: Maybe<WebImage_Sizes_Tablet_webp>;
+    thumbnail_avif?: Maybe<WebImage_Sizes_Thumbnail_avif>;
+    thumbnail_jpeg?: Maybe<WebImage_Sizes_Thumbnail_jpeg>;
+    thumbnail_webp?: Maybe<WebImage_Sizes_Thumbnail_webp>;
+};
+
+export type WebImage_Sizes_Desktop_avif = {
+    __typename?: 'WebImage_Sizes_Desktop_avif';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type WebImage_Sizes_Desktop_jpeg = {
+    __typename?: 'WebImage_Sizes_Desktop_jpeg';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type WebImage_Sizes_Desktop_webp = {
+    __typename?: 'WebImage_Sizes_Desktop_webp';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type WebImage_Sizes_Mobile_avif = {
+    __typename?: 'WebImage_Sizes_Mobile_avif';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type WebImage_Sizes_Mobile_jpeg = {
+    __typename?: 'WebImage_Sizes_Mobile_jpeg';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type WebImage_Sizes_Mobile_webp = {
+    __typename?: 'WebImage_Sizes_Mobile_webp';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type WebImage_Sizes_Tablet_avif = {
+    __typename?: 'WebImage_Sizes_Tablet_avif';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type WebImage_Sizes_Tablet_jpeg = {
+    __typename?: 'WebImage_Sizes_Tablet_jpeg';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type WebImage_Sizes_Tablet_webp = {
+    __typename?: 'WebImage_Sizes_Tablet_webp';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type WebImage_Sizes_Thumbnail_avif = {
+    __typename?: 'WebImage_Sizes_Thumbnail_avif';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type WebImage_Sizes_Thumbnail_jpeg = {
+    __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type WebImage_Sizes_Thumbnail_webp = {
+    __typename?: 'WebImage_Sizes_Thumbnail_webp';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type WebImage_alt_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_category_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
+    equals?: InputMaybe<Scalars['JSON']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
+    not_equals?: InputMaybe<Scalars['JSON']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
+};
+
+export type WebImage_createdAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type WebImage_filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_focalX_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_focalY_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_id_operator = {
+    equals?: InputMaybe<Scalars['Int']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Int']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    less_than?: InputMaybe<Scalars['Int']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    not_equals?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type WebImage_mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__desktop_avif__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__desktop_avif__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__desktop_avif__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__desktop_avif__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__desktop_avif__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__desktop_avif__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__desktop_jpeg__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__desktop_jpeg__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__desktop_jpeg__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__desktop_jpeg__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__desktop_jpeg__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__desktop_jpeg__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__desktop_webp__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__desktop_webp__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__desktop_webp__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__desktop_webp__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__desktop_webp__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__desktop_webp__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__mobile_avif__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__mobile_avif__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__mobile_avif__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__mobile_avif__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__mobile_avif__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__mobile_avif__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__mobile_jpeg__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__mobile_jpeg__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__mobile_jpeg__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__mobile_jpeg__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__mobile_jpeg__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__mobile_jpeg__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__mobile_webp__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__mobile_webp__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__mobile_webp__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__mobile_webp__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__mobile_webp__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__mobile_webp__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__tablet_avif__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__tablet_avif__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__tablet_avif__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__tablet_avif__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__tablet_avif__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__tablet_avif__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__tablet_jpeg__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__tablet_jpeg__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__tablet_jpeg__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__tablet_jpeg__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__tablet_jpeg__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__tablet_jpeg__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__tablet_webp__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__tablet_webp__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__tablet_webp__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__tablet_webp__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__tablet_webp__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__tablet_webp__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__thumbnail_avif__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__thumbnail_avif__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__thumbnail_avif__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__thumbnail_avif__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__thumbnail_avif__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__thumbnail_avif__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__thumbnail_jpeg__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__thumbnail_jpeg__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__thumbnail_jpeg__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__thumbnail_jpeg__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__thumbnail_jpeg__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__thumbnail_jpeg__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__thumbnail_webp__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__thumbnail_webp__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__thumbnail_webp__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_sizes__thumbnail_webp__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__thumbnail_webp__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_sizes__thumbnail_webp__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImage_thumbnailURL_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_updatedAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type WebImage_url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebImage_where = {
+    AND?: InputMaybe<Array<InputMaybe<WebImage_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<WebImage_where_or>>>;
+    alt?: InputMaybe<WebImage_alt_operator>;
+    category?: InputMaybe<WebImage_category_operator>;
+    createdAt?: InputMaybe<WebImage_createdAt_operator>;
+    filename?: InputMaybe<WebImage_filename_operator>;
+    filesize?: InputMaybe<WebImage_filesize_operator>;
+    focalX?: InputMaybe<WebImage_focalX_operator>;
+    focalY?: InputMaybe<WebImage_focalY_operator>;
+    height?: InputMaybe<WebImage_height_operator>;
+    id?: InputMaybe<WebImage_id_operator>;
+    mimeType?: InputMaybe<WebImage_mimeType_operator>;
+    sizes__desktop_avif__filename?: InputMaybe<WebImage_sizes__desktop_avif__filename_operator>;
+    sizes__desktop_avif__filesize?: InputMaybe<WebImage_sizes__desktop_avif__filesize_operator>;
+    sizes__desktop_avif__height?: InputMaybe<WebImage_sizes__desktop_avif__height_operator>;
+    sizes__desktop_avif__mimeType?: InputMaybe<WebImage_sizes__desktop_avif__mimeType_operator>;
+    sizes__desktop_avif__url?: InputMaybe<WebImage_sizes__desktop_avif__url_operator>;
+    sizes__desktop_avif__width?: InputMaybe<WebImage_sizes__desktop_avif__width_operator>;
+    sizes__desktop_jpeg__filename?: InputMaybe<WebImage_sizes__desktop_jpeg__filename_operator>;
+    sizes__desktop_jpeg__filesize?: InputMaybe<WebImage_sizes__desktop_jpeg__filesize_operator>;
+    sizes__desktop_jpeg__height?: InputMaybe<WebImage_sizes__desktop_jpeg__height_operator>;
+    sizes__desktop_jpeg__mimeType?: InputMaybe<WebImage_sizes__desktop_jpeg__mimeType_operator>;
+    sizes__desktop_jpeg__url?: InputMaybe<WebImage_sizes__desktop_jpeg__url_operator>;
+    sizes__desktop_jpeg__width?: InputMaybe<WebImage_sizes__desktop_jpeg__width_operator>;
+    sizes__desktop_webp__filename?: InputMaybe<WebImage_sizes__desktop_webp__filename_operator>;
+    sizes__desktop_webp__filesize?: InputMaybe<WebImage_sizes__desktop_webp__filesize_operator>;
+    sizes__desktop_webp__height?: InputMaybe<WebImage_sizes__desktop_webp__height_operator>;
+    sizes__desktop_webp__mimeType?: InputMaybe<WebImage_sizes__desktop_webp__mimeType_operator>;
+    sizes__desktop_webp__url?: InputMaybe<WebImage_sizes__desktop_webp__url_operator>;
+    sizes__desktop_webp__width?: InputMaybe<WebImage_sizes__desktop_webp__width_operator>;
+    sizes__mobile_avif__filename?: InputMaybe<WebImage_sizes__mobile_avif__filename_operator>;
+    sizes__mobile_avif__filesize?: InputMaybe<WebImage_sizes__mobile_avif__filesize_operator>;
+    sizes__mobile_avif__height?: InputMaybe<WebImage_sizes__mobile_avif__height_operator>;
+    sizes__mobile_avif__mimeType?: InputMaybe<WebImage_sizes__mobile_avif__mimeType_operator>;
+    sizes__mobile_avif__url?: InputMaybe<WebImage_sizes__mobile_avif__url_operator>;
+    sizes__mobile_avif__width?: InputMaybe<WebImage_sizes__mobile_avif__width_operator>;
+    sizes__mobile_jpeg__filename?: InputMaybe<WebImage_sizes__mobile_jpeg__filename_operator>;
+    sizes__mobile_jpeg__filesize?: InputMaybe<WebImage_sizes__mobile_jpeg__filesize_operator>;
+    sizes__mobile_jpeg__height?: InputMaybe<WebImage_sizes__mobile_jpeg__height_operator>;
+    sizes__mobile_jpeg__mimeType?: InputMaybe<WebImage_sizes__mobile_jpeg__mimeType_operator>;
+    sizes__mobile_jpeg__url?: InputMaybe<WebImage_sizes__mobile_jpeg__url_operator>;
+    sizes__mobile_jpeg__width?: InputMaybe<WebImage_sizes__mobile_jpeg__width_operator>;
+    sizes__mobile_webp__filename?: InputMaybe<WebImage_sizes__mobile_webp__filename_operator>;
+    sizes__mobile_webp__filesize?: InputMaybe<WebImage_sizes__mobile_webp__filesize_operator>;
+    sizes__mobile_webp__height?: InputMaybe<WebImage_sizes__mobile_webp__height_operator>;
+    sizes__mobile_webp__mimeType?: InputMaybe<WebImage_sizes__mobile_webp__mimeType_operator>;
+    sizes__mobile_webp__url?: InputMaybe<WebImage_sizes__mobile_webp__url_operator>;
+    sizes__mobile_webp__width?: InputMaybe<WebImage_sizes__mobile_webp__width_operator>;
+    sizes__tablet_avif__filename?: InputMaybe<WebImage_sizes__tablet_avif__filename_operator>;
+    sizes__tablet_avif__filesize?: InputMaybe<WebImage_sizes__tablet_avif__filesize_operator>;
+    sizes__tablet_avif__height?: InputMaybe<WebImage_sizes__tablet_avif__height_operator>;
+    sizes__tablet_avif__mimeType?: InputMaybe<WebImage_sizes__tablet_avif__mimeType_operator>;
+    sizes__tablet_avif__url?: InputMaybe<WebImage_sizes__tablet_avif__url_operator>;
+    sizes__tablet_avif__width?: InputMaybe<WebImage_sizes__tablet_avif__width_operator>;
+    sizes__tablet_jpeg__filename?: InputMaybe<WebImage_sizes__tablet_jpeg__filename_operator>;
+    sizes__tablet_jpeg__filesize?: InputMaybe<WebImage_sizes__tablet_jpeg__filesize_operator>;
+    sizes__tablet_jpeg__height?: InputMaybe<WebImage_sizes__tablet_jpeg__height_operator>;
+    sizes__tablet_jpeg__mimeType?: InputMaybe<WebImage_sizes__tablet_jpeg__mimeType_operator>;
+    sizes__tablet_jpeg__url?: InputMaybe<WebImage_sizes__tablet_jpeg__url_operator>;
+    sizes__tablet_jpeg__width?: InputMaybe<WebImage_sizes__tablet_jpeg__width_operator>;
+    sizes__tablet_webp__filename?: InputMaybe<WebImage_sizes__tablet_webp__filename_operator>;
+    sizes__tablet_webp__filesize?: InputMaybe<WebImage_sizes__tablet_webp__filesize_operator>;
+    sizes__tablet_webp__height?: InputMaybe<WebImage_sizes__tablet_webp__height_operator>;
+    sizes__tablet_webp__mimeType?: InputMaybe<WebImage_sizes__tablet_webp__mimeType_operator>;
+    sizes__tablet_webp__url?: InputMaybe<WebImage_sizes__tablet_webp__url_operator>;
+    sizes__tablet_webp__width?: InputMaybe<WebImage_sizes__tablet_webp__width_operator>;
+    sizes__thumbnail_avif__filename?: InputMaybe<WebImage_sizes__thumbnail_avif__filename_operator>;
+    sizes__thumbnail_avif__filesize?: InputMaybe<WebImage_sizes__thumbnail_avif__filesize_operator>;
+    sizes__thumbnail_avif__height?: InputMaybe<WebImage_sizes__thumbnail_avif__height_operator>;
+    sizes__thumbnail_avif__mimeType?: InputMaybe<WebImage_sizes__thumbnail_avif__mimeType_operator>;
+    sizes__thumbnail_avif__url?: InputMaybe<WebImage_sizes__thumbnail_avif__url_operator>;
+    sizes__thumbnail_avif__width?: InputMaybe<WebImage_sizes__thumbnail_avif__width_operator>;
+    sizes__thumbnail_jpeg__filename?: InputMaybe<WebImage_sizes__thumbnail_jpeg__filename_operator>;
+    sizes__thumbnail_jpeg__filesize?: InputMaybe<WebImage_sizes__thumbnail_jpeg__filesize_operator>;
+    sizes__thumbnail_jpeg__height?: InputMaybe<WebImage_sizes__thumbnail_jpeg__height_operator>;
+    sizes__thumbnail_jpeg__mimeType?: InputMaybe<WebImage_sizes__thumbnail_jpeg__mimeType_operator>;
+    sizes__thumbnail_jpeg__url?: InputMaybe<WebImage_sizes__thumbnail_jpeg__url_operator>;
+    sizes__thumbnail_jpeg__width?: InputMaybe<WebImage_sizes__thumbnail_jpeg__width_operator>;
+    sizes__thumbnail_webp__filename?: InputMaybe<WebImage_sizes__thumbnail_webp__filename_operator>;
+    sizes__thumbnail_webp__filesize?: InputMaybe<WebImage_sizes__thumbnail_webp__filesize_operator>;
+    sizes__thumbnail_webp__height?: InputMaybe<WebImage_sizes__thumbnail_webp__height_operator>;
+    sizes__thumbnail_webp__mimeType?: InputMaybe<WebImage_sizes__thumbnail_webp__mimeType_operator>;
+    sizes__thumbnail_webp__url?: InputMaybe<WebImage_sizes__thumbnail_webp__url_operator>;
+    sizes__thumbnail_webp__width?: InputMaybe<WebImage_sizes__thumbnail_webp__width_operator>;
+    thumbnailURL?: InputMaybe<WebImage_thumbnailURL_operator>;
+    updatedAt?: InputMaybe<WebImage_updatedAt_operator>;
+    url?: InputMaybe<WebImage_url_operator>;
+    width?: InputMaybe<WebImage_width_operator>;
+};
+
+export type WebImage_where_and = {
+    AND?: InputMaybe<Array<InputMaybe<WebImage_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<WebImage_where_or>>>;
+    alt?: InputMaybe<WebImage_alt_operator>;
+    category?: InputMaybe<WebImage_category_operator>;
+    createdAt?: InputMaybe<WebImage_createdAt_operator>;
+    filename?: InputMaybe<WebImage_filename_operator>;
+    filesize?: InputMaybe<WebImage_filesize_operator>;
+    focalX?: InputMaybe<WebImage_focalX_operator>;
+    focalY?: InputMaybe<WebImage_focalY_operator>;
+    height?: InputMaybe<WebImage_height_operator>;
+    id?: InputMaybe<WebImage_id_operator>;
+    mimeType?: InputMaybe<WebImage_mimeType_operator>;
+    sizes__desktop_avif__filename?: InputMaybe<WebImage_sizes__desktop_avif__filename_operator>;
+    sizes__desktop_avif__filesize?: InputMaybe<WebImage_sizes__desktop_avif__filesize_operator>;
+    sizes__desktop_avif__height?: InputMaybe<WebImage_sizes__desktop_avif__height_operator>;
+    sizes__desktop_avif__mimeType?: InputMaybe<WebImage_sizes__desktop_avif__mimeType_operator>;
+    sizes__desktop_avif__url?: InputMaybe<WebImage_sizes__desktop_avif__url_operator>;
+    sizes__desktop_avif__width?: InputMaybe<WebImage_sizes__desktop_avif__width_operator>;
+    sizes__desktop_jpeg__filename?: InputMaybe<WebImage_sizes__desktop_jpeg__filename_operator>;
+    sizes__desktop_jpeg__filesize?: InputMaybe<WebImage_sizes__desktop_jpeg__filesize_operator>;
+    sizes__desktop_jpeg__height?: InputMaybe<WebImage_sizes__desktop_jpeg__height_operator>;
+    sizes__desktop_jpeg__mimeType?: InputMaybe<WebImage_sizes__desktop_jpeg__mimeType_operator>;
+    sizes__desktop_jpeg__url?: InputMaybe<WebImage_sizes__desktop_jpeg__url_operator>;
+    sizes__desktop_jpeg__width?: InputMaybe<WebImage_sizes__desktop_jpeg__width_operator>;
+    sizes__desktop_webp__filename?: InputMaybe<WebImage_sizes__desktop_webp__filename_operator>;
+    sizes__desktop_webp__filesize?: InputMaybe<WebImage_sizes__desktop_webp__filesize_operator>;
+    sizes__desktop_webp__height?: InputMaybe<WebImage_sizes__desktop_webp__height_operator>;
+    sizes__desktop_webp__mimeType?: InputMaybe<WebImage_sizes__desktop_webp__mimeType_operator>;
+    sizes__desktop_webp__url?: InputMaybe<WebImage_sizes__desktop_webp__url_operator>;
+    sizes__desktop_webp__width?: InputMaybe<WebImage_sizes__desktop_webp__width_operator>;
+    sizes__mobile_avif__filename?: InputMaybe<WebImage_sizes__mobile_avif__filename_operator>;
+    sizes__mobile_avif__filesize?: InputMaybe<WebImage_sizes__mobile_avif__filesize_operator>;
+    sizes__mobile_avif__height?: InputMaybe<WebImage_sizes__mobile_avif__height_operator>;
+    sizes__mobile_avif__mimeType?: InputMaybe<WebImage_sizes__mobile_avif__mimeType_operator>;
+    sizes__mobile_avif__url?: InputMaybe<WebImage_sizes__mobile_avif__url_operator>;
+    sizes__mobile_avif__width?: InputMaybe<WebImage_sizes__mobile_avif__width_operator>;
+    sizes__mobile_jpeg__filename?: InputMaybe<WebImage_sizes__mobile_jpeg__filename_operator>;
+    sizes__mobile_jpeg__filesize?: InputMaybe<WebImage_sizes__mobile_jpeg__filesize_operator>;
+    sizes__mobile_jpeg__height?: InputMaybe<WebImage_sizes__mobile_jpeg__height_operator>;
+    sizes__mobile_jpeg__mimeType?: InputMaybe<WebImage_sizes__mobile_jpeg__mimeType_operator>;
+    sizes__mobile_jpeg__url?: InputMaybe<WebImage_sizes__mobile_jpeg__url_operator>;
+    sizes__mobile_jpeg__width?: InputMaybe<WebImage_sizes__mobile_jpeg__width_operator>;
+    sizes__mobile_webp__filename?: InputMaybe<WebImage_sizes__mobile_webp__filename_operator>;
+    sizes__mobile_webp__filesize?: InputMaybe<WebImage_sizes__mobile_webp__filesize_operator>;
+    sizes__mobile_webp__height?: InputMaybe<WebImage_sizes__mobile_webp__height_operator>;
+    sizes__mobile_webp__mimeType?: InputMaybe<WebImage_sizes__mobile_webp__mimeType_operator>;
+    sizes__mobile_webp__url?: InputMaybe<WebImage_sizes__mobile_webp__url_operator>;
+    sizes__mobile_webp__width?: InputMaybe<WebImage_sizes__mobile_webp__width_operator>;
+    sizes__tablet_avif__filename?: InputMaybe<WebImage_sizes__tablet_avif__filename_operator>;
+    sizes__tablet_avif__filesize?: InputMaybe<WebImage_sizes__tablet_avif__filesize_operator>;
+    sizes__tablet_avif__height?: InputMaybe<WebImage_sizes__tablet_avif__height_operator>;
+    sizes__tablet_avif__mimeType?: InputMaybe<WebImage_sizes__tablet_avif__mimeType_operator>;
+    sizes__tablet_avif__url?: InputMaybe<WebImage_sizes__tablet_avif__url_operator>;
+    sizes__tablet_avif__width?: InputMaybe<WebImage_sizes__tablet_avif__width_operator>;
+    sizes__tablet_jpeg__filename?: InputMaybe<WebImage_sizes__tablet_jpeg__filename_operator>;
+    sizes__tablet_jpeg__filesize?: InputMaybe<WebImage_sizes__tablet_jpeg__filesize_operator>;
+    sizes__tablet_jpeg__height?: InputMaybe<WebImage_sizes__tablet_jpeg__height_operator>;
+    sizes__tablet_jpeg__mimeType?: InputMaybe<WebImage_sizes__tablet_jpeg__mimeType_operator>;
+    sizes__tablet_jpeg__url?: InputMaybe<WebImage_sizes__tablet_jpeg__url_operator>;
+    sizes__tablet_jpeg__width?: InputMaybe<WebImage_sizes__tablet_jpeg__width_operator>;
+    sizes__tablet_webp__filename?: InputMaybe<WebImage_sizes__tablet_webp__filename_operator>;
+    sizes__tablet_webp__filesize?: InputMaybe<WebImage_sizes__tablet_webp__filesize_operator>;
+    sizes__tablet_webp__height?: InputMaybe<WebImage_sizes__tablet_webp__height_operator>;
+    sizes__tablet_webp__mimeType?: InputMaybe<WebImage_sizes__tablet_webp__mimeType_operator>;
+    sizes__tablet_webp__url?: InputMaybe<WebImage_sizes__tablet_webp__url_operator>;
+    sizes__tablet_webp__width?: InputMaybe<WebImage_sizes__tablet_webp__width_operator>;
+    sizes__thumbnail_avif__filename?: InputMaybe<WebImage_sizes__thumbnail_avif__filename_operator>;
+    sizes__thumbnail_avif__filesize?: InputMaybe<WebImage_sizes__thumbnail_avif__filesize_operator>;
+    sizes__thumbnail_avif__height?: InputMaybe<WebImage_sizes__thumbnail_avif__height_operator>;
+    sizes__thumbnail_avif__mimeType?: InputMaybe<WebImage_sizes__thumbnail_avif__mimeType_operator>;
+    sizes__thumbnail_avif__url?: InputMaybe<WebImage_sizes__thumbnail_avif__url_operator>;
+    sizes__thumbnail_avif__width?: InputMaybe<WebImage_sizes__thumbnail_avif__width_operator>;
+    sizes__thumbnail_jpeg__filename?: InputMaybe<WebImage_sizes__thumbnail_jpeg__filename_operator>;
+    sizes__thumbnail_jpeg__filesize?: InputMaybe<WebImage_sizes__thumbnail_jpeg__filesize_operator>;
+    sizes__thumbnail_jpeg__height?: InputMaybe<WebImage_sizes__thumbnail_jpeg__height_operator>;
+    sizes__thumbnail_jpeg__mimeType?: InputMaybe<WebImage_sizes__thumbnail_jpeg__mimeType_operator>;
+    sizes__thumbnail_jpeg__url?: InputMaybe<WebImage_sizes__thumbnail_jpeg__url_operator>;
+    sizes__thumbnail_jpeg__width?: InputMaybe<WebImage_sizes__thumbnail_jpeg__width_operator>;
+    sizes__thumbnail_webp__filename?: InputMaybe<WebImage_sizes__thumbnail_webp__filename_operator>;
+    sizes__thumbnail_webp__filesize?: InputMaybe<WebImage_sizes__thumbnail_webp__filesize_operator>;
+    sizes__thumbnail_webp__height?: InputMaybe<WebImage_sizes__thumbnail_webp__height_operator>;
+    sizes__thumbnail_webp__mimeType?: InputMaybe<WebImage_sizes__thumbnail_webp__mimeType_operator>;
+    sizes__thumbnail_webp__url?: InputMaybe<WebImage_sizes__thumbnail_webp__url_operator>;
+    sizes__thumbnail_webp__width?: InputMaybe<WebImage_sizes__thumbnail_webp__width_operator>;
+    thumbnailURL?: InputMaybe<WebImage_thumbnailURL_operator>;
+    updatedAt?: InputMaybe<WebImage_updatedAt_operator>;
+    url?: InputMaybe<WebImage_url_operator>;
+    width?: InputMaybe<WebImage_width_operator>;
+};
+
+export type WebImage_where_or = {
+    AND?: InputMaybe<Array<InputMaybe<WebImage_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<WebImage_where_or>>>;
+    alt?: InputMaybe<WebImage_alt_operator>;
+    category?: InputMaybe<WebImage_category_operator>;
+    createdAt?: InputMaybe<WebImage_createdAt_operator>;
+    filename?: InputMaybe<WebImage_filename_operator>;
+    filesize?: InputMaybe<WebImage_filesize_operator>;
+    focalX?: InputMaybe<WebImage_focalX_operator>;
+    focalY?: InputMaybe<WebImage_focalY_operator>;
+    height?: InputMaybe<WebImage_height_operator>;
+    id?: InputMaybe<WebImage_id_operator>;
+    mimeType?: InputMaybe<WebImage_mimeType_operator>;
+    sizes__desktop_avif__filename?: InputMaybe<WebImage_sizes__desktop_avif__filename_operator>;
+    sizes__desktop_avif__filesize?: InputMaybe<WebImage_sizes__desktop_avif__filesize_operator>;
+    sizes__desktop_avif__height?: InputMaybe<WebImage_sizes__desktop_avif__height_operator>;
+    sizes__desktop_avif__mimeType?: InputMaybe<WebImage_sizes__desktop_avif__mimeType_operator>;
+    sizes__desktop_avif__url?: InputMaybe<WebImage_sizes__desktop_avif__url_operator>;
+    sizes__desktop_avif__width?: InputMaybe<WebImage_sizes__desktop_avif__width_operator>;
+    sizes__desktop_jpeg__filename?: InputMaybe<WebImage_sizes__desktop_jpeg__filename_operator>;
+    sizes__desktop_jpeg__filesize?: InputMaybe<WebImage_sizes__desktop_jpeg__filesize_operator>;
+    sizes__desktop_jpeg__height?: InputMaybe<WebImage_sizes__desktop_jpeg__height_operator>;
+    sizes__desktop_jpeg__mimeType?: InputMaybe<WebImage_sizes__desktop_jpeg__mimeType_operator>;
+    sizes__desktop_jpeg__url?: InputMaybe<WebImage_sizes__desktop_jpeg__url_operator>;
+    sizes__desktop_jpeg__width?: InputMaybe<WebImage_sizes__desktop_jpeg__width_operator>;
+    sizes__desktop_webp__filename?: InputMaybe<WebImage_sizes__desktop_webp__filename_operator>;
+    sizes__desktop_webp__filesize?: InputMaybe<WebImage_sizes__desktop_webp__filesize_operator>;
+    sizes__desktop_webp__height?: InputMaybe<WebImage_sizes__desktop_webp__height_operator>;
+    sizes__desktop_webp__mimeType?: InputMaybe<WebImage_sizes__desktop_webp__mimeType_operator>;
+    sizes__desktop_webp__url?: InputMaybe<WebImage_sizes__desktop_webp__url_operator>;
+    sizes__desktop_webp__width?: InputMaybe<WebImage_sizes__desktop_webp__width_operator>;
+    sizes__mobile_avif__filename?: InputMaybe<WebImage_sizes__mobile_avif__filename_operator>;
+    sizes__mobile_avif__filesize?: InputMaybe<WebImage_sizes__mobile_avif__filesize_operator>;
+    sizes__mobile_avif__height?: InputMaybe<WebImage_sizes__mobile_avif__height_operator>;
+    sizes__mobile_avif__mimeType?: InputMaybe<WebImage_sizes__mobile_avif__mimeType_operator>;
+    sizes__mobile_avif__url?: InputMaybe<WebImage_sizes__mobile_avif__url_operator>;
+    sizes__mobile_avif__width?: InputMaybe<WebImage_sizes__mobile_avif__width_operator>;
+    sizes__mobile_jpeg__filename?: InputMaybe<WebImage_sizes__mobile_jpeg__filename_operator>;
+    sizes__mobile_jpeg__filesize?: InputMaybe<WebImage_sizes__mobile_jpeg__filesize_operator>;
+    sizes__mobile_jpeg__height?: InputMaybe<WebImage_sizes__mobile_jpeg__height_operator>;
+    sizes__mobile_jpeg__mimeType?: InputMaybe<WebImage_sizes__mobile_jpeg__mimeType_operator>;
+    sizes__mobile_jpeg__url?: InputMaybe<WebImage_sizes__mobile_jpeg__url_operator>;
+    sizes__mobile_jpeg__width?: InputMaybe<WebImage_sizes__mobile_jpeg__width_operator>;
+    sizes__mobile_webp__filename?: InputMaybe<WebImage_sizes__mobile_webp__filename_operator>;
+    sizes__mobile_webp__filesize?: InputMaybe<WebImage_sizes__mobile_webp__filesize_operator>;
+    sizes__mobile_webp__height?: InputMaybe<WebImage_sizes__mobile_webp__height_operator>;
+    sizes__mobile_webp__mimeType?: InputMaybe<WebImage_sizes__mobile_webp__mimeType_operator>;
+    sizes__mobile_webp__url?: InputMaybe<WebImage_sizes__mobile_webp__url_operator>;
+    sizes__mobile_webp__width?: InputMaybe<WebImage_sizes__mobile_webp__width_operator>;
+    sizes__tablet_avif__filename?: InputMaybe<WebImage_sizes__tablet_avif__filename_operator>;
+    sizes__tablet_avif__filesize?: InputMaybe<WebImage_sizes__tablet_avif__filesize_operator>;
+    sizes__tablet_avif__height?: InputMaybe<WebImage_sizes__tablet_avif__height_operator>;
+    sizes__tablet_avif__mimeType?: InputMaybe<WebImage_sizes__tablet_avif__mimeType_operator>;
+    sizes__tablet_avif__url?: InputMaybe<WebImage_sizes__tablet_avif__url_operator>;
+    sizes__tablet_avif__width?: InputMaybe<WebImage_sizes__tablet_avif__width_operator>;
+    sizes__tablet_jpeg__filename?: InputMaybe<WebImage_sizes__tablet_jpeg__filename_operator>;
+    sizes__tablet_jpeg__filesize?: InputMaybe<WebImage_sizes__tablet_jpeg__filesize_operator>;
+    sizes__tablet_jpeg__height?: InputMaybe<WebImage_sizes__tablet_jpeg__height_operator>;
+    sizes__tablet_jpeg__mimeType?: InputMaybe<WebImage_sizes__tablet_jpeg__mimeType_operator>;
+    sizes__tablet_jpeg__url?: InputMaybe<WebImage_sizes__tablet_jpeg__url_operator>;
+    sizes__tablet_jpeg__width?: InputMaybe<WebImage_sizes__tablet_jpeg__width_operator>;
+    sizes__tablet_webp__filename?: InputMaybe<WebImage_sizes__tablet_webp__filename_operator>;
+    sizes__tablet_webp__filesize?: InputMaybe<WebImage_sizes__tablet_webp__filesize_operator>;
+    sizes__tablet_webp__height?: InputMaybe<WebImage_sizes__tablet_webp__height_operator>;
+    sizes__tablet_webp__mimeType?: InputMaybe<WebImage_sizes__tablet_webp__mimeType_operator>;
+    sizes__tablet_webp__url?: InputMaybe<WebImage_sizes__tablet_webp__url_operator>;
+    sizes__tablet_webp__width?: InputMaybe<WebImage_sizes__tablet_webp__width_operator>;
+    sizes__thumbnail_avif__filename?: InputMaybe<WebImage_sizes__thumbnail_avif__filename_operator>;
+    sizes__thumbnail_avif__filesize?: InputMaybe<WebImage_sizes__thumbnail_avif__filesize_operator>;
+    sizes__thumbnail_avif__height?: InputMaybe<WebImage_sizes__thumbnail_avif__height_operator>;
+    sizes__thumbnail_avif__mimeType?: InputMaybe<WebImage_sizes__thumbnail_avif__mimeType_operator>;
+    sizes__thumbnail_avif__url?: InputMaybe<WebImage_sizes__thumbnail_avif__url_operator>;
+    sizes__thumbnail_avif__width?: InputMaybe<WebImage_sizes__thumbnail_avif__width_operator>;
+    sizes__thumbnail_jpeg__filename?: InputMaybe<WebImage_sizes__thumbnail_jpeg__filename_operator>;
+    sizes__thumbnail_jpeg__filesize?: InputMaybe<WebImage_sizes__thumbnail_jpeg__filesize_operator>;
+    sizes__thumbnail_jpeg__height?: InputMaybe<WebImage_sizes__thumbnail_jpeg__height_operator>;
+    sizes__thumbnail_jpeg__mimeType?: InputMaybe<WebImage_sizes__thumbnail_jpeg__mimeType_operator>;
+    sizes__thumbnail_jpeg__url?: InputMaybe<WebImage_sizes__thumbnail_jpeg__url_operator>;
+    sizes__thumbnail_jpeg__width?: InputMaybe<WebImage_sizes__thumbnail_jpeg__width_operator>;
+    sizes__thumbnail_webp__filename?: InputMaybe<WebImage_sizes__thumbnail_webp__filename_operator>;
+    sizes__thumbnail_webp__filesize?: InputMaybe<WebImage_sizes__thumbnail_webp__filesize_operator>;
+    sizes__thumbnail_webp__height?: InputMaybe<WebImage_sizes__thumbnail_webp__height_operator>;
+    sizes__thumbnail_webp__mimeType?: InputMaybe<WebImage_sizes__thumbnail_webp__mimeType_operator>;
+    sizes__thumbnail_webp__url?: InputMaybe<WebImage_sizes__thumbnail_webp__url_operator>;
+    sizes__thumbnail_webp__width?: InputMaybe<WebImage_sizes__thumbnail_webp__width_operator>;
+    thumbnailURL?: InputMaybe<WebImage_thumbnailURL_operator>;
+    updatedAt?: InputMaybe<WebImage_updatedAt_operator>;
+    url?: InputMaybe<WebImage_url_operator>;
+    width?: InputMaybe<WebImage_width_operator>;
+};
+
+export type WebImage_width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type WebImages = {
+    __typename?: 'WebImages';
+    docs: Array<WebImage>;
+    hasNextPage: Scalars['Boolean']['output'];
+    hasPrevPage: Scalars['Boolean']['output'];
+    limit: Scalars['Int']['output'];
+    nextPage?: Maybe<Scalars['Int']['output']>;
+    offset?: Maybe<Scalars['Int']['output']>;
+    page: Scalars['Int']['output'];
+    pagingCounter: Scalars['Int']['output'];
+    prevPage?: Maybe<Scalars['Int']['output']>;
+    totalDocs: Scalars['Int']['output'];
+    totalPages: Scalars['Int']['output'];
+};
+
+export type WebImagesCreateAccess = {
+    __typename?: 'WebImagesCreateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebImagesCreateDocAccess = {
+    __typename?: 'WebImagesCreateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebImagesDeleteAccess = {
+    __typename?: 'WebImagesDeleteAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebImagesDeleteDocAccess = {
+    __typename?: 'WebImagesDeleteDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebImagesDocAccessFields = {
+    __typename?: 'WebImagesDocAccessFields';
+    alt?: Maybe<WebImagesDocAccessFields_alt>;
+    category?: Maybe<WebImagesDocAccessFields_category>;
+    createdAt?: Maybe<WebImagesDocAccessFields_createdAt>;
+    filename?: Maybe<WebImagesDocAccessFields_filename>;
+    filesize?: Maybe<WebImagesDocAccessFields_filesize>;
+    focalX?: Maybe<WebImagesDocAccessFields_focalX>;
+    focalY?: Maybe<WebImagesDocAccessFields_focalY>;
+    height?: Maybe<WebImagesDocAccessFields_height>;
+    mimeType?: Maybe<WebImagesDocAccessFields_mimeType>;
+    sizes?: Maybe<WebImagesDocAccessFields_sizes>;
+    thumbnailURL?: Maybe<WebImagesDocAccessFields_thumbnailURL>;
+    updatedAt?: Maybe<WebImagesDocAccessFields_updatedAt>;
+    url?: Maybe<WebImagesDocAccessFields_url>;
+    width?: Maybe<WebImagesDocAccessFields_width>;
+};
+
+export type WebImagesDocAccessFields_alt = {
+    __typename?: 'WebImagesDocAccessFields_alt';
+    create?: Maybe<WebImagesDocAccessFields_alt_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_alt_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_alt_Read>;
+    update?: Maybe<WebImagesDocAccessFields_alt_Update>;
+};
+
+export type WebImagesDocAccessFields_alt_Create = {
+    __typename?: 'WebImagesDocAccessFields_alt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_alt_Delete = {
+    __typename?: 'WebImagesDocAccessFields_alt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_alt_Read = {
+    __typename?: 'WebImagesDocAccessFields_alt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_alt_Update = {
+    __typename?: 'WebImagesDocAccessFields_alt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_category = {
+    __typename?: 'WebImagesDocAccessFields_category';
+    create?: Maybe<WebImagesDocAccessFields_category_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_category_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_category_Read>;
+    update?: Maybe<WebImagesDocAccessFields_category_Update>;
+};
+
+export type WebImagesDocAccessFields_category_Create = {
+    __typename?: 'WebImagesDocAccessFields_category_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_category_Delete = {
+    __typename?: 'WebImagesDocAccessFields_category_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_category_Read = {
+    __typename?: 'WebImagesDocAccessFields_category_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_category_Update = {
+    __typename?: 'WebImagesDocAccessFields_category_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_createdAt = {
+    __typename?: 'WebImagesDocAccessFields_createdAt';
+    create?: Maybe<WebImagesDocAccessFields_createdAt_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_createdAt_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_createdAt_Read>;
+    update?: Maybe<WebImagesDocAccessFields_createdAt_Update>;
+};
+
+export type WebImagesDocAccessFields_createdAt_Create = {
+    __typename?: 'WebImagesDocAccessFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_createdAt_Delete = {
+    __typename?: 'WebImagesDocAccessFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_createdAt_Read = {
+    __typename?: 'WebImagesDocAccessFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_createdAt_Update = {
+    __typename?: 'WebImagesDocAccessFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_filename = {
+    __typename?: 'WebImagesDocAccessFields_filename';
+    create?: Maybe<WebImagesDocAccessFields_filename_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_filename_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_filename_Read>;
+    update?: Maybe<WebImagesDocAccessFields_filename_Update>;
+};
+
+export type WebImagesDocAccessFields_filename_Create = {
+    __typename?: 'WebImagesDocAccessFields_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_filename_Delete = {
+    __typename?: 'WebImagesDocAccessFields_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_filename_Read = {
+    __typename?: 'WebImagesDocAccessFields_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_filename_Update = {
+    __typename?: 'WebImagesDocAccessFields_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_filesize = {
+    __typename?: 'WebImagesDocAccessFields_filesize';
+    create?: Maybe<WebImagesDocAccessFields_filesize_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_filesize_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_filesize_Read>;
+    update?: Maybe<WebImagesDocAccessFields_filesize_Update>;
+};
+
+export type WebImagesDocAccessFields_filesize_Create = {
+    __typename?: 'WebImagesDocAccessFields_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_filesize_Delete = {
+    __typename?: 'WebImagesDocAccessFields_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_filesize_Read = {
+    __typename?: 'WebImagesDocAccessFields_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_filesize_Update = {
+    __typename?: 'WebImagesDocAccessFields_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_focalX = {
+    __typename?: 'WebImagesDocAccessFields_focalX';
+    create?: Maybe<WebImagesDocAccessFields_focalX_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_focalX_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_focalX_Read>;
+    update?: Maybe<WebImagesDocAccessFields_focalX_Update>;
+};
+
+export type WebImagesDocAccessFields_focalX_Create = {
+    __typename?: 'WebImagesDocAccessFields_focalX_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_focalX_Delete = {
+    __typename?: 'WebImagesDocAccessFields_focalX_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_focalX_Read = {
+    __typename?: 'WebImagesDocAccessFields_focalX_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_focalX_Update = {
+    __typename?: 'WebImagesDocAccessFields_focalX_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_focalY = {
+    __typename?: 'WebImagesDocAccessFields_focalY';
+    create?: Maybe<WebImagesDocAccessFields_focalY_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_focalY_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_focalY_Read>;
+    update?: Maybe<WebImagesDocAccessFields_focalY_Update>;
+};
+
+export type WebImagesDocAccessFields_focalY_Create = {
+    __typename?: 'WebImagesDocAccessFields_focalY_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_focalY_Delete = {
+    __typename?: 'WebImagesDocAccessFields_focalY_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_focalY_Read = {
+    __typename?: 'WebImagesDocAccessFields_focalY_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_focalY_Update = {
+    __typename?: 'WebImagesDocAccessFields_focalY_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_height = {
+    __typename?: 'WebImagesDocAccessFields_height';
+    create?: Maybe<WebImagesDocAccessFields_height_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_height_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_height_Read>;
+    update?: Maybe<WebImagesDocAccessFields_height_Update>;
+};
+
+export type WebImagesDocAccessFields_height_Create = {
+    __typename?: 'WebImagesDocAccessFields_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_height_Delete = {
+    __typename?: 'WebImagesDocAccessFields_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_height_Read = {
+    __typename?: 'WebImagesDocAccessFields_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_height_Update = {
+    __typename?: 'WebImagesDocAccessFields_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_mimeType = {
+    __typename?: 'WebImagesDocAccessFields_mimeType';
+    create?: Maybe<WebImagesDocAccessFields_mimeType_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_mimeType_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_mimeType_Read>;
+    update?: Maybe<WebImagesDocAccessFields_mimeType_Update>;
+};
+
+export type WebImagesDocAccessFields_mimeType_Create = {
+    __typename?: 'WebImagesDocAccessFields_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_mimeType_Delete = {
+    __typename?: 'WebImagesDocAccessFields_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_mimeType_Read = {
+    __typename?: 'WebImagesDocAccessFields_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_mimeType_Update = {
+    __typename?: 'WebImagesDocAccessFields_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes = {
+    __typename?: 'WebImagesDocAccessFields_sizes';
+    create?: Maybe<WebImagesDocAccessFields_sizes_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_Delete>;
+    fields?: Maybe<WebImagesDocAccessFields_sizes_Fields>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_Fields = {
+    __typename?: 'WebImagesDocAccessFields_sizes_Fields';
+    desktop_avif?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif>;
+    desktop_jpeg?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg>;
+    desktop_webp?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp>;
+    mobile_avif?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif>;
+    mobile_jpeg?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg>;
+    mobile_webp?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp>;
+    tablet_avif?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif>;
+    tablet_jpeg?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg>;
+    tablet_webp?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp>;
+    thumbnail_avif?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif>;
+    thumbnail_jpeg?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg>;
+    thumbnail_webp?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp>;
+};
+
+export type WebImagesDocAccessFields_sizes_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_Delete>;
+    fields?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_Fields>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_Fields = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_Fields';
+    filename?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_filename>;
+    filesize?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_filesize>;
+    height?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_height>;
+    mimeType?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_mimeType>;
+    url?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_url>;
+    width?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_width>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_filename = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_filename';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_filename_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_filename_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_filename_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_filename_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_filename_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_filename_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_filename_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_filename_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_filesize = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_filesize';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_filesize_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_filesize_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_filesize_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_filesize_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_filesize_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_filesize_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_filesize_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_filesize_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_height = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_height';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_height_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_height_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_height_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_height_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_height_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_height_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_height_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_height_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_mimeType = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_mimeType';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_mimeType_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_mimeType_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_mimeType_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_mimeType_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_mimeType_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_mimeType_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_mimeType_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_mimeType_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_url = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_url';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_url_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_url_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_url_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_url_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_url_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_url_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_url_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_url_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_width = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_width';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_width_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_width_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_width_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_avif_width_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_width_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_width_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_width_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_avif_width_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_Delete>;
+    fields?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_Fields>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_Fields = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_Fields';
+    filename?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_filename>;
+    filesize?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_filesize>;
+    height?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_height>;
+    mimeType?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_mimeType>;
+    url?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_url>;
+    width?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_width>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_filename = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_filename';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_filename_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_filename_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_filename_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_filename_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_filename_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_filename_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_filename_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_filename_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_filesize = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_filesize';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_filesize_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_filesize_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_filesize_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_filesize_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_filesize_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_filesize_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_filesize_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_filesize_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_height = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_height';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_height_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_height_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_height_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_height_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_height_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_height_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_height_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_height_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_mimeType = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_mimeType';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_url = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_url';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_url_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_url_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_url_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_url_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_url_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_url_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_url_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_url_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_width = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_width';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_width_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_width_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_width_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_jpeg_width_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_width_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_width_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_width_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_jpeg_width_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_Delete>;
+    fields?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_Fields>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_Fields = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_Fields';
+    filename?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_filename>;
+    filesize?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_filesize>;
+    height?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_height>;
+    mimeType?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_mimeType>;
+    url?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_url>;
+    width?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_width>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_filename = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_filename';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_filename_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_filename_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_filename_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_filename_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_filename_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_filename_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_filename_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_filename_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_filesize = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_filesize';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_filesize_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_filesize_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_filesize_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_filesize_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_filesize_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_filesize_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_filesize_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_filesize_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_height = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_height';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_height_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_height_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_height_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_height_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_height_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_height_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_height_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_height_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_mimeType = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_mimeType';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_mimeType_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_mimeType_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_mimeType_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_mimeType_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_mimeType_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_mimeType_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_mimeType_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_mimeType_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_url = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_url';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_url_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_url_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_url_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_url_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_url_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_url_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_url_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_url_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_width = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_width';
+    create?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_width_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_width_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_width_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_desktop_webp_width_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_width_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_width_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_width_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_desktop_webp_width_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_desktop_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_Delete>;
+    fields?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_Fields>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_Fields = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_Fields';
+    filename?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_filename>;
+    filesize?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_filesize>;
+    height?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_height>;
+    mimeType?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_mimeType>;
+    url?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_url>;
+    width?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_width>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_filename = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_filename';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_filename_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_filename_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_filename_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_filename_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_filename_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_filename_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_filename_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_filename_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_filesize = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_filesize';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_filesize_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_filesize_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_filesize_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_filesize_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_filesize_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_filesize_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_filesize_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_filesize_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_height = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_height';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_height_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_height_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_height_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_height_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_height_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_height_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_height_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_height_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_mimeType = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_mimeType';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_mimeType_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_mimeType_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_mimeType_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_mimeType_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_mimeType_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_mimeType_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_mimeType_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_mimeType_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_url = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_url';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_url_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_url_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_url_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_url_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_url_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_url_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_url_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_url_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_width = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_width';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_width_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_width_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_width_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_avif_width_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_width_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_width_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_width_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_avif_width_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_Delete>;
+    fields?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_Fields>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_Fields = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_Fields';
+    filename?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_filename>;
+    filesize?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_filesize>;
+    height?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_height>;
+    mimeType?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_mimeType>;
+    url?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_url>;
+    width?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_width>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_filename = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_filename';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_filename_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_filename_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_filename_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_filename_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_filename_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_filename_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_filename_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_filename_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_filesize = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_filesize';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_filesize_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_filesize_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_filesize_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_filesize_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_filesize_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_filesize_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_filesize_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_filesize_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_height = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_height';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_height_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_height_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_height_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_height_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_height_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_height_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_height_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_height_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_mimeType = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_mimeType';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_url = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_url';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_url_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_url_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_url_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_url_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_url_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_url_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_url_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_url_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_width = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_width';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_width_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_width_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_width_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_jpeg_width_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_width_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_width_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_width_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_jpeg_width_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_Delete>;
+    fields?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_Fields>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_Fields = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_Fields';
+    filename?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_filename>;
+    filesize?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_filesize>;
+    height?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_height>;
+    mimeType?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_mimeType>;
+    url?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_url>;
+    width?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_width>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_filename = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_filename';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_filename_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_filename_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_filename_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_filename_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_filename_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_filename_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_filename_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_filename_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_filesize = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_filesize';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_filesize_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_filesize_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_filesize_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_filesize_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_filesize_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_filesize_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_filesize_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_filesize_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_height = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_height';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_height_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_height_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_height_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_height_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_height_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_height_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_height_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_height_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_mimeType = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_mimeType';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_mimeType_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_mimeType_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_mimeType_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_mimeType_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_mimeType_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_mimeType_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_mimeType_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_mimeType_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_url = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_url';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_url_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_url_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_url_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_url_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_url_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_url_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_url_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_url_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_width = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_width';
+    create?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_width_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_width_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_width_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_mobile_webp_width_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_width_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_width_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_width_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_mobile_webp_width_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_mobile_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_Delete>;
+    fields?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_Fields>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_Fields = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_Fields';
+    filename?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_filename>;
+    filesize?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_filesize>;
+    height?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_height>;
+    mimeType?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_mimeType>;
+    url?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_url>;
+    width?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_width>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_filename = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_filename';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_filename_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_filename_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_filename_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_filename_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_filename_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_filename_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_filename_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_filename_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_filesize = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_filesize';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_filesize_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_filesize_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_filesize_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_filesize_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_filesize_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_filesize_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_filesize_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_filesize_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_height = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_height';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_height_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_height_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_height_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_height_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_height_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_height_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_height_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_height_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_mimeType = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_mimeType';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_mimeType_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_mimeType_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_mimeType_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_mimeType_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_mimeType_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_mimeType_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_mimeType_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_mimeType_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_url = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_url';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_url_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_url_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_url_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_url_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_url_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_url_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_url_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_url_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_width = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_width';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_width_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_width_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_width_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_avif_width_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_width_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_width_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_width_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_avif_width_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_Delete>;
+    fields?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_Fields>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_Fields = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_Fields';
+    filename?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_filename>;
+    filesize?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_filesize>;
+    height?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_height>;
+    mimeType?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_mimeType>;
+    url?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_url>;
+    width?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_width>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_filename = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_filename';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_filename_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_filename_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_filename_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_filename_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_filename_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_filename_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_filename_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_filename_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_filesize = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_filesize';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_filesize_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_filesize_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_filesize_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_filesize_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_filesize_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_filesize_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_filesize_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_filesize_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_height = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_height';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_height_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_height_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_height_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_height_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_height_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_height_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_height_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_height_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_mimeType = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_mimeType';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_url = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_url';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_url_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_url_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_url_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_url_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_url_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_url_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_url_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_url_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_width = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_width';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_width_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_width_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_width_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_jpeg_width_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_width_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_width_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_width_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_jpeg_width_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_Delete>;
+    fields?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_Fields>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_Fields = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_Fields';
+    filename?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_filename>;
+    filesize?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_filesize>;
+    height?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_height>;
+    mimeType?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_mimeType>;
+    url?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_url>;
+    width?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_width>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_filename = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_filename';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_filename_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_filename_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_filename_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_filename_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_filename_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_filename_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_filename_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_filename_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_filesize = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_filesize';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_filesize_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_filesize_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_filesize_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_filesize_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_filesize_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_filesize_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_filesize_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_filesize_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_height = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_height';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_height_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_height_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_height_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_height_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_height_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_height_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_height_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_height_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_mimeType = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_mimeType';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_mimeType_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_mimeType_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_mimeType_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_mimeType_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_mimeType_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_mimeType_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_mimeType_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_mimeType_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_url = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_url';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_url_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_url_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_url_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_url_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_url_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_url_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_url_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_url_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_width = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_width';
+    create?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_width_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_width_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_width_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_tablet_webp_width_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_width_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_width_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_width_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_tablet_webp_width_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_tablet_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_Delete>;
+    fields?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_Fields>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_Fields = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_Fields';
+    filename?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_filename>;
+    filesize?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_filesize>;
+    height?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_height>;
+    mimeType?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_mimeType>;
+    url?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_url>;
+    width?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_width>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_filename = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_filename';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_filename_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_filename_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_filename_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_filename_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_filename_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_filename_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_filename_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_filename_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_filesize = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_filesize';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_filesize_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_filesize_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_filesize_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_filesize_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_filesize_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_filesize_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_filesize_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_filesize_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_height = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_height';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_height_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_height_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_height_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_height_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_height_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_height_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_height_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_height_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_mimeType = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_mimeType';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_url = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_url';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_url_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_url_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_url_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_url_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_url_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_url_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_url_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_url_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_width = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_width';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_width_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_width_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_width_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_avif_width_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_width_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_width_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_width_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_avif_width_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_Delete>;
+    fields?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_Fields>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_Fields = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_Fields';
+    filename?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_filename>;
+    filesize?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_filesize>;
+    height?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_height>;
+    mimeType?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType>;
+    url?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_url>;
+    width?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_width>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_filename = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_filename';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_filesize = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_filesize';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_height = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_height';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_height_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_height_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_height_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_height_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_height_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_height_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_height_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_height_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_url = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_url';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_url_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_url_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_url_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_url_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_url_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_url_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_url_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_url_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_width = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_width';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_width_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_width_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_width_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_jpeg_width_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_width_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_width_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_width_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_jpeg_width_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_Delete>;
+    fields?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_Fields>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_Fields = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_Fields';
+    filename?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_filename>;
+    filesize?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_filesize>;
+    height?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_height>;
+    mimeType?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_mimeType>;
+    url?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_url>;
+    width?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_width>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_filename = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_filename';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_filename_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_filename_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_filename_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_filename_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_filename_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_filename_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_filename_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_filename_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_filesize = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_filesize';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_filesize_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_filesize_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_filesize_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_filesize_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_filesize_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_filesize_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_filesize_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_filesize_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_height = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_height';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_height_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_height_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_height_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_height_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_height_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_height_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_height_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_height_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_mimeType = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_mimeType';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_url = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_url';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_url_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_url_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_url_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_url_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_url_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_url_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_url_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_url_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_width = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_width';
+    create?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_width_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_width_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_width_Read>;
+    update?: Maybe<WebImagesDocAccessFields_sizes_thumbnail_webp_width_Update>;
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_width_Create = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_width_Delete = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_width_Read = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_sizes_thumbnail_webp_width_Update = {
+    __typename?: 'WebImagesDocAccessFields_sizes_thumbnail_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_thumbnailURL = {
+    __typename?: 'WebImagesDocAccessFields_thumbnailURL';
+    create?: Maybe<WebImagesDocAccessFields_thumbnailURL_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_thumbnailURL_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_thumbnailURL_Read>;
+    update?: Maybe<WebImagesDocAccessFields_thumbnailURL_Update>;
+};
+
+export type WebImagesDocAccessFields_thumbnailURL_Create = {
+    __typename?: 'WebImagesDocAccessFields_thumbnailURL_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_thumbnailURL_Delete = {
+    __typename?: 'WebImagesDocAccessFields_thumbnailURL_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_thumbnailURL_Read = {
+    __typename?: 'WebImagesDocAccessFields_thumbnailURL_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_thumbnailURL_Update = {
+    __typename?: 'WebImagesDocAccessFields_thumbnailURL_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_updatedAt = {
+    __typename?: 'WebImagesDocAccessFields_updatedAt';
+    create?: Maybe<WebImagesDocAccessFields_updatedAt_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_updatedAt_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_updatedAt_Read>;
+    update?: Maybe<WebImagesDocAccessFields_updatedAt_Update>;
+};
+
+export type WebImagesDocAccessFields_updatedAt_Create = {
+    __typename?: 'WebImagesDocAccessFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_updatedAt_Delete = {
+    __typename?: 'WebImagesDocAccessFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_updatedAt_Read = {
+    __typename?: 'WebImagesDocAccessFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_updatedAt_Update = {
+    __typename?: 'WebImagesDocAccessFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_url = {
+    __typename?: 'WebImagesDocAccessFields_url';
+    create?: Maybe<WebImagesDocAccessFields_url_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_url_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_url_Read>;
+    update?: Maybe<WebImagesDocAccessFields_url_Update>;
+};
+
+export type WebImagesDocAccessFields_url_Create = {
+    __typename?: 'WebImagesDocAccessFields_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_url_Delete = {
+    __typename?: 'WebImagesDocAccessFields_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_url_Read = {
+    __typename?: 'WebImagesDocAccessFields_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_url_Update = {
+    __typename?: 'WebImagesDocAccessFields_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_width = {
+    __typename?: 'WebImagesDocAccessFields_width';
+    create?: Maybe<WebImagesDocAccessFields_width_Create>;
+    delete?: Maybe<WebImagesDocAccessFields_width_Delete>;
+    read?: Maybe<WebImagesDocAccessFields_width_Read>;
+    update?: Maybe<WebImagesDocAccessFields_width_Update>;
+};
+
+export type WebImagesDocAccessFields_width_Create = {
+    __typename?: 'WebImagesDocAccessFields_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_width_Delete = {
+    __typename?: 'WebImagesDocAccessFields_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_width_Read = {
+    __typename?: 'WebImagesDocAccessFields_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesDocAccessFields_width_Update = {
+    __typename?: 'WebImagesDocAccessFields_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields = {
+    __typename?: 'WebImagesFields';
+    alt?: Maybe<WebImagesFields_alt>;
+    category?: Maybe<WebImagesFields_category>;
+    createdAt?: Maybe<WebImagesFields_createdAt>;
+    filename?: Maybe<WebImagesFields_filename>;
+    filesize?: Maybe<WebImagesFields_filesize>;
+    focalX?: Maybe<WebImagesFields_focalX>;
+    focalY?: Maybe<WebImagesFields_focalY>;
+    height?: Maybe<WebImagesFields_height>;
+    mimeType?: Maybe<WebImagesFields_mimeType>;
+    sizes?: Maybe<WebImagesFields_sizes>;
+    thumbnailURL?: Maybe<WebImagesFields_thumbnailURL>;
+    updatedAt?: Maybe<WebImagesFields_updatedAt>;
+    url?: Maybe<WebImagesFields_url>;
+    width?: Maybe<WebImagesFields_width>;
+};
+
+export type WebImagesFields_alt = {
+    __typename?: 'WebImagesFields_alt';
+    create?: Maybe<WebImagesFields_alt_Create>;
+    delete?: Maybe<WebImagesFields_alt_Delete>;
+    read?: Maybe<WebImagesFields_alt_Read>;
+    update?: Maybe<WebImagesFields_alt_Update>;
+};
+
+export type WebImagesFields_alt_Create = {
+    __typename?: 'WebImagesFields_alt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_alt_Delete = {
+    __typename?: 'WebImagesFields_alt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_alt_Read = {
+    __typename?: 'WebImagesFields_alt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_alt_Update = {
+    __typename?: 'WebImagesFields_alt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_category = {
+    __typename?: 'WebImagesFields_category';
+    create?: Maybe<WebImagesFields_category_Create>;
+    delete?: Maybe<WebImagesFields_category_Delete>;
+    read?: Maybe<WebImagesFields_category_Read>;
+    update?: Maybe<WebImagesFields_category_Update>;
+};
+
+export type WebImagesFields_category_Create = {
+    __typename?: 'WebImagesFields_category_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_category_Delete = {
+    __typename?: 'WebImagesFields_category_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_category_Read = {
+    __typename?: 'WebImagesFields_category_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_category_Update = {
+    __typename?: 'WebImagesFields_category_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_createdAt = {
+    __typename?: 'WebImagesFields_createdAt';
+    create?: Maybe<WebImagesFields_createdAt_Create>;
+    delete?: Maybe<WebImagesFields_createdAt_Delete>;
+    read?: Maybe<WebImagesFields_createdAt_Read>;
+    update?: Maybe<WebImagesFields_createdAt_Update>;
+};
+
+export type WebImagesFields_createdAt_Create = {
+    __typename?: 'WebImagesFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_createdAt_Delete = {
+    __typename?: 'WebImagesFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_createdAt_Read = {
+    __typename?: 'WebImagesFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_createdAt_Update = {
+    __typename?: 'WebImagesFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_filename = {
+    __typename?: 'WebImagesFields_filename';
+    create?: Maybe<WebImagesFields_filename_Create>;
+    delete?: Maybe<WebImagesFields_filename_Delete>;
+    read?: Maybe<WebImagesFields_filename_Read>;
+    update?: Maybe<WebImagesFields_filename_Update>;
+};
+
+export type WebImagesFields_filename_Create = {
+    __typename?: 'WebImagesFields_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_filename_Delete = {
+    __typename?: 'WebImagesFields_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_filename_Read = {
+    __typename?: 'WebImagesFields_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_filename_Update = {
+    __typename?: 'WebImagesFields_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_filesize = {
+    __typename?: 'WebImagesFields_filesize';
+    create?: Maybe<WebImagesFields_filesize_Create>;
+    delete?: Maybe<WebImagesFields_filesize_Delete>;
+    read?: Maybe<WebImagesFields_filesize_Read>;
+    update?: Maybe<WebImagesFields_filesize_Update>;
+};
+
+export type WebImagesFields_filesize_Create = {
+    __typename?: 'WebImagesFields_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_filesize_Delete = {
+    __typename?: 'WebImagesFields_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_filesize_Read = {
+    __typename?: 'WebImagesFields_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_filesize_Update = {
+    __typename?: 'WebImagesFields_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_focalX = {
+    __typename?: 'WebImagesFields_focalX';
+    create?: Maybe<WebImagesFields_focalX_Create>;
+    delete?: Maybe<WebImagesFields_focalX_Delete>;
+    read?: Maybe<WebImagesFields_focalX_Read>;
+    update?: Maybe<WebImagesFields_focalX_Update>;
+};
+
+export type WebImagesFields_focalX_Create = {
+    __typename?: 'WebImagesFields_focalX_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_focalX_Delete = {
+    __typename?: 'WebImagesFields_focalX_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_focalX_Read = {
+    __typename?: 'WebImagesFields_focalX_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_focalX_Update = {
+    __typename?: 'WebImagesFields_focalX_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_focalY = {
+    __typename?: 'WebImagesFields_focalY';
+    create?: Maybe<WebImagesFields_focalY_Create>;
+    delete?: Maybe<WebImagesFields_focalY_Delete>;
+    read?: Maybe<WebImagesFields_focalY_Read>;
+    update?: Maybe<WebImagesFields_focalY_Update>;
+};
+
+export type WebImagesFields_focalY_Create = {
+    __typename?: 'WebImagesFields_focalY_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_focalY_Delete = {
+    __typename?: 'WebImagesFields_focalY_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_focalY_Read = {
+    __typename?: 'WebImagesFields_focalY_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_focalY_Update = {
+    __typename?: 'WebImagesFields_focalY_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_height = {
+    __typename?: 'WebImagesFields_height';
+    create?: Maybe<WebImagesFields_height_Create>;
+    delete?: Maybe<WebImagesFields_height_Delete>;
+    read?: Maybe<WebImagesFields_height_Read>;
+    update?: Maybe<WebImagesFields_height_Update>;
+};
+
+export type WebImagesFields_height_Create = {
+    __typename?: 'WebImagesFields_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_height_Delete = {
+    __typename?: 'WebImagesFields_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_height_Read = {
+    __typename?: 'WebImagesFields_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_height_Update = {
+    __typename?: 'WebImagesFields_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_mimeType = {
+    __typename?: 'WebImagesFields_mimeType';
+    create?: Maybe<WebImagesFields_mimeType_Create>;
+    delete?: Maybe<WebImagesFields_mimeType_Delete>;
+    read?: Maybe<WebImagesFields_mimeType_Read>;
+    update?: Maybe<WebImagesFields_mimeType_Update>;
+};
+
+export type WebImagesFields_mimeType_Create = {
+    __typename?: 'WebImagesFields_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_mimeType_Delete = {
+    __typename?: 'WebImagesFields_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_mimeType_Read = {
+    __typename?: 'WebImagesFields_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_mimeType_Update = {
+    __typename?: 'WebImagesFields_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes = {
+    __typename?: 'WebImagesFields_sizes';
+    create?: Maybe<WebImagesFields_sizes_Create>;
+    delete?: Maybe<WebImagesFields_sizes_Delete>;
+    fields?: Maybe<WebImagesFields_sizes_Fields>;
+    read?: Maybe<WebImagesFields_sizes_Read>;
+    update?: Maybe<WebImagesFields_sizes_Update>;
+};
+
+export type WebImagesFields_sizes_Create = {
+    __typename?: 'WebImagesFields_sizes_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_Delete = {
+    __typename?: 'WebImagesFields_sizes_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_Fields = {
+    __typename?: 'WebImagesFields_sizes_Fields';
+    desktop_avif?: Maybe<WebImagesFields_sizes_desktop_avif>;
+    desktop_jpeg?: Maybe<WebImagesFields_sizes_desktop_jpeg>;
+    desktop_webp?: Maybe<WebImagesFields_sizes_desktop_webp>;
+    mobile_avif?: Maybe<WebImagesFields_sizes_mobile_avif>;
+    mobile_jpeg?: Maybe<WebImagesFields_sizes_mobile_jpeg>;
+    mobile_webp?: Maybe<WebImagesFields_sizes_mobile_webp>;
+    tablet_avif?: Maybe<WebImagesFields_sizes_tablet_avif>;
+    tablet_jpeg?: Maybe<WebImagesFields_sizes_tablet_jpeg>;
+    tablet_webp?: Maybe<WebImagesFields_sizes_tablet_webp>;
+    thumbnail_avif?: Maybe<WebImagesFields_sizes_thumbnail_avif>;
+    thumbnail_jpeg?: Maybe<WebImagesFields_sizes_thumbnail_jpeg>;
+    thumbnail_webp?: Maybe<WebImagesFields_sizes_thumbnail_webp>;
+};
+
+export type WebImagesFields_sizes_Read = {
+    __typename?: 'WebImagesFields_sizes_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_Update = {
+    __typename?: 'WebImagesFields_sizes_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif';
+    create?: Maybe<WebImagesFields_sizes_desktop_avif_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_avif_Delete>;
+    fields?: Maybe<WebImagesFields_sizes_desktop_avif_Fields>;
+    read?: Maybe<WebImagesFields_sizes_desktop_avif_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_avif_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_avif_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_Fields = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_Fields';
+    filename?: Maybe<WebImagesFields_sizes_desktop_avif_filename>;
+    filesize?: Maybe<WebImagesFields_sizes_desktop_avif_filesize>;
+    height?: Maybe<WebImagesFields_sizes_desktop_avif_height>;
+    mimeType?: Maybe<WebImagesFields_sizes_desktop_avif_mimeType>;
+    url?: Maybe<WebImagesFields_sizes_desktop_avif_url>;
+    width?: Maybe<WebImagesFields_sizes_desktop_avif_width>;
+};
+
+export type WebImagesFields_sizes_desktop_avif_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_filename = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_filename';
+    create?: Maybe<WebImagesFields_sizes_desktop_avif_filename_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_avif_filename_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_avif_filename_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_avif_filename_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_avif_filename_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_filename_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_filename_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_filename_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_filesize = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_filesize';
+    create?: Maybe<WebImagesFields_sizes_desktop_avif_filesize_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_avif_filesize_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_avif_filesize_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_avif_filesize_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_avif_filesize_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_filesize_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_filesize_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_filesize_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_height = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_height';
+    create?: Maybe<WebImagesFields_sizes_desktop_avif_height_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_avif_height_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_avif_height_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_avif_height_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_avif_height_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_height_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_height_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_height_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_mimeType = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_mimeType';
+    create?: Maybe<WebImagesFields_sizes_desktop_avif_mimeType_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_avif_mimeType_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_avif_mimeType_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_avif_mimeType_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_avif_mimeType_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_mimeType_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_mimeType_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_mimeType_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_url = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_url';
+    create?: Maybe<WebImagesFields_sizes_desktop_avif_url_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_avif_url_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_avif_url_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_avif_url_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_avif_url_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_url_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_url_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_url_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_width = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_width';
+    create?: Maybe<WebImagesFields_sizes_desktop_avif_width_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_avif_width_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_avif_width_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_avif_width_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_avif_width_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_width_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_width_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_avif_width_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg';
+    create?: Maybe<WebImagesFields_sizes_desktop_jpeg_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_jpeg_Delete>;
+    fields?: Maybe<WebImagesFields_sizes_desktop_jpeg_Fields>;
+    read?: Maybe<WebImagesFields_sizes_desktop_jpeg_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_jpeg_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_Fields = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_Fields';
+    filename?: Maybe<WebImagesFields_sizes_desktop_jpeg_filename>;
+    filesize?: Maybe<WebImagesFields_sizes_desktop_jpeg_filesize>;
+    height?: Maybe<WebImagesFields_sizes_desktop_jpeg_height>;
+    mimeType?: Maybe<WebImagesFields_sizes_desktop_jpeg_mimeType>;
+    url?: Maybe<WebImagesFields_sizes_desktop_jpeg_url>;
+    width?: Maybe<WebImagesFields_sizes_desktop_jpeg_width>;
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_filename = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_filename';
+    create?: Maybe<WebImagesFields_sizes_desktop_jpeg_filename_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_jpeg_filename_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_jpeg_filename_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_jpeg_filename_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_filename_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_filename_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_filename_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_filename_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_filesize = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_filesize';
+    create?: Maybe<WebImagesFields_sizes_desktop_jpeg_filesize_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_jpeg_filesize_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_jpeg_filesize_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_jpeg_filesize_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_filesize_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_filesize_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_filesize_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_filesize_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_height = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_height';
+    create?: Maybe<WebImagesFields_sizes_desktop_jpeg_height_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_jpeg_height_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_jpeg_height_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_jpeg_height_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_height_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_height_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_height_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_height_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_mimeType = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_mimeType';
+    create?: Maybe<WebImagesFields_sizes_desktop_jpeg_mimeType_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_jpeg_mimeType_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_jpeg_mimeType_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_jpeg_mimeType_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_mimeType_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_mimeType_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_mimeType_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_mimeType_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_url = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_url';
+    create?: Maybe<WebImagesFields_sizes_desktop_jpeg_url_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_jpeg_url_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_jpeg_url_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_jpeg_url_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_url_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_url_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_url_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_url_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_width = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_width';
+    create?: Maybe<WebImagesFields_sizes_desktop_jpeg_width_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_jpeg_width_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_jpeg_width_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_jpeg_width_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_width_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_width_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_width_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_jpeg_width_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp';
+    create?: Maybe<WebImagesFields_sizes_desktop_webp_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_webp_Delete>;
+    fields?: Maybe<WebImagesFields_sizes_desktop_webp_Fields>;
+    read?: Maybe<WebImagesFields_sizes_desktop_webp_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_webp_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_webp_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_Fields = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_Fields';
+    filename?: Maybe<WebImagesFields_sizes_desktop_webp_filename>;
+    filesize?: Maybe<WebImagesFields_sizes_desktop_webp_filesize>;
+    height?: Maybe<WebImagesFields_sizes_desktop_webp_height>;
+    mimeType?: Maybe<WebImagesFields_sizes_desktop_webp_mimeType>;
+    url?: Maybe<WebImagesFields_sizes_desktop_webp_url>;
+    width?: Maybe<WebImagesFields_sizes_desktop_webp_width>;
+};
+
+export type WebImagesFields_sizes_desktop_webp_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_filename = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_filename';
+    create?: Maybe<WebImagesFields_sizes_desktop_webp_filename_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_webp_filename_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_webp_filename_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_webp_filename_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_webp_filename_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_filename_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_filename_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_filename_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_filesize = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_filesize';
+    create?: Maybe<WebImagesFields_sizes_desktop_webp_filesize_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_webp_filesize_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_webp_filesize_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_webp_filesize_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_webp_filesize_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_filesize_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_filesize_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_filesize_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_height = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_height';
+    create?: Maybe<WebImagesFields_sizes_desktop_webp_height_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_webp_height_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_webp_height_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_webp_height_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_webp_height_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_height_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_height_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_height_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_mimeType = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_mimeType';
+    create?: Maybe<WebImagesFields_sizes_desktop_webp_mimeType_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_webp_mimeType_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_webp_mimeType_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_webp_mimeType_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_webp_mimeType_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_mimeType_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_mimeType_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_mimeType_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_url = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_url';
+    create?: Maybe<WebImagesFields_sizes_desktop_webp_url_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_webp_url_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_webp_url_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_webp_url_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_webp_url_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_url_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_url_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_url_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_width = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_width';
+    create?: Maybe<WebImagesFields_sizes_desktop_webp_width_Create>;
+    delete?: Maybe<WebImagesFields_sizes_desktop_webp_width_Delete>;
+    read?: Maybe<WebImagesFields_sizes_desktop_webp_width_Read>;
+    update?: Maybe<WebImagesFields_sizes_desktop_webp_width_Update>;
+};
+
+export type WebImagesFields_sizes_desktop_webp_width_Create = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_width_Delete = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_width_Read = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_desktop_webp_width_Update = {
+    __typename?: 'WebImagesFields_sizes_desktop_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif';
+    create?: Maybe<WebImagesFields_sizes_mobile_avif_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_avif_Delete>;
+    fields?: Maybe<WebImagesFields_sizes_mobile_avif_Fields>;
+    read?: Maybe<WebImagesFields_sizes_mobile_avif_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_avif_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_avif_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_Fields = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_Fields';
+    filename?: Maybe<WebImagesFields_sizes_mobile_avif_filename>;
+    filesize?: Maybe<WebImagesFields_sizes_mobile_avif_filesize>;
+    height?: Maybe<WebImagesFields_sizes_mobile_avif_height>;
+    mimeType?: Maybe<WebImagesFields_sizes_mobile_avif_mimeType>;
+    url?: Maybe<WebImagesFields_sizes_mobile_avif_url>;
+    width?: Maybe<WebImagesFields_sizes_mobile_avif_width>;
+};
+
+export type WebImagesFields_sizes_mobile_avif_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_filename = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_filename';
+    create?: Maybe<WebImagesFields_sizes_mobile_avif_filename_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_avif_filename_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_avif_filename_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_avif_filename_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_avif_filename_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_filename_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_filename_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_filename_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_filesize = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_filesize';
+    create?: Maybe<WebImagesFields_sizes_mobile_avif_filesize_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_avif_filesize_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_avif_filesize_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_avif_filesize_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_avif_filesize_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_filesize_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_filesize_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_filesize_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_height = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_height';
+    create?: Maybe<WebImagesFields_sizes_mobile_avif_height_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_avif_height_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_avif_height_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_avif_height_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_avif_height_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_height_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_height_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_height_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_mimeType = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_mimeType';
+    create?: Maybe<WebImagesFields_sizes_mobile_avif_mimeType_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_avif_mimeType_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_avif_mimeType_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_avif_mimeType_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_avif_mimeType_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_mimeType_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_mimeType_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_mimeType_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_url = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_url';
+    create?: Maybe<WebImagesFields_sizes_mobile_avif_url_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_avif_url_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_avif_url_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_avif_url_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_avif_url_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_url_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_url_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_url_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_width = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_width';
+    create?: Maybe<WebImagesFields_sizes_mobile_avif_width_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_avif_width_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_avif_width_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_avif_width_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_avif_width_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_width_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_width_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_avif_width_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg';
+    create?: Maybe<WebImagesFields_sizes_mobile_jpeg_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_jpeg_Delete>;
+    fields?: Maybe<WebImagesFields_sizes_mobile_jpeg_Fields>;
+    read?: Maybe<WebImagesFields_sizes_mobile_jpeg_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_jpeg_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_Fields = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_Fields';
+    filename?: Maybe<WebImagesFields_sizes_mobile_jpeg_filename>;
+    filesize?: Maybe<WebImagesFields_sizes_mobile_jpeg_filesize>;
+    height?: Maybe<WebImagesFields_sizes_mobile_jpeg_height>;
+    mimeType?: Maybe<WebImagesFields_sizes_mobile_jpeg_mimeType>;
+    url?: Maybe<WebImagesFields_sizes_mobile_jpeg_url>;
+    width?: Maybe<WebImagesFields_sizes_mobile_jpeg_width>;
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_filename = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_filename';
+    create?: Maybe<WebImagesFields_sizes_mobile_jpeg_filename_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_jpeg_filename_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_jpeg_filename_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_jpeg_filename_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_filename_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_filename_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_filename_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_filename_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_filesize = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_filesize';
+    create?: Maybe<WebImagesFields_sizes_mobile_jpeg_filesize_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_jpeg_filesize_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_jpeg_filesize_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_jpeg_filesize_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_filesize_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_filesize_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_filesize_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_filesize_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_height = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_height';
+    create?: Maybe<WebImagesFields_sizes_mobile_jpeg_height_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_jpeg_height_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_jpeg_height_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_jpeg_height_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_height_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_height_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_height_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_height_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_mimeType = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_mimeType';
+    create?: Maybe<WebImagesFields_sizes_mobile_jpeg_mimeType_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_jpeg_mimeType_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_jpeg_mimeType_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_jpeg_mimeType_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_mimeType_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_mimeType_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_mimeType_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_mimeType_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_url = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_url';
+    create?: Maybe<WebImagesFields_sizes_mobile_jpeg_url_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_jpeg_url_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_jpeg_url_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_jpeg_url_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_url_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_url_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_url_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_url_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_width = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_width';
+    create?: Maybe<WebImagesFields_sizes_mobile_jpeg_width_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_jpeg_width_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_jpeg_width_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_jpeg_width_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_width_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_width_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_width_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_jpeg_width_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp';
+    create?: Maybe<WebImagesFields_sizes_mobile_webp_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_webp_Delete>;
+    fields?: Maybe<WebImagesFields_sizes_mobile_webp_Fields>;
+    read?: Maybe<WebImagesFields_sizes_mobile_webp_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_webp_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_webp_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_Fields = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_Fields';
+    filename?: Maybe<WebImagesFields_sizes_mobile_webp_filename>;
+    filesize?: Maybe<WebImagesFields_sizes_mobile_webp_filesize>;
+    height?: Maybe<WebImagesFields_sizes_mobile_webp_height>;
+    mimeType?: Maybe<WebImagesFields_sizes_mobile_webp_mimeType>;
+    url?: Maybe<WebImagesFields_sizes_mobile_webp_url>;
+    width?: Maybe<WebImagesFields_sizes_mobile_webp_width>;
+};
+
+export type WebImagesFields_sizes_mobile_webp_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_filename = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_filename';
+    create?: Maybe<WebImagesFields_sizes_mobile_webp_filename_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_webp_filename_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_webp_filename_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_webp_filename_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_webp_filename_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_filename_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_filename_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_filename_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_filesize = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_filesize';
+    create?: Maybe<WebImagesFields_sizes_mobile_webp_filesize_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_webp_filesize_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_webp_filesize_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_webp_filesize_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_webp_filesize_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_filesize_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_filesize_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_filesize_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_height = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_height';
+    create?: Maybe<WebImagesFields_sizes_mobile_webp_height_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_webp_height_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_webp_height_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_webp_height_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_webp_height_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_height_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_height_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_height_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_mimeType = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_mimeType';
+    create?: Maybe<WebImagesFields_sizes_mobile_webp_mimeType_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_webp_mimeType_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_webp_mimeType_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_webp_mimeType_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_webp_mimeType_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_mimeType_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_mimeType_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_mimeType_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_url = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_url';
+    create?: Maybe<WebImagesFields_sizes_mobile_webp_url_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_webp_url_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_webp_url_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_webp_url_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_webp_url_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_url_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_url_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_url_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_width = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_width';
+    create?: Maybe<WebImagesFields_sizes_mobile_webp_width_Create>;
+    delete?: Maybe<WebImagesFields_sizes_mobile_webp_width_Delete>;
+    read?: Maybe<WebImagesFields_sizes_mobile_webp_width_Read>;
+    update?: Maybe<WebImagesFields_sizes_mobile_webp_width_Update>;
+};
+
+export type WebImagesFields_sizes_mobile_webp_width_Create = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_width_Delete = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_width_Read = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_mobile_webp_width_Update = {
+    __typename?: 'WebImagesFields_sizes_mobile_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif';
+    create?: Maybe<WebImagesFields_sizes_tablet_avif_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_avif_Delete>;
+    fields?: Maybe<WebImagesFields_sizes_tablet_avif_Fields>;
+    read?: Maybe<WebImagesFields_sizes_tablet_avif_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_avif_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_avif_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_Fields = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_Fields';
+    filename?: Maybe<WebImagesFields_sizes_tablet_avif_filename>;
+    filesize?: Maybe<WebImagesFields_sizes_tablet_avif_filesize>;
+    height?: Maybe<WebImagesFields_sizes_tablet_avif_height>;
+    mimeType?: Maybe<WebImagesFields_sizes_tablet_avif_mimeType>;
+    url?: Maybe<WebImagesFields_sizes_tablet_avif_url>;
+    width?: Maybe<WebImagesFields_sizes_tablet_avif_width>;
+};
+
+export type WebImagesFields_sizes_tablet_avif_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_filename = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_filename';
+    create?: Maybe<WebImagesFields_sizes_tablet_avif_filename_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_avif_filename_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_avif_filename_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_avif_filename_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_avif_filename_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_filename_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_filename_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_filename_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_filesize = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_filesize';
+    create?: Maybe<WebImagesFields_sizes_tablet_avif_filesize_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_avif_filesize_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_avif_filesize_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_avif_filesize_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_avif_filesize_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_filesize_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_filesize_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_filesize_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_height = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_height';
+    create?: Maybe<WebImagesFields_sizes_tablet_avif_height_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_avif_height_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_avif_height_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_avif_height_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_avif_height_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_height_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_height_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_height_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_mimeType = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_mimeType';
+    create?: Maybe<WebImagesFields_sizes_tablet_avif_mimeType_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_avif_mimeType_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_avif_mimeType_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_avif_mimeType_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_avif_mimeType_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_mimeType_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_mimeType_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_mimeType_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_url = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_url';
+    create?: Maybe<WebImagesFields_sizes_tablet_avif_url_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_avif_url_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_avif_url_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_avif_url_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_avif_url_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_url_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_url_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_url_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_width = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_width';
+    create?: Maybe<WebImagesFields_sizes_tablet_avif_width_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_avif_width_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_avif_width_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_avif_width_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_avif_width_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_width_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_width_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_avif_width_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg';
+    create?: Maybe<WebImagesFields_sizes_tablet_jpeg_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_jpeg_Delete>;
+    fields?: Maybe<WebImagesFields_sizes_tablet_jpeg_Fields>;
+    read?: Maybe<WebImagesFields_sizes_tablet_jpeg_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_jpeg_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_Fields = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_Fields';
+    filename?: Maybe<WebImagesFields_sizes_tablet_jpeg_filename>;
+    filesize?: Maybe<WebImagesFields_sizes_tablet_jpeg_filesize>;
+    height?: Maybe<WebImagesFields_sizes_tablet_jpeg_height>;
+    mimeType?: Maybe<WebImagesFields_sizes_tablet_jpeg_mimeType>;
+    url?: Maybe<WebImagesFields_sizes_tablet_jpeg_url>;
+    width?: Maybe<WebImagesFields_sizes_tablet_jpeg_width>;
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_filename = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_filename';
+    create?: Maybe<WebImagesFields_sizes_tablet_jpeg_filename_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_jpeg_filename_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_jpeg_filename_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_jpeg_filename_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_filename_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_filename_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_filename_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_filename_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_filesize = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_filesize';
+    create?: Maybe<WebImagesFields_sizes_tablet_jpeg_filesize_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_jpeg_filesize_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_jpeg_filesize_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_jpeg_filesize_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_filesize_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_filesize_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_filesize_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_filesize_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_height = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_height';
+    create?: Maybe<WebImagesFields_sizes_tablet_jpeg_height_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_jpeg_height_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_jpeg_height_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_jpeg_height_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_height_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_height_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_height_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_height_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_mimeType = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_mimeType';
+    create?: Maybe<WebImagesFields_sizes_tablet_jpeg_mimeType_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_jpeg_mimeType_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_jpeg_mimeType_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_jpeg_mimeType_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_mimeType_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_mimeType_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_mimeType_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_mimeType_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_url = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_url';
+    create?: Maybe<WebImagesFields_sizes_tablet_jpeg_url_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_jpeg_url_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_jpeg_url_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_jpeg_url_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_url_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_url_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_url_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_url_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_width = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_width';
+    create?: Maybe<WebImagesFields_sizes_tablet_jpeg_width_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_jpeg_width_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_jpeg_width_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_jpeg_width_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_width_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_width_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_width_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_jpeg_width_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp';
+    create?: Maybe<WebImagesFields_sizes_tablet_webp_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_webp_Delete>;
+    fields?: Maybe<WebImagesFields_sizes_tablet_webp_Fields>;
+    read?: Maybe<WebImagesFields_sizes_tablet_webp_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_webp_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_webp_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_Fields = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_Fields';
+    filename?: Maybe<WebImagesFields_sizes_tablet_webp_filename>;
+    filesize?: Maybe<WebImagesFields_sizes_tablet_webp_filesize>;
+    height?: Maybe<WebImagesFields_sizes_tablet_webp_height>;
+    mimeType?: Maybe<WebImagesFields_sizes_tablet_webp_mimeType>;
+    url?: Maybe<WebImagesFields_sizes_tablet_webp_url>;
+    width?: Maybe<WebImagesFields_sizes_tablet_webp_width>;
+};
+
+export type WebImagesFields_sizes_tablet_webp_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_filename = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_filename';
+    create?: Maybe<WebImagesFields_sizes_tablet_webp_filename_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_webp_filename_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_webp_filename_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_webp_filename_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_webp_filename_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_filename_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_filename_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_filename_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_filesize = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_filesize';
+    create?: Maybe<WebImagesFields_sizes_tablet_webp_filesize_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_webp_filesize_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_webp_filesize_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_webp_filesize_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_webp_filesize_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_filesize_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_filesize_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_filesize_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_height = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_height';
+    create?: Maybe<WebImagesFields_sizes_tablet_webp_height_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_webp_height_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_webp_height_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_webp_height_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_webp_height_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_height_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_height_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_height_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_mimeType = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_mimeType';
+    create?: Maybe<WebImagesFields_sizes_tablet_webp_mimeType_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_webp_mimeType_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_webp_mimeType_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_webp_mimeType_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_webp_mimeType_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_mimeType_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_mimeType_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_mimeType_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_url = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_url';
+    create?: Maybe<WebImagesFields_sizes_tablet_webp_url_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_webp_url_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_webp_url_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_webp_url_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_webp_url_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_url_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_url_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_url_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_width = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_width';
+    create?: Maybe<WebImagesFields_sizes_tablet_webp_width_Create>;
+    delete?: Maybe<WebImagesFields_sizes_tablet_webp_width_Delete>;
+    read?: Maybe<WebImagesFields_sizes_tablet_webp_width_Read>;
+    update?: Maybe<WebImagesFields_sizes_tablet_webp_width_Update>;
+};
+
+export type WebImagesFields_sizes_tablet_webp_width_Create = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_width_Delete = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_width_Read = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_tablet_webp_width_Update = {
+    __typename?: 'WebImagesFields_sizes_tablet_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_avif_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_avif_Delete>;
+    fields?: Maybe<WebImagesFields_sizes_thumbnail_avif_Fields>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_avif_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_avif_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_Fields = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_Fields';
+    filename?: Maybe<WebImagesFields_sizes_thumbnail_avif_filename>;
+    filesize?: Maybe<WebImagesFields_sizes_thumbnail_avif_filesize>;
+    height?: Maybe<WebImagesFields_sizes_thumbnail_avif_height>;
+    mimeType?: Maybe<WebImagesFields_sizes_thumbnail_avif_mimeType>;
+    url?: Maybe<WebImagesFields_sizes_thumbnail_avif_url>;
+    width?: Maybe<WebImagesFields_sizes_thumbnail_avif_width>;
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_filename = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_filename';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_avif_filename_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_avif_filename_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_avif_filename_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_avif_filename_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_filename_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_filename_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_filename_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_filename_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_filesize = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_filesize';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_avif_filesize_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_avif_filesize_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_avif_filesize_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_avif_filesize_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_filesize_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_filesize_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_filesize_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_filesize_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_height = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_height';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_avif_height_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_avif_height_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_avif_height_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_avif_height_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_height_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_height_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_height_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_height_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_mimeType = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_mimeType';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_avif_mimeType_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_avif_mimeType_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_avif_mimeType_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_avif_mimeType_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_mimeType_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_mimeType_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_mimeType_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_mimeType_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_url = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_url';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_avif_url_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_avif_url_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_avif_url_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_avif_url_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_url_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_url_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_url_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_url_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_width = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_width';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_avif_width_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_avif_width_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_avif_width_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_avif_width_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_width_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_width_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_width_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_avif_width_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_Delete>;
+    fields?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_Fields>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_Fields = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_Fields';
+    filename?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_filename>;
+    filesize?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_filesize>;
+    height?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_height>;
+    mimeType?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_mimeType>;
+    url?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_url>;
+    width?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_width>;
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_filename = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_filename';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_filename_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_filename_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_filename_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_filename_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_filename_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_filename_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_filename_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_filename_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_filesize = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_filesize';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_filesize_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_filesize_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_filesize_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_filesize_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_filesize_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_filesize_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_filesize_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_filesize_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_height = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_height';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_height_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_height_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_height_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_height_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_height_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_height_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_height_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_height_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_mimeType = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_mimeType';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_mimeType_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_mimeType_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_mimeType_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_mimeType_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_mimeType_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_mimeType_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_mimeType_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_mimeType_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_url = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_url';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_url_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_url_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_url_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_url_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_url_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_url_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_url_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_url_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_width = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_width';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_width_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_width_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_width_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_jpeg_width_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_width_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_width_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_width_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_jpeg_width_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_webp_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_webp_Delete>;
+    fields?: Maybe<WebImagesFields_sizes_thumbnail_webp_Fields>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_webp_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_webp_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_Fields = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_Fields';
+    filename?: Maybe<WebImagesFields_sizes_thumbnail_webp_filename>;
+    filesize?: Maybe<WebImagesFields_sizes_thumbnail_webp_filesize>;
+    height?: Maybe<WebImagesFields_sizes_thumbnail_webp_height>;
+    mimeType?: Maybe<WebImagesFields_sizes_thumbnail_webp_mimeType>;
+    url?: Maybe<WebImagesFields_sizes_thumbnail_webp_url>;
+    width?: Maybe<WebImagesFields_sizes_thumbnail_webp_width>;
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_filename = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_filename';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_webp_filename_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_webp_filename_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_webp_filename_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_webp_filename_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_filename_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_filename_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_filename_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_filename_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_filesize = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_filesize';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_webp_filesize_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_webp_filesize_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_webp_filesize_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_webp_filesize_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_filesize_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_filesize_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_filesize_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_filesize_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_height = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_height';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_webp_height_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_webp_height_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_webp_height_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_webp_height_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_height_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_height_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_height_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_height_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_mimeType = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_mimeType';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_webp_mimeType_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_webp_mimeType_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_webp_mimeType_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_webp_mimeType_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_mimeType_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_mimeType_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_mimeType_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_mimeType_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_url = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_url';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_webp_url_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_webp_url_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_webp_url_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_webp_url_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_url_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_url_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_url_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_url_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_width = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_width';
+    create?: Maybe<WebImagesFields_sizes_thumbnail_webp_width_Create>;
+    delete?: Maybe<WebImagesFields_sizes_thumbnail_webp_width_Delete>;
+    read?: Maybe<WebImagesFields_sizes_thumbnail_webp_width_Read>;
+    update?: Maybe<WebImagesFields_sizes_thumbnail_webp_width_Update>;
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_width_Create = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_width_Delete = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_width_Read = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_sizes_thumbnail_webp_width_Update = {
+    __typename?: 'WebImagesFields_sizes_thumbnail_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_thumbnailURL = {
+    __typename?: 'WebImagesFields_thumbnailURL';
+    create?: Maybe<WebImagesFields_thumbnailURL_Create>;
+    delete?: Maybe<WebImagesFields_thumbnailURL_Delete>;
+    read?: Maybe<WebImagesFields_thumbnailURL_Read>;
+    update?: Maybe<WebImagesFields_thumbnailURL_Update>;
+};
+
+export type WebImagesFields_thumbnailURL_Create = {
+    __typename?: 'WebImagesFields_thumbnailURL_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_thumbnailURL_Delete = {
+    __typename?: 'WebImagesFields_thumbnailURL_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_thumbnailURL_Read = {
+    __typename?: 'WebImagesFields_thumbnailURL_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_thumbnailURL_Update = {
+    __typename?: 'WebImagesFields_thumbnailURL_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_updatedAt = {
+    __typename?: 'WebImagesFields_updatedAt';
+    create?: Maybe<WebImagesFields_updatedAt_Create>;
+    delete?: Maybe<WebImagesFields_updatedAt_Delete>;
+    read?: Maybe<WebImagesFields_updatedAt_Read>;
+    update?: Maybe<WebImagesFields_updatedAt_Update>;
+};
+
+export type WebImagesFields_updatedAt_Create = {
+    __typename?: 'WebImagesFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_updatedAt_Delete = {
+    __typename?: 'WebImagesFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_updatedAt_Read = {
+    __typename?: 'WebImagesFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_updatedAt_Update = {
+    __typename?: 'WebImagesFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_url = {
+    __typename?: 'WebImagesFields_url';
+    create?: Maybe<WebImagesFields_url_Create>;
+    delete?: Maybe<WebImagesFields_url_Delete>;
+    read?: Maybe<WebImagesFields_url_Read>;
+    update?: Maybe<WebImagesFields_url_Update>;
+};
+
+export type WebImagesFields_url_Create = {
+    __typename?: 'WebImagesFields_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_url_Delete = {
+    __typename?: 'WebImagesFields_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_url_Read = {
+    __typename?: 'WebImagesFields_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_url_Update = {
+    __typename?: 'WebImagesFields_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_width = {
+    __typename?: 'WebImagesFields_width';
+    create?: Maybe<WebImagesFields_width_Create>;
+    delete?: Maybe<WebImagesFields_width_Delete>;
+    read?: Maybe<WebImagesFields_width_Read>;
+    update?: Maybe<WebImagesFields_width_Update>;
+};
+
+export type WebImagesFields_width_Create = {
+    __typename?: 'WebImagesFields_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_width_Delete = {
+    __typename?: 'WebImagesFields_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_width_Read = {
+    __typename?: 'WebImagesFields_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesFields_width_Update = {
+    __typename?: 'WebImagesFields_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebImagesReadAccess = {
+    __typename?: 'WebImagesReadAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebImagesReadDocAccess = {
+    __typename?: 'WebImagesReadDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebImagesUpdateAccess = {
+    __typename?: 'WebImagesUpdateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type WebImagesUpdateDocAccess = {
+    __typename?: 'WebImagesUpdateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
 
 export type WebInfos = {
     __typename?: 'WebInfos';
@@ -20353,980 +34261,6 @@ export type WebInfos_Settings_Spacing_paddingTop =
 
 export type WebInfos_Settings_style = 'dark' | 'gray' | 'light' | '%future added value';
 
-export type WebMedia = {
-    __typename?: 'WebMedia';
-    alt: Scalars['String']['output'];
-    createdAt?: Maybe<Scalars['DateTime']['output']>;
-    filename?: Maybe<Scalars['String']['output']>;
-    filesize?: Maybe<Scalars['Float']['output']>;
-    focalX?: Maybe<Scalars['Float']['output']>;
-    focalY?: Maybe<Scalars['Float']['output']>;
-    height?: Maybe<Scalars['Float']['output']>;
-    id: Scalars['Int']['output'];
-    mimeType?: Maybe<Scalars['String']['output']>;
-    thumbnailURL?: Maybe<Scalars['String']['output']>;
-    updatedAt?: Maybe<Scalars['DateTime']['output']>;
-    url?: Maybe<Scalars['String']['output']>;
-    width?: Maybe<Scalars['Float']['output']>;
-};
-
-export type WebMediaCreateAccess = {
-    __typename?: 'WebMediaCreateAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type WebMediaCreateDocAccess = {
-    __typename?: 'WebMediaCreateDocAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type WebMediaDeleteAccess = {
-    __typename?: 'WebMediaDeleteAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type WebMediaDeleteDocAccess = {
-    __typename?: 'WebMediaDeleteDocAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type WebMediaDocAccessFields = {
-    __typename?: 'WebMediaDocAccessFields';
-    alt?: Maybe<WebMediaDocAccessFields_alt>;
-    createdAt?: Maybe<WebMediaDocAccessFields_createdAt>;
-    filename?: Maybe<WebMediaDocAccessFields_filename>;
-    filesize?: Maybe<WebMediaDocAccessFields_filesize>;
-    focalX?: Maybe<WebMediaDocAccessFields_focalX>;
-    focalY?: Maybe<WebMediaDocAccessFields_focalY>;
-    height?: Maybe<WebMediaDocAccessFields_height>;
-    mimeType?: Maybe<WebMediaDocAccessFields_mimeType>;
-    thumbnailURL?: Maybe<WebMediaDocAccessFields_thumbnailURL>;
-    updatedAt?: Maybe<WebMediaDocAccessFields_updatedAt>;
-    url?: Maybe<WebMediaDocAccessFields_url>;
-    width?: Maybe<WebMediaDocAccessFields_width>;
-};
-
-export type WebMediaDocAccessFields_alt = {
-    __typename?: 'WebMediaDocAccessFields_alt';
-    create?: Maybe<WebMediaDocAccessFields_alt_Create>;
-    delete?: Maybe<WebMediaDocAccessFields_alt_Delete>;
-    read?: Maybe<WebMediaDocAccessFields_alt_Read>;
-    update?: Maybe<WebMediaDocAccessFields_alt_Update>;
-};
-
-export type WebMediaDocAccessFields_alt_Create = {
-    __typename?: 'WebMediaDocAccessFields_alt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_alt_Delete = {
-    __typename?: 'WebMediaDocAccessFields_alt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_alt_Read = {
-    __typename?: 'WebMediaDocAccessFields_alt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_alt_Update = {
-    __typename?: 'WebMediaDocAccessFields_alt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_createdAt = {
-    __typename?: 'WebMediaDocAccessFields_createdAt';
-    create?: Maybe<WebMediaDocAccessFields_createdAt_Create>;
-    delete?: Maybe<WebMediaDocAccessFields_createdAt_Delete>;
-    read?: Maybe<WebMediaDocAccessFields_createdAt_Read>;
-    update?: Maybe<WebMediaDocAccessFields_createdAt_Update>;
-};
-
-export type WebMediaDocAccessFields_createdAt_Create = {
-    __typename?: 'WebMediaDocAccessFields_createdAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_createdAt_Delete = {
-    __typename?: 'WebMediaDocAccessFields_createdAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_createdAt_Read = {
-    __typename?: 'WebMediaDocAccessFields_createdAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_createdAt_Update = {
-    __typename?: 'WebMediaDocAccessFields_createdAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_filename = {
-    __typename?: 'WebMediaDocAccessFields_filename';
-    create?: Maybe<WebMediaDocAccessFields_filename_Create>;
-    delete?: Maybe<WebMediaDocAccessFields_filename_Delete>;
-    read?: Maybe<WebMediaDocAccessFields_filename_Read>;
-    update?: Maybe<WebMediaDocAccessFields_filename_Update>;
-};
-
-export type WebMediaDocAccessFields_filename_Create = {
-    __typename?: 'WebMediaDocAccessFields_filename_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_filename_Delete = {
-    __typename?: 'WebMediaDocAccessFields_filename_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_filename_Read = {
-    __typename?: 'WebMediaDocAccessFields_filename_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_filename_Update = {
-    __typename?: 'WebMediaDocAccessFields_filename_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_filesize = {
-    __typename?: 'WebMediaDocAccessFields_filesize';
-    create?: Maybe<WebMediaDocAccessFields_filesize_Create>;
-    delete?: Maybe<WebMediaDocAccessFields_filesize_Delete>;
-    read?: Maybe<WebMediaDocAccessFields_filesize_Read>;
-    update?: Maybe<WebMediaDocAccessFields_filesize_Update>;
-};
-
-export type WebMediaDocAccessFields_filesize_Create = {
-    __typename?: 'WebMediaDocAccessFields_filesize_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_filesize_Delete = {
-    __typename?: 'WebMediaDocAccessFields_filesize_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_filesize_Read = {
-    __typename?: 'WebMediaDocAccessFields_filesize_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_filesize_Update = {
-    __typename?: 'WebMediaDocAccessFields_filesize_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_focalX = {
-    __typename?: 'WebMediaDocAccessFields_focalX';
-    create?: Maybe<WebMediaDocAccessFields_focalX_Create>;
-    delete?: Maybe<WebMediaDocAccessFields_focalX_Delete>;
-    read?: Maybe<WebMediaDocAccessFields_focalX_Read>;
-    update?: Maybe<WebMediaDocAccessFields_focalX_Update>;
-};
-
-export type WebMediaDocAccessFields_focalX_Create = {
-    __typename?: 'WebMediaDocAccessFields_focalX_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_focalX_Delete = {
-    __typename?: 'WebMediaDocAccessFields_focalX_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_focalX_Read = {
-    __typename?: 'WebMediaDocAccessFields_focalX_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_focalX_Update = {
-    __typename?: 'WebMediaDocAccessFields_focalX_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_focalY = {
-    __typename?: 'WebMediaDocAccessFields_focalY';
-    create?: Maybe<WebMediaDocAccessFields_focalY_Create>;
-    delete?: Maybe<WebMediaDocAccessFields_focalY_Delete>;
-    read?: Maybe<WebMediaDocAccessFields_focalY_Read>;
-    update?: Maybe<WebMediaDocAccessFields_focalY_Update>;
-};
-
-export type WebMediaDocAccessFields_focalY_Create = {
-    __typename?: 'WebMediaDocAccessFields_focalY_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_focalY_Delete = {
-    __typename?: 'WebMediaDocAccessFields_focalY_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_focalY_Read = {
-    __typename?: 'WebMediaDocAccessFields_focalY_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_focalY_Update = {
-    __typename?: 'WebMediaDocAccessFields_focalY_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_height = {
-    __typename?: 'WebMediaDocAccessFields_height';
-    create?: Maybe<WebMediaDocAccessFields_height_Create>;
-    delete?: Maybe<WebMediaDocAccessFields_height_Delete>;
-    read?: Maybe<WebMediaDocAccessFields_height_Read>;
-    update?: Maybe<WebMediaDocAccessFields_height_Update>;
-};
-
-export type WebMediaDocAccessFields_height_Create = {
-    __typename?: 'WebMediaDocAccessFields_height_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_height_Delete = {
-    __typename?: 'WebMediaDocAccessFields_height_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_height_Read = {
-    __typename?: 'WebMediaDocAccessFields_height_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_height_Update = {
-    __typename?: 'WebMediaDocAccessFields_height_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_mimeType = {
-    __typename?: 'WebMediaDocAccessFields_mimeType';
-    create?: Maybe<WebMediaDocAccessFields_mimeType_Create>;
-    delete?: Maybe<WebMediaDocAccessFields_mimeType_Delete>;
-    read?: Maybe<WebMediaDocAccessFields_mimeType_Read>;
-    update?: Maybe<WebMediaDocAccessFields_mimeType_Update>;
-};
-
-export type WebMediaDocAccessFields_mimeType_Create = {
-    __typename?: 'WebMediaDocAccessFields_mimeType_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_mimeType_Delete = {
-    __typename?: 'WebMediaDocAccessFields_mimeType_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_mimeType_Read = {
-    __typename?: 'WebMediaDocAccessFields_mimeType_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_mimeType_Update = {
-    __typename?: 'WebMediaDocAccessFields_mimeType_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_thumbnailURL = {
-    __typename?: 'WebMediaDocAccessFields_thumbnailURL';
-    create?: Maybe<WebMediaDocAccessFields_thumbnailURL_Create>;
-    delete?: Maybe<WebMediaDocAccessFields_thumbnailURL_Delete>;
-    read?: Maybe<WebMediaDocAccessFields_thumbnailURL_Read>;
-    update?: Maybe<WebMediaDocAccessFields_thumbnailURL_Update>;
-};
-
-export type WebMediaDocAccessFields_thumbnailURL_Create = {
-    __typename?: 'WebMediaDocAccessFields_thumbnailURL_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_thumbnailURL_Delete = {
-    __typename?: 'WebMediaDocAccessFields_thumbnailURL_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_thumbnailURL_Read = {
-    __typename?: 'WebMediaDocAccessFields_thumbnailURL_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_thumbnailURL_Update = {
-    __typename?: 'WebMediaDocAccessFields_thumbnailURL_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_updatedAt = {
-    __typename?: 'WebMediaDocAccessFields_updatedAt';
-    create?: Maybe<WebMediaDocAccessFields_updatedAt_Create>;
-    delete?: Maybe<WebMediaDocAccessFields_updatedAt_Delete>;
-    read?: Maybe<WebMediaDocAccessFields_updatedAt_Read>;
-    update?: Maybe<WebMediaDocAccessFields_updatedAt_Update>;
-};
-
-export type WebMediaDocAccessFields_updatedAt_Create = {
-    __typename?: 'WebMediaDocAccessFields_updatedAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_updatedAt_Delete = {
-    __typename?: 'WebMediaDocAccessFields_updatedAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_updatedAt_Read = {
-    __typename?: 'WebMediaDocAccessFields_updatedAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_updatedAt_Update = {
-    __typename?: 'WebMediaDocAccessFields_updatedAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_url = {
-    __typename?: 'WebMediaDocAccessFields_url';
-    create?: Maybe<WebMediaDocAccessFields_url_Create>;
-    delete?: Maybe<WebMediaDocAccessFields_url_Delete>;
-    read?: Maybe<WebMediaDocAccessFields_url_Read>;
-    update?: Maybe<WebMediaDocAccessFields_url_Update>;
-};
-
-export type WebMediaDocAccessFields_url_Create = {
-    __typename?: 'WebMediaDocAccessFields_url_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_url_Delete = {
-    __typename?: 'WebMediaDocAccessFields_url_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_url_Read = {
-    __typename?: 'WebMediaDocAccessFields_url_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_url_Update = {
-    __typename?: 'WebMediaDocAccessFields_url_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_width = {
-    __typename?: 'WebMediaDocAccessFields_width';
-    create?: Maybe<WebMediaDocAccessFields_width_Create>;
-    delete?: Maybe<WebMediaDocAccessFields_width_Delete>;
-    read?: Maybe<WebMediaDocAccessFields_width_Read>;
-    update?: Maybe<WebMediaDocAccessFields_width_Update>;
-};
-
-export type WebMediaDocAccessFields_width_Create = {
-    __typename?: 'WebMediaDocAccessFields_width_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_width_Delete = {
-    __typename?: 'WebMediaDocAccessFields_width_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_width_Read = {
-    __typename?: 'WebMediaDocAccessFields_width_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaDocAccessFields_width_Update = {
-    __typename?: 'WebMediaDocAccessFields_width_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields = {
-    __typename?: 'WebMediaFields';
-    alt?: Maybe<WebMediaFields_alt>;
-    createdAt?: Maybe<WebMediaFields_createdAt>;
-    filename?: Maybe<WebMediaFields_filename>;
-    filesize?: Maybe<WebMediaFields_filesize>;
-    focalX?: Maybe<WebMediaFields_focalX>;
-    focalY?: Maybe<WebMediaFields_focalY>;
-    height?: Maybe<WebMediaFields_height>;
-    mimeType?: Maybe<WebMediaFields_mimeType>;
-    thumbnailURL?: Maybe<WebMediaFields_thumbnailURL>;
-    updatedAt?: Maybe<WebMediaFields_updatedAt>;
-    url?: Maybe<WebMediaFields_url>;
-    width?: Maybe<WebMediaFields_width>;
-};
-
-export type WebMediaFields_alt = {
-    __typename?: 'WebMediaFields_alt';
-    create?: Maybe<WebMediaFields_alt_Create>;
-    delete?: Maybe<WebMediaFields_alt_Delete>;
-    read?: Maybe<WebMediaFields_alt_Read>;
-    update?: Maybe<WebMediaFields_alt_Update>;
-};
-
-export type WebMediaFields_alt_Create = {
-    __typename?: 'WebMediaFields_alt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_alt_Delete = {
-    __typename?: 'WebMediaFields_alt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_alt_Read = {
-    __typename?: 'WebMediaFields_alt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_alt_Update = {
-    __typename?: 'WebMediaFields_alt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_createdAt = {
-    __typename?: 'WebMediaFields_createdAt';
-    create?: Maybe<WebMediaFields_createdAt_Create>;
-    delete?: Maybe<WebMediaFields_createdAt_Delete>;
-    read?: Maybe<WebMediaFields_createdAt_Read>;
-    update?: Maybe<WebMediaFields_createdAt_Update>;
-};
-
-export type WebMediaFields_createdAt_Create = {
-    __typename?: 'WebMediaFields_createdAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_createdAt_Delete = {
-    __typename?: 'WebMediaFields_createdAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_createdAt_Read = {
-    __typename?: 'WebMediaFields_createdAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_createdAt_Update = {
-    __typename?: 'WebMediaFields_createdAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_filename = {
-    __typename?: 'WebMediaFields_filename';
-    create?: Maybe<WebMediaFields_filename_Create>;
-    delete?: Maybe<WebMediaFields_filename_Delete>;
-    read?: Maybe<WebMediaFields_filename_Read>;
-    update?: Maybe<WebMediaFields_filename_Update>;
-};
-
-export type WebMediaFields_filename_Create = {
-    __typename?: 'WebMediaFields_filename_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_filename_Delete = {
-    __typename?: 'WebMediaFields_filename_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_filename_Read = {
-    __typename?: 'WebMediaFields_filename_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_filename_Update = {
-    __typename?: 'WebMediaFields_filename_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_filesize = {
-    __typename?: 'WebMediaFields_filesize';
-    create?: Maybe<WebMediaFields_filesize_Create>;
-    delete?: Maybe<WebMediaFields_filesize_Delete>;
-    read?: Maybe<WebMediaFields_filesize_Read>;
-    update?: Maybe<WebMediaFields_filesize_Update>;
-};
-
-export type WebMediaFields_filesize_Create = {
-    __typename?: 'WebMediaFields_filesize_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_filesize_Delete = {
-    __typename?: 'WebMediaFields_filesize_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_filesize_Read = {
-    __typename?: 'WebMediaFields_filesize_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_filesize_Update = {
-    __typename?: 'WebMediaFields_filesize_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_focalX = {
-    __typename?: 'WebMediaFields_focalX';
-    create?: Maybe<WebMediaFields_focalX_Create>;
-    delete?: Maybe<WebMediaFields_focalX_Delete>;
-    read?: Maybe<WebMediaFields_focalX_Read>;
-    update?: Maybe<WebMediaFields_focalX_Update>;
-};
-
-export type WebMediaFields_focalX_Create = {
-    __typename?: 'WebMediaFields_focalX_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_focalX_Delete = {
-    __typename?: 'WebMediaFields_focalX_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_focalX_Read = {
-    __typename?: 'WebMediaFields_focalX_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_focalX_Update = {
-    __typename?: 'WebMediaFields_focalX_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_focalY = {
-    __typename?: 'WebMediaFields_focalY';
-    create?: Maybe<WebMediaFields_focalY_Create>;
-    delete?: Maybe<WebMediaFields_focalY_Delete>;
-    read?: Maybe<WebMediaFields_focalY_Read>;
-    update?: Maybe<WebMediaFields_focalY_Update>;
-};
-
-export type WebMediaFields_focalY_Create = {
-    __typename?: 'WebMediaFields_focalY_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_focalY_Delete = {
-    __typename?: 'WebMediaFields_focalY_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_focalY_Read = {
-    __typename?: 'WebMediaFields_focalY_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_focalY_Update = {
-    __typename?: 'WebMediaFields_focalY_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_height = {
-    __typename?: 'WebMediaFields_height';
-    create?: Maybe<WebMediaFields_height_Create>;
-    delete?: Maybe<WebMediaFields_height_Delete>;
-    read?: Maybe<WebMediaFields_height_Read>;
-    update?: Maybe<WebMediaFields_height_Update>;
-};
-
-export type WebMediaFields_height_Create = {
-    __typename?: 'WebMediaFields_height_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_height_Delete = {
-    __typename?: 'WebMediaFields_height_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_height_Read = {
-    __typename?: 'WebMediaFields_height_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_height_Update = {
-    __typename?: 'WebMediaFields_height_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_mimeType = {
-    __typename?: 'WebMediaFields_mimeType';
-    create?: Maybe<WebMediaFields_mimeType_Create>;
-    delete?: Maybe<WebMediaFields_mimeType_Delete>;
-    read?: Maybe<WebMediaFields_mimeType_Read>;
-    update?: Maybe<WebMediaFields_mimeType_Update>;
-};
-
-export type WebMediaFields_mimeType_Create = {
-    __typename?: 'WebMediaFields_mimeType_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_mimeType_Delete = {
-    __typename?: 'WebMediaFields_mimeType_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_mimeType_Read = {
-    __typename?: 'WebMediaFields_mimeType_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_mimeType_Update = {
-    __typename?: 'WebMediaFields_mimeType_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_thumbnailURL = {
-    __typename?: 'WebMediaFields_thumbnailURL';
-    create?: Maybe<WebMediaFields_thumbnailURL_Create>;
-    delete?: Maybe<WebMediaFields_thumbnailURL_Delete>;
-    read?: Maybe<WebMediaFields_thumbnailURL_Read>;
-    update?: Maybe<WebMediaFields_thumbnailURL_Update>;
-};
-
-export type WebMediaFields_thumbnailURL_Create = {
-    __typename?: 'WebMediaFields_thumbnailURL_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_thumbnailURL_Delete = {
-    __typename?: 'WebMediaFields_thumbnailURL_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_thumbnailURL_Read = {
-    __typename?: 'WebMediaFields_thumbnailURL_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_thumbnailURL_Update = {
-    __typename?: 'WebMediaFields_thumbnailURL_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_updatedAt = {
-    __typename?: 'WebMediaFields_updatedAt';
-    create?: Maybe<WebMediaFields_updatedAt_Create>;
-    delete?: Maybe<WebMediaFields_updatedAt_Delete>;
-    read?: Maybe<WebMediaFields_updatedAt_Read>;
-    update?: Maybe<WebMediaFields_updatedAt_Update>;
-};
-
-export type WebMediaFields_updatedAt_Create = {
-    __typename?: 'WebMediaFields_updatedAt_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_updatedAt_Delete = {
-    __typename?: 'WebMediaFields_updatedAt_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_updatedAt_Read = {
-    __typename?: 'WebMediaFields_updatedAt_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_updatedAt_Update = {
-    __typename?: 'WebMediaFields_updatedAt_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_url = {
-    __typename?: 'WebMediaFields_url';
-    create?: Maybe<WebMediaFields_url_Create>;
-    delete?: Maybe<WebMediaFields_url_Delete>;
-    read?: Maybe<WebMediaFields_url_Read>;
-    update?: Maybe<WebMediaFields_url_Update>;
-};
-
-export type WebMediaFields_url_Create = {
-    __typename?: 'WebMediaFields_url_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_url_Delete = {
-    __typename?: 'WebMediaFields_url_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_url_Read = {
-    __typename?: 'WebMediaFields_url_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_url_Update = {
-    __typename?: 'WebMediaFields_url_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_width = {
-    __typename?: 'WebMediaFields_width';
-    create?: Maybe<WebMediaFields_width_Create>;
-    delete?: Maybe<WebMediaFields_width_Delete>;
-    read?: Maybe<WebMediaFields_width_Read>;
-    update?: Maybe<WebMediaFields_width_Update>;
-};
-
-export type WebMediaFields_width_Create = {
-    __typename?: 'WebMediaFields_width_Create';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_width_Delete = {
-    __typename?: 'WebMediaFields_width_Delete';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_width_Read = {
-    __typename?: 'WebMediaFields_width_Read';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaFields_width_Update = {
-    __typename?: 'WebMediaFields_width_Update';
-    permission: Scalars['Boolean']['output'];
-};
-
-export type WebMediaReadAccess = {
-    __typename?: 'WebMediaReadAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type WebMediaReadDocAccess = {
-    __typename?: 'WebMediaReadDocAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type WebMediaUpdateAccess = {
-    __typename?: 'WebMediaUpdateAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type WebMediaUpdateDocAccess = {
-    __typename?: 'WebMediaUpdateDocAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type WebMedia_alt_operator = {
-    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-    contains?: InputMaybe<Scalars['String']['input']>;
-    equals?: InputMaybe<Scalars['String']['input']>;
-    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-    like?: InputMaybe<Scalars['String']['input']>;
-    not_equals?: InputMaybe<Scalars['String']['input']>;
-    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type WebMedia_createdAt_operator = {
-    equals?: InputMaybe<Scalars['DateTime']['input']>;
-    exists?: InputMaybe<Scalars['Boolean']['input']>;
-    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
-    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
-    less_than?: InputMaybe<Scalars['DateTime']['input']>;
-    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
-    like?: InputMaybe<Scalars['DateTime']['input']>;
-    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
-};
-
-export type WebMedia_filename_operator = {
-    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-    contains?: InputMaybe<Scalars['String']['input']>;
-    equals?: InputMaybe<Scalars['String']['input']>;
-    exists?: InputMaybe<Scalars['Boolean']['input']>;
-    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-    like?: InputMaybe<Scalars['String']['input']>;
-    not_equals?: InputMaybe<Scalars['String']['input']>;
-    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type WebMedia_filesize_operator = {
-    equals?: InputMaybe<Scalars['Float']['input']>;
-    exists?: InputMaybe<Scalars['Boolean']['input']>;
-    greater_than?: InputMaybe<Scalars['Float']['input']>;
-    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
-    less_than?: InputMaybe<Scalars['Float']['input']>;
-    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
-    not_equals?: InputMaybe<Scalars['Float']['input']>;
-};
-
-export type WebMedia_focalX_operator = {
-    equals?: InputMaybe<Scalars['Float']['input']>;
-    exists?: InputMaybe<Scalars['Boolean']['input']>;
-    greater_than?: InputMaybe<Scalars['Float']['input']>;
-    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
-    less_than?: InputMaybe<Scalars['Float']['input']>;
-    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
-    not_equals?: InputMaybe<Scalars['Float']['input']>;
-};
-
-export type WebMedia_focalY_operator = {
-    equals?: InputMaybe<Scalars['Float']['input']>;
-    exists?: InputMaybe<Scalars['Boolean']['input']>;
-    greater_than?: InputMaybe<Scalars['Float']['input']>;
-    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
-    less_than?: InputMaybe<Scalars['Float']['input']>;
-    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
-    not_equals?: InputMaybe<Scalars['Float']['input']>;
-};
-
-export type WebMedia_height_operator = {
-    equals?: InputMaybe<Scalars['Float']['input']>;
-    exists?: InputMaybe<Scalars['Boolean']['input']>;
-    greater_than?: InputMaybe<Scalars['Float']['input']>;
-    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
-    less_than?: InputMaybe<Scalars['Float']['input']>;
-    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
-    not_equals?: InputMaybe<Scalars['Float']['input']>;
-};
-
-export type WebMedia_id_operator = {
-    equals?: InputMaybe<Scalars['Int']['input']>;
-    exists?: InputMaybe<Scalars['Boolean']['input']>;
-    greater_than?: InputMaybe<Scalars['Int']['input']>;
-    greater_than_equal?: InputMaybe<Scalars['Int']['input']>;
-    less_than?: InputMaybe<Scalars['Int']['input']>;
-    less_than_equal?: InputMaybe<Scalars['Int']['input']>;
-    not_equals?: InputMaybe<Scalars['Int']['input']>;
-};
-
-export type WebMedia_mimeType_operator = {
-    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-    contains?: InputMaybe<Scalars['String']['input']>;
-    equals?: InputMaybe<Scalars['String']['input']>;
-    exists?: InputMaybe<Scalars['Boolean']['input']>;
-    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-    like?: InputMaybe<Scalars['String']['input']>;
-    not_equals?: InputMaybe<Scalars['String']['input']>;
-    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type WebMedia_thumbnailURL_operator = {
-    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-    contains?: InputMaybe<Scalars['String']['input']>;
-    equals?: InputMaybe<Scalars['String']['input']>;
-    exists?: InputMaybe<Scalars['Boolean']['input']>;
-    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-    like?: InputMaybe<Scalars['String']['input']>;
-    not_equals?: InputMaybe<Scalars['String']['input']>;
-    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type WebMedia_updatedAt_operator = {
-    equals?: InputMaybe<Scalars['DateTime']['input']>;
-    exists?: InputMaybe<Scalars['Boolean']['input']>;
-    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
-    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
-    less_than?: InputMaybe<Scalars['DateTime']['input']>;
-    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
-    like?: InputMaybe<Scalars['DateTime']['input']>;
-    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
-};
-
-export type WebMedia_url_operator = {
-    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-    contains?: InputMaybe<Scalars['String']['input']>;
-    equals?: InputMaybe<Scalars['String']['input']>;
-    exists?: InputMaybe<Scalars['Boolean']['input']>;
-    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-    like?: InputMaybe<Scalars['String']['input']>;
-    not_equals?: InputMaybe<Scalars['String']['input']>;
-    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type WebMedia_where = {
-    AND?: InputMaybe<Array<InputMaybe<WebMedia_where_and>>>;
-    OR?: InputMaybe<Array<InputMaybe<WebMedia_where_or>>>;
-    alt?: InputMaybe<WebMedia_alt_operator>;
-    createdAt?: InputMaybe<WebMedia_createdAt_operator>;
-    filename?: InputMaybe<WebMedia_filename_operator>;
-    filesize?: InputMaybe<WebMedia_filesize_operator>;
-    focalX?: InputMaybe<WebMedia_focalX_operator>;
-    focalY?: InputMaybe<WebMedia_focalY_operator>;
-    height?: InputMaybe<WebMedia_height_operator>;
-    id?: InputMaybe<WebMedia_id_operator>;
-    mimeType?: InputMaybe<WebMedia_mimeType_operator>;
-    thumbnailURL?: InputMaybe<WebMedia_thumbnailURL_operator>;
-    updatedAt?: InputMaybe<WebMedia_updatedAt_operator>;
-    url?: InputMaybe<WebMedia_url_operator>;
-    width?: InputMaybe<WebMedia_width_operator>;
-};
-
-export type WebMedia_where_and = {
-    AND?: InputMaybe<Array<InputMaybe<WebMedia_where_and>>>;
-    OR?: InputMaybe<Array<InputMaybe<WebMedia_where_or>>>;
-    alt?: InputMaybe<WebMedia_alt_operator>;
-    createdAt?: InputMaybe<WebMedia_createdAt_operator>;
-    filename?: InputMaybe<WebMedia_filename_operator>;
-    filesize?: InputMaybe<WebMedia_filesize_operator>;
-    focalX?: InputMaybe<WebMedia_focalX_operator>;
-    focalY?: InputMaybe<WebMedia_focalY_operator>;
-    height?: InputMaybe<WebMedia_height_operator>;
-    id?: InputMaybe<WebMedia_id_operator>;
-    mimeType?: InputMaybe<WebMedia_mimeType_operator>;
-    thumbnailURL?: InputMaybe<WebMedia_thumbnailURL_operator>;
-    updatedAt?: InputMaybe<WebMedia_updatedAt_operator>;
-    url?: InputMaybe<WebMedia_url_operator>;
-    width?: InputMaybe<WebMedia_width_operator>;
-};
-
-export type WebMedia_where_or = {
-    AND?: InputMaybe<Array<InputMaybe<WebMedia_where_and>>>;
-    OR?: InputMaybe<Array<InputMaybe<WebMedia_where_or>>>;
-    alt?: InputMaybe<WebMedia_alt_operator>;
-    createdAt?: InputMaybe<WebMedia_createdAt_operator>;
-    filename?: InputMaybe<WebMedia_filename_operator>;
-    filesize?: InputMaybe<WebMedia_filesize_operator>;
-    focalX?: InputMaybe<WebMedia_focalX_operator>;
-    focalY?: InputMaybe<WebMedia_focalY_operator>;
-    height?: InputMaybe<WebMedia_height_operator>;
-    id?: InputMaybe<WebMedia_id_operator>;
-    mimeType?: InputMaybe<WebMedia_mimeType_operator>;
-    thumbnailURL?: InputMaybe<WebMedia_thumbnailURL_operator>;
-    updatedAt?: InputMaybe<WebMedia_updatedAt_operator>;
-    url?: InputMaybe<WebMedia_url_operator>;
-    width?: InputMaybe<WebMedia_width_operator>;
-};
-
-export type WebMedia_width_operator = {
-    equals?: InputMaybe<Scalars['Float']['input']>;
-    exists?: InputMaybe<Scalars['Boolean']['input']>;
-    greater_than?: InputMaybe<Scalars['Float']['input']>;
-    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
-    less_than?: InputMaybe<Scalars['Float']['input']>;
-    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
-    not_equals?: InputMaybe<Scalars['Float']['input']>;
-};
-
-export type WebMedias = {
-    __typename?: 'WebMedias';
-    docs: Array<WebMedia>;
-    hasNextPage: Scalars['Boolean']['output'];
-    hasPrevPage: Scalars['Boolean']['output'];
-    limit: Scalars['Int']['output'];
-    nextPage?: Maybe<Scalars['Int']['output']>;
-    offset?: Maybe<Scalars['Int']['output']>;
-    page: Scalars['Int']['output'];
-    pagingCounter: Scalars['Int']['output'];
-    prevPage?: Maybe<Scalars['Int']['output']>;
-    totalDocs: Scalars['Int']['output'];
-    totalPages: Scalars['Int']['output'];
-};
-
 export type WebMoodPicture = {
     __typename?: 'WebMoodPicture';
     blockName?: Maybe<Scalars['String']['output']>;
@@ -21338,7 +34272,7 @@ export type WebMoodPicture = {
 
 export type WebMoodPicture_Content = {
     __typename?: 'WebMoodPicture_Content';
-    image?: Maybe<WebMedia>;
+    image?: Maybe<WebImage>;
 };
 
 export type WebMoodPicture_Settings = {
@@ -21392,14 +34326,28 @@ export type WebMoodPicture_Settings_style = 'dark' | 'gray' | 'light' | '%future
 export type WebPage = {
     __typename?: 'WebPage';
     blocks?: Maybe<Array<WebPage_Blocks>>;
+    canonical?: Maybe<Scalars['String']['output']>;
     createdAt?: Maybe<Scalars['DateTime']['output']>;
     description?: Maybe<Scalars['String']['output']>;
     id: Scalars['Int']['output'];
-    image?: Maybe<WebMedia>;
+    image?: Maybe<WebImage>;
+    keywords?: Maybe<Array<Scalars['String']['output']>>;
+    noIndex?: Maybe<Scalars['Boolean']['output']>;
+    schemaType?: Maybe<WebPage_schemaType>;
     slug: Scalars['String']['output'];
     title?: Maybe<Scalars['String']['output']>;
     updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
+
+export type WebPageUpdate_schemaType_MutationInput =
+    | 'AboutPage'
+    | 'Article'
+    | 'BlogPosting'
+    | 'ContactPage'
+    | 'Course'
+    | 'FAQPage'
+    | 'WebPage'
+    | '%future added value';
 
 export type WebPage_Blocks =
     | WebAccordions
@@ -21416,6 +34364,17 @@ export type WebPage_Blocks =
     | WebSwiperLarge
     | WebSwiperSimple
     | WebTextElement;
+
+export type WebPage_canonical_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
 
 export type WebPage_createdAt_operator = {
     equals?: InputMaybe<Scalars['DateTime']['input']>;
@@ -21455,6 +34414,62 @@ export type WebPage_image_operator = {
     not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
 };
 
+export type WebPage_keywords_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type WebPage_noIndex_operator = {
+    equals?: InputMaybe<Scalars['Boolean']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    not_equals?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type WebPage_schemaType =
+    | 'AboutPage'
+    | 'Article'
+    | 'BlogPosting'
+    | 'ContactPage'
+    | 'Course'
+    | 'FAQPage'
+    | 'WebPage'
+    | '%future added value';
+
+export type WebPage_schemaType_Input =
+    | 'AboutPage'
+    | 'Article'
+    | 'BlogPosting'
+    | 'ContactPage'
+    | 'Course'
+    | 'FAQPage'
+    | 'WebPage'
+    | '%future added value';
+
+export type WebPage_schemaType_MutationInput =
+    | 'AboutPage'
+    | 'Article'
+    | 'BlogPosting'
+    | 'ContactPage'
+    | 'Course'
+    | 'FAQPage'
+    | 'WebPage'
+    | '%future added value';
+
+export type WebPage_schemaType_operator = {
+    all?: InputMaybe<Array<InputMaybe<WebPage_schemaType_Input>>>;
+    equals?: InputMaybe<WebPage_schemaType_Input>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<WebPage_schemaType_Input>>>;
+    not_equals?: InputMaybe<WebPage_schemaType_Input>;
+    not_in?: InputMaybe<Array<InputMaybe<WebPage_schemaType_Input>>>;
+};
+
 export type WebPage_slug_operator = {
     all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
     contains?: InputMaybe<Scalars['String']['input']>;
@@ -21490,10 +34505,14 @@ export type WebPage_updatedAt_operator = {
 export type WebPage_where = {
     AND?: InputMaybe<Array<InputMaybe<WebPage_where_and>>>;
     OR?: InputMaybe<Array<InputMaybe<WebPage_where_or>>>;
+    canonical?: InputMaybe<WebPage_canonical_operator>;
     createdAt?: InputMaybe<WebPage_createdAt_operator>;
     description?: InputMaybe<WebPage_description_operator>;
     id?: InputMaybe<WebPage_id_operator>;
     image?: InputMaybe<WebPage_image_operator>;
+    keywords?: InputMaybe<WebPage_keywords_operator>;
+    noIndex?: InputMaybe<WebPage_noIndex_operator>;
+    schemaType?: InputMaybe<WebPage_schemaType_operator>;
     slug?: InputMaybe<WebPage_slug_operator>;
     title?: InputMaybe<WebPage_title_operator>;
     updatedAt?: InputMaybe<WebPage_updatedAt_operator>;
@@ -21502,10 +34521,14 @@ export type WebPage_where = {
 export type WebPage_where_and = {
     AND?: InputMaybe<Array<InputMaybe<WebPage_where_and>>>;
     OR?: InputMaybe<Array<InputMaybe<WebPage_where_or>>>;
+    canonical?: InputMaybe<WebPage_canonical_operator>;
     createdAt?: InputMaybe<WebPage_createdAt_operator>;
     description?: InputMaybe<WebPage_description_operator>;
     id?: InputMaybe<WebPage_id_operator>;
     image?: InputMaybe<WebPage_image_operator>;
+    keywords?: InputMaybe<WebPage_keywords_operator>;
+    noIndex?: InputMaybe<WebPage_noIndex_operator>;
+    schemaType?: InputMaybe<WebPage_schemaType_operator>;
     slug?: InputMaybe<WebPage_slug_operator>;
     title?: InputMaybe<WebPage_title_operator>;
     updatedAt?: InputMaybe<WebPage_updatedAt_operator>;
@@ -21514,10 +34537,14 @@ export type WebPage_where_and = {
 export type WebPage_where_or = {
     AND?: InputMaybe<Array<InputMaybe<WebPage_where_and>>>;
     OR?: InputMaybe<Array<InputMaybe<WebPage_where_or>>>;
+    canonical?: InputMaybe<WebPage_canonical_operator>;
     createdAt?: InputMaybe<WebPage_createdAt_operator>;
     description?: InputMaybe<WebPage_description_operator>;
     id?: InputMaybe<WebPage_id_operator>;
     image?: InputMaybe<WebPage_image_operator>;
+    keywords?: InputMaybe<WebPage_keywords_operator>;
+    noIndex?: InputMaybe<WebPage_noIndex_operator>;
+    schemaType?: InputMaybe<WebPage_schemaType_operator>;
     slug?: InputMaybe<WebPage_slug_operator>;
     title?: InputMaybe<WebPage_title_operator>;
     updatedAt?: InputMaybe<WebPage_updatedAt_operator>;
@@ -21565,9 +34592,13 @@ export type WebPagesDeleteDocAccess = {
 export type WebPagesDocAccessFields = {
     __typename?: 'WebPagesDocAccessFields';
     blocks?: Maybe<WebPagesDocAccessFields_blocks>;
+    canonical?: Maybe<WebPagesDocAccessFields_canonical>;
     createdAt?: Maybe<WebPagesDocAccessFields_createdAt>;
     description?: Maybe<WebPagesDocAccessFields_description>;
     image?: Maybe<WebPagesDocAccessFields_image>;
+    keywords?: Maybe<WebPagesDocAccessFields_keywords>;
+    noIndex?: Maybe<WebPagesDocAccessFields_noIndex>;
+    schemaType?: Maybe<WebPagesDocAccessFields_schemaType>;
     slug?: Maybe<WebPagesDocAccessFields_slug>;
     title?: Maybe<WebPagesDocAccessFields_title>;
     updatedAt?: Maybe<WebPagesDocAccessFields_updatedAt>;
@@ -21598,6 +34629,34 @@ export type WebPagesDocAccessFields_blocks_Read = {
 
 export type WebPagesDocAccessFields_blocks_Update = {
     __typename?: 'WebPagesDocAccessFields_blocks_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_canonical = {
+    __typename?: 'WebPagesDocAccessFields_canonical';
+    create?: Maybe<WebPagesDocAccessFields_canonical_Create>;
+    delete?: Maybe<WebPagesDocAccessFields_canonical_Delete>;
+    read?: Maybe<WebPagesDocAccessFields_canonical_Read>;
+    update?: Maybe<WebPagesDocAccessFields_canonical_Update>;
+};
+
+export type WebPagesDocAccessFields_canonical_Create = {
+    __typename?: 'WebPagesDocAccessFields_canonical_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_canonical_Delete = {
+    __typename?: 'WebPagesDocAccessFields_canonical_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_canonical_Read = {
+    __typename?: 'WebPagesDocAccessFields_canonical_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_canonical_Update = {
+    __typename?: 'WebPagesDocAccessFields_canonical_Update';
     permission: Scalars['Boolean']['output'];
 };
 
@@ -21682,6 +34741,90 @@ export type WebPagesDocAccessFields_image_Read = {
 
 export type WebPagesDocAccessFields_image_Update = {
     __typename?: 'WebPagesDocAccessFields_image_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_keywords = {
+    __typename?: 'WebPagesDocAccessFields_keywords';
+    create?: Maybe<WebPagesDocAccessFields_keywords_Create>;
+    delete?: Maybe<WebPagesDocAccessFields_keywords_Delete>;
+    read?: Maybe<WebPagesDocAccessFields_keywords_Read>;
+    update?: Maybe<WebPagesDocAccessFields_keywords_Update>;
+};
+
+export type WebPagesDocAccessFields_keywords_Create = {
+    __typename?: 'WebPagesDocAccessFields_keywords_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_keywords_Delete = {
+    __typename?: 'WebPagesDocAccessFields_keywords_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_keywords_Read = {
+    __typename?: 'WebPagesDocAccessFields_keywords_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_keywords_Update = {
+    __typename?: 'WebPagesDocAccessFields_keywords_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_noIndex = {
+    __typename?: 'WebPagesDocAccessFields_noIndex';
+    create?: Maybe<WebPagesDocAccessFields_noIndex_Create>;
+    delete?: Maybe<WebPagesDocAccessFields_noIndex_Delete>;
+    read?: Maybe<WebPagesDocAccessFields_noIndex_Read>;
+    update?: Maybe<WebPagesDocAccessFields_noIndex_Update>;
+};
+
+export type WebPagesDocAccessFields_noIndex_Create = {
+    __typename?: 'WebPagesDocAccessFields_noIndex_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_noIndex_Delete = {
+    __typename?: 'WebPagesDocAccessFields_noIndex_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_noIndex_Read = {
+    __typename?: 'WebPagesDocAccessFields_noIndex_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_noIndex_Update = {
+    __typename?: 'WebPagesDocAccessFields_noIndex_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_schemaType = {
+    __typename?: 'WebPagesDocAccessFields_schemaType';
+    create?: Maybe<WebPagesDocAccessFields_schemaType_Create>;
+    delete?: Maybe<WebPagesDocAccessFields_schemaType_Delete>;
+    read?: Maybe<WebPagesDocAccessFields_schemaType_Read>;
+    update?: Maybe<WebPagesDocAccessFields_schemaType_Update>;
+};
+
+export type WebPagesDocAccessFields_schemaType_Create = {
+    __typename?: 'WebPagesDocAccessFields_schemaType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_schemaType_Delete = {
+    __typename?: 'WebPagesDocAccessFields_schemaType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_schemaType_Read = {
+    __typename?: 'WebPagesDocAccessFields_schemaType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesDocAccessFields_schemaType_Update = {
+    __typename?: 'WebPagesDocAccessFields_schemaType_Update';
     permission: Scalars['Boolean']['output'];
 };
 
@@ -21772,9 +34915,13 @@ export type WebPagesDocAccessFields_updatedAt_Update = {
 export type WebPagesFields = {
     __typename?: 'WebPagesFields';
     blocks?: Maybe<WebPagesFields_blocks>;
+    canonical?: Maybe<WebPagesFields_canonical>;
     createdAt?: Maybe<WebPagesFields_createdAt>;
     description?: Maybe<WebPagesFields_description>;
     image?: Maybe<WebPagesFields_image>;
+    keywords?: Maybe<WebPagesFields_keywords>;
+    noIndex?: Maybe<WebPagesFields_noIndex>;
+    schemaType?: Maybe<WebPagesFields_schemaType>;
     slug?: Maybe<WebPagesFields_slug>;
     title?: Maybe<WebPagesFields_title>;
     updatedAt?: Maybe<WebPagesFields_updatedAt>;
@@ -21805,6 +34952,34 @@ export type WebPagesFields_blocks_Read = {
 
 export type WebPagesFields_blocks_Update = {
     __typename?: 'WebPagesFields_blocks_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_canonical = {
+    __typename?: 'WebPagesFields_canonical';
+    create?: Maybe<WebPagesFields_canonical_Create>;
+    delete?: Maybe<WebPagesFields_canonical_Delete>;
+    read?: Maybe<WebPagesFields_canonical_Read>;
+    update?: Maybe<WebPagesFields_canonical_Update>;
+};
+
+export type WebPagesFields_canonical_Create = {
+    __typename?: 'WebPagesFields_canonical_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_canonical_Delete = {
+    __typename?: 'WebPagesFields_canonical_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_canonical_Read = {
+    __typename?: 'WebPagesFields_canonical_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_canonical_Update = {
+    __typename?: 'WebPagesFields_canonical_Update';
     permission: Scalars['Boolean']['output'];
 };
 
@@ -21889,6 +35064,90 @@ export type WebPagesFields_image_Read = {
 
 export type WebPagesFields_image_Update = {
     __typename?: 'WebPagesFields_image_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_keywords = {
+    __typename?: 'WebPagesFields_keywords';
+    create?: Maybe<WebPagesFields_keywords_Create>;
+    delete?: Maybe<WebPagesFields_keywords_Delete>;
+    read?: Maybe<WebPagesFields_keywords_Read>;
+    update?: Maybe<WebPagesFields_keywords_Update>;
+};
+
+export type WebPagesFields_keywords_Create = {
+    __typename?: 'WebPagesFields_keywords_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_keywords_Delete = {
+    __typename?: 'WebPagesFields_keywords_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_keywords_Read = {
+    __typename?: 'WebPagesFields_keywords_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_keywords_Update = {
+    __typename?: 'WebPagesFields_keywords_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_noIndex = {
+    __typename?: 'WebPagesFields_noIndex';
+    create?: Maybe<WebPagesFields_noIndex_Create>;
+    delete?: Maybe<WebPagesFields_noIndex_Delete>;
+    read?: Maybe<WebPagesFields_noIndex_Read>;
+    update?: Maybe<WebPagesFields_noIndex_Update>;
+};
+
+export type WebPagesFields_noIndex_Create = {
+    __typename?: 'WebPagesFields_noIndex_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_noIndex_Delete = {
+    __typename?: 'WebPagesFields_noIndex_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_noIndex_Read = {
+    __typename?: 'WebPagesFields_noIndex_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_noIndex_Update = {
+    __typename?: 'WebPagesFields_noIndex_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_schemaType = {
+    __typename?: 'WebPagesFields_schemaType';
+    create?: Maybe<WebPagesFields_schemaType_Create>;
+    delete?: Maybe<WebPagesFields_schemaType_Delete>;
+    read?: Maybe<WebPagesFields_schemaType_Read>;
+    update?: Maybe<WebPagesFields_schemaType_Update>;
+};
+
+export type WebPagesFields_schemaType_Create = {
+    __typename?: 'WebPagesFields_schemaType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_schemaType_Delete = {
+    __typename?: 'WebPagesFields_schemaType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_schemaType_Read = {
+    __typename?: 'WebPagesFields_schemaType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type WebPagesFields_schemaType_Update = {
+    __typename?: 'WebPagesFields_schemaType_Update';
     permission: Scalars['Boolean']['output'];
 };
 
@@ -22004,7 +35263,7 @@ export type WebPartner = {
     __typename?: 'WebPartner';
     createdAt?: Maybe<Scalars['DateTime']['output']>;
     id: Scalars['Int']['output'];
-    image?: Maybe<WebMedia>;
+    image?: Maybe<WebImage>;
     link?: Maybe<WebPartner_Link>;
     name?: Maybe<Scalars['String']['output']>;
     updatedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -22785,7 +36044,7 @@ export type WebPartnersUpdateDocAccess = {
 
 export type WebSocial = {
     __typename?: 'WebSocial';
-    backgroundImage?: Maybe<WebMedia>;
+    backgroundImage?: Maybe<WebImage>;
     createdAt?: Maybe<Scalars['DateTime']['output']>;
     icon?: Maybe<WebSocial_icon>;
     id: Scalars['Int']['output'];
@@ -23590,7 +36849,7 @@ export type WebSwiperCard_Content_Cards = {
     __typename?: 'WebSwiperCard_Content_Cards';
     date?: Maybe<Scalars['DateTime']['output']>;
     id?: Maybe<Scalars['String']['output']>;
-    image?: Maybe<WebMedia>;
+    image?: Maybe<WebImage>;
     info?: Maybe<Scalars['String']['output']>;
     link?: Maybe<WebSwiperCard_Content_Cards_Link>;
     title?: Maybe<Scalars['String']['output']>;
@@ -23679,7 +36938,7 @@ export type WebSwiperLarge_Content_Items = {
     __typename?: 'WebSwiperLarge_Content_Items';
     description?: Maybe<Scalars['JSON']['output']>;
     id?: Maybe<Scalars['String']['output']>;
-    image?: Maybe<WebMedia>;
+    image?: Maybe<WebImage>;
     infos?: Maybe<Scalars['String']['output']>;
     link?: Maybe<WebSwiperLarge_Content_Items_Link>;
     title?: Maybe<Scalars['String']['output']>;
@@ -23777,7 +37036,7 @@ export type WebSwiperSimple_Content_Slides = {
 export type WebSwiperSimple_Content_Slides_Images = {
     __typename?: 'WebSwiperSimple_Content_Slides_Images';
     id?: Maybe<Scalars['String']['output']>;
-    image?: Maybe<WebMedia>;
+    image?: Maybe<WebImage>;
 };
 
 export type WebSwiperSimple_Settings = {
@@ -24435,8 +37694,13 @@ export type countWebBooks = {
     totalDocs?: Maybe<Scalars['Int']['output']>;
 };
 
-export type countWebMedias = {
-    __typename?: 'countWebMedias';
+export type countWebImageCategories = {
+    __typename?: 'countWebImageCategories';
+    totalDocs?: Maybe<Scalars['Int']['output']>;
+};
+
+export type countWebImages = {
+    __typename?: 'countWebImages';
     totalDocs?: Maybe<Scalars['Int']['output']>;
 };
 
@@ -24939,6 +38203,7 @@ export type mutationPlantImageInput = {
     mimeType?: InputMaybe<Scalars['String']['input']>;
     plant?: InputMaybe<Scalars['Int']['input']>;
     recognitionFeatures?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+    sizes?: InputMaybe<mutationPlantImage_SizesInput>;
     thumbnailURL?: InputMaybe<Scalars['String']['input']>;
     updatedAt?: InputMaybe<Scalars['String']['input']>;
     url?: InputMaybe<Scalars['String']['input']>;
@@ -24956,8 +38221,255 @@ export type mutationPlantImageUpdateInput = {
     mimeType?: InputMaybe<Scalars['String']['input']>;
     plant?: InputMaybe<Scalars['Int']['input']>;
     recognitionFeatures?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+    sizes?: InputMaybe<mutationPlantImageUpdate_SizesInput>;
     thumbnailURL?: InputMaybe<Scalars['String']['input']>;
     updatedAt?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImageUpdate_SizesInput = {
+    desktop_avif?: InputMaybe<mutationPlantImageUpdate_Sizes_Desktop_avifInput>;
+    desktop_jpeg?: InputMaybe<mutationPlantImageUpdate_Sizes_Desktop_jpegInput>;
+    desktop_webp?: InputMaybe<mutationPlantImageUpdate_Sizes_Desktop_webpInput>;
+    mobile_avif?: InputMaybe<mutationPlantImageUpdate_Sizes_Mobile_avifInput>;
+    mobile_jpeg?: InputMaybe<mutationPlantImageUpdate_Sizes_Mobile_jpegInput>;
+    mobile_webp?: InputMaybe<mutationPlantImageUpdate_Sizes_Mobile_webpInput>;
+    tablet_avif?: InputMaybe<mutationPlantImageUpdate_Sizes_Tablet_avifInput>;
+    tablet_jpeg?: InputMaybe<mutationPlantImageUpdate_Sizes_Tablet_jpegInput>;
+    tablet_webp?: InputMaybe<mutationPlantImageUpdate_Sizes_Tablet_webpInput>;
+    thumbnail_avif?: InputMaybe<mutationPlantImageUpdate_Sizes_Thumbnail_avifInput>;
+    thumbnail_jpeg?: InputMaybe<mutationPlantImageUpdate_Sizes_Thumbnail_jpegInput>;
+    thumbnail_webp?: InputMaybe<mutationPlantImageUpdate_Sizes_Thumbnail_webpInput>;
+};
+
+export type mutationPlantImageUpdate_Sizes_Desktop_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImageUpdate_Sizes_Desktop_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImageUpdate_Sizes_Desktop_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImageUpdate_Sizes_Mobile_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImageUpdate_Sizes_Mobile_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImageUpdate_Sizes_Mobile_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImageUpdate_Sizes_Tablet_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImageUpdate_Sizes_Tablet_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImageUpdate_Sizes_Tablet_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImageUpdate_Sizes_Thumbnail_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImageUpdate_Sizes_Thumbnail_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImageUpdate_Sizes_Thumbnail_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImage_SizesInput = {
+    desktop_avif?: InputMaybe<mutationPlantImage_Sizes_Desktop_avifInput>;
+    desktop_jpeg?: InputMaybe<mutationPlantImage_Sizes_Desktop_jpegInput>;
+    desktop_webp?: InputMaybe<mutationPlantImage_Sizes_Desktop_webpInput>;
+    mobile_avif?: InputMaybe<mutationPlantImage_Sizes_Mobile_avifInput>;
+    mobile_jpeg?: InputMaybe<mutationPlantImage_Sizes_Mobile_jpegInput>;
+    mobile_webp?: InputMaybe<mutationPlantImage_Sizes_Mobile_webpInput>;
+    tablet_avif?: InputMaybe<mutationPlantImage_Sizes_Tablet_avifInput>;
+    tablet_jpeg?: InputMaybe<mutationPlantImage_Sizes_Tablet_jpegInput>;
+    tablet_webp?: InputMaybe<mutationPlantImage_Sizes_Tablet_webpInput>;
+    thumbnail_avif?: InputMaybe<mutationPlantImage_Sizes_Thumbnail_avifInput>;
+    thumbnail_jpeg?: InputMaybe<mutationPlantImage_Sizes_Thumbnail_jpegInput>;
+    thumbnail_webp?: InputMaybe<mutationPlantImage_Sizes_Thumbnail_webpInput>;
+};
+
+export type mutationPlantImage_Sizes_Desktop_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImage_Sizes_Desktop_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImage_Sizes_Desktop_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImage_Sizes_Mobile_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImage_Sizes_Mobile_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImage_Sizes_Mobile_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImage_Sizes_Tablet_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImage_Sizes_Tablet_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImage_Sizes_Tablet_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImage_Sizes_Thumbnail_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImage_Sizes_Thumbnail_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationPlantImage_Sizes_Thumbnail_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
     url?: InputMaybe<Scalars['String']['input']>;
     width?: InputMaybe<Scalars['Float']['input']>;
 };
@@ -25244,8 +38756,25 @@ export type mutationWebBook_LinkInput = {
     text?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type mutationWebMediaInput = {
+export type mutationWebImageCategoryInput = {
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    description?: InputMaybe<Scalars['String']['input']>;
+    showInGallery?: InputMaybe<Scalars['Boolean']['input']>;
+    title: Scalars['String']['input'];
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationWebImageCategoryUpdateInput = {
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    description?: InputMaybe<Scalars['String']['input']>;
+    showInGallery?: InputMaybe<Scalars['Boolean']['input']>;
+    title?: InputMaybe<Scalars['String']['input']>;
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationWebImageInput = {
     alt: Scalars['String']['input'];
+    category?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
     createdAt?: InputMaybe<Scalars['String']['input']>;
     filename?: InputMaybe<Scalars['String']['input']>;
     filesize?: InputMaybe<Scalars['Float']['input']>;
@@ -25253,14 +38782,16 @@ export type mutationWebMediaInput = {
     focalY?: InputMaybe<Scalars['Float']['input']>;
     height?: InputMaybe<Scalars['Float']['input']>;
     mimeType?: InputMaybe<Scalars['String']['input']>;
+    sizes?: InputMaybe<mutationWebImage_SizesInput>;
     thumbnailURL?: InputMaybe<Scalars['String']['input']>;
     updatedAt?: InputMaybe<Scalars['String']['input']>;
     url?: InputMaybe<Scalars['String']['input']>;
     width?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type mutationWebMediaUpdateInput = {
+export type mutationWebImageUpdateInput = {
     alt?: InputMaybe<Scalars['String']['input']>;
+    category?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
     createdAt?: InputMaybe<Scalars['String']['input']>;
     filename?: InputMaybe<Scalars['String']['input']>;
     filesize?: InputMaybe<Scalars['Float']['input']>;
@@ -25268,17 +38799,268 @@ export type mutationWebMediaUpdateInput = {
     focalY?: InputMaybe<Scalars['Float']['input']>;
     height?: InputMaybe<Scalars['Float']['input']>;
     mimeType?: InputMaybe<Scalars['String']['input']>;
+    sizes?: InputMaybe<mutationWebImageUpdate_SizesInput>;
     thumbnailURL?: InputMaybe<Scalars['String']['input']>;
     updatedAt?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImageUpdate_SizesInput = {
+    desktop_avif?: InputMaybe<mutationWebImageUpdate_Sizes_Desktop_avifInput>;
+    desktop_jpeg?: InputMaybe<mutationWebImageUpdate_Sizes_Desktop_jpegInput>;
+    desktop_webp?: InputMaybe<mutationWebImageUpdate_Sizes_Desktop_webpInput>;
+    mobile_avif?: InputMaybe<mutationWebImageUpdate_Sizes_Mobile_avifInput>;
+    mobile_jpeg?: InputMaybe<mutationWebImageUpdate_Sizes_Mobile_jpegInput>;
+    mobile_webp?: InputMaybe<mutationWebImageUpdate_Sizes_Mobile_webpInput>;
+    tablet_avif?: InputMaybe<mutationWebImageUpdate_Sizes_Tablet_avifInput>;
+    tablet_jpeg?: InputMaybe<mutationWebImageUpdate_Sizes_Tablet_jpegInput>;
+    tablet_webp?: InputMaybe<mutationWebImageUpdate_Sizes_Tablet_webpInput>;
+    thumbnail_avif?: InputMaybe<mutationWebImageUpdate_Sizes_Thumbnail_avifInput>;
+    thumbnail_jpeg?: InputMaybe<mutationWebImageUpdate_Sizes_Thumbnail_jpegInput>;
+    thumbnail_webp?: InputMaybe<mutationWebImageUpdate_Sizes_Thumbnail_webpInput>;
+};
+
+export type mutationWebImageUpdate_Sizes_Desktop_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImageUpdate_Sizes_Desktop_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImageUpdate_Sizes_Desktop_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImageUpdate_Sizes_Mobile_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImageUpdate_Sizes_Mobile_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImageUpdate_Sizes_Mobile_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImageUpdate_Sizes_Tablet_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImageUpdate_Sizes_Tablet_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImageUpdate_Sizes_Tablet_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImageUpdate_Sizes_Thumbnail_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImageUpdate_Sizes_Thumbnail_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImageUpdate_Sizes_Thumbnail_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImage_SizesInput = {
+    desktop_avif?: InputMaybe<mutationWebImage_Sizes_Desktop_avifInput>;
+    desktop_jpeg?: InputMaybe<mutationWebImage_Sizes_Desktop_jpegInput>;
+    desktop_webp?: InputMaybe<mutationWebImage_Sizes_Desktop_webpInput>;
+    mobile_avif?: InputMaybe<mutationWebImage_Sizes_Mobile_avifInput>;
+    mobile_jpeg?: InputMaybe<mutationWebImage_Sizes_Mobile_jpegInput>;
+    mobile_webp?: InputMaybe<mutationWebImage_Sizes_Mobile_webpInput>;
+    tablet_avif?: InputMaybe<mutationWebImage_Sizes_Tablet_avifInput>;
+    tablet_jpeg?: InputMaybe<mutationWebImage_Sizes_Tablet_jpegInput>;
+    tablet_webp?: InputMaybe<mutationWebImage_Sizes_Tablet_webpInput>;
+    thumbnail_avif?: InputMaybe<mutationWebImage_Sizes_Thumbnail_avifInput>;
+    thumbnail_jpeg?: InputMaybe<mutationWebImage_Sizes_Thumbnail_jpegInput>;
+    thumbnail_webp?: InputMaybe<mutationWebImage_Sizes_Thumbnail_webpInput>;
+};
+
+export type mutationWebImage_Sizes_Desktop_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImage_Sizes_Desktop_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImage_Sizes_Desktop_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImage_Sizes_Mobile_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImage_Sizes_Mobile_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImage_Sizes_Mobile_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImage_Sizes_Tablet_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImage_Sizes_Tablet_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImage_Sizes_Tablet_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImage_Sizes_Thumbnail_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImage_Sizes_Thumbnail_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationWebImage_Sizes_Thumbnail_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
     url?: InputMaybe<Scalars['String']['input']>;
     width?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type mutationWebPageInput = {
     blocks?: InputMaybe<Scalars['JSON']['input']>;
+    canonical?: InputMaybe<Scalars['String']['input']>;
     createdAt?: InputMaybe<Scalars['String']['input']>;
     description?: InputMaybe<Scalars['String']['input']>;
     image?: InputMaybe<Scalars['Int']['input']>;
+    keywords?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    noIndex?: InputMaybe<Scalars['Boolean']['input']>;
+    schemaType?: InputMaybe<WebPage_schemaType_MutationInput>;
     slug: Scalars['String']['input'];
     title?: InputMaybe<Scalars['String']['input']>;
     updatedAt?: InputMaybe<Scalars['String']['input']>;
@@ -25286,9 +39068,13 @@ export type mutationWebPageInput = {
 
 export type mutationWebPageUpdateInput = {
     blocks?: InputMaybe<Scalars['JSON']['input']>;
+    canonical?: InputMaybe<Scalars['String']['input']>;
     createdAt?: InputMaybe<Scalars['String']['input']>;
     description?: InputMaybe<Scalars['String']['input']>;
     image?: InputMaybe<Scalars['Int']['input']>;
+    keywords?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    noIndex?: InputMaybe<Scalars['Boolean']['input']>;
+    schemaType?: InputMaybe<WebPageUpdate_schemaType_MutationInput>;
     slug?: InputMaybe<Scalars['String']['input']>;
     title?: InputMaybe<Scalars['String']['input']>;
     updatedAt?: InputMaybe<Scalars['String']['input']>;
@@ -25690,22 +39476,40 @@ export type web_booksDocAccess = {
     update?: Maybe<WebBooksUpdateDocAccess>;
 };
 
-export type web_mediaAccess = {
-    __typename?: 'web_mediaAccess';
-    create?: Maybe<WebMediaCreateAccess>;
-    delete?: Maybe<WebMediaDeleteAccess>;
-    fields?: Maybe<WebMediaFields>;
-    read?: Maybe<WebMediaReadAccess>;
-    update?: Maybe<WebMediaUpdateAccess>;
+export type web_image_categoriesAccess = {
+    __typename?: 'web_image_categoriesAccess';
+    create?: Maybe<WebImageCategoriesCreateAccess>;
+    delete?: Maybe<WebImageCategoriesDeleteAccess>;
+    fields?: Maybe<WebImageCategoriesFields>;
+    read?: Maybe<WebImageCategoriesReadAccess>;
+    update?: Maybe<WebImageCategoriesUpdateAccess>;
 };
 
-export type web_mediaDocAccess = {
-    __typename?: 'web_mediaDocAccess';
-    create?: Maybe<WebMediaCreateDocAccess>;
-    delete?: Maybe<WebMediaDeleteDocAccess>;
-    fields?: Maybe<WebMediaDocAccessFields>;
-    read?: Maybe<WebMediaReadDocAccess>;
-    update?: Maybe<WebMediaUpdateDocAccess>;
+export type web_image_categoriesDocAccess = {
+    __typename?: 'web_image_categoriesDocAccess';
+    create?: Maybe<WebImageCategoriesCreateDocAccess>;
+    delete?: Maybe<WebImageCategoriesDeleteDocAccess>;
+    fields?: Maybe<WebImageCategoriesDocAccessFields>;
+    read?: Maybe<WebImageCategoriesReadDocAccess>;
+    update?: Maybe<WebImageCategoriesUpdateDocAccess>;
+};
+
+export type web_imagesAccess = {
+    __typename?: 'web_imagesAccess';
+    create?: Maybe<WebImagesCreateAccess>;
+    delete?: Maybe<WebImagesDeleteAccess>;
+    fields?: Maybe<WebImagesFields>;
+    read?: Maybe<WebImagesReadAccess>;
+    update?: Maybe<WebImagesUpdateAccess>;
+};
+
+export type web_imagesDocAccess = {
+    __typename?: 'web_imagesDocAccess';
+    create?: Maybe<WebImagesCreateDocAccess>;
+    delete?: Maybe<WebImagesDeleteDocAccess>;
+    fields?: Maybe<WebImagesDocAccessFields>;
+    read?: Maybe<WebImagesReadDocAccess>;
+    update?: Maybe<WebImagesUpdateDocAccess>;
 };
 
 export type web_pagesAccess = {
@@ -25891,7 +39695,7 @@ export type BookListAttributesFragment = {
             infos: string;
             description?: { [key: string]: any } | null;
             cover?: {
-                __typename?: 'WebMedia';
+                __typename?: 'WebImage';
                 id: number;
                 alt: string;
                 updatedAt?: string | null;
@@ -25905,6 +39709,117 @@ export type BookListAttributesFragment = {
                 height?: number | null;
                 focalX?: number | null;
                 focalY?: number | null;
+                sizes?: {
+                    __typename?: 'WebImage_Sizes';
+                    thumbnail_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    thumbnail_webp?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    thumbnail_avif?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_webp?: {
+                        __typename?: 'WebImage_Sizes_Mobile_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_avif?: {
+                        __typename?: 'WebImage_Sizes_Mobile_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_webp?: {
+                        __typename?: 'WebImage_Sizes_Tablet_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_avif?: {
+                        __typename?: 'WebImage_Sizes_Tablet_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_webp?: {
+                        __typename?: 'WebImage_Sizes_Desktop_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_avif?: {
+                        __typename?: 'WebImage_Sizes_Desktop_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                } | null;
             } | null;
             link?: {
                 __typename?: 'WebBook_Link';
@@ -25965,7 +39880,7 @@ export type HeroLargeAttributesFragment = {
         __typename?: 'WebHeroLarge_Content';
         title: string;
         image: {
-            __typename?: 'WebMedia';
+            __typename?: 'WebImage';
             id: number;
             alt: string;
             updatedAt?: string | null;
@@ -25979,6 +39894,117 @@ export type HeroLargeAttributesFragment = {
             height?: number | null;
             focalX?: number | null;
             focalY?: number | null;
+            sizes?: {
+                __typename?: 'WebImage_Sizes';
+                thumbnail_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_webp?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_avif?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_webp?: {
+                    __typename?: 'WebImage_Sizes_Mobile_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_avif?: {
+                    __typename?: 'WebImage_Sizes_Mobile_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_webp?: {
+                    __typename?: 'WebImage_Sizes_Tablet_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_avif?: {
+                    __typename?: 'WebImage_Sizes_Tablet_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_webp?: {
+                    __typename?: 'WebImage_Sizes_Desktop_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_avif?: {
+                    __typename?: 'WebImage_Sizes_Desktop_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+            } | null;
         };
     } | null;
     webHeroLargeSettings?: {
@@ -26002,7 +40028,7 @@ export type HeroSmallAttributesFragment = {
         __typename?: 'WebHeroSmall_Content';
         title: string;
         image?: {
-            __typename?: 'WebMedia';
+            __typename?: 'WebImage';
             id: number;
             alt: string;
             updatedAt?: string | null;
@@ -26016,6 +40042,117 @@ export type HeroSmallAttributesFragment = {
             height?: number | null;
             focalX?: number | null;
             focalY?: number | null;
+            sizes?: {
+                __typename?: 'WebImage_Sizes';
+                thumbnail_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_webp?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_avif?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_webp?: {
+                    __typename?: 'WebImage_Sizes_Mobile_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_avif?: {
+                    __typename?: 'WebImage_Sizes_Mobile_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_webp?: {
+                    __typename?: 'WebImage_Sizes_Tablet_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_avif?: {
+                    __typename?: 'WebImage_Sizes_Tablet_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_webp?: {
+                    __typename?: 'WebImage_Sizes_Desktop_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_avif?: {
+                    __typename?: 'WebImage_Sizes_Desktop_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+            } | null;
         } | null;
         link?: {
             __typename?: 'WebHeroSmall_Content_Link';
@@ -26050,7 +40187,7 @@ export type HighlightedLinksAttributesFragment = {
             url?: string | null;
             target?: WebHighlightedLinks_Content_Links_target | null;
             image?: {
-                __typename?: 'WebMedia';
+                __typename?: 'WebImage';
                 id: number;
                 alt: string;
                 updatedAt?: string | null;
@@ -26064,6 +40201,117 @@ export type HighlightedLinksAttributesFragment = {
                 height?: number | null;
                 focalX?: number | null;
                 focalY?: number | null;
+                sizes?: {
+                    __typename?: 'WebImage_Sizes';
+                    thumbnail_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    thumbnail_webp?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    thumbnail_avif?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_webp?: {
+                        __typename?: 'WebImage_Sizes_Mobile_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_avif?: {
+                        __typename?: 'WebImage_Sizes_Mobile_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_webp?: {
+                        __typename?: 'WebImage_Sizes_Tablet_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_avif?: {
+                        __typename?: 'WebImage_Sizes_Tablet_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_webp?: {
+                        __typename?: 'WebImage_Sizes_Desktop_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_avif?: {
+                        __typename?: 'WebImage_Sizes_Desktop_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                } | null;
             } | null;
         }> | null;
     } | null;
@@ -26097,7 +40345,7 @@ export type ImageTextAttributesFragment = {
             target?: WebImageText_Content_Link_target | null;
         } | null;
         image?: {
-            __typename?: 'WebMedia';
+            __typename?: 'WebImage';
             id: number;
             alt: string;
             updatedAt?: string | null;
@@ -26111,6 +40359,117 @@ export type ImageTextAttributesFragment = {
             height?: number | null;
             focalX?: number | null;
             focalY?: number | null;
+            sizes?: {
+                __typename?: 'WebImage_Sizes';
+                thumbnail_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_webp?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_avif?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_webp?: {
+                    __typename?: 'WebImage_Sizes_Mobile_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_avif?: {
+                    __typename?: 'WebImage_Sizes_Mobile_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_webp?: {
+                    __typename?: 'WebImage_Sizes_Tablet_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_avif?: {
+                    __typename?: 'WebImage_Sizes_Tablet_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_webp?: {
+                    __typename?: 'WebImage_Sizes_Desktop_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_avif?: {
+                    __typename?: 'WebImage_Sizes_Desktop_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+            } | null;
         } | null;
     } | null;
     webImageTextSettings?: {
@@ -26168,7 +40527,7 @@ export type MoodPictureAttributesFragment = {
     webMoodPictureContent?: {
         __typename?: 'WebMoodPicture_Content';
         image?: {
-            __typename?: 'WebMedia';
+            __typename?: 'WebImage';
             id: number;
             alt: string;
             updatedAt?: string | null;
@@ -26182,6 +40541,117 @@ export type MoodPictureAttributesFragment = {
             height?: number | null;
             focalX?: number | null;
             focalY?: number | null;
+            sizes?: {
+                __typename?: 'WebImage_Sizes';
+                thumbnail_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_webp?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_avif?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_webp?: {
+                    __typename?: 'WebImage_Sizes_Mobile_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_avif?: {
+                    __typename?: 'WebImage_Sizes_Mobile_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_webp?: {
+                    __typename?: 'WebImage_Sizes_Tablet_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_avif?: {
+                    __typename?: 'WebImage_Sizes_Tablet_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_webp?: {
+                    __typename?: 'WebImage_Sizes_Desktop_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_avif?: {
+                    __typename?: 'WebImage_Sizes_Desktop_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+            } | null;
         } | null;
     } | null;
     webMoodPictureSettings?: {
@@ -26211,7 +40681,7 @@ export type SwiperCardAttributesFragment = {
             date?: string | null;
             title?: string | null;
             image?: {
-                __typename?: 'WebMedia';
+                __typename?: 'WebImage';
                 id: number;
                 alt: string;
                 updatedAt?: string | null;
@@ -26225,6 +40695,117 @@ export type SwiperCardAttributesFragment = {
                 height?: number | null;
                 focalX?: number | null;
                 focalY?: number | null;
+                sizes?: {
+                    __typename?: 'WebImage_Sizes';
+                    thumbnail_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    thumbnail_webp?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    thumbnail_avif?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_webp?: {
+                        __typename?: 'WebImage_Sizes_Mobile_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_avif?: {
+                        __typename?: 'WebImage_Sizes_Mobile_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_webp?: {
+                        __typename?: 'WebImage_Sizes_Tablet_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_avif?: {
+                        __typename?: 'WebImage_Sizes_Tablet_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_webp?: {
+                        __typename?: 'WebImage_Sizes_Desktop_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_avif?: {
+                        __typename?: 'WebImage_Sizes_Desktop_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                } | null;
             } | null;
             link?: {
                 __typename?: 'WebSwiperCard_Content_Cards_Link';
@@ -26268,7 +40849,7 @@ export type SwiperLargeAttributesFragment = {
                 target?: WebSwiperLarge_Content_Items_Link_target | null;
             } | null;
             image?: {
-                __typename?: 'WebMedia';
+                __typename?: 'WebImage';
                 id: number;
                 alt: string;
                 updatedAt?: string | null;
@@ -26282,6 +40863,117 @@ export type SwiperLargeAttributesFragment = {
                 height?: number | null;
                 focalX?: number | null;
                 focalY?: number | null;
+                sizes?: {
+                    __typename?: 'WebImage_Sizes';
+                    thumbnail_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    thumbnail_webp?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    thumbnail_avif?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_webp?: {
+                        __typename?: 'WebImage_Sizes_Mobile_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_avif?: {
+                        __typename?: 'WebImage_Sizes_Mobile_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_webp?: {
+                        __typename?: 'WebImage_Sizes_Tablet_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_avif?: {
+                        __typename?: 'WebImage_Sizes_Tablet_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_webp?: {
+                        __typename?: 'WebImage_Sizes_Desktop_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_avif?: {
+                        __typename?: 'WebImage_Sizes_Desktop_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                } | null;
             } | null;
         }> | null;
     } | null;
@@ -26313,7 +41005,7 @@ export type SwiperSimpleAttributesFragment = {
                 __typename?: 'WebSwiperSimple_Content_Slides_Images';
                 id?: string | null;
                 image?: {
-                    __typename?: 'WebMedia';
+                    __typename?: 'WebImage';
                     id: number;
                     alt: string;
                     updatedAt?: string | null;
@@ -26327,6 +41019,117 @@ export type SwiperSimpleAttributesFragment = {
                     height?: number | null;
                     focalX?: number | null;
                     focalY?: number | null;
+                    sizes?: {
+                        __typename?: 'WebImage_Sizes';
+                        thumbnail_jpeg?: {
+                            __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                            url?: string | null;
+                            width?: number | null;
+                            height?: number | null;
+                            mimeType?: string | null;
+                            filesize?: number | null;
+                            filename?: string | null;
+                        } | null;
+                        thumbnail_webp?: {
+                            __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                            url?: string | null;
+                            width?: number | null;
+                            height?: number | null;
+                            mimeType?: string | null;
+                            filesize?: number | null;
+                            filename?: string | null;
+                        } | null;
+                        thumbnail_avif?: {
+                            __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                            url?: string | null;
+                            width?: number | null;
+                            height?: number | null;
+                            mimeType?: string | null;
+                            filesize?: number | null;
+                            filename?: string | null;
+                        } | null;
+                        mobile_jpeg?: {
+                            __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                            url?: string | null;
+                            width?: number | null;
+                            height?: number | null;
+                            mimeType?: string | null;
+                            filesize?: number | null;
+                            filename?: string | null;
+                        } | null;
+                        mobile_webp?: {
+                            __typename?: 'WebImage_Sizes_Mobile_webp';
+                            url?: string | null;
+                            width?: number | null;
+                            height?: number | null;
+                            mimeType?: string | null;
+                            filesize?: number | null;
+                            filename?: string | null;
+                        } | null;
+                        mobile_avif?: {
+                            __typename?: 'WebImage_Sizes_Mobile_avif';
+                            url?: string | null;
+                            width?: number | null;
+                            height?: number | null;
+                            mimeType?: string | null;
+                            filesize?: number | null;
+                            filename?: string | null;
+                        } | null;
+                        tablet_jpeg?: {
+                            __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                            url?: string | null;
+                            width?: number | null;
+                            height?: number | null;
+                            mimeType?: string | null;
+                            filesize?: number | null;
+                            filename?: string | null;
+                        } | null;
+                        tablet_webp?: {
+                            __typename?: 'WebImage_Sizes_Tablet_webp';
+                            url?: string | null;
+                            width?: number | null;
+                            height?: number | null;
+                            mimeType?: string | null;
+                            filesize?: number | null;
+                            filename?: string | null;
+                        } | null;
+                        tablet_avif?: {
+                            __typename?: 'WebImage_Sizes_Tablet_avif';
+                            url?: string | null;
+                            width?: number | null;
+                            height?: number | null;
+                            mimeType?: string | null;
+                            filesize?: number | null;
+                            filename?: string | null;
+                        } | null;
+                        desktop_jpeg?: {
+                            __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                            url?: string | null;
+                            width?: number | null;
+                            height?: number | null;
+                            mimeType?: string | null;
+                            filesize?: number | null;
+                            filename?: string | null;
+                        } | null;
+                        desktop_webp?: {
+                            __typename?: 'WebImage_Sizes_Desktop_webp';
+                            url?: string | null;
+                            width?: number | null;
+                            height?: number | null;
+                            mimeType?: string | null;
+                            filesize?: number | null;
+                            filename?: string | null;
+                        } | null;
+                        desktop_avif?: {
+                            __typename?: 'WebImage_Sizes_Desktop_avif';
+                            url?: string | null;
+                            width?: number | null;
+                            height?: number | null;
+                            mimeType?: string | null;
+                            filesize?: number | null;
+                            filename?: string | null;
+                        } | null;
+                    } | null;
                 } | null;
             }> | null;
         }> | null;
@@ -26373,8 +41176,13 @@ export type TextElementAttributesFragment = {
     } | null;
 };
 
-export type MediaAttributesFragment = {
-    __typename?: 'WebMedia';
+export type TextBlocksAttributesFragment = {
+    __typename?: 'WebTextBlocks';
+    docs: Array<{ __typename?: 'WebTextBlock'; id: number; slug: string; value: string }>;
+};
+
+export type WebImageAttributesFragment = {
+    __typename?: 'WebImage';
     id: number;
     alt: string;
     updatedAt?: string | null;
@@ -26388,9 +41196,120 @@ export type MediaAttributesFragment = {
     height?: number | null;
     focalX?: number | null;
     focalY?: number | null;
+    sizes?: {
+        __typename?: 'WebImage_Sizes';
+        thumbnail_jpeg?: {
+            __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        thumbnail_webp?: {
+            __typename?: 'WebImage_Sizes_Thumbnail_webp';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        thumbnail_avif?: {
+            __typename?: 'WebImage_Sizes_Thumbnail_avif';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        mobile_jpeg?: {
+            __typename?: 'WebImage_Sizes_Mobile_jpeg';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        mobile_webp?: {
+            __typename?: 'WebImage_Sizes_Mobile_webp';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        mobile_avif?: {
+            __typename?: 'WebImage_Sizes_Mobile_avif';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        tablet_jpeg?: {
+            __typename?: 'WebImage_Sizes_Tablet_jpeg';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        tablet_webp?: {
+            __typename?: 'WebImage_Sizes_Tablet_webp';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        tablet_avif?: {
+            __typename?: 'WebImage_Sizes_Tablet_avif';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        desktop_jpeg?: {
+            __typename?: 'WebImage_Sizes_Desktop_jpeg';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        desktop_webp?: {
+            __typename?: 'WebImage_Sizes_Desktop_webp';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        desktop_avif?: {
+            __typename?: 'WebImage_Sizes_Desktop_avif';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+    } | null;
 };
 
-export type PartnersAttributesFragment = {
+export type WebPartnersAttributesFragment = {
     __typename?: 'WebPartners';
     docs: Array<{
         __typename?: 'WebPartner';
@@ -26403,7 +41322,7 @@ export type PartnersAttributesFragment = {
             target?: WebPartner_Link_target | null;
         } | null;
         image?: {
-            __typename?: 'WebMedia';
+            __typename?: 'WebImage';
             id: number;
             alt: string;
             updatedAt?: string | null;
@@ -26417,11 +41336,122 @@ export type PartnersAttributesFragment = {
             height?: number | null;
             focalX?: number | null;
             focalY?: number | null;
+            sizes?: {
+                __typename?: 'WebImage_Sizes';
+                thumbnail_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_webp?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_avif?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_webp?: {
+                    __typename?: 'WebImage_Sizes_Mobile_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_avif?: {
+                    __typename?: 'WebImage_Sizes_Mobile_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_webp?: {
+                    __typename?: 'WebImage_Sizes_Tablet_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_avif?: {
+                    __typename?: 'WebImage_Sizes_Tablet_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_webp?: {
+                    __typename?: 'WebImage_Sizes_Desktop_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_avif?: {
+                    __typename?: 'WebImage_Sizes_Desktop_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+            } | null;
         } | null;
     }>;
 };
 
-export type SocialsAttributesFragment = {
+export type WebSocialsAttributesFragment = {
     __typename?: 'WebSocials';
     docs: Array<{
         __typename?: 'WebSocial';
@@ -26434,7 +41464,7 @@ export type SocialsAttributesFragment = {
             target?: WebSocial_Link_target | null;
         } | null;
         backgroundImage?: {
-            __typename?: 'WebMedia';
+            __typename?: 'WebImage';
             id: number;
             alt: string;
             updatedAt?: string | null;
@@ -26448,13 +41478,119 @@ export type SocialsAttributesFragment = {
             height?: number | null;
             focalX?: number | null;
             focalY?: number | null;
+            sizes?: {
+                __typename?: 'WebImage_Sizes';
+                thumbnail_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_webp?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_avif?: {
+                    __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_webp?: {
+                    __typename?: 'WebImage_Sizes_Mobile_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_avif?: {
+                    __typename?: 'WebImage_Sizes_Mobile_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_webp?: {
+                    __typename?: 'WebImage_Sizes_Tablet_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_avif?: {
+                    __typename?: 'WebImage_Sizes_Tablet_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_jpeg?: {
+                    __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_webp?: {
+                    __typename?: 'WebImage_Sizes_Desktop_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_avif?: {
+                    __typename?: 'WebImage_Sizes_Desktop_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+            } | null;
         } | null;
     }>;
-};
-
-export type TextBlocksAttributesFragment = {
-    __typename?: 'WebTextBlocks';
-    docs: Array<{ __typename?: 'WebTextBlock'; id: number; slug: string; value: string }>;
 };
 
 export type findGlobalsQueryVariables = Exact<{ [key: string]: never }>;
@@ -26519,7 +41655,7 @@ export type findGlobalsQuery = {
                 target?: WebPartner_Link_target | null;
             } | null;
             image?: {
-                __typename?: 'WebMedia';
+                __typename?: 'WebImage';
                 id: number;
                 alt: string;
                 updatedAt?: string | null;
@@ -26533,6 +41669,117 @@ export type findGlobalsQuery = {
                 height?: number | null;
                 focalX?: number | null;
                 focalY?: number | null;
+                sizes?: {
+                    __typename?: 'WebImage_Sizes';
+                    thumbnail_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    thumbnail_webp?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    thumbnail_avif?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_webp?: {
+                        __typename?: 'WebImage_Sizes_Mobile_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_avif?: {
+                        __typename?: 'WebImage_Sizes_Mobile_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_webp?: {
+                        __typename?: 'WebImage_Sizes_Tablet_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_avif?: {
+                        __typename?: 'WebImage_Sizes_Tablet_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_webp?: {
+                        __typename?: 'WebImage_Sizes_Desktop_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_avif?: {
+                        __typename?: 'WebImage_Sizes_Desktop_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                } | null;
             } | null;
         }>;
     } | null;
@@ -26549,7 +41796,7 @@ export type findGlobalsQuery = {
                 target?: WebSocial_Link_target | null;
             } | null;
             backgroundImage?: {
-                __typename?: 'WebMedia';
+                __typename?: 'WebImage';
                 id: number;
                 alt: string;
                 updatedAt?: string | null;
@@ -26563,6 +41810,117 @@ export type findGlobalsQuery = {
                 height?: number | null;
                 focalX?: number | null;
                 focalY?: number | null;
+                sizes?: {
+                    __typename?: 'WebImage_Sizes';
+                    thumbnail_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    thumbnail_webp?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    thumbnail_avif?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_webp?: {
+                        __typename?: 'WebImage_Sizes_Mobile_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_avif?: {
+                        __typename?: 'WebImage_Sizes_Mobile_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_webp?: {
+                        __typename?: 'WebImage_Sizes_Tablet_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_avif?: {
+                        __typename?: 'WebImage_Sizes_Tablet_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_webp?: {
+                        __typename?: 'WebImage_Sizes_Desktop_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_avif?: {
+                        __typename?: 'WebImage_Sizes_Desktop_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                } | null;
             } | null;
         }>;
     } | null;
@@ -26598,8 +41956,12 @@ export type findWebPagesQuery = {
             createdAt?: string | null;
             title?: string | null;
             description?: string | null;
+            keywords?: Array<string> | null;
+            noIndex?: boolean | null;
+            canonical?: string | null;
+            schemaType?: WebPage_schemaType | null;
             image?: {
-                __typename?: 'WebMedia';
+                __typename?: 'WebImage';
                 id: number;
                 alt: string;
                 updatedAt?: string | null;
@@ -26613,6 +41975,117 @@ export type findWebPagesQuery = {
                 height?: number | null;
                 focalX?: number | null;
                 focalY?: number | null;
+                sizes?: {
+                    __typename?: 'WebImage_Sizes';
+                    thumbnail_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    thumbnail_webp?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    thumbnail_avif?: {
+                        __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_webp?: {
+                        __typename?: 'WebImage_Sizes_Mobile_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    mobile_avif?: {
+                        __typename?: 'WebImage_Sizes_Mobile_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_webp?: {
+                        __typename?: 'WebImage_Sizes_Tablet_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    tablet_avif?: {
+                        __typename?: 'WebImage_Sizes_Tablet_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_jpeg?: {
+                        __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_webp?: {
+                        __typename?: 'WebImage_Sizes_Desktop_webp';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                    desktop_avif?: {
+                        __typename?: 'WebImage_Sizes_Desktop_avif';
+                        url?: string | null;
+                        width?: number | null;
+                        height?: number | null;
+                        mimeType?: string | null;
+                        filesize?: number | null;
+                        filename?: string | null;
+                    } | null;
+                } | null;
             } | null;
             blocks?: Array<
                 | {
@@ -26675,7 +42148,7 @@ export type findWebPagesQuery = {
                               infos: string;
                               description?: { [key: string]: any } | null;
                               cover?: {
-                                  __typename?: 'WebMedia';
+                                  __typename?: 'WebImage';
                                   id: number;
                                   alt: string;
                                   updatedAt?: string | null;
@@ -26689,6 +42162,117 @@ export type findWebPagesQuery = {
                                   height?: number | null;
                                   focalX?: number | null;
                                   focalY?: number | null;
+                                  sizes?: {
+                                      __typename?: 'WebImage_Sizes';
+                                      thumbnail_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      thumbnail_webp?: {
+                                          __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      thumbnail_avif?: {
+                                          __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      mobile_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      mobile_webp?: {
+                                          __typename?: 'WebImage_Sizes_Mobile_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      mobile_avif?: {
+                                          __typename?: 'WebImage_Sizes_Mobile_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      tablet_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      tablet_webp?: {
+                                          __typename?: 'WebImage_Sizes_Tablet_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      tablet_avif?: {
+                                          __typename?: 'WebImage_Sizes_Tablet_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      desktop_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      desktop_webp?: {
+                                          __typename?: 'WebImage_Sizes_Desktop_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      desktop_avif?: {
+                                          __typename?: 'WebImage_Sizes_Desktop_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                  } | null;
                               } | null;
                               link?: {
                                   __typename?: 'WebBook_Link';
@@ -26747,7 +42331,7 @@ export type findWebPagesQuery = {
                           __typename?: 'WebHeroLarge_Content';
                           title: string;
                           image: {
-                              __typename?: 'WebMedia';
+                              __typename?: 'WebImage';
                               id: number;
                               alt: string;
                               updatedAt?: string | null;
@@ -26761,6 +42345,117 @@ export type findWebPagesQuery = {
                               height?: number | null;
                               focalX?: number | null;
                               focalY?: number | null;
+                              sizes?: {
+                                  __typename?: 'WebImage_Sizes';
+                                  thumbnail_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  thumbnail_webp?: {
+                                      __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  thumbnail_avif?: {
+                                      __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  mobile_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  mobile_webp?: {
+                                      __typename?: 'WebImage_Sizes_Mobile_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  mobile_avif?: {
+                                      __typename?: 'WebImage_Sizes_Mobile_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  tablet_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  tablet_webp?: {
+                                      __typename?: 'WebImage_Sizes_Tablet_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  tablet_avif?: {
+                                      __typename?: 'WebImage_Sizes_Tablet_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  desktop_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  desktop_webp?: {
+                                      __typename?: 'WebImage_Sizes_Desktop_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  desktop_avif?: {
+                                      __typename?: 'WebImage_Sizes_Desktop_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                              } | null;
                           };
                       } | null;
                       webHeroLargeSettings?: {
@@ -26783,7 +42478,7 @@ export type findWebPagesQuery = {
                           __typename?: 'WebHeroSmall_Content';
                           title: string;
                           image?: {
-                              __typename?: 'WebMedia';
+                              __typename?: 'WebImage';
                               id: number;
                               alt: string;
                               updatedAt?: string | null;
@@ -26797,6 +42492,117 @@ export type findWebPagesQuery = {
                               height?: number | null;
                               focalX?: number | null;
                               focalY?: number | null;
+                              sizes?: {
+                                  __typename?: 'WebImage_Sizes';
+                                  thumbnail_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  thumbnail_webp?: {
+                                      __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  thumbnail_avif?: {
+                                      __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  mobile_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  mobile_webp?: {
+                                      __typename?: 'WebImage_Sizes_Mobile_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  mobile_avif?: {
+                                      __typename?: 'WebImage_Sizes_Mobile_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  tablet_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  tablet_webp?: {
+                                      __typename?: 'WebImage_Sizes_Tablet_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  tablet_avif?: {
+                                      __typename?: 'WebImage_Sizes_Tablet_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  desktop_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  desktop_webp?: {
+                                      __typename?: 'WebImage_Sizes_Desktop_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  desktop_avif?: {
+                                      __typename?: 'WebImage_Sizes_Desktop_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                              } | null;
                           } | null;
                           link?: {
                               __typename?: 'WebHeroSmall_Content_Link';
@@ -26830,7 +42636,7 @@ export type findWebPagesQuery = {
                               url?: string | null;
                               target?: WebHighlightedLinks_Content_Links_target | null;
                               image?: {
-                                  __typename?: 'WebMedia';
+                                  __typename?: 'WebImage';
                                   id: number;
                                   alt: string;
                                   updatedAt?: string | null;
@@ -26844,6 +42650,117 @@ export type findWebPagesQuery = {
                                   height?: number | null;
                                   focalX?: number | null;
                                   focalY?: number | null;
+                                  sizes?: {
+                                      __typename?: 'WebImage_Sizes';
+                                      thumbnail_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      thumbnail_webp?: {
+                                          __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      thumbnail_avif?: {
+                                          __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      mobile_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      mobile_webp?: {
+                                          __typename?: 'WebImage_Sizes_Mobile_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      mobile_avif?: {
+                                          __typename?: 'WebImage_Sizes_Mobile_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      tablet_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      tablet_webp?: {
+                                          __typename?: 'WebImage_Sizes_Tablet_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      tablet_avif?: {
+                                          __typename?: 'WebImage_Sizes_Tablet_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      desktop_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      desktop_webp?: {
+                                          __typename?: 'WebImage_Sizes_Desktop_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      desktop_avif?: {
+                                          __typename?: 'WebImage_Sizes_Desktop_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                  } | null;
                               } | null;
                           }> | null;
                       } | null;
@@ -26876,7 +42793,7 @@ export type findWebPagesQuery = {
                               target?: WebImageText_Content_Link_target | null;
                           } | null;
                           image?: {
-                              __typename?: 'WebMedia';
+                              __typename?: 'WebImage';
                               id: number;
                               alt: string;
                               updatedAt?: string | null;
@@ -26890,6 +42807,117 @@ export type findWebPagesQuery = {
                               height?: number | null;
                               focalX?: number | null;
                               focalY?: number | null;
+                              sizes?: {
+                                  __typename?: 'WebImage_Sizes';
+                                  thumbnail_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  thumbnail_webp?: {
+                                      __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  thumbnail_avif?: {
+                                      __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  mobile_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  mobile_webp?: {
+                                      __typename?: 'WebImage_Sizes_Mobile_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  mobile_avif?: {
+                                      __typename?: 'WebImage_Sizes_Mobile_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  tablet_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  tablet_webp?: {
+                                      __typename?: 'WebImage_Sizes_Tablet_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  tablet_avif?: {
+                                      __typename?: 'WebImage_Sizes_Tablet_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  desktop_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  desktop_webp?: {
+                                      __typename?: 'WebImage_Sizes_Desktop_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  desktop_avif?: {
+                                      __typename?: 'WebImage_Sizes_Desktop_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                              } | null;
                           } | null;
                       } | null;
                       webImageTextSettings?: {
@@ -26945,7 +42973,7 @@ export type findWebPagesQuery = {
                       webMoodPictureContent?: {
                           __typename?: 'WebMoodPicture_Content';
                           image?: {
-                              __typename?: 'WebMedia';
+                              __typename?: 'WebImage';
                               id: number;
                               alt: string;
                               updatedAt?: string | null;
@@ -26959,6 +42987,117 @@ export type findWebPagesQuery = {
                               height?: number | null;
                               focalX?: number | null;
                               focalY?: number | null;
+                              sizes?: {
+                                  __typename?: 'WebImage_Sizes';
+                                  thumbnail_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  thumbnail_webp?: {
+                                      __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  thumbnail_avif?: {
+                                      __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  mobile_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  mobile_webp?: {
+                                      __typename?: 'WebImage_Sizes_Mobile_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  mobile_avif?: {
+                                      __typename?: 'WebImage_Sizes_Mobile_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  tablet_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  tablet_webp?: {
+                                      __typename?: 'WebImage_Sizes_Tablet_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  tablet_avif?: {
+                                      __typename?: 'WebImage_Sizes_Tablet_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  desktop_jpeg?: {
+                                      __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  desktop_webp?: {
+                                      __typename?: 'WebImage_Sizes_Desktop_webp';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                                  desktop_avif?: {
+                                      __typename?: 'WebImage_Sizes_Desktop_avif';
+                                      url?: string | null;
+                                      width?: number | null;
+                                      height?: number | null;
+                                      mimeType?: string | null;
+                                      filesize?: number | null;
+                                      filename?: string | null;
+                                  } | null;
+                              } | null;
                           } | null;
                       } | null;
                       webMoodPictureSettings?: {
@@ -26987,7 +43126,7 @@ export type findWebPagesQuery = {
                               date?: string | null;
                               title?: string | null;
                               image?: {
-                                  __typename?: 'WebMedia';
+                                  __typename?: 'WebImage';
                                   id: number;
                                   alt: string;
                                   updatedAt?: string | null;
@@ -27001,6 +43140,117 @@ export type findWebPagesQuery = {
                                   height?: number | null;
                                   focalX?: number | null;
                                   focalY?: number | null;
+                                  sizes?: {
+                                      __typename?: 'WebImage_Sizes';
+                                      thumbnail_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      thumbnail_webp?: {
+                                          __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      thumbnail_avif?: {
+                                          __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      mobile_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      mobile_webp?: {
+                                          __typename?: 'WebImage_Sizes_Mobile_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      mobile_avif?: {
+                                          __typename?: 'WebImage_Sizes_Mobile_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      tablet_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      tablet_webp?: {
+                                          __typename?: 'WebImage_Sizes_Tablet_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      tablet_avif?: {
+                                          __typename?: 'WebImage_Sizes_Tablet_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      desktop_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      desktop_webp?: {
+                                          __typename?: 'WebImage_Sizes_Desktop_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      desktop_avif?: {
+                                          __typename?: 'WebImage_Sizes_Desktop_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                  } | null;
                               } | null;
                               link?: {
                                   __typename?: 'WebSwiperCard_Content_Cards_Link';
@@ -27043,7 +43293,7 @@ export type findWebPagesQuery = {
                                   target?: WebSwiperLarge_Content_Items_Link_target | null;
                               } | null;
                               image?: {
-                                  __typename?: 'WebMedia';
+                                  __typename?: 'WebImage';
                                   id: number;
                                   alt: string;
                                   updatedAt?: string | null;
@@ -27057,6 +43307,117 @@ export type findWebPagesQuery = {
                                   height?: number | null;
                                   focalX?: number | null;
                                   focalY?: number | null;
+                                  sizes?: {
+                                      __typename?: 'WebImage_Sizes';
+                                      thumbnail_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      thumbnail_webp?: {
+                                          __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      thumbnail_avif?: {
+                                          __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      mobile_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      mobile_webp?: {
+                                          __typename?: 'WebImage_Sizes_Mobile_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      mobile_avif?: {
+                                          __typename?: 'WebImage_Sizes_Mobile_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      tablet_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      tablet_webp?: {
+                                          __typename?: 'WebImage_Sizes_Tablet_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      tablet_avif?: {
+                                          __typename?: 'WebImage_Sizes_Tablet_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      desktop_jpeg?: {
+                                          __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      desktop_webp?: {
+                                          __typename?: 'WebImage_Sizes_Desktop_webp';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                      desktop_avif?: {
+                                          __typename?: 'WebImage_Sizes_Desktop_avif';
+                                          url?: string | null;
+                                          width?: number | null;
+                                          height?: number | null;
+                                          mimeType?: string | null;
+                                          filesize?: number | null;
+                                          filename?: string | null;
+                                      } | null;
+                                  } | null;
                               } | null;
                           }> | null;
                       } | null;
@@ -27087,7 +43448,7 @@ export type findWebPagesQuery = {
                                   __typename?: 'WebSwiperSimple_Content_Slides_Images';
                                   id?: string | null;
                                   image?: {
-                                      __typename?: 'WebMedia';
+                                      __typename?: 'WebImage';
                                       id: number;
                                       alt: string;
                                       updatedAt?: string | null;
@@ -27101,6 +43462,117 @@ export type findWebPagesQuery = {
                                       height?: number | null;
                                       focalX?: number | null;
                                       focalY?: number | null;
+                                      sizes?: {
+                                          __typename?: 'WebImage_Sizes';
+                                          thumbnail_jpeg?: {
+                                              __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                                              url?: string | null;
+                                              width?: number | null;
+                                              height?: number | null;
+                                              mimeType?: string | null;
+                                              filesize?: number | null;
+                                              filename?: string | null;
+                                          } | null;
+                                          thumbnail_webp?: {
+                                              __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                                              url?: string | null;
+                                              width?: number | null;
+                                              height?: number | null;
+                                              mimeType?: string | null;
+                                              filesize?: number | null;
+                                              filename?: string | null;
+                                          } | null;
+                                          thumbnail_avif?: {
+                                              __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                                              url?: string | null;
+                                              width?: number | null;
+                                              height?: number | null;
+                                              mimeType?: string | null;
+                                              filesize?: number | null;
+                                              filename?: string | null;
+                                          } | null;
+                                          mobile_jpeg?: {
+                                              __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                                              url?: string | null;
+                                              width?: number | null;
+                                              height?: number | null;
+                                              mimeType?: string | null;
+                                              filesize?: number | null;
+                                              filename?: string | null;
+                                          } | null;
+                                          mobile_webp?: {
+                                              __typename?: 'WebImage_Sizes_Mobile_webp';
+                                              url?: string | null;
+                                              width?: number | null;
+                                              height?: number | null;
+                                              mimeType?: string | null;
+                                              filesize?: number | null;
+                                              filename?: string | null;
+                                          } | null;
+                                          mobile_avif?: {
+                                              __typename?: 'WebImage_Sizes_Mobile_avif';
+                                              url?: string | null;
+                                              width?: number | null;
+                                              height?: number | null;
+                                              mimeType?: string | null;
+                                              filesize?: number | null;
+                                              filename?: string | null;
+                                          } | null;
+                                          tablet_jpeg?: {
+                                              __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                                              url?: string | null;
+                                              width?: number | null;
+                                              height?: number | null;
+                                              mimeType?: string | null;
+                                              filesize?: number | null;
+                                              filename?: string | null;
+                                          } | null;
+                                          tablet_webp?: {
+                                              __typename?: 'WebImage_Sizes_Tablet_webp';
+                                              url?: string | null;
+                                              width?: number | null;
+                                              height?: number | null;
+                                              mimeType?: string | null;
+                                              filesize?: number | null;
+                                              filename?: string | null;
+                                          } | null;
+                                          tablet_avif?: {
+                                              __typename?: 'WebImage_Sizes_Tablet_avif';
+                                              url?: string | null;
+                                              width?: number | null;
+                                              height?: number | null;
+                                              mimeType?: string | null;
+                                              filesize?: number | null;
+                                              filename?: string | null;
+                                          } | null;
+                                          desktop_jpeg?: {
+                                              __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                                              url?: string | null;
+                                              width?: number | null;
+                                              height?: number | null;
+                                              mimeType?: string | null;
+                                              filesize?: number | null;
+                                              filename?: string | null;
+                                          } | null;
+                                          desktop_webp?: {
+                                              __typename?: 'WebImage_Sizes_Desktop_webp';
+                                              url?: string | null;
+                                              width?: number | null;
+                                              height?: number | null;
+                                              mimeType?: string | null;
+                                              filesize?: number | null;
+                                              filename?: string | null;
+                                          } | null;
+                                          desktop_avif?: {
+                                              __typename?: 'WebImage_Sizes_Desktop_avif';
+                                              url?: string | null;
+                                              width?: number | null;
+                                              height?: number | null;
+                                              mimeType?: string | null;
+                                              filesize?: number | null;
+                                              filename?: string | null;
+                                          } | null;
+                                      } | null;
                                   } | null;
                               }> | null;
                           }> | null;
@@ -27247,8 +43719,8 @@ export const AnimatedTextAttributesFragmentDoc = gql`
         }
     }
 `;
-export const MediaAttributesFragmentDoc = gql`
-    fragment MediaAttributes on WebMedia {
+export const WebImageAttributesFragmentDoc = gql`
+    fragment WebImageAttributes on WebImage {
         id
         alt
         updatedAt
@@ -27262,6 +43734,104 @@ export const MediaAttributesFragmentDoc = gql`
         height
         focalX
         focalY
+        sizes {
+            thumbnail_jpeg {
+                url
+                width
+                height
+                mimeType
+                filesize
+                filename
+            }
+            thumbnail_webp {
+                url
+                width
+                height
+                mimeType
+                filesize
+                filename
+            }
+            thumbnail_avif {
+                url
+                width
+                height
+                mimeType
+                filesize
+                filename
+            }
+            mobile_jpeg {
+                url
+                width
+                height
+                mimeType
+                filesize
+                filename
+            }
+            mobile_webp {
+                url
+                width
+                height
+                mimeType
+                filesize
+                filename
+            }
+            mobile_avif {
+                url
+                width
+                height
+                mimeType
+                filesize
+                filename
+            }
+            tablet_jpeg {
+                url
+                width
+                height
+                mimeType
+                filesize
+                filename
+            }
+            tablet_webp {
+                url
+                width
+                height
+                mimeType
+                filesize
+                filename
+            }
+            tablet_avif {
+                url
+                width
+                height
+                mimeType
+                filesize
+                filename
+            }
+            desktop_jpeg {
+                url
+                width
+                height
+                mimeType
+                filesize
+                filename
+            }
+            desktop_webp {
+                url
+                width
+                height
+                mimeType
+                filesize
+                filename
+            }
+            desktop_avif {
+                url
+                width
+                height
+                mimeType
+                filesize
+                filename
+            }
+        }
     }
 `;
 export const BookListAttributesFragmentDoc = gql`
@@ -27277,7 +43847,7 @@ export const BookListAttributesFragmentDoc = gql`
                 infos
                 description
                 cover {
-                    ...MediaAttributes
+                    ...WebImageAttributes
                 }
                 link {
                     text
@@ -27296,7 +43866,7 @@ export const BookListAttributesFragmentDoc = gql`
             style
         }
     }
-    ${MediaAttributesFragmentDoc}
+    ${WebImageAttributesFragmentDoc}
 `;
 export const CourseListAttributesFragmentDoc = gql`
     fragment CourseListAttributes on WebCourseList {
@@ -27331,7 +43901,7 @@ export const HeroLargeAttributesFragmentDoc = gql`
         webHeroLargeContent: content {
             title
             image {
-                ...MediaAttributes
+                ...WebImageAttributes
             }
         }
         webHeroLargeSettings: settings {
@@ -27343,7 +43913,7 @@ export const HeroLargeAttributesFragmentDoc = gql`
             }
         }
     }
-    ${MediaAttributesFragmentDoc}
+    ${WebImageAttributesFragmentDoc}
 `;
 export const HeroSmallAttributesFragmentDoc = gql`
     fragment HeroSmallAttributes on WebHeroSmall {
@@ -27353,7 +43923,7 @@ export const HeroSmallAttributesFragmentDoc = gql`
         webHeroSmallContent: content {
             title
             image {
-                ...MediaAttributes
+                ...WebImageAttributes
             }
             link {
                 text
@@ -27370,7 +43940,7 @@ export const HeroSmallAttributesFragmentDoc = gql`
             }
         }
     }
-    ${MediaAttributesFragmentDoc}
+    ${WebImageAttributesFragmentDoc}
 `;
 export const HighlightedLinksAttributesFragmentDoc = gql`
     fragment HighlightedLinksAttributes on WebHighlightedLinks {
@@ -27384,7 +43954,7 @@ export const HighlightedLinksAttributesFragmentDoc = gql`
                 url
                 target
                 image {
-                    ...MediaAttributes
+                    ...WebImageAttributes
                 }
             }
         }
@@ -27397,7 +43967,7 @@ export const HighlightedLinksAttributesFragmentDoc = gql`
             }
         }
     }
-    ${MediaAttributesFragmentDoc}
+    ${WebImageAttributesFragmentDoc}
 `;
 export const ImageTextAttributesFragmentDoc = gql`
     fragment ImageTextAttributes on WebImageText {
@@ -27415,7 +43985,7 @@ export const ImageTextAttributesFragmentDoc = gql`
                 target
             }
             image {
-                ...MediaAttributes
+                ...WebImageAttributes
             }
         }
         webImageTextSettings: settings {
@@ -27427,7 +43997,7 @@ export const ImageTextAttributesFragmentDoc = gql`
             }
         }
     }
-    ${MediaAttributesFragmentDoc}
+    ${WebImageAttributesFragmentDoc}
 `;
 export const InfosAttributesFragmentDoc = gql`
     fragment InfosAttributes on WebInfos {
@@ -27465,7 +44035,7 @@ export const MoodPictureAttributesFragmentDoc = gql`
         blockType
         webMoodPictureContent: content {
             image {
-                ...MediaAttributes
+                ...WebImageAttributes
             }
         }
         webMoodPictureSettings: settings {
@@ -27478,7 +44048,7 @@ export const MoodPictureAttributesFragmentDoc = gql`
             style
         }
     }
-    ${MediaAttributesFragmentDoc}
+    ${WebImageAttributesFragmentDoc}
 `;
 export const SwiperCardAttributesFragmentDoc = gql`
     fragment SwiperCardAttributes on WebSwiperCard {
@@ -27489,7 +44059,7 @@ export const SwiperCardAttributesFragmentDoc = gql`
             cards {
                 id
                 image {
-                    ...MediaAttributes
+                    ...WebImageAttributes
                 }
                 info
                 date
@@ -27511,7 +44081,7 @@ export const SwiperCardAttributesFragmentDoc = gql`
             style
         }
     }
-    ${MediaAttributesFragmentDoc}
+    ${WebImageAttributesFragmentDoc}
 `;
 export const SwiperLargeAttributesFragmentDoc = gql`
     fragment SwiperLargeAttributes on WebSwiperLarge {
@@ -27531,7 +44101,7 @@ export const SwiperLargeAttributesFragmentDoc = gql`
                     target
                 }
                 image {
-                    ...MediaAttributes
+                    ...WebImageAttributes
                 }
             }
         }
@@ -27545,7 +44115,7 @@ export const SwiperLargeAttributesFragmentDoc = gql`
             style
         }
     }
-    ${MediaAttributesFragmentDoc}
+    ${WebImageAttributesFragmentDoc}
 `;
 export const SwiperSimpleAttributesFragmentDoc = gql`
     fragment SwiperSimpleAttributes on WebSwiperSimple {
@@ -27559,7 +44129,7 @@ export const SwiperSimpleAttributesFragmentDoc = gql`
                 images {
                     id
                     image {
-                        ...MediaAttributes
+                        ...WebImageAttributes
                     }
                 }
             }
@@ -27574,7 +44144,7 @@ export const SwiperSimpleAttributesFragmentDoc = gql`
             style
         }
     }
-    ${MediaAttributesFragmentDoc}
+    ${WebImageAttributesFragmentDoc}
 `;
 export const TextElementAttributesFragmentDoc = gql`
     fragment TextElementAttributes on WebTextElement {
@@ -27601,8 +44171,17 @@ export const TextElementAttributesFragmentDoc = gql`
         }
     }
 `;
-export const PartnersAttributesFragmentDoc = gql`
-    fragment PartnersAttributes on WebPartners {
+export const TextBlocksAttributesFragmentDoc = gql`
+    fragment TextBlocksAttributes on WebTextBlocks {
+        docs {
+            id
+            slug
+            value
+        }
+    }
+`;
+export const WebPartnersAttributesFragmentDoc = gql`
+    fragment WebPartnersAttributes on WebPartners {
         docs {
             id
             name
@@ -27612,14 +44191,14 @@ export const PartnersAttributesFragmentDoc = gql`
                 target
             }
             image {
-                ...MediaAttributes
+                ...WebImageAttributes
             }
         }
     }
-    ${MediaAttributesFragmentDoc}
+    ${WebImageAttributesFragmentDoc}
 `;
-export const SocialsAttributesFragmentDoc = gql`
-    fragment SocialsAttributes on WebSocials {
+export const WebSocialsAttributesFragmentDoc = gql`
+    fragment WebSocialsAttributes on WebSocials {
         docs {
             id
             link {
@@ -27629,20 +44208,11 @@ export const SocialsAttributesFragmentDoc = gql`
             }
             icon
             backgroundImage {
-                ...MediaAttributes
+                ...WebImageAttributes
             }
         }
     }
-    ${MediaAttributesFragmentDoc}
-`;
-export const TextBlocksAttributesFragmentDoc = gql`
-    fragment TextBlocksAttributes on WebTextBlocks {
-        docs {
-            id
-            slug
-            value
-        }
-    }
+    ${WebImageAttributesFragmentDoc}
 `;
 export const findGlobalsDocument = gql`
     query findGlobals {
@@ -27659,10 +44229,10 @@ export const findGlobalsDocument = gql`
             ...ContactAttributes
         }
         WebPartners {
-            ...PartnersAttributes
+            ...WebPartnersAttributes
         }
         WebSocials {
-            ...SocialsAttributes
+            ...WebSocialsAttributes
         }
         WebTextBlocks {
             ...TextBlocksAttributes
@@ -27672,8 +44242,8 @@ export const findGlobalsDocument = gql`
     ${FooterAttributesFragmentDoc}
     ${SidebarAttributesFragmentDoc}
     ${ContactAttributesFragmentDoc}
-    ${PartnersAttributesFragmentDoc}
-    ${SocialsAttributesFragmentDoc}
+    ${WebPartnersAttributesFragmentDoc}
+    ${WebSocialsAttributesFragmentDoc}
     ${TextBlocksAttributesFragmentDoc}
 `;
 export const findWebPagesDocument = gql`
@@ -27687,8 +44257,12 @@ export const findWebPagesDocument = gql`
                 title
                 description
                 image {
-                    ...MediaAttributes
+                    ...WebImageAttributes
                 }
+                keywords
+                noIndex
+                canonical
+                schemaType
                 blocks {
                     __typename
                     ... on WebAccordions {
@@ -27747,7 +44321,7 @@ export const findWebPagesDocument = gql`
             totalPages
         }
     }
-    ${MediaAttributesFragmentDoc}
+    ${WebImageAttributesFragmentDoc}
     ${AccordionsAttributesFragmentDoc}
     ${AnimatedTextAttributesFragmentDoc}
     ${BookListAttributesFragmentDoc}

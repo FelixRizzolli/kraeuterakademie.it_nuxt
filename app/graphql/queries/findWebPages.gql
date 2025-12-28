@@ -8,7 +8,7 @@ query findWebPages($where: WebPage_where) {
             title
             description
             image {
-                ...MediaAttributes
+                ...WebImageAttributes
             }
             keywords
             noIndex

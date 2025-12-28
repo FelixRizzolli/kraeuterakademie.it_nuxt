@@ -6,7 +6,7 @@ fragment SwiperCardAttributes on WebSwiperCard {
         cards {
             id
             image {
-                ...MediaAttributes
+                ...WebImageAttributes
             }
             info
             date

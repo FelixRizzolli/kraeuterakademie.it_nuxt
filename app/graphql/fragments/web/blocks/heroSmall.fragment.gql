@@ -5,7 +5,7 @@ fragment HeroSmallAttributes on WebHeroSmall {
     webHeroSmallContent: content {
         title
         image {
-            ...MediaAttributes
+            ...WebImageAttributes
         }
         link {
             text

@@ -12,10 +12,10 @@ query findGlobals {
         ...ContactAttributes
     }
     WebPartners {
-        ...PartnersAttributes
+        ...WebPartnersAttributes
     }
     WebSocials {
-        ...SocialsAttributes
+        ...WebSocialsAttributes
     }
     WebTextBlocks {
         ...TextBlocksAttributes

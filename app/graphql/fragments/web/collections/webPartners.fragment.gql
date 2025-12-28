@@ -1,4 +1,4 @@
-fragment PartnersAttributes on WebPartners {
+fragment WebPartnersAttributes on WebPartners {
     docs {
         id
         name
@@ -8,7 +8,7 @@ fragment PartnersAttributes on WebPartners {
             target
         }
         image {
-            ...MediaAttributes
+            ...WebImageAttributes
         }
     }
 }

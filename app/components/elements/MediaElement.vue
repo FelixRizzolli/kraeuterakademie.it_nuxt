@@ -16,7 +16,7 @@
     const runtimeConfig = useRuntimeConfig();
 
     export interface MediaElementProps {
-        media: WebMedia;
+        media: WebImages;
         scaleAnimation?: boolean;
     }
 

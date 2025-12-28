@@ -1,4 +1,4 @@
-fragment MediaAttributes on WebMedia {
+fragment WebImageAttributes on WebImage {
     id
     alt
     updatedAt

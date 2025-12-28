@@ -28,7 +28,7 @@
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
     interface ImageLink {
-        image: WebMedia;
+        image: WebImages;
         link: Link;
     }
 

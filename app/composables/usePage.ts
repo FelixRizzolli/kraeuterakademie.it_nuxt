@@ -1,4 +1,4 @@
-import MEDIA_FRAGMENT from '~/graphql/fragments/web/collections/media.fragment.gql';
+import WEB_IMAGE_FRAGMENT from '~/graphql/fragments/web/collections/webImage.fragment.gql';
 
 import WEB_ACCORDIONS_FRAGMENT from '~/graphql/fragments/web/blocks/accordions.fragment.gql';
 import WEB_ANIMATED_TEXT_FRAGMENT from '~/graphql/fragments/web/blocks/animatedText.fragment.gql';
@@ -39,7 +39,7 @@ interface PageData {
 }
 
 const findWebPagesQuery = `
-    ${MEDIA_FRAGMENT?.loc?.source?.body}
+    ${WEB_IMAGE_FRAGMENT?.loc?.source?.body}
 
     ${WEB_ACCORDIONS_FRAGMENT?.loc?.source?.body}
     ${WEB_ANIMATED_TEXT_FRAGMENT?.loc?.source?.body}
