@@ -65,11 +65,11 @@
     };
 
     watch(
-        () => pageData.value?.seo,
-        (seo: any) => {
-            if (!seo) return;
+        () => pageData.value?.meta,
+        (meta: any) => {
+            if (!meta) return;
 
-            useSeoConfig(pageData?.value?.seo ?? {});
+            useSeoConfig(pageData?.value?.meta);
         },
         { immediate: true },
     );

@@ -24,7 +24,11 @@ interface ContentComponent {
 }
 
 interface PageData {
-    seo: any;
+    meta: {
+        title?: string;
+        description?: string;
+        image?: any;
+    };
     contentComponents: ContentComponent[];
 }
 
@@ -113,7 +117,7 @@ export const usePage = () => {
             console.log('Found page:', page);
 
             return {
-                seo: {
+                meta: {
                     title: page.title || '',
                     description: page.description || '',
                     image: page.image || null,

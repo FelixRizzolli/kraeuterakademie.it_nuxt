@@ -1,17 +1,30 @@
-export function useSeoConfig(seo: any) {
-    if (!seo) return;
+interface PayloadSeoMeta {
+    title?: string;
+    description?: string;
+    image?: {
+        url?: string;
+        alt?: string;
+        width?: number;
+        height?: number;
+    } | null;
+}
+
+export function useSeoConfig(meta: PayloadSeoMeta | null | undefined) {
+    if (!meta) return;
+
+    const imageUrl = meta.image?.url ?? '';
+    const imageAlt = meta.image?.alt ?? '';
 
     useSeoMeta({
-        title: seo.metaTitle ?? '',
-        description: seo.metaDescription ?? '',
-        keywords: seo.keywords ?? '',
-        robots: seo.preventIndexing ? 'noindex, nofollow' : 'index, follow',
-        ogTitle: seo.metaTitle ?? '',
-        ogDescription: seo.metaDescription ?? '',
-        ogImage: seo.sharedImage?.media?.url ?? '',
-        ogImageAlt: seo.sharedImage?.alt ?? '',
-        twitterTitle: seo.metaTitle ?? '',
-        twitterDescription: seo.metaDescription ?? '',
-        twitterImage: seo.sharedImage?.media?.url ?? '',
+        title: meta.title ?? '',
+        description: meta.description ?? '',
+        ogTitle: meta.title ?? '',
+        ogDescription: meta.description ?? '',
+        ogImage: imageUrl,
+        ogImageAlt: imageAlt,
+        twitterTitle: meta.title ?? '',
+        twitterDescription: meta.description ?? '',
+        twitterImage: imageUrl,
+        twitterCard: imageUrl ? 'summary_large_image' : 'summary',
     });
 }
