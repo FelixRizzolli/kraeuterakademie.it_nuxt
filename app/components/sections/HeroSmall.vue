@@ -11,7 +11,7 @@
                 {{ data.link.text }}
             </NuxtLink>
         </div>
-        <MediaElement v-if="data.image" :media="data.image" scale-animation />
+        <ResponsiveImage v-if="data.image" :image="data.image" scale-animation />
     </SectionElement>
 </template>
 
@@ -21,7 +21,7 @@
     interface HeroSmallData {
         title?: string;
         link?: Link;
-        image?: WebImages;
+        image?: WebImage;
     }
 
     interface HeroSmallSettings {

@@ -8,9 +8,9 @@
                     :to="social.link.href || '#'"
                     :target="social.link.target ?? '_self'"
                 >
-                    <MediaElement
+                    <ResponsiveImage
                         v-if="social.backgroundImage && typeof social.backgroundImage === 'object'"
-                        :media="social.backgroundImage"
+                        :image="social.backgroundImage"
                     />
                     <component v-if="social.icon" :is="'i-' + social.icon" />
                 </NuxtLink>

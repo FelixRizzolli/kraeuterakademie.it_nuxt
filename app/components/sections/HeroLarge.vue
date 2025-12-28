@@ -3,7 +3,7 @@
         <div v-if="data.title" class="content-container grid-container">
             <h1 class="title">{{ data.title }}</h1>
         </div>
-        <MediaElement v-if="data.image" :media="data.image" scale-animation />
+        <ResponsiveImage v-if="data.image" :image="data.image" scale-animation />
     </SectionElement>
 </template>
 
@@ -17,7 +17,7 @@
 
     interface HeroLargeData {
         title?: string;
-        image?: WebImages;
+        image?: WebImage;
     }
 
     interface HeroLargeSettings {

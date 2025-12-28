@@ -7,9 +7,9 @@
                 :to="partner.link.href || '#'"
                 :target="partner.link.target ?? '_self'"
             >
-                <MediaElement
+                <ResponsiveImage
                     v-if="partner.image && typeof partner.image === 'object'"
-                    :media="partner.image"
+                    :image="partner.image"
                     scale-animation
                 />
             </NuxtLink>

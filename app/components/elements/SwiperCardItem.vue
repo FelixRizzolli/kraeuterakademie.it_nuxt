@@ -1,6 +1,6 @@
 <template>
     <div class="card-container">
-        <MediaElement v-if="data.image" :media="data.image" ref="imageElement" />
+        <ResponsiveImage v-if="data.image" :image="data.image" ref="imageElement" />
         <p v-if="data.info" class="info">{{ data.info }}</p>
         <p v-else-if="data.date" class="date">{{ data.date }}</p>
         <h3 v-if="data.title" class="title">{{ data.title }}</h3>
@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
     export interface SwiperCardItem {
-        image: WebImages;
+        image: WebImage;
         info?: string;
         date?: string;
         title?: string;

@@ -1,6 +1,6 @@
 <template>
     <div class="item-container">
-        <MediaElement v-if="data.image" :media="data.image" ref="imageElement" />
+        <ResponsiveImage v-if="data.image" :image="data.image" ref="imageElement" />
         <div class="content-container">
             <p v-if="data.infos" class="infos">{{ data.infos }}</p>
             <h3 v-if="data.title" class="title">{{ data.title }}</h3>
@@ -22,7 +22,7 @@
 
 <script lang="ts" setup>
     export interface SwiperLargeItem {
-        image: WebImages;
+        image: WebImage;
         infos?: string;
         title?: string;
         description?: any;

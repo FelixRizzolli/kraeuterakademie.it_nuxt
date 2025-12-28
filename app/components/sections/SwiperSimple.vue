@@ -10,7 +10,7 @@
             <ClientOnly>
                 <swiper-container ref="swiperContainer" class="swiper-container">
                     <swiper-slide v-for="(image, idx) in data.images" :key="idx" class="swiper-slide">
-                        <MediaElement v-if="image" :media="image" ref="imageElement" />
+                        <ResponsiveImage v-if="image" :image="image" ref="imageElement" />
                     </swiper-slide>
                 </swiper-container>
             </ClientOnly>
@@ -35,7 +35,7 @@
 
     interface SwiperSimpleData {
         title?: string;
-        images: Array<WebImages>;
+        images: Array<WebImage>;
     }
 
     interface SwiperSimpleSettings {

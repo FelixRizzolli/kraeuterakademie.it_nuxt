@@ -1,6 +1,6 @@
 <template>
     <div class="book scale-animation" :class="{ 'scale-active': showBookElement }" ref="bookElement">
-        <MediaElement :media="book.image" />
+        <ResponsiveImage :image="book.image" />
         <div class="infos-container">
             <LexicalRenderer class="infos" :nodes="book.infos" />
         </div>
@@ -27,7 +27,7 @@
     const { isMobile } = useDevice();
 
     interface Book {
-        image: WebImages;
+        image: WebImage;
         infos: any;
         title: string;
         description: any;

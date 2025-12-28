@@ -17,7 +17,7 @@
                 :class="{ 'scale-active': showHighlightedLinkElements[index] }"
             >
                 <span class="title">{{ imageLink.link.text }}</span>
-                <MediaElement :media="imageLink.image" />
+                <ResponsiveImage :image="imageLink.image" />
             </div>
         </NuxtLink>
     </SectionElement>
@@ -28,7 +28,7 @@
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
     interface ImageLink {
-        image: WebImages;
+        image: WebImage;
         link: Link;
     }
 

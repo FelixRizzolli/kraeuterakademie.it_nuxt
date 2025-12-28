@@ -1,6 +1,6 @@
 <template>
     <SectionElement class="contentelement_moodpicture" :spacing="settings?.spacing">
-        <MediaElement v-if="data.image" :media="data.image" scale-animation />
+        <ResponsiveImage v-if="data.image" :image="data.image" scale-animation />
     </SectionElement>
 </template>
 
@@ -11,7 +11,7 @@
     }
 
     interface MoodPictureData {
-        image: WebImages;
+        image: WebImage;
     }
 
     interface MoodPictureSettings {

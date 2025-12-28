@@ -5,7 +5,7 @@
         :style="settings?.imageTextStyle"
     >
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
-        <MediaElement v-if="data.image" :media="data.image" scale-animation ref="imageElement" />
+        <ResponsiveImage v-if="data.image" :image="data.image" scale-animation ref="imageElement" />
         <div v-if="data.textTop" class="text" ref="textTopElement">
             <LexicalRenderer :nodes="data.textTop" />
         </div>
@@ -35,7 +35,7 @@
 
     interface ImageTextData {
         title?: string;
-        image?: WebImages;
+        image?: WebImage;
         textTop?: RichText;
         textHighlight?: string;
         textBottom?: RichText;
