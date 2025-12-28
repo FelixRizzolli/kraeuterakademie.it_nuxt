@@ -5,23 +5,26 @@
         ref="imageElement"
         :class="{ 'scale-active': showImageElement && scaleAnimation, 'scale-animation': scaleAnimation }"
     >
-        <picture v-if="image.sizes">
+        <picture v-if="image.sizes && hasValidSizes">
             <!-- AVIF format for modern browsers -->
             <source
-                :srcset="`${getImageURL(image.sizes.mobile_avif?.url)} 640w, ${getImageURL(image.sizes.tablet_avif?.url)} 1024w, ${getImageURL(image.sizes.desktop_avif?.url)} 1920w`"
-                sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1920px"
+                v-if="avifSrcset"
+                :srcset="avifSrcset"
+                sizes="(max-width: 768px) 768px, (max-width: 1024px) 1024px, 1920px"
                 type="image/avif"
             />
             <!-- WebP format for wider browser support -->
             <source
-                :srcset="`${getImageURL(image.sizes.mobile_webp?.url)} 640w, ${getImageURL(image.sizes.tablet_webp?.url)} 1024w, ${getImageURL(image.sizes.desktop_webp?.url)} 1920w`"
-                sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1920px"
+                v-if="webpSrcset"
+                :srcset="webpSrcset"
+                sizes="(max-width: 768px) 768px, (max-width: 1024px) 1024px, 1920px"
                 type="image/webp"
             />
             <!-- JPEG fallback for all browsers -->
             <source
-                :srcset="`${getImageURL(image.sizes.mobile_jpeg?.url)} 640w, ${getImageURL(image.sizes.tablet_jpeg?.url)} 1024w, ${getImageURL(image.sizes.desktop_jpeg?.url)} 1920w`"
-                sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1920px"
+                v-if="jpegSrcset"
+                :srcset="jpegSrcset"
+                sizes="(max-width: 768px) 768px, (max-width: 1024px) 1024px, 1920px"
                 type="image/jpeg"
             />
             <!-- Fallback img tag -->
@@ -49,6 +52,44 @@
         }
         return runtimeConfig.public.payloadApiUrl + url;
     };
+
+    const buildSrcset = (sizes: { url?: Maybe<string>; width: number }[]) => {
+        return sizes
+            .filter((size) => size.url)
+            .map((size) => `${getImageURL(size.url)} ${size.width}w`)
+            .join(', ');
+    };
+
+    const avifSrcset = computed(() => {
+        if (!props.image?.sizes) return '';
+        return buildSrcset([
+            { url: props.image.sizes.mobile_avif?.url, width: 768 },
+            { url: props.image.sizes.tablet_avif?.url, width: 1024 },
+            { url: props.image.sizes.desktop_avif?.url, width: 1920 },
+        ]);
+    });
+
+    const webpSrcset = computed(() => {
+        if (!props.image?.sizes) return '';
+        return buildSrcset([
+            { url: props.image.sizes.mobile_webp?.url, width: 768 },
+            { url: props.image.sizes.tablet_webp?.url, width: 1024 },
+            { url: props.image.sizes.desktop_webp?.url, width: 1920 },
+        ]);
+    });
+
+    const jpegSrcset = computed(() => {
+        if (!props.image?.sizes) return '';
+        return buildSrcset([
+            { url: props.image.sizes.mobile_jpeg?.url, width: 768 },
+            { url: props.image.sizes.tablet_jpeg?.url, width: 1024 },
+            { url: props.image.sizes.desktop_jpeg?.url, width: 1920 },
+        ]);
+    });
+
+    const hasValidSizes = computed(() => {
+        return !!(avifSrcset.value || webpSrcset.value || jpegSrcset.value);
+    });
 
     const imageElement = ref<HTMLElement>();
     const showImageElement = ref(false);
