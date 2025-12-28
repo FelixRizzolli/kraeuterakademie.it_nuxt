@@ -14,6 +14,7 @@ import WEB_SWIPER_CARD_FRAGMENT from '~/graphql/fragments/web/blocks/swiperCard.
 import WEB_SWIPER_LARGE_FRAGMENT from '~/graphql/fragments/web/blocks/swiperLarge.fragment.gql';
 import WEB_SWIPER_SIMPLE_FRAGMENT from '~/graphql/fragments/web/blocks/swiperSimple.fragment.gql';
 import WEB_TEXT_ELEMENT_FRAGMENT from '~/graphql/fragments/web/blocks/textElement.fragment.gql';
+import WEB_TITLE_ELEMENT_FRAGMENT from '~/graphql/fragments/web/blocks/titleElement.fragment.gql';
 
 import FIND_WEB_PAGES_QUERY from '~/graphql/queries/findWebPages.gql';
 
@@ -55,6 +56,7 @@ const findWebPagesQuery = `
     ${WEB_SWIPER_LARGE_FRAGMENT?.loc?.source?.body}
     ${WEB_SWIPER_SIMPLE_FRAGMENT?.loc?.source?.body}
     ${WEB_TEXT_ELEMENT_FRAGMENT?.loc?.source?.body}
+    ${WEB_TITLE_ELEMENT_FRAGMENT?.loc?.source?.body}
 
     ${FIND_WEB_PAGES_QUERY?.loc?.source?.body}
 `;

@@ -58,6 +58,9 @@ query findWebPages($where: WebPage_where) {
                 ... on WebTextElement {
                     ...TextElementAttributes
                 }
+                ... on WebTitleElement {
+                    ...TitleElementAttributes
+                }
             }
         }
         hasNextPage

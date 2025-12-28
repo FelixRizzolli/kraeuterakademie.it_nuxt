@@ -13,6 +13,7 @@
     <SwiperLarge v-else-if="name === 'SwiperLarge' && data" :data="data" :settings="settings" />
     <SwiperSimple v-else-if="name === 'SwiperSimple' && data" :data="data" :settings="settings" />
     <TextElement v-else-if="name === 'TextElement' && data" :data="data" :settings="settings" />
+    <TitleElement v-else-if="name === 'TitleElement' && data" :data="data" :settings="settings" />
 </template>
 
 <script lang="ts" setup>

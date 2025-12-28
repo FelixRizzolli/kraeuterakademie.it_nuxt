@@ -1,5 +1,6 @@
 <template>
-    <section
+    <component
+        :is="div ? 'div' : 'section'"
         class="section-element"
         :class="[
             'pt-' + (spacing?.paddingTop ?? 'none'),
@@ -10,13 +11,14 @@
         ]"
     >
         <slot />
-    </section>
+    </component>
 </template>
 
 <script lang="ts" setup>
     interface SectionElementProps {
         spacing: Spacing;
         style?: string; // e.g., 'light', 'dark', 'gray'
+        div?: boolean;
     }
 
     const props = defineProps<SectionElementProps>();
