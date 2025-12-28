@@ -1,0 +1,5 @@
+fragment WebImageCategoryAttributes on WebImageCategory {
+    id
+    title
+    description
+}

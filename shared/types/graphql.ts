@@ -41306,6 +41306,13 @@ export type WebImageAttributesFragment = {
     } | null;
 };
 
+export type WebImageCategoryAttributesFragment = {
+    __typename?: 'WebImageCategory';
+    id: number;
+    title: string;
+    description?: string | null;
+};
+
 export type WebPartnerAttributesFragment = {
     __typename?: 'WebPartner';
     id: number;
@@ -44167,6 +44174,13 @@ export const TextBlockAttributesFragmentDoc = gql`
         id
         slug
         value
+    }
+`;
+export const WebImageCategoryAttributesFragmentDoc = gql`
+    fragment WebImageCategoryAttributes on WebImageCategory {
+        id
+        title
+        description
     }
 `;
 export const WebPartnerAttributesFragmentDoc = gql`
