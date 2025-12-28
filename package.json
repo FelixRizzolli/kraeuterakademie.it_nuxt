@@ -11,6 +11,7 @@
         "preview": "nuxt preview",
         "postinstall": "nuxt prepare",
         "format": "prettier --write . --ignore-path .prettierignore",
+        "lint": "oxlint --type-aware",
         "storybook": "storybook dev -p 6006 --host 0.0.0.0",
         "build-storybook": "storybook build",
         "codegen": "graphql-codegen --config codegen.yml",
