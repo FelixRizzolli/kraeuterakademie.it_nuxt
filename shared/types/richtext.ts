@@ -6,16 +6,7 @@
 /**
  * Lexical editor node types
  */
-export type LexicalNodeType =
-    | 'root'
-    | 'paragraph'
-    | 'text'
-    | 'heading'
-    | 'list'
-    | 'listitem'
-    | 'quote'
-    | 'link'
-    | string;
+export type LexicalNodeType = 'root' | 'paragraph' | 'text' | 'heading' | 'list' | 'listitem' | 'quote' | 'link';
 
 /**
  * Text formatting options

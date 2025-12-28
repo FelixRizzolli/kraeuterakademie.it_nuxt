@@ -5,7 +5,7 @@ export default (element: HTMLElement, callback: () => void): ResizeObserver | un
     }
 
     const resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
-        entries.forEach((entry: ResizeObserverEntry) => {
+        entries.forEach((_entry: ResizeObserverEntry) => {
             // Call the callback function when the observed element is resized
             callback();
             if (!document.contains(element)) {

@@ -1,8 +1,8 @@
-export default (gsap: globalThis.GSAP) => {
+export default (_gsap: globalThis.GSAP) => {
     return (
         element: Ref<HTMLElement | undefined | null, HTMLElement | undefined | null>,
         showText: globalThis.Ref<boolean, boolean> | WritableComputedRef<boolean | undefined, boolean | undefined>,
-        threshold: number = 0.5,
+        _threshold: number = 0.5,
     ) => {
         if (!element.value) return;
 

@@ -12,10 +12,10 @@ export type SpacingOption = 'none' | 'small' | 'medium' | 'large' | 'xlarge';
  * Spacing configuration for a block or section
  */
 export interface Spacing {
-    marginTop?: SpacingOption | string | null;
-    marginBottom?: SpacingOption | string | null;
-    paddingTop?: SpacingOption | string | null;
-    paddingBottom?: SpacingOption | string | null;
+    marginTop?: SpacingOption | null;
+    marginBottom?: SpacingOption | null;
+    paddingTop?: SpacingOption | null;
+    paddingBottom?: SpacingOption | null;
 }
 
 /**

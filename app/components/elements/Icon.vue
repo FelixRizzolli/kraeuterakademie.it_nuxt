@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
     interface KaIcon {
-        icon?: Object;
+        icon?: object;
         name?: string;
         filled?: boolean;
     }
