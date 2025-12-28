@@ -19,7 +19,7 @@
             <LexicalRenderer :nodes="data.textBottom" />
         </div>
         <NuxtLink
-            v-if="data.link"
+            v-if="data.link && data.link.text && data.link.href"
             class="link-button"
             :to="data.link.href || '/'"
             ref="linkElement"

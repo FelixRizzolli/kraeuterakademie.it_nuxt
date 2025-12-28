@@ -3,7 +3,7 @@
         <div v-if="data.title || data.link" class="content" ref="contentElement">
             <h1 v-if="data.title" class="title">{{ data.title }}</h1>
             <NuxtLink
-                v-if="data.link"
+                v-if="data.link && data.link.text && data.link.href"
                 class="link-button"
                 :to="data.link.href || '/'"
                 :target="data.link.target ?? '_self'"

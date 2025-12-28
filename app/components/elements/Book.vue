@@ -12,7 +12,7 @@
             <button class="more" @click="toggleTruncate">{{ moreTextBlock }}</button>
         </div>
         <NuxtLink
-            v-if="book.link"
+            v-if="book.link && book.link.text && book.link.href"
             class="link-button"
             :to="book.link.href || '/'"
             :target="book.link.target ?? '_self'"

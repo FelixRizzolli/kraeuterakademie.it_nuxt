@@ -8,13 +8,15 @@
                 <LexicalRenderer class="description" :nodes="data.description" />
             </div>
             <div class="links-container">
-                <NuxtLink
-                    class="link-button"
-                    :to="link.href || '/'"
-                    v-for="link in data.links"
-                    :target="link.target ?? '_self'"
-                    >{{ link.text }}</NuxtLink
-                >
+                <template v-for="link in data.links" :key="link.href || ''">
+                    <NuxtLink
+                        v-if="link.href && link.text"
+                        class="link-button"
+                        :to="link.href || '/'"
+                        :target="link.target ?? '_self'"
+                        >{{ link.text }}</NuxtLink
+                    >
+                </template>
             </div>
         </div>
     </div>

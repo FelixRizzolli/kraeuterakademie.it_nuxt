@@ -4,22 +4,23 @@
         :spacing="settings?.spacing"
         :style="settings?.highlightedLinksStyle"
     >
-        <NuxtLink
-            :to="imageLink.link.href || '/'"
-            class="link-container"
-            v-for="(imageLink, index) in data.imageLinks"
-            :key="index"
-            :target="imageLink.link.target ?? '_self'"
-        >
-            <div
-                class="inner-container scale-animation"
-                ref="highlightedLinkElements"
-                :class="{ 'scale-active': showHighlightedLinkElements[index] }"
+        <template v-for="(imageLink, index) in data.imageLinks" :key="index">
+            <NuxtLink
+                v-if="imageLink.link && imageLink.link.href && imageLink.link.text"
+                :to="imageLink.link.href || '/'"
+                class="link-container"
+                :target="imageLink.link.target ?? '_self'"
             >
-                <span class="title">{{ imageLink.link.text }}</span>
-                <ResponsiveImage :image="imageLink.image" />
-            </div>
-        </NuxtLink>
+                <div
+                    class="inner-container scale-animation"
+                    ref="highlightedLinkElements"
+                    :class="{ 'scale-active': showHighlightedLinkElements[index] }"
+                >
+                    <span class="title">{{ imageLink.link.text }}</span>
+                    <ResponsiveImage :image="imageLink.image" />
+                </div>
+            </NuxtLink>
+        </template>
     </SectionElement>
 </template>
 
