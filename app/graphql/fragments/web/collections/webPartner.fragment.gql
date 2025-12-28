@@ -1,12 +1,12 @@
-fragment WebSocialAttributes on WebSocial {
+fragment WebPartnerAttributes on WebPartner {
     id
+    name
     link {
         href
         text
         target
     }
-    icon
-    backgroundImage {
+    image {
         ...WebImageAttributes
     }
 }

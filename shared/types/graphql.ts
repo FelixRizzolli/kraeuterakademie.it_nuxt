@@ -41176,10 +41176,7 @@ export type TextElementAttributesFragment = {
     } | null;
 };
 
-export type TextBlocksAttributesFragment = {
-    __typename?: 'WebTextBlocks';
-    docs: Array<{ __typename?: 'WebTextBlock'; id: number; slug: string; value: string }>;
-};
+export type TextBlockAttributesFragment = { __typename?: 'WebTextBlock'; id: number; slug: string; value: string };
 
 export type WebImageAttributesFragment = {
     __typename?: 'WebImage';
@@ -41309,288 +41306,282 @@ export type WebImageAttributesFragment = {
     } | null;
 };
 
-export type WebPartnersAttributesFragment = {
-    __typename?: 'WebPartners';
-    docs: Array<{
-        __typename?: 'WebPartner';
+export type WebPartnerAttributesFragment = {
+    __typename?: 'WebPartner';
+    id: number;
+    name?: string | null;
+    link?: {
+        __typename?: 'WebPartner_Link';
+        href?: string | null;
+        text?: string | null;
+        target?: WebPartner_Link_target | null;
+    } | null;
+    image?: {
+        __typename?: 'WebImage';
         id: number;
-        name?: string | null;
-        link?: {
-            __typename?: 'WebPartner_Link';
-            href?: string | null;
-            text?: string | null;
-            target?: WebPartner_Link_target | null;
-        } | null;
-        image?: {
-            __typename?: 'WebImage';
-            id: number;
-            alt: string;
-            updatedAt?: string | null;
-            createdAt?: string | null;
-            url?: string | null;
-            thumbnailURL?: string | null;
-            filename?: string | null;
-            mimeType?: string | null;
-            filesize?: number | null;
-            width?: number | null;
-            height?: number | null;
-            focalX?: number | null;
-            focalY?: number | null;
-            sizes?: {
-                __typename?: 'WebImage_Sizes';
-                thumbnail_jpeg?: {
-                    __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                thumbnail_webp?: {
-                    __typename?: 'WebImage_Sizes_Thumbnail_webp';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                thumbnail_avif?: {
-                    __typename?: 'WebImage_Sizes_Thumbnail_avif';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                mobile_jpeg?: {
-                    __typename?: 'WebImage_Sizes_Mobile_jpeg';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                mobile_webp?: {
-                    __typename?: 'WebImage_Sizes_Mobile_webp';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                mobile_avif?: {
-                    __typename?: 'WebImage_Sizes_Mobile_avif';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                tablet_jpeg?: {
-                    __typename?: 'WebImage_Sizes_Tablet_jpeg';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                tablet_webp?: {
-                    __typename?: 'WebImage_Sizes_Tablet_webp';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                tablet_avif?: {
-                    __typename?: 'WebImage_Sizes_Tablet_avif';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                desktop_jpeg?: {
-                    __typename?: 'WebImage_Sizes_Desktop_jpeg';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                desktop_webp?: {
-                    __typename?: 'WebImage_Sizes_Desktop_webp';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                desktop_avif?: {
-                    __typename?: 'WebImage_Sizes_Desktop_avif';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
+        alt: string;
+        updatedAt?: string | null;
+        createdAt?: string | null;
+        url?: string | null;
+        thumbnailURL?: string | null;
+        filename?: string | null;
+        mimeType?: string | null;
+        filesize?: number | null;
+        width?: number | null;
+        height?: number | null;
+        focalX?: number | null;
+        focalY?: number | null;
+        sizes?: {
+            __typename?: 'WebImage_Sizes';
+            thumbnail_jpeg?: {
+                __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            thumbnail_webp?: {
+                __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            thumbnail_avif?: {
+                __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            mobile_jpeg?: {
+                __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            mobile_webp?: {
+                __typename?: 'WebImage_Sizes_Mobile_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            mobile_avif?: {
+                __typename?: 'WebImage_Sizes_Mobile_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            tablet_jpeg?: {
+                __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            tablet_webp?: {
+                __typename?: 'WebImage_Sizes_Tablet_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            tablet_avif?: {
+                __typename?: 'WebImage_Sizes_Tablet_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            desktop_jpeg?: {
+                __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            desktop_webp?: {
+                __typename?: 'WebImage_Sizes_Desktop_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            desktop_avif?: {
+                __typename?: 'WebImage_Sizes_Desktop_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
             } | null;
         } | null;
-    }>;
+    } | null;
 };
 
-export type WebSocialsAttributesFragment = {
-    __typename?: 'WebSocials';
-    docs: Array<{
-        __typename?: 'WebSocial';
+export type WebSocialAttributesFragment = {
+    __typename?: 'WebSocial';
+    id: number;
+    icon?: WebSocial_icon | null;
+    link?: {
+        __typename?: 'WebSocial_Link';
+        href?: string | null;
+        text?: string | null;
+        target?: WebSocial_Link_target | null;
+    } | null;
+    backgroundImage?: {
+        __typename?: 'WebImage';
         id: number;
-        icon?: WebSocial_icon | null;
-        link?: {
-            __typename?: 'WebSocial_Link';
-            href?: string | null;
-            text?: string | null;
-            target?: WebSocial_Link_target | null;
-        } | null;
-        backgroundImage?: {
-            __typename?: 'WebImage';
-            id: number;
-            alt: string;
-            updatedAt?: string | null;
-            createdAt?: string | null;
-            url?: string | null;
-            thumbnailURL?: string | null;
-            filename?: string | null;
-            mimeType?: string | null;
-            filesize?: number | null;
-            width?: number | null;
-            height?: number | null;
-            focalX?: number | null;
-            focalY?: number | null;
-            sizes?: {
-                __typename?: 'WebImage_Sizes';
-                thumbnail_jpeg?: {
-                    __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                thumbnail_webp?: {
-                    __typename?: 'WebImage_Sizes_Thumbnail_webp';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                thumbnail_avif?: {
-                    __typename?: 'WebImage_Sizes_Thumbnail_avif';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                mobile_jpeg?: {
-                    __typename?: 'WebImage_Sizes_Mobile_jpeg';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                mobile_webp?: {
-                    __typename?: 'WebImage_Sizes_Mobile_webp';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                mobile_avif?: {
-                    __typename?: 'WebImage_Sizes_Mobile_avif';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                tablet_jpeg?: {
-                    __typename?: 'WebImage_Sizes_Tablet_jpeg';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                tablet_webp?: {
-                    __typename?: 'WebImage_Sizes_Tablet_webp';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                tablet_avif?: {
-                    __typename?: 'WebImage_Sizes_Tablet_avif';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                desktop_jpeg?: {
-                    __typename?: 'WebImage_Sizes_Desktop_jpeg';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                desktop_webp?: {
-                    __typename?: 'WebImage_Sizes_Desktop_webp';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
-                desktop_avif?: {
-                    __typename?: 'WebImage_Sizes_Desktop_avif';
-                    url?: string | null;
-                    width?: number | null;
-                    height?: number | null;
-                    mimeType?: string | null;
-                    filesize?: number | null;
-                    filename?: string | null;
-                } | null;
+        alt: string;
+        updatedAt?: string | null;
+        createdAt?: string | null;
+        url?: string | null;
+        thumbnailURL?: string | null;
+        filename?: string | null;
+        mimeType?: string | null;
+        filesize?: number | null;
+        width?: number | null;
+        height?: number | null;
+        focalX?: number | null;
+        focalY?: number | null;
+        sizes?: {
+            __typename?: 'WebImage_Sizes';
+            thumbnail_jpeg?: {
+                __typename?: 'WebImage_Sizes_Thumbnail_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            thumbnail_webp?: {
+                __typename?: 'WebImage_Sizes_Thumbnail_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            thumbnail_avif?: {
+                __typename?: 'WebImage_Sizes_Thumbnail_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            mobile_jpeg?: {
+                __typename?: 'WebImage_Sizes_Mobile_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            mobile_webp?: {
+                __typename?: 'WebImage_Sizes_Mobile_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            mobile_avif?: {
+                __typename?: 'WebImage_Sizes_Mobile_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            tablet_jpeg?: {
+                __typename?: 'WebImage_Sizes_Tablet_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            tablet_webp?: {
+                __typename?: 'WebImage_Sizes_Tablet_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            tablet_avif?: {
+                __typename?: 'WebImage_Sizes_Tablet_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            desktop_jpeg?: {
+                __typename?: 'WebImage_Sizes_Desktop_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            desktop_webp?: {
+                __typename?: 'WebImage_Sizes_Desktop_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            desktop_avif?: {
+                __typename?: 'WebImage_Sizes_Desktop_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
             } | null;
         } | null;
-    }>;
+    } | null;
 };
 
 export type findGlobalsQueryVariables = Exact<{ [key: string]: never }>;
@@ -44171,45 +44162,39 @@ export const TextElementAttributesFragmentDoc = gql`
         }
     }
 `;
-export const TextBlocksAttributesFragmentDoc = gql`
-    fragment TextBlocksAttributes on WebTextBlocks {
-        docs {
-            id
-            slug
-            value
-        }
+export const TextBlockAttributesFragmentDoc = gql`
+    fragment TextBlockAttributes on WebTextBlock {
+        id
+        slug
+        value
     }
 `;
-export const WebPartnersAttributesFragmentDoc = gql`
-    fragment WebPartnersAttributes on WebPartners {
-        docs {
-            id
-            name
-            link {
-                href
-                text
-                target
-            }
-            image {
-                ...WebImageAttributes
-            }
+export const WebPartnerAttributesFragmentDoc = gql`
+    fragment WebPartnerAttributes on WebPartner {
+        id
+        name
+        link {
+            href
+            text
+            target
+        }
+        image {
+            ...WebImageAttributes
         }
     }
     ${WebImageAttributesFragmentDoc}
 `;
-export const WebSocialsAttributesFragmentDoc = gql`
-    fragment WebSocialsAttributes on WebSocials {
-        docs {
-            id
-            link {
-                href
-                text
-                target
-            }
-            icon
-            backgroundImage {
-                ...WebImageAttributes
-            }
+export const WebSocialAttributesFragmentDoc = gql`
+    fragment WebSocialAttributes on WebSocial {
+        id
+        link {
+            href
+            text
+            target
+        }
+        icon
+        backgroundImage {
+            ...WebImageAttributes
         }
     }
     ${WebImageAttributesFragmentDoc}
@@ -44229,22 +44214,28 @@ export const findGlobalsDocument = gql`
             ...ContactAttributes
         }
         WebPartners {
-            ...WebPartnersAttributes
+            docs {
+                ...WebPartnerAttributes
+            }
         }
         WebSocials {
-            ...WebSocialsAttributes
+            docs {
+                ...WebSocialAttributes
+            }
         }
         WebTextBlocks {
-            ...TextBlocksAttributes
+            docs {
+                ...TextBlockAttributes
+            }
         }
     }
     ${HeaderAttributesFragmentDoc}
     ${FooterAttributesFragmentDoc}
     ${SidebarAttributesFragmentDoc}
     ${ContactAttributesFragmentDoc}
-    ${WebPartnersAttributesFragmentDoc}
-    ${WebSocialsAttributesFragmentDoc}
-    ${TextBlocksAttributesFragmentDoc}
+    ${WebPartnerAttributesFragmentDoc}
+    ${WebSocialAttributesFragmentDoc}
+    ${TextBlockAttributesFragmentDoc}
 `;
 export const findWebPagesDocument = gql`
     query findWebPages($where: WebPage_where) {
