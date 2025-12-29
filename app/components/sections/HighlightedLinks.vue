@@ -4,19 +4,14 @@
         :spacing="settings?.spacing"
         :style="settings?.highlightedLinksStyle"
     >
-        <template v-for="(imageLink, index) in data.imageLinks" :key="index">
-            <NuxtLink
-                v-if="imageLink.link && imageLink.link.href && imageLink.link.text"
-                :to="imageLink.link.href || '/'"
-                class="link-container"
-                :target="imageLink.link.target ?? '_self'"
-            >
+        <template v-for="(imageLink, index) in data.links">
+            <NuxtLink :to="imageLink.href || '/'" class="link-container" :target="imageLink.target ?? '_self'">
                 <div
                     class="inner-container scale-animation"
                     ref="highlightedLinkElements"
                     :class="{ 'scale-active': showHighlightedLinkElements[index] }"
                 >
-                    <span class="title">{{ imageLink.link.text }}</span>
+                    <span class="title">{{ imageLink.text }}</span>
                     <ResponsiveImage :image="imageLink.image" />
                 </div>
             </NuxtLink>
@@ -28,13 +23,12 @@
     import { gsap } from 'gsap';
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-    interface ImageLink {
+    interface ImageLink extends Link {
         image: WebImage;
-        link: Link;
     }
 
     interface HighlightedLinksData {
-        imageLinks: Array<ImageLink>;
+        links: Array<ImageLink>;
     }
 
     interface HighlightedLinksSettings {
@@ -52,6 +46,8 @@
     const highlightedLinkElements = ref<Array<HTMLElement>>([]);
     const showHighlightedLinkElements = ref<Array<boolean>>([]);
     onMounted(() => {
+        console.log(props);
+
         // Initialize visibility array with false values
         showHighlightedLinkElements.value = Array(highlightedLinkElements?.value?.length).fill(false);
 

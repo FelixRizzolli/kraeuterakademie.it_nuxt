@@ -5,7 +5,7 @@ fragment HighlightedLinksAttributes on WebHighlightedLinks {
     webHighlightedLinksContent: content {
         links {
             id
-            label
+            text
             url
             target
             image {

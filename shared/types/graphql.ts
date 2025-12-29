@@ -25501,8 +25501,8 @@ export type WebHighlightedLinks_Content_Links = {
     __typename?: 'WebHighlightedLinks_Content_Links';
     id?: Maybe<Scalars['String']['output']>;
     image?: Maybe<WebImage>;
-    label?: Maybe<Scalars['String']['output']>;
     target?: Maybe<WebHighlightedLinks_Content_Links_target>;
+    text?: Maybe<Scalars['String']['output']>;
     url?: Maybe<Scalars['String']['output']>;
 };
 
@@ -40207,7 +40207,7 @@ export type HighlightedLinksAttributesFragment = {
         links?: Array<{
             __typename?: 'WebHighlightedLinks_Content_Links';
             id?: string | null;
-            label?: string | null;
+            text?: string | null;
             url?: string | null;
             target?: WebHighlightedLinks_Content_Links_target | null;
             image?: {
@@ -42715,7 +42715,7 @@ export type findWebPagesQuery = {
                           links?: Array<{
                               __typename?: 'WebHighlightedLinks_Content_Links';
                               id?: string | null;
-                              label?: string | null;
+                              text?: string | null;
                               url?: string | null;
                               target?: WebHighlightedLinks_Content_Links_target | null;
                               image?: {
@@ -44016,7 +44016,7 @@ export const HighlightedLinksAttributesFragmentDoc = gql`
         webHighlightedLinksContent: content {
             links {
                 id
-                label
+                text
                 url
                 target
                 image {
