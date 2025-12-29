@@ -36,6 +36,14 @@
     .section-element.style-dark {
         background-color: $colorBackgroundBrown;
         color: $colorFontWhite;
+
+        :deep(a) {
+            color: $colorFontWhite;
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
     }
 
     .pt-small {
