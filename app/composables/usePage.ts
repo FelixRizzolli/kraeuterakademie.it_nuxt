@@ -104,15 +104,11 @@ export const usePage = () => {
                 throw new Error('Slug parameter is required');
             }
 
-            console.log('Fetching page with slug:', slug);
-
             const response = await gqlQuery<any>(findWebPagesQuery, {
                 where: {
                     slug: { equals: slug },
                 },
             });
-
-            console.log('GraphQL Response:', response);
 
             const page = response?.data?.WebPages?.docs?.[0];
 
@@ -121,8 +117,6 @@ export const usePage = () => {
                 console.log('Available pages:', response?.data?.WebPages?.docs);
                 return null;
             }
-
-            console.log('Found page:', page);
 
             return {
                 meta: {
