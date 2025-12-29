@@ -42,7 +42,12 @@
 
     interface LinkNode extends LexicalNode {
         type: 'link' | 'autolink';
-        url: string;
+        url?: string;
+        fields?: {
+            url: string;
+            linkType?: string;
+            newTab?: boolean;
+        };
         children: LexicalNode[];
         target?: string;
         rel?: string;
@@ -208,15 +213,26 @@
             case 'link':
             case 'autolink': {
                 const linkNode = node as LinkNode;
+                // Handle both direct url and fields.url (Payload CMS format)
+                const url = linkNode.url || linkNode.fields?.url;
+                if (!url) return null;
+
                 const attrs: Record<string, any> = {
-                    href: linkNode.url,
+                    href: url,
                 };
+
+                // Check for newTab in fields or target property
+                const shouldOpenInNewTab = linkNode.fields?.newTab || linkNode.target === '_blank';
+
                 if (linkNode.target) {
                     attrs.target = linkNode.target;
+                } else if (shouldOpenInNewTab) {
+                    attrs.target = '_blank';
                 }
+
                 if (linkNode.rel) {
                     attrs.rel = linkNode.rel;
-                } else if (linkNode.target === '_blank') {
+                } else if (attrs.target === '_blank') {
                     attrs.rel = 'noopener noreferrer';
                 }
                 return h('a', attrs, renderChildren(linkNode.children));
