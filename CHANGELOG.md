@@ -16,12 +16,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+
 - **BREAKING**: Migrated from Strapi to Payload CMS as the backend
 - Updated API integration to use Payload CMS endpoints
 - Environment variable `STRAPI_API_URL` replaced with `PAYLOAD_API_URL`
 - updated types across components
 - enhanced SEO metadata handling
 - reporganized graphql fragments for better maintainability
+
+- updated dependencies
+    - vue 3.5.25 → 3.5.26
+- removed dependencies
+    - @nuxtjs/strapi@2.1.1
+    - nuxt-strapi-blocks-renderer@1.1.1
+- updated devDependencies
+    - @vitest/browser 4.0.15 → 4.0.16
+    - @vitest/browser-playwright 4.0.15 → 4.0.16
+    - @vitest/coverage-v8 4.0.15 → 4.0.16
+    - sass 1.97.0 → 1.97.1
+    - vitest 4.0.15 → 4.0.16
+- added devDependencies
+    - @graphql-codegen/cli@^6.1.0
+    - @graphql-codegen/typed-document-node@^6.1.5
+    - @graphql-codegen/typescript@^5.0.7
+    - @graphql-codegen/typescript-operations@^5.0.7
+    - @graphql-typed-document-node/core@^3.2.0
+    - oxlint@1.35.0
+    - oxlint-tsgolint@0.10.0
 
 ### Fixed
 
