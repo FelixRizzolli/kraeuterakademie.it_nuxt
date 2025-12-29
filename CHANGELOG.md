@@ -5,8 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.6.4] - 2025-12-16
+## [1.0.0] - 2025-12-29
 
+### Added
+
+- Added graphql-codegen for type-safe GraphQL queries and fragments
+- Added lint script with oxlint for code quality checks
+- Added new TitleElement component
+- Added LexicalRenderer for rich text rendering with Lexical editor content
+
+### Changed
+
+- **BREAKING**: Migrated from Strapi to Payload CMS as the backend
+- Updated API integration to use Payload CMS endpoints
+- Environment variable `STRAPI_API_URL` replaced with `PAYLOAD_API_URL`
+- updated types across components
+- enhanced SEO metadata handling
+- reporganized graphql fragments for better maintainability
+
+### Fixed
+
+- fixed some issues by removing effects from footer components
+
+## [0.6.4] - 2025-12-16
 
 ### Changed
 
