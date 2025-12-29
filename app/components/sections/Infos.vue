@@ -1,9 +1,5 @@
 <template>
-    <SectionElement
-        class="contentelement_infos grid-container"
-        :spacing="settings?.spacing"
-        :style="settings?.infosStyle"
-    >
+    <SectionElement class="contentelement_infos grid-container" :spacing="settings?.spacing" :style="settings?.style">
         <div class="info" v-for="(info, index) in data.infos" :key="index" ref="infoElements">
             <h3 v-if="info.title" class="title">{{ info.title }}</h3>
             <div v-if="info.text" class="text">
@@ -37,7 +33,7 @@
 
     interface InfosSettings {
         spacing: Spacing;
-        infosStyle: string;
+        style: string;
     }
 
     export interface InfosProps {

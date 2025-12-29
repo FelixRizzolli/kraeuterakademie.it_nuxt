@@ -33327,34 +33327,29 @@ export type WebInfos = {
 export type WebInfos_Content = {
     __typename?: 'WebInfos_Content';
     infos?: Maybe<Array<WebInfos_Content_Infos>>;
+    link?: Maybe<WebInfos_Content_Link>;
 };
 
 export type WebInfos_Content_Infos = {
     __typename?: 'WebInfos_Content_Infos';
     id?: Maybe<Scalars['String']['output']>;
-    infos?: Maybe<WebInfos_Content_Infos_Infos>;
-    link?: Maybe<WebInfos_Content_Infos_Link>;
-};
-
-export type WebInfos_Content_Infos_Infos = {
-    __typename?: 'WebInfos_Content_Infos_Infos';
     text?: Maybe<Scalars['JSON']['output']>;
     title?: Maybe<Scalars['String']['output']>;
 };
 
-export type WebInfos_Content_Infos_Infos_textArgs = {
+export type WebInfos_Content_Infos_textArgs = {
     depth?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export type WebInfos_Content_Infos_Link = {
-    __typename?: 'WebInfos_Content_Infos_Link';
+export type WebInfos_Content_Link = {
+    __typename?: 'WebInfos_Content_Link';
     href?: Maybe<Scalars['String']['output']>;
     id?: Maybe<Scalars['String']['output']>;
-    target?: Maybe<WebInfos_Content_Infos_Link_target>;
+    target?: Maybe<WebInfos_Content_Link_target>;
     text?: Maybe<Scalars['String']['output']>;
 };
 
-export type WebInfos_Content_Infos_Link_target =
+export type WebInfos_Content_Link_target =
     | '_blank'
     | '_parent'
     | '_self'
@@ -33427,7 +33422,6 @@ export type WebMoodPicture_Content = {
 export type WebMoodPicture_Settings = {
     __typename?: 'WebMoodPicture_Settings';
     spacing?: Maybe<WebMoodPicture_Settings_Spacing>;
-    style: WebMoodPicture_Settings_style;
 };
 
 export type WebMoodPicture_Settings_Spacing = {
@@ -33469,8 +33463,6 @@ export type WebMoodPicture_Settings_Spacing_paddingTop =
     | 'small'
     | 'xlarge'
     | '%future added value';
-
-export type WebMoodPicture_Settings_style = 'dark' | 'gray' | 'light' | '%future added value';
 
 export type WebPage = {
     __typename?: 'WebPage';
@@ -37589,6 +37581,7 @@ export type WebTitleElement_Content = {
 export type WebTitleElement_Settings = {
     __typename?: 'WebTitleElement_Settings';
     spacing?: Maybe<WebTitleElement_Settings_Spacing>;
+    style: WebTitleElement_Settings_style;
 };
 
 export type WebTitleElement_Settings_Spacing = {
@@ -37630,6 +37623,8 @@ export type WebTitleElement_Settings_Spacing_paddingTop =
     | 'small'
     | 'xlarge'
     | '%future added value';
+
+export type WebTitleElement_Settings_style = 'dark' | 'gray' | 'light' | '%future added value';
 
 export type contactAccess = {
     __typename?: 'contactAccess';
@@ -39675,7 +39670,7 @@ export type AccordionsAttributesFragment = {
     } | null;
     webAccordionsSettings?: {
         __typename?: 'WebAccordions_Settings';
-        accordionsStyle: WebAccordions_Settings_style;
+        style: WebAccordions_Settings_style;
         spacing?: {
             __typename?: 'WebAccordions_Settings_Spacing';
             marginTop?: WebAccordions_Settings_Spacing_marginTop | null;
@@ -40523,21 +40518,19 @@ export type InfosAttributesFragment = {
         infos?: Array<{
             __typename?: 'WebInfos_Content_Infos';
             id?: string | null;
-            infos?: {
-                __typename?: 'WebInfos_Content_Infos_Infos';
-                title?: string | null;
-                text?: { [key: string]: any } | null;
-            } | null;
-            link?: {
-                __typename?: 'WebInfos_Content_Infos_Link';
-                text?: string | null;
-                href?: string | null;
-                target?: WebInfos_Content_Infos_Link_target | null;
-            } | null;
+            title?: string | null;
+            text?: { [key: string]: any } | null;
         }> | null;
+        link?: {
+            __typename?: 'WebInfos_Content_Link';
+            text?: string | null;
+            href?: string | null;
+            target?: WebInfos_Content_Link_target | null;
+        } | null;
     } | null;
     webInfosSettings?: {
         __typename?: 'WebInfos_Settings';
+        style: WebInfos_Settings_style;
         spacing?: {
             __typename?: 'WebInfos_Settings_Spacing';
             marginTop?: WebInfos_Settings_Spacing_marginTop | null;
@@ -40685,7 +40678,6 @@ export type MoodPictureAttributesFragment = {
     } | null;
     webMoodPictureSettings?: {
         __typename?: 'WebMoodPicture_Settings';
-        style: WebMoodPicture_Settings_style;
         spacing?: {
             __typename?: 'WebMoodPicture_Settings_Spacing';
             marginTop?: WebMoodPicture_Settings_Spacing_marginTop | null;
@@ -41213,6 +41205,7 @@ export type TitleElementAttributesFragment = {
     webTitleElementContent?: { __typename?: 'WebTitleElement_Content'; title: string } | null;
     webTitleElementSettings?: {
         __typename?: 'WebTitleElement_Settings';
+        style: WebTitleElement_Settings_style;
         spacing?: {
             __typename?: 'WebTitleElement_Settings_Spacing';
             marginTop?: WebTitleElement_Settings_Spacing_marginTop | null;
@@ -42191,7 +42184,7 @@ export type findWebPagesQuery = {
                       } | null;
                       webAccordionsSettings?: {
                           __typename?: 'WebAccordions_Settings';
-                          accordionsStyle: WebAccordions_Settings_style;
+                          style: WebAccordions_Settings_style;
                           spacing?: {
                               __typename?: 'WebAccordions_Settings_Spacing';
                               marginTop?: WebAccordions_Settings_Spacing_marginTop | null;
@@ -43031,21 +43024,19 @@ export type findWebPagesQuery = {
                           infos?: Array<{
                               __typename?: 'WebInfos_Content_Infos';
                               id?: string | null;
-                              infos?: {
-                                  __typename?: 'WebInfos_Content_Infos_Infos';
-                                  title?: string | null;
-                                  text?: { [key: string]: any } | null;
-                              } | null;
-                              link?: {
-                                  __typename?: 'WebInfos_Content_Infos_Link';
-                                  text?: string | null;
-                                  href?: string | null;
-                                  target?: WebInfos_Content_Infos_Link_target | null;
-                              } | null;
+                              title?: string | null;
+                              text?: { [key: string]: any } | null;
                           }> | null;
+                          link?: {
+                              __typename?: 'WebInfos_Content_Link';
+                              text?: string | null;
+                              href?: string | null;
+                              target?: WebInfos_Content_Link_target | null;
+                          } | null;
                       } | null;
                       webInfosSettings?: {
                           __typename?: 'WebInfos_Settings';
+                          style: WebInfos_Settings_style;
                           spacing?: {
                               __typename?: 'WebInfos_Settings_Spacing';
                               marginTop?: WebInfos_Settings_Spacing_marginTop | null;
@@ -43192,7 +43183,6 @@ export type findWebPagesQuery = {
                       } | null;
                       webMoodPictureSettings?: {
                           __typename?: 'WebMoodPicture_Settings';
-                          style: WebMoodPicture_Settings_style;
                           spacing?: {
                               __typename?: 'WebMoodPicture_Settings_Spacing';
                               marginTop?: WebMoodPicture_Settings_Spacing_marginTop | null;
@@ -43715,6 +43705,7 @@ export type findWebPagesQuery = {
                       webTitleElementContent?: { __typename?: 'WebTitleElement_Content'; title: string } | null;
                       webTitleElementSettings?: {
                           __typename?: 'WebTitleElement_Settings';
+                          style: WebTitleElement_Settings_style;
                           spacing?: {
                               __typename?: 'WebTitleElement_Settings_Spacing';
                               marginTop?: WebTitleElement_Settings_Spacing_marginTop | null;
@@ -43766,7 +43757,7 @@ export const AccordionsAttributesFragmentDoc = gql`
                 paddingTop
                 paddingBottom
             }
-            accordionsStyle: style
+            style
         }
     }
 `;
@@ -44082,15 +44073,13 @@ export const InfosAttributesFragmentDoc = gql`
         webInfosContent: content {
             infos {
                 id
-                infos {
-                    title
-                    text
-                }
-                link {
-                    text
-                    href
-                    target
-                }
+                title
+                text
+            }
+            link {
+                text
+                href
+                target
             }
         }
         webInfosSettings: settings {
@@ -44100,6 +44089,7 @@ export const InfosAttributesFragmentDoc = gql`
                 paddingTop
                 paddingBottom
             }
+            style
         }
     }
 `;
@@ -44120,7 +44110,6 @@ export const MoodPictureAttributesFragmentDoc = gql`
                 paddingTop
                 paddingBottom
             }
-            style
         }
     }
     ${WebImageAttributesFragmentDoc}
@@ -44261,6 +44250,7 @@ export const TitleElementAttributesFragmentDoc = gql`
                 paddingTop
                 paddingBottom
             }
+            style
         }
     }
 `;

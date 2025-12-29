@@ -2,7 +2,7 @@
     <SectionElement
         class="contentelement_swipercard grid-container"
         :spacing="settings?.spacing"
-        :style="settings?.swiperCardStyle"
+        :style="settings?.style"
     >
         <h2 class="title" ref="titleElement">{{ data.title }}</h2>
 
@@ -39,7 +39,7 @@
 
     interface SwiperCardSettings {
         spacing: Spacing;
-        swiperCardStyle: string;
+        style: string;
     }
 
     export interface SwiperCardProps {

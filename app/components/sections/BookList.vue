@@ -2,7 +2,7 @@
     <SectionElement
         class="contentelement_booklist grid-container"
         :spacing="settings?.spacing"
-        :style="settings?.bookListStyle"
+        :style="settings?.style"
     >
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
         <div class="books grid-container">
@@ -22,7 +22,7 @@
 
     interface BookListSettings {
         spacing: Spacing;
-        bookListStyle: string;
+        style: string;
     }
 
     export interface BookListProps {

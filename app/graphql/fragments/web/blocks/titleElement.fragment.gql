@@ -12,5 +12,6 @@ fragment TitleElementAttributes on WebTitleElement {
             paddingTop
             paddingBottom
         }
+        style
     }
 }

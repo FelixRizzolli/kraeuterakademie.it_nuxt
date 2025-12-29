@@ -2,7 +2,7 @@
     <SectionElement
         class="contentelement_swiperlarge grid-container"
         :spacing="settings?.spacing"
-        :style="settings?.swiperLargeStyle"
+        :style="settings?.style"
     >
         <h2 class="title" ref="titleElement">{{ data.title }}</h2>
 
@@ -39,7 +39,7 @@
 
     interface SwiperLargeSettings {
         spacing: Spacing;
-        swiperLargeStyle: string;
+        style: string;
     }
 
     export interface SwiperLargeProps {

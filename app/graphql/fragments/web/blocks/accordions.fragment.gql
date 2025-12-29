@@ -17,6 +17,6 @@ fragment AccordionsAttributes on WebAccordions {
             paddingTop
             paddingBottom
         }
-        accordionsStyle: style
+        style
     }
 }

@@ -2,7 +2,7 @@
     <SectionElement
         class="contentelement_textelement grid-container"
         :spacing="settings?.spacing"
-        :style="settings?.textElementStyle"
+        :style="settings?.style"
     >
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
         <div v-if="data.content" class="content" ref="contentElement">
@@ -31,7 +31,7 @@
 
     interface TextElementSettings {
         spacing: Spacing;
-        textElementStyle: string;
+        style: string;
     }
 
     export interface TextElementProps {

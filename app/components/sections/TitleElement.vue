@@ -15,6 +15,7 @@
 
     interface TitleElementSettings {
         spacing: Spacing;
+        style: string;
     }
 
     export interface TitleElementProps {

@@ -2,7 +2,7 @@
     <SectionElement
         class="contentelement_accordions grid-container"
         :spacing="settings?.spacing"
-        :style="settings?.accordionsStyle"
+        :style="settings?.style"
     >
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
 
@@ -44,7 +44,7 @@
 
     interface AccordionsSettings {
         spacing: Spacing;
-        accordionsStyle: string;
+        style: string;
     }
 
     export interface AccordionsProps {

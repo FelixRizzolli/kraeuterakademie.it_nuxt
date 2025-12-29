@@ -2,7 +2,7 @@
     <SectionElement
         class="contentelement_swipersimple grid-container"
         :spacing="settings?.spacing"
-        :style="settings?.swiperSimpleStyle"
+        :style="settings?.style"
     >
         <h2 class="title" ref="titleElement">{{ data.title }}</h2>
 
@@ -40,7 +40,7 @@
 
     interface SwiperSimpleSettings {
         spacing: Spacing;
-        swiperSimpleStyle: string;
+        style: string;
     }
 
     export interface SwiperSimpleProps {

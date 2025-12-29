@@ -2,7 +2,7 @@
     <SectionElement
         class="contentelement_animatedtext grid-container"
         :spacing="settings?.spacing"
-        :style="settings?.animatedTextStyle"
+        :style="settings?.style"
     >
         <p v-if="data.text" class="text" ref="textElement">{{ data.text }}</p>
     </SectionElement>
@@ -19,7 +19,7 @@
 
     interface AnimatedTextSettings {
         spacing: Spacing;
-        animatedTextStyle: string;
+        style: string;
     }
 
     export interface AnimatedTextProps {
