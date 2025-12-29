@@ -1,5 +1,5 @@
 <template>
-    <nav class="footer-links" ref="containerElement">
+    <nav class="footer-links">
         <span v-for="(link, index) in links" :key="index" class="link-wrapper">
             <NuxtLink class="link" :to="link.href || '#'" :target="link.target ?? '_self'">{{ link.text }}</NuxtLink>
             <span v-if="index < links.length - 1" class="sep">.</span>
@@ -8,22 +8,11 @@
 </template>
 
 <script lang="ts" setup>
-    import { gsap } from 'gsap';
-
-    const containerElement = ref<HTMLElement>();
-
     interface FooterLinksProps {
         links: Array<WebFooter_Links>;
     }
 
     const props = defineProps<FooterLinksProps>();
-
-    onMounted(() => {
-        if (containerElement.value) {
-            const opacityEffect = getOpacityEffect(gsap);
-            opacityEffect(containerElement);
-        }
-    });
 </script>
 
 <style lang="scss" scoped>

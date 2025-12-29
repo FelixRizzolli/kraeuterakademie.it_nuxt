@@ -1,7 +1,7 @@
 <template>
     <div class="socials">
         <template v-for="(social, index) in socials" :key="social.id">
-            <div class="scale-animation" ref="socialElements" :class="{ 'scale-active': showSocialElements[index] }">
+            <div>
                 <NuxtLink
                     v-if="social.link"
                     class="social"
@@ -29,29 +29,6 @@
     const props = defineProps<FooterSocialsProps>();
 
     const socials = computed(() => props.data || []);
-
-    const socialElements = ref<HTMLElement[]>([]);
-    const showSocialElements = ref<boolean[]>([]);
-
-    onMounted(() => {
-        // Initialize visibility array with false values
-        showSocialElements.value = Array(socialElements.value.length).fill(false);
-
-        // Set up scale effect for each element
-        socialElements.value.forEach((element, index) => {
-            const scaleEffect = getScaleEffect(gsap);
-            const elementRef = ref(element);
-
-            const elementShowRef = computed({
-                get: () => showSocialElements.value[index],
-                set: (value) => {
-                    showSocialElements.value[index] = value as boolean;
-                },
-            });
-
-            scaleEffect(elementRef, elementShowRef);
-        });
-    });
 </script>
 
 <style lang="scss" scoped>

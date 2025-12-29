@@ -2,10 +2,10 @@
     <footer class="grid-container">
         <FooterAddress :data="contact" />
         <FooterContact :data="contact" />
-        <div v-if="footer.text1" class="text1" ref="text1Element">
+        <div v-if="footer.text1" class="text1">
             <LexicalRenderer :nodes="text1Data" />
         </div>
-        <div v-if="footer.text2" class="text2" ref="text2Element">
+        <div v-if="footer.text2" class="text2">
             <LexicalRenderer :nodes="text2Data" />
         </div>
         <FooterSocials :data="socials" />
@@ -28,20 +28,6 @@
     const text2Data = computed(() => (props.footer.text2 as RichText) || null);
 
     const props = defineProps<FooterProps>();
-
-    const text1Element = ref<HTMLElement>();
-    const text2Element = ref<HTMLElement>();
-
-    onMounted(() => {
-        if (text1Element.value) {
-            const opacityEffect = getOpacityEffect(gsap);
-            opacityEffect(text1Element);
-        }
-        if (text2Element.value) {
-            const opacityEffect = getOpacityEffect(gsap);
-            opacityEffect(text2Element);
-        }
-    });
 </script>
 
 <style lang="scss" scoped>

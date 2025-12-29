@@ -41,7 +41,7 @@
             gap: 4.5rem;
         }
 
-        img {
+        :deep(img) {
             height: 9rem;
             width: auto;
         }
@@ -54,7 +54,7 @@
             justify-content: start;
             gap: 2rem;
 
-            img {
+            :deep(img) {
                 height: 4.4rem;
             }
         }

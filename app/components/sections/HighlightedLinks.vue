@@ -46,8 +46,6 @@
     const highlightedLinkElements = ref<Array<HTMLElement>>([]);
     const showHighlightedLinkElements = ref<Array<boolean>>([]);
     onMounted(() => {
-        console.log(props);
-
         // Initialize visibility array with false values
         showHighlightedLinkElements.value = Array(highlightedLinkElements?.value?.length).fill(false);
 
