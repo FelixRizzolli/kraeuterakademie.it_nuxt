@@ -1,19 +1,19 @@
-fragment HighlightedLinksAttributes on WebHighlightedLinks {
+fragment HighlightedLinksAttributes on PublicHighlightedLinks {
     id
     blockName
     blockType
-    webHighlightedLinksContent: content {
+    publicHighlightedLinksContent: content {
         links {
             id
             text
             url
             target
             image {
-                ...WebImageAttributes
+                ...PublicImageAttributes
             }
         }
     }
-    webHighlightedLinksSettings: settings {
+    publicHighlightedLinksSettings: settings {
         spacing {
             marginTop
             marginBottom

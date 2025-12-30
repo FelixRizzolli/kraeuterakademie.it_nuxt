@@ -1,8 +1,8 @@
-fragment CourseListAttributes on WebCourseList {
+fragment CourseListAttributes on PublicCourseList {
     id
     blockName
     blockType
-    webCourseListContent: content {
+    publicCourseListContent: content {
         title
         courses {
             id
@@ -16,7 +16,7 @@ fragment CourseListAttributes on WebCourseList {
             }
         }
     }
-    webCourseListSettings: settings {
+    publicCourseListSettings: settings {
         spacing {
             marginTop
             marginBottom

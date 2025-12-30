@@ -1,34 +1,34 @@
-import WEB_IMAGE_FRAGMENT from '~/graphql/fragments/web/collections/webImage.fragment.gql';
-import WEB_PARTNER_FRAGMENT from '~/graphql/fragments/web/collections/webPartner.fragment.gql';
-import WEB_SOCIAL_FRAGMENT from '~/graphql/fragments/web/collections/webSocial.fragment.gql';
-import WEB_TEXT_BLOCK_FRAGMENT from '~/graphql/fragments/web/collections/webTextBlock.fragment.gql';
+import PUBLIC_IMAGE_FRAGMENT from '~/graphql/fragments/web/collections/publicImage.fragment.gql';
+import PUBLIC_PARTNER_FRAGMENT from '~/graphql/fragments/web/collections/publicPartner.fragment.gql';
+import PUBLIC_SOCIAL_FRAGMENT from '~/graphql/fragments/web/collections/publicSocial.fragment.gql';
+import PUBLIC_TEXT_BLOCK_FRAGMENT from '~/graphql/fragments/web/collections/publicTextBlock.fragment.gql';
 
-import WEB_HEADER_FRAGMENT from '~/graphql/fragments/web/globals/webHeader.fragment.gql';
-import WEB_FOOTER_FRAGMENT from '~/graphql/fragments/web/globals/webFooter.fragment.gql';
-import WEB_SIDEBAR_FRAGMENT from '~/graphql/fragments/web/globals/webSidebar.fragment.gql';
+import PUBLIC_HEADER_FRAGMENT from '~/graphql/fragments/web/globals/publicHeader.fragment.gql';
+import PUBLIC_FOOTER_FRAGMENT from '~/graphql/fragments/web/globals/publicFooter.fragment.gql';
+import PUBLIC_SIDEBAR_FRAGMENT from '~/graphql/fragments/web/globals/publicSidebar.fragment.gql';
 import CONTACT_FRAGMENT from '~/graphql/fragments/shared/globals/contact.fragment.gql';
 
 import FIND_GLOBALS_QUERY from '~/graphql/queries/findGlobals.gql';
 
 interface GlobalData {
-    header: WebHeader;
-    footer: WebFooter;
-    sidebar: WebSidebar;
+    header: PublicHeader;
+    footer: PublicFooter;
+    sidebar: PublicSidebar;
     contact: Contact;
-    textblocks: Array<WebTextBlock>;
-    partners: Array<WebPartner>;
-    socials: Array<WebSocial>;
+    textblocks: Array<PublicTextBlock>;
+    partners: Array<PublicPartner>;
+    socials: Array<PublicSocial>;
 }
 
 const findGlobalsQuery = `
-    ${WEB_IMAGE_FRAGMENT?.loc?.source?.body}
-    ${WEB_PARTNER_FRAGMENT?.loc?.source?.body}
-    ${WEB_SOCIAL_FRAGMENT?.loc?.source?.body}
-    ${WEB_TEXT_BLOCK_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_IMAGE_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_PARTNER_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_SOCIAL_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_TEXT_BLOCK_FRAGMENT?.loc?.source?.body}
 
-    ${WEB_HEADER_FRAGMENT?.loc?.source?.body}
-    ${WEB_FOOTER_FRAGMENT?.loc?.source?.body}
-    ${WEB_SIDEBAR_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_HEADER_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_FOOTER_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_SIDEBAR_FRAGMENT?.loc?.source?.body}
     ${CONTACT_FRAGMENT?.loc?.source?.body}
 
     ${FIND_GLOBALS_QUERY?.loc?.source?.body}
@@ -48,13 +48,13 @@ export const useGlobal = () => {
             // Fetch globals (Header, Footer, Sidebar, Contact)
             const response = await gqlQuery<any>(findGlobalsQuery);
 
-            const header = response?.data?.WebHeader;
-            const footer = response?.data?.WebFooter;
-            const sidebar = response?.data?.WebSidebar;
+            const header = response?.data?.PublicHeader;
+            const footer = response?.data?.PublicFooter;
+            const sidebar = response?.data?.PublicSidebar;
             const contact = response?.data?.Contact;
-            const partners = response?.data?.WebPartners?.docs || [];
-            const socials = response?.data?.WebSocials?.docs || [];
-            const textblocks = response?.data?.WebTextBlocks?.docs || [];
+            const partners = response?.data?.PublicPartners?.docs || [];
+            const socials = response?.data?.PublicSocials?.docs || [];
+            const textblocks = response?.data?.PublicTextBlocks?.docs || [];
 
             if (!header || !footer || !sidebar || !contact || !partners || !socials || !textblocks) {
                 console.warn('Global data not found');

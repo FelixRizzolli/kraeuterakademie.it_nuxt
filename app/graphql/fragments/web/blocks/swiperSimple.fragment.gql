@@ -1,20 +1,20 @@
-fragment SwiperSimpleAttributes on WebSwiperSimple {
+fragment SwiperSimpleAttributes on PublicSwiperSimple {
     id
     blockName
     blockType
-    webSwiperSimpleContent: content {
+    publicSwiperSimpleContent: content {
         slides {
             id
             title
             images {
                 id
                 image {
-                    ...WebImageAttributes
+                    ...PublicImageAttributes
                 }
             }
         }
     }
-    webSwiperSimpleSettings: settings {
+    publicSwiperSimpleSettings: settings {
         spacing {
             marginTop
             marginBottom

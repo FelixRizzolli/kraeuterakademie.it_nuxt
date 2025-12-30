@@ -1,4 +1,4 @@
-fragment WebImageAttributes on WebImage {
+fragment PublicImageAttributes on PublicImage {
     id
     alt
     updatedAt

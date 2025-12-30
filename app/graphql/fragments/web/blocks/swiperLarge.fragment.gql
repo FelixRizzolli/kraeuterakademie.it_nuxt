@@ -1,8 +1,8 @@
-fragment SwiperLargeAttributes on WebSwiperLarge {
+fragment SwiperLargeAttributes on PublicSwiperLarge {
     id
     blockName
     blockType
-    webSwiperLargeContent: content {
+    publicSwiperLargeContent: content {
         title
         items {
             id
@@ -15,11 +15,11 @@ fragment SwiperLargeAttributes on WebSwiperLarge {
                 target
             }
             image {
-                ...WebImageAttributes
+                ...PublicImageAttributes
             }
         }
     }
-    webSwiperLargeSettings: settings {
+    publicSwiperLargeSettings: settings {
         spacing {
             marginTop
             marginBottom

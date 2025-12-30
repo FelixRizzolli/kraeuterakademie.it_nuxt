@@ -1,11 +1,11 @@
-fragment HeroSmallAttributes on WebHeroSmall {
+fragment HeroSmallAttributes on PublicHeroSmall {
     id
     blockName
     blockType
-    webHeroSmallContent: content {
+    publicHeroSmallContent: content {
         title
         image {
-            ...WebImageAttributes
+            ...PublicImageAttributes
         }
         link {
             text
@@ -13,7 +13,7 @@ fragment HeroSmallAttributes on WebHeroSmall {
             target
         }
     }
-    webHeroSmallSettings: settings {
+    publicHeroSmallSettings: settings {
         spacing {
             marginTop
             marginBottom

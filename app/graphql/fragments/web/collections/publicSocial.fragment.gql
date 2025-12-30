@@ -1,4 +1,4 @@
-fragment WebSocialAttributes on WebSocial {
+fragment PublicSocialAttributes on PublicSocial {
     id
     link {
         href
@@ -7,6 +7,6 @@ fragment WebSocialAttributes on WebSocial {
     }
     icon
     backgroundImage {
-        ...WebImageAttributes
+        ...PublicImageAttributes
     }
 }

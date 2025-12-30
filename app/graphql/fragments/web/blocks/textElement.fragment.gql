@@ -1,8 +1,8 @@
-fragment TextElementAttributes on WebTextElement {
+fragment TextElementAttributes on PublicTextElement {
     id
     blockName
     blockType
-    webTextElementContent: content {
+    publicTextElementContent: content {
         title
         content
         link {
@@ -11,7 +11,7 @@ fragment TextElementAttributes on WebTextElement {
             target
         }
     }
-    webTextElementSettings: settings {
+    publicTextElementSettings: settings {
         spacing {
             marginTop
             marginBottom

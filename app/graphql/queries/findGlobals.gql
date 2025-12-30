@@ -1,29 +1,29 @@
 query findGlobals {
-    WebHeader {
-        ...WebHeaderAttributes
+    PublicHeader {
+        ...PublicHeaderAttributes
     }
-    WebFooter {
-        ...WebFooterAttributes
+    PublicFooter {
+        ...PublicFooterAttributes
     }
-    WebSidebar {
-        ...WebSidebarAttributes
+    PublicSidebar {
+        ...PublicSidebarAttributes
     }
     Contact {
         ...ContactAttributes
     }
-    WebPartners {
+    PublicPartners {
         docs {
-            ...WebPartnerAttributes
+            ...PublicPartnerAttributes
         }
     }
-    WebSocials {
+    PublicSocials {
         docs {
-            ...WebSocialAttributes
+            ...PublicSocialAttributes
         }
     }
-    WebTextBlocks {
+    PublicTextBlocks {
         docs {
-            ...WebTextBlockAttributes
+            ...PublicTextBlockAttributes
         }
     }
 }

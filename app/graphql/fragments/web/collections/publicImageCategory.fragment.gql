@@ -1,0 +1,5 @@
+fragment PublicImageCategoryAttributes on PublicImageCategory {
+    id
+    title
+    description
+}

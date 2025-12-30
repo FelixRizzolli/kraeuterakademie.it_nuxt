@@ -1,13 +1,13 @@
-fragment MoodPictureAttributes on WebMoodPicture {
+fragment MoodPictureAttributes on PublicMoodPicture {
     id
     blockName
     blockType
-    webMoodPictureContent: content {
+    publicMoodPictureContent: content {
         image {
-            ...WebImageAttributes
+            ...PublicImageAttributes
         }
     }
-    webMoodPictureSettings: settings {
+    publicMoodPictureSettings: settings {
         spacing {
             marginTop
             marginBottom

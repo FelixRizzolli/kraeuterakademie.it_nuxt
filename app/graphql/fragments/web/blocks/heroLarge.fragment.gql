@@ -1,14 +1,14 @@
-fragment HeroLargeAttributes on WebHeroLarge {
+fragment HeroLargeAttributes on PublicHeroLarge {
     id
     blockName
     blockType
-    webHeroLargeContent: content {
+    publicHeroLargeContent: content {
         title
         image {
-            ...WebImageAttributes
+            ...PublicImageAttributes
         }
     }
-    webHeroLargeSettings: settings {
+    publicHeroLargeSettings: settings {
         spacing {
             marginTop
             marginBottom

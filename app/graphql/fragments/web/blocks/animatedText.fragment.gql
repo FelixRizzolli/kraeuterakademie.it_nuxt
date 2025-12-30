@@ -1,11 +1,11 @@
-fragment AnimatedTextAttributes on WebAnimatedText {
+fragment AnimatedTextAttributes on PublicAnimatedText {
     id
     blockName
     blockType
-    webAnimatedTextContent: content {
+    publicAnimatedTextContent: content {
         text
     }
-    webAnimatedTextSettings: settings {
+    publicAnimatedTextSettings: settings {
         spacing {
             marginTop
             marginBottom

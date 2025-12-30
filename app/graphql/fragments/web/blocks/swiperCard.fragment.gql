@@ -1,12 +1,12 @@
-fragment SwiperCardAttributes on WebSwiperCard {
+fragment SwiperCardAttributes on PublicSwiperCard {
     id
     blockName
     blockType
-    webSwiperCardContent: content {
+    publicSwiperCardContent: content {
         cards {
             id
             image {
-                ...WebImageAttributes
+                ...PublicImageAttributes
             }
             info
             date
@@ -18,7 +18,7 @@ fragment SwiperCardAttributes on WebSwiperCard {
             }
         }
     }
-    webSwiperCardSettings: settings {
+    publicSwiperCardSettings: settings {
         spacing {
             marginTop
             marginBottom

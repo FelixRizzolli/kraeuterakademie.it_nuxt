@@ -1,8 +1,8 @@
-fragment InfosAttributes on WebInfos {
+fragment InfosAttributes on PublicInfos {
     id
     blockName
     blockType
-    webInfosContent: content {
+    publicInfosContent: content {
         infos {
             id
             title
@@ -14,7 +14,7 @@ fragment InfosAttributes on WebInfos {
             target
         }
     }
-    webInfosSettings: settings {
+    publicInfosSettings: settings {
         spacing {
             marginTop
             marginBottom

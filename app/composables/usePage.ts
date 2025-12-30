@@ -1,22 +1,22 @@
-import WEB_IMAGE_FRAGMENT from '~/graphql/fragments/web/collections/webImage.fragment.gql';
+import PUBLIC_IMAGE_FRAGMENT from '~/graphql/fragments/web/collections/publicImage.fragment.gql';
 
-import WEB_ACCORDIONS_FRAGMENT from '~/graphql/fragments/web/blocks/accordions.fragment.gql';
-import WEB_ANIMATED_TEXT_FRAGMENT from '~/graphql/fragments/web/blocks/animatedText.fragment.gql';
-import WEB_BOOK_LIST_FRAGMENT from '~/graphql/fragments/web/blocks/bookList.fragment.gql';
-import WEB_COURSE_LIST_FRAGMENT from '~/graphql/fragments/web/blocks/courseList.fragment.gql';
-import WEB_HERO_LARGE_FRAGMENT from '~/graphql/fragments/web/blocks/heroLarge.fragment.gql';
-import WEB_HERO_SMALL_FRAGMENT from '~/graphql/fragments/web/blocks/heroSmall.fragment.gql';
-import WEB_HIGHLIGHTED_LINKS_FRAGMENT from '~/graphql/fragments/web/blocks/highlightedLinks.fragment.gql';
-import WEB_IMAGE_TEXT_FRAGMENT from '~/graphql/fragments/web/blocks/imageText.fragment.gql';
-import WEB_INFOS_FRAGMENT from '~/graphql/fragments/web/blocks/infos.fragment.gql';
-import WEB_MOOD_PICTURE_FRAGMENT from '~/graphql/fragments/web/blocks/moodPicture.fragment.gql';
-import WEB_SWIPER_CARD_FRAGMENT from '~/graphql/fragments/web/blocks/swiperCard.fragment.gql';
-import WEB_SWIPER_LARGE_FRAGMENT from '~/graphql/fragments/web/blocks/swiperLarge.fragment.gql';
-import WEB_SWIPER_SIMPLE_FRAGMENT from '~/graphql/fragments/web/blocks/swiperSimple.fragment.gql';
-import WEB_TEXT_ELEMENT_FRAGMENT from '~/graphql/fragments/web/blocks/textElement.fragment.gql';
-import WEB_TITLE_ELEMENT_FRAGMENT from '~/graphql/fragments/web/blocks/titleElement.fragment.gql';
+import PUBLIC_ACCORDIONS_FRAGMENT from '~/graphql/fragments/web/blocks/accordions.fragment.gql';
+import PUBLIC_ANIMATED_TEXT_FRAGMENT from '~/graphql/fragments/web/blocks/animatedText.fragment.gql';
+import PUBLIC_BOOK_LIST_FRAGMENT from '~/graphql/fragments/web/blocks/bookList.fragment.gql';
+import PUBLIC_COURSE_LIST_FRAGMENT from '~/graphql/fragments/web/blocks/courseList.fragment.gql';
+import PUBLIC_HERO_LARGE_FRAGMENT from '~/graphql/fragments/web/blocks/heroLarge.fragment.gql';
+import PUBLIC_HERO_SMALL_FRAGMENT from '~/graphql/fragments/web/blocks/heroSmall.fragment.gql';
+import PUBLIC_HIGHLIGHTED_LINKS_FRAGMENT from '~/graphql/fragments/web/blocks/highlightedLinks.fragment.gql';
+import PUBLIC_IMAGE_TEXT_FRAGMENT from '~/graphql/fragments/web/blocks/imageText.fragment.gql';
+import PUBLIC_INFOS_FRAGMENT from '~/graphql/fragments/web/blocks/infos.fragment.gql';
+import PUBLIC_MOOD_PICTURE_FRAGMENT from '~/graphql/fragments/web/blocks/moodPicture.fragment.gql';
+import PUBLIC_SWIPER_CARD_FRAGMENT from '~/graphql/fragments/web/blocks/swiperCard.fragment.gql';
+import PUBLIC_SWIPER_LARGE_FRAGMENT from '~/graphql/fragments/web/blocks/swiperLarge.fragment.gql';
+import PUBLIC_SWIPER_SIMPLE_FRAGMENT from '~/graphql/fragments/web/blocks/swiperSimple.fragment.gql';
+import PUBLIC_TEXT_ELEMENT_FRAGMENT from '~/graphql/fragments/web/blocks/textElement.fragment.gql';
+import PUBLIC_TITLE_ELEMENT_FRAGMENT from '~/graphql/fragments/web/blocks/titleElement.fragment.gql';
 
-import FIND_WEB_PAGES_QUERY from '~/graphql/queries/findWebPages.gql';
+import FIND_PUBLIC_PAGES_QUERY from '~/graphql/queries/findPublicPages.gql';
 
 interface ContentComponent {
     name: string;
@@ -39,26 +39,26 @@ interface PageData {
     contentComponents: ContentComponent[];
 }
 
-const findWebPagesQuery = `
-    ${WEB_IMAGE_FRAGMENT?.loc?.source?.body}
+const findPublicPagesQuery = `
+    ${PUBLIC_IMAGE_FRAGMENT?.loc?.source?.body}
 
-    ${WEB_ACCORDIONS_FRAGMENT?.loc?.source?.body}
-    ${WEB_ANIMATED_TEXT_FRAGMENT?.loc?.source?.body}
-    ${WEB_BOOK_LIST_FRAGMENT?.loc?.source?.body}
-    ${WEB_COURSE_LIST_FRAGMENT?.loc?.source?.body}
-    ${WEB_HERO_LARGE_FRAGMENT?.loc?.source?.body}
-    ${WEB_HERO_SMALL_FRAGMENT?.loc?.source?.body}
-    ${WEB_HIGHLIGHTED_LINKS_FRAGMENT?.loc?.source?.body}
-    ${WEB_IMAGE_TEXT_FRAGMENT?.loc?.source?.body}
-    ${WEB_INFOS_FRAGMENT?.loc?.source?.body}
-    ${WEB_MOOD_PICTURE_FRAGMENT?.loc?.source?.body}
-    ${WEB_SWIPER_CARD_FRAGMENT?.loc?.source?.body}
-    ${WEB_SWIPER_LARGE_FRAGMENT?.loc?.source?.body}
-    ${WEB_SWIPER_SIMPLE_FRAGMENT?.loc?.source?.body}
-    ${WEB_TEXT_ELEMENT_FRAGMENT?.loc?.source?.body}
-    ${WEB_TITLE_ELEMENT_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_ACCORDIONS_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_ANIMATED_TEXT_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_BOOK_LIST_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_COURSE_LIST_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_HERO_LARGE_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_HERO_SMALL_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_HIGHLIGHTED_LINKS_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_IMAGE_TEXT_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_INFOS_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_MOOD_PICTURE_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_SWIPER_CARD_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_SWIPER_LARGE_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_SWIPER_SIMPLE_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_TEXT_ELEMENT_FRAGMENT?.loc?.source?.body}
+    ${PUBLIC_TITLE_ELEMENT_FRAGMENT?.loc?.source?.body}
 
-    ${FIND_WEB_PAGES_QUERY?.loc?.source?.body}
+    ${FIND_PUBLIC_PAGES_QUERY?.loc?.source?.body}
 `;
 
 export const usePage = () => {
@@ -73,13 +73,13 @@ export const usePage = () => {
         return blocks
             .filter((block) => block?.__typename) // Filter out invalid blocks
             .map((block: any) => {
-                // Extract component name by removing 'Web' prefix from PayloadCMS block types
-                // e.g., 'WebHeroLarge' -> 'HeroLarge'
-                const componentName = block?.__typename?.startsWith('Web')
-                    ? block.__typename.replace('Web', '')
+                // Extract component name by removing 'Public' prefix from PayloadCMS block types
+                // e.g., 'PublicHeroLarge' -> 'HeroLarge'
+                const componentName = block?.__typename?.startsWith('Public')
+                    ? block.__typename.replace('Public', '')
                     : block.__typename || 'unknown';
 
-                // PayloadCMS blocks structure: { webHeroLargeContent, webHeroLargeSettings, etc. }
+                // PayloadCMS blocks structure: { publicHeroLargeContent, publicHeroLargeSettings, etc. }
                 // Find the content and settings fields dynamically
                 const blockPrefix = block.__typename.charAt(0).toLowerCase() + block.__typename.slice(1);
                 const contentKey = `${blockPrefix}Content`;
@@ -104,17 +104,17 @@ export const usePage = () => {
                 throw new Error('Slug parameter is required');
             }
 
-            const response = await gqlQuery<any>(findWebPagesQuery, {
+            const response = await gqlQuery<any>(findPublicPagesQuery, {
                 where: {
                     slug: { equals: slug },
                 },
             });
 
-            const page = response?.data?.WebPages?.docs?.[0];
+            const page = response?.data?.PublicPages?.docs?.[0];
 
             if (!page) {
                 console.warn(`Page with slug "${slug}" not found`);
-                console.log('Available pages:', response?.data?.WebPages?.docs);
+                console.log('Available pages:', response?.data?.PublicPages?.docs);
                 return null;
             }
 
@@ -126,7 +126,7 @@ export const usePage = () => {
                     keywords: page.keywords || [],
                     noIndex: page.noIndex || false,
                     canonical: page.canonical || '',
-                    schemaType: page.schemaType || 'WebPage',
+                    schemaType: page.schemaType || 'PublicPage',
                     publishedTime: page.createdAt || '',
                     modifiedTime: page.updatedAt || '',
                 },

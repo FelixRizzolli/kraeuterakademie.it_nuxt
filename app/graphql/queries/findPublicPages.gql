@@ -1,5 +1,5 @@
-query findWebPages($where: WebPage_where) {
-    WebPages: WebPages(where: $where) {
+query findPublicPages($where: PublicPage_where) {
+    PublicPages: PublicPages(where: $where) {
         docs {
             id
             slug
@@ -8,7 +8,7 @@ query findWebPages($where: WebPage_where) {
             title
             description
             image {
-                ...WebImageAttributes
+                ...PublicImageAttributes
             }
             keywords
             noIndex
@@ -16,49 +16,49 @@ query findWebPages($where: WebPage_where) {
             schemaType
             blocks {
                 __typename
-                ... on WebAccordions {
+                ... on PublicAccordions {
                     ...AccordionsAttributes
                 }
-                ... on WebAnimatedText {
+                ... on PublicAnimatedText {
                     ...AnimatedTextAttributes
                 }
-                ... on WebBookList {
+                ... on PublicBookList {
                     ...BookListAttributes
                 }
-                ... on WebCourseList {
+                ... on PublicCourseList {
                     ...CourseListAttributes
                 }
-                ... on WebHeroLarge {
+                ... on PublicHeroLarge {
                     ...HeroLargeAttributes
                 }
-                ... on WebHeroSmall {
+                ... on PublicHeroSmall {
                     ...HeroSmallAttributes
                 }
-                ... on WebHighlightedLinks {
+                ... on PublicHighlightedLinks {
                     ...HighlightedLinksAttributes
                 }
-                ... on WebImageText {
+                ... on PublicImageText {
                     ...ImageTextAttributes
                 }
-                ... on WebInfos {
+                ... on PublicInfos {
                     ...InfosAttributes
                 }
-                ... on WebMoodPicture {
+                ... on PublicMoodPicture {
                     ...MoodPictureAttributes
                 }
-                ... on WebSwiperCard {
+                ... on PublicSwiperCard {
                     ...SwiperCardAttributes
                 }
-                ... on WebSwiperLarge {
+                ... on PublicSwiperLarge {
                     ...SwiperLargeAttributes
                 }
-                ... on WebSwiperSimple {
+                ... on PublicSwiperSimple {
                     ...SwiperSimpleAttributes
                 }
-                ... on WebTextElement {
+                ... on PublicTextElement {
                     ...TextElementAttributes
                 }
-                ... on WebTitleElement {
+                ... on PublicTitleElement {
                     ...TitleElementAttributes
                 }
             }

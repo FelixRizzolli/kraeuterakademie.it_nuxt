@@ -1,8 +1,8 @@
-fragment AccordionsAttributes on WebAccordions {
+fragment AccordionsAttributes on PublicAccordions {
     id
     blockName
     blockType
-    webAccordionsContent: content {
+    publicAccordionsContent: content {
         title
         items {
             id
@@ -10,7 +10,7 @@ fragment AccordionsAttributes on WebAccordions {
             content
         }
     }
-    webAccordionsSettings: settings {
+    publicAccordionsSettings: settings {
         spacing {
             marginTop
             marginBottom

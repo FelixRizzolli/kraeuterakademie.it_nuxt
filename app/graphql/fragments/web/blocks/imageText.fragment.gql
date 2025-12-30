@@ -1,8 +1,8 @@
-fragment ImageTextAttributes on WebImageText {
+fragment ImageTextAttributes on PublicImageText {
     id
     blockName
     blockType
-    webImageTextContent: content {
+    publicImageTextContent: content {
         title
         textTop
         textHighlight
@@ -13,10 +13,10 @@ fragment ImageTextAttributes on WebImageText {
             target
         }
         image {
-            ...WebImageAttributes
+            ...PublicImageAttributes
         }
     }
-    webImageTextSettings: settings {
+    publicImageTextSettings: settings {
         spacing {
             marginTop
             marginBottom

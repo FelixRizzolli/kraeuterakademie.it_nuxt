@@ -1,4 +1,6 @@
-fragment WebHeaderAttributes on WebHeader {
+fragment PublicFooterAttributes on PublicFooter {
+    text1
+    text2
     links {
         href
         text

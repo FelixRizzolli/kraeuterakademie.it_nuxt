@@ -1,0 +1,5 @@
+fragment PublicTextBlockAttributes on PublicTextBlock {
+    id
+    slug
+    value
+}

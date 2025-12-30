@@ -1,4 +1,4 @@
-fragment WebPartnerAttributes on WebPartner {
+fragment PublicPartnerAttributes on PublicPartner {
     id
     name
     link {
@@ -7,6 +7,6 @@ fragment WebPartnerAttributes on WebPartner {
         target
     }
     image {
-        ...WebImageAttributes
+        ...PublicImageAttributes
     }
 }

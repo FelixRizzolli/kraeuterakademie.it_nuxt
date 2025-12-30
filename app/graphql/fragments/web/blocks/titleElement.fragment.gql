@@ -1,11 +1,11 @@
-fragment TitleElementAttributes on WebTitleElement {
+fragment TitleElementAttributes on PublicTitleElement {
     id
     blockName
     blockType
-    webTitleElementContent: content {
+    publicTitleElementContent: content {
         title
     }
-    webTitleElementSettings: settings {
+    publicTitleElementSettings: settings {
         spacing {
             marginTop
             marginBottom
