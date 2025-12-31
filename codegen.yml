@@ -13,6 +13,7 @@ generates:
             enumsAsTypes: true
             futureProofEnums: true
             immutableTypes: false
+            useTypeImports: true
 
             # Naming conventions
             namingConvention:
@@ -35,7 +36,7 @@ generates:
             maybeValue: T | null
 
             # Generate both types and document nodes
-            documentMode: documentNodeString
+            documentMode: documentNode
 
             # Add useful utility types
             addUnderscoreToArgsType: true
