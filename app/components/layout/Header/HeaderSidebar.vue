@@ -21,7 +21,7 @@
 
 <script lang="ts" setup>
     interface HeaderSidebarProps {
-        data: WebSidebar;
+        data: PublicSidebar;
     }
 
     const props = defineProps<HeaderSidebarProps>();

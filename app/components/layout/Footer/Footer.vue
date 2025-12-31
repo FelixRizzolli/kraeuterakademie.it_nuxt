@@ -18,10 +18,10 @@
     import { gsap } from 'gsap';
 
     interface FooterProps {
-        footer: WebFooter;
+        footer: PublicFooter;
         contact: Contact;
-        socials: Array<WebSocial>;
-        partners: Array<WebPartner>;
+        socials: Array<PublicSocial>;
+        partners: Array<PublicPartner>;
     }
 
     const text1Data = computed(() => (props.footer.text1 as RichText) || null);

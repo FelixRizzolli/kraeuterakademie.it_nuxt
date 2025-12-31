@@ -9,7 +9,7 @@
 
 <script lang="ts" setup>
     interface FooterLinksProps {
-        links: Array<WebFooter_Links>;
+        links: Array<PublicFooter_Links>;
     }
 
     const props = defineProps<FooterLinksProps>();

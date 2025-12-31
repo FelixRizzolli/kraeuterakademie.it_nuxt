@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
     export interface SwiperCardItem {
-        image: WebImage;
+        image: PublicImage;
         info?: string;
         date?: string;
         title?: string;

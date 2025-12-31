@@ -11,7 +11,7 @@
     }
 
     interface MoodPictureData {
-        image: WebImage;
+        image: PublicImage;
     }
 
     interface MoodPictureSettings {

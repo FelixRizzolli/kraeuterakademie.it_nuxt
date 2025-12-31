@@ -24,7 +24,7 @@
 
 <script lang="ts" setup>
     export interface SwiperLargeItem {
-        image: WebImage;
+        image: PublicImage;
         infos?: string;
         title?: string;
         description?: any;

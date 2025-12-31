@@ -24,7 +24,7 @@
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
     interface ImageLink extends Link {
-        image: WebImage;
+        image: PublicImage;
     }
 
     interface HighlightedLinksData {

@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia';
 
 interface GlobalData {
-    header: Header;
-    sidebar: Sidebar;
-    footer: Footer;
+    header: PublicHeader;
+    sidebar: PublicSidebar;
+    footer: PublicFooter;
     contact: Contact;
-    textblocks: Array<WebTextBlock>;
-    partners: Array<WebPartner>;
-    socials: Array<WebSocial>;
+    textblocks: Array<PublicTextBlock>;
+    partners: Array<PublicPartner>;
+    socials: Array<PublicSocial>;
 }
 
 export const useGlobalStore = defineStore('global', () => {

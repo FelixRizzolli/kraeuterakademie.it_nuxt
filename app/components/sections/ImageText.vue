@@ -35,7 +35,7 @@
 
     interface ImageTextData {
         title?: string;
-        image?: WebImage;
+        image?: PublicImage;
         textTop?: RichText;
         textHighlight?: string;
         textBottom?: RichText;

@@ -21,7 +21,7 @@
     interface HeroSmallData {
         title?: string;
         link?: Link;
-        image?: WebImage;
+        image?: PublicImage;
     }
 
     interface HeroSmallSettings {

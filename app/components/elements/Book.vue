@@ -27,7 +27,7 @@
     const { isMobile } = useDevice();
 
     interface Book {
-        image: WebImage;
+        image: PublicImage;
         infos: any;
         title: string;
         description: any;

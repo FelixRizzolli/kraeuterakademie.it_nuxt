@@ -35,7 +35,7 @@
 
     interface SwiperSimpleData {
         title?: string;
-        images: Array<WebImage>;
+        images: Array<PublicImage>;
     }
 
     interface SwiperSimpleSettings {

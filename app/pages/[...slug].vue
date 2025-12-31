@@ -79,7 +79,7 @@
 
             // Add structured data
             useStructuredData({
-                type: meta.schemaType || 'WebPage',
+                type: meta.schemaType || 'PublicPage',
                 title: meta.title,
                 description: meta.description,
                 image: meta.image,

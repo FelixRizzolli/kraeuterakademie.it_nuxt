@@ -23,7 +23,7 @@
     import { gsap } from 'gsap';
 
     interface FooterSocialsProps {
-        data: WebSocial[];
+        data: PublicSocial[];
     }
 
     const props = defineProps<FooterSocialsProps>();

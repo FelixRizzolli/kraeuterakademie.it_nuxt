@@ -8,8 +8,8 @@
 
 <script lang="ts" setup>
     interface HeaderProps {
-        header: WebHeader;
-        sidebar: WebSidebar;
+        header: PublicHeader;
+        sidebar: PublicSidebar;
     }
 
     const props = defineProps<HeaderProps>();

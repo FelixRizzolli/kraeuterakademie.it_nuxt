@@ -39,7 +39,7 @@
     const runtimeConfig = useRuntimeConfig();
 
     export interface ResponsiveImageProps {
-        image: WebImage;
+        image: PublicImage;
         scaleAnimation?: boolean;
     }
 

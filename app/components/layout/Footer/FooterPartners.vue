@@ -19,7 +19,7 @@
 
 <script lang="ts" setup>
     interface FooterPartnerProps {
-        data: WebPartner[];
+        data: PublicPartner[];
     }
 
     const props = defineProps<FooterPartnerProps>();
