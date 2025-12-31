@@ -1,0 +1,4 @@
+// Public layout styles - using modern @use instead of deprecated @import
+@use './base.scss';
+@use './layout.scss';
+@use './grid-layout.scss';

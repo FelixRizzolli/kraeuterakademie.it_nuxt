@@ -23,6 +23,12 @@
 </template>
 
 <script lang="ts" setup>
+    definePageMeta({
+        layout: 'public',
+        // Lower priority so dashboard routes are matched first
+        // This allows /dashboard to be matched before [...slug]
+    });
+
     const route = useRoute();
     import { showError } from '#app';
 
@@ -70,7 +76,7 @@
             if (!meta) return;
 
             useSeoConfig(pageData?.value?.meta);
-            
+
             // Add structured data
             useStructuredData({
                 type: meta.schemaType || 'WebPage',

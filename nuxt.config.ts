@@ -2,6 +2,7 @@
 
 import devtoolsJson from 'vite-plugin-devtools-json';
 import graphqlLoader from 'vite-plugin-graphql-loader';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineNuxtConfig({
     app: {
@@ -42,8 +43,6 @@ export default defineNuxtConfig({
         dirs: ['shared/types'],
     },
 
-    css: ['@/assets/styles/base.scss', '@/assets/styles/layout.scss', '@/assets/styles/grid-layout.scss'],
-
     plugins: ['~/plugins/pinia.ts'],
 
     modules: [
@@ -53,6 +52,7 @@ export default defineNuxtConfig({
         '@nuxtjs/seo',
         '@nuxtjs/device',
         'nuxt-swiper',
+        'shadcn-nuxt',
     ],
 
     vite: {
@@ -60,10 +60,10 @@ export default defineNuxtConfig({
             preprocessorOptions: {
                 scss: {
                     additionalData: `
-                        @use "~/assets/styles/colors.scss" as *;
-                        @use "~/assets/styles/fonts.scss" as *;
-                        @use "~/assets/styles/mixins.scss" as *;
-                        @use "~/assets/styles/prefixer.scss" as *;
+                        @use "~/assets/styles/public/colors.scss" as *;
+                        @use "~/assets/styles/public/fonts.scss" as *;
+                        @use "~/assets/styles/public/mixins.scss" as *;
+                        @use "~/assets/styles/public/prefixer.scss" as *;
                     `,
                 },
             },
@@ -74,7 +74,7 @@ export default defineNuxtConfig({
                 target: 'esnext',
             },
         },
-        plugins: [devtoolsJson(), graphqlLoader()],
+        plugins: [devtoolsJson(), graphqlLoader(), tailwindcss()],
         resolve: {
             alias: {
                 qs: 'qs/lib/index.js',
@@ -129,5 +129,20 @@ export default defineNuxtConfig({
                 'removeXMLNS',
             ],
         },
+    },
+
+    shadcn: {
+        /**
+         * Prefix for all the imported component.
+         * @default "Ui"
+         */
+        prefix: '',
+        /**
+         * Directory that the component lives in.
+         * Will respect the Nuxt aliases.
+         * @link https://nuxt.com/docs/api/nuxt-config#alias
+         * @default "@/components/ui"
+         */
+        componentDir: '@/components/ui',
     },
 });
