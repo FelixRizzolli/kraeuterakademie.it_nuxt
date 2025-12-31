@@ -32,12 +32,6 @@ export default defineNuxtConfig({
         },
     },
 
-    components: [
-        { path: '~~/layers/public/components/elements', pathPrefix: false },
-        { path: '~~/layers/public/components/layout', pathPrefix: false },
-        { path: '~~/layers/public/components/sections', pathPrefix: false },
-    ],
-
     compatibilityDate: '2025-08-29',
     devtools: { enabled: true },
 
