@@ -57,7 +57,7 @@ export const Default: Story = {
                 paddingTop: 'none',
                 paddingBottom: 'none',
             },
-            swiperSimpleStyle: 'light',
+            style: 'light',
         },
     },
 };

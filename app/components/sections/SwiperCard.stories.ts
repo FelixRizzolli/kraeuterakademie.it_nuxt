@@ -93,7 +93,7 @@ export const Default: Story = {
                 paddingTop: 'none',
                 paddingBottom: 'none',
             },
-            swiperCardStyle: 'light',
+            style: 'light',
         },
     },
 };

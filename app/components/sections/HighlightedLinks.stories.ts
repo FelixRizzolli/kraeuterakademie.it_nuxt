@@ -69,7 +69,7 @@ export const Default: Story = {
                 paddingTop: 'large',
                 paddingBottom: 'large',
             },
-            highlightedLinksStyle: 'light',
+            style: 'light',
         },
     },
 };

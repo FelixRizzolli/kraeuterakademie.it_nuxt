@@ -34,7 +34,7 @@ export const Default: Story = {
                 paddingTop: 'medium',
                 paddingBottom: 'medium',
             },
-            animatedTextStyle: 'dark',
+            style: 'dark',
         },
     },
 };

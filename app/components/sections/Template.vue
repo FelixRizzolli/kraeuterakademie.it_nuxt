@@ -2,21 +2,18 @@
     <SectionElement
         class="contentelement_template grid-container"
         :spacing="settings?.spacing"
-        :style="settings?.templateStyle"
+        :style="settings?.style"
     >
         <div></div>
     </SectionElement>
 </template>
 
 <script lang="ts" setup>
-    import { gsap } from 'gsap';
-    import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
     interface TemplateData {}
 
     interface TemplateSettings {
         spacing: Spacing;
-        templateStyle: string;
+        style: string;
     }
 
     export interface TemplateProps {

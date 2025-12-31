@@ -2,7 +2,7 @@
     <SectionElement
         class="contentelement_highlightedlinks grid-container"
         :spacing="settings?.spacing"
-        :style="settings?.highlightedLinksStyle"
+        :style="settings?.style"
     >
         <template v-for="(imageLink, index) in data.links">
             <NuxtLink :to="imageLink.href || '/'" class="link-container" :target="imageLink.target ?? '_self'">
@@ -33,7 +33,7 @@
 
     interface HighlightedLinksSettings {
         spacing: Spacing;
-        highlightedLinksStyle: string;
+        style: string;
     }
 
     export interface HighlightedLinksProps {

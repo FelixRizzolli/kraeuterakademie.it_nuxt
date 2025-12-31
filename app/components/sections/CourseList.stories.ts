@@ -234,7 +234,7 @@ export const Default: Story = {
                 paddingTop: 'large',
                 paddingBottom: 'large',
             },
-            courseListStyle: 'light',
+            style: 'light',
         },
     },
 };

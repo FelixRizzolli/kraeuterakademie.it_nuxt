@@ -2,7 +2,7 @@
     <SectionElement
         class="contentelement_imagetext grid-container"
         :spacing="settings?.spacing"
-        :style="settings?.imageTextStyle"
+        :style="settings?.style"
     >
         <h2 v-if="data.title" class="title" ref="titleElement">{{ data.title }}</h2>
         <ResponsiveImage v-if="data.image" :image="data.image" scale-animation ref="imageElement" />
@@ -44,7 +44,7 @@
 
     interface ImageTextSettings {
         spacing: Spacing;
-        imageTextStyle: string;
+        style: string;
     }
 
     export interface ImageTextProps {

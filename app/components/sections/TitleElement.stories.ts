@@ -33,6 +33,7 @@ export const Default: Story = {
                 paddingTop: 'none',
                 paddingBottom: 'none',
             },
+            style: 'light',
         },
     },
 };

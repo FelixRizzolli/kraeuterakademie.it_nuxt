@@ -177,7 +177,7 @@ export const Default: Story = {
                 paddingTop: 'large',
                 paddingBottom: 'large',
             },
-            bookListStyle: 'dark',
+            style: 'dark',
         },
     },
 };

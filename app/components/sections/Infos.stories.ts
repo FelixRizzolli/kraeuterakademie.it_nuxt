@@ -117,7 +117,7 @@ export const Default: Story = {
                 paddingTop: 'large',
                 paddingBottom: 'large',
             },
-            infosStyle: 'dark',
+            style: 'dark',
         },
     },
 };

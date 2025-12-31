@@ -150,7 +150,7 @@ export const Default: Story = {
                 paddingTop: 'none',
                 paddingBottom: 'none',
             },
-            accordionsStyle: 'light',
+            style: 'light',
         },
     },
 };

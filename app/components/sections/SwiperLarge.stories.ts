@@ -151,7 +151,7 @@ export const Default: Story = {
                 paddingTop: 'none',
                 paddingBottom: 'none',
             },
-            swiperLargeStyle: 'light',
+            style: 'light',
         },
     },
 };

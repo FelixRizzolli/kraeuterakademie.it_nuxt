@@ -100,7 +100,7 @@ export const Default: Story = {
                 paddingTop: 'none',
                 paddingBottom: 'none',
             },
-            textElementStyle: 'light',
+            style: 'light',
         },
     },
 };
