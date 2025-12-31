@@ -1,10 +1,12 @@
 export default (gsap: globalThis.GSAP) => {
-    return (element: globalThis.Ref<HTMLElement, HTMLElement, HTMLElement | undefined>) => {
+    return (element: globalThis.Ref<HTMLElement | undefined | null, HTMLElement | undefined | null>) => {
+        if (!element.value) return;
         gsap.set(element.value, { opacity: 0 });
 
         const observeElement = observe(
             element.value,
             () => {
+                if (!element.value) return;
                 gsap.to(element.value, { opacity: 1, duration: 2, stagger: 0.2 });
                 observeElement?.disconnect();
             },
