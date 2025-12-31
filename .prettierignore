@@ -4,7 +4,7 @@ coverage
 .output
 .nuxt
 .pnpm-store
-public
+./public
 node_modules
 node-compile-cache
 .pnpm-lock.yaml

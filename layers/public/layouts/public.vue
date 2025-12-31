@@ -24,5 +24,5 @@
 
 <style lang="scss">
     /* Import SCSS styles only for public layout */
-    @use '@/assets/styles/public/index.scss';
+    @use '~~/layers/public/assets/styles/public/index.scss';
 </style>

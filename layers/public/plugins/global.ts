@@ -1,4 +1,4 @@
-import { useGlobalStore } from '~/stores/globalStore';
+import { useGlobalStore } from '~~/layers/public/stores/globalStore';
 
 export default defineNuxtPlugin(async () => {
     const globalStore = useGlobalStore();

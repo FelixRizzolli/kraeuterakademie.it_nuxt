@@ -5,6 +5,8 @@ import graphqlLoader from 'vite-plugin-graphql-loader';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineNuxtConfig({
+    extends: ['./layers/public/nuxt.config.ts', './layers/dashboard/nuxt.config.ts'],
+
     app: {
         head: {
             titleTemplate: '%s | Sigrid Thaler Rizzolli',
@@ -31,9 +33,9 @@ export default defineNuxtConfig({
     },
 
     components: [
-        { path: '~/components/elements', pathPrefix: false },
-        { path: '~/components/layout', pathPrefix: false },
-        { path: '~/components/sections', pathPrefix: false },
+        { path: '~~/layers/public/components/elements', pathPrefix: false },
+        { path: '~~/layers/public/components/layout', pathPrefix: false },
+        { path: '~~/layers/public/components/sections', pathPrefix: false },
     ],
 
     compatibilityDate: '2025-08-29',
@@ -43,9 +45,8 @@ export default defineNuxtConfig({
         dirs: ['shared/types'],
     },
 
-    plugins: ['~/plugins/pinia.ts'],
-
     modules: [
+        '@pinia/nuxt',
         '@nuxt/image',
         'nuxt-svgo',
         ...(process.env.STORYBOOK === 'true' ? ['@nuxtjs/storybook'] : []),
@@ -60,10 +61,10 @@ export default defineNuxtConfig({
             preprocessorOptions: {
                 scss: {
                     additionalData: `
-                        @use "~/assets/styles/public/colors.scss" as *;
-                        @use "~/assets/styles/public/fonts.scss" as *;
-                        @use "~/assets/styles/public/mixins.scss" as *;
-                        @use "~/assets/styles/public/prefixer.scss" as *;
+                        @use "~~/layers/public/assets/styles/public/colors.scss" as *;
+                        @use "~~/layers/public/assets/styles/public/fonts.scss" as *;
+                        @use "~~/layers/public/assets/styles/public/mixins.scss" as *;
+                        @use "~~/layers/public/assets/styles/public/prefixer.scss" as *;
                     `,
                 },
             },
@@ -92,7 +93,7 @@ export default defineNuxtConfig({
         // https://www.npmjs.com/package/nuxt-svgo
         componentPrefix: 'i',
 
-        autoImportPath: '~/assets/icons/',
+        autoImportPath: '~~/layers/public/assets/icons/',
 
         customComponent: 'Icon',
 
@@ -143,6 +144,6 @@ export default defineNuxtConfig({
          * @link https://nuxt.com/docs/api/nuxt-config#alias
          * @default "@/components/ui"
          */
-        componentDir: '@/components/ui',
+        componentDir: '~~/layers/dashboard/components/ui',
     },
 });
