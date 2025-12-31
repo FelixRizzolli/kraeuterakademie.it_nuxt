@@ -26,17 +26,15 @@ export const Default: Story = {
     }),
     args: {
         data: {
-            imageLinks: [
+            links: [
                 {
                     image: {
                         id: 0,
                         url: getImagePath('images/herbatio.jpg'),
                         alt: 'Herbatio',
                     },
-                    link: {
-                        href: '/',
-                        text: 'Herbatio',
-                    },
+                    href: '/',
+                    text: 'Herbatio',
                 },
                 {
                     image: {
@@ -44,10 +42,8 @@ export const Default: Story = {
                         url: getImagePath('images/kraeutervitaltage.jpg'),
                         alt: 'Kräuter Vital Tage',
                     },
-                    link: {
-                        href: '/',
-                        text: 'Kräuter Vital Tage',
-                    },
+                    href: '/',
+                    text: 'Kräuter Vital Tage',
                 },
                 {
                     image: {
@@ -55,10 +51,8 @@ export const Default: Story = {
                         url: getImagePath('images/knospe.png'),
                         alt: 'Knospe',
                     },
-                    link: {
-                        href: '/',
-                        text: 'Knospe',
-                    },
+                    href: '/',
+                    text: 'Knospe',
                 },
             ],
         },

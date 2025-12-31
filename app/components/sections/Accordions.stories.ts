@@ -26,42 +26,28 @@ export const Default: Story = {
     args: {
         data: {
             title: 'Accordions',
-            accordions: [
+            items: [
                 {
                     title: 'Accordion 1',
                     content: {
                         root: {
                             type: 'root',
-                            children: [
-                                {
-                                    type: 'paragraph',
-                                    children: [
-                                        {
-                                            type: 'text',
-                                            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
-                                            format: 0,
-                                            version: 1,
-                                        },
-                                        {
-                                            type: 'text',
-                                            text: 'elit',
-                                            format: 1,
-                                            version: 1,
-                                        },
-                                        {
-                                            type: 'text',
-                                            text: '. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                            format: 0,
-                                            version: 1,
-                                        },
-                                    ],
-                                    version: 1,
-                                },
-                            ],
+                            version: 1,
                             direction: 'ltr',
                             format: '',
                             indent: 0,
-                            version: 1,
+                            children: [
+                                {
+                                    type: 'paragraph',
+                                    version: 1,
+                                    children: [
+                                        {
+                                            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                            version: 1,
+                                        },
+                                    ],
+                                },
+                            ],
                         },
                     },
                 },
@@ -70,36 +56,22 @@ export const Default: Story = {
                     content: {
                         root: {
                             type: 'root',
-                            children: [
-                                {
-                                    type: 'paragraph',
-                                    children: [
-                                        {
-                                            type: 'text',
-                                            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
-                                            format: 0,
-                                            version: 1,
-                                        },
-                                        {
-                                            type: 'text',
-                                            text: 'elit',
-                                            format: 1,
-                                            version: 1,
-                                        },
-                                        {
-                                            type: 'text',
-                                            text: '. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                            format: 0,
-                                            version: 1,
-                                        },
-                                    ],
-                                    version: 1,
-                                },
-                            ],
+                            version: 1,
                             direction: 'ltr',
                             format: '',
                             indent: 0,
-                            version: 1,
+                            children: [
+                                {
+                                    type: 'paragraph',
+                                    version: 1,
+                                    children: [
+                                        {
+                                            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                            version: 1,
+                                        },
+                                    ],
+                                },
+                            ],
                         },
                     },
                 },
@@ -108,36 +80,22 @@ export const Default: Story = {
                     content: {
                         root: {
                             type: 'root',
-                            children: [
-                                {
-                                    type: 'paragraph',
-                                    children: [
-                                        {
-                                            type: 'text',
-                                            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing ',
-                                            format: 0,
-                                            version: 1,
-                                        },
-                                        {
-                                            type: 'text',
-                                            text: 'elit',
-                                            format: 1,
-                                            version: 1,
-                                        },
-                                        {
-                                            type: 'text',
-                                            text: '. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                            format: 0,
-                                            version: 1,
-                                        },
-                                    ],
-                                    version: 1,
-                                },
-                            ],
+                            version: 1,
                             direction: 'ltr',
                             format: '',
                             indent: 0,
-                            version: 1,
+                            children: [
+                                {
+                                    type: 'paragraph',
+                                    version: 1,
+                                    children: [
+                                        {
+                                            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                            version: 1,
+                                        },
+                                    ],
+                                },
+                            ],
                         },
                     },
                 },
