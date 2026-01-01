@@ -65,6 +65,9 @@ importers:
       vue:
         specifier: 3.5.26
         version: 3.5.26(typescript@5.9.2)
+      vue-input-otp:
+        specifier: ^0.3.2
+        version: 0.3.2(typescript@5.9.2)(vue@3.5.26(typescript@5.9.2))
       vue-router:
         specifier: 4.6.4
         version: 4.6.4(vue@3.5.26(typescript@5.9.2))
@@ -6462,6 +6465,11 @@ packages:
     resolution: {integrity: sha512-K3wt3iVmNGaFEOUR4JIThQRWfqokxLfnPslD41FDZB2ajXp789+wCqJyGYlIFsvEQ2P61PInw6/ph5iiqg51gg==}
     peerDependencies:
       vue: '>=2'
+
+  vue-input-otp@0.3.2:
+    resolution: {integrity: sha512-QMl1842WB6uNAsK4+mZXIskb00TOfahH3AQt8rpRecbtQnOp+oHSUbL/Z3wekfy6pAl+hyN3e1rCUSkCMzbDLQ==}
+    peerDependencies:
+      vue: ^3.2.0
 
   vue-router@4.6.4:
     resolution: {integrity: sha512-Hz9q5sa33Yhduglwz6g9skT8OBPii+4bFn88w6J+J4MfEo4KRRpmiNG/hHHkdbRFlLBOqxN8y8gf2Fb0MTUgVg==}
@@ -13996,6 +14004,15 @@ snapshots:
   vue-inbrowser-compiler-independent-utils@4.71.1(vue@3.5.26(typescript@5.9.2)):
     dependencies:
       vue: 3.5.26(typescript@5.9.2)
+
+  vue-input-otp@0.3.2(typescript@5.9.2)(vue@3.5.26(typescript@5.9.2)):
+    dependencies:
+      '@vueuse/core': 12.8.2(typescript@5.9.2)
+      reka-ui: 2.7.0(typescript@5.9.2)(vue@3.5.26(typescript@5.9.2))
+      vue: 3.5.26(typescript@5.9.2)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - typescript
 
   vue-router@4.6.4(vue@3.5.26(typescript@5.9.2)):
     dependencies:
