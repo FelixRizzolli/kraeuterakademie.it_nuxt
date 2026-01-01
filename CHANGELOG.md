@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Added new Dashboard layer
+    - User login and registration page
+    - Dashboard home page
+
+### Changed
+
+- Refactoring: renamed Web* components to Public* to better reflect their purpose
+- Refactoring: restructured architecture into nuxt layers for better separation of concerns (domain driven design)
+    - moved public-related (web) components, composables, and styles into a dedicated public layer
+    - updated import paths accordingly throughout the codebase
+
+### Fixed
+
+- Fixed some issues introduced during the migration from Strapi to Payload CMS with storybook stories
+
+
 ## [1.0.0] - 2025-12-29
 
 ### Added
