@@ -5,7 +5,7 @@ import graphqlLoader from 'vite-plugin-graphql-loader';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineNuxtConfig({
-    extends: ['./layers/public/nuxt.config.ts', './layers/dashboard/nuxt.config.ts'],
+    extends: ['./layers/public', './layers/dashboard'],
 
     app: {
         head: {
