@@ -1,0 +1,55 @@
+{
+    "dashboard": {
+        "auth": {
+            "login": {
+                "title": "Willkommen zurück",
+                "description": "Melden Sie sich bei Ihrem Kräuterakademie-Konto an",
+                "email": {
+                    "title": "E-Mail"
+                },
+                "password": {
+                    "title": "Passwort",
+                    "forgot": "Passwort vergessen?"
+                },
+                "submitButton": "Anmelden",
+                "signupLink": {
+                    "description": "Noch keinen Account?",
+                    "action": "Registrieren"
+                },
+                "disclaimer": {
+                    "text": "Durch Klicken auf 'Weiter' stimmen Sie unseren {terms} und unserer {privacy} zu.",
+                    "terms": "Nutzungsbedingungen",
+                    "privacy": "Datenschutzerklärung"
+                }
+            },
+            "register": {
+                "title": "Erstellen Sie Ihr Konto",
+                "description": "Geben Sie unten Ihre E-Mail-Adresse ein, um Ihr Konto zu erstellen.",
+                "email": {
+                    "title": "E-Mail",
+                    "description": "Wir verwenden diese, um Sie zu kontaktieren. Wir geben Ihre E-Mail-Adresse nicht an Dritte weiter."
+                },
+                "password": {
+                    "title": "Passwort",
+                    "confirmTitle": "Passwort bestätigen",
+                    "description": "Muss mindestens 8 Zeichen lang sein."
+                },
+                "invitationToken": {
+                    "title": "Einladungscode",
+                    "description": "Geben Sie den 8-stelligen Code ein, den wir an Ihre E-Mail-Adresse gesendet haben."
+                },
+                "submitButton": "Konto erstellen",
+                "signinLink": {
+                    "description": "Sie haben bereits ein Konto?",
+                    "action": "Anmelden"
+                },
+                "disclaimer": {
+                    "text": "Durch Klicken auf 'Weiter' stimmen Sie unseren {terms} und unserer {privacy} zu.",
+                    "terms": "Nutzungsbedingungen",
+                    "privacy": "Datenschutzerklärung"
+                }
+            }
+        }
+    },
+    "public": {}
+}

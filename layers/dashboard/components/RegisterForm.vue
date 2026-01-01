@@ -25,41 +25,52 @@
                 <form class="p-6 md:p-8">
                     <FieldGroup>
                         <div class="flex flex-col items-center gap-2 text-center">
-                            <h1 class="text-2xl font-bold">Create your account</h1>
+                            <h1 class="text-2xl font-bold">{{ $t('dashboard.auth.register.title') }}</h1>
                             <p class="text-muted-foreground text-sm text-balance">
-                                Enter your email below to create your account
+                                {{ $t('dashboard.auth.register.description') }}
                             </p>
                         </div>
                         <Field>
-                            <FieldLabel for="email"> Email </FieldLabel>
+                            <FieldLabel for="email"> {{ $t('dashboard.auth.register.email.title') }} </FieldLabel>
                             <Input id="email" type="email" placeholder="m@example.com" required />
                             <FieldDescription>
-                                We'll use this to contact you. We will not share your email with anyone else.
+                                {{ $t('dashboard.auth.register.email.description') }}
                             </FieldDescription>
                         </Field>
                         <Field>
                             <Field class="grid grid-cols-2 gap-4">
                                 <Field>
-                                    <FieldLabel for="password"> Password </FieldLabel>
+                                    <FieldLabel for="password">
+                                        {{ $t('dashboard.auth.register.password.title') }}
+                                    </FieldLabel>
                                     <Input id="password" type="password" required />
                                 </Field>
                                 <Field>
-                                    <FieldLabel for="confirm-password"> Confirm Password </FieldLabel>
+                                    <FieldLabel for="confirm-password">
+                                        {{ $t('dashboard.auth.register.password.confirmTitle') }}
+                                    </FieldLabel>
                                     <Input id="confirm-password" type="password" required />
                                 </Field>
                             </Field>
-                            <FieldDescription> Must be at least 8 characters long. </FieldDescription>
+                            <FieldDescription>
+                                {{ $t('dashboard.auth.register.password.description') }}
+                            </FieldDescription>
                         </Field>
                         <Field>
-                            <FieldLabel for="otp">Invitation Token</FieldLabel>
+                            <FieldLabel for="otp">
+                                {{ $t('dashboard.auth.register.invitationToken.title') }}
+                            </FieldLabel>
                             <FieldInputOTP id="otp" />
-                            <FieldDescription> Enter the 8-digit code we sent to your email address. </FieldDescription>
+                            <FieldDescription>
+                                {{ $t('dashboard.auth.register.invitationToken.description') }}
+                            </FieldDescription>
                         </Field>
                         <Field>
-                            <Button type="submit"> Create Account </Button>
+                            <Button type="submit"> {{ $t('dashboard.auth.register.submitButton') }} </Button>
                         </Field>
                         <FieldDescription class="text-center">
-                            Already have an account? <a href="/login">Sign in</a>
+                            {{ $t('dashboard.auth.register.signinLink.description') }}
+                            <a href="/login">{{ $t('dashboard.auth.register.signinLink.action') }}</a>
                         </FieldDescription>
                     </FieldGroup>
                 </form>
@@ -73,7 +84,14 @@
             </CardContent>
         </Card>
         <FieldDescription class="px-6 text-center">
-            By clicking continue, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+            <i18n-t keypath="dashboard.auth.register.disclaimer.text" tag="span">
+                <template #terms>
+                    <a href="/terms">{{ $t('dashboard.auth.register.disclaimer.terms') }}</a>
+                </template>
+                <template #privacy>
+                    <a href="/privacy">{{ $t('dashboard.auth.register.disclaimer.privacy') }}</a>
+                </template>
+            </i18n-t>
         </FieldDescription>
     </div>
 </template>

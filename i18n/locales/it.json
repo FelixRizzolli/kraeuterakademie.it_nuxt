@@ -1,0 +1,55 @@
+{
+    "dashboard": {
+        "auth": {
+            "login": {
+                "title": "Bentornato",
+                "description": "Accedi al tuo account Kräuterakademie",
+                "email": {
+                    "title": "Email"
+                },
+                "password": {
+                    "title": "Password",
+                    "forgot": "Hai dimenticato la password?"
+                },
+                "submitButton": "Accedi",
+                "signupLink": {
+                    "description": "Non hai un account?",
+                    "action": "Registrati"
+                },
+                "disclaimer": {
+                    "text": "Cliccando su continua, accetti i nostri {terms} e la nostra {privacy}.",
+                    "terms": "Termini di servizio",
+                    "privacy": "Informativa sulla privacy"
+                }
+            },
+            "register": {
+                "title": "Crea il tuo account",
+                "description": "Inserisci la tua email qui sotto per creare il tuo account",
+                "email": {
+                    "title": "Email",
+                    "description": "Useremo questa email per contattarti. Non condivideremo la tua email con nessun altro."
+                },
+                "password": {
+                    "title": "Password",
+                    "confirmTitle": "Conferma password",
+                    "description": "Deve essere lunga almeno 8 caratteri."
+                },
+                "invitationToken": {
+                    "title": "Codice di invito",
+                    "description": "Inserisci il codice a 8 cifre che ti abbiamo inviato via email."
+                },
+                "submitButton": "Crea account",
+                "signinLink": {
+                    "description": "Hai già un account?",
+                    "action": "Accedi"
+                },
+                "disclaimer": {
+                    "text": "Cliccando su continua, accetti i nostri {terms} e la nostra {privacy}.",
+                    "terms": "Termini di servizio",
+                    "privacy": "Informativa sulla privacy"
+                }
+            }
+        }
+    },
+    "public": {}
+}

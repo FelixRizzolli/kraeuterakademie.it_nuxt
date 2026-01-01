@@ -48,7 +48,17 @@ export default defineNuxtConfig({
         '@nuxtjs/device',
         'nuxt-swiper',
         'shadcn-nuxt',
+        '@nuxtjs/i18n',
     ],
+
+    i18n: {
+        locales: [
+            { code: 'en', language: 'en-US', file: 'en.json' },
+            { code: 'de', language: 'de-DE', file: 'de.json' },
+            { code: 'it', language: 'it-IT', file: 'it.json' },
+        ],
+        defaultLocale: 'de',
+    },
 
     vite: {
         optimizeDeps: {

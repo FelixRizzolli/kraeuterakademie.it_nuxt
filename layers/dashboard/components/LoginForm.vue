@@ -24,28 +24,32 @@
                 <form class="p-6 md:p-8">
                     <FieldGroup>
                         <div class="flex flex-col items-center gap-2 text-center">
-                            <h1 class="text-2xl font-bold">Welcome back</h1>
-                            <p class="text-muted-foreground text-balance">Login to your Acme Inc account</p>
+                            <h1 class="text-2xl font-bold">{{ $t('dashboard.auth.login.title') }}</h1>
+                            <p class="text-muted-foreground text-balance">
+                                {{ $t('dashboard.auth.login.description') }}
+                            </p>
                         </div>
                         <Field>
-                            <FieldLabel for="email"> Email </FieldLabel>
-                            <Input id="email" type="email" placeholder="m@example.com" required />
+                            <FieldLabel for="email"> {{ $t('dashboard.auth.login.email.title') }} </FieldLabel>
+                            <Input id="email" type="email" :placeholder="'m@example.com'" required />
                         </Field>
                         <Field>
                             <div class="flex items-center">
-                                <FieldLabel for="password"> Password </FieldLabel>
+                                <FieldLabel for="password">
+                                    {{ $t('dashboard.auth.login.password.title') }}
+                                </FieldLabel>
                                 <a href="#" class="ml-auto text-sm underline-offset-2 hover:underline">
-                                    Forgot your password?
+                                    {{ $t('dashboard.auth.login.password.forgot') }}
                                 </a>
                             </div>
                             <Input id="password" type="password" required />
                         </Field>
                         <Field>
-                            <Button type="submit"> Login </Button>
+                            <Button type="submit">{{ $t('dashboard.auth.login.submitButton') }}</Button>
                         </Field>
                         <FieldDescription class="text-center">
-                            Don't have an account?
-                            <a href="/register"> Sign up </a>
+                            {{ $t('dashboard.auth.login.signupLink.description') }}
+                            <a href="/register"> {{ $t('dashboard.auth.login.signupLink.action') }} </a>
                         </FieldDescription>
                     </FieldGroup>
                 </form>
@@ -59,7 +63,14 @@
             </CardContent>
         </Card>
         <FieldDescription class="px-6 text-center">
-            By clicking continue, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+            <i18n-t keypath="dashboard.auth.login.disclaimer.text" tag="span">
+                <template #terms>
+                    <a href="/terms">{{ $t('dashboard.auth.login.disclaimer.terms') }}</a>
+                </template>
+                <template #privacy>
+                    <a href="/privacy">{{ $t('dashboard.auth.login.disclaimer.privacy') }}</a>
+                </template>
+            </i18n-t>
         </FieldDescription>
     </div>
 </template>

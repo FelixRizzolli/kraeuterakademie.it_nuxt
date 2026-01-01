@@ -1,0 +1,55 @@
+{
+    "dashboard": {
+        "auth": {
+            "login": {
+                "title": "Welcome back",
+                "description": "Login to your Kräuterakademie account",
+                "email": {
+                    "title": "Email"
+                },
+                "password": {
+                    "title": "Password",
+                    "forgot": "Forgot your password?"
+                },
+                "submitButton": "Login",
+                "signupLink": {
+                    "description": "Don't have an account?",
+                    "action": "Sign up"
+                },
+                "disclaimer": {
+                    "text": "By clicking continue, you agree to our {terms} and {privacy}.",
+                    "terms": "Terms of Service",
+                    "privacy": "Privacy Policy"
+                }
+            },
+            "register": {
+                "title": "Create your account",
+                "description": "Enter your email below to create your account",
+                "email": {
+                    "title": "Email",
+                    "description": "We'll use this to contact you. We will not share your email with anyone else."
+                },
+                "password": {
+                    "title": "Password",
+                    "confirmTitle": "Confirm Password",
+                    "description": "Must be at least 8 characters long."
+                },
+                "invitationToken": {
+                    "title": "Invitation Token",
+                    "description": "Enter the 8-digit code we sent to your email address."
+                },
+                "submitButton": "Create Account",
+                "signinLink": {
+                    "description": "Already have an account?",
+                    "action": "Sign in"
+                },
+                "disclaimer": {
+                    "text": "By clicking continue, you agree to our {terms} and {privacy}.",
+                    "terms": "Terms of Service",
+                    "privacy": "Privacy Policy"
+                }
+            }
+        }
+    },
+    "public": {}
+}
