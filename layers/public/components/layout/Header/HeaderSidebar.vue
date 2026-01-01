@@ -28,6 +28,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .highlight {
         position: fixed;
         top: 0;

@@ -84,6 +84,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .contentelement_swiperlarge {
         background-color: $colorBackgroundBrown;
         color: $colorFontWhite;

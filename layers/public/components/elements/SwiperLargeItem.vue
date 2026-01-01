@@ -41,6 +41,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .item-container {
         width: 100%;
 

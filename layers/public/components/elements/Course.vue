@@ -163,6 +163,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .course {
         display: grid;
         height: fit-content;

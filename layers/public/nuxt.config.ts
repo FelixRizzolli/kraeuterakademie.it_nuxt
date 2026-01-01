@@ -4,8 +4,8 @@ export default defineNuxtConfig({
     },
 
     components: [
-        { path: './components/elements', pathPrefix: false },
-        { path: './components/layout', pathPrefix: false },
-        { path: './components/sections', pathPrefix: false },
+        { path: './components/elements', pathPrefix: false, global: false },
+        { path: './components/layout', pathPrefix: false, global: false },
+        { path: './components/sections', pathPrefix: false, global: false },
     ],
 });

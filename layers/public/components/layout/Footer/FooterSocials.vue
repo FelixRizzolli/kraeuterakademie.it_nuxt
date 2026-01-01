@@ -32,6 +32,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .socials {
         @include col-start(5);
         @include col(6);

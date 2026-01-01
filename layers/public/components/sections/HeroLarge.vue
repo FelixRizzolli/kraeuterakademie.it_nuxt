@@ -42,6 +42,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .contentelement_herobig {
         padding-top: 30rem;
     }

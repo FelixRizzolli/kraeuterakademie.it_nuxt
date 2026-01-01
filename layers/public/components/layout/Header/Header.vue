@@ -22,6 +22,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     header {
         position: relative;
         z-index: 10;

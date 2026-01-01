@@ -27,6 +27,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     @media (max-width: 1023px) {
     }
 </style>

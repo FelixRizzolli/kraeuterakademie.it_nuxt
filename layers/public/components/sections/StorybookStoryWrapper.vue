@@ -8,7 +8,9 @@
 
 <script lang="ts" setup></script>
 
-<style>
+<style lang="scss">
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .storybook-story-wrapper {
         padding-top: 20rem;
         padding-bottom: 20rem;

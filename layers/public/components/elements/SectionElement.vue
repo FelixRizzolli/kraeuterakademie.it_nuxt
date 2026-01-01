@@ -25,6 +25,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .section-element.style-light {
         background-color: $colorBackgroundWhite;
         color: $colorFont;

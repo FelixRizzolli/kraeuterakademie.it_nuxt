@@ -43,6 +43,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .contentelement_courselist {
         margin-bottom: 15rem;
     }

@@ -22,7 +22,4 @@
     const globalStore = useGlobalStore();
 </script>
 
-<style lang="scss">
-    /* Import SCSS styles only for public layout */
-    @use '~~/layers/public/assets/styles/public/index.scss';
-</style>
+<style lang="scss" src="../assets/styles/public/index.scss"></style>

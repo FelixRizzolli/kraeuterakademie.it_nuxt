@@ -28,6 +28,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .logo {
         margin: 2rem auto 6rem auto;
         width: 11rem;

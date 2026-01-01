@@ -23,6 +23,8 @@
     });
 </script>
 
+<style lang="scss" src="./assets/styles/public/index.scss"></style>
+
 <style lang="scss" scoped>
     .error {
         padding: 15rem 0;

@@ -14,6 +14,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .filled,
     .filled:deep(*) {
         fill: currentColor;

@@ -35,6 +35,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .contentelement_titleelement {
         padding-top: 30rem;
     }

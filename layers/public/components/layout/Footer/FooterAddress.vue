@@ -26,6 +26,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .address {
         @include col-start(2);
         @include col(3);

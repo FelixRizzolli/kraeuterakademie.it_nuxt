@@ -31,6 +31,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     footer {
         @include font-17-29-5-L-U();
 

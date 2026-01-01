@@ -28,6 +28,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .partner {
         @include col-start(1);
         @include col(14);

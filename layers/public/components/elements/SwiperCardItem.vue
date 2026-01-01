@@ -33,6 +33,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .card-container {
         width: 100%;
     }

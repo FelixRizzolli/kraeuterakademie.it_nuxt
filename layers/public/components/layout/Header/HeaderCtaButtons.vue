@@ -14,7 +14,7 @@
     const menuTextBlock = ref<string | undefined | null>(null);
     const ctaLinkTextBlock = ref<string | undefined | null>(null);
     const ctaLinktextTextBlock = ref<string | undefined | null>(null);
-        
+
     onMounted(() => {
         menuTextBlock.value = useTextBlock('menu-button');
         ctaLinkTextBlock.value = useTextBlock('cta-link');
@@ -23,6 +23,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .cta-buttons-container {
         z-index: 10;
         position: absolute;

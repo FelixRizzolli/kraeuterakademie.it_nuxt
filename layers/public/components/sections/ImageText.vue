@@ -89,6 +89,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .title {
         @include col-start(3);
         @include col(5);

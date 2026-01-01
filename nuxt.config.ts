@@ -51,18 +51,6 @@ export default defineNuxtConfig({
     ],
 
     vite: {
-        css: {
-            preprocessorOptions: {
-                scss: {
-                    additionalData: `
-                        @use "~~/layers/public/assets/styles/public/colors.scss" as *;
-                        @use "~~/layers/public/assets/styles/public/fonts.scss" as *;
-                        @use "~~/layers/public/assets/styles/public/mixins.scss" as *;
-                        @use "~~/layers/public/assets/styles/public/prefixer.scss" as *;
-                    `,
-                },
-            },
-        },
         optimizeDeps: {
             include: ['qs'],
             esbuildOptions: {

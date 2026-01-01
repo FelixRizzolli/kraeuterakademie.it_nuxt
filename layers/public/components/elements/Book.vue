@@ -105,6 +105,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .infos-container {
         margin-top: 2.5rem;
     }
