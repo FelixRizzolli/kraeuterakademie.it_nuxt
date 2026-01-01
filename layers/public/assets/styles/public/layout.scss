@@ -2,11 +2,11 @@
 @use 'colors' as *;
 @use 'mixins' as *;
 
-////////////////////////////////////////////////////////////
-// rem
-////////////////////////////////////////////////////////////
+.public-root {
+    ////////////////////////////////////////////////////////////
+    // rem
+    ////////////////////////////////////////////////////////////
 
-:root {
     font-size: 10 * 0.2777777777777778vw !important;
     --adaptive-height: 100vh;
     --dp-font-family: $fontDefault, sans-serif !important;
@@ -22,137 +22,137 @@
     @media (min-width: 2000px) {
         font-size: 10 * 0.045vw !important;
     }
-}
 
-////////////////////////////////////////////////////////////
-// fonts
-////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////
+    // fonts
+    ////////////////////////////////////////////////////////////
 
-body {
-    @include fontFamilyDefault();
-    @include fontSizeText();
+    body {
+        @include fontFamilyDefault();
+        @include fontSizeText();
 
-    & {
-        color: $colorFont;
-        --dp-font-size: 1.7rem;
-        --dp-preview-font-size: 1.7rem;
-    }
-}
-
-h1,
-.h1 {
-    @include fontSizeH1();
-}
-
-h2,
-.h2 {
-    @include fontSizeH2();
-}
-
-h3,
-.h3 {
-    @include fontSizeH3();
-}
-
-h4,
-.h4 {
-    @include fontSizeH4();
-}
-
-h5,
-.h5 {
-    @include fontSizeH5();
-}
-
-h6,
-.h6 {
-    @include fontSizeH6();
-}
-
-////////////////////////////////////////////////////////////
-// links
-////////////////////////////////////////////////////////////
-
-.link-button {
-    @include font-17-17-10-M-U();
-
-    & {
-        border-radius: 3rem;
-        padding: 1.2rem 2.5rem;
-
-        width: max-content;
-        height: fit-content;
-
-        background-color: $colorCta;
-        color: $colorFontWhite;
-
-        text-decoration: none;
-        text-align: center;
-        cursor: pointer;
-    }
-
-    &:hover {
-        background-color: $colorBackgroundBrown;
-        color: $colorFont;
-    }
-}
-
-.link-container {
-    display: flex;
-}
-
-main a {
-    color: $colorFont;
-
-    &:hover {
-        color: $colorCta;
-    }
-}
-
-////////////////////////////////////////////////////////////
-// list
-////////////////////////////////////////////////////////////
-
-:where(ul) {
-    list-style: none;
-    padding: 0;
-
-    > li {
-        position: relative;
-        padding-left: 2rem;
-
-        &::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 1.3rem;
-            width: 1.2rem;
-            height: 1.5rem;
-            background: url('~~/layers/public/assets/icons/leaf.svg') no-repeat center center;
-            background-size: contain;
+        & {
+            color: $colorFont;
+            --dp-font-size: 1.7rem;
+            --dp-preview-font-size: 1.7rem;
         }
     }
-}
 
-:where(ol) {
-    padding-left: 2.5ch;
-    display: inline-block;
-}
+    h1,
+    .h1 {
+        @include fontSizeH1();
+    }
 
-.abcList {
-    list-style-type: lower-alpha;
-}
+    h2,
+    .h2 {
+        @include fontSizeH2();
+    }
 
-////////////////////////////////////////////////////////////
-// EFFEKTS
-////////////////////////////////////////////////////////////
-.scale-animation {
-    transition: all 1.2s ease;
-    opacity: 0;
-    transform: scale(0.8);
-}
+    h3,
+    .h3 {
+        @include fontSizeH3();
+    }
 
-.scale-active {
-    opacity: 1;
-    transform: none;
+    h4,
+    .h4 {
+        @include fontSizeH4();
+    }
+
+    h5,
+    .h5 {
+        @include fontSizeH5();
+    }
+
+    h6,
+    .h6 {
+        @include fontSizeH6();
+    }
+
+    ////////////////////////////////////////////////////////////
+    // links
+    ////////////////////////////////////////////////////////////
+
+    .link-button {
+        @include font-17-17-10-M-U();
+
+        & {
+            border-radius: 3rem;
+            padding: 1.2rem 2.5rem;
+
+            width: max-content;
+            height: fit-content;
+
+            background-color: $colorCta;
+            color: $colorFontWhite;
+
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        &:hover {
+            background-color: $colorBackgroundBrown;
+            color: $colorFont;
+        }
+    }
+
+    .link-container {
+        display: flex;
+    }
+
+    main a {
+        color: $colorFont;
+
+        &:hover {
+            color: $colorCta;
+        }
+    }
+
+    ////////////////////////////////////////////////////////////
+    // list
+    ////////////////////////////////////////////////////////////
+
+    :where(ul) {
+        list-style: none;
+        padding: 0;
+
+        > li {
+            position: relative;
+            padding-left: 2rem;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 1.3rem;
+                width: 1.2rem;
+                height: 1.5rem;
+                background: url('~~/layers/public/assets/icons/leaf.svg') no-repeat center center;
+                background-size: contain;
+            }
+        }
+    }
+
+    :where(ol) {
+        padding-left: 2.5ch;
+        display: inline-block;
+    }
+
+    .abcList {
+        list-style-type: lower-alpha;
+    }
+
+    ////////////////////////////////////////////////////////////
+    // EFFEKTS
+    ////////////////////////////////////////////////////////////
+    .scale-animation {
+        transition: all 1.2s ease;
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    .scale-active {
+        opacity: 1;
+        transform: none;
+    }
 }

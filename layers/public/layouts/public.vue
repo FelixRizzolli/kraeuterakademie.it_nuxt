@@ -20,6 +20,12 @@
     import { useGlobalStore } from '~/stores/globalStore';
 
     const globalStore = useGlobalStore();
+
+    useHead({
+        htmlAttrs: {
+            class: 'public-root',
+        },
+    });
 </script>
 
 <style lang="scss" src="../assets/styles/public/index.scss"></style>

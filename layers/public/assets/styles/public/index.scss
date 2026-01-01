@@ -1,4 +1,5 @@
-// Public layout styles - using modern @use instead of deprecated @import
+// Public layout styles - SCOPED under .public-root class
+// This prevents style bleeding when navigating to dashboard pages
 @use './base.scss';
 @use './layout.scss';
 @use './grid-layout.scss';

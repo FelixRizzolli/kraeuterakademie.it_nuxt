@@ -2,170 +2,252 @@
 @use 'colors' as *;
 @use 'fonts' as *;
 
-////////////////////////////////////////////////////////////
-// default
-////////////////////////////////////////////////////////////
+.public-root {
+    ////////////////////////////////////////////////////////////
+    // default
+    ////////////////////////////////////////////////////////////
 
-* {
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
 
-a,
-abbr,
-acronym,
-address,
-applet,
-big,
-blockquote,
-body,
-caption,
-cite,
-code,
-dd,
-del,
-dfn,
-div,
-dl,
-dt,
-em,
-fieldset,
-font,
-form,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-html,
-iframe,
-img,
-ins,
-kbd,
-label,
-legend,
-li,
-object,
-p,
-pre,
-q,
-s,
-samp,
-small,
-span,
-strike,
-strong,
-sub,
-sup,
-table,
-tbody,
-td,
-tfoot,
-th,
-thead,
-tr,
-tt,
-var {
-    margin: 0;
-    padding: 0;
-    border: 0 none;
-    font: inherit;
-    vertical-align: baseline;
-}
+    a,
+    abbr,
+    acronym,
+    address,
+    applet,
+    big,
+    blockquote,
+    caption,
+    cite,
+    code,
+    dd,
+    del,
+    dfn,
+    div,
+    dl,
+    dt,
+    em,
+    fieldset,
+    font,
+    form,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    iframe,
+    img,
+    ins,
+    kbd,
+    label,
+    legend,
+    li,
+    object,
+    p,
+    pre,
+    q,
+    s,
+    samp,
+    small,
+    span,
+    strike,
+    strong,
+    sub,
+    sup,
+    table,
+    tbody,
+    td,
+    tfoot,
+    th,
+    thead,
+    tr,
+    tt,
+    var {
+        margin: 0;
+        padding: 0;
+        border: 0 none;
+        font: inherit;
+        vertical-align: baseline;
+    }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        a {
+            text-decoration: none;
+        }
+    }
+
+    p {
+        padding: 0;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border-spacing: 0;
+    }
+
     a {
-        text-decoration: none;
+        @include transition();
+
+        & {
+            display: inline-block;
+        }
+    }
+
+    b,
+    strong {
+        font-weight: 700;
+    }
+
+    em {
+        font-style: italic;
+    }
+
+    iframe {
+        border: none;
+    }
+
+    sup {
+        vertical-align: super !important;
+        font-size: smaller !important;
+        line-height: 100%;
+    }
+
+    sub {
+        vertical-align: sub !important;
+        font-size: smaller !important;
+    }
+
+    img {
+        user-select: none;
+        object-fit: cover;
+        display: block;
+    }
+
+    svg {
+        overflow: visible;
+    }
+
+    ////////////////////////////////////////////////////////////
+    // form
+    ////////////////////////////////////////////////////////////
+
+    a,
+    input,
+    textarea {
+        outline: none;
+    }
+
+    input,
+    textarea,
+    button {
+        border-radius: 0;
+        -webkit-appearance: none !important;
+        border: 1px solid $colorFont;
+        outline: none;
+    }
+
+    textarea {
+        resize: vertical;
+        font-family: inherit;
+    }
+
+    ////////////////////////////////////////////////////////////
+    // table
+    ////////////////////////////////////////////////////////////
+
+    table {
+        margin: 4.5rem 0;
+
+        thead {
+            font-weight: 700;
+
+            tr {
+                border-bottom: 1px solid fade($colorFont, 60%);
+
+                th {
+                    padding: 1rem;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                border-bottom: 1px solid fade($colorFont, 60%);
+
+                td {
+                    padding: 1rem;
+                }
+            }
+        }
+    }
+
+    ////////////////////////////////////////////////////////////
+    // google map
+    ////////////////////////////////////////////////////////////
+
+    .gme-info-window {
+        @include fontSizeText();
+
+        & {
+            padding: 1.5rem 0 1.5rem 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        a {
+            color: $colorFont;
+            text-decoration: underline;
+
+            &:hover {
+                color: $colorCta;
+            }
+        }
+    }
+
+    ////////////////////////////////////////////////////////////
+    // Body styles when public layout is active
+    // Using :has() for modern browsers
+    ////////////////////////////////////////////////////////////
+
+    body {
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        background-color: $colorBackgroundWhite;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-size-adjust: none;
+
+        > .body-inner {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            min-height: 100vh;
+            max-width: 2550px;
+            margin: 0 auto;
+        }
     }
 }
 
-body,
-html {
+html:has(.public-root) {
     width: 100%;
     height: 100%;
 }
 
-p {
-    padding: 0;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-    border-spacing: 0;
-}
-
-a {
-    @include transition();
-
-    & {
-        display: inline-block;
-    }
-}
-
-b,
-strong {
-    font-weight: 700;
-}
-
-em {
-    font-style: italic;
-}
-
-iframe {
-    border: none;
-}
-
-sup {
-    vertical-align: super !important;
-    font-size: smaller !important;
-    line-height: 100%;
-}
-
-sub {
-    vertical-align: sub !important;
-    font-size: smaller !important;
-}
-
-img {
-    user-select: none;
-    object-fit: cover;
-    display: block;
-}
-
-svg {
-    overflow: visible;
-}
-
-body {
-    overflow-x: hidden;
-    background-color: $colorBackgroundWhite;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-size-adjust: none;
-
-    > .body-inner {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        min-height: 100vh;
-        max-width: 2550px;
-        margin: 0 auto;
-    }
-}
-
 // LAYOUT mobile
 @media (max-width: 767px) {
-    html.browser-chrome:not(.browser-samsung) {
+    html.browser-chrome:not(.browser-samsung):has(.public-root) {
         body {
             -webkit-text-size-adjust: auto;
         }
@@ -173,77 +255,7 @@ body {
 }
 
 ////////////////////////////////////////////////////////////
-// form
-////////////////////////////////////////////////////////////
-
-a,
-input,
-textarea {
-    outline: none;
-}
-
-input,
-textarea,
-button {
-    border-radius: 0;
-    -webkit-appearance: none !important;
-    border: 1px solid $colorFont;
-    outline: none;
-}
-
-textarea {
-    resize: vertical;
-    font-family: inherit;
-}
-
-////////////////////////////////////////////////////////////
-// table
-////////////////////////////////////////////////////////////
-
-table {
-    margin: 4.5rem 0;
-
-    thead {
-        font-weight: 700;
-
-        tr {
-            border-bottom: 1px solid fade($colorFont, 60%);
-
-            th {
-                padding: 1rem;
-            }
-        }
-    }
-
-    tbody {
-        tr {
-            border-bottom: 1px solid fade($colorFont, 60%);
-
-            td {
-                padding: 1rem;
-            }
-        }
-    }
-}
-
-////////////////////////////////////////////////////////////
-// noscript
-////////////////////////////////////////////////////////////
-
-#noscript {
-    position: relative;
-    z-index: 5555555555555;
-    background-color: white;
-    width: 100%;
-
-    .container > div {
-        background-color: rgba(255, 0, 0, 0.1);
-        padding: 3rem;
-    }
-}
-
-////////////////////////////////////////////////////////////
-// reduced-motion
+// reduced-motion - keep global for accessibility
 ////////////////////////////////////////////////////////////
 
 @media (prefers-reduced-motion: reduce) {
@@ -261,23 +273,17 @@ table {
 }
 
 ////////////////////////////////////////////////////////////
-// google map
+// noscript - keep global as it's an edge case
 ////////////////////////////////////////////////////////////
 
-.gme-info-window {
-    @include fontSizeText();
+#noscript {
+    position: relative;
+    z-index: 5555555555555;
+    background-color: white;
+    width: 100%;
 
-    & {
-        padding: 1.5rem 0 1.5rem 1.5rem;
-        font-size: 1.4rem;
-    }
-
-    a {
-        color: $colorFont;
-        text-decoration: underline;
-
-        &:hover {
-            color: $colorCta;
-        }
+    .container > div {
+        background-color: rgba(255, 0, 0, 0.1);
+        padding: 3rem;
     }
 }

@@ -11,6 +11,10 @@
 <script setup lang="ts">
     import type { NuxtError } from '#app';
 
+    definePageMeta({
+        layout: 'public',
+    });
+
     const props = defineProps({
         error: Object as () => NuxtError,
     });
@@ -26,6 +30,8 @@
 <style lang="scss" src="./assets/styles/public/index.scss"></style>
 
 <style lang="scss" scoped>
+    @use '~~/layers/public/assets/styles/public/utils.scss' as *;
+
     .error {
         padding: 15rem 0;
     }
