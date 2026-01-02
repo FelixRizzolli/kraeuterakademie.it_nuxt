@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-    import { useGlobalStore } from '~/stores/globalStore';
+    import { useGlobalStore } from '~~/layers/public/stores/globalStore';
 
     const globalStore = useGlobalStore();
 
