@@ -1,4 +1,4 @@
-import DASHBOARD_GLOBALS_FRAGMENT from '~/graphql/fragments/dashboard/globals/dashboardGlobals.fragment.gql';
+import DASHBOARD_GLOBAL_FRAGMENT from '~/graphql/fragments/dashboard/globals/dashboardGlobal.fragment.gql';
 import DASHBOARD_IMAGE_FRAGMENT from '~/graphql/fragments/dashboard/collections/dashboardImage.fragment.gql';
 import DASHBOARD_TEXT_BLOCK_FRAGMENT from '~/graphql/fragments/dashboard/collections/dashboardTextBlock.fragment.gql';
 
@@ -11,7 +11,7 @@ interface DashboardData {
 
 const findDashboardQuery = `
     ${DASHBOARD_IMAGE_FRAGMENT?.loc?.source?.body}
-    ${DASHBOARD_GLOBALS_FRAGMENT?.loc?.source?.body}
+    ${DASHBOARD_GLOBAL_FRAGMENT?.loc?.source?.body}
     ${DASHBOARD_TEXT_BLOCK_FRAGMENT?.loc?.source?.body}
 
     ${FIND_DASHBOARD_GLOBAL_QUERY?.loc?.source?.body}
