@@ -40,6 +40,7 @@ export const useAuth = () => {
                 `${config.public.payloadApiUrl}/api/users/login`,
                 {
                     method: 'POST',
+                    credentials: 'include',
                     body: {
                         email,
                         password,
@@ -86,6 +87,7 @@ export const useAuth = () => {
                 `${config.public.payloadApiUrl}/api/users/verify-invitation`,
                 {
                     method: 'POST',
+                    credentials: 'include',
                     body: {
                         email,
                         invitationToken,
@@ -105,6 +107,7 @@ export const useAuth = () => {
                 `${config.public.payloadApiUrl}/api/users/set-password`,
                 {
                     method: 'POST',
+                    credentials: 'include',
                     body: {
                         userId,
                         password,
@@ -150,6 +153,7 @@ export const useAuth = () => {
             // Call logout endpoint
             await $fetch(`${config.public.payloadApiUrl}/api/users/logout`, {
                 method: 'POST',
+                credentials: 'include',
                 headers: {
                     Authorization: `JWT ${authState.value.token}`,
                 },
@@ -186,6 +190,7 @@ export const useAuth = () => {
 
         try {
             const response = await $fetch<{ user: User }>(`${config.public.payloadApiUrl}/api/users/me`, {
+                credentials: 'include',
                 headers: {
                     Authorization: `JWT ${token}`,
                 },
