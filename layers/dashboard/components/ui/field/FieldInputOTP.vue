@@ -5,10 +5,12 @@
         InputOTPSeparator,
         InputOTPSlot,
     } from '~~/layers/dashboard/components/ui/input-otp';
+
+    const modelValue = defineModel<string>();
 </script>
 
 <template>
-    <InputOTP :maxlength="8">
+    <InputOTP v-model="modelValue" :maxlength="8">
         <InputOTPGroup>
             <InputOTPSlot :index="0" />
             <InputOTPSlot :index="1" />

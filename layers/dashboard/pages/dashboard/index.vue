@@ -39,6 +39,7 @@
 <script setup lang="ts">
     definePageMeta({
         layout: 'dashboard',
+        middleware: ['auth'],
     });
 
     import AppSidebar from '~~/layers/dashboard/components/AppSidebar.vue';
