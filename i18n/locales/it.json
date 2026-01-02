@@ -48,6 +48,52 @@
                     "terms": "Termini di servizio",
                     "privacy": "Informativa sulla privacy"
                 }
+            },
+            "navigation": {
+                "title": "Kräuterakademie",
+                "subtitle": "di Sigrid Thaler Rizzolli",
+                "nav-course": {
+                    "courses": {
+                        "title": "Corsi",
+                        "items": {
+                            "overview": "Panoramica",
+                            "documents": "Documenti"
+                        }
+                    },
+                    "course-modules": {
+                        "title": "Moduli del corso",
+                        "items": {
+                            "overview": "Panoramica"
+                        }
+                    }
+                },
+                "nav-study": {
+                    "video-lessons": "Lezioni video",
+                    "plant-lexicon": {
+                        "title": "Lessico delle piante",
+                        "items": {
+                            "plants": "Piante",
+                            "poison-plants": "Piante velenose",
+                            "plant-families": "Famiglie di piante",
+                            "plant-groups": "Gruppi di piante",
+                            "catalogue": "Catalogo d'esame"
+                        }
+                    },
+                    "quiz": {
+                        "title": "Quiz",
+                        "items": {
+                            "plants-practice": "Pratica piante",
+                            "plants-theory": "Teoria piante",
+                            "plants-poison": "Piante velenose",
+                            "catalogue": "Catalogo d'esame"
+                        }
+                    }
+                },
+                "nav-secondary": {
+                    "support": "Supporto",
+                    "feedback": "Feedback",
+                    "changelog": "Registro delle modifiche"
+                }
             }
         }
     },

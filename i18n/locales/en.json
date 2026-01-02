@@ -49,6 +49,52 @@
                     "privacy": "Privacy Policy"
                 }
             }
+        },
+        "navigation": {
+            "title": "Kräuterakademie",
+            "subtitle": "by Sigrid Thaler Rizzolli",
+            "nav-course": {
+                "courses": {
+                    "title": "Courses",
+                    "items": {
+                        "overview": "Overview",
+                        "documents": "Documents"
+                    }
+                },
+                "course-modules": {
+                    "title": "Course Modules",
+                    "items": {
+                        "overview": "Overview"
+                    }
+                }
+            },
+            "nav-study": {
+                "video-lessons": "Video Lessons",
+                "plant-lexicon": {
+                    "title": "Plant Lexicon",
+                    "items": {
+                        "plants": "Plants",
+                        "poison-plants": "Poisonous Plants",
+                        "plant-families": "Plant Families",
+                        "plant-groups": "Plant Groups",
+                        "catalogue": "Catalogue"
+                    }
+                },
+                "quiz": {
+                    "title": "Quiz",
+                    "items": {
+                        "plants-practice": "Plants Practice",
+                        "plants-theory": "Plants Theory",
+                        "plants-poison": "Poisonous Plants",
+                        "catalogue": "Catalogue"
+                    }
+                }
+            },
+            "nav-secondary": {
+                "support": "Support",
+                "feedback": "Feedback",
+                "changelog": "Changelog"
+            }
         }
     },
     "public": {}

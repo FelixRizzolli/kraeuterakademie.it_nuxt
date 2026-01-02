@@ -49,6 +49,52 @@
                     "privacy": "Datenschutzerklärung"
                 }
             }
+        },
+        "navigation": {
+            "title": "Kräuterakademie",
+            "subtitle": "der Sigrid Thaler Rizzolli",
+            "nav-course": {
+                "courses": {
+                    "title": "Kurse",
+                    "items": {
+                        "overview": "Übersicht",
+                        "documents": "Unterlagen"
+                    }
+                },
+                "course-modules": {
+                    "title": "Kurs Module",
+                    "items": {
+                        "overview": "Übersicht"
+                    }
+                }
+            },
+            "nav-study": {
+                "video-lessons": "Video Lektionen",
+                "plant-lexicon": {
+                    "title": "Pflanzenlexikon",
+                    "items": {
+                        "plants": "Pflanzen",
+                        "poison-plants": "Giftpflanzen",
+                        "plant-families": "Pflanzenfamilein",
+                        "plant-groups": "Pflanzengruppen",
+                        "catalogue": "Prüfungskatalog"
+                    }
+                },
+                "quiz": {
+                    "title": "Quiz",
+                    "items": {
+                        "plants-practice": "Pflanzenpraxis",
+                        "plants-theory": "Pflanzentheorie",
+                        "plants-poison": "Giftpflanzen",
+                        "catalogue": "Prüfungskatalog"
+                    }
+                }
+            },
+            "nav-secondary": {
+                "support": "Hilfe",
+                "feedback": "Feedback",
+                "changelog": "Änderungsprotokoll"
+            }
         }
     },
     "public": {}
