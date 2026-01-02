@@ -1,4 +1,4 @@
-query findGlobals {
+query findPublicGlobals {
     PublicHeader {
         ...PublicHeaderAttributes
     }

@@ -8,7 +8,7 @@ import PUBLIC_FOOTER_FRAGMENT from '~/graphql/fragments/public/globals/publicFoo
 import PUBLIC_SIDEBAR_FRAGMENT from '~/graphql/fragments/public/globals/publicSidebar.fragment.gql';
 import CONTACT_FRAGMENT from '~/graphql/fragments/shared/globals/contact.fragment.gql';
 
-import FIND_GLOBALS_QUERY from '~/graphql/queries/findGlobals.gql';
+import FIND_PUBLIC_GLOBALS_QUERY from '~/graphql/queries/findPublicGlobals.gql';
 
 interface GlobalData {
     header: PublicHeader;
@@ -31,7 +31,7 @@ const findGlobalsQuery = `
     ${PUBLIC_SIDEBAR_FRAGMENT?.loc?.source?.body}
     ${CONTACT_FRAGMENT?.loc?.source?.body}
 
-    ${FIND_GLOBALS_QUERY?.loc?.source?.body}
+    ${FIND_PUBLIC_GLOBALS_QUERY?.loc?.source?.body}
 `;
 
 export const useGlobal = () => {
