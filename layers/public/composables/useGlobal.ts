@@ -1,11 +1,11 @@
-import PUBLIC_IMAGE_FRAGMENT from '~/graphql/fragments/web/collections/publicImage.fragment.gql';
-import PUBLIC_PARTNER_FRAGMENT from '~/graphql/fragments/web/collections/publicPartner.fragment.gql';
-import PUBLIC_SOCIAL_FRAGMENT from '~/graphql/fragments/web/collections/publicSocial.fragment.gql';
-import PUBLIC_TEXT_BLOCK_FRAGMENT from '~/graphql/fragments/web/collections/publicTextBlock.fragment.gql';
+import PUBLIC_IMAGE_FRAGMENT from '~/graphql/fragments/public/collections/publicImage.fragment.gql';
+import PUBLIC_PARTNER_FRAGMENT from '~/graphql/fragments/public/collections/publicPartner.fragment.gql';
+import PUBLIC_SOCIAL_FRAGMENT from '~/graphql/fragments/public/collections/publicSocial.fragment.gql';
+import PUBLIC_TEXT_BLOCK_FRAGMENT from '~/graphql/fragments/public/collections/publicTextBlock.fragment.gql';
 
-import PUBLIC_HEADER_FRAGMENT from '~/graphql/fragments/web/globals/publicHeader.fragment.gql';
-import PUBLIC_FOOTER_FRAGMENT from '~/graphql/fragments/web/globals/publicFooter.fragment.gql';
-import PUBLIC_SIDEBAR_FRAGMENT from '~/graphql/fragments/web/globals/publicSidebar.fragment.gql';
+import PUBLIC_HEADER_FRAGMENT from '~/graphql/fragments/public/globals/publicHeader.fragment.gql';
+import PUBLIC_FOOTER_FRAGMENT from '~/graphql/fragments/public/globals/publicFooter.fragment.gql';
+import PUBLIC_SIDEBAR_FRAGMENT from '~/graphql/fragments/public/globals/publicSidebar.fragment.gql';
 import CONTACT_FRAGMENT from '~/graphql/fragments/shared/globals/contact.fragment.gql';
 
 import FIND_GLOBALS_QUERY from '~/graphql/queries/findGlobals.gql';

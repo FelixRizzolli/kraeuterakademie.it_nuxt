@@ -1,20 +1,20 @@
-import PUBLIC_IMAGE_FRAGMENT from '~/graphql/fragments/web/collections/publicImage.fragment.gql';
+import PUBLIC_IMAGE_FRAGMENT from '~/graphql/fragments/public/collections/publicImage.fragment.gql';
 
-import PUBLIC_ACCORDIONS_FRAGMENT from '~/graphql/fragments/web/blocks/accordions.fragment.gql';
-import PUBLIC_ANIMATED_TEXT_FRAGMENT from '~/graphql/fragments/web/blocks/animatedText.fragment.gql';
-import PUBLIC_BOOK_LIST_FRAGMENT from '~/graphql/fragments/web/blocks/bookList.fragment.gql';
-import PUBLIC_COURSE_LIST_FRAGMENT from '~/graphql/fragments/web/blocks/courseList.fragment.gql';
-import PUBLIC_HERO_LARGE_FRAGMENT from '~/graphql/fragments/web/blocks/heroLarge.fragment.gql';
-import PUBLIC_HERO_SMALL_FRAGMENT from '~/graphql/fragments/web/blocks/heroSmall.fragment.gql';
-import PUBLIC_HIGHLIGHTED_LINKS_FRAGMENT from '~/graphql/fragments/web/blocks/highlightedLinks.fragment.gql';
-import PUBLIC_IMAGE_TEXT_FRAGMENT from '~/graphql/fragments/web/blocks/imageText.fragment.gql';
-import PUBLIC_INFOS_FRAGMENT from '~/graphql/fragments/web/blocks/infos.fragment.gql';
-import PUBLIC_MOOD_PICTURE_FRAGMENT from '~/graphql/fragments/web/blocks/moodPicture.fragment.gql';
-import PUBLIC_SWIPER_CARD_FRAGMENT from '~/graphql/fragments/web/blocks/swiperCard.fragment.gql';
-import PUBLIC_SWIPER_LARGE_FRAGMENT from '~/graphql/fragments/web/blocks/swiperLarge.fragment.gql';
-import PUBLIC_SWIPER_SIMPLE_FRAGMENT from '~/graphql/fragments/web/blocks/swiperSimple.fragment.gql';
-import PUBLIC_TEXT_ELEMENT_FRAGMENT from '~/graphql/fragments/web/blocks/textElement.fragment.gql';
-import PUBLIC_TITLE_ELEMENT_FRAGMENT from '~/graphql/fragments/web/blocks/titleElement.fragment.gql';
+import PUBLIC_ACCORDIONS_FRAGMENT from '~/graphql/fragments/public/blocks/accordions.fragment.gql';
+import PUBLIC_ANIMATED_TEXT_FRAGMENT from '~/graphql/fragments/public/blocks/animatedText.fragment.gql';
+import PUBLIC_BOOK_LIST_FRAGMENT from '~/graphql/fragments/public/blocks/bookList.fragment.gql';
+import PUBLIC_COURSE_LIST_FRAGMENT from '~/graphql/fragments/public/blocks/courseList.fragment.gql';
+import PUBLIC_HERO_LARGE_FRAGMENT from '~/graphql/fragments/public/blocks/heroLarge.fragment.gql';
+import PUBLIC_HERO_SMALL_FRAGMENT from '~/graphql/fragments/public/blocks/heroSmall.fragment.gql';
+import PUBLIC_HIGHLIGHTED_LINKS_FRAGMENT from '~/graphql/fragments/public/blocks/highlightedLinks.fragment.gql';
+import PUBLIC_IMAGE_TEXT_FRAGMENT from '~/graphql/fragments/public/blocks/imageText.fragment.gql';
+import PUBLIC_INFOS_FRAGMENT from '~/graphql/fragments/public/blocks/infos.fragment.gql';
+import PUBLIC_MOOD_PICTURE_FRAGMENT from '~/graphql/fragments/public/blocks/moodPicture.fragment.gql';
+import PUBLIC_SWIPER_CARD_FRAGMENT from '~/graphql/fragments/public/blocks/swiperCard.fragment.gql';
+import PUBLIC_SWIPER_LARGE_FRAGMENT from '~/graphql/fragments/public/blocks/swiperLarge.fragment.gql';
+import PUBLIC_SWIPER_SIMPLE_FRAGMENT from '~/graphql/fragments/public/blocks/swiperSimple.fragment.gql';
+import PUBLIC_TEXT_ELEMENT_FRAGMENT from '~/graphql/fragments/public/blocks/textElement.fragment.gql';
+import PUBLIC_TITLE_ELEMENT_FRAGMENT from '~/graphql/fragments/public/blocks/titleElement.fragment.gql';
 
 import FIND_PUBLIC_PAGES_QUERY from '~/graphql/queries/findPublicPages.gql';
 
