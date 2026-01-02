@@ -1,4 +1,4 @@
-fragment DashboardGlobalsAttributes on DashboardGlobal {
+fragment DashboardGlobalAttributes on DashboardGlobal {
     loginImage {
         ...DashboardImageAttributes
     }

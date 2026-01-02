@@ -1,6 +1,6 @@
-query findDashboardGlobals {
+query findDashboardGlobal {
     DashboardGlobal {
-        ...DashboardGlobalsAttributes
+        ...DashboardGlobalAttributes
     }
     DashboardTextBlocks {
         docs {

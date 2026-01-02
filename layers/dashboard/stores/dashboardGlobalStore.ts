@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { useDashboardGlobal } from '~~/layers/dashboard/composables/useDashboardGlobal';
 
 interface DashboardData {
-    globals: DashboardGlobals;
+    globals: DashboardGlobal;
     textblocks: Array<DashboardTextBlock>;
 }
 
