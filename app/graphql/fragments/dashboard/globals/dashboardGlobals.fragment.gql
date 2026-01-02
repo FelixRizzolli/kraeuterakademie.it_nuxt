@@ -1,0 +1,8 @@
+fragment DashboardGlobalsAttributes on DashboardGlobal {
+    loginImage {
+        ...DashboardImageAttributes
+    }
+    registerImage {
+        ...DashboardImageAttributes
+    }
+}

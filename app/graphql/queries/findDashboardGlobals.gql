@@ -1,0 +1,10 @@
+query findDashboardGlobals {
+    DashboardGlobal {
+        ...DashboardGlobalsAttributes
+    }
+    DashboardTextBlocks {
+        docs {
+            ...DashboardTextBlockAttributes
+        }
+    }
+}

@@ -1,0 +1,113 @@
+fragment DashboardImageAttributes on DashboardImage {
+    id
+    alt
+    updatedAt
+    createdAt
+    url
+    thumbnailURL
+    filename
+    mimeType
+    filesize
+    width
+    height
+    focalX
+    focalY
+    sizes {
+        thumbnail_jpeg {
+            url
+            width
+            height
+            mimeType
+            filesize
+            filename
+        }
+        thumbnail_webp {
+            url
+            width
+            height
+            mimeType
+            filesize
+            filename
+        }
+        thumbnail_avif {
+            url
+            width
+            height
+            mimeType
+            filesize
+            filename
+        }
+        mobile_jpeg {
+            url
+            width
+            height
+            mimeType
+            filesize
+            filename
+        }
+        mobile_webp {
+            url
+            width
+            height
+            mimeType
+            filesize
+            filename
+        }
+        mobile_avif {
+            url
+            width
+            height
+            mimeType
+            filesize
+            filename
+        }
+        tablet_jpeg {
+            url
+            width
+            height
+            mimeType
+            filesize
+            filename
+        }
+        tablet_webp {
+            url
+            width
+            height
+            mimeType
+            filesize
+            filename
+        }
+        tablet_avif {
+            url
+            width
+            height
+            mimeType
+            filesize
+            filename
+        }
+        desktop_jpeg {
+            url
+            width
+            height
+            mimeType
+            filesize
+            filename
+        }
+        desktop_webp {
+            url
+            width
+            height
+            mimeType
+            filesize
+            filename
+        }
+        desktop_avif {
+            url
+            width
+            height
+            mimeType
+            filesize
+            filename
+        }
+    }
+}

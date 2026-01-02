@@ -1,0 +1,7 @@
+fragment CourseVideoLessonAttributes on CourseVideoLesson {
+    id
+    title
+    youtubeURL
+    updatedAt
+    createdAt
+}

@@ -1,0 +1,5 @@
+fragment DashboardTextBlockAttributes on DashboardTextBlock {
+    id
+    slug
+    value
+}

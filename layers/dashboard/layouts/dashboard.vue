@@ -5,6 +5,12 @@
 </template>
 
 <script lang="ts" setup>
+    import { useDashboardGlobalStore } from '~~/layers/dashboard/stores/dashboardGlobalStore';
+
+    const dashboardGlobalStore = useDashboardGlobalStore();
+    // Load dashboard globals application-wide
+    dashboardGlobalStore.loadDashboardGlobalData();
+
     useHead({
         htmlAttrs: {
             class: 'dashboard-root',

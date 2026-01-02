@@ -31,6 +31,13 @@ export type Access = {
     course_speakers?: Maybe<course_speakersAccess>;
     course_video_lessons?: Maybe<course_video_lessonsAccess>;
     courses?: Maybe<coursesAccess>;
+    dashboard_changelogs?: Maybe<dashboard_changelogsAccess>;
+    dashboard_globals?: Maybe<dashboard_globalsAccess>;
+    dashboard_help_pages?: Maybe<dashboard_help_pagesAccess>;
+    dashboard_images?: Maybe<dashboard_imagesAccess>;
+    dashboard_text_blocks?: Maybe<dashboard_text_blocksAccess>;
+    dashboard_ticket_categories?: Maybe<dashboard_ticket_categoriesAccess>;
+    dashboard_tickets?: Maybe<dashboard_ticketsAccess>;
     payload_kv?: Maybe<payload_kvAccess>;
     payload_locked_documents?: Maybe<payload_locked_documentsAccess>;
     payload_preferences?: Maybe<payload_preferencesAccess>;
@@ -5008,6 +5015,10286 @@ export type CoursesUpdateDocAccess = {
     where?: Maybe<Scalars['JSONObject']['output']>;
 };
 
+export type DashboardChangelog = {
+    __typename?: 'DashboardChangelog';
+    blocks?: Maybe<Array<DashboardChangelog_Blocks>>;
+    createdAt?: Maybe<Scalars['DateTime']['output']>;
+    id: Scalars['Int']['output'];
+    releaseDate: Scalars['DateTime']['output'];
+    updatedAt?: Maybe<Scalars['DateTime']['output']>;
+    version: Scalars['String']['output'];
+};
+
+export type DashboardChangelog_Blocks =
+    | DashboardImageElement
+    | DashboardImageText
+    | DashboardTextElement
+    | DashboardTitleElement;
+
+export type DashboardChangelog_createdAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DashboardChangelog_id_operator = {
+    equals?: InputMaybe<Scalars['Int']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Int']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    less_than?: InputMaybe<Scalars['Int']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    not_equals?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type DashboardChangelog_releaseDate_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DashboardChangelog_updatedAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DashboardChangelog_version_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardChangelog_where = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardChangelog_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardChangelog_where_or>>>;
+    createdAt?: InputMaybe<DashboardChangelog_createdAt_operator>;
+    id?: InputMaybe<DashboardChangelog_id_operator>;
+    releaseDate?: InputMaybe<DashboardChangelog_releaseDate_operator>;
+    updatedAt?: InputMaybe<DashboardChangelog_updatedAt_operator>;
+    version?: InputMaybe<DashboardChangelog_version_operator>;
+};
+
+export type DashboardChangelog_where_and = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardChangelog_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardChangelog_where_or>>>;
+    createdAt?: InputMaybe<DashboardChangelog_createdAt_operator>;
+    id?: InputMaybe<DashboardChangelog_id_operator>;
+    releaseDate?: InputMaybe<DashboardChangelog_releaseDate_operator>;
+    updatedAt?: InputMaybe<DashboardChangelog_updatedAt_operator>;
+    version?: InputMaybe<DashboardChangelog_version_operator>;
+};
+
+export type DashboardChangelog_where_or = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardChangelog_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardChangelog_where_or>>>;
+    createdAt?: InputMaybe<DashboardChangelog_createdAt_operator>;
+    id?: InputMaybe<DashboardChangelog_id_operator>;
+    releaseDate?: InputMaybe<DashboardChangelog_releaseDate_operator>;
+    updatedAt?: InputMaybe<DashboardChangelog_updatedAt_operator>;
+    version?: InputMaybe<DashboardChangelog_version_operator>;
+};
+
+export type DashboardChangelogs = {
+    __typename?: 'DashboardChangelogs';
+    docs: Array<DashboardChangelog>;
+    hasNextPage: Scalars['Boolean']['output'];
+    hasPrevPage: Scalars['Boolean']['output'];
+    limit: Scalars['Int']['output'];
+    nextPage?: Maybe<Scalars['Int']['output']>;
+    offset?: Maybe<Scalars['Int']['output']>;
+    page: Scalars['Int']['output'];
+    pagingCounter: Scalars['Int']['output'];
+    prevPage?: Maybe<Scalars['Int']['output']>;
+    totalDocs: Scalars['Int']['output'];
+    totalPages: Scalars['Int']['output'];
+};
+
+export type DashboardChangelogsCreateAccess = {
+    __typename?: 'DashboardChangelogsCreateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardChangelogsCreateDocAccess = {
+    __typename?: 'DashboardChangelogsCreateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardChangelogsDeleteAccess = {
+    __typename?: 'DashboardChangelogsDeleteAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardChangelogsDeleteDocAccess = {
+    __typename?: 'DashboardChangelogsDeleteDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardChangelogsDocAccessFields = {
+    __typename?: 'DashboardChangelogsDocAccessFields';
+    blocks?: Maybe<DashboardChangelogsDocAccessFields_blocks>;
+    createdAt?: Maybe<DashboardChangelogsDocAccessFields_createdAt>;
+    releaseDate?: Maybe<DashboardChangelogsDocAccessFields_releaseDate>;
+    updatedAt?: Maybe<DashboardChangelogsDocAccessFields_updatedAt>;
+    version?: Maybe<DashboardChangelogsDocAccessFields_version>;
+};
+
+export type DashboardChangelogsDocAccessFields_blocks = {
+    __typename?: 'DashboardChangelogsDocAccessFields_blocks';
+    create?: Maybe<DashboardChangelogsDocAccessFields_blocks_Create>;
+    delete?: Maybe<DashboardChangelogsDocAccessFields_blocks_Delete>;
+    read?: Maybe<DashboardChangelogsDocAccessFields_blocks_Read>;
+    update?: Maybe<DashboardChangelogsDocAccessFields_blocks_Update>;
+};
+
+export type DashboardChangelogsDocAccessFields_blocks_Create = {
+    __typename?: 'DashboardChangelogsDocAccessFields_blocks_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_blocks_Delete = {
+    __typename?: 'DashboardChangelogsDocAccessFields_blocks_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_blocks_Read = {
+    __typename?: 'DashboardChangelogsDocAccessFields_blocks_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_blocks_Update = {
+    __typename?: 'DashboardChangelogsDocAccessFields_blocks_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_createdAt = {
+    __typename?: 'DashboardChangelogsDocAccessFields_createdAt';
+    create?: Maybe<DashboardChangelogsDocAccessFields_createdAt_Create>;
+    delete?: Maybe<DashboardChangelogsDocAccessFields_createdAt_Delete>;
+    read?: Maybe<DashboardChangelogsDocAccessFields_createdAt_Read>;
+    update?: Maybe<DashboardChangelogsDocAccessFields_createdAt_Update>;
+};
+
+export type DashboardChangelogsDocAccessFields_createdAt_Create = {
+    __typename?: 'DashboardChangelogsDocAccessFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_createdAt_Delete = {
+    __typename?: 'DashboardChangelogsDocAccessFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_createdAt_Read = {
+    __typename?: 'DashboardChangelogsDocAccessFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_createdAt_Update = {
+    __typename?: 'DashboardChangelogsDocAccessFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_releaseDate = {
+    __typename?: 'DashboardChangelogsDocAccessFields_releaseDate';
+    create?: Maybe<DashboardChangelogsDocAccessFields_releaseDate_Create>;
+    delete?: Maybe<DashboardChangelogsDocAccessFields_releaseDate_Delete>;
+    read?: Maybe<DashboardChangelogsDocAccessFields_releaseDate_Read>;
+    update?: Maybe<DashboardChangelogsDocAccessFields_releaseDate_Update>;
+};
+
+export type DashboardChangelogsDocAccessFields_releaseDate_Create = {
+    __typename?: 'DashboardChangelogsDocAccessFields_releaseDate_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_releaseDate_Delete = {
+    __typename?: 'DashboardChangelogsDocAccessFields_releaseDate_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_releaseDate_Read = {
+    __typename?: 'DashboardChangelogsDocAccessFields_releaseDate_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_releaseDate_Update = {
+    __typename?: 'DashboardChangelogsDocAccessFields_releaseDate_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_updatedAt = {
+    __typename?: 'DashboardChangelogsDocAccessFields_updatedAt';
+    create?: Maybe<DashboardChangelogsDocAccessFields_updatedAt_Create>;
+    delete?: Maybe<DashboardChangelogsDocAccessFields_updatedAt_Delete>;
+    read?: Maybe<DashboardChangelogsDocAccessFields_updatedAt_Read>;
+    update?: Maybe<DashboardChangelogsDocAccessFields_updatedAt_Update>;
+};
+
+export type DashboardChangelogsDocAccessFields_updatedAt_Create = {
+    __typename?: 'DashboardChangelogsDocAccessFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_updatedAt_Delete = {
+    __typename?: 'DashboardChangelogsDocAccessFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_updatedAt_Read = {
+    __typename?: 'DashboardChangelogsDocAccessFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_updatedAt_Update = {
+    __typename?: 'DashboardChangelogsDocAccessFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_version = {
+    __typename?: 'DashboardChangelogsDocAccessFields_version';
+    create?: Maybe<DashboardChangelogsDocAccessFields_version_Create>;
+    delete?: Maybe<DashboardChangelogsDocAccessFields_version_Delete>;
+    read?: Maybe<DashboardChangelogsDocAccessFields_version_Read>;
+    update?: Maybe<DashboardChangelogsDocAccessFields_version_Update>;
+};
+
+export type DashboardChangelogsDocAccessFields_version_Create = {
+    __typename?: 'DashboardChangelogsDocAccessFields_version_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_version_Delete = {
+    __typename?: 'DashboardChangelogsDocAccessFields_version_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_version_Read = {
+    __typename?: 'DashboardChangelogsDocAccessFields_version_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsDocAccessFields_version_Update = {
+    __typename?: 'DashboardChangelogsDocAccessFields_version_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields = {
+    __typename?: 'DashboardChangelogsFields';
+    blocks?: Maybe<DashboardChangelogsFields_blocks>;
+    createdAt?: Maybe<DashboardChangelogsFields_createdAt>;
+    releaseDate?: Maybe<DashboardChangelogsFields_releaseDate>;
+    updatedAt?: Maybe<DashboardChangelogsFields_updatedAt>;
+    version?: Maybe<DashboardChangelogsFields_version>;
+};
+
+export type DashboardChangelogsFields_blocks = {
+    __typename?: 'DashboardChangelogsFields_blocks';
+    create?: Maybe<DashboardChangelogsFields_blocks_Create>;
+    delete?: Maybe<DashboardChangelogsFields_blocks_Delete>;
+    read?: Maybe<DashboardChangelogsFields_blocks_Read>;
+    update?: Maybe<DashboardChangelogsFields_blocks_Update>;
+};
+
+export type DashboardChangelogsFields_blocks_Create = {
+    __typename?: 'DashboardChangelogsFields_blocks_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_blocks_Delete = {
+    __typename?: 'DashboardChangelogsFields_blocks_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_blocks_Read = {
+    __typename?: 'DashboardChangelogsFields_blocks_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_blocks_Update = {
+    __typename?: 'DashboardChangelogsFields_blocks_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_createdAt = {
+    __typename?: 'DashboardChangelogsFields_createdAt';
+    create?: Maybe<DashboardChangelogsFields_createdAt_Create>;
+    delete?: Maybe<DashboardChangelogsFields_createdAt_Delete>;
+    read?: Maybe<DashboardChangelogsFields_createdAt_Read>;
+    update?: Maybe<DashboardChangelogsFields_createdAt_Update>;
+};
+
+export type DashboardChangelogsFields_createdAt_Create = {
+    __typename?: 'DashboardChangelogsFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_createdAt_Delete = {
+    __typename?: 'DashboardChangelogsFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_createdAt_Read = {
+    __typename?: 'DashboardChangelogsFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_createdAt_Update = {
+    __typename?: 'DashboardChangelogsFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_releaseDate = {
+    __typename?: 'DashboardChangelogsFields_releaseDate';
+    create?: Maybe<DashboardChangelogsFields_releaseDate_Create>;
+    delete?: Maybe<DashboardChangelogsFields_releaseDate_Delete>;
+    read?: Maybe<DashboardChangelogsFields_releaseDate_Read>;
+    update?: Maybe<DashboardChangelogsFields_releaseDate_Update>;
+};
+
+export type DashboardChangelogsFields_releaseDate_Create = {
+    __typename?: 'DashboardChangelogsFields_releaseDate_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_releaseDate_Delete = {
+    __typename?: 'DashboardChangelogsFields_releaseDate_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_releaseDate_Read = {
+    __typename?: 'DashboardChangelogsFields_releaseDate_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_releaseDate_Update = {
+    __typename?: 'DashboardChangelogsFields_releaseDate_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_updatedAt = {
+    __typename?: 'DashboardChangelogsFields_updatedAt';
+    create?: Maybe<DashboardChangelogsFields_updatedAt_Create>;
+    delete?: Maybe<DashboardChangelogsFields_updatedAt_Delete>;
+    read?: Maybe<DashboardChangelogsFields_updatedAt_Read>;
+    update?: Maybe<DashboardChangelogsFields_updatedAt_Update>;
+};
+
+export type DashboardChangelogsFields_updatedAt_Create = {
+    __typename?: 'DashboardChangelogsFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_updatedAt_Delete = {
+    __typename?: 'DashboardChangelogsFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_updatedAt_Read = {
+    __typename?: 'DashboardChangelogsFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_updatedAt_Update = {
+    __typename?: 'DashboardChangelogsFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_version = {
+    __typename?: 'DashboardChangelogsFields_version';
+    create?: Maybe<DashboardChangelogsFields_version_Create>;
+    delete?: Maybe<DashboardChangelogsFields_version_Delete>;
+    read?: Maybe<DashboardChangelogsFields_version_Read>;
+    update?: Maybe<DashboardChangelogsFields_version_Update>;
+};
+
+export type DashboardChangelogsFields_version_Create = {
+    __typename?: 'DashboardChangelogsFields_version_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_version_Delete = {
+    __typename?: 'DashboardChangelogsFields_version_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_version_Read = {
+    __typename?: 'DashboardChangelogsFields_version_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsFields_version_Update = {
+    __typename?: 'DashboardChangelogsFields_version_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardChangelogsReadAccess = {
+    __typename?: 'DashboardChangelogsReadAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardChangelogsReadDocAccess = {
+    __typename?: 'DashboardChangelogsReadDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardChangelogsUpdateAccess = {
+    __typename?: 'DashboardChangelogsUpdateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardChangelogsUpdateDocAccess = {
+    __typename?: 'DashboardChangelogsUpdateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardGlobal = {
+    __typename?: 'DashboardGlobal';
+    createdAt?: Maybe<Scalars['DateTime']['output']>;
+    loginImage?: Maybe<DashboardImage>;
+    registerImage?: Maybe<DashboardImage>;
+    updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type DashboardGlobalsDocAccessFields = {
+    __typename?: 'DashboardGlobalsDocAccessFields';
+    createdAt?: Maybe<DashboardGlobalsDocAccessFields_createdAt>;
+    loginImage?: Maybe<DashboardGlobalsDocAccessFields_loginImage>;
+    registerImage?: Maybe<DashboardGlobalsDocAccessFields_registerImage>;
+    updatedAt?: Maybe<DashboardGlobalsDocAccessFields_updatedAt>;
+};
+
+export type DashboardGlobalsDocAccessFields_createdAt = {
+    __typename?: 'DashboardGlobalsDocAccessFields_createdAt';
+    create?: Maybe<DashboardGlobalsDocAccessFields_createdAt_Create>;
+    delete?: Maybe<DashboardGlobalsDocAccessFields_createdAt_Delete>;
+    read?: Maybe<DashboardGlobalsDocAccessFields_createdAt_Read>;
+    update?: Maybe<DashboardGlobalsDocAccessFields_createdAt_Update>;
+};
+
+export type DashboardGlobalsDocAccessFields_createdAt_Create = {
+    __typename?: 'DashboardGlobalsDocAccessFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsDocAccessFields_createdAt_Delete = {
+    __typename?: 'DashboardGlobalsDocAccessFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsDocAccessFields_createdAt_Read = {
+    __typename?: 'DashboardGlobalsDocAccessFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsDocAccessFields_createdAt_Update = {
+    __typename?: 'DashboardGlobalsDocAccessFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsDocAccessFields_loginImage = {
+    __typename?: 'DashboardGlobalsDocAccessFields_loginImage';
+    create?: Maybe<DashboardGlobalsDocAccessFields_loginImage_Create>;
+    delete?: Maybe<DashboardGlobalsDocAccessFields_loginImage_Delete>;
+    read?: Maybe<DashboardGlobalsDocAccessFields_loginImage_Read>;
+    update?: Maybe<DashboardGlobalsDocAccessFields_loginImage_Update>;
+};
+
+export type DashboardGlobalsDocAccessFields_loginImage_Create = {
+    __typename?: 'DashboardGlobalsDocAccessFields_loginImage_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsDocAccessFields_loginImage_Delete = {
+    __typename?: 'DashboardGlobalsDocAccessFields_loginImage_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsDocAccessFields_loginImage_Read = {
+    __typename?: 'DashboardGlobalsDocAccessFields_loginImage_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsDocAccessFields_loginImage_Update = {
+    __typename?: 'DashboardGlobalsDocAccessFields_loginImage_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsDocAccessFields_registerImage = {
+    __typename?: 'DashboardGlobalsDocAccessFields_registerImage';
+    create?: Maybe<DashboardGlobalsDocAccessFields_registerImage_Create>;
+    delete?: Maybe<DashboardGlobalsDocAccessFields_registerImage_Delete>;
+    read?: Maybe<DashboardGlobalsDocAccessFields_registerImage_Read>;
+    update?: Maybe<DashboardGlobalsDocAccessFields_registerImage_Update>;
+};
+
+export type DashboardGlobalsDocAccessFields_registerImage_Create = {
+    __typename?: 'DashboardGlobalsDocAccessFields_registerImage_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsDocAccessFields_registerImage_Delete = {
+    __typename?: 'DashboardGlobalsDocAccessFields_registerImage_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsDocAccessFields_registerImage_Read = {
+    __typename?: 'DashboardGlobalsDocAccessFields_registerImage_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsDocAccessFields_registerImage_Update = {
+    __typename?: 'DashboardGlobalsDocAccessFields_registerImage_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsDocAccessFields_updatedAt = {
+    __typename?: 'DashboardGlobalsDocAccessFields_updatedAt';
+    create?: Maybe<DashboardGlobalsDocAccessFields_updatedAt_Create>;
+    delete?: Maybe<DashboardGlobalsDocAccessFields_updatedAt_Delete>;
+    read?: Maybe<DashboardGlobalsDocAccessFields_updatedAt_Read>;
+    update?: Maybe<DashboardGlobalsDocAccessFields_updatedAt_Update>;
+};
+
+export type DashboardGlobalsDocAccessFields_updatedAt_Create = {
+    __typename?: 'DashboardGlobalsDocAccessFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsDocAccessFields_updatedAt_Delete = {
+    __typename?: 'DashboardGlobalsDocAccessFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsDocAccessFields_updatedAt_Read = {
+    __typename?: 'DashboardGlobalsDocAccessFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsDocAccessFields_updatedAt_Update = {
+    __typename?: 'DashboardGlobalsDocAccessFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields = {
+    __typename?: 'DashboardGlobalsFields';
+    createdAt?: Maybe<DashboardGlobalsFields_createdAt>;
+    loginImage?: Maybe<DashboardGlobalsFields_loginImage>;
+    registerImage?: Maybe<DashboardGlobalsFields_registerImage>;
+    updatedAt?: Maybe<DashboardGlobalsFields_updatedAt>;
+};
+
+export type DashboardGlobalsFields_createdAt = {
+    __typename?: 'DashboardGlobalsFields_createdAt';
+    create?: Maybe<DashboardGlobalsFields_createdAt_Create>;
+    delete?: Maybe<DashboardGlobalsFields_createdAt_Delete>;
+    read?: Maybe<DashboardGlobalsFields_createdAt_Read>;
+    update?: Maybe<DashboardGlobalsFields_createdAt_Update>;
+};
+
+export type DashboardGlobalsFields_createdAt_Create = {
+    __typename?: 'DashboardGlobalsFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields_createdAt_Delete = {
+    __typename?: 'DashboardGlobalsFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields_createdAt_Read = {
+    __typename?: 'DashboardGlobalsFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields_createdAt_Update = {
+    __typename?: 'DashboardGlobalsFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields_loginImage = {
+    __typename?: 'DashboardGlobalsFields_loginImage';
+    create?: Maybe<DashboardGlobalsFields_loginImage_Create>;
+    delete?: Maybe<DashboardGlobalsFields_loginImage_Delete>;
+    read?: Maybe<DashboardGlobalsFields_loginImage_Read>;
+    update?: Maybe<DashboardGlobalsFields_loginImage_Update>;
+};
+
+export type DashboardGlobalsFields_loginImage_Create = {
+    __typename?: 'DashboardGlobalsFields_loginImage_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields_loginImage_Delete = {
+    __typename?: 'DashboardGlobalsFields_loginImage_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields_loginImage_Read = {
+    __typename?: 'DashboardGlobalsFields_loginImage_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields_loginImage_Update = {
+    __typename?: 'DashboardGlobalsFields_loginImage_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields_registerImage = {
+    __typename?: 'DashboardGlobalsFields_registerImage';
+    create?: Maybe<DashboardGlobalsFields_registerImage_Create>;
+    delete?: Maybe<DashboardGlobalsFields_registerImage_Delete>;
+    read?: Maybe<DashboardGlobalsFields_registerImage_Read>;
+    update?: Maybe<DashboardGlobalsFields_registerImage_Update>;
+};
+
+export type DashboardGlobalsFields_registerImage_Create = {
+    __typename?: 'DashboardGlobalsFields_registerImage_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields_registerImage_Delete = {
+    __typename?: 'DashboardGlobalsFields_registerImage_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields_registerImage_Read = {
+    __typename?: 'DashboardGlobalsFields_registerImage_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields_registerImage_Update = {
+    __typename?: 'DashboardGlobalsFields_registerImage_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields_updatedAt = {
+    __typename?: 'DashboardGlobalsFields_updatedAt';
+    create?: Maybe<DashboardGlobalsFields_updatedAt_Create>;
+    delete?: Maybe<DashboardGlobalsFields_updatedAt_Delete>;
+    read?: Maybe<DashboardGlobalsFields_updatedAt_Read>;
+    update?: Maybe<DashboardGlobalsFields_updatedAt_Update>;
+};
+
+export type DashboardGlobalsFields_updatedAt_Create = {
+    __typename?: 'DashboardGlobalsFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields_updatedAt_Delete = {
+    __typename?: 'DashboardGlobalsFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields_updatedAt_Read = {
+    __typename?: 'DashboardGlobalsFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsFields_updatedAt_Update = {
+    __typename?: 'DashboardGlobalsFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardGlobalsReadAccess = {
+    __typename?: 'DashboardGlobalsReadAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardGlobalsReadDocAccess = {
+    __typename?: 'DashboardGlobalsReadDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardGlobalsUpdateAccess = {
+    __typename?: 'DashboardGlobalsUpdateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardGlobalsUpdateDocAccess = {
+    __typename?: 'DashboardGlobalsUpdateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardHelpPage = {
+    __typename?: 'DashboardHelpPage';
+    blocks?: Maybe<Array<DashboardHelpPage_Blocks>>;
+    createdAt?: Maybe<Scalars['DateTime']['output']>;
+    id: Scalars['Int']['output'];
+    slug: Scalars['String']['output'];
+    title: Scalars['String']['output'];
+    updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type DashboardHelpPage_Blocks =
+    | DashboardImageElement
+    | DashboardImageText
+    | DashboardTextElement
+    | DashboardTitleElement;
+
+export type DashboardHelpPage_createdAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DashboardHelpPage_id_operator = {
+    equals?: InputMaybe<Scalars['Int']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Int']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    less_than?: InputMaybe<Scalars['Int']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    not_equals?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type DashboardHelpPage_slug_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardHelpPage_title_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardHelpPage_updatedAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DashboardHelpPage_where = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardHelpPage_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardHelpPage_where_or>>>;
+    createdAt?: InputMaybe<DashboardHelpPage_createdAt_operator>;
+    id?: InputMaybe<DashboardHelpPage_id_operator>;
+    slug?: InputMaybe<DashboardHelpPage_slug_operator>;
+    title?: InputMaybe<DashboardHelpPage_title_operator>;
+    updatedAt?: InputMaybe<DashboardHelpPage_updatedAt_operator>;
+};
+
+export type DashboardHelpPage_where_and = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardHelpPage_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardHelpPage_where_or>>>;
+    createdAt?: InputMaybe<DashboardHelpPage_createdAt_operator>;
+    id?: InputMaybe<DashboardHelpPage_id_operator>;
+    slug?: InputMaybe<DashboardHelpPage_slug_operator>;
+    title?: InputMaybe<DashboardHelpPage_title_operator>;
+    updatedAt?: InputMaybe<DashboardHelpPage_updatedAt_operator>;
+};
+
+export type DashboardHelpPage_where_or = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardHelpPage_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardHelpPage_where_or>>>;
+    createdAt?: InputMaybe<DashboardHelpPage_createdAt_operator>;
+    id?: InputMaybe<DashboardHelpPage_id_operator>;
+    slug?: InputMaybe<DashboardHelpPage_slug_operator>;
+    title?: InputMaybe<DashboardHelpPage_title_operator>;
+    updatedAt?: InputMaybe<DashboardHelpPage_updatedAt_operator>;
+};
+
+export type DashboardHelpPages = {
+    __typename?: 'DashboardHelpPages';
+    docs: Array<DashboardHelpPage>;
+    hasNextPage: Scalars['Boolean']['output'];
+    hasPrevPage: Scalars['Boolean']['output'];
+    limit: Scalars['Int']['output'];
+    nextPage?: Maybe<Scalars['Int']['output']>;
+    offset?: Maybe<Scalars['Int']['output']>;
+    page: Scalars['Int']['output'];
+    pagingCounter: Scalars['Int']['output'];
+    prevPage?: Maybe<Scalars['Int']['output']>;
+    totalDocs: Scalars['Int']['output'];
+    totalPages: Scalars['Int']['output'];
+};
+
+export type DashboardHelpPagesCreateAccess = {
+    __typename?: 'DashboardHelpPagesCreateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardHelpPagesCreateDocAccess = {
+    __typename?: 'DashboardHelpPagesCreateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardHelpPagesDeleteAccess = {
+    __typename?: 'DashboardHelpPagesDeleteAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardHelpPagesDeleteDocAccess = {
+    __typename?: 'DashboardHelpPagesDeleteDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardHelpPagesDocAccessFields = {
+    __typename?: 'DashboardHelpPagesDocAccessFields';
+    blocks?: Maybe<DashboardHelpPagesDocAccessFields_blocks>;
+    createdAt?: Maybe<DashboardHelpPagesDocAccessFields_createdAt>;
+    slug?: Maybe<DashboardHelpPagesDocAccessFields_slug>;
+    title?: Maybe<DashboardHelpPagesDocAccessFields_title>;
+    updatedAt?: Maybe<DashboardHelpPagesDocAccessFields_updatedAt>;
+};
+
+export type DashboardHelpPagesDocAccessFields_blocks = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_blocks';
+    create?: Maybe<DashboardHelpPagesDocAccessFields_blocks_Create>;
+    delete?: Maybe<DashboardHelpPagesDocAccessFields_blocks_Delete>;
+    read?: Maybe<DashboardHelpPagesDocAccessFields_blocks_Read>;
+    update?: Maybe<DashboardHelpPagesDocAccessFields_blocks_Update>;
+};
+
+export type DashboardHelpPagesDocAccessFields_blocks_Create = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_blocks_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_blocks_Delete = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_blocks_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_blocks_Read = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_blocks_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_blocks_Update = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_blocks_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_createdAt = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_createdAt';
+    create?: Maybe<DashboardHelpPagesDocAccessFields_createdAt_Create>;
+    delete?: Maybe<DashboardHelpPagesDocAccessFields_createdAt_Delete>;
+    read?: Maybe<DashboardHelpPagesDocAccessFields_createdAt_Read>;
+    update?: Maybe<DashboardHelpPagesDocAccessFields_createdAt_Update>;
+};
+
+export type DashboardHelpPagesDocAccessFields_createdAt_Create = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_createdAt_Delete = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_createdAt_Read = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_createdAt_Update = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_slug = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_slug';
+    create?: Maybe<DashboardHelpPagesDocAccessFields_slug_Create>;
+    delete?: Maybe<DashboardHelpPagesDocAccessFields_slug_Delete>;
+    read?: Maybe<DashboardHelpPagesDocAccessFields_slug_Read>;
+    update?: Maybe<DashboardHelpPagesDocAccessFields_slug_Update>;
+};
+
+export type DashboardHelpPagesDocAccessFields_slug_Create = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_slug_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_slug_Delete = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_slug_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_slug_Read = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_slug_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_slug_Update = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_slug_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_title = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_title';
+    create?: Maybe<DashboardHelpPagesDocAccessFields_title_Create>;
+    delete?: Maybe<DashboardHelpPagesDocAccessFields_title_Delete>;
+    read?: Maybe<DashboardHelpPagesDocAccessFields_title_Read>;
+    update?: Maybe<DashboardHelpPagesDocAccessFields_title_Update>;
+};
+
+export type DashboardHelpPagesDocAccessFields_title_Create = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_title_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_title_Delete = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_title_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_title_Read = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_title_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_title_Update = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_title_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_updatedAt = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_updatedAt';
+    create?: Maybe<DashboardHelpPagesDocAccessFields_updatedAt_Create>;
+    delete?: Maybe<DashboardHelpPagesDocAccessFields_updatedAt_Delete>;
+    read?: Maybe<DashboardHelpPagesDocAccessFields_updatedAt_Read>;
+    update?: Maybe<DashboardHelpPagesDocAccessFields_updatedAt_Update>;
+};
+
+export type DashboardHelpPagesDocAccessFields_updatedAt_Create = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_updatedAt_Delete = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_updatedAt_Read = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesDocAccessFields_updatedAt_Update = {
+    __typename?: 'DashboardHelpPagesDocAccessFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields = {
+    __typename?: 'DashboardHelpPagesFields';
+    blocks?: Maybe<DashboardHelpPagesFields_blocks>;
+    createdAt?: Maybe<DashboardHelpPagesFields_createdAt>;
+    slug?: Maybe<DashboardHelpPagesFields_slug>;
+    title?: Maybe<DashboardHelpPagesFields_title>;
+    updatedAt?: Maybe<DashboardHelpPagesFields_updatedAt>;
+};
+
+export type DashboardHelpPagesFields_blocks = {
+    __typename?: 'DashboardHelpPagesFields_blocks';
+    create?: Maybe<DashboardHelpPagesFields_blocks_Create>;
+    delete?: Maybe<DashboardHelpPagesFields_blocks_Delete>;
+    read?: Maybe<DashboardHelpPagesFields_blocks_Read>;
+    update?: Maybe<DashboardHelpPagesFields_blocks_Update>;
+};
+
+export type DashboardHelpPagesFields_blocks_Create = {
+    __typename?: 'DashboardHelpPagesFields_blocks_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_blocks_Delete = {
+    __typename?: 'DashboardHelpPagesFields_blocks_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_blocks_Read = {
+    __typename?: 'DashboardHelpPagesFields_blocks_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_blocks_Update = {
+    __typename?: 'DashboardHelpPagesFields_blocks_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_createdAt = {
+    __typename?: 'DashboardHelpPagesFields_createdAt';
+    create?: Maybe<DashboardHelpPagesFields_createdAt_Create>;
+    delete?: Maybe<DashboardHelpPagesFields_createdAt_Delete>;
+    read?: Maybe<DashboardHelpPagesFields_createdAt_Read>;
+    update?: Maybe<DashboardHelpPagesFields_createdAt_Update>;
+};
+
+export type DashboardHelpPagesFields_createdAt_Create = {
+    __typename?: 'DashboardHelpPagesFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_createdAt_Delete = {
+    __typename?: 'DashboardHelpPagesFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_createdAt_Read = {
+    __typename?: 'DashboardHelpPagesFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_createdAt_Update = {
+    __typename?: 'DashboardHelpPagesFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_slug = {
+    __typename?: 'DashboardHelpPagesFields_slug';
+    create?: Maybe<DashboardHelpPagesFields_slug_Create>;
+    delete?: Maybe<DashboardHelpPagesFields_slug_Delete>;
+    read?: Maybe<DashboardHelpPagesFields_slug_Read>;
+    update?: Maybe<DashboardHelpPagesFields_slug_Update>;
+};
+
+export type DashboardHelpPagesFields_slug_Create = {
+    __typename?: 'DashboardHelpPagesFields_slug_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_slug_Delete = {
+    __typename?: 'DashboardHelpPagesFields_slug_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_slug_Read = {
+    __typename?: 'DashboardHelpPagesFields_slug_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_slug_Update = {
+    __typename?: 'DashboardHelpPagesFields_slug_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_title = {
+    __typename?: 'DashboardHelpPagesFields_title';
+    create?: Maybe<DashboardHelpPagesFields_title_Create>;
+    delete?: Maybe<DashboardHelpPagesFields_title_Delete>;
+    read?: Maybe<DashboardHelpPagesFields_title_Read>;
+    update?: Maybe<DashboardHelpPagesFields_title_Update>;
+};
+
+export type DashboardHelpPagesFields_title_Create = {
+    __typename?: 'DashboardHelpPagesFields_title_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_title_Delete = {
+    __typename?: 'DashboardHelpPagesFields_title_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_title_Read = {
+    __typename?: 'DashboardHelpPagesFields_title_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_title_Update = {
+    __typename?: 'DashboardHelpPagesFields_title_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_updatedAt = {
+    __typename?: 'DashboardHelpPagesFields_updatedAt';
+    create?: Maybe<DashboardHelpPagesFields_updatedAt_Create>;
+    delete?: Maybe<DashboardHelpPagesFields_updatedAt_Delete>;
+    read?: Maybe<DashboardHelpPagesFields_updatedAt_Read>;
+    update?: Maybe<DashboardHelpPagesFields_updatedAt_Update>;
+};
+
+export type DashboardHelpPagesFields_updatedAt_Create = {
+    __typename?: 'DashboardHelpPagesFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_updatedAt_Delete = {
+    __typename?: 'DashboardHelpPagesFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_updatedAt_Read = {
+    __typename?: 'DashboardHelpPagesFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesFields_updatedAt_Update = {
+    __typename?: 'DashboardHelpPagesFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardHelpPagesReadAccess = {
+    __typename?: 'DashboardHelpPagesReadAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardHelpPagesReadDocAccess = {
+    __typename?: 'DashboardHelpPagesReadDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardHelpPagesUpdateAccess = {
+    __typename?: 'DashboardHelpPagesUpdateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardHelpPagesUpdateDocAccess = {
+    __typename?: 'DashboardHelpPagesUpdateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardImage = {
+    __typename?: 'DashboardImage';
+    alt: Scalars['String']['output'];
+    createdAt?: Maybe<Scalars['DateTime']['output']>;
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    focalX?: Maybe<Scalars['Float']['output']>;
+    focalY?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    id: Scalars['Int']['output'];
+    mimeType?: Maybe<Scalars['String']['output']>;
+    sizes?: Maybe<DashboardImage_Sizes>;
+    thumbnailURL?: Maybe<Scalars['String']['output']>;
+    updatedAt?: Maybe<Scalars['DateTime']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type DashboardImageElement = {
+    __typename?: 'DashboardImageElement';
+    blockName?: Maybe<Scalars['String']['output']>;
+    blockType?: Maybe<Scalars['String']['output']>;
+    id?: Maybe<Scalars['String']['output']>;
+    image?: Maybe<DashboardImage>;
+};
+
+export type DashboardImageText = {
+    __typename?: 'DashboardImageText';
+    blockName?: Maybe<Scalars['String']['output']>;
+    blockType?: Maybe<Scalars['String']['output']>;
+    id?: Maybe<Scalars['String']['output']>;
+    image?: Maybe<DashboardImage>;
+    text?: Maybe<Scalars['JSON']['output']>;
+    title?: Maybe<Scalars['String']['output']>;
+};
+
+export type DashboardImageText_textArgs = {
+    depth?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type DashboardImage_Sizes = {
+    __typename?: 'DashboardImage_Sizes';
+    desktop_avif?: Maybe<DashboardImage_Sizes_Desktop_avif>;
+    desktop_jpeg?: Maybe<DashboardImage_Sizes_Desktop_jpeg>;
+    desktop_webp?: Maybe<DashboardImage_Sizes_Desktop_webp>;
+    mobile_avif?: Maybe<DashboardImage_Sizes_Mobile_avif>;
+    mobile_jpeg?: Maybe<DashboardImage_Sizes_Mobile_jpeg>;
+    mobile_webp?: Maybe<DashboardImage_Sizes_Mobile_webp>;
+    tablet_avif?: Maybe<DashboardImage_Sizes_Tablet_avif>;
+    tablet_jpeg?: Maybe<DashboardImage_Sizes_Tablet_jpeg>;
+    tablet_webp?: Maybe<DashboardImage_Sizes_Tablet_webp>;
+    thumbnail_avif?: Maybe<DashboardImage_Sizes_Thumbnail_avif>;
+    thumbnail_jpeg?: Maybe<DashboardImage_Sizes_Thumbnail_jpeg>;
+    thumbnail_webp?: Maybe<DashboardImage_Sizes_Thumbnail_webp>;
+};
+
+export type DashboardImage_Sizes_Desktop_avif = {
+    __typename?: 'DashboardImage_Sizes_Desktop_avif';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type DashboardImage_Sizes_Desktop_jpeg = {
+    __typename?: 'DashboardImage_Sizes_Desktop_jpeg';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type DashboardImage_Sizes_Desktop_webp = {
+    __typename?: 'DashboardImage_Sizes_Desktop_webp';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type DashboardImage_Sizes_Mobile_avif = {
+    __typename?: 'DashboardImage_Sizes_Mobile_avif';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type DashboardImage_Sizes_Mobile_jpeg = {
+    __typename?: 'DashboardImage_Sizes_Mobile_jpeg';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type DashboardImage_Sizes_Mobile_webp = {
+    __typename?: 'DashboardImage_Sizes_Mobile_webp';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type DashboardImage_Sizes_Tablet_avif = {
+    __typename?: 'DashboardImage_Sizes_Tablet_avif';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type DashboardImage_Sizes_Tablet_jpeg = {
+    __typename?: 'DashboardImage_Sizes_Tablet_jpeg';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type DashboardImage_Sizes_Tablet_webp = {
+    __typename?: 'DashboardImage_Sizes_Tablet_webp';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type DashboardImage_Sizes_Thumbnail_avif = {
+    __typename?: 'DashboardImage_Sizes_Thumbnail_avif';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type DashboardImage_Sizes_Thumbnail_jpeg = {
+    __typename?: 'DashboardImage_Sizes_Thumbnail_jpeg';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type DashboardImage_Sizes_Thumbnail_webp = {
+    __typename?: 'DashboardImage_Sizes_Thumbnail_webp';
+    filename?: Maybe<Scalars['String']['output']>;
+    filesize?: Maybe<Scalars['Float']['output']>;
+    height?: Maybe<Scalars['Float']['output']>;
+    mimeType?: Maybe<Scalars['String']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+    width?: Maybe<Scalars['Float']['output']>;
+};
+
+export type DashboardImage_alt_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_createdAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DashboardImage_filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_focalX_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_focalY_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_id_operator = {
+    equals?: InputMaybe<Scalars['Int']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Int']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    less_than?: InputMaybe<Scalars['Int']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    not_equals?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type DashboardImage_mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__desktop_avif__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__desktop_avif__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__desktop_avif__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__desktop_avif__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__desktop_avif__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__desktop_avif__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__desktop_jpeg__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__desktop_jpeg__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__desktop_jpeg__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__desktop_jpeg__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__desktop_jpeg__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__desktop_jpeg__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__desktop_webp__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__desktop_webp__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__desktop_webp__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__desktop_webp__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__desktop_webp__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__desktop_webp__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__mobile_avif__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__mobile_avif__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__mobile_avif__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__mobile_avif__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__mobile_avif__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__mobile_avif__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__mobile_jpeg__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__mobile_jpeg__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__mobile_jpeg__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__mobile_jpeg__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__mobile_jpeg__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__mobile_jpeg__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__mobile_webp__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__mobile_webp__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__mobile_webp__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__mobile_webp__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__mobile_webp__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__mobile_webp__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__tablet_avif__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__tablet_avif__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__tablet_avif__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__tablet_avif__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__tablet_avif__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__tablet_avif__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__tablet_jpeg__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__tablet_jpeg__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__tablet_jpeg__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__tablet_jpeg__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__tablet_jpeg__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__tablet_jpeg__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__tablet_webp__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__tablet_webp__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__tablet_webp__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__tablet_webp__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__tablet_webp__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__tablet_webp__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__thumbnail_avif__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__thumbnail_avif__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__thumbnail_avif__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__thumbnail_avif__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__thumbnail_avif__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__thumbnail_avif__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__thumbnail_jpeg__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__thumbnail_jpeg__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__thumbnail_jpeg__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__thumbnail_jpeg__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__thumbnail_jpeg__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__thumbnail_jpeg__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__thumbnail_webp__filename_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__thumbnail_webp__filesize_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__thumbnail_webp__height_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_sizes__thumbnail_webp__mimeType_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__thumbnail_webp__url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_sizes__thumbnail_webp__width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImage_thumbnailURL_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_updatedAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DashboardImage_url_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardImage_where = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardImage_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardImage_where_or>>>;
+    alt?: InputMaybe<DashboardImage_alt_operator>;
+    createdAt?: InputMaybe<DashboardImage_createdAt_operator>;
+    filename?: InputMaybe<DashboardImage_filename_operator>;
+    filesize?: InputMaybe<DashboardImage_filesize_operator>;
+    focalX?: InputMaybe<DashboardImage_focalX_operator>;
+    focalY?: InputMaybe<DashboardImage_focalY_operator>;
+    height?: InputMaybe<DashboardImage_height_operator>;
+    id?: InputMaybe<DashboardImage_id_operator>;
+    mimeType?: InputMaybe<DashboardImage_mimeType_operator>;
+    sizes__desktop_avif__filename?: InputMaybe<DashboardImage_sizes__desktop_avif__filename_operator>;
+    sizes__desktop_avif__filesize?: InputMaybe<DashboardImage_sizes__desktop_avif__filesize_operator>;
+    sizes__desktop_avif__height?: InputMaybe<DashboardImage_sizes__desktop_avif__height_operator>;
+    sizes__desktop_avif__mimeType?: InputMaybe<DashboardImage_sizes__desktop_avif__mimeType_operator>;
+    sizes__desktop_avif__url?: InputMaybe<DashboardImage_sizes__desktop_avif__url_operator>;
+    sizes__desktop_avif__width?: InputMaybe<DashboardImage_sizes__desktop_avif__width_operator>;
+    sizes__desktop_jpeg__filename?: InputMaybe<DashboardImage_sizes__desktop_jpeg__filename_operator>;
+    sizes__desktop_jpeg__filesize?: InputMaybe<DashboardImage_sizes__desktop_jpeg__filesize_operator>;
+    sizes__desktop_jpeg__height?: InputMaybe<DashboardImage_sizes__desktop_jpeg__height_operator>;
+    sizes__desktop_jpeg__mimeType?: InputMaybe<DashboardImage_sizes__desktop_jpeg__mimeType_operator>;
+    sizes__desktop_jpeg__url?: InputMaybe<DashboardImage_sizes__desktop_jpeg__url_operator>;
+    sizes__desktop_jpeg__width?: InputMaybe<DashboardImage_sizes__desktop_jpeg__width_operator>;
+    sizes__desktop_webp__filename?: InputMaybe<DashboardImage_sizes__desktop_webp__filename_operator>;
+    sizes__desktop_webp__filesize?: InputMaybe<DashboardImage_sizes__desktop_webp__filesize_operator>;
+    sizes__desktop_webp__height?: InputMaybe<DashboardImage_sizes__desktop_webp__height_operator>;
+    sizes__desktop_webp__mimeType?: InputMaybe<DashboardImage_sizes__desktop_webp__mimeType_operator>;
+    sizes__desktop_webp__url?: InputMaybe<DashboardImage_sizes__desktop_webp__url_operator>;
+    sizes__desktop_webp__width?: InputMaybe<DashboardImage_sizes__desktop_webp__width_operator>;
+    sizes__mobile_avif__filename?: InputMaybe<DashboardImage_sizes__mobile_avif__filename_operator>;
+    sizes__mobile_avif__filesize?: InputMaybe<DashboardImage_sizes__mobile_avif__filesize_operator>;
+    sizes__mobile_avif__height?: InputMaybe<DashboardImage_sizes__mobile_avif__height_operator>;
+    sizes__mobile_avif__mimeType?: InputMaybe<DashboardImage_sizes__mobile_avif__mimeType_operator>;
+    sizes__mobile_avif__url?: InputMaybe<DashboardImage_sizes__mobile_avif__url_operator>;
+    sizes__mobile_avif__width?: InputMaybe<DashboardImage_sizes__mobile_avif__width_operator>;
+    sizes__mobile_jpeg__filename?: InputMaybe<DashboardImage_sizes__mobile_jpeg__filename_operator>;
+    sizes__mobile_jpeg__filesize?: InputMaybe<DashboardImage_sizes__mobile_jpeg__filesize_operator>;
+    sizes__mobile_jpeg__height?: InputMaybe<DashboardImage_sizes__mobile_jpeg__height_operator>;
+    sizes__mobile_jpeg__mimeType?: InputMaybe<DashboardImage_sizes__mobile_jpeg__mimeType_operator>;
+    sizes__mobile_jpeg__url?: InputMaybe<DashboardImage_sizes__mobile_jpeg__url_operator>;
+    sizes__mobile_jpeg__width?: InputMaybe<DashboardImage_sizes__mobile_jpeg__width_operator>;
+    sizes__mobile_webp__filename?: InputMaybe<DashboardImage_sizes__mobile_webp__filename_operator>;
+    sizes__mobile_webp__filesize?: InputMaybe<DashboardImage_sizes__mobile_webp__filesize_operator>;
+    sizes__mobile_webp__height?: InputMaybe<DashboardImage_sizes__mobile_webp__height_operator>;
+    sizes__mobile_webp__mimeType?: InputMaybe<DashboardImage_sizes__mobile_webp__mimeType_operator>;
+    sizes__mobile_webp__url?: InputMaybe<DashboardImage_sizes__mobile_webp__url_operator>;
+    sizes__mobile_webp__width?: InputMaybe<DashboardImage_sizes__mobile_webp__width_operator>;
+    sizes__tablet_avif__filename?: InputMaybe<DashboardImage_sizes__tablet_avif__filename_operator>;
+    sizes__tablet_avif__filesize?: InputMaybe<DashboardImage_sizes__tablet_avif__filesize_operator>;
+    sizes__tablet_avif__height?: InputMaybe<DashboardImage_sizes__tablet_avif__height_operator>;
+    sizes__tablet_avif__mimeType?: InputMaybe<DashboardImage_sizes__tablet_avif__mimeType_operator>;
+    sizes__tablet_avif__url?: InputMaybe<DashboardImage_sizes__tablet_avif__url_operator>;
+    sizes__tablet_avif__width?: InputMaybe<DashboardImage_sizes__tablet_avif__width_operator>;
+    sizes__tablet_jpeg__filename?: InputMaybe<DashboardImage_sizes__tablet_jpeg__filename_operator>;
+    sizes__tablet_jpeg__filesize?: InputMaybe<DashboardImage_sizes__tablet_jpeg__filesize_operator>;
+    sizes__tablet_jpeg__height?: InputMaybe<DashboardImage_sizes__tablet_jpeg__height_operator>;
+    sizes__tablet_jpeg__mimeType?: InputMaybe<DashboardImage_sizes__tablet_jpeg__mimeType_operator>;
+    sizes__tablet_jpeg__url?: InputMaybe<DashboardImage_sizes__tablet_jpeg__url_operator>;
+    sizes__tablet_jpeg__width?: InputMaybe<DashboardImage_sizes__tablet_jpeg__width_operator>;
+    sizes__tablet_webp__filename?: InputMaybe<DashboardImage_sizes__tablet_webp__filename_operator>;
+    sizes__tablet_webp__filesize?: InputMaybe<DashboardImage_sizes__tablet_webp__filesize_operator>;
+    sizes__tablet_webp__height?: InputMaybe<DashboardImage_sizes__tablet_webp__height_operator>;
+    sizes__tablet_webp__mimeType?: InputMaybe<DashboardImage_sizes__tablet_webp__mimeType_operator>;
+    sizes__tablet_webp__url?: InputMaybe<DashboardImage_sizes__tablet_webp__url_operator>;
+    sizes__tablet_webp__width?: InputMaybe<DashboardImage_sizes__tablet_webp__width_operator>;
+    sizes__thumbnail_avif__filename?: InputMaybe<DashboardImage_sizes__thumbnail_avif__filename_operator>;
+    sizes__thumbnail_avif__filesize?: InputMaybe<DashboardImage_sizes__thumbnail_avif__filesize_operator>;
+    sizes__thumbnail_avif__height?: InputMaybe<DashboardImage_sizes__thumbnail_avif__height_operator>;
+    sizes__thumbnail_avif__mimeType?: InputMaybe<DashboardImage_sizes__thumbnail_avif__mimeType_operator>;
+    sizes__thumbnail_avif__url?: InputMaybe<DashboardImage_sizes__thumbnail_avif__url_operator>;
+    sizes__thumbnail_avif__width?: InputMaybe<DashboardImage_sizes__thumbnail_avif__width_operator>;
+    sizes__thumbnail_jpeg__filename?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__filename_operator>;
+    sizes__thumbnail_jpeg__filesize?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__filesize_operator>;
+    sizes__thumbnail_jpeg__height?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__height_operator>;
+    sizes__thumbnail_jpeg__mimeType?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__mimeType_operator>;
+    sizes__thumbnail_jpeg__url?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__url_operator>;
+    sizes__thumbnail_jpeg__width?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__width_operator>;
+    sizes__thumbnail_webp__filename?: InputMaybe<DashboardImage_sizes__thumbnail_webp__filename_operator>;
+    sizes__thumbnail_webp__filesize?: InputMaybe<DashboardImage_sizes__thumbnail_webp__filesize_operator>;
+    sizes__thumbnail_webp__height?: InputMaybe<DashboardImage_sizes__thumbnail_webp__height_operator>;
+    sizes__thumbnail_webp__mimeType?: InputMaybe<DashboardImage_sizes__thumbnail_webp__mimeType_operator>;
+    sizes__thumbnail_webp__url?: InputMaybe<DashboardImage_sizes__thumbnail_webp__url_operator>;
+    sizes__thumbnail_webp__width?: InputMaybe<DashboardImage_sizes__thumbnail_webp__width_operator>;
+    thumbnailURL?: InputMaybe<DashboardImage_thumbnailURL_operator>;
+    updatedAt?: InputMaybe<DashboardImage_updatedAt_operator>;
+    url?: InputMaybe<DashboardImage_url_operator>;
+    width?: InputMaybe<DashboardImage_width_operator>;
+};
+
+export type DashboardImage_where_and = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardImage_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardImage_where_or>>>;
+    alt?: InputMaybe<DashboardImage_alt_operator>;
+    createdAt?: InputMaybe<DashboardImage_createdAt_operator>;
+    filename?: InputMaybe<DashboardImage_filename_operator>;
+    filesize?: InputMaybe<DashboardImage_filesize_operator>;
+    focalX?: InputMaybe<DashboardImage_focalX_operator>;
+    focalY?: InputMaybe<DashboardImage_focalY_operator>;
+    height?: InputMaybe<DashboardImage_height_operator>;
+    id?: InputMaybe<DashboardImage_id_operator>;
+    mimeType?: InputMaybe<DashboardImage_mimeType_operator>;
+    sizes__desktop_avif__filename?: InputMaybe<DashboardImage_sizes__desktop_avif__filename_operator>;
+    sizes__desktop_avif__filesize?: InputMaybe<DashboardImage_sizes__desktop_avif__filesize_operator>;
+    sizes__desktop_avif__height?: InputMaybe<DashboardImage_sizes__desktop_avif__height_operator>;
+    sizes__desktop_avif__mimeType?: InputMaybe<DashboardImage_sizes__desktop_avif__mimeType_operator>;
+    sizes__desktop_avif__url?: InputMaybe<DashboardImage_sizes__desktop_avif__url_operator>;
+    sizes__desktop_avif__width?: InputMaybe<DashboardImage_sizes__desktop_avif__width_operator>;
+    sizes__desktop_jpeg__filename?: InputMaybe<DashboardImage_sizes__desktop_jpeg__filename_operator>;
+    sizes__desktop_jpeg__filesize?: InputMaybe<DashboardImage_sizes__desktop_jpeg__filesize_operator>;
+    sizes__desktop_jpeg__height?: InputMaybe<DashboardImage_sizes__desktop_jpeg__height_operator>;
+    sizes__desktop_jpeg__mimeType?: InputMaybe<DashboardImage_sizes__desktop_jpeg__mimeType_operator>;
+    sizes__desktop_jpeg__url?: InputMaybe<DashboardImage_sizes__desktop_jpeg__url_operator>;
+    sizes__desktop_jpeg__width?: InputMaybe<DashboardImage_sizes__desktop_jpeg__width_operator>;
+    sizes__desktop_webp__filename?: InputMaybe<DashboardImage_sizes__desktop_webp__filename_operator>;
+    sizes__desktop_webp__filesize?: InputMaybe<DashboardImage_sizes__desktop_webp__filesize_operator>;
+    sizes__desktop_webp__height?: InputMaybe<DashboardImage_sizes__desktop_webp__height_operator>;
+    sizes__desktop_webp__mimeType?: InputMaybe<DashboardImage_sizes__desktop_webp__mimeType_operator>;
+    sizes__desktop_webp__url?: InputMaybe<DashboardImage_sizes__desktop_webp__url_operator>;
+    sizes__desktop_webp__width?: InputMaybe<DashboardImage_sizes__desktop_webp__width_operator>;
+    sizes__mobile_avif__filename?: InputMaybe<DashboardImage_sizes__mobile_avif__filename_operator>;
+    sizes__mobile_avif__filesize?: InputMaybe<DashboardImage_sizes__mobile_avif__filesize_operator>;
+    sizes__mobile_avif__height?: InputMaybe<DashboardImage_sizes__mobile_avif__height_operator>;
+    sizes__mobile_avif__mimeType?: InputMaybe<DashboardImage_sizes__mobile_avif__mimeType_operator>;
+    sizes__mobile_avif__url?: InputMaybe<DashboardImage_sizes__mobile_avif__url_operator>;
+    sizes__mobile_avif__width?: InputMaybe<DashboardImage_sizes__mobile_avif__width_operator>;
+    sizes__mobile_jpeg__filename?: InputMaybe<DashboardImage_sizes__mobile_jpeg__filename_operator>;
+    sizes__mobile_jpeg__filesize?: InputMaybe<DashboardImage_sizes__mobile_jpeg__filesize_operator>;
+    sizes__mobile_jpeg__height?: InputMaybe<DashboardImage_sizes__mobile_jpeg__height_operator>;
+    sizes__mobile_jpeg__mimeType?: InputMaybe<DashboardImage_sizes__mobile_jpeg__mimeType_operator>;
+    sizes__mobile_jpeg__url?: InputMaybe<DashboardImage_sizes__mobile_jpeg__url_operator>;
+    sizes__mobile_jpeg__width?: InputMaybe<DashboardImage_sizes__mobile_jpeg__width_operator>;
+    sizes__mobile_webp__filename?: InputMaybe<DashboardImage_sizes__mobile_webp__filename_operator>;
+    sizes__mobile_webp__filesize?: InputMaybe<DashboardImage_sizes__mobile_webp__filesize_operator>;
+    sizes__mobile_webp__height?: InputMaybe<DashboardImage_sizes__mobile_webp__height_operator>;
+    sizes__mobile_webp__mimeType?: InputMaybe<DashboardImage_sizes__mobile_webp__mimeType_operator>;
+    sizes__mobile_webp__url?: InputMaybe<DashboardImage_sizes__mobile_webp__url_operator>;
+    sizes__mobile_webp__width?: InputMaybe<DashboardImage_sizes__mobile_webp__width_operator>;
+    sizes__tablet_avif__filename?: InputMaybe<DashboardImage_sizes__tablet_avif__filename_operator>;
+    sizes__tablet_avif__filesize?: InputMaybe<DashboardImage_sizes__tablet_avif__filesize_operator>;
+    sizes__tablet_avif__height?: InputMaybe<DashboardImage_sizes__tablet_avif__height_operator>;
+    sizes__tablet_avif__mimeType?: InputMaybe<DashboardImage_sizes__tablet_avif__mimeType_operator>;
+    sizes__tablet_avif__url?: InputMaybe<DashboardImage_sizes__tablet_avif__url_operator>;
+    sizes__tablet_avif__width?: InputMaybe<DashboardImage_sizes__tablet_avif__width_operator>;
+    sizes__tablet_jpeg__filename?: InputMaybe<DashboardImage_sizes__tablet_jpeg__filename_operator>;
+    sizes__tablet_jpeg__filesize?: InputMaybe<DashboardImage_sizes__tablet_jpeg__filesize_operator>;
+    sizes__tablet_jpeg__height?: InputMaybe<DashboardImage_sizes__tablet_jpeg__height_operator>;
+    sizes__tablet_jpeg__mimeType?: InputMaybe<DashboardImage_sizes__tablet_jpeg__mimeType_operator>;
+    sizes__tablet_jpeg__url?: InputMaybe<DashboardImage_sizes__tablet_jpeg__url_operator>;
+    sizes__tablet_jpeg__width?: InputMaybe<DashboardImage_sizes__tablet_jpeg__width_operator>;
+    sizes__tablet_webp__filename?: InputMaybe<DashboardImage_sizes__tablet_webp__filename_operator>;
+    sizes__tablet_webp__filesize?: InputMaybe<DashboardImage_sizes__tablet_webp__filesize_operator>;
+    sizes__tablet_webp__height?: InputMaybe<DashboardImage_sizes__tablet_webp__height_operator>;
+    sizes__tablet_webp__mimeType?: InputMaybe<DashboardImage_sizes__tablet_webp__mimeType_operator>;
+    sizes__tablet_webp__url?: InputMaybe<DashboardImage_sizes__tablet_webp__url_operator>;
+    sizes__tablet_webp__width?: InputMaybe<DashboardImage_sizes__tablet_webp__width_operator>;
+    sizes__thumbnail_avif__filename?: InputMaybe<DashboardImage_sizes__thumbnail_avif__filename_operator>;
+    sizes__thumbnail_avif__filesize?: InputMaybe<DashboardImage_sizes__thumbnail_avif__filesize_operator>;
+    sizes__thumbnail_avif__height?: InputMaybe<DashboardImage_sizes__thumbnail_avif__height_operator>;
+    sizes__thumbnail_avif__mimeType?: InputMaybe<DashboardImage_sizes__thumbnail_avif__mimeType_operator>;
+    sizes__thumbnail_avif__url?: InputMaybe<DashboardImage_sizes__thumbnail_avif__url_operator>;
+    sizes__thumbnail_avif__width?: InputMaybe<DashboardImage_sizes__thumbnail_avif__width_operator>;
+    sizes__thumbnail_jpeg__filename?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__filename_operator>;
+    sizes__thumbnail_jpeg__filesize?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__filesize_operator>;
+    sizes__thumbnail_jpeg__height?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__height_operator>;
+    sizes__thumbnail_jpeg__mimeType?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__mimeType_operator>;
+    sizes__thumbnail_jpeg__url?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__url_operator>;
+    sizes__thumbnail_jpeg__width?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__width_operator>;
+    sizes__thumbnail_webp__filename?: InputMaybe<DashboardImage_sizes__thumbnail_webp__filename_operator>;
+    sizes__thumbnail_webp__filesize?: InputMaybe<DashboardImage_sizes__thumbnail_webp__filesize_operator>;
+    sizes__thumbnail_webp__height?: InputMaybe<DashboardImage_sizes__thumbnail_webp__height_operator>;
+    sizes__thumbnail_webp__mimeType?: InputMaybe<DashboardImage_sizes__thumbnail_webp__mimeType_operator>;
+    sizes__thumbnail_webp__url?: InputMaybe<DashboardImage_sizes__thumbnail_webp__url_operator>;
+    sizes__thumbnail_webp__width?: InputMaybe<DashboardImage_sizes__thumbnail_webp__width_operator>;
+    thumbnailURL?: InputMaybe<DashboardImage_thumbnailURL_operator>;
+    updatedAt?: InputMaybe<DashboardImage_updatedAt_operator>;
+    url?: InputMaybe<DashboardImage_url_operator>;
+    width?: InputMaybe<DashboardImage_width_operator>;
+};
+
+export type DashboardImage_where_or = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardImage_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardImage_where_or>>>;
+    alt?: InputMaybe<DashboardImage_alt_operator>;
+    createdAt?: InputMaybe<DashboardImage_createdAt_operator>;
+    filename?: InputMaybe<DashboardImage_filename_operator>;
+    filesize?: InputMaybe<DashboardImage_filesize_operator>;
+    focalX?: InputMaybe<DashboardImage_focalX_operator>;
+    focalY?: InputMaybe<DashboardImage_focalY_operator>;
+    height?: InputMaybe<DashboardImage_height_operator>;
+    id?: InputMaybe<DashboardImage_id_operator>;
+    mimeType?: InputMaybe<DashboardImage_mimeType_operator>;
+    sizes__desktop_avif__filename?: InputMaybe<DashboardImage_sizes__desktop_avif__filename_operator>;
+    sizes__desktop_avif__filesize?: InputMaybe<DashboardImage_sizes__desktop_avif__filesize_operator>;
+    sizes__desktop_avif__height?: InputMaybe<DashboardImage_sizes__desktop_avif__height_operator>;
+    sizes__desktop_avif__mimeType?: InputMaybe<DashboardImage_sizes__desktop_avif__mimeType_operator>;
+    sizes__desktop_avif__url?: InputMaybe<DashboardImage_sizes__desktop_avif__url_operator>;
+    sizes__desktop_avif__width?: InputMaybe<DashboardImage_sizes__desktop_avif__width_operator>;
+    sizes__desktop_jpeg__filename?: InputMaybe<DashboardImage_sizes__desktop_jpeg__filename_operator>;
+    sizes__desktop_jpeg__filesize?: InputMaybe<DashboardImage_sizes__desktop_jpeg__filesize_operator>;
+    sizes__desktop_jpeg__height?: InputMaybe<DashboardImage_sizes__desktop_jpeg__height_operator>;
+    sizes__desktop_jpeg__mimeType?: InputMaybe<DashboardImage_sizes__desktop_jpeg__mimeType_operator>;
+    sizes__desktop_jpeg__url?: InputMaybe<DashboardImage_sizes__desktop_jpeg__url_operator>;
+    sizes__desktop_jpeg__width?: InputMaybe<DashboardImage_sizes__desktop_jpeg__width_operator>;
+    sizes__desktop_webp__filename?: InputMaybe<DashboardImage_sizes__desktop_webp__filename_operator>;
+    sizes__desktop_webp__filesize?: InputMaybe<DashboardImage_sizes__desktop_webp__filesize_operator>;
+    sizes__desktop_webp__height?: InputMaybe<DashboardImage_sizes__desktop_webp__height_operator>;
+    sizes__desktop_webp__mimeType?: InputMaybe<DashboardImage_sizes__desktop_webp__mimeType_operator>;
+    sizes__desktop_webp__url?: InputMaybe<DashboardImage_sizes__desktop_webp__url_operator>;
+    sizes__desktop_webp__width?: InputMaybe<DashboardImage_sizes__desktop_webp__width_operator>;
+    sizes__mobile_avif__filename?: InputMaybe<DashboardImage_sizes__mobile_avif__filename_operator>;
+    sizes__mobile_avif__filesize?: InputMaybe<DashboardImage_sizes__mobile_avif__filesize_operator>;
+    sizes__mobile_avif__height?: InputMaybe<DashboardImage_sizes__mobile_avif__height_operator>;
+    sizes__mobile_avif__mimeType?: InputMaybe<DashboardImage_sizes__mobile_avif__mimeType_operator>;
+    sizes__mobile_avif__url?: InputMaybe<DashboardImage_sizes__mobile_avif__url_operator>;
+    sizes__mobile_avif__width?: InputMaybe<DashboardImage_sizes__mobile_avif__width_operator>;
+    sizes__mobile_jpeg__filename?: InputMaybe<DashboardImage_sizes__mobile_jpeg__filename_operator>;
+    sizes__mobile_jpeg__filesize?: InputMaybe<DashboardImage_sizes__mobile_jpeg__filesize_operator>;
+    sizes__mobile_jpeg__height?: InputMaybe<DashboardImage_sizes__mobile_jpeg__height_operator>;
+    sizes__mobile_jpeg__mimeType?: InputMaybe<DashboardImage_sizes__mobile_jpeg__mimeType_operator>;
+    sizes__mobile_jpeg__url?: InputMaybe<DashboardImage_sizes__mobile_jpeg__url_operator>;
+    sizes__mobile_jpeg__width?: InputMaybe<DashboardImage_sizes__mobile_jpeg__width_operator>;
+    sizes__mobile_webp__filename?: InputMaybe<DashboardImage_sizes__mobile_webp__filename_operator>;
+    sizes__mobile_webp__filesize?: InputMaybe<DashboardImage_sizes__mobile_webp__filesize_operator>;
+    sizes__mobile_webp__height?: InputMaybe<DashboardImage_sizes__mobile_webp__height_operator>;
+    sizes__mobile_webp__mimeType?: InputMaybe<DashboardImage_sizes__mobile_webp__mimeType_operator>;
+    sizes__mobile_webp__url?: InputMaybe<DashboardImage_sizes__mobile_webp__url_operator>;
+    sizes__mobile_webp__width?: InputMaybe<DashboardImage_sizes__mobile_webp__width_operator>;
+    sizes__tablet_avif__filename?: InputMaybe<DashboardImage_sizes__tablet_avif__filename_operator>;
+    sizes__tablet_avif__filesize?: InputMaybe<DashboardImage_sizes__tablet_avif__filesize_operator>;
+    sizes__tablet_avif__height?: InputMaybe<DashboardImage_sizes__tablet_avif__height_operator>;
+    sizes__tablet_avif__mimeType?: InputMaybe<DashboardImage_sizes__tablet_avif__mimeType_operator>;
+    sizes__tablet_avif__url?: InputMaybe<DashboardImage_sizes__tablet_avif__url_operator>;
+    sizes__tablet_avif__width?: InputMaybe<DashboardImage_sizes__tablet_avif__width_operator>;
+    sizes__tablet_jpeg__filename?: InputMaybe<DashboardImage_sizes__tablet_jpeg__filename_operator>;
+    sizes__tablet_jpeg__filesize?: InputMaybe<DashboardImage_sizes__tablet_jpeg__filesize_operator>;
+    sizes__tablet_jpeg__height?: InputMaybe<DashboardImage_sizes__tablet_jpeg__height_operator>;
+    sizes__tablet_jpeg__mimeType?: InputMaybe<DashboardImage_sizes__tablet_jpeg__mimeType_operator>;
+    sizes__tablet_jpeg__url?: InputMaybe<DashboardImage_sizes__tablet_jpeg__url_operator>;
+    sizes__tablet_jpeg__width?: InputMaybe<DashboardImage_sizes__tablet_jpeg__width_operator>;
+    sizes__tablet_webp__filename?: InputMaybe<DashboardImage_sizes__tablet_webp__filename_operator>;
+    sizes__tablet_webp__filesize?: InputMaybe<DashboardImage_sizes__tablet_webp__filesize_operator>;
+    sizes__tablet_webp__height?: InputMaybe<DashboardImage_sizes__tablet_webp__height_operator>;
+    sizes__tablet_webp__mimeType?: InputMaybe<DashboardImage_sizes__tablet_webp__mimeType_operator>;
+    sizes__tablet_webp__url?: InputMaybe<DashboardImage_sizes__tablet_webp__url_operator>;
+    sizes__tablet_webp__width?: InputMaybe<DashboardImage_sizes__tablet_webp__width_operator>;
+    sizes__thumbnail_avif__filename?: InputMaybe<DashboardImage_sizes__thumbnail_avif__filename_operator>;
+    sizes__thumbnail_avif__filesize?: InputMaybe<DashboardImage_sizes__thumbnail_avif__filesize_operator>;
+    sizes__thumbnail_avif__height?: InputMaybe<DashboardImage_sizes__thumbnail_avif__height_operator>;
+    sizes__thumbnail_avif__mimeType?: InputMaybe<DashboardImage_sizes__thumbnail_avif__mimeType_operator>;
+    sizes__thumbnail_avif__url?: InputMaybe<DashboardImage_sizes__thumbnail_avif__url_operator>;
+    sizes__thumbnail_avif__width?: InputMaybe<DashboardImage_sizes__thumbnail_avif__width_operator>;
+    sizes__thumbnail_jpeg__filename?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__filename_operator>;
+    sizes__thumbnail_jpeg__filesize?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__filesize_operator>;
+    sizes__thumbnail_jpeg__height?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__height_operator>;
+    sizes__thumbnail_jpeg__mimeType?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__mimeType_operator>;
+    sizes__thumbnail_jpeg__url?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__url_operator>;
+    sizes__thumbnail_jpeg__width?: InputMaybe<DashboardImage_sizes__thumbnail_jpeg__width_operator>;
+    sizes__thumbnail_webp__filename?: InputMaybe<DashboardImage_sizes__thumbnail_webp__filename_operator>;
+    sizes__thumbnail_webp__filesize?: InputMaybe<DashboardImage_sizes__thumbnail_webp__filesize_operator>;
+    sizes__thumbnail_webp__height?: InputMaybe<DashboardImage_sizes__thumbnail_webp__height_operator>;
+    sizes__thumbnail_webp__mimeType?: InputMaybe<DashboardImage_sizes__thumbnail_webp__mimeType_operator>;
+    sizes__thumbnail_webp__url?: InputMaybe<DashboardImage_sizes__thumbnail_webp__url_operator>;
+    sizes__thumbnail_webp__width?: InputMaybe<DashboardImage_sizes__thumbnail_webp__width_operator>;
+    thumbnailURL?: InputMaybe<DashboardImage_thumbnailURL_operator>;
+    updatedAt?: InputMaybe<DashboardImage_updatedAt_operator>;
+    url?: InputMaybe<DashboardImage_url_operator>;
+    width?: InputMaybe<DashboardImage_width_operator>;
+};
+
+export type DashboardImage_width_operator = {
+    equals?: InputMaybe<Scalars['Float']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Float']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    less_than?: InputMaybe<Scalars['Float']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Float']['input']>;
+    not_equals?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type DashboardImages = {
+    __typename?: 'DashboardImages';
+    docs: Array<DashboardImage>;
+    hasNextPage: Scalars['Boolean']['output'];
+    hasPrevPage: Scalars['Boolean']['output'];
+    limit: Scalars['Int']['output'];
+    nextPage?: Maybe<Scalars['Int']['output']>;
+    offset?: Maybe<Scalars['Int']['output']>;
+    page: Scalars['Int']['output'];
+    pagingCounter: Scalars['Int']['output'];
+    prevPage?: Maybe<Scalars['Int']['output']>;
+    totalDocs: Scalars['Int']['output'];
+    totalPages: Scalars['Int']['output'];
+};
+
+export type DashboardImagesCreateAccess = {
+    __typename?: 'DashboardImagesCreateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardImagesCreateDocAccess = {
+    __typename?: 'DashboardImagesCreateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardImagesDeleteAccess = {
+    __typename?: 'DashboardImagesDeleteAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardImagesDeleteDocAccess = {
+    __typename?: 'DashboardImagesDeleteDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardImagesDocAccessFields = {
+    __typename?: 'DashboardImagesDocAccessFields';
+    alt?: Maybe<DashboardImagesDocAccessFields_alt>;
+    createdAt?: Maybe<DashboardImagesDocAccessFields_createdAt>;
+    filename?: Maybe<DashboardImagesDocAccessFields_filename>;
+    filesize?: Maybe<DashboardImagesDocAccessFields_filesize>;
+    focalX?: Maybe<DashboardImagesDocAccessFields_focalX>;
+    focalY?: Maybe<DashboardImagesDocAccessFields_focalY>;
+    height?: Maybe<DashboardImagesDocAccessFields_height>;
+    mimeType?: Maybe<DashboardImagesDocAccessFields_mimeType>;
+    sizes?: Maybe<DashboardImagesDocAccessFields_sizes>;
+    thumbnailURL?: Maybe<DashboardImagesDocAccessFields_thumbnailURL>;
+    updatedAt?: Maybe<DashboardImagesDocAccessFields_updatedAt>;
+    url?: Maybe<DashboardImagesDocAccessFields_url>;
+    width?: Maybe<DashboardImagesDocAccessFields_width>;
+};
+
+export type DashboardImagesDocAccessFields_alt = {
+    __typename?: 'DashboardImagesDocAccessFields_alt';
+    create?: Maybe<DashboardImagesDocAccessFields_alt_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_alt_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_alt_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_alt_Update>;
+};
+
+export type DashboardImagesDocAccessFields_alt_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_alt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_alt_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_alt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_alt_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_alt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_alt_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_alt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_createdAt = {
+    __typename?: 'DashboardImagesDocAccessFields_createdAt';
+    create?: Maybe<DashboardImagesDocAccessFields_createdAt_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_createdAt_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_createdAt_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_createdAt_Update>;
+};
+
+export type DashboardImagesDocAccessFields_createdAt_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_createdAt_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_createdAt_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_createdAt_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_filename = {
+    __typename?: 'DashboardImagesDocAccessFields_filename';
+    create?: Maybe<DashboardImagesDocAccessFields_filename_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_filename_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_filename_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_filename_Update>;
+};
+
+export type DashboardImagesDocAccessFields_filename_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_filename_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_filename_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_filename_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_filesize = {
+    __typename?: 'DashboardImagesDocAccessFields_filesize';
+    create?: Maybe<DashboardImagesDocAccessFields_filesize_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_filesize_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_filesize_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_filesize_Update>;
+};
+
+export type DashboardImagesDocAccessFields_filesize_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_filesize_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_filesize_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_filesize_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_focalX = {
+    __typename?: 'DashboardImagesDocAccessFields_focalX';
+    create?: Maybe<DashboardImagesDocAccessFields_focalX_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_focalX_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_focalX_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_focalX_Update>;
+};
+
+export type DashboardImagesDocAccessFields_focalX_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_focalX_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_focalX_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_focalX_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_focalX_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_focalX_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_focalX_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_focalX_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_focalY = {
+    __typename?: 'DashboardImagesDocAccessFields_focalY';
+    create?: Maybe<DashboardImagesDocAccessFields_focalY_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_focalY_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_focalY_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_focalY_Update>;
+};
+
+export type DashboardImagesDocAccessFields_focalY_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_focalY_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_focalY_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_focalY_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_focalY_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_focalY_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_focalY_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_focalY_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_height = {
+    __typename?: 'DashboardImagesDocAccessFields_height';
+    create?: Maybe<DashboardImagesDocAccessFields_height_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_height_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_height_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_height_Update>;
+};
+
+export type DashboardImagesDocAccessFields_height_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_height_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_height_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_height_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_mimeType = {
+    __typename?: 'DashboardImagesDocAccessFields_mimeType';
+    create?: Maybe<DashboardImagesDocAccessFields_mimeType_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_mimeType_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_mimeType_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_mimeType_Update>;
+};
+
+export type DashboardImagesDocAccessFields_mimeType_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_mimeType_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_mimeType_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_mimeType_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_Delete>;
+    fields?: Maybe<DashboardImagesDocAccessFields_sizes_Fields>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_Fields = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_Fields';
+    desktop_avif?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif>;
+    desktop_jpeg?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg>;
+    desktop_webp?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp>;
+    mobile_avif?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif>;
+    mobile_jpeg?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg>;
+    mobile_webp?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp>;
+    tablet_avif?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif>;
+    tablet_jpeg?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg>;
+    tablet_webp?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp>;
+    thumbnail_avif?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif>;
+    thumbnail_jpeg?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg>;
+    thumbnail_webp?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_Delete>;
+    fields?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_Fields>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_Fields = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_Fields';
+    filename?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_filename>;
+    filesize?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_filesize>;
+    height?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_height>;
+    mimeType?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_mimeType>;
+    url?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_url>;
+    width?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_width>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_filename = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_filename';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_filename_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_filename_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_filename_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_filename_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_filename_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_filename_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_filename_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_filename_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_filesize = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_filesize';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_filesize_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_filesize_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_filesize_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_filesize_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_filesize_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_filesize_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_filesize_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_filesize_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_height = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_height';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_height_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_height_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_height_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_height_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_height_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_height_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_height_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_height_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_mimeType = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_mimeType';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_mimeType_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_mimeType_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_mimeType_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_mimeType_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_mimeType_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_mimeType_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_mimeType_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_mimeType_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_url = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_url';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_url_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_url_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_url_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_url_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_url_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_url_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_url_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_url_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_width = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_width';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_width_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_width_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_width_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_avif_width_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_width_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_width_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_width_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_avif_width_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_Delete>;
+    fields?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_Fields>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_Fields = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_Fields';
+    filename?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_filename>;
+    filesize?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_filesize>;
+    height?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_height>;
+    mimeType?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_mimeType>;
+    url?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_url>;
+    width?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_width>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_filename = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_filename';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_filename_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_filename_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_filename_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_filename_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_filename_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_filename_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_filename_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_filename_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_filesize = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_filesize';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_filesize_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_filesize_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_filesize_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_filesize_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_filesize_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_filesize_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_filesize_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_filesize_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_height = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_height';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_height_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_height_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_height_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_height_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_height_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_height_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_height_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_height_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_mimeType = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_mimeType';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_url = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_url';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_url_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_url_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_url_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_url_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_url_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_url_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_url_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_url_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_width = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_width';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_width_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_width_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_width_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_jpeg_width_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_width_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_width_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_width_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_jpeg_width_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_Delete>;
+    fields?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_Fields>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_Fields = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_Fields';
+    filename?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_filename>;
+    filesize?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_filesize>;
+    height?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_height>;
+    mimeType?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_mimeType>;
+    url?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_url>;
+    width?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_width>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_filename = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_filename';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_filename_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_filename_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_filename_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_filename_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_filename_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_filename_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_filename_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_filename_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_filesize = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_filesize';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_filesize_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_filesize_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_filesize_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_filesize_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_filesize_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_filesize_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_filesize_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_filesize_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_height = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_height';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_height_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_height_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_height_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_height_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_height_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_height_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_height_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_height_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_mimeType = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_mimeType';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_mimeType_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_mimeType_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_mimeType_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_mimeType_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_mimeType_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_mimeType_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_mimeType_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_mimeType_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_url = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_url';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_url_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_url_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_url_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_url_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_url_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_url_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_url_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_url_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_width = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_width';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_width_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_width_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_width_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_desktop_webp_width_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_width_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_width_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_width_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_desktop_webp_width_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_desktop_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_Delete>;
+    fields?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_Fields>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_Fields = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_Fields';
+    filename?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_filename>;
+    filesize?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_filesize>;
+    height?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_height>;
+    mimeType?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_mimeType>;
+    url?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_url>;
+    width?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_width>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_filename = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_filename';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_filename_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_filename_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_filename_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_filename_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_filename_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_filename_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_filename_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_filename_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_filesize = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_filesize';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_filesize_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_filesize_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_filesize_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_filesize_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_filesize_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_filesize_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_filesize_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_filesize_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_height = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_height';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_height_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_height_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_height_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_height_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_height_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_height_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_height_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_height_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_mimeType = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_mimeType';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_mimeType_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_mimeType_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_mimeType_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_mimeType_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_mimeType_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_mimeType_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_mimeType_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_mimeType_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_url = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_url';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_url_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_url_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_url_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_url_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_url_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_url_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_url_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_url_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_width = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_width';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_width_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_width_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_width_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_avif_width_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_width_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_width_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_width_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_avif_width_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_Delete>;
+    fields?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_Fields>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_Fields = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_Fields';
+    filename?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_filename>;
+    filesize?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_filesize>;
+    height?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_height>;
+    mimeType?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_mimeType>;
+    url?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_url>;
+    width?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_width>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_filename = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_filename';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_filename_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_filename_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_filename_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_filename_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_filename_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_filename_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_filename_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_filename_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_filesize = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_filesize';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_filesize_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_filesize_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_filesize_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_filesize_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_filesize_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_filesize_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_filesize_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_filesize_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_height = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_height';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_height_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_height_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_height_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_height_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_height_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_height_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_height_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_height_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_mimeType = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_mimeType';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_url = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_url';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_url_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_url_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_url_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_url_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_url_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_url_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_url_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_url_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_width = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_width';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_width_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_width_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_width_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_jpeg_width_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_width_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_width_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_width_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_jpeg_width_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_Delete>;
+    fields?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_Fields>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_Fields = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_Fields';
+    filename?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_filename>;
+    filesize?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_filesize>;
+    height?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_height>;
+    mimeType?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_mimeType>;
+    url?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_url>;
+    width?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_width>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_filename = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_filename';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_filename_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_filename_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_filename_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_filename_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_filename_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_filename_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_filename_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_filename_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_filesize = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_filesize';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_filesize_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_filesize_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_filesize_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_filesize_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_filesize_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_filesize_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_filesize_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_filesize_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_height = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_height';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_height_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_height_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_height_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_height_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_height_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_height_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_height_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_height_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_mimeType = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_mimeType';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_mimeType_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_mimeType_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_mimeType_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_mimeType_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_mimeType_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_mimeType_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_mimeType_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_mimeType_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_url = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_url';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_url_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_url_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_url_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_url_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_url_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_url_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_url_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_url_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_width = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_width';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_width_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_width_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_width_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_mobile_webp_width_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_width_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_width_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_width_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_mobile_webp_width_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_mobile_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_Delete>;
+    fields?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_Fields>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_Fields = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_Fields';
+    filename?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_filename>;
+    filesize?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_filesize>;
+    height?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_height>;
+    mimeType?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_mimeType>;
+    url?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_url>;
+    width?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_width>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_filename = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_filename';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_filename_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_filename_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_filename_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_filename_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_filename_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_filename_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_filename_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_filename_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_filesize = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_filesize';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_filesize_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_filesize_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_filesize_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_filesize_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_filesize_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_filesize_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_filesize_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_filesize_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_height = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_height';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_height_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_height_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_height_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_height_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_height_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_height_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_height_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_height_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_mimeType = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_mimeType';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_mimeType_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_mimeType_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_mimeType_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_mimeType_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_mimeType_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_mimeType_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_mimeType_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_mimeType_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_url = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_url';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_url_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_url_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_url_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_url_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_url_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_url_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_url_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_url_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_width = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_width';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_width_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_width_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_width_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_avif_width_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_width_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_width_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_width_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_avif_width_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_Delete>;
+    fields?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_Fields>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_Fields = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_Fields';
+    filename?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_filename>;
+    filesize?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_filesize>;
+    height?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_height>;
+    mimeType?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_mimeType>;
+    url?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_url>;
+    width?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_width>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_filename = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_filename';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_filename_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_filename_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_filename_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_filename_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_filename_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_filename_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_filename_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_filename_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_filesize = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_filesize';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_filesize_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_filesize_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_filesize_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_filesize_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_filesize_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_filesize_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_filesize_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_filesize_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_height = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_height';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_height_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_height_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_height_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_height_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_height_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_height_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_height_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_height_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_mimeType = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_mimeType';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_url = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_url';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_url_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_url_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_url_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_url_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_url_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_url_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_url_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_url_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_width = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_width';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_width_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_width_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_width_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_jpeg_width_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_width_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_width_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_width_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_jpeg_width_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_Delete>;
+    fields?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_Fields>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_Fields = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_Fields';
+    filename?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_filename>;
+    filesize?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_filesize>;
+    height?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_height>;
+    mimeType?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_mimeType>;
+    url?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_url>;
+    width?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_width>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_filename = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_filename';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_filename_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_filename_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_filename_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_filename_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_filename_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_filename_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_filename_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_filename_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_filesize = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_filesize';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_filesize_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_filesize_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_filesize_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_filesize_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_filesize_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_filesize_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_filesize_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_filesize_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_height = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_height';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_height_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_height_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_height_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_height_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_height_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_height_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_height_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_height_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_mimeType = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_mimeType';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_mimeType_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_mimeType_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_mimeType_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_mimeType_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_mimeType_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_mimeType_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_mimeType_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_mimeType_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_url = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_url';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_url_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_url_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_url_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_url_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_url_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_url_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_url_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_url_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_width = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_width';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_width_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_width_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_width_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_tablet_webp_width_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_width_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_width_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_width_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_tablet_webp_width_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_tablet_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_Delete>;
+    fields?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_Fields>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_Fields = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_Fields';
+    filename?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_filename>;
+    filesize?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_filesize>;
+    height?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_height>;
+    mimeType?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_mimeType>;
+    url?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_url>;
+    width?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_width>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_filename = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_filename';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_filename_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_filename_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_filename_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_filename_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_filename_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_filename_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_filename_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_filename_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_filesize = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_filesize';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_filesize_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_filesize_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_filesize_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_filesize_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_filesize_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_filesize_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_filesize_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_filesize_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_height = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_height';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_height_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_height_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_height_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_height_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_height_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_height_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_height_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_height_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_mimeType = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_mimeType';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_url = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_url';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_url_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_url_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_url_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_url_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_url_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_url_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_url_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_url_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_width = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_width';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_width_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_width_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_width_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_avif_width_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_width_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_width_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_width_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_avif_width_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_Delete>;
+    fields?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_Fields>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_Fields = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_Fields';
+    filename?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filename>;
+    filesize?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filesize>;
+    height?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_height>;
+    mimeType?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType>;
+    url?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_url>;
+    width?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_width>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filename = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filename';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filesize = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filesize';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_height = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_height';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_height_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_height_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_height_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_height_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_height_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_height_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_height_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_height_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_url = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_url';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_url_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_url_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_url_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_url_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_url_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_url_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_url_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_url_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_width = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_width';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_width_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_width_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_width_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_width_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_width_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_width_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_width_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_width_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_Delete>;
+    fields?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_Fields>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_Fields = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_Fields';
+    filename?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_filename>;
+    filesize?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_filesize>;
+    height?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_height>;
+    mimeType?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_mimeType>;
+    url?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_url>;
+    width?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_width>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_filename = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_filename';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_filename_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_filename_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_filename_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_filename_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_filename_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_filename_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_filename_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_filename_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_filesize = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_filesize';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_filesize_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_filesize_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_filesize_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_filesize_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_filesize_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_filesize_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_filesize_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_filesize_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_height = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_height';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_height_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_height_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_height_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_height_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_height_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_height_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_height_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_height_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_mimeType = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_mimeType';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_url = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_url';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_url_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_url_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_url_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_url_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_url_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_url_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_url_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_url_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_width = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_width';
+    create?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_width_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_width_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_width_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_sizes_thumbnail_webp_width_Update>;
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_width_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_width_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_width_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_sizes_thumbnail_webp_width_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_sizes_thumbnail_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_thumbnailURL = {
+    __typename?: 'DashboardImagesDocAccessFields_thumbnailURL';
+    create?: Maybe<DashboardImagesDocAccessFields_thumbnailURL_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_thumbnailURL_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_thumbnailURL_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_thumbnailURL_Update>;
+};
+
+export type DashboardImagesDocAccessFields_thumbnailURL_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_thumbnailURL_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_thumbnailURL_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_thumbnailURL_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_thumbnailURL_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_thumbnailURL_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_thumbnailURL_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_thumbnailURL_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_updatedAt = {
+    __typename?: 'DashboardImagesDocAccessFields_updatedAt';
+    create?: Maybe<DashboardImagesDocAccessFields_updatedAt_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_updatedAt_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_updatedAt_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_updatedAt_Update>;
+};
+
+export type DashboardImagesDocAccessFields_updatedAt_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_updatedAt_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_updatedAt_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_updatedAt_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_url = {
+    __typename?: 'DashboardImagesDocAccessFields_url';
+    create?: Maybe<DashboardImagesDocAccessFields_url_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_url_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_url_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_url_Update>;
+};
+
+export type DashboardImagesDocAccessFields_url_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_url_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_url_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_url_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_width = {
+    __typename?: 'DashboardImagesDocAccessFields_width';
+    create?: Maybe<DashboardImagesDocAccessFields_width_Create>;
+    delete?: Maybe<DashboardImagesDocAccessFields_width_Delete>;
+    read?: Maybe<DashboardImagesDocAccessFields_width_Read>;
+    update?: Maybe<DashboardImagesDocAccessFields_width_Update>;
+};
+
+export type DashboardImagesDocAccessFields_width_Create = {
+    __typename?: 'DashboardImagesDocAccessFields_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_width_Delete = {
+    __typename?: 'DashboardImagesDocAccessFields_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_width_Read = {
+    __typename?: 'DashboardImagesDocAccessFields_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesDocAccessFields_width_Update = {
+    __typename?: 'DashboardImagesDocAccessFields_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields = {
+    __typename?: 'DashboardImagesFields';
+    alt?: Maybe<DashboardImagesFields_alt>;
+    createdAt?: Maybe<DashboardImagesFields_createdAt>;
+    filename?: Maybe<DashboardImagesFields_filename>;
+    filesize?: Maybe<DashboardImagesFields_filesize>;
+    focalX?: Maybe<DashboardImagesFields_focalX>;
+    focalY?: Maybe<DashboardImagesFields_focalY>;
+    height?: Maybe<DashboardImagesFields_height>;
+    mimeType?: Maybe<DashboardImagesFields_mimeType>;
+    sizes?: Maybe<DashboardImagesFields_sizes>;
+    thumbnailURL?: Maybe<DashboardImagesFields_thumbnailURL>;
+    updatedAt?: Maybe<DashboardImagesFields_updatedAt>;
+    url?: Maybe<DashboardImagesFields_url>;
+    width?: Maybe<DashboardImagesFields_width>;
+};
+
+export type DashboardImagesFields_alt = {
+    __typename?: 'DashboardImagesFields_alt';
+    create?: Maybe<DashboardImagesFields_alt_Create>;
+    delete?: Maybe<DashboardImagesFields_alt_Delete>;
+    read?: Maybe<DashboardImagesFields_alt_Read>;
+    update?: Maybe<DashboardImagesFields_alt_Update>;
+};
+
+export type DashboardImagesFields_alt_Create = {
+    __typename?: 'DashboardImagesFields_alt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_alt_Delete = {
+    __typename?: 'DashboardImagesFields_alt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_alt_Read = {
+    __typename?: 'DashboardImagesFields_alt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_alt_Update = {
+    __typename?: 'DashboardImagesFields_alt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_createdAt = {
+    __typename?: 'DashboardImagesFields_createdAt';
+    create?: Maybe<DashboardImagesFields_createdAt_Create>;
+    delete?: Maybe<DashboardImagesFields_createdAt_Delete>;
+    read?: Maybe<DashboardImagesFields_createdAt_Read>;
+    update?: Maybe<DashboardImagesFields_createdAt_Update>;
+};
+
+export type DashboardImagesFields_createdAt_Create = {
+    __typename?: 'DashboardImagesFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_createdAt_Delete = {
+    __typename?: 'DashboardImagesFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_createdAt_Read = {
+    __typename?: 'DashboardImagesFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_createdAt_Update = {
+    __typename?: 'DashboardImagesFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_filename = {
+    __typename?: 'DashboardImagesFields_filename';
+    create?: Maybe<DashboardImagesFields_filename_Create>;
+    delete?: Maybe<DashboardImagesFields_filename_Delete>;
+    read?: Maybe<DashboardImagesFields_filename_Read>;
+    update?: Maybe<DashboardImagesFields_filename_Update>;
+};
+
+export type DashboardImagesFields_filename_Create = {
+    __typename?: 'DashboardImagesFields_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_filename_Delete = {
+    __typename?: 'DashboardImagesFields_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_filename_Read = {
+    __typename?: 'DashboardImagesFields_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_filename_Update = {
+    __typename?: 'DashboardImagesFields_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_filesize = {
+    __typename?: 'DashboardImagesFields_filesize';
+    create?: Maybe<DashboardImagesFields_filesize_Create>;
+    delete?: Maybe<DashboardImagesFields_filesize_Delete>;
+    read?: Maybe<DashboardImagesFields_filesize_Read>;
+    update?: Maybe<DashboardImagesFields_filesize_Update>;
+};
+
+export type DashboardImagesFields_filesize_Create = {
+    __typename?: 'DashboardImagesFields_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_filesize_Delete = {
+    __typename?: 'DashboardImagesFields_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_filesize_Read = {
+    __typename?: 'DashboardImagesFields_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_filesize_Update = {
+    __typename?: 'DashboardImagesFields_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_focalX = {
+    __typename?: 'DashboardImagesFields_focalX';
+    create?: Maybe<DashboardImagesFields_focalX_Create>;
+    delete?: Maybe<DashboardImagesFields_focalX_Delete>;
+    read?: Maybe<DashboardImagesFields_focalX_Read>;
+    update?: Maybe<DashboardImagesFields_focalX_Update>;
+};
+
+export type DashboardImagesFields_focalX_Create = {
+    __typename?: 'DashboardImagesFields_focalX_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_focalX_Delete = {
+    __typename?: 'DashboardImagesFields_focalX_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_focalX_Read = {
+    __typename?: 'DashboardImagesFields_focalX_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_focalX_Update = {
+    __typename?: 'DashboardImagesFields_focalX_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_focalY = {
+    __typename?: 'DashboardImagesFields_focalY';
+    create?: Maybe<DashboardImagesFields_focalY_Create>;
+    delete?: Maybe<DashboardImagesFields_focalY_Delete>;
+    read?: Maybe<DashboardImagesFields_focalY_Read>;
+    update?: Maybe<DashboardImagesFields_focalY_Update>;
+};
+
+export type DashboardImagesFields_focalY_Create = {
+    __typename?: 'DashboardImagesFields_focalY_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_focalY_Delete = {
+    __typename?: 'DashboardImagesFields_focalY_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_focalY_Read = {
+    __typename?: 'DashboardImagesFields_focalY_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_focalY_Update = {
+    __typename?: 'DashboardImagesFields_focalY_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_height = {
+    __typename?: 'DashboardImagesFields_height';
+    create?: Maybe<DashboardImagesFields_height_Create>;
+    delete?: Maybe<DashboardImagesFields_height_Delete>;
+    read?: Maybe<DashboardImagesFields_height_Read>;
+    update?: Maybe<DashboardImagesFields_height_Update>;
+};
+
+export type DashboardImagesFields_height_Create = {
+    __typename?: 'DashboardImagesFields_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_height_Delete = {
+    __typename?: 'DashboardImagesFields_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_height_Read = {
+    __typename?: 'DashboardImagesFields_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_height_Update = {
+    __typename?: 'DashboardImagesFields_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_mimeType = {
+    __typename?: 'DashboardImagesFields_mimeType';
+    create?: Maybe<DashboardImagesFields_mimeType_Create>;
+    delete?: Maybe<DashboardImagesFields_mimeType_Delete>;
+    read?: Maybe<DashboardImagesFields_mimeType_Read>;
+    update?: Maybe<DashboardImagesFields_mimeType_Update>;
+};
+
+export type DashboardImagesFields_mimeType_Create = {
+    __typename?: 'DashboardImagesFields_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_mimeType_Delete = {
+    __typename?: 'DashboardImagesFields_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_mimeType_Read = {
+    __typename?: 'DashboardImagesFields_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_mimeType_Update = {
+    __typename?: 'DashboardImagesFields_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes = {
+    __typename?: 'DashboardImagesFields_sizes';
+    create?: Maybe<DashboardImagesFields_sizes_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_Delete>;
+    fields?: Maybe<DashboardImagesFields_sizes_Fields>;
+    read?: Maybe<DashboardImagesFields_sizes_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_Update>;
+};
+
+export type DashboardImagesFields_sizes_Create = {
+    __typename?: 'DashboardImagesFields_sizes_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_Fields = {
+    __typename?: 'DashboardImagesFields_sizes_Fields';
+    desktop_avif?: Maybe<DashboardImagesFields_sizes_desktop_avif>;
+    desktop_jpeg?: Maybe<DashboardImagesFields_sizes_desktop_jpeg>;
+    desktop_webp?: Maybe<DashboardImagesFields_sizes_desktop_webp>;
+    mobile_avif?: Maybe<DashboardImagesFields_sizes_mobile_avif>;
+    mobile_jpeg?: Maybe<DashboardImagesFields_sizes_mobile_jpeg>;
+    mobile_webp?: Maybe<DashboardImagesFields_sizes_mobile_webp>;
+    tablet_avif?: Maybe<DashboardImagesFields_sizes_tablet_avif>;
+    tablet_jpeg?: Maybe<DashboardImagesFields_sizes_tablet_jpeg>;
+    tablet_webp?: Maybe<DashboardImagesFields_sizes_tablet_webp>;
+    thumbnail_avif?: Maybe<DashboardImagesFields_sizes_thumbnail_avif>;
+    thumbnail_jpeg?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg>;
+    thumbnail_webp?: Maybe<DashboardImagesFields_sizes_thumbnail_webp>;
+};
+
+export type DashboardImagesFields_sizes_Read = {
+    __typename?: 'DashboardImagesFields_sizes_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_Update = {
+    __typename?: 'DashboardImagesFields_sizes_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_avif_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_avif_Delete>;
+    fields?: Maybe<DashboardImagesFields_sizes_desktop_avif_Fields>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_avif_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_avif_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_Fields = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_Fields';
+    filename?: Maybe<DashboardImagesFields_sizes_desktop_avif_filename>;
+    filesize?: Maybe<DashboardImagesFields_sizes_desktop_avif_filesize>;
+    height?: Maybe<DashboardImagesFields_sizes_desktop_avif_height>;
+    mimeType?: Maybe<DashboardImagesFields_sizes_desktop_avif_mimeType>;
+    url?: Maybe<DashboardImagesFields_sizes_desktop_avif_url>;
+    width?: Maybe<DashboardImagesFields_sizes_desktop_avif_width>;
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_filename = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_filename';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_avif_filename_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_avif_filename_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_avif_filename_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_avif_filename_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_filename_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_filename_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_filename_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_filename_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_filesize = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_filesize';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_avif_filesize_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_avif_filesize_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_avif_filesize_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_avif_filesize_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_filesize_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_filesize_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_filesize_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_filesize_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_height = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_height';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_avif_height_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_avif_height_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_avif_height_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_avif_height_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_height_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_height_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_height_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_height_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_mimeType = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_mimeType';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_avif_mimeType_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_avif_mimeType_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_avif_mimeType_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_avif_mimeType_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_mimeType_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_mimeType_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_mimeType_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_mimeType_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_url = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_url';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_avif_url_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_avif_url_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_avif_url_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_avif_url_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_url_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_url_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_url_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_url_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_width = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_width';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_avif_width_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_avif_width_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_avif_width_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_avif_width_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_width_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_width_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_width_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_avif_width_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_Delete>;
+    fields?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_Fields>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_Fields = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_Fields';
+    filename?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_filename>;
+    filesize?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_filesize>;
+    height?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_height>;
+    mimeType?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_mimeType>;
+    url?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_url>;
+    width?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_width>;
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_filename = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_filename';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_filename_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_filename_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_filename_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_filename_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_filename_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_filename_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_filename_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_filename_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_filesize = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_filesize';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_filesize_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_filesize_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_filesize_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_filesize_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_filesize_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_filesize_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_filesize_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_filesize_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_height = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_height';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_height_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_height_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_height_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_height_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_height_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_height_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_height_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_height_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_mimeType = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_mimeType';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_mimeType_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_mimeType_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_mimeType_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_mimeType_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_mimeType_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_mimeType_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_mimeType_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_mimeType_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_url = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_url';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_url_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_url_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_url_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_url_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_url_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_url_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_url_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_url_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_width = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_width';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_width_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_width_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_width_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_jpeg_width_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_width_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_width_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_width_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_jpeg_width_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_webp_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_webp_Delete>;
+    fields?: Maybe<DashboardImagesFields_sizes_desktop_webp_Fields>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_webp_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_webp_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_Fields = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_Fields';
+    filename?: Maybe<DashboardImagesFields_sizes_desktop_webp_filename>;
+    filesize?: Maybe<DashboardImagesFields_sizes_desktop_webp_filesize>;
+    height?: Maybe<DashboardImagesFields_sizes_desktop_webp_height>;
+    mimeType?: Maybe<DashboardImagesFields_sizes_desktop_webp_mimeType>;
+    url?: Maybe<DashboardImagesFields_sizes_desktop_webp_url>;
+    width?: Maybe<DashboardImagesFields_sizes_desktop_webp_width>;
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_filename = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_filename';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_webp_filename_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_webp_filename_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_webp_filename_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_webp_filename_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_filename_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_filename_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_filename_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_filename_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_filesize = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_filesize';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_webp_filesize_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_webp_filesize_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_webp_filesize_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_webp_filesize_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_filesize_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_filesize_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_filesize_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_filesize_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_height = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_height';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_webp_height_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_webp_height_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_webp_height_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_webp_height_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_height_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_height_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_height_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_height_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_mimeType = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_mimeType';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_webp_mimeType_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_webp_mimeType_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_webp_mimeType_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_webp_mimeType_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_mimeType_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_mimeType_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_mimeType_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_mimeType_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_url = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_url';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_webp_url_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_webp_url_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_webp_url_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_webp_url_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_url_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_url_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_url_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_url_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_width = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_width';
+    create?: Maybe<DashboardImagesFields_sizes_desktop_webp_width_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_desktop_webp_width_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_desktop_webp_width_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_desktop_webp_width_Update>;
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_width_Create = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_width_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_width_Read = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_desktop_webp_width_Update = {
+    __typename?: 'DashboardImagesFields_sizes_desktop_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_avif_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_avif_Delete>;
+    fields?: Maybe<DashboardImagesFields_sizes_mobile_avif_Fields>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_avif_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_avif_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_Fields = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_Fields';
+    filename?: Maybe<DashboardImagesFields_sizes_mobile_avif_filename>;
+    filesize?: Maybe<DashboardImagesFields_sizes_mobile_avif_filesize>;
+    height?: Maybe<DashboardImagesFields_sizes_mobile_avif_height>;
+    mimeType?: Maybe<DashboardImagesFields_sizes_mobile_avif_mimeType>;
+    url?: Maybe<DashboardImagesFields_sizes_mobile_avif_url>;
+    width?: Maybe<DashboardImagesFields_sizes_mobile_avif_width>;
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_filename = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_filename';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_avif_filename_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_avif_filename_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_avif_filename_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_avif_filename_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_filename_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_filename_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_filename_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_filename_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_filesize = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_filesize';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_avif_filesize_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_avif_filesize_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_avif_filesize_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_avif_filesize_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_filesize_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_filesize_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_filesize_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_filesize_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_height = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_height';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_avif_height_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_avif_height_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_avif_height_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_avif_height_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_height_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_height_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_height_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_height_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_mimeType = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_mimeType';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_avif_mimeType_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_avif_mimeType_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_avif_mimeType_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_avif_mimeType_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_mimeType_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_mimeType_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_mimeType_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_mimeType_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_url = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_url';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_avif_url_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_avif_url_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_avif_url_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_avif_url_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_url_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_url_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_url_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_url_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_width = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_width';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_avif_width_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_avif_width_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_avif_width_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_avif_width_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_width_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_width_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_width_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_avif_width_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_Delete>;
+    fields?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_Fields>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_Fields = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_Fields';
+    filename?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_filename>;
+    filesize?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_filesize>;
+    height?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_height>;
+    mimeType?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_mimeType>;
+    url?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_url>;
+    width?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_width>;
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_filename = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_filename';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_filename_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_filename_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_filename_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_filename_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_filename_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_filename_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_filename_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_filename_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_filesize = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_filesize';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_filesize_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_filesize_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_filesize_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_filesize_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_filesize_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_filesize_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_filesize_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_filesize_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_height = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_height';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_height_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_height_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_height_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_height_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_height_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_height_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_height_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_height_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_mimeType = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_mimeType';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_mimeType_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_mimeType_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_mimeType_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_mimeType_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_mimeType_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_mimeType_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_mimeType_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_mimeType_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_url = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_url';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_url_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_url_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_url_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_url_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_url_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_url_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_url_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_url_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_width = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_width';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_width_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_width_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_width_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_jpeg_width_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_width_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_width_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_width_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_jpeg_width_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_webp_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_webp_Delete>;
+    fields?: Maybe<DashboardImagesFields_sizes_mobile_webp_Fields>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_webp_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_webp_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_Fields = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_Fields';
+    filename?: Maybe<DashboardImagesFields_sizes_mobile_webp_filename>;
+    filesize?: Maybe<DashboardImagesFields_sizes_mobile_webp_filesize>;
+    height?: Maybe<DashboardImagesFields_sizes_mobile_webp_height>;
+    mimeType?: Maybe<DashboardImagesFields_sizes_mobile_webp_mimeType>;
+    url?: Maybe<DashboardImagesFields_sizes_mobile_webp_url>;
+    width?: Maybe<DashboardImagesFields_sizes_mobile_webp_width>;
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_filename = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_filename';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_webp_filename_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_webp_filename_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_webp_filename_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_webp_filename_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_filename_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_filename_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_filename_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_filename_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_filesize = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_filesize';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_webp_filesize_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_webp_filesize_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_webp_filesize_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_webp_filesize_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_filesize_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_filesize_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_filesize_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_filesize_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_height = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_height';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_webp_height_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_webp_height_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_webp_height_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_webp_height_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_height_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_height_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_height_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_height_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_mimeType = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_mimeType';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_webp_mimeType_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_webp_mimeType_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_webp_mimeType_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_webp_mimeType_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_mimeType_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_mimeType_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_mimeType_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_mimeType_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_url = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_url';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_webp_url_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_webp_url_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_webp_url_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_webp_url_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_url_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_url_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_url_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_url_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_width = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_width';
+    create?: Maybe<DashboardImagesFields_sizes_mobile_webp_width_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_mobile_webp_width_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_mobile_webp_width_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_mobile_webp_width_Update>;
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_width_Create = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_width_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_width_Read = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_mobile_webp_width_Update = {
+    __typename?: 'DashboardImagesFields_sizes_mobile_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_avif_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_avif_Delete>;
+    fields?: Maybe<DashboardImagesFields_sizes_tablet_avif_Fields>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_avif_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_avif_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_Fields = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_Fields';
+    filename?: Maybe<DashboardImagesFields_sizes_tablet_avif_filename>;
+    filesize?: Maybe<DashboardImagesFields_sizes_tablet_avif_filesize>;
+    height?: Maybe<DashboardImagesFields_sizes_tablet_avif_height>;
+    mimeType?: Maybe<DashboardImagesFields_sizes_tablet_avif_mimeType>;
+    url?: Maybe<DashboardImagesFields_sizes_tablet_avif_url>;
+    width?: Maybe<DashboardImagesFields_sizes_tablet_avif_width>;
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_filename = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_filename';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_avif_filename_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_avif_filename_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_avif_filename_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_avif_filename_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_filename_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_filename_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_filename_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_filename_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_filesize = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_filesize';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_avif_filesize_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_avif_filesize_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_avif_filesize_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_avif_filesize_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_filesize_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_filesize_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_filesize_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_filesize_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_height = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_height';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_avif_height_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_avif_height_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_avif_height_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_avif_height_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_height_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_height_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_height_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_height_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_mimeType = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_mimeType';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_avif_mimeType_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_avif_mimeType_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_avif_mimeType_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_avif_mimeType_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_mimeType_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_mimeType_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_mimeType_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_mimeType_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_url = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_url';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_avif_url_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_avif_url_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_avif_url_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_avif_url_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_url_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_url_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_url_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_url_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_width = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_width';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_avif_width_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_avif_width_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_avif_width_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_avif_width_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_width_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_width_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_width_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_avif_width_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_Delete>;
+    fields?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_Fields>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_Fields = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_Fields';
+    filename?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_filename>;
+    filesize?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_filesize>;
+    height?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_height>;
+    mimeType?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_mimeType>;
+    url?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_url>;
+    width?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_width>;
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_filename = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_filename';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_filename_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_filename_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_filename_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_filename_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_filename_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_filename_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_filename_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_filename_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_filesize = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_filesize';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_filesize_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_filesize_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_filesize_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_filesize_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_filesize_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_filesize_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_filesize_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_filesize_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_height = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_height';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_height_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_height_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_height_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_height_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_height_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_height_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_height_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_height_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_mimeType = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_mimeType';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_mimeType_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_mimeType_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_mimeType_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_mimeType_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_mimeType_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_mimeType_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_mimeType_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_mimeType_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_url = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_url';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_url_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_url_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_url_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_url_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_url_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_url_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_url_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_url_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_width = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_width';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_width_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_width_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_width_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_jpeg_width_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_width_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_width_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_width_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_jpeg_width_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_webp_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_webp_Delete>;
+    fields?: Maybe<DashboardImagesFields_sizes_tablet_webp_Fields>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_webp_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_webp_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_Fields = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_Fields';
+    filename?: Maybe<DashboardImagesFields_sizes_tablet_webp_filename>;
+    filesize?: Maybe<DashboardImagesFields_sizes_tablet_webp_filesize>;
+    height?: Maybe<DashboardImagesFields_sizes_tablet_webp_height>;
+    mimeType?: Maybe<DashboardImagesFields_sizes_tablet_webp_mimeType>;
+    url?: Maybe<DashboardImagesFields_sizes_tablet_webp_url>;
+    width?: Maybe<DashboardImagesFields_sizes_tablet_webp_width>;
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_filename = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_filename';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_webp_filename_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_webp_filename_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_webp_filename_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_webp_filename_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_filename_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_filename_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_filename_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_filename_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_filesize = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_filesize';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_webp_filesize_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_webp_filesize_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_webp_filesize_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_webp_filesize_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_filesize_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_filesize_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_filesize_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_filesize_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_height = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_height';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_webp_height_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_webp_height_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_webp_height_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_webp_height_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_height_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_height_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_height_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_height_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_mimeType = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_mimeType';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_webp_mimeType_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_webp_mimeType_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_webp_mimeType_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_webp_mimeType_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_mimeType_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_mimeType_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_mimeType_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_mimeType_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_url = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_url';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_webp_url_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_webp_url_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_webp_url_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_webp_url_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_url_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_url_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_url_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_url_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_width = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_width';
+    create?: Maybe<DashboardImagesFields_sizes_tablet_webp_width_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_tablet_webp_width_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_tablet_webp_width_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_tablet_webp_width_Update>;
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_width_Create = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_width_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_width_Read = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_tablet_webp_width_Update = {
+    __typename?: 'DashboardImagesFields_sizes_tablet_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_Delete>;
+    fields?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_Fields>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_Fields = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_Fields';
+    filename?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_filename>;
+    filesize?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_filesize>;
+    height?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_height>;
+    mimeType?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_mimeType>;
+    url?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_url>;
+    width?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_width>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_filename = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_filename';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_filename_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_filename_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_filename_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_filename_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_filename_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_filename_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_filename_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_filename_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_filesize = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_filesize';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_filesize_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_filesize_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_filesize_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_filesize_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_filesize_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_filesize_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_filesize_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_filesize_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_height = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_height';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_height_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_height_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_height_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_height_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_height_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_height_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_height_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_height_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_mimeType = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_mimeType';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_mimeType_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_mimeType_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_mimeType_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_mimeType_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_mimeType_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_mimeType_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_mimeType_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_mimeType_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_url = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_url';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_url_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_url_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_url_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_url_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_url_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_url_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_url_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_url_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_width = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_width';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_width_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_width_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_width_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_avif_width_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_width_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_width_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_width_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_avif_width_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_avif_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_Delete>;
+    fields?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_Fields>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_Fields = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_Fields';
+    filename?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_filename>;
+    filesize?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_filesize>;
+    height?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_height>;
+    mimeType?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_mimeType>;
+    url?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_url>;
+    width?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_width>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_filename = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_filename';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_filename_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_filename_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_filename_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_filename_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_filename_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_filename_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_filename_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_filename_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_filesize = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_filesize';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_filesize_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_filesize_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_filesize_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_filesize_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_filesize_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_filesize_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_filesize_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_filesize_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_height = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_height';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_height_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_height_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_height_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_height_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_height_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_height_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_height_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_height_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_mimeType = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_mimeType';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_mimeType_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_mimeType_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_mimeType_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_mimeType_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_mimeType_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_mimeType_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_mimeType_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_mimeType_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_url = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_url';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_url_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_url_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_url_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_url_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_url_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_url_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_url_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_url_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_width = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_width';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_width_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_width_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_width_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_jpeg_width_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_width_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_width_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_width_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_jpeg_width_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_jpeg_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_Delete>;
+    fields?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_Fields>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_Fields = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_Fields';
+    filename?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_filename>;
+    filesize?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_filesize>;
+    height?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_height>;
+    mimeType?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_mimeType>;
+    url?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_url>;
+    width?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_width>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_filename = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_filename';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_filename_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_filename_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_filename_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_filename_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_filename_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_filename_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_filename_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_filename_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_filename_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_filename_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_filename_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_filename_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_filesize = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_filesize';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_filesize_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_filesize_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_filesize_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_filesize_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_filesize_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_filesize_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_filesize_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_filesize_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_filesize_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_filesize_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_filesize_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_filesize_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_height = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_height';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_height_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_height_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_height_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_height_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_height_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_height_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_height_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_height_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_height_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_height_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_height_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_height_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_mimeType = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_mimeType';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_mimeType_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_mimeType_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_mimeType_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_mimeType_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_mimeType_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_mimeType_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_mimeType_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_mimeType_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_mimeType_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_mimeType_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_mimeType_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_mimeType_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_url = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_url';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_url_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_url_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_url_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_url_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_url_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_url_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_url_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_url_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_width = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_width';
+    create?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_width_Create>;
+    delete?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_width_Delete>;
+    read?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_width_Read>;
+    update?: Maybe<DashboardImagesFields_sizes_thumbnail_webp_width_Update>;
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_width_Create = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_width_Delete = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_width_Read = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_sizes_thumbnail_webp_width_Update = {
+    __typename?: 'DashboardImagesFields_sizes_thumbnail_webp_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_thumbnailURL = {
+    __typename?: 'DashboardImagesFields_thumbnailURL';
+    create?: Maybe<DashboardImagesFields_thumbnailURL_Create>;
+    delete?: Maybe<DashboardImagesFields_thumbnailURL_Delete>;
+    read?: Maybe<DashboardImagesFields_thumbnailURL_Read>;
+    update?: Maybe<DashboardImagesFields_thumbnailURL_Update>;
+};
+
+export type DashboardImagesFields_thumbnailURL_Create = {
+    __typename?: 'DashboardImagesFields_thumbnailURL_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_thumbnailURL_Delete = {
+    __typename?: 'DashboardImagesFields_thumbnailURL_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_thumbnailURL_Read = {
+    __typename?: 'DashboardImagesFields_thumbnailURL_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_thumbnailURL_Update = {
+    __typename?: 'DashboardImagesFields_thumbnailURL_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_updatedAt = {
+    __typename?: 'DashboardImagesFields_updatedAt';
+    create?: Maybe<DashboardImagesFields_updatedAt_Create>;
+    delete?: Maybe<DashboardImagesFields_updatedAt_Delete>;
+    read?: Maybe<DashboardImagesFields_updatedAt_Read>;
+    update?: Maybe<DashboardImagesFields_updatedAt_Update>;
+};
+
+export type DashboardImagesFields_updatedAt_Create = {
+    __typename?: 'DashboardImagesFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_updatedAt_Delete = {
+    __typename?: 'DashboardImagesFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_updatedAt_Read = {
+    __typename?: 'DashboardImagesFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_updatedAt_Update = {
+    __typename?: 'DashboardImagesFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_url = {
+    __typename?: 'DashboardImagesFields_url';
+    create?: Maybe<DashboardImagesFields_url_Create>;
+    delete?: Maybe<DashboardImagesFields_url_Delete>;
+    read?: Maybe<DashboardImagesFields_url_Read>;
+    update?: Maybe<DashboardImagesFields_url_Update>;
+};
+
+export type DashboardImagesFields_url_Create = {
+    __typename?: 'DashboardImagesFields_url_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_url_Delete = {
+    __typename?: 'DashboardImagesFields_url_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_url_Read = {
+    __typename?: 'DashboardImagesFields_url_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_url_Update = {
+    __typename?: 'DashboardImagesFields_url_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_width = {
+    __typename?: 'DashboardImagesFields_width';
+    create?: Maybe<DashboardImagesFields_width_Create>;
+    delete?: Maybe<DashboardImagesFields_width_Delete>;
+    read?: Maybe<DashboardImagesFields_width_Read>;
+    update?: Maybe<DashboardImagesFields_width_Update>;
+};
+
+export type DashboardImagesFields_width_Create = {
+    __typename?: 'DashboardImagesFields_width_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_width_Delete = {
+    __typename?: 'DashboardImagesFields_width_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_width_Read = {
+    __typename?: 'DashboardImagesFields_width_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesFields_width_Update = {
+    __typename?: 'DashboardImagesFields_width_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardImagesReadAccess = {
+    __typename?: 'DashboardImagesReadAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardImagesReadDocAccess = {
+    __typename?: 'DashboardImagesReadDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardImagesUpdateAccess = {
+    __typename?: 'DashboardImagesUpdateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardImagesUpdateDocAccess = {
+    __typename?: 'DashboardImagesUpdateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTextBlock = {
+    __typename?: 'DashboardTextBlock';
+    createdAt?: Maybe<Scalars['DateTime']['output']>;
+    id: Scalars['Int']['output'];
+    slug: Scalars['String']['output'];
+    updatedAt?: Maybe<Scalars['DateTime']['output']>;
+    value: Scalars['String']['output'];
+};
+
+export type DashboardTextBlock_createdAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DashboardTextBlock_id_operator = {
+    equals?: InputMaybe<Scalars['Int']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Int']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    less_than?: InputMaybe<Scalars['Int']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    not_equals?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type DashboardTextBlock_slug_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardTextBlock_updatedAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DashboardTextBlock_value_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardTextBlock_where = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardTextBlock_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardTextBlock_where_or>>>;
+    createdAt?: InputMaybe<DashboardTextBlock_createdAt_operator>;
+    id?: InputMaybe<DashboardTextBlock_id_operator>;
+    slug?: InputMaybe<DashboardTextBlock_slug_operator>;
+    updatedAt?: InputMaybe<DashboardTextBlock_updatedAt_operator>;
+    value?: InputMaybe<DashboardTextBlock_value_operator>;
+};
+
+export type DashboardTextBlock_where_and = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardTextBlock_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardTextBlock_where_or>>>;
+    createdAt?: InputMaybe<DashboardTextBlock_createdAt_operator>;
+    id?: InputMaybe<DashboardTextBlock_id_operator>;
+    slug?: InputMaybe<DashboardTextBlock_slug_operator>;
+    updatedAt?: InputMaybe<DashboardTextBlock_updatedAt_operator>;
+    value?: InputMaybe<DashboardTextBlock_value_operator>;
+};
+
+export type DashboardTextBlock_where_or = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardTextBlock_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardTextBlock_where_or>>>;
+    createdAt?: InputMaybe<DashboardTextBlock_createdAt_operator>;
+    id?: InputMaybe<DashboardTextBlock_id_operator>;
+    slug?: InputMaybe<DashboardTextBlock_slug_operator>;
+    updatedAt?: InputMaybe<DashboardTextBlock_updatedAt_operator>;
+    value?: InputMaybe<DashboardTextBlock_value_operator>;
+};
+
+export type DashboardTextBlocks = {
+    __typename?: 'DashboardTextBlocks';
+    docs: Array<DashboardTextBlock>;
+    hasNextPage: Scalars['Boolean']['output'];
+    hasPrevPage: Scalars['Boolean']['output'];
+    limit: Scalars['Int']['output'];
+    nextPage?: Maybe<Scalars['Int']['output']>;
+    offset?: Maybe<Scalars['Int']['output']>;
+    page: Scalars['Int']['output'];
+    pagingCounter: Scalars['Int']['output'];
+    prevPage?: Maybe<Scalars['Int']['output']>;
+    totalDocs: Scalars['Int']['output'];
+    totalPages: Scalars['Int']['output'];
+};
+
+export type DashboardTextBlocksCreateAccess = {
+    __typename?: 'DashboardTextBlocksCreateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTextBlocksCreateDocAccess = {
+    __typename?: 'DashboardTextBlocksCreateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTextBlocksDeleteAccess = {
+    __typename?: 'DashboardTextBlocksDeleteAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTextBlocksDeleteDocAccess = {
+    __typename?: 'DashboardTextBlocksDeleteDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTextBlocksDocAccessFields = {
+    __typename?: 'DashboardTextBlocksDocAccessFields';
+    createdAt?: Maybe<DashboardTextBlocksDocAccessFields_createdAt>;
+    slug?: Maybe<DashboardTextBlocksDocAccessFields_slug>;
+    updatedAt?: Maybe<DashboardTextBlocksDocAccessFields_updatedAt>;
+    value?: Maybe<DashboardTextBlocksDocAccessFields_value>;
+};
+
+export type DashboardTextBlocksDocAccessFields_createdAt = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_createdAt';
+    create?: Maybe<DashboardTextBlocksDocAccessFields_createdAt_Create>;
+    delete?: Maybe<DashboardTextBlocksDocAccessFields_createdAt_Delete>;
+    read?: Maybe<DashboardTextBlocksDocAccessFields_createdAt_Read>;
+    update?: Maybe<DashboardTextBlocksDocAccessFields_createdAt_Update>;
+};
+
+export type DashboardTextBlocksDocAccessFields_createdAt_Create = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksDocAccessFields_createdAt_Delete = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksDocAccessFields_createdAt_Read = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksDocAccessFields_createdAt_Update = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksDocAccessFields_slug = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_slug';
+    create?: Maybe<DashboardTextBlocksDocAccessFields_slug_Create>;
+    delete?: Maybe<DashboardTextBlocksDocAccessFields_slug_Delete>;
+    read?: Maybe<DashboardTextBlocksDocAccessFields_slug_Read>;
+    update?: Maybe<DashboardTextBlocksDocAccessFields_slug_Update>;
+};
+
+export type DashboardTextBlocksDocAccessFields_slug_Create = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_slug_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksDocAccessFields_slug_Delete = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_slug_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksDocAccessFields_slug_Read = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_slug_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksDocAccessFields_slug_Update = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_slug_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksDocAccessFields_updatedAt = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_updatedAt';
+    create?: Maybe<DashboardTextBlocksDocAccessFields_updatedAt_Create>;
+    delete?: Maybe<DashboardTextBlocksDocAccessFields_updatedAt_Delete>;
+    read?: Maybe<DashboardTextBlocksDocAccessFields_updatedAt_Read>;
+    update?: Maybe<DashboardTextBlocksDocAccessFields_updatedAt_Update>;
+};
+
+export type DashboardTextBlocksDocAccessFields_updatedAt_Create = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksDocAccessFields_updatedAt_Delete = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksDocAccessFields_updatedAt_Read = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksDocAccessFields_updatedAt_Update = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksDocAccessFields_value = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_value';
+    create?: Maybe<DashboardTextBlocksDocAccessFields_value_Create>;
+    delete?: Maybe<DashboardTextBlocksDocAccessFields_value_Delete>;
+    read?: Maybe<DashboardTextBlocksDocAccessFields_value_Read>;
+    update?: Maybe<DashboardTextBlocksDocAccessFields_value_Update>;
+};
+
+export type DashboardTextBlocksDocAccessFields_value_Create = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_value_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksDocAccessFields_value_Delete = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_value_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksDocAccessFields_value_Read = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_value_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksDocAccessFields_value_Update = {
+    __typename?: 'DashboardTextBlocksDocAccessFields_value_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields = {
+    __typename?: 'DashboardTextBlocksFields';
+    createdAt?: Maybe<DashboardTextBlocksFields_createdAt>;
+    slug?: Maybe<DashboardTextBlocksFields_slug>;
+    updatedAt?: Maybe<DashboardTextBlocksFields_updatedAt>;
+    value?: Maybe<DashboardTextBlocksFields_value>;
+};
+
+export type DashboardTextBlocksFields_createdAt = {
+    __typename?: 'DashboardTextBlocksFields_createdAt';
+    create?: Maybe<DashboardTextBlocksFields_createdAt_Create>;
+    delete?: Maybe<DashboardTextBlocksFields_createdAt_Delete>;
+    read?: Maybe<DashboardTextBlocksFields_createdAt_Read>;
+    update?: Maybe<DashboardTextBlocksFields_createdAt_Update>;
+};
+
+export type DashboardTextBlocksFields_createdAt_Create = {
+    __typename?: 'DashboardTextBlocksFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields_createdAt_Delete = {
+    __typename?: 'DashboardTextBlocksFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields_createdAt_Read = {
+    __typename?: 'DashboardTextBlocksFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields_createdAt_Update = {
+    __typename?: 'DashboardTextBlocksFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields_slug = {
+    __typename?: 'DashboardTextBlocksFields_slug';
+    create?: Maybe<DashboardTextBlocksFields_slug_Create>;
+    delete?: Maybe<DashboardTextBlocksFields_slug_Delete>;
+    read?: Maybe<DashboardTextBlocksFields_slug_Read>;
+    update?: Maybe<DashboardTextBlocksFields_slug_Update>;
+};
+
+export type DashboardTextBlocksFields_slug_Create = {
+    __typename?: 'DashboardTextBlocksFields_slug_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields_slug_Delete = {
+    __typename?: 'DashboardTextBlocksFields_slug_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields_slug_Read = {
+    __typename?: 'DashboardTextBlocksFields_slug_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields_slug_Update = {
+    __typename?: 'DashboardTextBlocksFields_slug_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields_updatedAt = {
+    __typename?: 'DashboardTextBlocksFields_updatedAt';
+    create?: Maybe<DashboardTextBlocksFields_updatedAt_Create>;
+    delete?: Maybe<DashboardTextBlocksFields_updatedAt_Delete>;
+    read?: Maybe<DashboardTextBlocksFields_updatedAt_Read>;
+    update?: Maybe<DashboardTextBlocksFields_updatedAt_Update>;
+};
+
+export type DashboardTextBlocksFields_updatedAt_Create = {
+    __typename?: 'DashboardTextBlocksFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields_updatedAt_Delete = {
+    __typename?: 'DashboardTextBlocksFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields_updatedAt_Read = {
+    __typename?: 'DashboardTextBlocksFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields_updatedAt_Update = {
+    __typename?: 'DashboardTextBlocksFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields_value = {
+    __typename?: 'DashboardTextBlocksFields_value';
+    create?: Maybe<DashboardTextBlocksFields_value_Create>;
+    delete?: Maybe<DashboardTextBlocksFields_value_Delete>;
+    read?: Maybe<DashboardTextBlocksFields_value_Read>;
+    update?: Maybe<DashboardTextBlocksFields_value_Update>;
+};
+
+export type DashboardTextBlocksFields_value_Create = {
+    __typename?: 'DashboardTextBlocksFields_value_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields_value_Delete = {
+    __typename?: 'DashboardTextBlocksFields_value_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields_value_Read = {
+    __typename?: 'DashboardTextBlocksFields_value_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksFields_value_Update = {
+    __typename?: 'DashboardTextBlocksFields_value_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTextBlocksReadAccess = {
+    __typename?: 'DashboardTextBlocksReadAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTextBlocksReadDocAccess = {
+    __typename?: 'DashboardTextBlocksReadDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTextBlocksUpdateAccess = {
+    __typename?: 'DashboardTextBlocksUpdateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTextBlocksUpdateDocAccess = {
+    __typename?: 'DashboardTextBlocksUpdateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTextElement = {
+    __typename?: 'DashboardTextElement';
+    blockName?: Maybe<Scalars['String']['output']>;
+    blockType?: Maybe<Scalars['String']['output']>;
+    icon?: Maybe<Scalars['String']['output']>;
+    id?: Maybe<Scalars['String']['output']>;
+    text: Scalars['String']['output'];
+    title: Scalars['String']['output'];
+};
+
+export type DashboardTicket = {
+    __typename?: 'DashboardTicket';
+    assignedTo?: Maybe<User>;
+    author: User;
+    category?: Maybe<DashboardTicketCategory>;
+    comments?: Maybe<Array<DashboardTicket_Comments>>;
+    createdAt?: Maybe<Scalars['DateTime']['output']>;
+    description?: Maybe<Scalars['String']['output']>;
+    id: Scalars['Int']['output'];
+    priority: DashboardTicket_priority;
+    status: DashboardTicket_status;
+    title: Scalars['String']['output'];
+    updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type DashboardTicketCategories = {
+    __typename?: 'DashboardTicketCategories';
+    docs: Array<DashboardTicketCategory>;
+    hasNextPage: Scalars['Boolean']['output'];
+    hasPrevPage: Scalars['Boolean']['output'];
+    limit: Scalars['Int']['output'];
+    nextPage?: Maybe<Scalars['Int']['output']>;
+    offset?: Maybe<Scalars['Int']['output']>;
+    page: Scalars['Int']['output'];
+    pagingCounter: Scalars['Int']['output'];
+    prevPage?: Maybe<Scalars['Int']['output']>;
+    totalDocs: Scalars['Int']['output'];
+    totalPages: Scalars['Int']['output'];
+};
+
+export type DashboardTicketCategoriesCreateAccess = {
+    __typename?: 'DashboardTicketCategoriesCreateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTicketCategoriesCreateDocAccess = {
+    __typename?: 'DashboardTicketCategoriesCreateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTicketCategoriesDeleteAccess = {
+    __typename?: 'DashboardTicketCategoriesDeleteAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTicketCategoriesDeleteDocAccess = {
+    __typename?: 'DashboardTicketCategoriesDeleteDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTicketCategoriesDocAccessFields = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields';
+    createdAt?: Maybe<DashboardTicketCategoriesDocAccessFields_createdAt>;
+    description?: Maybe<DashboardTicketCategoriesDocAccessFields_description>;
+    title?: Maybe<DashboardTicketCategoriesDocAccessFields_title>;
+    updatedAt?: Maybe<DashboardTicketCategoriesDocAccessFields_updatedAt>;
+};
+
+export type DashboardTicketCategoriesDocAccessFields_createdAt = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_createdAt';
+    create?: Maybe<DashboardTicketCategoriesDocAccessFields_createdAt_Create>;
+    delete?: Maybe<DashboardTicketCategoriesDocAccessFields_createdAt_Delete>;
+    read?: Maybe<DashboardTicketCategoriesDocAccessFields_createdAt_Read>;
+    update?: Maybe<DashboardTicketCategoriesDocAccessFields_createdAt_Update>;
+};
+
+export type DashboardTicketCategoriesDocAccessFields_createdAt_Create = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesDocAccessFields_createdAt_Delete = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesDocAccessFields_createdAt_Read = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesDocAccessFields_createdAt_Update = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesDocAccessFields_description = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_description';
+    create?: Maybe<DashboardTicketCategoriesDocAccessFields_description_Create>;
+    delete?: Maybe<DashboardTicketCategoriesDocAccessFields_description_Delete>;
+    read?: Maybe<DashboardTicketCategoriesDocAccessFields_description_Read>;
+    update?: Maybe<DashboardTicketCategoriesDocAccessFields_description_Update>;
+};
+
+export type DashboardTicketCategoriesDocAccessFields_description_Create = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_description_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesDocAccessFields_description_Delete = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_description_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesDocAccessFields_description_Read = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_description_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesDocAccessFields_description_Update = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_description_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesDocAccessFields_title = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_title';
+    create?: Maybe<DashboardTicketCategoriesDocAccessFields_title_Create>;
+    delete?: Maybe<DashboardTicketCategoriesDocAccessFields_title_Delete>;
+    read?: Maybe<DashboardTicketCategoriesDocAccessFields_title_Read>;
+    update?: Maybe<DashboardTicketCategoriesDocAccessFields_title_Update>;
+};
+
+export type DashboardTicketCategoriesDocAccessFields_title_Create = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_title_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesDocAccessFields_title_Delete = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_title_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesDocAccessFields_title_Read = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_title_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesDocAccessFields_title_Update = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_title_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesDocAccessFields_updatedAt = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_updatedAt';
+    create?: Maybe<DashboardTicketCategoriesDocAccessFields_updatedAt_Create>;
+    delete?: Maybe<DashboardTicketCategoriesDocAccessFields_updatedAt_Delete>;
+    read?: Maybe<DashboardTicketCategoriesDocAccessFields_updatedAt_Read>;
+    update?: Maybe<DashboardTicketCategoriesDocAccessFields_updatedAt_Update>;
+};
+
+export type DashboardTicketCategoriesDocAccessFields_updatedAt_Create = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesDocAccessFields_updatedAt_Delete = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesDocAccessFields_updatedAt_Read = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesDocAccessFields_updatedAt_Update = {
+    __typename?: 'DashboardTicketCategoriesDocAccessFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields = {
+    __typename?: 'DashboardTicketCategoriesFields';
+    createdAt?: Maybe<DashboardTicketCategoriesFields_createdAt>;
+    description?: Maybe<DashboardTicketCategoriesFields_description>;
+    title?: Maybe<DashboardTicketCategoriesFields_title>;
+    updatedAt?: Maybe<DashboardTicketCategoriesFields_updatedAt>;
+};
+
+export type DashboardTicketCategoriesFields_createdAt = {
+    __typename?: 'DashboardTicketCategoriesFields_createdAt';
+    create?: Maybe<DashboardTicketCategoriesFields_createdAt_Create>;
+    delete?: Maybe<DashboardTicketCategoriesFields_createdAt_Delete>;
+    read?: Maybe<DashboardTicketCategoriesFields_createdAt_Read>;
+    update?: Maybe<DashboardTicketCategoriesFields_createdAt_Update>;
+};
+
+export type DashboardTicketCategoriesFields_createdAt_Create = {
+    __typename?: 'DashboardTicketCategoriesFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields_createdAt_Delete = {
+    __typename?: 'DashboardTicketCategoriesFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields_createdAt_Read = {
+    __typename?: 'DashboardTicketCategoriesFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields_createdAt_Update = {
+    __typename?: 'DashboardTicketCategoriesFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields_description = {
+    __typename?: 'DashboardTicketCategoriesFields_description';
+    create?: Maybe<DashboardTicketCategoriesFields_description_Create>;
+    delete?: Maybe<DashboardTicketCategoriesFields_description_Delete>;
+    read?: Maybe<DashboardTicketCategoriesFields_description_Read>;
+    update?: Maybe<DashboardTicketCategoriesFields_description_Update>;
+};
+
+export type DashboardTicketCategoriesFields_description_Create = {
+    __typename?: 'DashboardTicketCategoriesFields_description_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields_description_Delete = {
+    __typename?: 'DashboardTicketCategoriesFields_description_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields_description_Read = {
+    __typename?: 'DashboardTicketCategoriesFields_description_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields_description_Update = {
+    __typename?: 'DashboardTicketCategoriesFields_description_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields_title = {
+    __typename?: 'DashboardTicketCategoriesFields_title';
+    create?: Maybe<DashboardTicketCategoriesFields_title_Create>;
+    delete?: Maybe<DashboardTicketCategoriesFields_title_Delete>;
+    read?: Maybe<DashboardTicketCategoriesFields_title_Read>;
+    update?: Maybe<DashboardTicketCategoriesFields_title_Update>;
+};
+
+export type DashboardTicketCategoriesFields_title_Create = {
+    __typename?: 'DashboardTicketCategoriesFields_title_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields_title_Delete = {
+    __typename?: 'DashboardTicketCategoriesFields_title_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields_title_Read = {
+    __typename?: 'DashboardTicketCategoriesFields_title_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields_title_Update = {
+    __typename?: 'DashboardTicketCategoriesFields_title_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields_updatedAt = {
+    __typename?: 'DashboardTicketCategoriesFields_updatedAt';
+    create?: Maybe<DashboardTicketCategoriesFields_updatedAt_Create>;
+    delete?: Maybe<DashboardTicketCategoriesFields_updatedAt_Delete>;
+    read?: Maybe<DashboardTicketCategoriesFields_updatedAt_Read>;
+    update?: Maybe<DashboardTicketCategoriesFields_updatedAt_Update>;
+};
+
+export type DashboardTicketCategoriesFields_updatedAt_Create = {
+    __typename?: 'DashboardTicketCategoriesFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields_updatedAt_Delete = {
+    __typename?: 'DashboardTicketCategoriesFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields_updatedAt_Read = {
+    __typename?: 'DashboardTicketCategoriesFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesFields_updatedAt_Update = {
+    __typename?: 'DashboardTicketCategoriesFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketCategoriesReadAccess = {
+    __typename?: 'DashboardTicketCategoriesReadAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTicketCategoriesReadDocAccess = {
+    __typename?: 'DashboardTicketCategoriesReadDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTicketCategoriesUpdateAccess = {
+    __typename?: 'DashboardTicketCategoriesUpdateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTicketCategoriesUpdateDocAccess = {
+    __typename?: 'DashboardTicketCategoriesUpdateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTicketCategory = {
+    __typename?: 'DashboardTicketCategory';
+    createdAt?: Maybe<Scalars['DateTime']['output']>;
+    description?: Maybe<Scalars['String']['output']>;
+    id: Scalars['Int']['output'];
+    title: Scalars['String']['output'];
+    updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type DashboardTicketCategory_createdAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DashboardTicketCategory_description_operator = {
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DashboardTicketCategory_id_operator = {
+    equals?: InputMaybe<Scalars['Int']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Int']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    less_than?: InputMaybe<Scalars['Int']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    not_equals?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type DashboardTicketCategory_title_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardTicketCategory_updatedAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DashboardTicketCategory_where = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardTicketCategory_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardTicketCategory_where_or>>>;
+    createdAt?: InputMaybe<DashboardTicketCategory_createdAt_operator>;
+    description?: InputMaybe<DashboardTicketCategory_description_operator>;
+    id?: InputMaybe<DashboardTicketCategory_id_operator>;
+    title?: InputMaybe<DashboardTicketCategory_title_operator>;
+    updatedAt?: InputMaybe<DashboardTicketCategory_updatedAt_operator>;
+};
+
+export type DashboardTicketCategory_where_and = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardTicketCategory_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardTicketCategory_where_or>>>;
+    createdAt?: InputMaybe<DashboardTicketCategory_createdAt_operator>;
+    description?: InputMaybe<DashboardTicketCategory_description_operator>;
+    id?: InputMaybe<DashboardTicketCategory_id_operator>;
+    title?: InputMaybe<DashboardTicketCategory_title_operator>;
+    updatedAt?: InputMaybe<DashboardTicketCategory_updatedAt_operator>;
+};
+
+export type DashboardTicketCategory_where_or = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardTicketCategory_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardTicketCategory_where_or>>>;
+    createdAt?: InputMaybe<DashboardTicketCategory_createdAt_operator>;
+    description?: InputMaybe<DashboardTicketCategory_description_operator>;
+    id?: InputMaybe<DashboardTicketCategory_id_operator>;
+    title?: InputMaybe<DashboardTicketCategory_title_operator>;
+    updatedAt?: InputMaybe<DashboardTicketCategory_updatedAt_operator>;
+};
+
+export type DashboardTicketUpdate_priority_MutationInput = 'high' | 'low' | 'medium' | '%future added value';
+
+export type DashboardTicketUpdate_status_MutationInput = 'closed' | 'in_progress' | 'open' | '%future added value';
+
+export type DashboardTicket_Comments = {
+    __typename?: 'DashboardTicket_Comments';
+    commentText?: Maybe<Scalars['String']['output']>;
+    commenter?: Maybe<User>;
+    createdAt?: Maybe<Scalars['DateTime']['output']>;
+    id?: Maybe<Scalars['String']['output']>;
+};
+
+export type DashboardTicket_assignedTo_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
+    equals?: InputMaybe<Scalars['JSON']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
+    not_equals?: InputMaybe<Scalars['JSON']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
+};
+
+export type DashboardTicket_author_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
+    equals?: InputMaybe<Scalars['JSON']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
+    not_equals?: InputMaybe<Scalars['JSON']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
+};
+
+export type DashboardTicket_category_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
+    equals?: InputMaybe<Scalars['JSON']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
+    not_equals?: InputMaybe<Scalars['JSON']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
+};
+
+export type DashboardTicket_comments__commentText_operator = {
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DashboardTicket_comments__commenter_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
+    equals?: InputMaybe<Scalars['JSON']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
+    not_equals?: InputMaybe<Scalars['JSON']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
+};
+
+export type DashboardTicket_comments__createdAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DashboardTicket_comments__id_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardTicket_createdAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DashboardTicket_description_operator = {
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DashboardTicket_id_operator = {
+    equals?: InputMaybe<Scalars['Int']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['Int']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    less_than?: InputMaybe<Scalars['Int']['input']>;
+    less_than_equal?: InputMaybe<Scalars['Int']['input']>;
+    not_equals?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type DashboardTicket_priority = 'high' | 'low' | 'medium' | '%future added value';
+
+export type DashboardTicket_priority_Input = 'high' | 'low' | 'medium' | '%future added value';
+
+export type DashboardTicket_priority_MutationInput = 'high' | 'low' | 'medium' | '%future added value';
+
+export type DashboardTicket_priority_operator = {
+    all?: InputMaybe<Array<InputMaybe<DashboardTicket_priority_Input>>>;
+    equals?: InputMaybe<DashboardTicket_priority_Input>;
+    in?: InputMaybe<Array<InputMaybe<DashboardTicket_priority_Input>>>;
+    not_equals?: InputMaybe<DashboardTicket_priority_Input>;
+    not_in?: InputMaybe<Array<InputMaybe<DashboardTicket_priority_Input>>>;
+};
+
+export type DashboardTicket_status = 'closed' | 'in_progress' | 'open' | '%future added value';
+
+export type DashboardTicket_status_Input = 'closed' | 'in_progress' | 'open' | '%future added value';
+
+export type DashboardTicket_status_MutationInput = 'closed' | 'in_progress' | 'open' | '%future added value';
+
+export type DashboardTicket_status_operator = {
+    all?: InputMaybe<Array<InputMaybe<DashboardTicket_status_Input>>>;
+    equals?: InputMaybe<DashboardTicket_status_Input>;
+    in?: InputMaybe<Array<InputMaybe<DashboardTicket_status_Input>>>;
+    not_equals?: InputMaybe<DashboardTicket_status_Input>;
+    not_in?: InputMaybe<Array<InputMaybe<DashboardTicket_status_Input>>>;
+};
+
+export type DashboardTicket_title_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type DashboardTicket_updatedAt_operator = {
+    equals?: InputMaybe<Scalars['DateTime']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    greater_than?: InputMaybe<Scalars['DateTime']['input']>;
+    greater_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than?: InputMaybe<Scalars['DateTime']['input']>;
+    less_than_equal?: InputMaybe<Scalars['DateTime']['input']>;
+    like?: InputMaybe<Scalars['DateTime']['input']>;
+    not_equals?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DashboardTicket_where = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardTicket_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardTicket_where_or>>>;
+    assignedTo?: InputMaybe<DashboardTicket_assignedTo_operator>;
+    author?: InputMaybe<DashboardTicket_author_operator>;
+    category?: InputMaybe<DashboardTicket_category_operator>;
+    comments__commentText?: InputMaybe<DashboardTicket_comments__commentText_operator>;
+    comments__commenter?: InputMaybe<DashboardTicket_comments__commenter_operator>;
+    comments__createdAt?: InputMaybe<DashboardTicket_comments__createdAt_operator>;
+    comments__id?: InputMaybe<DashboardTicket_comments__id_operator>;
+    createdAt?: InputMaybe<DashboardTicket_createdAt_operator>;
+    description?: InputMaybe<DashboardTicket_description_operator>;
+    id?: InputMaybe<DashboardTicket_id_operator>;
+    priority?: InputMaybe<DashboardTicket_priority_operator>;
+    status?: InputMaybe<DashboardTicket_status_operator>;
+    title?: InputMaybe<DashboardTicket_title_operator>;
+    updatedAt?: InputMaybe<DashboardTicket_updatedAt_operator>;
+};
+
+export type DashboardTicket_where_and = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardTicket_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardTicket_where_or>>>;
+    assignedTo?: InputMaybe<DashboardTicket_assignedTo_operator>;
+    author?: InputMaybe<DashboardTicket_author_operator>;
+    category?: InputMaybe<DashboardTicket_category_operator>;
+    comments__commentText?: InputMaybe<DashboardTicket_comments__commentText_operator>;
+    comments__commenter?: InputMaybe<DashboardTicket_comments__commenter_operator>;
+    comments__createdAt?: InputMaybe<DashboardTicket_comments__createdAt_operator>;
+    comments__id?: InputMaybe<DashboardTicket_comments__id_operator>;
+    createdAt?: InputMaybe<DashboardTicket_createdAt_operator>;
+    description?: InputMaybe<DashboardTicket_description_operator>;
+    id?: InputMaybe<DashboardTicket_id_operator>;
+    priority?: InputMaybe<DashboardTicket_priority_operator>;
+    status?: InputMaybe<DashboardTicket_status_operator>;
+    title?: InputMaybe<DashboardTicket_title_operator>;
+    updatedAt?: InputMaybe<DashboardTicket_updatedAt_operator>;
+};
+
+export type DashboardTicket_where_or = {
+    AND?: InputMaybe<Array<InputMaybe<DashboardTicket_where_and>>>;
+    OR?: InputMaybe<Array<InputMaybe<DashboardTicket_where_or>>>;
+    assignedTo?: InputMaybe<DashboardTicket_assignedTo_operator>;
+    author?: InputMaybe<DashboardTicket_author_operator>;
+    category?: InputMaybe<DashboardTicket_category_operator>;
+    comments__commentText?: InputMaybe<DashboardTicket_comments__commentText_operator>;
+    comments__commenter?: InputMaybe<DashboardTicket_comments__commenter_operator>;
+    comments__createdAt?: InputMaybe<DashboardTicket_comments__createdAt_operator>;
+    comments__id?: InputMaybe<DashboardTicket_comments__id_operator>;
+    createdAt?: InputMaybe<DashboardTicket_createdAt_operator>;
+    description?: InputMaybe<DashboardTicket_description_operator>;
+    id?: InputMaybe<DashboardTicket_id_operator>;
+    priority?: InputMaybe<DashboardTicket_priority_operator>;
+    status?: InputMaybe<DashboardTicket_status_operator>;
+    title?: InputMaybe<DashboardTicket_title_operator>;
+    updatedAt?: InputMaybe<DashboardTicket_updatedAt_operator>;
+};
+
+export type DashboardTickets = {
+    __typename?: 'DashboardTickets';
+    docs: Array<DashboardTicket>;
+    hasNextPage: Scalars['Boolean']['output'];
+    hasPrevPage: Scalars['Boolean']['output'];
+    limit: Scalars['Int']['output'];
+    nextPage?: Maybe<Scalars['Int']['output']>;
+    offset?: Maybe<Scalars['Int']['output']>;
+    page: Scalars['Int']['output'];
+    pagingCounter: Scalars['Int']['output'];
+    prevPage?: Maybe<Scalars['Int']['output']>;
+    totalDocs: Scalars['Int']['output'];
+    totalPages: Scalars['Int']['output'];
+};
+
+export type DashboardTicketsCreateAccess = {
+    __typename?: 'DashboardTicketsCreateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTicketsCreateDocAccess = {
+    __typename?: 'DashboardTicketsCreateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTicketsDeleteAccess = {
+    __typename?: 'DashboardTicketsDeleteAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTicketsDeleteDocAccess = {
+    __typename?: 'DashboardTicketsDeleteDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTicketsDocAccessFields = {
+    __typename?: 'DashboardTicketsDocAccessFields';
+    assignedTo?: Maybe<DashboardTicketsDocAccessFields_assignedTo>;
+    author?: Maybe<DashboardTicketsDocAccessFields_author>;
+    category?: Maybe<DashboardTicketsDocAccessFields_category>;
+    comments?: Maybe<DashboardTicketsDocAccessFields_comments>;
+    createdAt?: Maybe<DashboardTicketsDocAccessFields_createdAt>;
+    description?: Maybe<DashboardTicketsDocAccessFields_description>;
+    priority?: Maybe<DashboardTicketsDocAccessFields_priority>;
+    status?: Maybe<DashboardTicketsDocAccessFields_status>;
+    title?: Maybe<DashboardTicketsDocAccessFields_title>;
+    updatedAt?: Maybe<DashboardTicketsDocAccessFields_updatedAt>;
+};
+
+export type DashboardTicketsDocAccessFields_assignedTo = {
+    __typename?: 'DashboardTicketsDocAccessFields_assignedTo';
+    create?: Maybe<DashboardTicketsDocAccessFields_assignedTo_Create>;
+    delete?: Maybe<DashboardTicketsDocAccessFields_assignedTo_Delete>;
+    read?: Maybe<DashboardTicketsDocAccessFields_assignedTo_Read>;
+    update?: Maybe<DashboardTicketsDocAccessFields_assignedTo_Update>;
+};
+
+export type DashboardTicketsDocAccessFields_assignedTo_Create = {
+    __typename?: 'DashboardTicketsDocAccessFields_assignedTo_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_assignedTo_Delete = {
+    __typename?: 'DashboardTicketsDocAccessFields_assignedTo_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_assignedTo_Read = {
+    __typename?: 'DashboardTicketsDocAccessFields_assignedTo_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_assignedTo_Update = {
+    __typename?: 'DashboardTicketsDocAccessFields_assignedTo_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_author = {
+    __typename?: 'DashboardTicketsDocAccessFields_author';
+    create?: Maybe<DashboardTicketsDocAccessFields_author_Create>;
+    delete?: Maybe<DashboardTicketsDocAccessFields_author_Delete>;
+    read?: Maybe<DashboardTicketsDocAccessFields_author_Read>;
+    update?: Maybe<DashboardTicketsDocAccessFields_author_Update>;
+};
+
+export type DashboardTicketsDocAccessFields_author_Create = {
+    __typename?: 'DashboardTicketsDocAccessFields_author_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_author_Delete = {
+    __typename?: 'DashboardTicketsDocAccessFields_author_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_author_Read = {
+    __typename?: 'DashboardTicketsDocAccessFields_author_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_author_Update = {
+    __typename?: 'DashboardTicketsDocAccessFields_author_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_category = {
+    __typename?: 'DashboardTicketsDocAccessFields_category';
+    create?: Maybe<DashboardTicketsDocAccessFields_category_Create>;
+    delete?: Maybe<DashboardTicketsDocAccessFields_category_Delete>;
+    read?: Maybe<DashboardTicketsDocAccessFields_category_Read>;
+    update?: Maybe<DashboardTicketsDocAccessFields_category_Update>;
+};
+
+export type DashboardTicketsDocAccessFields_category_Create = {
+    __typename?: 'DashboardTicketsDocAccessFields_category_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_category_Delete = {
+    __typename?: 'DashboardTicketsDocAccessFields_category_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_category_Read = {
+    __typename?: 'DashboardTicketsDocAccessFields_category_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_category_Update = {
+    __typename?: 'DashboardTicketsDocAccessFields_category_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments';
+    create?: Maybe<DashboardTicketsDocAccessFields_comments_Create>;
+    delete?: Maybe<DashboardTicketsDocAccessFields_comments_Delete>;
+    fields?: Maybe<DashboardTicketsDocAccessFields_comments_Fields>;
+    read?: Maybe<DashboardTicketsDocAccessFields_comments_Read>;
+    update?: Maybe<DashboardTicketsDocAccessFields_comments_Update>;
+};
+
+export type DashboardTicketsDocAccessFields_comments_Create = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_Delete = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_Fields = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_Fields';
+    commentText?: Maybe<DashboardTicketsDocAccessFields_comments_commentText>;
+    commenter?: Maybe<DashboardTicketsDocAccessFields_comments_commenter>;
+    createdAt?: Maybe<DashboardTicketsDocAccessFields_comments_createdAt>;
+    id?: Maybe<DashboardTicketsDocAccessFields_comments_id>;
+};
+
+export type DashboardTicketsDocAccessFields_comments_Read = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_Update = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_commentText = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_commentText';
+    create?: Maybe<DashboardTicketsDocAccessFields_comments_commentText_Create>;
+    delete?: Maybe<DashboardTicketsDocAccessFields_comments_commentText_Delete>;
+    read?: Maybe<DashboardTicketsDocAccessFields_comments_commentText_Read>;
+    update?: Maybe<DashboardTicketsDocAccessFields_comments_commentText_Update>;
+};
+
+export type DashboardTicketsDocAccessFields_comments_commentText_Create = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_commentText_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_commentText_Delete = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_commentText_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_commentText_Read = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_commentText_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_commentText_Update = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_commentText_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_commenter = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_commenter';
+    create?: Maybe<DashboardTicketsDocAccessFields_comments_commenter_Create>;
+    delete?: Maybe<DashboardTicketsDocAccessFields_comments_commenter_Delete>;
+    read?: Maybe<DashboardTicketsDocAccessFields_comments_commenter_Read>;
+    update?: Maybe<DashboardTicketsDocAccessFields_comments_commenter_Update>;
+};
+
+export type DashboardTicketsDocAccessFields_comments_commenter_Create = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_commenter_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_commenter_Delete = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_commenter_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_commenter_Read = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_commenter_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_commenter_Update = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_commenter_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_createdAt = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_createdAt';
+    create?: Maybe<DashboardTicketsDocAccessFields_comments_createdAt_Create>;
+    delete?: Maybe<DashboardTicketsDocAccessFields_comments_createdAt_Delete>;
+    read?: Maybe<DashboardTicketsDocAccessFields_comments_createdAt_Read>;
+    update?: Maybe<DashboardTicketsDocAccessFields_comments_createdAt_Update>;
+};
+
+export type DashboardTicketsDocAccessFields_comments_createdAt_Create = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_createdAt_Delete = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_createdAt_Read = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_createdAt_Update = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_id = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_id';
+    create?: Maybe<DashboardTicketsDocAccessFields_comments_id_Create>;
+    delete?: Maybe<DashboardTicketsDocAccessFields_comments_id_Delete>;
+    read?: Maybe<DashboardTicketsDocAccessFields_comments_id_Read>;
+    update?: Maybe<DashboardTicketsDocAccessFields_comments_id_Update>;
+};
+
+export type DashboardTicketsDocAccessFields_comments_id_Create = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_id_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_id_Delete = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_id_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_id_Read = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_id_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_comments_id_Update = {
+    __typename?: 'DashboardTicketsDocAccessFields_comments_id_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_createdAt = {
+    __typename?: 'DashboardTicketsDocAccessFields_createdAt';
+    create?: Maybe<DashboardTicketsDocAccessFields_createdAt_Create>;
+    delete?: Maybe<DashboardTicketsDocAccessFields_createdAt_Delete>;
+    read?: Maybe<DashboardTicketsDocAccessFields_createdAt_Read>;
+    update?: Maybe<DashboardTicketsDocAccessFields_createdAt_Update>;
+};
+
+export type DashboardTicketsDocAccessFields_createdAt_Create = {
+    __typename?: 'DashboardTicketsDocAccessFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_createdAt_Delete = {
+    __typename?: 'DashboardTicketsDocAccessFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_createdAt_Read = {
+    __typename?: 'DashboardTicketsDocAccessFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_createdAt_Update = {
+    __typename?: 'DashboardTicketsDocAccessFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_description = {
+    __typename?: 'DashboardTicketsDocAccessFields_description';
+    create?: Maybe<DashboardTicketsDocAccessFields_description_Create>;
+    delete?: Maybe<DashboardTicketsDocAccessFields_description_Delete>;
+    read?: Maybe<DashboardTicketsDocAccessFields_description_Read>;
+    update?: Maybe<DashboardTicketsDocAccessFields_description_Update>;
+};
+
+export type DashboardTicketsDocAccessFields_description_Create = {
+    __typename?: 'DashboardTicketsDocAccessFields_description_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_description_Delete = {
+    __typename?: 'DashboardTicketsDocAccessFields_description_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_description_Read = {
+    __typename?: 'DashboardTicketsDocAccessFields_description_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_description_Update = {
+    __typename?: 'DashboardTicketsDocAccessFields_description_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_priority = {
+    __typename?: 'DashboardTicketsDocAccessFields_priority';
+    create?: Maybe<DashboardTicketsDocAccessFields_priority_Create>;
+    delete?: Maybe<DashboardTicketsDocAccessFields_priority_Delete>;
+    read?: Maybe<DashboardTicketsDocAccessFields_priority_Read>;
+    update?: Maybe<DashboardTicketsDocAccessFields_priority_Update>;
+};
+
+export type DashboardTicketsDocAccessFields_priority_Create = {
+    __typename?: 'DashboardTicketsDocAccessFields_priority_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_priority_Delete = {
+    __typename?: 'DashboardTicketsDocAccessFields_priority_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_priority_Read = {
+    __typename?: 'DashboardTicketsDocAccessFields_priority_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_priority_Update = {
+    __typename?: 'DashboardTicketsDocAccessFields_priority_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_status = {
+    __typename?: 'DashboardTicketsDocAccessFields_status';
+    create?: Maybe<DashboardTicketsDocAccessFields_status_Create>;
+    delete?: Maybe<DashboardTicketsDocAccessFields_status_Delete>;
+    read?: Maybe<DashboardTicketsDocAccessFields_status_Read>;
+    update?: Maybe<DashboardTicketsDocAccessFields_status_Update>;
+};
+
+export type DashboardTicketsDocAccessFields_status_Create = {
+    __typename?: 'DashboardTicketsDocAccessFields_status_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_status_Delete = {
+    __typename?: 'DashboardTicketsDocAccessFields_status_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_status_Read = {
+    __typename?: 'DashboardTicketsDocAccessFields_status_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_status_Update = {
+    __typename?: 'DashboardTicketsDocAccessFields_status_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_title = {
+    __typename?: 'DashboardTicketsDocAccessFields_title';
+    create?: Maybe<DashboardTicketsDocAccessFields_title_Create>;
+    delete?: Maybe<DashboardTicketsDocAccessFields_title_Delete>;
+    read?: Maybe<DashboardTicketsDocAccessFields_title_Read>;
+    update?: Maybe<DashboardTicketsDocAccessFields_title_Update>;
+};
+
+export type DashboardTicketsDocAccessFields_title_Create = {
+    __typename?: 'DashboardTicketsDocAccessFields_title_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_title_Delete = {
+    __typename?: 'DashboardTicketsDocAccessFields_title_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_title_Read = {
+    __typename?: 'DashboardTicketsDocAccessFields_title_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_title_Update = {
+    __typename?: 'DashboardTicketsDocAccessFields_title_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_updatedAt = {
+    __typename?: 'DashboardTicketsDocAccessFields_updatedAt';
+    create?: Maybe<DashboardTicketsDocAccessFields_updatedAt_Create>;
+    delete?: Maybe<DashboardTicketsDocAccessFields_updatedAt_Delete>;
+    read?: Maybe<DashboardTicketsDocAccessFields_updatedAt_Read>;
+    update?: Maybe<DashboardTicketsDocAccessFields_updatedAt_Update>;
+};
+
+export type DashboardTicketsDocAccessFields_updatedAt_Create = {
+    __typename?: 'DashboardTicketsDocAccessFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_updatedAt_Delete = {
+    __typename?: 'DashboardTicketsDocAccessFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_updatedAt_Read = {
+    __typename?: 'DashboardTicketsDocAccessFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsDocAccessFields_updatedAt_Update = {
+    __typename?: 'DashboardTicketsDocAccessFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields = {
+    __typename?: 'DashboardTicketsFields';
+    assignedTo?: Maybe<DashboardTicketsFields_assignedTo>;
+    author?: Maybe<DashboardTicketsFields_author>;
+    category?: Maybe<DashboardTicketsFields_category>;
+    comments?: Maybe<DashboardTicketsFields_comments>;
+    createdAt?: Maybe<DashboardTicketsFields_createdAt>;
+    description?: Maybe<DashboardTicketsFields_description>;
+    priority?: Maybe<DashboardTicketsFields_priority>;
+    status?: Maybe<DashboardTicketsFields_status>;
+    title?: Maybe<DashboardTicketsFields_title>;
+    updatedAt?: Maybe<DashboardTicketsFields_updatedAt>;
+};
+
+export type DashboardTicketsFields_assignedTo = {
+    __typename?: 'DashboardTicketsFields_assignedTo';
+    create?: Maybe<DashboardTicketsFields_assignedTo_Create>;
+    delete?: Maybe<DashboardTicketsFields_assignedTo_Delete>;
+    read?: Maybe<DashboardTicketsFields_assignedTo_Read>;
+    update?: Maybe<DashboardTicketsFields_assignedTo_Update>;
+};
+
+export type DashboardTicketsFields_assignedTo_Create = {
+    __typename?: 'DashboardTicketsFields_assignedTo_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_assignedTo_Delete = {
+    __typename?: 'DashboardTicketsFields_assignedTo_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_assignedTo_Read = {
+    __typename?: 'DashboardTicketsFields_assignedTo_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_assignedTo_Update = {
+    __typename?: 'DashboardTicketsFields_assignedTo_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_author = {
+    __typename?: 'DashboardTicketsFields_author';
+    create?: Maybe<DashboardTicketsFields_author_Create>;
+    delete?: Maybe<DashboardTicketsFields_author_Delete>;
+    read?: Maybe<DashboardTicketsFields_author_Read>;
+    update?: Maybe<DashboardTicketsFields_author_Update>;
+};
+
+export type DashboardTicketsFields_author_Create = {
+    __typename?: 'DashboardTicketsFields_author_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_author_Delete = {
+    __typename?: 'DashboardTicketsFields_author_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_author_Read = {
+    __typename?: 'DashboardTicketsFields_author_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_author_Update = {
+    __typename?: 'DashboardTicketsFields_author_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_category = {
+    __typename?: 'DashboardTicketsFields_category';
+    create?: Maybe<DashboardTicketsFields_category_Create>;
+    delete?: Maybe<DashboardTicketsFields_category_Delete>;
+    read?: Maybe<DashboardTicketsFields_category_Read>;
+    update?: Maybe<DashboardTicketsFields_category_Update>;
+};
+
+export type DashboardTicketsFields_category_Create = {
+    __typename?: 'DashboardTicketsFields_category_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_category_Delete = {
+    __typename?: 'DashboardTicketsFields_category_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_category_Read = {
+    __typename?: 'DashboardTicketsFields_category_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_category_Update = {
+    __typename?: 'DashboardTicketsFields_category_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments = {
+    __typename?: 'DashboardTicketsFields_comments';
+    create?: Maybe<DashboardTicketsFields_comments_Create>;
+    delete?: Maybe<DashboardTicketsFields_comments_Delete>;
+    fields?: Maybe<DashboardTicketsFields_comments_Fields>;
+    read?: Maybe<DashboardTicketsFields_comments_Read>;
+    update?: Maybe<DashboardTicketsFields_comments_Update>;
+};
+
+export type DashboardTicketsFields_comments_Create = {
+    __typename?: 'DashboardTicketsFields_comments_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_Delete = {
+    __typename?: 'DashboardTicketsFields_comments_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_Fields = {
+    __typename?: 'DashboardTicketsFields_comments_Fields';
+    commentText?: Maybe<DashboardTicketsFields_comments_commentText>;
+    commenter?: Maybe<DashboardTicketsFields_comments_commenter>;
+    createdAt?: Maybe<DashboardTicketsFields_comments_createdAt>;
+    id?: Maybe<DashboardTicketsFields_comments_id>;
+};
+
+export type DashboardTicketsFields_comments_Read = {
+    __typename?: 'DashboardTicketsFields_comments_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_Update = {
+    __typename?: 'DashboardTicketsFields_comments_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_commentText = {
+    __typename?: 'DashboardTicketsFields_comments_commentText';
+    create?: Maybe<DashboardTicketsFields_comments_commentText_Create>;
+    delete?: Maybe<DashboardTicketsFields_comments_commentText_Delete>;
+    read?: Maybe<DashboardTicketsFields_comments_commentText_Read>;
+    update?: Maybe<DashboardTicketsFields_comments_commentText_Update>;
+};
+
+export type DashboardTicketsFields_comments_commentText_Create = {
+    __typename?: 'DashboardTicketsFields_comments_commentText_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_commentText_Delete = {
+    __typename?: 'DashboardTicketsFields_comments_commentText_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_commentText_Read = {
+    __typename?: 'DashboardTicketsFields_comments_commentText_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_commentText_Update = {
+    __typename?: 'DashboardTicketsFields_comments_commentText_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_commenter = {
+    __typename?: 'DashboardTicketsFields_comments_commenter';
+    create?: Maybe<DashboardTicketsFields_comments_commenter_Create>;
+    delete?: Maybe<DashboardTicketsFields_comments_commenter_Delete>;
+    read?: Maybe<DashboardTicketsFields_comments_commenter_Read>;
+    update?: Maybe<DashboardTicketsFields_comments_commenter_Update>;
+};
+
+export type DashboardTicketsFields_comments_commenter_Create = {
+    __typename?: 'DashboardTicketsFields_comments_commenter_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_commenter_Delete = {
+    __typename?: 'DashboardTicketsFields_comments_commenter_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_commenter_Read = {
+    __typename?: 'DashboardTicketsFields_comments_commenter_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_commenter_Update = {
+    __typename?: 'DashboardTicketsFields_comments_commenter_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_createdAt = {
+    __typename?: 'DashboardTicketsFields_comments_createdAt';
+    create?: Maybe<DashboardTicketsFields_comments_createdAt_Create>;
+    delete?: Maybe<DashboardTicketsFields_comments_createdAt_Delete>;
+    read?: Maybe<DashboardTicketsFields_comments_createdAt_Read>;
+    update?: Maybe<DashboardTicketsFields_comments_createdAt_Update>;
+};
+
+export type DashboardTicketsFields_comments_createdAt_Create = {
+    __typename?: 'DashboardTicketsFields_comments_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_createdAt_Delete = {
+    __typename?: 'DashboardTicketsFields_comments_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_createdAt_Read = {
+    __typename?: 'DashboardTicketsFields_comments_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_createdAt_Update = {
+    __typename?: 'DashboardTicketsFields_comments_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_id = {
+    __typename?: 'DashboardTicketsFields_comments_id';
+    create?: Maybe<DashboardTicketsFields_comments_id_Create>;
+    delete?: Maybe<DashboardTicketsFields_comments_id_Delete>;
+    read?: Maybe<DashboardTicketsFields_comments_id_Read>;
+    update?: Maybe<DashboardTicketsFields_comments_id_Update>;
+};
+
+export type DashboardTicketsFields_comments_id_Create = {
+    __typename?: 'DashboardTicketsFields_comments_id_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_id_Delete = {
+    __typename?: 'DashboardTicketsFields_comments_id_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_id_Read = {
+    __typename?: 'DashboardTicketsFields_comments_id_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_comments_id_Update = {
+    __typename?: 'DashboardTicketsFields_comments_id_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_createdAt = {
+    __typename?: 'DashboardTicketsFields_createdAt';
+    create?: Maybe<DashboardTicketsFields_createdAt_Create>;
+    delete?: Maybe<DashboardTicketsFields_createdAt_Delete>;
+    read?: Maybe<DashboardTicketsFields_createdAt_Read>;
+    update?: Maybe<DashboardTicketsFields_createdAt_Update>;
+};
+
+export type DashboardTicketsFields_createdAt_Create = {
+    __typename?: 'DashboardTicketsFields_createdAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_createdAt_Delete = {
+    __typename?: 'DashboardTicketsFields_createdAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_createdAt_Read = {
+    __typename?: 'DashboardTicketsFields_createdAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_createdAt_Update = {
+    __typename?: 'DashboardTicketsFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_description = {
+    __typename?: 'DashboardTicketsFields_description';
+    create?: Maybe<DashboardTicketsFields_description_Create>;
+    delete?: Maybe<DashboardTicketsFields_description_Delete>;
+    read?: Maybe<DashboardTicketsFields_description_Read>;
+    update?: Maybe<DashboardTicketsFields_description_Update>;
+};
+
+export type DashboardTicketsFields_description_Create = {
+    __typename?: 'DashboardTicketsFields_description_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_description_Delete = {
+    __typename?: 'DashboardTicketsFields_description_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_description_Read = {
+    __typename?: 'DashboardTicketsFields_description_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_description_Update = {
+    __typename?: 'DashboardTicketsFields_description_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_priority = {
+    __typename?: 'DashboardTicketsFields_priority';
+    create?: Maybe<DashboardTicketsFields_priority_Create>;
+    delete?: Maybe<DashboardTicketsFields_priority_Delete>;
+    read?: Maybe<DashboardTicketsFields_priority_Read>;
+    update?: Maybe<DashboardTicketsFields_priority_Update>;
+};
+
+export type DashboardTicketsFields_priority_Create = {
+    __typename?: 'DashboardTicketsFields_priority_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_priority_Delete = {
+    __typename?: 'DashboardTicketsFields_priority_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_priority_Read = {
+    __typename?: 'DashboardTicketsFields_priority_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_priority_Update = {
+    __typename?: 'DashboardTicketsFields_priority_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_status = {
+    __typename?: 'DashboardTicketsFields_status';
+    create?: Maybe<DashboardTicketsFields_status_Create>;
+    delete?: Maybe<DashboardTicketsFields_status_Delete>;
+    read?: Maybe<DashboardTicketsFields_status_Read>;
+    update?: Maybe<DashboardTicketsFields_status_Update>;
+};
+
+export type DashboardTicketsFields_status_Create = {
+    __typename?: 'DashboardTicketsFields_status_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_status_Delete = {
+    __typename?: 'DashboardTicketsFields_status_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_status_Read = {
+    __typename?: 'DashboardTicketsFields_status_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_status_Update = {
+    __typename?: 'DashboardTicketsFields_status_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_title = {
+    __typename?: 'DashboardTicketsFields_title';
+    create?: Maybe<DashboardTicketsFields_title_Create>;
+    delete?: Maybe<DashboardTicketsFields_title_Delete>;
+    read?: Maybe<DashboardTicketsFields_title_Read>;
+    update?: Maybe<DashboardTicketsFields_title_Update>;
+};
+
+export type DashboardTicketsFields_title_Create = {
+    __typename?: 'DashboardTicketsFields_title_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_title_Delete = {
+    __typename?: 'DashboardTicketsFields_title_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_title_Read = {
+    __typename?: 'DashboardTicketsFields_title_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_title_Update = {
+    __typename?: 'DashboardTicketsFields_title_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_updatedAt = {
+    __typename?: 'DashboardTicketsFields_updatedAt';
+    create?: Maybe<DashboardTicketsFields_updatedAt_Create>;
+    delete?: Maybe<DashboardTicketsFields_updatedAt_Delete>;
+    read?: Maybe<DashboardTicketsFields_updatedAt_Read>;
+    update?: Maybe<DashboardTicketsFields_updatedAt_Update>;
+};
+
+export type DashboardTicketsFields_updatedAt_Create = {
+    __typename?: 'DashboardTicketsFields_updatedAt_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_updatedAt_Delete = {
+    __typename?: 'DashboardTicketsFields_updatedAt_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_updatedAt_Read = {
+    __typename?: 'DashboardTicketsFields_updatedAt_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsFields_updatedAt_Update = {
+    __typename?: 'DashboardTicketsFields_updatedAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type DashboardTicketsReadAccess = {
+    __typename?: 'DashboardTicketsReadAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTicketsReadDocAccess = {
+    __typename?: 'DashboardTicketsReadDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTicketsUpdateAccess = {
+    __typename?: 'DashboardTicketsUpdateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTicketsUpdateDocAccess = {
+    __typename?: 'DashboardTicketsUpdateDocAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardTitleElement = {
+    __typename?: 'DashboardTitleElement';
+    blockName?: Maybe<Scalars['String']['output']>;
+    blockType?: Maybe<Scalars['String']['output']>;
+    icon?: Maybe<Scalars['String']['output']>;
+    id?: Maybe<Scalars['String']['output']>;
+    title: Scalars['String']['output'];
+};
+
 export type Mutation = {
     __typename?: 'Mutation';
     createCourse?: Maybe<Course>;
@@ -5018,6 +15305,12 @@ export type Mutation = {
     createCourseSharedDocument?: Maybe<CourseSharedDocument>;
     createCourseSpeaker?: Maybe<CourseSpeaker>;
     createCourseVideoLesson?: Maybe<CourseVideoLesson>;
+    createDashboardChangelog?: Maybe<DashboardChangelog>;
+    createDashboardHelpPage?: Maybe<DashboardHelpPage>;
+    createDashboardImage?: Maybe<DashboardImage>;
+    createDashboardTextBlock?: Maybe<DashboardTextBlock>;
+    createDashboardTicket?: Maybe<DashboardTicket>;
+    createDashboardTicketCategory?: Maybe<DashboardTicketCategory>;
     createPayloadKv?: Maybe<PayloadKv>;
     createPayloadLockedDocument?: Maybe<PayloadLockedDocument>;
     createPayloadPreference?: Maybe<PayloadPreference>;
@@ -5047,6 +15340,12 @@ export type Mutation = {
     deleteCourseSharedDocument?: Maybe<CourseSharedDocument>;
     deleteCourseSpeaker?: Maybe<CourseSpeaker>;
     deleteCourseVideoLesson?: Maybe<CourseVideoLesson>;
+    deleteDashboardChangelog?: Maybe<DashboardChangelog>;
+    deleteDashboardHelpPage?: Maybe<DashboardHelpPage>;
+    deleteDashboardImage?: Maybe<DashboardImage>;
+    deleteDashboardTextBlock?: Maybe<DashboardTextBlock>;
+    deleteDashboardTicket?: Maybe<DashboardTicket>;
+    deleteDashboardTicketCategory?: Maybe<DashboardTicketCategory>;
     deletePayloadKv?: Maybe<PayloadKv>;
     deletePayloadLockedDocument?: Maybe<PayloadLockedDocument>;
     deletePayloadPreference?: Maybe<PayloadPreference>;
@@ -5076,6 +15375,12 @@ export type Mutation = {
     duplicateCourseSharedDocument?: Maybe<CourseSharedDocument>;
     duplicateCourseSpeaker?: Maybe<CourseSpeaker>;
     duplicateCourseVideoLesson?: Maybe<CourseVideoLesson>;
+    duplicateDashboardChangelog?: Maybe<DashboardChangelog>;
+    duplicateDashboardHelpPage?: Maybe<DashboardHelpPage>;
+    duplicateDashboardImage?: Maybe<DashboardImage>;
+    duplicateDashboardTextBlock?: Maybe<DashboardTextBlock>;
+    duplicateDashboardTicket?: Maybe<DashboardTicket>;
+    duplicateDashboardTicketCategory?: Maybe<DashboardTicketCategory>;
     duplicatePayloadKv?: Maybe<PayloadKv>;
     duplicatePayloadLockedDocument?: Maybe<PayloadLockedDocument>;
     duplicatePayloadPreference?: Maybe<PayloadPreference>;
@@ -5111,6 +15416,13 @@ export type Mutation = {
     updateCourseSharedDocument?: Maybe<CourseSharedDocument>;
     updateCourseSpeaker?: Maybe<CourseSpeaker>;
     updateCourseVideoLesson?: Maybe<CourseVideoLesson>;
+    updateDashboardChangelog?: Maybe<DashboardChangelog>;
+    updateDashboardGlobal?: Maybe<DashboardGlobal>;
+    updateDashboardHelpPage?: Maybe<DashboardHelpPage>;
+    updateDashboardImage?: Maybe<DashboardImage>;
+    updateDashboardTextBlock?: Maybe<DashboardTextBlock>;
+    updateDashboardTicket?: Maybe<DashboardTicket>;
+    updateDashboardTicketCategory?: Maybe<DashboardTicketCategory>;
     updatePayloadKv?: Maybe<PayloadKv>;
     updatePayloadLockedDocument?: Maybe<PayloadLockedDocument>;
     updatePayloadPreference?: Maybe<PayloadPreference>;
@@ -5175,6 +15487,36 @@ export type Mutation_createCourseSpeakerArgs = {
 
 export type Mutation_createCourseVideoLessonArgs = {
     data: mutationCourseVideoLessonInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_createDashboardChangelogArgs = {
+    data: mutationDashboardChangelogInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_createDashboardHelpPageArgs = {
+    data: mutationDashboardHelpPageInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_createDashboardImageArgs = {
+    data: mutationDashboardImageInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_createDashboardTextBlockArgs = {
+    data: mutationDashboardTextBlockInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_createDashboardTicketArgs = {
+    data: mutationDashboardTicketInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_createDashboardTicketCategoryArgs = {
+    data: mutationDashboardTicketCategoryInput;
     draft?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
@@ -5323,6 +15665,36 @@ export type Mutation_deleteCourseVideoLessonArgs = {
     trash?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type Mutation_deleteDashboardChangelogArgs = {
+    id: Scalars['Int']['input'];
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_deleteDashboardHelpPageArgs = {
+    id: Scalars['Int']['input'];
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_deleteDashboardImageArgs = {
+    id: Scalars['Int']['input'];
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_deleteDashboardTextBlockArgs = {
+    id: Scalars['Int']['input'];
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_deleteDashboardTicketArgs = {
+    id: Scalars['Int']['input'];
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_deleteDashboardTicketCategoryArgs = {
+    id: Scalars['Int']['input'];
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type Mutation_deletePayloadKvArgs = {
     id: Scalars['Int']['input'];
     trash?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5465,6 +15837,36 @@ export type Mutation_duplicateCourseSpeakerArgs = {
 
 export type Mutation_duplicateCourseVideoLessonArgs = {
     data: mutationCourseVideoLessonInput;
+    id: Scalars['Int']['input'];
+};
+
+export type Mutation_duplicateDashboardChangelogArgs = {
+    data: mutationDashboardChangelogInput;
+    id: Scalars['Int']['input'];
+};
+
+export type Mutation_duplicateDashboardHelpPageArgs = {
+    data: mutationDashboardHelpPageInput;
+    id: Scalars['Int']['input'];
+};
+
+export type Mutation_duplicateDashboardImageArgs = {
+    data: mutationDashboardImageInput;
+    id: Scalars['Int']['input'];
+};
+
+export type Mutation_duplicateDashboardTextBlockArgs = {
+    data: mutationDashboardTextBlockInput;
+    id: Scalars['Int']['input'];
+};
+
+export type Mutation_duplicateDashboardTicketArgs = {
+    data: mutationDashboardTicketInput;
+    id: Scalars['Int']['input'];
+};
+
+export type Mutation_duplicateDashboardTicketCategoryArgs = {
+    data: mutationDashboardTicketCategoryInput;
     id: Scalars['Int']['input'];
 };
 
@@ -5656,6 +16058,59 @@ export type Mutation_updateCourseSpeakerArgs = {
 export type Mutation_updateCourseVideoLessonArgs = {
     autosave?: InputMaybe<Scalars['Boolean']['input']>;
     data: mutationCourseVideoLessonUpdateInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    id: Scalars['Int']['input'];
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_updateDashboardChangelogArgs = {
+    autosave?: InputMaybe<Scalars['Boolean']['input']>;
+    data: mutationDashboardChangelogUpdateInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    id: Scalars['Int']['input'];
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_updateDashboardGlobalArgs = {
+    data: mutationDashboardGlobalInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_updateDashboardHelpPageArgs = {
+    autosave?: InputMaybe<Scalars['Boolean']['input']>;
+    data: mutationDashboardHelpPageUpdateInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    id: Scalars['Int']['input'];
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_updateDashboardImageArgs = {
+    autosave?: InputMaybe<Scalars['Boolean']['input']>;
+    data: mutationDashboardImageUpdateInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    id: Scalars['Int']['input'];
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_updateDashboardTextBlockArgs = {
+    autosave?: InputMaybe<Scalars['Boolean']['input']>;
+    data: mutationDashboardTextBlockUpdateInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    id: Scalars['Int']['input'];
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_updateDashboardTicketArgs = {
+    autosave?: InputMaybe<Scalars['Boolean']['input']>;
+    data: mutationDashboardTicketUpdateInput;
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    id: Scalars['Int']['input'];
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation_updateDashboardTicketCategoryArgs = {
+    autosave?: InputMaybe<Scalars['Boolean']['input']>;
+    data: mutationDashboardTicketCategoryUpdateInput;
     draft?: InputMaybe<Scalars['Boolean']['input']>;
     id: Scalars['Int']['input'];
     trash?: InputMaybe<Scalars['Boolean']['input']>;
@@ -6119,6 +16574,12 @@ export type PayloadLockedDocumentUpdate_DocumentRelationshipInputRelationTo =
     | 'course_speakers'
     | 'course_video_lessons'
     | 'courses'
+    | 'dashboard_changelogs'
+    | 'dashboard_help_pages'
+    | 'dashboard_images'
+    | 'dashboard_text_blocks'
+    | 'dashboard_ticket_categories'
+    | 'dashboard_tickets'
     | 'plant_effects'
     | 'plant_families'
     | 'plant_groups'
@@ -6155,6 +16616,12 @@ export type PayloadLockedDocument_Document =
     | CourseSharedDocument
     | CourseSpeaker
     | CourseVideoLesson
+    | DashboardChangelog
+    | DashboardHelpPage
+    | DashboardImage
+    | DashboardTextBlock
+    | DashboardTicket
+    | DashboardTicketCategory
     | Plant
     | PlantEffect
     | PlantFamily
@@ -6188,6 +16655,12 @@ export type PayloadLockedDocument_DocumentRelationshipInputRelationTo =
     | 'course_speakers'
     | 'course_video_lessons'
     | 'courses'
+    | 'dashboard_changelogs'
+    | 'dashboard_help_pages'
+    | 'dashboard_images'
+    | 'dashboard_text_blocks'
+    | 'dashboard_ticket_categories'
+    | 'dashboard_tickets'
     | 'plant_effects'
     | 'plant_families'
     | 'plant_groups'
@@ -6217,6 +16690,12 @@ export type PayloadLockedDocument_Document_RelationTo =
     | 'course_speakers'
     | 'course_video_lessons'
     | 'courses'
+    | 'dashboard_changelogs'
+    | 'dashboard_help_pages'
+    | 'dashboard_images'
+    | 'dashboard_text_blocks'
+    | 'dashboard_ticket_categories'
+    | 'dashboard_tickets'
     | 'plant_effects'
     | 'plant_families'
     | 'plant_groups'
@@ -6285,6 +16764,12 @@ export type PayloadLockedDocument_document_Relation_RelationTo =
     | 'course_speakers'
     | 'course_video_lessons'
     | 'courses'
+    | 'dashboard_changelogs'
+    | 'dashboard_help_pages'
+    | 'dashboard_images'
+    | 'dashboard_text_blocks'
+    | 'dashboard_ticket_categories'
+    | 'dashboard_tickets'
     | 'plant_effects'
     | 'plant_families'
     | 'plant_groups'
@@ -34196,6 +44681,19 @@ export type Query = {
     CourseVideoLesson?: Maybe<CourseVideoLesson>;
     CourseVideoLessons?: Maybe<CourseVideoLessons>;
     Courses?: Maybe<Courses>;
+    DashboardChangelog?: Maybe<DashboardChangelog>;
+    DashboardChangelogs?: Maybe<DashboardChangelogs>;
+    DashboardGlobal?: Maybe<DashboardGlobal>;
+    DashboardHelpPage?: Maybe<DashboardHelpPage>;
+    DashboardHelpPages?: Maybe<DashboardHelpPages>;
+    DashboardImage?: Maybe<DashboardImage>;
+    DashboardImages?: Maybe<DashboardImages>;
+    DashboardTextBlock?: Maybe<DashboardTextBlock>;
+    DashboardTextBlocks?: Maybe<DashboardTextBlocks>;
+    DashboardTicket?: Maybe<DashboardTicket>;
+    DashboardTicketCategories?: Maybe<DashboardTicketCategories>;
+    DashboardTicketCategory?: Maybe<DashboardTicketCategory>;
+    DashboardTickets?: Maybe<DashboardTickets>;
     PayloadKv?: Maybe<PayloadKv>;
     PayloadKvs?: Maybe<PayloadKvs>;
     PayloadLockedDocument?: Maybe<PayloadLockedDocument>;
@@ -34249,6 +44747,12 @@ export type Query = {
     countCourseSpeakers?: Maybe<countCourseSpeakers>;
     countCourseVideoLessons?: Maybe<countCourseVideoLessons>;
     countCourses?: Maybe<countCourses>;
+    countDashboardChangelogs?: Maybe<countDashboardChangelogs>;
+    countDashboardHelpPages?: Maybe<countDashboardHelpPages>;
+    countDashboardImages?: Maybe<countDashboardImages>;
+    countDashboardTextBlocks?: Maybe<countDashboardTextBlocks>;
+    countDashboardTicketCategories?: Maybe<countDashboardTicketCategories>;
+    countDashboardTickets?: Maybe<countDashboardTickets>;
     countPayloadKvs?: Maybe<countPayloadKvs>;
     countPayloadLockedDocuments?: Maybe<countPayloadLockedDocuments>;
     countPayloadPreferences?: Maybe<countPayloadPreferences>;
@@ -34279,6 +44783,13 @@ export type Query = {
     docAccessCourseSharedDocument?: Maybe<course_shared_documentsDocAccess>;
     docAccessCourseSpeaker?: Maybe<course_speakersDocAccess>;
     docAccessCourseVideoLesson?: Maybe<course_video_lessonsDocAccess>;
+    docAccessDashboardChangelog?: Maybe<dashboard_changelogsDocAccess>;
+    docAccessDashboardGlobal?: Maybe<dashboard_globalsDocAccess>;
+    docAccessDashboardHelpPage?: Maybe<dashboard_help_pagesDocAccess>;
+    docAccessDashboardImage?: Maybe<dashboard_imagesDocAccess>;
+    docAccessDashboardTextBlock?: Maybe<dashboard_text_blocksDocAccess>;
+    docAccessDashboardTicket?: Maybe<dashboard_ticketsDocAccess>;
+    docAccessDashboardTicketCategory?: Maybe<dashboard_ticket_categoriesDocAccess>;
     docAccessPayloadKv?: Maybe<payload_kvDocAccess>;
     docAccessPayloadLockedDocument?: Maybe<payload_locked_documentsDocAccess>;
     docAccessPayloadPreference?: Maybe<payload_preferencesDocAccess>;
@@ -34454,6 +44965,119 @@ export type Query_CoursesArgs = {
     sort?: InputMaybe<Scalars['String']['input']>;
     trash?: InputMaybe<Scalars['Boolean']['input']>;
     where?: InputMaybe<Course_where>;
+};
+
+export type Query_DashboardChangelogArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    id: Scalars['Int']['input'];
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Query_DashboardChangelogsArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    page?: InputMaybe<Scalars['Int']['input']>;
+    pagination?: InputMaybe<Scalars['Boolean']['input']>;
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+    sort?: InputMaybe<Scalars['String']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+    where?: InputMaybe<DashboardChangelog_where>;
+};
+
+export type Query_DashboardGlobalArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Query_DashboardHelpPageArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    id: Scalars['Int']['input'];
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Query_DashboardHelpPagesArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    page?: InputMaybe<Scalars['Int']['input']>;
+    pagination?: InputMaybe<Scalars['Boolean']['input']>;
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+    sort?: InputMaybe<Scalars['String']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+    where?: InputMaybe<DashboardHelpPage_where>;
+};
+
+export type Query_DashboardImageArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    id: Scalars['Int']['input'];
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Query_DashboardImagesArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    page?: InputMaybe<Scalars['Int']['input']>;
+    pagination?: InputMaybe<Scalars['Boolean']['input']>;
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+    sort?: InputMaybe<Scalars['String']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+    where?: InputMaybe<DashboardImage_where>;
+};
+
+export type Query_DashboardTextBlockArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    id: Scalars['Int']['input'];
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Query_DashboardTextBlocksArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    page?: InputMaybe<Scalars['Int']['input']>;
+    pagination?: InputMaybe<Scalars['Boolean']['input']>;
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+    sort?: InputMaybe<Scalars['String']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+    where?: InputMaybe<DashboardTextBlock_where>;
+};
+
+export type Query_DashboardTicketArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    id: Scalars['Int']['input'];
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Query_DashboardTicketCategoriesArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    page?: InputMaybe<Scalars['Int']['input']>;
+    pagination?: InputMaybe<Scalars['Boolean']['input']>;
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+    sort?: InputMaybe<Scalars['String']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+    where?: InputMaybe<DashboardTicketCategory_where>;
+};
+
+export type Query_DashboardTicketCategoryArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    id: Scalars['Int']['input'];
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Query_DashboardTicketsArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    page?: InputMaybe<Scalars['Int']['input']>;
+    pagination?: InputMaybe<Scalars['Boolean']['input']>;
+    select?: InputMaybe<Scalars['Boolean']['input']>;
+    sort?: InputMaybe<Scalars['String']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+    where?: InputMaybe<DashboardTicket_where>;
 };
 
 export type Query_PayloadKvArgs = {
@@ -34897,6 +45521,42 @@ export type Query_countCoursesArgs = {
     where?: InputMaybe<Course_where>;
 };
 
+export type Query_countDashboardChangelogsArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+    where?: InputMaybe<DashboardChangelog_where>;
+};
+
+export type Query_countDashboardHelpPagesArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+    where?: InputMaybe<DashboardHelpPage_where>;
+};
+
+export type Query_countDashboardImagesArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+    where?: InputMaybe<DashboardImage_where>;
+};
+
+export type Query_countDashboardTextBlocksArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+    where?: InputMaybe<DashboardTextBlock_where>;
+};
+
+export type Query_countDashboardTicketCategoriesArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+    where?: InputMaybe<DashboardTicketCategory_where>;
+};
+
+export type Query_countDashboardTicketsArgs = {
+    draft?: InputMaybe<Scalars['Boolean']['input']>;
+    trash?: InputMaybe<Scalars['Boolean']['input']>;
+    where?: InputMaybe<DashboardTicket_where>;
+};
+
 export type Query_countPayloadKvsArgs = {
     draft?: InputMaybe<Scalars['Boolean']['input']>;
     trash?: InputMaybe<Scalars['Boolean']['input']>;
@@ -35052,6 +45712,30 @@ export type Query_docAccessCourseSpeakerArgs = {
 };
 
 export type Query_docAccessCourseVideoLessonArgs = {
+    id: Scalars['Int']['input'];
+};
+
+export type Query_docAccessDashboardChangelogArgs = {
+    id: Scalars['Int']['input'];
+};
+
+export type Query_docAccessDashboardHelpPageArgs = {
+    id: Scalars['Int']['input'];
+};
+
+export type Query_docAccessDashboardImageArgs = {
+    id: Scalars['Int']['input'];
+};
+
+export type Query_docAccessDashboardTextBlockArgs = {
+    id: Scalars['Int']['input'];
+};
+
+export type Query_docAccessDashboardTicketArgs = {
+    id: Scalars['Int']['input'];
+};
+
+export type Query_docAccessDashboardTicketCategoryArgs = {
     id: Scalars['Int']['input'];
 };
 
@@ -35656,6 +46340,7 @@ export type User = {
     hash?: Maybe<Scalars['String']['output']>;
     id: Scalars['Int']['output'];
     instagram?: Maybe<Scalars['String']['output']>;
+    invitationToken?: Maybe<Scalars['String']['output']>;
     lastName?: Maybe<Scalars['String']['output']>;
     linkedin?: Maybe<Scalars['String']['output']>;
     lockUntil?: Maybe<Scalars['DateTime']['output']>;
@@ -35843,6 +46528,17 @@ export type User_instagram_operator = {
     not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
+export type User_invitationToken_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    exists?: InputMaybe<Scalars['Boolean']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
 export type User_lastName_operator = {
     all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
     contains?: InputMaybe<Scalars['String']['input']>;
@@ -35971,6 +46667,7 @@ export type User_where = {
     firstName?: InputMaybe<User_firstName_operator>;
     id?: InputMaybe<User_id_operator>;
     instagram?: InputMaybe<User_instagram_operator>;
+    invitationToken?: InputMaybe<User_invitationToken_operator>;
     lastName?: InputMaybe<User_lastName_operator>;
     linkedin?: InputMaybe<User_linkedin_operator>;
     notes?: InputMaybe<User_notes_operator>;
@@ -35999,6 +46696,7 @@ export type User_where_and = {
     firstName?: InputMaybe<User_firstName_operator>;
     id?: InputMaybe<User_id_operator>;
     instagram?: InputMaybe<User_instagram_operator>;
+    invitationToken?: InputMaybe<User_invitationToken_operator>;
     lastName?: InputMaybe<User_lastName_operator>;
     linkedin?: InputMaybe<User_linkedin_operator>;
     notes?: InputMaybe<User_notes_operator>;
@@ -36027,6 +46725,7 @@ export type User_where_or = {
     firstName?: InputMaybe<User_firstName_operator>;
     id?: InputMaybe<User_id_operator>;
     instagram?: InputMaybe<User_instagram_operator>;
+    invitationToken?: InputMaybe<User_invitationToken_operator>;
     lastName?: InputMaybe<User_lastName_operator>;
     linkedin?: InputMaybe<User_linkedin_operator>;
     notes?: InputMaybe<User_notes_operator>;
@@ -36092,6 +46791,7 @@ export type UsersDocAccessFields = {
     facebook?: Maybe<UsersDocAccessFields_facebook>;
     firstName?: Maybe<UsersDocAccessFields_firstName>;
     instagram?: Maybe<UsersDocAccessFields_instagram>;
+    invitationToken?: Maybe<UsersDocAccessFields_invitationToken>;
     lastName?: Maybe<UsersDocAccessFields_lastName>;
     linkedin?: Maybe<UsersDocAccessFields_linkedin>;
     notes?: Maybe<UsersDocAccessFields_notes>;
@@ -36503,6 +47203,34 @@ export type UsersDocAccessFields_instagram_Update = {
     permission: Scalars['Boolean']['output'];
 };
 
+export type UsersDocAccessFields_invitationToken = {
+    __typename?: 'UsersDocAccessFields_invitationToken';
+    create?: Maybe<UsersDocAccessFields_invitationToken_Create>;
+    delete?: Maybe<UsersDocAccessFields_invitationToken_Delete>;
+    read?: Maybe<UsersDocAccessFields_invitationToken_Read>;
+    update?: Maybe<UsersDocAccessFields_invitationToken_Update>;
+};
+
+export type UsersDocAccessFields_invitationToken_Create = {
+    __typename?: 'UsersDocAccessFields_invitationToken_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type UsersDocAccessFields_invitationToken_Delete = {
+    __typename?: 'UsersDocAccessFields_invitationToken_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type UsersDocAccessFields_invitationToken_Read = {
+    __typename?: 'UsersDocAccessFields_invitationToken_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type UsersDocAccessFields_invitationToken_Update = {
+    __typename?: 'UsersDocAccessFields_invitationToken_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
 export type UsersDocAccessFields_lastName = {
     __typename?: 'UsersDocAccessFields_lastName';
     create?: Maybe<UsersDocAccessFields_lastName_Create>;
@@ -36860,6 +47588,7 @@ export type UsersFields = {
     facebook?: Maybe<UsersFields_facebook>;
     firstName?: Maybe<UsersFields_firstName>;
     instagram?: Maybe<UsersFields_instagram>;
+    invitationToken?: Maybe<UsersFields_invitationToken>;
     lastName?: Maybe<UsersFields_lastName>;
     linkedin?: Maybe<UsersFields_linkedin>;
     notes?: Maybe<UsersFields_notes>;
@@ -37268,6 +47997,34 @@ export type UsersFields_instagram_Read = {
 
 export type UsersFields_instagram_Update = {
     __typename?: 'UsersFields_instagram_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type UsersFields_invitationToken = {
+    __typename?: 'UsersFields_invitationToken';
+    create?: Maybe<UsersFields_invitationToken_Create>;
+    delete?: Maybe<UsersFields_invitationToken_Delete>;
+    read?: Maybe<UsersFields_invitationToken_Read>;
+    update?: Maybe<UsersFields_invitationToken_Update>;
+};
+
+export type UsersFields_invitationToken_Create = {
+    __typename?: 'UsersFields_invitationToken_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type UsersFields_invitationToken_Delete = {
+    __typename?: 'UsersFields_invitationToken_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type UsersFields_invitationToken_Read = {
+    __typename?: 'UsersFields_invitationToken_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type UsersFields_invitationToken_Update = {
+    __typename?: 'UsersFields_invitationToken_Update';
     permission: Scalars['Boolean']['output'];
 };
 
@@ -37705,6 +48462,36 @@ export type countCourses = {
     totalDocs?: Maybe<Scalars['Int']['output']>;
 };
 
+export type countDashboardChangelogs = {
+    __typename?: 'countDashboardChangelogs';
+    totalDocs?: Maybe<Scalars['Int']['output']>;
+};
+
+export type countDashboardHelpPages = {
+    __typename?: 'countDashboardHelpPages';
+    totalDocs?: Maybe<Scalars['Int']['output']>;
+};
+
+export type countDashboardImages = {
+    __typename?: 'countDashboardImages';
+    totalDocs?: Maybe<Scalars['Int']['output']>;
+};
+
+export type countDashboardTextBlocks = {
+    __typename?: 'countDashboardTextBlocks';
+    totalDocs?: Maybe<Scalars['Int']['output']>;
+};
+
+export type countDashboardTicketCategories = {
+    __typename?: 'countDashboardTicketCategories';
+    totalDocs?: Maybe<Scalars['Int']['output']>;
+};
+
+export type countDashboardTickets = {
+    __typename?: 'countDashboardTickets';
+    totalDocs?: Maybe<Scalars['Int']['output']>;
+};
+
 export type countPayloadKvs = {
     __typename?: 'countPayloadKvs';
     totalDocs?: Maybe<Scalars['Int']['output']>;
@@ -37954,6 +48741,128 @@ export type coursesDocAccess = {
     update?: Maybe<CoursesUpdateDocAccess>;
 };
 
+export type dashboard_changelogsAccess = {
+    __typename?: 'dashboard_changelogsAccess';
+    create?: Maybe<DashboardChangelogsCreateAccess>;
+    delete?: Maybe<DashboardChangelogsDeleteAccess>;
+    fields?: Maybe<DashboardChangelogsFields>;
+    read?: Maybe<DashboardChangelogsReadAccess>;
+    update?: Maybe<DashboardChangelogsUpdateAccess>;
+};
+
+export type dashboard_changelogsDocAccess = {
+    __typename?: 'dashboard_changelogsDocAccess';
+    create?: Maybe<DashboardChangelogsCreateDocAccess>;
+    delete?: Maybe<DashboardChangelogsDeleteDocAccess>;
+    fields?: Maybe<DashboardChangelogsDocAccessFields>;
+    read?: Maybe<DashboardChangelogsReadDocAccess>;
+    update?: Maybe<DashboardChangelogsUpdateDocAccess>;
+};
+
+export type dashboard_globalsAccess = {
+    __typename?: 'dashboard_globalsAccess';
+    fields?: Maybe<DashboardGlobalsFields>;
+    read?: Maybe<DashboardGlobalsReadAccess>;
+    update?: Maybe<DashboardGlobalsUpdateAccess>;
+};
+
+export type dashboard_globalsDocAccess = {
+    __typename?: 'dashboard_globalsDocAccess';
+    fields?: Maybe<DashboardGlobalsDocAccessFields>;
+    read?: Maybe<DashboardGlobalsReadDocAccess>;
+    update?: Maybe<DashboardGlobalsUpdateDocAccess>;
+};
+
+export type dashboard_help_pagesAccess = {
+    __typename?: 'dashboard_help_pagesAccess';
+    create?: Maybe<DashboardHelpPagesCreateAccess>;
+    delete?: Maybe<DashboardHelpPagesDeleteAccess>;
+    fields?: Maybe<DashboardHelpPagesFields>;
+    read?: Maybe<DashboardHelpPagesReadAccess>;
+    update?: Maybe<DashboardHelpPagesUpdateAccess>;
+};
+
+export type dashboard_help_pagesDocAccess = {
+    __typename?: 'dashboard_help_pagesDocAccess';
+    create?: Maybe<DashboardHelpPagesCreateDocAccess>;
+    delete?: Maybe<DashboardHelpPagesDeleteDocAccess>;
+    fields?: Maybe<DashboardHelpPagesDocAccessFields>;
+    read?: Maybe<DashboardHelpPagesReadDocAccess>;
+    update?: Maybe<DashboardHelpPagesUpdateDocAccess>;
+};
+
+export type dashboard_imagesAccess = {
+    __typename?: 'dashboard_imagesAccess';
+    create?: Maybe<DashboardImagesCreateAccess>;
+    delete?: Maybe<DashboardImagesDeleteAccess>;
+    fields?: Maybe<DashboardImagesFields>;
+    read?: Maybe<DashboardImagesReadAccess>;
+    update?: Maybe<DashboardImagesUpdateAccess>;
+};
+
+export type dashboard_imagesDocAccess = {
+    __typename?: 'dashboard_imagesDocAccess';
+    create?: Maybe<DashboardImagesCreateDocAccess>;
+    delete?: Maybe<DashboardImagesDeleteDocAccess>;
+    fields?: Maybe<DashboardImagesDocAccessFields>;
+    read?: Maybe<DashboardImagesReadDocAccess>;
+    update?: Maybe<DashboardImagesUpdateDocAccess>;
+};
+
+export type dashboard_text_blocksAccess = {
+    __typename?: 'dashboard_text_blocksAccess';
+    create?: Maybe<DashboardTextBlocksCreateAccess>;
+    delete?: Maybe<DashboardTextBlocksDeleteAccess>;
+    fields?: Maybe<DashboardTextBlocksFields>;
+    read?: Maybe<DashboardTextBlocksReadAccess>;
+    update?: Maybe<DashboardTextBlocksUpdateAccess>;
+};
+
+export type dashboard_text_blocksDocAccess = {
+    __typename?: 'dashboard_text_blocksDocAccess';
+    create?: Maybe<DashboardTextBlocksCreateDocAccess>;
+    delete?: Maybe<DashboardTextBlocksDeleteDocAccess>;
+    fields?: Maybe<DashboardTextBlocksDocAccessFields>;
+    read?: Maybe<DashboardTextBlocksReadDocAccess>;
+    update?: Maybe<DashboardTextBlocksUpdateDocAccess>;
+};
+
+export type dashboard_ticket_categoriesAccess = {
+    __typename?: 'dashboard_ticket_categoriesAccess';
+    create?: Maybe<DashboardTicketCategoriesCreateAccess>;
+    delete?: Maybe<DashboardTicketCategoriesDeleteAccess>;
+    fields?: Maybe<DashboardTicketCategoriesFields>;
+    read?: Maybe<DashboardTicketCategoriesReadAccess>;
+    update?: Maybe<DashboardTicketCategoriesUpdateAccess>;
+};
+
+export type dashboard_ticket_categoriesDocAccess = {
+    __typename?: 'dashboard_ticket_categoriesDocAccess';
+    create?: Maybe<DashboardTicketCategoriesCreateDocAccess>;
+    delete?: Maybe<DashboardTicketCategoriesDeleteDocAccess>;
+    fields?: Maybe<DashboardTicketCategoriesDocAccessFields>;
+    read?: Maybe<DashboardTicketCategoriesReadDocAccess>;
+    update?: Maybe<DashboardTicketCategoriesUpdateDocAccess>;
+};
+
+export type dashboard_ticketsAccess = {
+    __typename?: 'dashboard_ticketsAccess';
+    create?: Maybe<DashboardTicketsCreateAccess>;
+    delete?: Maybe<DashboardTicketsDeleteAccess>;
+    fields?: Maybe<DashboardTicketsFields>;
+    read?: Maybe<DashboardTicketsReadAccess>;
+    update?: Maybe<DashboardTicketsUpdateAccess>;
+};
+
+export type dashboard_ticketsDocAccess = {
+    __typename?: 'dashboard_ticketsDocAccess';
+    create?: Maybe<DashboardTicketsCreateDocAccess>;
+    delete?: Maybe<DashboardTicketsDeleteDocAccess>;
+    fields?: Maybe<DashboardTicketsDocAccessFields>;
+    read?: Maybe<DashboardTicketsReadDocAccess>;
+    update?: Maybe<DashboardTicketsUpdateDocAccess>;
+};
+
 export type mutationContactInput = {
     address?: InputMaybe<mutationContact_AddressInput>;
     createdAt?: InputMaybe<Scalars['String']['input']>;
@@ -38114,6 +49023,391 @@ export type mutationCourseVideoLessonUpdateInput = {
     title?: InputMaybe<Scalars['String']['input']>;
     updatedAt?: InputMaybe<Scalars['String']['input']>;
     youtubeURL?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationDashboardChangelogInput = {
+    blocks?: InputMaybe<Scalars['JSON']['input']>;
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    releaseDate: Scalars['String']['input'];
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+    version: Scalars['String']['input'];
+};
+
+export type mutationDashboardChangelogUpdateInput = {
+    blocks?: InputMaybe<Scalars['JSON']['input']>;
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    releaseDate?: InputMaybe<Scalars['String']['input']>;
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+    version?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationDashboardGlobalInput = {
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    loginImage?: InputMaybe<Scalars['Int']['input']>;
+    registerImage?: InputMaybe<Scalars['Int']['input']>;
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationDashboardHelpPageInput = {
+    blocks?: InputMaybe<Scalars['JSON']['input']>;
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    slug: Scalars['String']['input'];
+    title: Scalars['String']['input'];
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationDashboardHelpPageUpdateInput = {
+    blocks?: InputMaybe<Scalars['JSON']['input']>;
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    slug?: InputMaybe<Scalars['String']['input']>;
+    title?: InputMaybe<Scalars['String']['input']>;
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationDashboardImageInput = {
+    alt: Scalars['String']['input'];
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    focalX?: InputMaybe<Scalars['Float']['input']>;
+    focalY?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    sizes?: InputMaybe<mutationDashboardImage_SizesInput>;
+    thumbnailURL?: InputMaybe<Scalars['String']['input']>;
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImageUpdateInput = {
+    alt?: InputMaybe<Scalars['String']['input']>;
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    focalX?: InputMaybe<Scalars['Float']['input']>;
+    focalY?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    sizes?: InputMaybe<mutationDashboardImageUpdate_SizesInput>;
+    thumbnailURL?: InputMaybe<Scalars['String']['input']>;
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImageUpdate_SizesInput = {
+    desktop_avif?: InputMaybe<mutationDashboardImageUpdate_Sizes_Desktop_avifInput>;
+    desktop_jpeg?: InputMaybe<mutationDashboardImageUpdate_Sizes_Desktop_jpegInput>;
+    desktop_webp?: InputMaybe<mutationDashboardImageUpdate_Sizes_Desktop_webpInput>;
+    mobile_avif?: InputMaybe<mutationDashboardImageUpdate_Sizes_Mobile_avifInput>;
+    mobile_jpeg?: InputMaybe<mutationDashboardImageUpdate_Sizes_Mobile_jpegInput>;
+    mobile_webp?: InputMaybe<mutationDashboardImageUpdate_Sizes_Mobile_webpInput>;
+    tablet_avif?: InputMaybe<mutationDashboardImageUpdate_Sizes_Tablet_avifInput>;
+    tablet_jpeg?: InputMaybe<mutationDashboardImageUpdate_Sizes_Tablet_jpegInput>;
+    tablet_webp?: InputMaybe<mutationDashboardImageUpdate_Sizes_Tablet_webpInput>;
+    thumbnail_avif?: InputMaybe<mutationDashboardImageUpdate_Sizes_Thumbnail_avifInput>;
+    thumbnail_jpeg?: InputMaybe<mutationDashboardImageUpdate_Sizes_Thumbnail_jpegInput>;
+    thumbnail_webp?: InputMaybe<mutationDashboardImageUpdate_Sizes_Thumbnail_webpInput>;
+};
+
+export type mutationDashboardImageUpdate_Sizes_Desktop_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImageUpdate_Sizes_Desktop_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImageUpdate_Sizes_Desktop_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImageUpdate_Sizes_Mobile_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImageUpdate_Sizes_Mobile_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImageUpdate_Sizes_Mobile_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImageUpdate_Sizes_Tablet_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImageUpdate_Sizes_Tablet_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImageUpdate_Sizes_Tablet_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImageUpdate_Sizes_Thumbnail_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImageUpdate_Sizes_Thumbnail_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImageUpdate_Sizes_Thumbnail_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImage_SizesInput = {
+    desktop_avif?: InputMaybe<mutationDashboardImage_Sizes_Desktop_avifInput>;
+    desktop_jpeg?: InputMaybe<mutationDashboardImage_Sizes_Desktop_jpegInput>;
+    desktop_webp?: InputMaybe<mutationDashboardImage_Sizes_Desktop_webpInput>;
+    mobile_avif?: InputMaybe<mutationDashboardImage_Sizes_Mobile_avifInput>;
+    mobile_jpeg?: InputMaybe<mutationDashboardImage_Sizes_Mobile_jpegInput>;
+    mobile_webp?: InputMaybe<mutationDashboardImage_Sizes_Mobile_webpInput>;
+    tablet_avif?: InputMaybe<mutationDashboardImage_Sizes_Tablet_avifInput>;
+    tablet_jpeg?: InputMaybe<mutationDashboardImage_Sizes_Tablet_jpegInput>;
+    tablet_webp?: InputMaybe<mutationDashboardImage_Sizes_Tablet_webpInput>;
+    thumbnail_avif?: InputMaybe<mutationDashboardImage_Sizes_Thumbnail_avifInput>;
+    thumbnail_jpeg?: InputMaybe<mutationDashboardImage_Sizes_Thumbnail_jpegInput>;
+    thumbnail_webp?: InputMaybe<mutationDashboardImage_Sizes_Thumbnail_webpInput>;
+};
+
+export type mutationDashboardImage_Sizes_Desktop_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImage_Sizes_Desktop_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImage_Sizes_Desktop_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImage_Sizes_Mobile_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImage_Sizes_Mobile_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImage_Sizes_Mobile_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImage_Sizes_Tablet_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImage_Sizes_Tablet_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImage_Sizes_Tablet_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImage_Sizes_Thumbnail_avifInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImage_Sizes_Thumbnail_jpegInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardImage_Sizes_Thumbnail_webpInput = {
+    filename?: InputMaybe<Scalars['String']['input']>;
+    filesize?: InputMaybe<Scalars['Float']['input']>;
+    height?: InputMaybe<Scalars['Float']['input']>;
+    mimeType?: InputMaybe<Scalars['String']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    width?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type mutationDashboardTextBlockInput = {
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    slug: Scalars['String']['input'];
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+    value: Scalars['String']['input'];
+};
+
+export type mutationDashboardTextBlockUpdateInput = {
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    slug?: InputMaybe<Scalars['String']['input']>;
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+    value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationDashboardTicketCategoryInput = {
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    description?: InputMaybe<Scalars['String']['input']>;
+    title: Scalars['String']['input'];
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationDashboardTicketCategoryUpdateInput = {
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    description?: InputMaybe<Scalars['String']['input']>;
+    title?: InputMaybe<Scalars['String']['input']>;
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationDashboardTicketInput = {
+    assignedTo?: InputMaybe<Scalars['Int']['input']>;
+    author?: InputMaybe<Scalars['Int']['input']>;
+    category?: InputMaybe<Scalars['Int']['input']>;
+    comments?: InputMaybe<Array<InputMaybe<mutationDashboardTicket_CommentsInput>>>;
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    description?: InputMaybe<Scalars['String']['input']>;
+    priority: DashboardTicket_priority_MutationInput;
+    status: DashboardTicket_status_MutationInput;
+    title: Scalars['String']['input'];
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationDashboardTicketUpdateInput = {
+    assignedTo?: InputMaybe<Scalars['Int']['input']>;
+    author?: InputMaybe<Scalars['Int']['input']>;
+    category?: InputMaybe<Scalars['Int']['input']>;
+    comments?: InputMaybe<Array<InputMaybe<mutationDashboardTicketUpdate_CommentsInput>>>;
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    description?: InputMaybe<Scalars['String']['input']>;
+    priority?: InputMaybe<DashboardTicketUpdate_priority_MutationInput>;
+    status?: InputMaybe<DashboardTicketUpdate_status_MutationInput>;
+    title?: InputMaybe<Scalars['String']['input']>;
+    updatedAt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationDashboardTicketUpdate_CommentsInput = {
+    commentText?: InputMaybe<Scalars['String']['input']>;
+    commenter?: InputMaybe<Scalars['Int']['input']>;
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    id?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type mutationDashboardTicket_CommentsInput = {
+    commentText?: InputMaybe<Scalars['String']['input']>;
+    commenter?: InputMaybe<Scalars['Int']['input']>;
+    createdAt?: InputMaybe<Scalars['String']['input']>;
+    id?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type mutationPayloadKvInput = {
@@ -39143,6 +50437,7 @@ export type mutationUserInput = {
     firstName?: InputMaybe<Scalars['String']['input']>;
     hash?: InputMaybe<Scalars['String']['input']>;
     instagram?: InputMaybe<Scalars['String']['input']>;
+    invitationToken?: InputMaybe<Scalars['String']['input']>;
     lastName?: InputMaybe<Scalars['String']['input']>;
     linkedin?: InputMaybe<Scalars['String']['input']>;
     lockUntil?: InputMaybe<Scalars['String']['input']>;
@@ -39171,6 +50466,7 @@ export type mutationUserUpdateInput = {
     firstName?: InputMaybe<Scalars['String']['input']>;
     hash?: InputMaybe<Scalars['String']['input']>;
     instagram?: InputMaybe<Scalars['String']['input']>;
+    invitationToken?: InputMaybe<Scalars['String']['input']>;
     lastName?: InputMaybe<Scalars['String']['input']>;
     linkedin?: InputMaybe<Scalars['String']['input']>;
     lockUntil?: InputMaybe<Scalars['String']['input']>;
@@ -39670,12 +50966,406 @@ export type usersResetPassword = {
     user?: Maybe<User>;
 };
 
-export type ContactAttributesFragment = {
-    __typename?: 'Contact';
-    name?: string | null;
-    phone?: { __typename?: 'Contact_Phone'; href?: string | null; text?: string | null } | null;
-    mail?: { __typename?: 'Contact_Mail'; href?: string | null; text?: string | null } | null;
-    address?: { __typename?: 'Contact_Address'; street?: string | null; place?: string | null } | null;
+export type CourseVideoLessonAttributesFragment = {
+    __typename?: 'CourseVideoLesson';
+    id: number;
+    title: string;
+    youtubeURL?: string | null;
+    updatedAt?: string | null;
+    createdAt?: string | null;
+};
+
+export type DashboardImageAttributesFragment = {
+    __typename?: 'DashboardImage';
+    id: number;
+    alt: string;
+    updatedAt?: string | null;
+    createdAt?: string | null;
+    url?: string | null;
+    thumbnailURL?: string | null;
+    filename?: string | null;
+    mimeType?: string | null;
+    filesize?: number | null;
+    width?: number | null;
+    height?: number | null;
+    focalX?: number | null;
+    focalY?: number | null;
+    sizes?: {
+        __typename?: 'DashboardImage_Sizes';
+        thumbnail_jpeg?: {
+            __typename?: 'DashboardImage_Sizes_Thumbnail_jpeg';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        thumbnail_webp?: {
+            __typename?: 'DashboardImage_Sizes_Thumbnail_webp';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        thumbnail_avif?: {
+            __typename?: 'DashboardImage_Sizes_Thumbnail_avif';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        mobile_jpeg?: {
+            __typename?: 'DashboardImage_Sizes_Mobile_jpeg';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        mobile_webp?: {
+            __typename?: 'DashboardImage_Sizes_Mobile_webp';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        mobile_avif?: {
+            __typename?: 'DashboardImage_Sizes_Mobile_avif';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        tablet_jpeg?: {
+            __typename?: 'DashboardImage_Sizes_Tablet_jpeg';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        tablet_webp?: {
+            __typename?: 'DashboardImage_Sizes_Tablet_webp';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        tablet_avif?: {
+            __typename?: 'DashboardImage_Sizes_Tablet_avif';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        desktop_jpeg?: {
+            __typename?: 'DashboardImage_Sizes_Desktop_jpeg';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        desktop_webp?: {
+            __typename?: 'DashboardImage_Sizes_Desktop_webp';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+        desktop_avif?: {
+            __typename?: 'DashboardImage_Sizes_Desktop_avif';
+            url?: string | null;
+            width?: number | null;
+            height?: number | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            filename?: string | null;
+        } | null;
+    } | null;
+};
+
+export type DashboardTextBlockAttributesFragment = {
+    __typename?: 'DashboardTextBlock';
+    id: number;
+    slug: string;
+    value: string;
+};
+
+export type DashboardGlobalsAttributesFragment = {
+    __typename?: 'DashboardGlobal';
+    loginImage?: {
+        __typename?: 'DashboardImage';
+        id: number;
+        alt: string;
+        updatedAt?: string | null;
+        createdAt?: string | null;
+        url?: string | null;
+        thumbnailURL?: string | null;
+        filename?: string | null;
+        mimeType?: string | null;
+        filesize?: number | null;
+        width?: number | null;
+        height?: number | null;
+        focalX?: number | null;
+        focalY?: number | null;
+        sizes?: {
+            __typename?: 'DashboardImage_Sizes';
+            thumbnail_jpeg?: {
+                __typename?: 'DashboardImage_Sizes_Thumbnail_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            thumbnail_webp?: {
+                __typename?: 'DashboardImage_Sizes_Thumbnail_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            thumbnail_avif?: {
+                __typename?: 'DashboardImage_Sizes_Thumbnail_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            mobile_jpeg?: {
+                __typename?: 'DashboardImage_Sizes_Mobile_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            mobile_webp?: {
+                __typename?: 'DashboardImage_Sizes_Mobile_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            mobile_avif?: {
+                __typename?: 'DashboardImage_Sizes_Mobile_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            tablet_jpeg?: {
+                __typename?: 'DashboardImage_Sizes_Tablet_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            tablet_webp?: {
+                __typename?: 'DashboardImage_Sizes_Tablet_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            tablet_avif?: {
+                __typename?: 'DashboardImage_Sizes_Tablet_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            desktop_jpeg?: {
+                __typename?: 'DashboardImage_Sizes_Desktop_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            desktop_webp?: {
+                __typename?: 'DashboardImage_Sizes_Desktop_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            desktop_avif?: {
+                __typename?: 'DashboardImage_Sizes_Desktop_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+        } | null;
+    } | null;
+    registerImage?: {
+        __typename?: 'DashboardImage';
+        id: number;
+        alt: string;
+        updatedAt?: string | null;
+        createdAt?: string | null;
+        url?: string | null;
+        thumbnailURL?: string | null;
+        filename?: string | null;
+        mimeType?: string | null;
+        filesize?: number | null;
+        width?: number | null;
+        height?: number | null;
+        focalX?: number | null;
+        focalY?: number | null;
+        sizes?: {
+            __typename?: 'DashboardImage_Sizes';
+            thumbnail_jpeg?: {
+                __typename?: 'DashboardImage_Sizes_Thumbnail_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            thumbnail_webp?: {
+                __typename?: 'DashboardImage_Sizes_Thumbnail_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            thumbnail_avif?: {
+                __typename?: 'DashboardImage_Sizes_Thumbnail_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            mobile_jpeg?: {
+                __typename?: 'DashboardImage_Sizes_Mobile_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            mobile_webp?: {
+                __typename?: 'DashboardImage_Sizes_Mobile_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            mobile_avif?: {
+                __typename?: 'DashboardImage_Sizes_Mobile_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            tablet_jpeg?: {
+                __typename?: 'DashboardImage_Sizes_Tablet_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            tablet_webp?: {
+                __typename?: 'DashboardImage_Sizes_Tablet_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            tablet_avif?: {
+                __typename?: 'DashboardImage_Sizes_Tablet_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            desktop_jpeg?: {
+                __typename?: 'DashboardImage_Sizes_Desktop_jpeg';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            desktop_webp?: {
+                __typename?: 'DashboardImage_Sizes_Desktop_webp';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+            desktop_avif?: {
+                __typename?: 'DashboardImage_Sizes_Desktop_avif';
+                url?: string | null;
+                width?: number | null;
+                height?: number | null;
+                mimeType?: string | null;
+                filesize?: number | null;
+                filename?: string | null;
+            } | null;
+        } | null;
+    } | null;
 };
 
 export type AccordionsAttributesFragment = {
@@ -41702,9 +53392,284 @@ export type PublicSidebarAttributesFragment = {
     }> | null;
 };
 
-export type findGlobalsQueryVariables = Exact<{ [key: string]: never }>;
+export type ContactAttributesFragment = {
+    __typename?: 'Contact';
+    name?: string | null;
+    phone?: { __typename?: 'Contact_Phone'; href?: string | null; text?: string | null } | null;
+    mail?: { __typename?: 'Contact_Mail'; href?: string | null; text?: string | null } | null;
+    address?: { __typename?: 'Contact_Address'; street?: string | null; place?: string | null } | null;
+};
 
-export type findGlobalsQuery = {
+export type findDashboardGlobalsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type findDashboardGlobalsQuery = {
+    __typename?: 'Query';
+    DashboardGlobal?: {
+        __typename?: 'DashboardGlobal';
+        loginImage?: {
+            __typename?: 'DashboardImage';
+            id: number;
+            alt: string;
+            updatedAt?: string | null;
+            createdAt?: string | null;
+            url?: string | null;
+            thumbnailURL?: string | null;
+            filename?: string | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            width?: number | null;
+            height?: number | null;
+            focalX?: number | null;
+            focalY?: number | null;
+            sizes?: {
+                __typename?: 'DashboardImage_Sizes';
+                thumbnail_jpeg?: {
+                    __typename?: 'DashboardImage_Sizes_Thumbnail_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_webp?: {
+                    __typename?: 'DashboardImage_Sizes_Thumbnail_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_avif?: {
+                    __typename?: 'DashboardImage_Sizes_Thumbnail_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_jpeg?: {
+                    __typename?: 'DashboardImage_Sizes_Mobile_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_webp?: {
+                    __typename?: 'DashboardImage_Sizes_Mobile_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_avif?: {
+                    __typename?: 'DashboardImage_Sizes_Mobile_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_jpeg?: {
+                    __typename?: 'DashboardImage_Sizes_Tablet_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_webp?: {
+                    __typename?: 'DashboardImage_Sizes_Tablet_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_avif?: {
+                    __typename?: 'DashboardImage_Sizes_Tablet_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_jpeg?: {
+                    __typename?: 'DashboardImage_Sizes_Desktop_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_webp?: {
+                    __typename?: 'DashboardImage_Sizes_Desktop_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_avif?: {
+                    __typename?: 'DashboardImage_Sizes_Desktop_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+            } | null;
+        } | null;
+        registerImage?: {
+            __typename?: 'DashboardImage';
+            id: number;
+            alt: string;
+            updatedAt?: string | null;
+            createdAt?: string | null;
+            url?: string | null;
+            thumbnailURL?: string | null;
+            filename?: string | null;
+            mimeType?: string | null;
+            filesize?: number | null;
+            width?: number | null;
+            height?: number | null;
+            focalX?: number | null;
+            focalY?: number | null;
+            sizes?: {
+                __typename?: 'DashboardImage_Sizes';
+                thumbnail_jpeg?: {
+                    __typename?: 'DashboardImage_Sizes_Thumbnail_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_webp?: {
+                    __typename?: 'DashboardImage_Sizes_Thumbnail_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                thumbnail_avif?: {
+                    __typename?: 'DashboardImage_Sizes_Thumbnail_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_jpeg?: {
+                    __typename?: 'DashboardImage_Sizes_Mobile_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_webp?: {
+                    __typename?: 'DashboardImage_Sizes_Mobile_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                mobile_avif?: {
+                    __typename?: 'DashboardImage_Sizes_Mobile_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_jpeg?: {
+                    __typename?: 'DashboardImage_Sizes_Tablet_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_webp?: {
+                    __typename?: 'DashboardImage_Sizes_Tablet_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                tablet_avif?: {
+                    __typename?: 'DashboardImage_Sizes_Tablet_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_jpeg?: {
+                    __typename?: 'DashboardImage_Sizes_Desktop_jpeg';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_webp?: {
+                    __typename?: 'DashboardImage_Sizes_Desktop_webp';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+                desktop_avif?: {
+                    __typename?: 'DashboardImage_Sizes_Desktop_avif';
+                    url?: string | null;
+                    width?: number | null;
+                    height?: number | null;
+                    mimeType?: string | null;
+                    filesize?: number | null;
+                    filename?: string | null;
+                } | null;
+            } | null;
+        } | null;
+    } | null;
+    DashboardTextBlocks?: {
+        __typename?: 'DashboardTextBlocks';
+        docs: Array<{ __typename?: 'DashboardTextBlock'; id: number; slug: string; value: string }>;
+    } | null;
+};
+
+export type findPublicGlobalsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type findPublicGlobalsQuery = {
     __typename?: 'Query';
     PublicHeader?: {
         __typename?: 'PublicHeader';
@@ -43750,47 +55715,253 @@ export type findPublicPagesQuery = {
     } | null;
 };
 
-export const ContactAttributesFragmentDoc = {
+export const CourseVideoLessonAttributesFragmentDoc = {
     kind: 'Document',
     definitions: [
         {
             kind: 'FragmentDefinition',
-            name: { kind: 'Name', value: 'ContactAttributes' },
-            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Contact' } },
+            name: { kind: 'Name', value: 'CourseVideoLessonAttributes' },
+            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'CourseVideoLesson' } },
             selectionSet: {
                 kind: 'SelectionSet',
                 selections: [
-                    { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'youtubeURL' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'updatedAt' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'createdAt' } },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<CourseVideoLessonAttributesFragment, unknown>;
+export const DashboardTextBlockAttributesFragmentDoc = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'FragmentDefinition',
+            name: { kind: 'Name', value: 'DashboardTextBlockAttributes' },
+            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'DashboardTextBlock' } },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'slug' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'value' } },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<DashboardTextBlockAttributesFragment, unknown>;
+export const DashboardImageAttributesFragmentDoc = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'FragmentDefinition',
+            name: { kind: 'Name', value: 'DashboardImageAttributes' },
+            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'DashboardImage' } },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'alt' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'updatedAt' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'createdAt' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'thumbnailURL' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'focalX' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'focalY' } },
                     {
                         kind: 'Field',
-                        name: { kind: 'Name', value: 'phone' },
+                        name: { kind: 'Name', value: 'sizes' },
                         selectionSet: {
                             kind: 'SelectionSet',
                             selections: [
-                                { kind: 'Field', name: { kind: 'Name', value: 'href' } },
-                                { kind: 'Field', name: { kind: 'Name', value: 'text' } },
-                            ],
-                        },
-                    },
-                    {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'mail' },
-                        selectionSet: {
-                            kind: 'SelectionSet',
-                            selections: [
-                                { kind: 'Field', name: { kind: 'Name', value: 'href' } },
-                                { kind: 'Field', name: { kind: 'Name', value: 'text' } },
-                            ],
-                        },
-                    },
-                    {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'address' },
-                        selectionSet: {
-                            kind: 'SelectionSet',
-                            selections: [
-                                { kind: 'Field', name: { kind: 'Name', value: 'street' } },
-                                { kind: 'Field', name: { kind: 'Name', value: 'place' } },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'thumbnail_jpeg' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'thumbnail_webp' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'thumbnail_avif' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'mobile_jpeg' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'mobile_webp' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'mobile_avif' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'tablet_jpeg' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'tablet_webp' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'tablet_avif' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'desktop_jpeg' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'desktop_webp' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'desktop_avif' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
                             ],
                         },
                     },
@@ -43798,7 +55969,254 @@ export const ContactAttributesFragmentDoc = {
             },
         },
     ],
-} as unknown as DocumentNode<ContactAttributesFragment, unknown>;
+} as unknown as DocumentNode<DashboardImageAttributesFragment, unknown>;
+export const DashboardGlobalsAttributesFragmentDoc = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'FragmentDefinition',
+            name: { kind: 'Name', value: 'DashboardGlobalsAttributes' },
+            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'DashboardGlobal' } },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'loginImage' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'DashboardImageAttributes' } },
+                            ],
+                        },
+                    },
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'registerImage' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'DashboardImageAttributes' } },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+        {
+            kind: 'FragmentDefinition',
+            name: { kind: 'Name', value: 'DashboardImageAttributes' },
+            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'DashboardImage' } },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'alt' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'updatedAt' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'createdAt' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'thumbnailURL' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'focalX' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'focalY' } },
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'sizes' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'thumbnail_jpeg' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'thumbnail_webp' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'thumbnail_avif' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'mobile_jpeg' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'mobile_webp' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'mobile_avif' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'tablet_jpeg' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'tablet_webp' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'tablet_avif' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'desktop_jpeg' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'desktop_webp' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'desktop_avif' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<DashboardGlobalsAttributesFragment, unknown>;
 export const AccordionsAttributesFragmentDoc = {
     kind: 'Document',
     definitions: [
@@ -47681,13 +60099,364 @@ export const PublicSidebarAttributesFragmentDoc = {
         },
     ],
 } as unknown as DocumentNode<PublicSidebarAttributesFragment, unknown>;
-export const findGlobalsDocument = {
+export const ContactAttributesFragmentDoc = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'FragmentDefinition',
+            name: { kind: 'Name', value: 'ContactAttributes' },
+            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Contact' } },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'phone' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                { kind: 'Field', name: { kind: 'Name', value: 'href' } },
+                                { kind: 'Field', name: { kind: 'Name', value: 'text' } },
+                            ],
+                        },
+                    },
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'mail' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                { kind: 'Field', name: { kind: 'Name', value: 'href' } },
+                                { kind: 'Field', name: { kind: 'Name', value: 'text' } },
+                            ],
+                        },
+                    },
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'address' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                { kind: 'Field', name: { kind: 'Name', value: 'street' } },
+                                { kind: 'Field', name: { kind: 'Name', value: 'place' } },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<ContactAttributesFragment, unknown>;
+export const findDashboardGlobalsDocument = {
     kind: 'Document',
     definitions: [
         {
             kind: 'OperationDefinition',
             operation: 'query',
-            name: { kind: 'Name', value: 'findGlobals' },
+            name: { kind: 'Name', value: 'findDashboardGlobals' },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'DashboardGlobal' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'DashboardGlobalsAttributes' } },
+                            ],
+                        },
+                    },
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'DashboardTextBlocks' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'docs' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            {
+                                                kind: 'FragmentSpread',
+                                                name: { kind: 'Name', value: 'DashboardTextBlockAttributes' },
+                                            },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+        {
+            kind: 'FragmentDefinition',
+            name: { kind: 'Name', value: 'DashboardImageAttributes' },
+            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'DashboardImage' } },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'alt' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'updatedAt' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'createdAt' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'thumbnailURL' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'focalX' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'focalY' } },
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'sizes' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'thumbnail_jpeg' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'thumbnail_webp' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'thumbnail_avif' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'mobile_jpeg' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'mobile_webp' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'mobile_avif' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'tablet_jpeg' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'tablet_webp' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'tablet_avif' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'desktop_jpeg' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'desktop_webp' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'desktop_avif' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'mimeType' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filesize' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'filename' } },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+        {
+            kind: 'FragmentDefinition',
+            name: { kind: 'Name', value: 'DashboardTextBlockAttributes' },
+            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'DashboardTextBlock' } },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'slug' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'value' } },
+                ],
+            },
+        },
+        {
+            kind: 'FragmentDefinition',
+            name: { kind: 'Name', value: 'DashboardGlobalsAttributes' },
+            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'DashboardGlobal' } },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'loginImage' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'DashboardImageAttributes' } },
+                            ],
+                        },
+                    },
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'registerImage' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'DashboardImageAttributes' } },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<findDashboardGlobalsQuery, findDashboardGlobalsQueryVariables>;
+export const findPublicGlobalsDocument = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'OperationDefinition',
+            operation: 'query',
+            name: { kind: 'Name', value: 'findPublicGlobals' },
             selectionSet: {
                 kind: 'SelectionSet',
                 selections: [
@@ -47794,50 +60563,6 @@ export const findGlobalsDocument = {
                                         ],
                                     },
                                 },
-                            ],
-                        },
-                    },
-                ],
-            },
-        },
-        {
-            kind: 'FragmentDefinition',
-            name: { kind: 'Name', value: 'ContactAttributes' },
-            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Contact' } },
-            selectionSet: {
-                kind: 'SelectionSet',
-                selections: [
-                    { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                    {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'phone' },
-                        selectionSet: {
-                            kind: 'SelectionSet',
-                            selections: [
-                                { kind: 'Field', name: { kind: 'Name', value: 'href' } },
-                                { kind: 'Field', name: { kind: 'Name', value: 'text' } },
-                            ],
-                        },
-                    },
-                    {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'mail' },
-                        selectionSet: {
-                            kind: 'SelectionSet',
-                            selections: [
-                                { kind: 'Field', name: { kind: 'Name', value: 'href' } },
-                                { kind: 'Field', name: { kind: 'Name', value: 'text' } },
-                            ],
-                        },
-                    },
-                    {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'address' },
-                        selectionSet: {
-                            kind: 'SelectionSet',
-                            selections: [
-                                { kind: 'Field', name: { kind: 'Name', value: 'street' } },
-                                { kind: 'Field', name: { kind: 'Name', value: 'place' } },
                             ],
                         },
                     },
@@ -48220,8 +60945,52 @@ export const findGlobalsDocument = {
                 ],
             },
         },
+        {
+            kind: 'FragmentDefinition',
+            name: { kind: 'Name', value: 'ContactAttributes' },
+            typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Contact' } },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'phone' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                { kind: 'Field', name: { kind: 'Name', value: 'href' } },
+                                { kind: 'Field', name: { kind: 'Name', value: 'text' } },
+                            ],
+                        },
+                    },
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'mail' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                { kind: 'Field', name: { kind: 'Name', value: 'href' } },
+                                { kind: 'Field', name: { kind: 'Name', value: 'text' } },
+                            ],
+                        },
+                    },
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'address' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                { kind: 'Field', name: { kind: 'Name', value: 'street' } },
+                                { kind: 'Field', name: { kind: 'Name', value: 'place' } },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
     ],
-} as unknown as DocumentNode<findGlobalsQuery, findGlobalsQueryVariables>;
+} as unknown as DocumentNode<findPublicGlobalsQuery, findPublicGlobalsQueryVariables>;
 export const findPublicPagesDocument = {
     kind: 'Document',
     definitions: [

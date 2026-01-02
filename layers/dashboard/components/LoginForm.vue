@@ -1,22 +1,3 @@
-<script setup lang="ts">
-    import type { HTMLAttributes } from 'vue';
-    import { cn } from '~~/layers/dashboard/lib/utils';
-    import { Button } from '~~/layers/dashboard/components/ui/button';
-    import { Card, CardContent } from '~~/layers/dashboard/components/ui/card';
-    import {
-        Field,
-        FieldDescription,
-        FieldGroup,
-        FieldLabel,
-        FieldSeparator,
-    } from '~~/layers/dashboard/components/ui/field';
-    import { Input } from '~~/layers/dashboard/components/ui/input';
-
-    const props = defineProps<{
-        class?: HTMLAttributes['class'];
-    }>();
-</script>
-
 <template>
     <div :class="cn('flex flex-col gap-6', props.class)">
         <Card class="overflow-hidden p-0">
@@ -54,10 +35,11 @@
                     </FieldGroup>
                 </form>
                 <div class="bg-muted relative hidden md:block">
-                    <img
-                        src="/placeholder.svg"
-                        alt="Image"
+                    <DashboardImg
+                        v-if="loginImage"
+                        :image="loginImage"
                         class="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+                        loading="eager"
                     />
                 </div>
             </CardContent>
@@ -74,3 +56,24 @@
         </FieldDescription>
     </div>
 </template>
+
+<script setup lang="ts">
+    import type { HTMLAttributes } from 'vue';
+    import { cn } from '~~/layers/dashboard/lib/utils';
+    import { Button } from '~~/layers/dashboard/components/ui/button';
+    import { Card, CardContent } from '~~/layers/dashboard/components/ui/card';
+    import { Field, FieldDescription, FieldGroup, FieldLabel } from '~~/layers/dashboard/components/ui/field';
+    import { Input } from '~~/layers/dashboard/components/ui/input';
+
+    import { useDashboardGlobalStore } from '~~/layers/dashboard/stores/dashboardGlobalStore';
+
+    const dashboardGlobalStore = useDashboardGlobalStore();
+
+    const loginImage = computed(() => {
+        return dashboardGlobalStore?.data?.globals?.loginImage;
+    });
+
+    const props = defineProps<{
+        class?: HTMLAttributes['class'];
+    }>();
+</script>
