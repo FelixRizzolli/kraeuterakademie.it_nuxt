@@ -5,7 +5,7 @@ import graphqlLoader from 'vite-plugin-graphql-loader';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineNuxtConfig({
-    extends: ['./layers/public', './layers/dashboard'],
+    extends: ['./layers/shared', './layers/public', './layers/dashboard'],
 
     app: {
         head: {
@@ -85,7 +85,7 @@ export default defineNuxtConfig({
         // https://www.npmjs.com/package/nuxt-svgo
         componentPrefix: 'i',
 
-        autoImportPath: '~~/layers/public/assets/icons/',
+        autoImportPath: '~~/layers/shared/assets/icons/',
 
         customComponent: 'Icon',
 
