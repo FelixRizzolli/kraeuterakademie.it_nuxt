@@ -31,6 +31,12 @@ export const useAuth = () => {
         );
     });
 
+    // Convenience computed properties for common user fields
+    const userId = computed(() => authState.value.user?.id ?? null);
+    const email = computed(() => authState.value.user?.email ?? null);
+    const firstName = computed(() => authState.value.user?.firstName ?? null);
+    const lastName = computed(() => authState.value.user?.lastName ?? null);
+
     /**
      * Login user with email and password
      */
@@ -223,6 +229,10 @@ export const useAuth = () => {
 
     return {
         user,
+        userId,
+        email,
+        firstName,
+        lastName,
         isAuthenticated,
         hasDashboardAccess,
         login,

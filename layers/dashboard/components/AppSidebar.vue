@@ -25,7 +25,7 @@
             <NavSecondary :items="data.navSecondary" class="mt-auto" />
         </SidebarContent>
         <SidebarFooter>
-            <NavUser :user="data.user" />
+            <NavUser :user="userInfo" />
         </SidebarFooter>
     </Sidebar>
 </template>
@@ -47,6 +47,8 @@
     import NavMain from '~~/layers/dashboard/components/NavMain.vue';
     import NavSecondary from '~~/layers/dashboard/components/NavSecondary.vue';
     import NavUser from '~~/layers/dashboard/components/NavUser.vue';
+    import { computed } from 'vue';
+    import { useAuth } from '~~/layers/dashboard/composables/useAuth';
     import {
         Sidebar,
         SidebarContent,
@@ -61,12 +63,19 @@
         variant: 'inset',
     });
 
-    const data = {
-        user: {
-            name: 'Sigrid Thaler Rizzolli',
-            email: 'sigrid.thaler@gmail.com',
+    const { user, email, firstName, lastName } = useAuth();
+
+    const userInfo = computed(() => {
+        const name =
+            [firstName.value, lastName.value].filter(Boolean).join(' ') || user.value?.email || email.value || '';
+        return {
+            name: name || 'User',
+            email: email.value ?? user.value?.email ?? '',
             avatar: '/avatars/shadcn.jpg',
-        },
+        };
+    });
+
+    const data = {
         navCourse: [
             {
                 title: $t('dashboard.navigation.nav-course.courses.title'),
@@ -102,6 +111,7 @@
                 url: '#',
                 icon: Video,
                 isActive: true,
+                items: [],
             },
             {
                 title: $t('dashboard.navigation.nav-study.plant-lexicon.title'),
