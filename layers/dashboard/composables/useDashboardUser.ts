@@ -16,16 +16,10 @@ export const useDashboardUser = () => {
     const gqlQuery = usePayloadGraphQL();
 
     const fetchDashboardUser = async (userId: number): Promise<DashboardUserData> => {
-        console.log('🔍 useDashboardUser - Fetching for userId:', userId);
-        console.log('📝 GraphQL Query:', getDashboardUserQuery);
-
         // Call without userId variable since we're using meUser (authenticated user)
         const response = await gqlQuery<any>(getDashboardUserQuery);
 
-        console.log('📦 Raw GraphQL Response:', JSON.stringify(response, null, 2));
-
         const user = response?.data?.meUser?.user ?? response?.meUser?.user ?? null;
-        console.log('👤 Parsed User object:', user);
 
         if (!user) {
             console.warn('⚠️ No user data returned from meUser query');
@@ -49,7 +43,6 @@ export const useDashboardUser = () => {
         const roles = (user.roles ?? []).map((r: any) => ({ name: r.name, slug: r.slug }));
 
         const result = { enrolledCourses, accessibleVideoLessons, roles };
-        console.log('✅ Returning dashboard user data:', result);
 
         return result;
     };

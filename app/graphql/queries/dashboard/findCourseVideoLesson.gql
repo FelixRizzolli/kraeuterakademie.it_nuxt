@@ -1,0 +1,9 @@
+query findCourseVideoLessons($where: CourseVideoLesson_where) {
+    CourseVideoLessons(where: $where) {
+        docs {
+            slug
+            title
+            youtubeURL
+        }
+    }
+}
