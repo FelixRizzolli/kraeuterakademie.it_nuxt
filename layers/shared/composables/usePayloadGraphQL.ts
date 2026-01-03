@@ -23,11 +23,23 @@ export const usePayloadGraphQL = () => {
             // Convert DocumentNode to string if needed
             const queryBody = typeof queryString === 'string' ? queryString : queryString.loc?.source?.body || '';
 
+            const tokenCookie = useCookie('payload-token');
+            const token = tokenCookie?.value ?? null;
+
+            console.log('🔑 Using token:', token ? 'Yes' : 'No');
+            if (!token) {
+                console.warn('⚠️ No payload-token cookie found in usePayloadGraphQL');
+            }
+
+            const headers: Record<string, string> = {
+                'Content-Type': 'application/json',
+            };
+            if (token) headers.Authorization = `JWT ${token}`;
+
             const response = await $fetch<T>(`${payloadApiUrl}/api/graphql`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                credentials: 'include',
+                headers,
                 body: {
                     query: queryBody,
                     variables: variables || {},

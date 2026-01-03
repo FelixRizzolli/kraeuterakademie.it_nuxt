@@ -1,5 +1,6 @@
 fragment CourseVideoLessonAttributes on CourseVideoLesson {
     id
+    slug
     title
     youtubeURL
     updatedAt

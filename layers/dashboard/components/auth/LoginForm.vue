@@ -84,6 +84,7 @@
     import { Input } from '~~/layers/dashboard/components/ui/input';
 
     import { useDashboardGlobalStore } from '~~/layers/dashboard/stores/dashboardGlobalStore';
+    import { useDashboardUserStore } from '~~/layers/dashboard/stores/dashboardUserStore';
     import { useAuth } from '~~/layers/dashboard/composables/useAuth';
 
     const dashboardGlobalStore = useDashboardGlobalStore();
@@ -112,6 +113,14 @@
             const result = await login(email.value, password.value);
 
             if (result.success) {
+                // Prefetch user data (non-blocking) - components will ensure it's loaded if needed
+                const userStore = useDashboardUserStore();
+                const userId = Number(result.user?.id || -1);
+                if (userId > 0) {
+                    userStore.loadForUser(userId).catch((err) => {
+                        console.error('Failed to prefetch dashboard user data:', err);
+                    });
+                }
                 // Redirect to dashboard after successful login
                 router.push('/dashboard');
             } else {

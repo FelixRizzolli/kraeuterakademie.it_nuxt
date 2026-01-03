@@ -59,12 +59,36 @@
     import NavGroup from '~~/layers/dashboard/components/layout/NavGroup.vue';
     import NavSecondary from '~~/layers/dashboard/components/layout/NavSecondary.vue';
     import NavUser from '~~/layers/dashboard/components/layout/NavUser.vue';
+    import useDashboardUserStore from '../../stores/dashboardUserStore';
 
     const props = withDefaults(defineProps<SidebarProps>(), {
         variant: 'inset',
     });
 
     const { userId, user, email, firstName, lastName } = useAuth();
+    const userData = useDashboardUserStore();
+
+    // Ensure user data is loaded when sidebar mounts
+    onMounted(async () => {
+        console.log('Sidebar mounted - User ID from auth:', userId.value);
+        console.log('Store userId before setting:', userData.userId);
+
+        if (userId.value) {
+            const numericUserId = Number(userId.value);
+            // Set userId in store first, then ensure data is loaded
+            userData.setUserId(numericUserId);
+            console.log('Store userId after setting:', userData.userId);
+
+            try {
+                await userData.ensureLoaded();
+                console.log('User data loaded successfully:', userData.data);
+            } catch (err) {
+                console.error('Failed to load dashboard user data:', err);
+            }
+        } else {
+            console.warn('No userId available from auth');
+        }
+    });
 
     const userInfo = computed(() => {
         const name =
@@ -77,45 +101,12 @@
         };
     });
 
-    // Fetch course video lessons for current user and map to nav items
-    const config = useRuntimeConfig();
-
-    const { data: lessonsData } = await useAsyncData(
-        'my-course-video-lessons',
-        async () => {
-            if (!userId.value) return { Courses: { docs: [] } };
-
-            const query = `query findMyCourseVideoLessons($where: Course_where) {\n  Courses(where: $where) {\n    docs {\n      videoLessons {\n        id\n        title\n      }\n    }\n  }\n}`;
-
-            // Adjust `where` shape to your schema. Here we assume courses have a participants relation
-            const variables = {
-                where: {
-                    participants: {
-                        equals: userId.value,
-                    },
-                },
-            };
-
-            const res = await $fetch(`${config.public.payloadApiUrl}/api/graphql`, {
-                method: 'POST',
-                body: { query, variables },
-            });
-
-            return res;
-        },
-        { watch: [userId] },
-    );
-
-    const videoLessons = computed(() => {
-        const docs = lessonsData.value?.data?.Courses?.docs ?? lessonsData.value?.Courses?.docs ?? [];
-        return docs.flatMap((d: any) => d.videoLessons ?? []);
-    });
-
     const navStudy = computed(() => {
-        const videoItems = videoLessons.value.map((v: any) => ({
-            title: v.title,
-            url: `/dashboard/study/video-lessons/${v.id}`,
-        }));
+        const videoItems =
+            userData.data?.accessibleVideoLessons?.map((v: any) => ({
+                title: v.title,
+                url: `/dashboard/study/video-lessons/${v.slug}`,
+            })) ?? [];
 
         return [
             {

@@ -1,0 +1,19 @@
+query getUserData {
+    meUser {
+        user {
+            enrolledCourses {
+                docs {
+                    name
+                    videoLessons {
+                        slug
+                        title
+                    }
+                }
+            }
+            roles {
+                slug
+                name
+            }
+        }
+    }
+}
