@@ -1,0 +1,10 @@
+query findMyCourseVideoLessons($where: Course_where) {
+  Courses(where: $where) {
+    docs {
+      videoLessons {
+        id
+        title
+      }
+    }
+  }
+}

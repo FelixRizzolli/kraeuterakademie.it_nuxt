@@ -21,7 +21,7 @@
         </SidebarHeader>
         <SidebarContent>
             <NavMain :items="data.navCourse" />
-            <NavMain :items="data.navStudy" />
+            <NavMain :items="navStudy" />
             <NavSecondary :items="data.navSecondary" class="mt-auto" />
         </SidebarContent>
         <SidebarFooter>
@@ -63,55 +63,63 @@
         variant: 'inset',
     });
 
-    const { user, email, firstName, lastName } = useAuth();
+    const { userId, user, email, firstName, lastName } = useAuth();
 
     const userInfo = computed(() => {
         const name =
             [firstName.value, lastName.value].filter(Boolean).join(' ') || user.value?.email || email.value || '';
         return {
+            id: userId.value ?? user.value?.id ?? '',
             name: name || 'User',
             email: email.value ?? user.value?.email ?? '',
             avatar: '/avatars/shadcn.jpg',
         };
     });
 
-    const data = {
-        navCourse: [
-            {
-                title: $t('dashboard.navigation.nav-course.courses.title'),
-                url: '#',
-                icon: GraduationCap,
-                isActive: true,
-                items: [
-                    {
-                        title: $t('dashboard.navigation.nav-course.courses.items.overview'),
-                        url: '#',
+    // Fetch course video lessons for current user and map to nav items
+    const config = useRuntimeConfig();
+
+    const { data: lessonsData } = await useAsyncData(
+        'my-course-video-lessons',
+        async () => {
+            if (!userId.value) return { Courses: { docs: [] } };
+
+            const query = `query findMyCourseVideoLessons($where: Course_where) {\n  Courses(where: $where) {\n    docs {\n      videoLessons {\n        id\n        title\n      }\n    }\n  }\n}`;
+
+            // Adjust `where` shape to your schema. Here we assume courses have a participants relation
+            const variables = {
+                where: {
+                    participants: {
+                        equals: userId.value,
                     },
-                    {
-                        title: $t('dashboard.navigation.nav-course.courses.items.documents'),
-                        url: '#',
-                    },
-                ],
-            },
-            {
-                title: $t('dashboard.navigation.nav-course.course-modules.title'),
-                url: '#',
-                icon: CalendarDays,
-                items: [
-                    {
-                        title: $t('dashboard.navigation.nav-course.course-modules.items.overview'),
-                        url: '#',
-                    },
-                ],
-            },
-        ],
-        navStudy: [
+                },
+            };
+
+            const res = await $fetch(`${config.public.payloadApiUrl}/api/graphql`, {
+                method: 'POST',
+                body: { query, variables },
+            });
+
+            return res;
+        },
+        { watch: [userId] },
+    );
+
+    const videoLessons = computed(() => {
+        const docs = lessonsData.value?.data?.Courses?.docs ?? lessonsData.value?.Courses?.docs ?? [];
+        return docs.flatMap((d: any) => d.videoLessons ?? []);
+    });
+
+    const navStudy = computed(() => {
+        const videoItems = videoLessons.value.map((v: any) => ({ title: v.title, url: `/dashboard/video-lessons/${v.id}` }));
+
+        return [
             {
                 title: $t('dashboard.navigation.nav-study.video-lessons'),
                 url: '#',
                 icon: Video,
                 isActive: true,
-                items: [],
+                items: videoItems,
             },
             {
                 title: $t('dashboard.navigation.nav-study.plant-lexicon.title'),
@@ -159,6 +167,38 @@
                     },
                     {
                         title: $t('dashboard.navigation.nav-study.quiz.items.catalogue'),
+                        url: '#',
+                    },
+                ],
+            },
+        ];
+    });
+
+    const data = {
+        navCourse: [
+            {
+                title: $t('dashboard.navigation.nav-course.courses.title'),
+                url: '#',
+                icon: GraduationCap,
+                isActive: true,
+                items: [
+                    {
+                        title: $t('dashboard.navigation.nav-course.courses.items.overview'),
+                        url: '#',
+                    },
+                    {
+                        title: $t('dashboard.navigation.nav-course.courses.items.documents'),
+                        url: '#',
+                    },
+                ],
+            },
+            {
+                title: $t('dashboard.navigation.nav-course.course-modules.title'),
+                url: '#',
+                icon: CalendarDays,
+                items: [
+                    {
+                        title: $t('dashboard.navigation.nav-course.course-modules.items.overview'),
                         url: '#',
                     },
                 ],
