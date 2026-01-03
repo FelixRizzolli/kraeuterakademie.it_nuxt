@@ -54,6 +54,7 @@
             "title": "Kräuterakademie",
             "subtitle": "der Sigrid Thaler Rizzolli",
             "nav-course": {
+                "title": "Kurse",
                 "courses": {
                     "title": "Kurse",
                     "items": {
@@ -69,6 +70,7 @@
                 }
             },
             "nav-study": {
+                "title": "Lernen",
                 "video-lessons": "Video Lektionen",
                 "plant-lexicon": {
                     "title": "Pflanzenlexikon",

@@ -1,6 +1,6 @@
 <template>
     <SidebarGroup>
-        <SidebarGroupLabel>Platform</SidebarGroupLabel>
+        <SidebarGroupLabel>{{ title }}</SidebarGroupLabel>
         <SidebarMenu>
             <Collapsible v-for="item in items" :key="item.title" as-child :default-open="item.isActive">
                 <SidebarMenuItem>
@@ -51,7 +51,8 @@
         SidebarMenuSubItem,
     } from '~~/layers/dashboard/components/ui/sidebar';
 
-    defineProps<{
+    interface NavGroupProps {
+        title: string;
         items: {
             title: string;
             url: string;
@@ -62,5 +63,7 @@
                 url: string;
             }[];
         }[];
-    }>();
+    }
+
+    const props = defineProps<NavGroupProps>();
 </script>

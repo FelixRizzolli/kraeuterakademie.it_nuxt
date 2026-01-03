@@ -20,8 +20,8 @@
             </SidebarMenu>
         </SidebarHeader>
         <SidebarContent>
-            <NavMain :items="data.navCourse" />
-            <NavMain :items="navStudy" />
+            <NavGroup :title="$t('dashboard.navigation.nav-course.title')" :items="data.navCourse" />
+            <NavGroup :title="$t('dashboard.navigation.nav-study.title')" :items="navStudy" />
             <NavSecondary :items="data.navSecondary" class="mt-auto" />
         </SidebarContent>
         <SidebarFooter>
@@ -44,7 +44,7 @@
         Video,
     } from 'lucide-vue-next';
 
-    import NavMain from '~~/layers/dashboard/components/NavMain.vue';
+    import NavGroup from '~~/layers/dashboard/components/NavGroup.vue';
     import NavSecondary from '~~/layers/dashboard/components/NavSecondary.vue';
     import NavUser from '~~/layers/dashboard/components/NavUser.vue';
     import { computed } from 'vue';
