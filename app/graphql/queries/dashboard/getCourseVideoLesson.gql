@@ -1,0 +1,7 @@
+query getCourseVideoLesson($courseVideoLessonId: Int!) {
+    CourseVideoLesson(id: $courseVideoLessonId) {
+        title
+        youtubeURL
+        id
+    }
+}
