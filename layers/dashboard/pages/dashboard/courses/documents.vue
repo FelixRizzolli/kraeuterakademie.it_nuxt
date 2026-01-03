@@ -6,7 +6,10 @@
 </template>
 
 <script setup lang="ts">
-    definePageMeta({ layout: 'dashboard' });
+    definePageMeta({
+        layout: 'dashboard',
+        middleware: ['auth'],
+    });
     import { useI18n } from 'vue-i18n';
     import { useBreadcrumbs } from '~~/layers/dashboard/composables/useBreadcrumbs';
 

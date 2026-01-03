@@ -31,7 +31,6 @@
 </template>
 
 <script lang="ts" setup>
-    definePageMeta({ middleware: ['auth'] });
     import { useDashboardGlobalStore } from '~~/layers/dashboard/stores/dashboardGlobalStore';
     import { useBreadcrumbs } from '~~/layers/dashboard/composables/useBreadcrumbs';
 

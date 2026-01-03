@@ -10,6 +10,7 @@
 <script setup lang="ts">
     definePageMeta({
         layout: 'dashboard',
+        middleware: ['auth'],
     });
 
     import { useI18n } from 'vue-i18n';
