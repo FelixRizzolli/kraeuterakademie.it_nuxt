@@ -57,7 +57,10 @@ export default defineNuxtConfig({
             { code: 'de', language: 'de-DE', file: 'de.json' },
             { code: 'it', language: 'it-IT', file: 'it.json' },
         ],
+        langDir: 'locales',
         defaultLocale: 'de',
+        strategy: 'no_prefix',
+        vueI18n: './i18n/i18n.config.ts',
     },
 
     vite: {

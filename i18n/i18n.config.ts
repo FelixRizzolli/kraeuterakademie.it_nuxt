@@ -1,5 +1,10 @@
 export default defineI18nConfig(() => {
     return {
-        // vue-i18n options
+        legacy: false,
+        locale: 'de',
+        fallbackLocale: 'de',
+        globalInjection: true,
+        missingWarn: false,
+        fallbackWarn: false,
     };
 });
