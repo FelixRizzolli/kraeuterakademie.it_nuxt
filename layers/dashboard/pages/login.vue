@@ -11,7 +11,7 @@
 </script>
 
 <script setup lang="ts">
-    import LoginForm from '~~/layers/dashboard/components/LoginForm.vue';
+    import LoginForm from '~~/layers/dashboard/components/auth/LoginForm.vue';
 
     definePageMeta({
         layout: 'auth',

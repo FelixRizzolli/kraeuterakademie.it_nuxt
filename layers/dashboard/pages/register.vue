@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-    import RegisterForm from '~~/layers/dashboard/components/RegisterForm.vue';
+    import RegisterForm from '~~/layers/dashboard/components/auth/RegisterForm.vue';
 
     definePageMeta({
         layout: 'auth',

@@ -44,9 +44,6 @@
         Video,
     } from 'lucide-vue-next';
 
-    import NavGroup from '~~/layers/dashboard/components/NavGroup.vue';
-    import NavSecondary from '~~/layers/dashboard/components/NavSecondary.vue';
-    import NavUser from '~~/layers/dashboard/components/NavUser.vue';
     import { computed } from 'vue';
     import { useAuth } from '~~/layers/dashboard/composables/useAuth';
     import {
@@ -58,6 +55,10 @@
         SidebarMenuButton,
         SidebarMenuItem,
     } from '~~/layers/dashboard/components/ui/sidebar';
+
+    import NavGroup from '~~/layers/dashboard/components/layout/NavGroup.vue';
+    import NavSecondary from '~~/layers/dashboard/components/layout/NavSecondary.vue';
+    import NavUser from '~~/layers/dashboard/components/layout/NavUser.vue';
 
     const props = withDefaults(defineProps<SidebarProps>(), {
         variant: 'inset',
@@ -121,7 +122,6 @@
                 title: $t('dashboard.navigation.nav-study.video-lessons'),
                 url: '/dashboard/study/video-lessons',
                 icon: Video,
-                isActive: true,
                 items: videoItems,
             },
             {
@@ -183,7 +183,6 @@
                 title: $t('dashboard.navigation.nav-course.courses.title'),
                 url: '/dashboard/courses',
                 icon: GraduationCap,
-                isActive: true,
                 items: [
                     {
                         title: $t('dashboard.navigation.nav-course.courses.items.overview'),

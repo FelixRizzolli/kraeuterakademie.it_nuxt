@@ -31,6 +31,17 @@
 </template>
 
 <script lang="ts" setup>
+    import AppSidebar from '~~/layers/dashboard/components/layout/AppSidebar.vue';
+    import { SidebarInset, SidebarProvider, SidebarTrigger } from '~~/layers/dashboard/components/ui/sidebar';
+    import {
+        Breadcrumb,
+        BreadcrumbItem,
+        BreadcrumbLink,
+        BreadcrumbList,
+        BreadcrumbPage,
+        BreadcrumbSeparator,
+    } from '~~/layers/dashboard/components/ui/breadcrumb';
+    import { Separator } from '~~/layers/dashboard/components/ui/separator';
     import { useDashboardGlobalStore } from '~~/layers/dashboard/stores/dashboardGlobalStore';
     import { useBreadcrumbs } from '~~/layers/dashboard/composables/useBreadcrumbs';
 
