@@ -2,15 +2,9 @@
     <div>
         <h1 class="text-2xl font-semibold mb-4">{{ lessonTitle }}</h1>
 
-        <div v-if="youtubeEmbedUrl" class="mb-6">
+        <div v-if="lessonYouTubeURL" class="mb-6">
             <div class="aspect-video rounded-xl overflow-hidden">
-                <iframe
-                    :src="youtubeEmbedUrl"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    class="w-full h-full"
-                />
+                <DashboardYouTubeVideo :youtubeURL="lessonYouTubeURL" class="w-full h-full" />
             </div>
         </div>
     </div>
@@ -61,20 +55,6 @@
         { watch: [() => slug] },
     );
 
+    const lessonYouTubeURL = computed(() => lessonData.value?.data?.CourseVideoLesson?.youtubeURL ?? '');
     const lessonTitle = computed(() => lessonData.value?.data?.CourseVideoLesson?.title ?? '');
-
-    function extractYouTubeId(url: string | null | undefined): string | null {
-        if (!url) return null;
-        const s = String(url).trim();
-        const m = s.match(/(?:v=|\/youtu\.be\/|\/embed\/)([A-Za-z0-9_-]{11})/);
-        return m ? m[1] : null;
-    }
-
-    const youtubeEmbedUrl = computed(() => {
-        const url = lessonData.value?.data?.CourseVideoLesson?.youtubeURL ?? '';
-        const id = extractYouTubeId(url);
-        if (id) return `https://www.youtube.com/embed/${id}`;
-        // Fallback: if it's already an embed URL or other video URL, return as-is (browser will decide)
-        return url || null;
-    });
 </script>
