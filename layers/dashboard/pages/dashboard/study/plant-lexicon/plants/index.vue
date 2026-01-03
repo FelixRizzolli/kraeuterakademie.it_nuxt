@@ -37,7 +37,7 @@
         </div>
 
         <div v-else class="rounded-lg bg-muted p-4">
-            <p class="text-muted-foreground">Video lesson not found</p>
+            <p class="text-muted-foreground">Plants not found</p>
         </div>
     </div>
 </template>
