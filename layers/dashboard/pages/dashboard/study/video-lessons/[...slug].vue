@@ -32,7 +32,7 @@
 
     import { useI18n } from 'vue-i18n';
     import { useBreadcrumbs } from '~~/layers/dashboard/composables/useBreadcrumbs';
-    import FIND_COURSE_VIDEO_LESSONS from '~/graphql/queries/dashboard/findCourseVideoLesson.gql';
+    import { useCourseVideoLesson } from '~~/layers/dashboard/composables/useCourseVideoLesson';
     import { useRoute } from 'vue-router';
     import { computed } from 'vue';
 
@@ -48,28 +48,6 @@
         { text: t('dashboard.pages.study.video-lessons.breadcrumb-title'), url: '/dashboard/study/video-lessons' },
         { text: slug || t('dashboard.pages.study.video-lessons.breadcrumb-title') },
     ]);
-
-    const useCourseVideoLesson = () => {
-        const getCourseVideoLessonQuery = `
-            ${FIND_COURSE_VIDEO_LESSONS?.loc?.source?.body}
-        `;
-
-        const gqlQuery = usePayloadGraphQL();
-
-        const fetchCourseVideoLesson = async (slug: string): Promise<any> => {
-            const response = await gqlQuery<any>(getCourseVideoLessonQuery, {
-                where: {
-                    slug: {
-                        equals: slug,
-                    },
-                },
-            });
-
-            return response.data?.CourseVideoLessons?.docs?.[0] || null;
-        };
-
-        return fetchCourseVideoLesson;
-    };
 
     const videoLesson = ref<any>(null);
     const loading = ref(true);

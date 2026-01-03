@@ -32,7 +32,7 @@ export type Access = {
     course_video_lessons?: Maybe<course_video_lessonsAccess>;
     courses?: Maybe<coursesAccess>;
     dashboard_changelogs?: Maybe<dashboard_changelogsAccess>;
-    dashboard_globals?: Maybe<dashboard_globalsAccess>;
+    dashboard_global?: Maybe<dashboard_globalAccess>;
     dashboard_help_pages?: Maybe<dashboard_help_pagesAccess>;
     dashboard_images?: Maybe<dashboard_imagesAccess>;
     dashboard_text_blocks?: Maybe<dashboard_text_blocksAccess>;
@@ -3816,6 +3816,7 @@ export type CourseVideoLesson = {
     __typename?: 'CourseVideoLesson';
     createdAt?: Maybe<Scalars['DateTime']['output']>;
     id: Scalars['Int']['output'];
+    slug: Scalars['String']['output'];
     title: Scalars['String']['output'];
     updatedAt?: Maybe<Scalars['DateTime']['output']>;
     youtubeURL?: Maybe<Scalars['String']['output']>;
@@ -3840,6 +3841,16 @@ export type CourseVideoLesson_id_operator = {
     less_than?: InputMaybe<Scalars['Int']['input']>;
     less_than_equal?: InputMaybe<Scalars['Int']['input']>;
     not_equals?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type CourseVideoLesson_slug_operator = {
+    all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    contains?: InputMaybe<Scalars['String']['input']>;
+    equals?: InputMaybe<Scalars['String']['input']>;
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    like?: InputMaybe<Scalars['String']['input']>;
+    not_equals?: InputMaybe<Scalars['String']['input']>;
+    not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type CourseVideoLesson_title_operator = {
@@ -3868,6 +3879,7 @@ export type CourseVideoLesson_where = {
     OR?: InputMaybe<Array<InputMaybe<CourseVideoLesson_where_or>>>;
     createdAt?: InputMaybe<CourseVideoLesson_createdAt_operator>;
     id?: InputMaybe<CourseVideoLesson_id_operator>;
+    slug?: InputMaybe<CourseVideoLesson_slug_operator>;
     title?: InputMaybe<CourseVideoLesson_title_operator>;
     updatedAt?: InputMaybe<CourseVideoLesson_updatedAt_operator>;
     youtubeURL?: InputMaybe<CourseVideoLesson_youtubeURL_operator>;
@@ -3878,6 +3890,7 @@ export type CourseVideoLesson_where_and = {
     OR?: InputMaybe<Array<InputMaybe<CourseVideoLesson_where_or>>>;
     createdAt?: InputMaybe<CourseVideoLesson_createdAt_operator>;
     id?: InputMaybe<CourseVideoLesson_id_operator>;
+    slug?: InputMaybe<CourseVideoLesson_slug_operator>;
     title?: InputMaybe<CourseVideoLesson_title_operator>;
     updatedAt?: InputMaybe<CourseVideoLesson_updatedAt_operator>;
     youtubeURL?: InputMaybe<CourseVideoLesson_youtubeURL_operator>;
@@ -3888,6 +3901,7 @@ export type CourseVideoLesson_where_or = {
     OR?: InputMaybe<Array<InputMaybe<CourseVideoLesson_where_or>>>;
     createdAt?: InputMaybe<CourseVideoLesson_createdAt_operator>;
     id?: InputMaybe<CourseVideoLesson_id_operator>;
+    slug?: InputMaybe<CourseVideoLesson_slug_operator>;
     title?: InputMaybe<CourseVideoLesson_title_operator>;
     updatedAt?: InputMaybe<CourseVideoLesson_updatedAt_operator>;
     youtubeURL?: InputMaybe<CourseVideoLesson_youtubeURL_operator>;
@@ -3946,6 +3960,7 @@ export type CourseVideoLessonsDeleteDocAccess = {
 export type CourseVideoLessonsDocAccessFields = {
     __typename?: 'CourseVideoLessonsDocAccessFields';
     createdAt?: Maybe<CourseVideoLessonsDocAccessFields_createdAt>;
+    slug?: Maybe<CourseVideoLessonsDocAccessFields_slug>;
     title?: Maybe<CourseVideoLessonsDocAccessFields_title>;
     updatedAt?: Maybe<CourseVideoLessonsDocAccessFields_updatedAt>;
     youtubeURL?: Maybe<CourseVideoLessonsDocAccessFields_youtubeURL>;
@@ -3976,6 +3991,34 @@ export type CourseVideoLessonsDocAccessFields_createdAt_Read = {
 
 export type CourseVideoLessonsDocAccessFields_createdAt_Update = {
     __typename?: 'CourseVideoLessonsDocAccessFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type CourseVideoLessonsDocAccessFields_slug = {
+    __typename?: 'CourseVideoLessonsDocAccessFields_slug';
+    create?: Maybe<CourseVideoLessonsDocAccessFields_slug_Create>;
+    delete?: Maybe<CourseVideoLessonsDocAccessFields_slug_Delete>;
+    read?: Maybe<CourseVideoLessonsDocAccessFields_slug_Read>;
+    update?: Maybe<CourseVideoLessonsDocAccessFields_slug_Update>;
+};
+
+export type CourseVideoLessonsDocAccessFields_slug_Create = {
+    __typename?: 'CourseVideoLessonsDocAccessFields_slug_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type CourseVideoLessonsDocAccessFields_slug_Delete = {
+    __typename?: 'CourseVideoLessonsDocAccessFields_slug_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type CourseVideoLessonsDocAccessFields_slug_Read = {
+    __typename?: 'CourseVideoLessonsDocAccessFields_slug_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type CourseVideoLessonsDocAccessFields_slug_Update = {
+    __typename?: 'CourseVideoLessonsDocAccessFields_slug_Update';
     permission: Scalars['Boolean']['output'];
 };
 
@@ -4066,6 +4109,7 @@ export type CourseVideoLessonsDocAccessFields_youtubeURL_Update = {
 export type CourseVideoLessonsFields = {
     __typename?: 'CourseVideoLessonsFields';
     createdAt?: Maybe<CourseVideoLessonsFields_createdAt>;
+    slug?: Maybe<CourseVideoLessonsFields_slug>;
     title?: Maybe<CourseVideoLessonsFields_title>;
     updatedAt?: Maybe<CourseVideoLessonsFields_updatedAt>;
     youtubeURL?: Maybe<CourseVideoLessonsFields_youtubeURL>;
@@ -4096,6 +4140,34 @@ export type CourseVideoLessonsFields_createdAt_Read = {
 
 export type CourseVideoLessonsFields_createdAt_Update = {
     __typename?: 'CourseVideoLessonsFields_createdAt_Update';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type CourseVideoLessonsFields_slug = {
+    __typename?: 'CourseVideoLessonsFields_slug';
+    create?: Maybe<CourseVideoLessonsFields_slug_Create>;
+    delete?: Maybe<CourseVideoLessonsFields_slug_Delete>;
+    read?: Maybe<CourseVideoLessonsFields_slug_Read>;
+    update?: Maybe<CourseVideoLessonsFields_slug_Update>;
+};
+
+export type CourseVideoLessonsFields_slug_Create = {
+    __typename?: 'CourseVideoLessonsFields_slug_Create';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type CourseVideoLessonsFields_slug_Delete = {
+    __typename?: 'CourseVideoLessonsFields_slug_Delete';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type CourseVideoLessonsFields_slug_Read = {
+    __typename?: 'CourseVideoLessonsFields_slug_Read';
+    permission: Scalars['Boolean']['output'];
+};
+
+export type CourseVideoLessonsFields_slug_Update = {
+    __typename?: 'CourseVideoLessonsFields_slug_Update';
     permission: Scalars['Boolean']['output'];
 };
 
@@ -5482,266 +5554,266 @@ export type DashboardGlobal = {
     updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
-export type DashboardGlobalsDocAccessFields = {
-    __typename?: 'DashboardGlobalsDocAccessFields';
-    createdAt?: Maybe<DashboardGlobalsDocAccessFields_createdAt>;
-    loginImage?: Maybe<DashboardGlobalsDocAccessFields_loginImage>;
-    registerImage?: Maybe<DashboardGlobalsDocAccessFields_registerImage>;
-    updatedAt?: Maybe<DashboardGlobalsDocAccessFields_updatedAt>;
+export type DashboardGlobalDocAccessFields = {
+    __typename?: 'DashboardGlobalDocAccessFields';
+    createdAt?: Maybe<DashboardGlobalDocAccessFields_createdAt>;
+    loginImage?: Maybe<DashboardGlobalDocAccessFields_loginImage>;
+    registerImage?: Maybe<DashboardGlobalDocAccessFields_registerImage>;
+    updatedAt?: Maybe<DashboardGlobalDocAccessFields_updatedAt>;
 };
 
-export type DashboardGlobalsDocAccessFields_createdAt = {
-    __typename?: 'DashboardGlobalsDocAccessFields_createdAt';
-    create?: Maybe<DashboardGlobalsDocAccessFields_createdAt_Create>;
-    delete?: Maybe<DashboardGlobalsDocAccessFields_createdAt_Delete>;
-    read?: Maybe<DashboardGlobalsDocAccessFields_createdAt_Read>;
-    update?: Maybe<DashboardGlobalsDocAccessFields_createdAt_Update>;
+export type DashboardGlobalDocAccessFields_createdAt = {
+    __typename?: 'DashboardGlobalDocAccessFields_createdAt';
+    create?: Maybe<DashboardGlobalDocAccessFields_createdAt_Create>;
+    delete?: Maybe<DashboardGlobalDocAccessFields_createdAt_Delete>;
+    read?: Maybe<DashboardGlobalDocAccessFields_createdAt_Read>;
+    update?: Maybe<DashboardGlobalDocAccessFields_createdAt_Update>;
 };
 
-export type DashboardGlobalsDocAccessFields_createdAt_Create = {
-    __typename?: 'DashboardGlobalsDocAccessFields_createdAt_Create';
+export type DashboardGlobalDocAccessFields_createdAt_Create = {
+    __typename?: 'DashboardGlobalDocAccessFields_createdAt_Create';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsDocAccessFields_createdAt_Delete = {
-    __typename?: 'DashboardGlobalsDocAccessFields_createdAt_Delete';
+export type DashboardGlobalDocAccessFields_createdAt_Delete = {
+    __typename?: 'DashboardGlobalDocAccessFields_createdAt_Delete';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsDocAccessFields_createdAt_Read = {
-    __typename?: 'DashboardGlobalsDocAccessFields_createdAt_Read';
+export type DashboardGlobalDocAccessFields_createdAt_Read = {
+    __typename?: 'DashboardGlobalDocAccessFields_createdAt_Read';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsDocAccessFields_createdAt_Update = {
-    __typename?: 'DashboardGlobalsDocAccessFields_createdAt_Update';
+export type DashboardGlobalDocAccessFields_createdAt_Update = {
+    __typename?: 'DashboardGlobalDocAccessFields_createdAt_Update';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsDocAccessFields_loginImage = {
-    __typename?: 'DashboardGlobalsDocAccessFields_loginImage';
-    create?: Maybe<DashboardGlobalsDocAccessFields_loginImage_Create>;
-    delete?: Maybe<DashboardGlobalsDocAccessFields_loginImage_Delete>;
-    read?: Maybe<DashboardGlobalsDocAccessFields_loginImage_Read>;
-    update?: Maybe<DashboardGlobalsDocAccessFields_loginImage_Update>;
+export type DashboardGlobalDocAccessFields_loginImage = {
+    __typename?: 'DashboardGlobalDocAccessFields_loginImage';
+    create?: Maybe<DashboardGlobalDocAccessFields_loginImage_Create>;
+    delete?: Maybe<DashboardGlobalDocAccessFields_loginImage_Delete>;
+    read?: Maybe<DashboardGlobalDocAccessFields_loginImage_Read>;
+    update?: Maybe<DashboardGlobalDocAccessFields_loginImage_Update>;
 };
 
-export type DashboardGlobalsDocAccessFields_loginImage_Create = {
-    __typename?: 'DashboardGlobalsDocAccessFields_loginImage_Create';
+export type DashboardGlobalDocAccessFields_loginImage_Create = {
+    __typename?: 'DashboardGlobalDocAccessFields_loginImage_Create';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsDocAccessFields_loginImage_Delete = {
-    __typename?: 'DashboardGlobalsDocAccessFields_loginImage_Delete';
+export type DashboardGlobalDocAccessFields_loginImage_Delete = {
+    __typename?: 'DashboardGlobalDocAccessFields_loginImage_Delete';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsDocAccessFields_loginImage_Read = {
-    __typename?: 'DashboardGlobalsDocAccessFields_loginImage_Read';
+export type DashboardGlobalDocAccessFields_loginImage_Read = {
+    __typename?: 'DashboardGlobalDocAccessFields_loginImage_Read';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsDocAccessFields_loginImage_Update = {
-    __typename?: 'DashboardGlobalsDocAccessFields_loginImage_Update';
+export type DashboardGlobalDocAccessFields_loginImage_Update = {
+    __typename?: 'DashboardGlobalDocAccessFields_loginImage_Update';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsDocAccessFields_registerImage = {
-    __typename?: 'DashboardGlobalsDocAccessFields_registerImage';
-    create?: Maybe<DashboardGlobalsDocAccessFields_registerImage_Create>;
-    delete?: Maybe<DashboardGlobalsDocAccessFields_registerImage_Delete>;
-    read?: Maybe<DashboardGlobalsDocAccessFields_registerImage_Read>;
-    update?: Maybe<DashboardGlobalsDocAccessFields_registerImage_Update>;
+export type DashboardGlobalDocAccessFields_registerImage = {
+    __typename?: 'DashboardGlobalDocAccessFields_registerImage';
+    create?: Maybe<DashboardGlobalDocAccessFields_registerImage_Create>;
+    delete?: Maybe<DashboardGlobalDocAccessFields_registerImage_Delete>;
+    read?: Maybe<DashboardGlobalDocAccessFields_registerImage_Read>;
+    update?: Maybe<DashboardGlobalDocAccessFields_registerImage_Update>;
 };
 
-export type DashboardGlobalsDocAccessFields_registerImage_Create = {
-    __typename?: 'DashboardGlobalsDocAccessFields_registerImage_Create';
+export type DashboardGlobalDocAccessFields_registerImage_Create = {
+    __typename?: 'DashboardGlobalDocAccessFields_registerImage_Create';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsDocAccessFields_registerImage_Delete = {
-    __typename?: 'DashboardGlobalsDocAccessFields_registerImage_Delete';
+export type DashboardGlobalDocAccessFields_registerImage_Delete = {
+    __typename?: 'DashboardGlobalDocAccessFields_registerImage_Delete';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsDocAccessFields_registerImage_Read = {
-    __typename?: 'DashboardGlobalsDocAccessFields_registerImage_Read';
+export type DashboardGlobalDocAccessFields_registerImage_Read = {
+    __typename?: 'DashboardGlobalDocAccessFields_registerImage_Read';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsDocAccessFields_registerImage_Update = {
-    __typename?: 'DashboardGlobalsDocAccessFields_registerImage_Update';
+export type DashboardGlobalDocAccessFields_registerImage_Update = {
+    __typename?: 'DashboardGlobalDocAccessFields_registerImage_Update';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsDocAccessFields_updatedAt = {
-    __typename?: 'DashboardGlobalsDocAccessFields_updatedAt';
-    create?: Maybe<DashboardGlobalsDocAccessFields_updatedAt_Create>;
-    delete?: Maybe<DashboardGlobalsDocAccessFields_updatedAt_Delete>;
-    read?: Maybe<DashboardGlobalsDocAccessFields_updatedAt_Read>;
-    update?: Maybe<DashboardGlobalsDocAccessFields_updatedAt_Update>;
+export type DashboardGlobalDocAccessFields_updatedAt = {
+    __typename?: 'DashboardGlobalDocAccessFields_updatedAt';
+    create?: Maybe<DashboardGlobalDocAccessFields_updatedAt_Create>;
+    delete?: Maybe<DashboardGlobalDocAccessFields_updatedAt_Delete>;
+    read?: Maybe<DashboardGlobalDocAccessFields_updatedAt_Read>;
+    update?: Maybe<DashboardGlobalDocAccessFields_updatedAt_Update>;
 };
 
-export type DashboardGlobalsDocAccessFields_updatedAt_Create = {
-    __typename?: 'DashboardGlobalsDocAccessFields_updatedAt_Create';
+export type DashboardGlobalDocAccessFields_updatedAt_Create = {
+    __typename?: 'DashboardGlobalDocAccessFields_updatedAt_Create';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsDocAccessFields_updatedAt_Delete = {
-    __typename?: 'DashboardGlobalsDocAccessFields_updatedAt_Delete';
+export type DashboardGlobalDocAccessFields_updatedAt_Delete = {
+    __typename?: 'DashboardGlobalDocAccessFields_updatedAt_Delete';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsDocAccessFields_updatedAt_Read = {
-    __typename?: 'DashboardGlobalsDocAccessFields_updatedAt_Read';
+export type DashboardGlobalDocAccessFields_updatedAt_Read = {
+    __typename?: 'DashboardGlobalDocAccessFields_updatedAt_Read';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsDocAccessFields_updatedAt_Update = {
-    __typename?: 'DashboardGlobalsDocAccessFields_updatedAt_Update';
+export type DashboardGlobalDocAccessFields_updatedAt_Update = {
+    __typename?: 'DashboardGlobalDocAccessFields_updatedAt_Update';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields = {
-    __typename?: 'DashboardGlobalsFields';
-    createdAt?: Maybe<DashboardGlobalsFields_createdAt>;
-    loginImage?: Maybe<DashboardGlobalsFields_loginImage>;
-    registerImage?: Maybe<DashboardGlobalsFields_registerImage>;
-    updatedAt?: Maybe<DashboardGlobalsFields_updatedAt>;
+export type DashboardGlobalFields = {
+    __typename?: 'DashboardGlobalFields';
+    createdAt?: Maybe<DashboardGlobalFields_createdAt>;
+    loginImage?: Maybe<DashboardGlobalFields_loginImage>;
+    registerImage?: Maybe<DashboardGlobalFields_registerImage>;
+    updatedAt?: Maybe<DashboardGlobalFields_updatedAt>;
 };
 
-export type DashboardGlobalsFields_createdAt = {
-    __typename?: 'DashboardGlobalsFields_createdAt';
-    create?: Maybe<DashboardGlobalsFields_createdAt_Create>;
-    delete?: Maybe<DashboardGlobalsFields_createdAt_Delete>;
-    read?: Maybe<DashboardGlobalsFields_createdAt_Read>;
-    update?: Maybe<DashboardGlobalsFields_createdAt_Update>;
+export type DashboardGlobalFields_createdAt = {
+    __typename?: 'DashboardGlobalFields_createdAt';
+    create?: Maybe<DashboardGlobalFields_createdAt_Create>;
+    delete?: Maybe<DashboardGlobalFields_createdAt_Delete>;
+    read?: Maybe<DashboardGlobalFields_createdAt_Read>;
+    update?: Maybe<DashboardGlobalFields_createdAt_Update>;
 };
 
-export type DashboardGlobalsFields_createdAt_Create = {
-    __typename?: 'DashboardGlobalsFields_createdAt_Create';
+export type DashboardGlobalFields_createdAt_Create = {
+    __typename?: 'DashboardGlobalFields_createdAt_Create';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields_createdAt_Delete = {
-    __typename?: 'DashboardGlobalsFields_createdAt_Delete';
+export type DashboardGlobalFields_createdAt_Delete = {
+    __typename?: 'DashboardGlobalFields_createdAt_Delete';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields_createdAt_Read = {
-    __typename?: 'DashboardGlobalsFields_createdAt_Read';
+export type DashboardGlobalFields_createdAt_Read = {
+    __typename?: 'DashboardGlobalFields_createdAt_Read';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields_createdAt_Update = {
-    __typename?: 'DashboardGlobalsFields_createdAt_Update';
+export type DashboardGlobalFields_createdAt_Update = {
+    __typename?: 'DashboardGlobalFields_createdAt_Update';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields_loginImage = {
-    __typename?: 'DashboardGlobalsFields_loginImage';
-    create?: Maybe<DashboardGlobalsFields_loginImage_Create>;
-    delete?: Maybe<DashboardGlobalsFields_loginImage_Delete>;
-    read?: Maybe<DashboardGlobalsFields_loginImage_Read>;
-    update?: Maybe<DashboardGlobalsFields_loginImage_Update>;
+export type DashboardGlobalFields_loginImage = {
+    __typename?: 'DashboardGlobalFields_loginImage';
+    create?: Maybe<DashboardGlobalFields_loginImage_Create>;
+    delete?: Maybe<DashboardGlobalFields_loginImage_Delete>;
+    read?: Maybe<DashboardGlobalFields_loginImage_Read>;
+    update?: Maybe<DashboardGlobalFields_loginImage_Update>;
 };
 
-export type DashboardGlobalsFields_loginImage_Create = {
-    __typename?: 'DashboardGlobalsFields_loginImage_Create';
+export type DashboardGlobalFields_loginImage_Create = {
+    __typename?: 'DashboardGlobalFields_loginImage_Create';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields_loginImage_Delete = {
-    __typename?: 'DashboardGlobalsFields_loginImage_Delete';
+export type DashboardGlobalFields_loginImage_Delete = {
+    __typename?: 'DashboardGlobalFields_loginImage_Delete';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields_loginImage_Read = {
-    __typename?: 'DashboardGlobalsFields_loginImage_Read';
+export type DashboardGlobalFields_loginImage_Read = {
+    __typename?: 'DashboardGlobalFields_loginImage_Read';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields_loginImage_Update = {
-    __typename?: 'DashboardGlobalsFields_loginImage_Update';
+export type DashboardGlobalFields_loginImage_Update = {
+    __typename?: 'DashboardGlobalFields_loginImage_Update';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields_registerImage = {
-    __typename?: 'DashboardGlobalsFields_registerImage';
-    create?: Maybe<DashboardGlobalsFields_registerImage_Create>;
-    delete?: Maybe<DashboardGlobalsFields_registerImage_Delete>;
-    read?: Maybe<DashboardGlobalsFields_registerImage_Read>;
-    update?: Maybe<DashboardGlobalsFields_registerImage_Update>;
+export type DashboardGlobalFields_registerImage = {
+    __typename?: 'DashboardGlobalFields_registerImage';
+    create?: Maybe<DashboardGlobalFields_registerImage_Create>;
+    delete?: Maybe<DashboardGlobalFields_registerImage_Delete>;
+    read?: Maybe<DashboardGlobalFields_registerImage_Read>;
+    update?: Maybe<DashboardGlobalFields_registerImage_Update>;
 };
 
-export type DashboardGlobalsFields_registerImage_Create = {
-    __typename?: 'DashboardGlobalsFields_registerImage_Create';
+export type DashboardGlobalFields_registerImage_Create = {
+    __typename?: 'DashboardGlobalFields_registerImage_Create';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields_registerImage_Delete = {
-    __typename?: 'DashboardGlobalsFields_registerImage_Delete';
+export type DashboardGlobalFields_registerImage_Delete = {
+    __typename?: 'DashboardGlobalFields_registerImage_Delete';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields_registerImage_Read = {
-    __typename?: 'DashboardGlobalsFields_registerImage_Read';
+export type DashboardGlobalFields_registerImage_Read = {
+    __typename?: 'DashboardGlobalFields_registerImage_Read';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields_registerImage_Update = {
-    __typename?: 'DashboardGlobalsFields_registerImage_Update';
+export type DashboardGlobalFields_registerImage_Update = {
+    __typename?: 'DashboardGlobalFields_registerImage_Update';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields_updatedAt = {
-    __typename?: 'DashboardGlobalsFields_updatedAt';
-    create?: Maybe<DashboardGlobalsFields_updatedAt_Create>;
-    delete?: Maybe<DashboardGlobalsFields_updatedAt_Delete>;
-    read?: Maybe<DashboardGlobalsFields_updatedAt_Read>;
-    update?: Maybe<DashboardGlobalsFields_updatedAt_Update>;
+export type DashboardGlobalFields_updatedAt = {
+    __typename?: 'DashboardGlobalFields_updatedAt';
+    create?: Maybe<DashboardGlobalFields_updatedAt_Create>;
+    delete?: Maybe<DashboardGlobalFields_updatedAt_Delete>;
+    read?: Maybe<DashboardGlobalFields_updatedAt_Read>;
+    update?: Maybe<DashboardGlobalFields_updatedAt_Update>;
 };
 
-export type DashboardGlobalsFields_updatedAt_Create = {
-    __typename?: 'DashboardGlobalsFields_updatedAt_Create';
+export type DashboardGlobalFields_updatedAt_Create = {
+    __typename?: 'DashboardGlobalFields_updatedAt_Create';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields_updatedAt_Delete = {
-    __typename?: 'DashboardGlobalsFields_updatedAt_Delete';
+export type DashboardGlobalFields_updatedAt_Delete = {
+    __typename?: 'DashboardGlobalFields_updatedAt_Delete';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields_updatedAt_Read = {
-    __typename?: 'DashboardGlobalsFields_updatedAt_Read';
+export type DashboardGlobalFields_updatedAt_Read = {
+    __typename?: 'DashboardGlobalFields_updatedAt_Read';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsFields_updatedAt_Update = {
-    __typename?: 'DashboardGlobalsFields_updatedAt_Update';
+export type DashboardGlobalFields_updatedAt_Update = {
+    __typename?: 'DashboardGlobalFields_updatedAt_Update';
     permission: Scalars['Boolean']['output'];
 };
 
-export type DashboardGlobalsReadAccess = {
-    __typename?: 'DashboardGlobalsReadAccess';
-    permission: Scalars['Boolean']['output'];
-    where?: Maybe<Scalars['JSONObject']['output']>;
-};
-
-export type DashboardGlobalsReadDocAccess = {
-    __typename?: 'DashboardGlobalsReadDocAccess';
+export type DashboardGlobalReadAccess = {
+    __typename?: 'DashboardGlobalReadAccess';
     permission: Scalars['Boolean']['output'];
     where?: Maybe<Scalars['JSONObject']['output']>;
 };
 
-export type DashboardGlobalsUpdateAccess = {
-    __typename?: 'DashboardGlobalsUpdateAccess';
+export type DashboardGlobalReadDocAccess = {
+    __typename?: 'DashboardGlobalReadDocAccess';
     permission: Scalars['Boolean']['output'];
     where?: Maybe<Scalars['JSONObject']['output']>;
 };
 
-export type DashboardGlobalsUpdateDocAccess = {
-    __typename?: 'DashboardGlobalsUpdateDocAccess';
+export type DashboardGlobalUpdateAccess = {
+    __typename?: 'DashboardGlobalUpdateAccess';
+    permission: Scalars['Boolean']['output'];
+    where?: Maybe<Scalars['JSONObject']['output']>;
+};
+
+export type DashboardGlobalUpdateDocAccess = {
+    __typename?: 'DashboardGlobalUpdateDocAccess';
     permission: Scalars['Boolean']['output'];
     where?: Maybe<Scalars['JSONObject']['output']>;
 };
@@ -44784,7 +44856,7 @@ export type Query = {
     docAccessCourseSpeaker?: Maybe<course_speakersDocAccess>;
     docAccessCourseVideoLesson?: Maybe<course_video_lessonsDocAccess>;
     docAccessDashboardChangelog?: Maybe<dashboard_changelogsDocAccess>;
-    docAccessDashboardGlobal?: Maybe<dashboard_globalsDocAccess>;
+    docAccessDashboardGlobal?: Maybe<dashboard_globalDocAccess>;
     docAccessDashboardHelpPage?: Maybe<dashboard_help_pagesDocAccess>;
     docAccessDashboardImage?: Maybe<dashboard_imagesDocAccess>;
     docAccessDashboardTextBlock?: Maybe<dashboard_text_blocksDocAccess>;
@@ -48759,18 +48831,18 @@ export type dashboard_changelogsDocAccess = {
     update?: Maybe<DashboardChangelogsUpdateDocAccess>;
 };
 
-export type dashboard_globalsAccess = {
-    __typename?: 'dashboard_globalsAccess';
-    fields?: Maybe<DashboardGlobalsFields>;
-    read?: Maybe<DashboardGlobalsReadAccess>;
-    update?: Maybe<DashboardGlobalsUpdateAccess>;
+export type dashboard_globalAccess = {
+    __typename?: 'dashboard_globalAccess';
+    fields?: Maybe<DashboardGlobalFields>;
+    read?: Maybe<DashboardGlobalReadAccess>;
+    update?: Maybe<DashboardGlobalUpdateAccess>;
 };
 
-export type dashboard_globalsDocAccess = {
-    __typename?: 'dashboard_globalsDocAccess';
-    fields?: Maybe<DashboardGlobalsDocAccessFields>;
-    read?: Maybe<DashboardGlobalsReadDocAccess>;
-    update?: Maybe<DashboardGlobalsUpdateDocAccess>;
+export type dashboard_globalDocAccess = {
+    __typename?: 'dashboard_globalDocAccess';
+    fields?: Maybe<DashboardGlobalDocAccessFields>;
+    read?: Maybe<DashboardGlobalReadDocAccess>;
+    update?: Maybe<DashboardGlobalUpdateDocAccess>;
 };
 
 export type dashboard_help_pagesAccess = {
@@ -49013,6 +49085,7 @@ export type mutationCourseUpdateInput = {
 
 export type mutationCourseVideoLessonInput = {
     createdAt?: InputMaybe<Scalars['String']['input']>;
+    slug: Scalars['String']['input'];
     title: Scalars['String']['input'];
     updatedAt?: InputMaybe<Scalars['String']['input']>;
     youtubeURL?: InputMaybe<Scalars['String']['input']>;
@@ -49020,6 +49093,7 @@ export type mutationCourseVideoLessonInput = {
 
 export type mutationCourseVideoLessonUpdateInput = {
     createdAt?: InputMaybe<Scalars['String']['input']>;
+    slug?: InputMaybe<Scalars['String']['input']>;
     title?: InputMaybe<Scalars['String']['input']>;
     updatedAt?: InputMaybe<Scalars['String']['input']>;
     youtubeURL?: InputMaybe<Scalars['String']['input']>;
@@ -50969,6 +51043,7 @@ export type usersResetPassword = {
 export type CourseVideoLessonAttributesFragment = {
     __typename?: 'CourseVideoLesson';
     id: number;
+    slug: string;
     title: string;
     youtubeURL?: string | null;
     updatedAt?: string | null;
@@ -51110,7 +51185,7 @@ export type DashboardTextBlockAttributesFragment = {
     value: string;
 };
 
-export type DashboardGlobalsAttributesFragment = {
+export type DashboardGlobalAttributesFragment = {
     __typename?: 'DashboardGlobal';
     loginImage?: {
         __typename?: 'DashboardImage';
@@ -53400,9 +53475,56 @@ export type ContactAttributesFragment = {
     address?: { __typename?: 'Contact_Address'; street?: string | null; place?: string | null } | null;
 };
 
-export type findDashboardGlobalsQueryVariables = Exact<{ [key: string]: never }>;
+export type findCourseVideoLessonsQueryVariables = Exact<{
+    where?: InputMaybe<CourseVideoLesson_where>;
+}>;
 
-export type findDashboardGlobalsQuery = {
+export type findCourseVideoLessonsQuery = {
+    __typename?: 'Query';
+    CourseVideoLessons?: {
+        __typename?: 'CourseVideoLessons';
+        docs: Array<{ __typename?: 'CourseVideoLesson'; slug: string; title: string; youtubeURL?: string | null }>;
+    } | null;
+};
+
+export type getCourseVideoLessonQueryVariables = Exact<{
+    courseVideoLessonId: Scalars['Int']['input'];
+}>;
+
+export type getCourseVideoLessonQuery = {
+    __typename?: 'Query';
+    CourseVideoLesson?: {
+        __typename?: 'CourseVideoLesson';
+        title: string;
+        youtubeURL?: string | null;
+        id: number;
+    } | null;
+};
+
+export type getUserDataQueryVariables = Exact<{ [key: string]: never }>;
+
+export type getUserDataQuery = {
+    __typename?: 'Query';
+    meUser?: {
+        __typename?: 'usersMe';
+        user?: {
+            __typename?: 'User';
+            enrolledCourses?: {
+                __typename?: 'User_EnrolledCourses';
+                docs: Array<{
+                    __typename?: 'Course';
+                    name: string;
+                    videoLessons?: Array<{ __typename?: 'CourseVideoLesson'; slug: string; title: string }> | null;
+                }>;
+            } | null;
+            roles: Array<{ __typename?: 'Role'; slug: Role_slug; name: string }>;
+        } | null;
+    } | null;
+};
+
+export type findDashboardGlobalQueryVariables = Exact<{ [key: string]: never }>;
+
+export type findDashboardGlobalQuery = {
     __typename?: 'Query';
     DashboardGlobal?: {
         __typename?: 'DashboardGlobal';
@@ -55726,6 +55848,7 @@ export const CourseVideoLessonAttributesFragmentDoc = {
                 kind: 'SelectionSet',
                 selections: [
                     { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                    { kind: 'Field', name: { kind: 'Name', value: 'slug' } },
                     { kind: 'Field', name: { kind: 'Name', value: 'title' } },
                     { kind: 'Field', name: { kind: 'Name', value: 'youtubeURL' } },
                     { kind: 'Field', name: { kind: 'Name', value: 'updatedAt' } },
@@ -55970,12 +56093,12 @@ export const DashboardImageAttributesFragmentDoc = {
         },
     ],
 } as unknown as DocumentNode<DashboardImageAttributesFragment, unknown>;
-export const DashboardGlobalsAttributesFragmentDoc = {
+export const DashboardGlobalAttributesFragmentDoc = {
     kind: 'Document',
     definitions: [
         {
             kind: 'FragmentDefinition',
-            name: { kind: 'Name', value: 'DashboardGlobalsAttributes' },
+            name: { kind: 'Name', value: 'DashboardGlobalAttributes' },
             typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'DashboardGlobal' } },
             selectionSet: {
                 kind: 'SelectionSet',
@@ -56216,7 +56339,7 @@ export const DashboardGlobalsAttributesFragmentDoc = {
             },
         },
     ],
-} as unknown as DocumentNode<DashboardGlobalsAttributesFragment, unknown>;
+} as unknown as DocumentNode<DashboardGlobalAttributesFragment, unknown>;
 export const AccordionsAttributesFragmentDoc = {
     kind: 'Document',
     definitions: [
@@ -60148,13 +60271,193 @@ export const ContactAttributesFragmentDoc = {
         },
     ],
 } as unknown as DocumentNode<ContactAttributesFragment, unknown>;
-export const findDashboardGlobalsDocument = {
+export const findCourseVideoLessonsDocument = {
     kind: 'Document',
     definitions: [
         {
             kind: 'OperationDefinition',
             operation: 'query',
-            name: { kind: 'Name', value: 'findDashboardGlobals' },
+            name: { kind: 'Name', value: 'findCourseVideoLessons' },
+            variableDefinitions: [
+                {
+                    kind: 'VariableDefinition',
+                    variable: { kind: 'Variable', name: { kind: 'Name', value: 'where' } },
+                    type: { kind: 'NamedType', name: { kind: 'Name', value: 'CourseVideoLesson_where' } },
+                },
+            ],
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'CourseVideoLessons' },
+                        arguments: [
+                            {
+                                kind: 'Argument',
+                                name: { kind: 'Name', value: 'where' },
+                                value: { kind: 'Variable', name: { kind: 'Name', value: 'where' } },
+                            },
+                        ],
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'docs' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'slug' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'youtubeURL' } },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<findCourseVideoLessonsQuery, findCourseVideoLessonsQueryVariables>;
+export const getCourseVideoLessonDocument = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'OperationDefinition',
+            operation: 'query',
+            name: { kind: 'Name', value: 'getCourseVideoLesson' },
+            variableDefinitions: [
+                {
+                    kind: 'VariableDefinition',
+                    variable: { kind: 'Variable', name: { kind: 'Name', value: 'courseVideoLessonId' } },
+                    type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } } },
+                },
+            ],
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'CourseVideoLesson' },
+                        arguments: [
+                            {
+                                kind: 'Argument',
+                                name: { kind: 'Name', value: 'id' },
+                                value: { kind: 'Variable', name: { kind: 'Name', value: 'courseVideoLessonId' } },
+                            },
+                        ],
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                                { kind: 'Field', name: { kind: 'Name', value: 'youtubeURL' } },
+                                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<getCourseVideoLessonQuery, getCourseVideoLessonQueryVariables>;
+export const getUserDataDocument = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'OperationDefinition',
+            operation: 'query',
+            name: { kind: 'Name', value: 'getUserData' },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'meUser' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'user' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            {
+                                                kind: 'Field',
+                                                name: { kind: 'Name', value: 'enrolledCourses' },
+                                                selectionSet: {
+                                                    kind: 'SelectionSet',
+                                                    selections: [
+                                                        {
+                                                            kind: 'Field',
+                                                            name: { kind: 'Name', value: 'docs' },
+                                                            selectionSet: {
+                                                                kind: 'SelectionSet',
+                                                                selections: [
+                                                                    {
+                                                                        kind: 'Field',
+                                                                        name: { kind: 'Name', value: 'name' },
+                                                                    },
+                                                                    {
+                                                                        kind: 'Field',
+                                                                        name: { kind: 'Name', value: 'videoLessons' },
+                                                                        selectionSet: {
+                                                                            kind: 'SelectionSet',
+                                                                            selections: [
+                                                                                {
+                                                                                    kind: 'Field',
+                                                                                    name: {
+                                                                                        kind: 'Name',
+                                                                                        value: 'slug',
+                                                                                    },
+                                                                                },
+                                                                                {
+                                                                                    kind: 'Field',
+                                                                                    name: {
+                                                                                        kind: 'Name',
+                                                                                        value: 'title',
+                                                                                    },
+                                                                                },
+                                                                            ],
+                                                                        },
+                                                                    },
+                                                                ],
+                                                            },
+                                                        },
+                                                    ],
+                                                },
+                                            },
+                                            {
+                                                kind: 'Field',
+                                                name: { kind: 'Name', value: 'roles' },
+                                                selectionSet: {
+                                                    kind: 'SelectionSet',
+                                                    selections: [
+                                                        { kind: 'Field', name: { kind: 'Name', value: 'slug' } },
+                                                        { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                                                    ],
+                                                },
+                                            },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<getUserDataQuery, getUserDataQueryVariables>;
+export const findDashboardGlobalDocument = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'OperationDefinition',
+            operation: 'query',
+            name: { kind: 'Name', value: 'findDashboardGlobal' },
             selectionSet: {
                 kind: 'SelectionSet',
                 selections: [
@@ -60164,7 +60467,7 @@ export const findDashboardGlobalsDocument = {
                         selectionSet: {
                             kind: 'SelectionSet',
                             selections: [
-                                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'DashboardGlobalsAttributes' } },
+                                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'DashboardGlobalAttributes' } },
                             ],
                         },
                     },
@@ -60420,7 +60723,7 @@ export const findDashboardGlobalsDocument = {
         },
         {
             kind: 'FragmentDefinition',
-            name: { kind: 'Name', value: 'DashboardGlobalsAttributes' },
+            name: { kind: 'Name', value: 'DashboardGlobalAttributes' },
             typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'DashboardGlobal' } },
             selectionSet: {
                 kind: 'SelectionSet',
@@ -60449,7 +60752,7 @@ export const findDashboardGlobalsDocument = {
             },
         },
     ],
-} as unknown as DocumentNode<findDashboardGlobalsQuery, findDashboardGlobalsQueryVariables>;
+} as unknown as DocumentNode<findDashboardGlobalQuery, findDashboardGlobalQueryVariables>;
 export const findPublicGlobalsDocument = {
     kind: 'Document',
     definitions: [
