@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 
 export interface User {
     id: string;
@@ -13,14 +13,18 @@ interface AuthState {
     token: string | null;
 }
 
-const authState = ref<AuthState>({
-    user: null,
-    token: null,
-});
-
 export const useAuth = () => {
     const config = useRuntimeConfig();
     const router = useRouter();
+
+    // Use Nuxt's useState to persist across SSR and client navigation
+    const authState = useState<AuthState>('auth-state', () => ({
+        user: null,
+        token: null,
+    }));
+
+    // Track if auth has been initialized to prevent redundant API calls
+    const isInitialized = useState<boolean>('auth-initialized', () => false);
 
     const user = computed(() => authState.value.user);
     const isAuthenticated = computed(() => !!authState.value.user && !!authState.value.token);
@@ -72,6 +76,9 @@ export const useAuth = () => {
                 user: response.user,
                 token: response.token,
             };
+
+            // Mark auth as initialized
+            isInitialized.value = true;
 
             return { success: true, user: response.user };
         } catch (error: any) {
@@ -141,6 +148,9 @@ export const useAuth = () => {
                 token: setPasswordResponse.token,
             };
 
+            // Mark auth as initialized
+            isInitialized.value = true;
+
             return { success: true, user: setPasswordResponse.user };
         } catch (error: any) {
             console.error('Registration error:', error);
@@ -172,6 +182,9 @@ export const useAuth = () => {
                 user: null,
                 token: null,
             };
+
+            // Reset initialization flag
+            isInitialized.value = false;
 
             // Clear cookie
             const tokenCookie = useCookie('payload-token');
@@ -224,7 +237,13 @@ export const useAuth = () => {
      * Initialize auth state on app load
      */
     const initAuth = async () => {
+        // Skip if already initialized to prevent redundant API calls
+        if (isInitialized.value) {
+            return;
+        }
+
         await fetchUser();
+        isInitialized.value = true;
     };
 
     return {

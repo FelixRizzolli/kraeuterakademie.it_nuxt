@@ -1,10 +1,8 @@
 export default defineNuxtRouteMiddleware(async (to, from) => {
     const { isAuthenticated, hasDashboardAccess, initAuth } = useAuth();
 
-    // Initialize auth state if not already done
-    if (!isAuthenticated.value) {
-        await initAuth();
-    }
+    // Initialize auth state once (initAuth has internal guard)
+    await initAuth();
 
     // Check if user is authenticated
     if (!isAuthenticated.value) {

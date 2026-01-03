@@ -11,15 +11,6 @@
 
     definePageMeta({
         layout: 'auth',
-    });
-
-    // Redirect if already authenticated
-    const { isAuthenticated, hasDashboardAccess, initAuth } = useAuth();
-
-    onMounted(async () => {
-        await initAuth();
-        if (isAuthenticated.value && hasDashboardAccess.value) {
-            navigateTo('/dashboard');
-        }
+        middleware: ['guest'],
     });
 </script>
