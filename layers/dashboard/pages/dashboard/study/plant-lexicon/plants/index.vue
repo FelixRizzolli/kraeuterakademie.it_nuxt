@@ -1,9 +1,11 @@
 <template>
     <div>
-        <h1>{{ t('dashboard.navigation.nav-study.plant-lexicon.items.plants') }}</h1>
+        <h1 class="text-2xl font-semibold mb-4">
+            {{ t('dashboard.navigation.nav-study.plant-lexicon.items.plants') }}
+        </h1>
 
         <div v-if="loading" class="flex items-center justify-center py-12">
-            <p class="text-muted-foreground">Loading video lesson...</p>
+            <p class="text-muted-foreground">Loading plants...</p>
         </div>
 
         <div v-else-if="error" class="rounded-lg bg-destructive/15 p-4 text-destructive">
@@ -12,7 +14,7 @@
 
         <div v-else-if="plants && plants.length">
             <Table>
-                <TableCaption>A list of your recent invoices.</TableCaption>
+                <TableCaption>A list of plants.</TableCaption>
                 <TableHeader>
                     <TableRow>
                         <TableHead>Wissenschaftlicher Name</TableHead>

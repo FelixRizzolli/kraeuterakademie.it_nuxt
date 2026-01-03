@@ -133,10 +133,6 @@
                         url: '/dashboard/study/plant-lexicon/plant-families',
                     },
                     {
-                        title: $t('dashboard.navigation.nav-study.plant-lexicon.items.plant-groups'),
-                        url: '/dashboard/study/plant-lexicon/plant-groups',
-                    },
-                    {
                         title: $t('dashboard.navigation.nav-study.plant-lexicon.items.catalogue'),
                         url: '/dashboard/study/plant-lexicon/catalogue',
                     },
