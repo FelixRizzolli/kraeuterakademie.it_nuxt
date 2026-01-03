@@ -24,7 +24,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed some issues introduced during the migration from Strapi to Payload CMS with storybook stories
 
-
 ## [1.0.0] - 2025-12-29
 
 ### Added
@@ -35,7 +34,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added LexicalRenderer for rich text rendering with Lexical editor content
 
 ### Changed
-
 
 - **BREAKING**: Migrated from Strapi to Payload CMS as the backend
 - Updated API integration to use Payload CMS endpoints

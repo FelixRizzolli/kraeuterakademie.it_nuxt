@@ -1,15 +1,15 @@
 query findPlants($pagination: Boolean, $limit: Int) {
-  Plants(pagination: $pagination, limit: $limit) {
-    docs {
-      germanName
-      scientificName
-      family {
-        germanName
-        scientificName
-      }
-      toxicityLevel {
-        title
-      }
+    Plants(pagination: $pagination, limit: $limit) {
+        docs {
+            germanName
+            scientificName
+            family {
+                germanName
+                scientificName
+            }
+            toxicityLevel {
+                title
+            }
+        }
     }
-  }
 }

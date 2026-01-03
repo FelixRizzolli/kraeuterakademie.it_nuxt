@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from "vue"
-import { cn } from '~~/layers/dashboard/lib/utils'
+    import type { HTMLAttributes } from 'vue';
+    import { cn } from '~~/layers/dashboard/lib/utils';
 
-const props = defineProps<{
-  class?: HTMLAttributes["class"]
-}>()
+    const props = defineProps<{
+        class?: HTMLAttributes['class'];
+    }>();
 </script>
 
 <template>
-  <caption :class="cn('mt-4 text-sm text-muted-foreground', props.class)">
-    <slot />
-  </caption>
+    <caption :class="cn('mt-4 text-sm text-muted-foreground', props.class)">
+        <slot />
+    </caption>
 </template>

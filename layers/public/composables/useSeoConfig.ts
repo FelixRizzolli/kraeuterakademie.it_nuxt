@@ -22,10 +22,10 @@ export function useSeoConfig(meta: PayloadSeoMeta | null | undefined) {
     const imageAlt = meta.image?.alt ?? '';
     const route = useRoute();
     const config = useRuntimeConfig();
-    
+
     // Build canonical URL
     const canonicalUrl = meta.canonical || `${config.public.siteUrl}${route.path}`;
-    
+
     // Build keywords string
     const keywordsString = Array.isArray(meta.keywords) ? meta.keywords.join(', ') : '';
 

@@ -20,7 +20,7 @@ interface StructuredDataConfig {
 export function useStructuredData(config: StructuredDataConfig) {
     const route = useRoute();
     const runtimeConfig = useRuntimeConfig();
-    
+
     const baseUrl = runtimeConfig.public.siteUrl || 'https://example.com';
     const currentUrl = config.url || `${baseUrl}${route.path}`;
 
@@ -28,19 +28,19 @@ export function useStructuredData(config: StructuredDataConfig) {
     const baseData: any = {
         '@context': 'https://schema.org',
         '@type': config.type,
-        name: config.title,
-        description: config.description,
-        url: currentUrl,
+        'name': config.title,
+        'description': config.description,
+        'url': currentUrl,
     };
 
     // Add image if available
     if (config.image?.url) {
         baseData.image = {
             '@type': 'ImageObject',
-            url: config.image.url,
-            width: config.image.width,
-            height: config.image.height,
-            caption: config.image.alt,
+            'url': config.image.url,
+            'width': config.image.width,
+            'height': config.image.height,
+            'caption': config.image.alt,
         };
     }
 
@@ -55,7 +55,7 @@ export function useStructuredData(config: StructuredDataConfig) {
         // You might want to add author info from a global config or user data
         baseData.author = {
             '@type': 'Organization',
-            name: runtimeConfig.public.siteName || 'Your Site Name',
+            'name': runtimeConfig.public.siteName || 'Your Site Name',
         };
     }
 
@@ -65,18 +65,18 @@ export function useStructuredData(config: StructuredDataConfig) {
         const breadcrumbList = {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
-            itemListElement: [
+            'itemListElement': [
                 {
                     '@type': 'ListItem',
-                    position: 1,
-                    name: 'Home',
-                    item: baseUrl,
+                    'position': 1,
+                    'name': 'Home',
+                    'item': baseUrl,
                 },
                 ...pathSegments.map((segment, index) => ({
                     '@type': 'ListItem',
-                    position: index + 2,
-                    name: segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
-                    item: `${baseUrl}/${pathSegments.slice(0, index + 1).join('/')}`,
+                    'position': index + 2,
+                    'name': segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
+                    'item': `${baseUrl}/${pathSegments.slice(0, index + 1).join('/')}`,
                 })),
             ],
         };
