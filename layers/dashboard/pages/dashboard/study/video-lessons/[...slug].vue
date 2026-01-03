@@ -24,7 +24,8 @@
 
     set([
         { text: t('dashboard.pages.dashboard.breadcrumb-title'), url: '/dashboard' },
-        { text: t('dashboard.pages.help.breadcrumb-title'), url: '/dashboard/help' },
-        { text: slug || t('dashboard.pages.help.breadcrumb-title') },
+        { text: t('dashboard.pages.study.breadcrumb-title'), url: '/dashboard/study' },
+        { text: t('dashboard.pages.study.video-lessons.breadcrumb-title'), url: '/dashboard/study/video-lessons' },
+        { text: slug || t('dashboard.pages.study.video-lessons.breadcrumb-title') },
     ]);
 </script>

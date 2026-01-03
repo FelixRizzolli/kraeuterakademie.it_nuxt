@@ -93,9 +93,32 @@
                 }
             },
             "nav-secondary": {
-                "support": "Hilfe",
+                "help": "Hilfe",
                 "feedback": "Feedback",
                 "changelog": "Änderungsprotokoll"
+            }
+        },
+        "pages": {
+            "dashboard": {
+                "breadcrumb-title": "Dashboard"
+            },
+            "help": {
+                "breadcrumb-title": "Hilfe"
+            },
+            "feedback": {
+                "breadcrumb-title": "Feedback"
+            },
+            "changelog": {
+                "breadcrumb-title": "Änderungsprotokoll"
+            },
+            "course": {
+                "breadcrumb-title": "Kurs"
+            },
+            "study": {
+                "breadcrumb-title": "Lernen",
+                "video-lessons": {
+                    "breadcrumb-title": "Video Lektionen"
+                }
             }
         }
     },

@@ -93,7 +93,7 @@
                 }
             },
             "nav-secondary": {
-                "support": "Support",
+                "help": "Support",
                 "feedback": "Feedback",
                 "changelog": "Changelog"
             }

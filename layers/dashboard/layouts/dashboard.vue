@@ -9,13 +9,15 @@
                         <Separator orientation="vertical" class="mr-2 data-[orientation=vertical]:h-4" />
                         <Breadcrumb>
                             <BreadcrumbList>
-                                <BreadcrumbItem class="hidden md:block">
-                                    <BreadcrumbLink href="#"> Building Your Application </BreadcrumbLink>
-                                </BreadcrumbItem>
-                                <BreadcrumbSeparator class="hidden md:block" />
-                                <BreadcrumbItem>
-                                    <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                                </BreadcrumbItem>
+                                <template v-for="(crumb, i) in breadcrumbs" :key="i">
+                                    <BreadcrumbItem v-if="i < breadcrumbs.length - 1" class="hidden md:block">
+                                        <BreadcrumbLink :href="crumb.url ?? '#'">{{ crumb.text }}</BreadcrumbLink>
+                                    </BreadcrumbItem>
+                                    <BreadcrumbSeparator v-if="i < breadcrumbs.length - 1" class="hidden md:block" />
+                                    <BreadcrumbItem v-else>
+                                        <BreadcrumbPage>{{ crumb.text }}</BreadcrumbPage>
+                                    </BreadcrumbItem>
+                                </template>
                             </BreadcrumbList>
                         </Breadcrumb>
                     </div>
@@ -31,6 +33,9 @@
 <script lang="ts" setup>
     definePageMeta({ middleware: ['auth'] });
     import { useDashboardGlobalStore } from '~~/layers/dashboard/stores/dashboardGlobalStore';
+    import { useBreadcrumbs } from '~~/layers/dashboard/composables/useBreadcrumbs';
+
+    const { breadcrumbs } = useBreadcrumbs();
 
     const dashboardGlobalStore = useDashboardGlobalStore();
     // Load dashboard globals application-wide

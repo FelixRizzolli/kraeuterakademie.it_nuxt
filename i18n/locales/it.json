@@ -92,7 +92,7 @@
                     }
                 },
                 "nav-secondary": {
-                    "support": "Supporto",
+                    "help": "Supporto",
                     "feedback": "Feedback",
                     "changelog": "Registro delle modifiche"
                 }

@@ -111,40 +111,43 @@
     });
 
     const navStudy = computed(() => {
-        const videoItems = videoLessons.value.map((v: any) => ({ title: v.title, url: `/dashboard/video-lessons/${v.id}` }));
+        const videoItems = videoLessons.value.map((v: any) => ({
+            title: v.title,
+            url: `/dashboard/study/video-lessons/${v.id}`,
+        }));
 
         return [
             {
                 title: $t('dashboard.navigation.nav-study.video-lessons'),
-                url: '#',
+                url: '/dashboard/study/video-lessons',
                 icon: Video,
                 isActive: true,
                 items: videoItems,
             },
             {
                 title: $t('dashboard.navigation.nav-study.plant-lexicon.title'),
-                url: '#',
+                url: '/dashboard/study/plant-lexicon',
                 icon: BookOpenText,
                 items: [
                     {
                         title: $t('dashboard.navigation.nav-study.plant-lexicon.items.plants'),
-                        url: '#',
+                        url: '/dashboard/study/plant-lexicon/plants',
                     },
                     {
                         title: $t('dashboard.navigation.nav-study.plant-lexicon.items.poison-plants'),
-                        url: '#',
+                        url: '/dashboard/study/plant-lexicon/poison-plants',
                     },
                     {
                         title: $t('dashboard.navigation.nav-study.plant-lexicon.items.plant-families'),
-                        url: '#',
+                        url: '/dashboard/study/plant-lexicon/plant-families',
                     },
                     {
                         title: $t('dashboard.navigation.nav-study.plant-lexicon.items.plant-groups'),
-                        url: '#',
+                        url: '/dashboard/study/plant-lexicon/plant-groups',
                     },
                     {
                         title: $t('dashboard.navigation.nav-study.plant-lexicon.items.catalogue'),
-                        url: '#',
+                        url: '/dashboard/study/plant-lexicon/catalogue',
                     },
                 ],
             },
@@ -155,19 +158,19 @@
                 items: [
                     {
                         title: $t('dashboard.navigation.nav-study.quiz.items.plants-practice'),
-                        url: '#',
+                        url: '/dashboard/study/quiz/plants-practice',
                     },
                     {
                         title: $t('dashboard.navigation.nav-study.quiz.items.plants-theory'),
-                        url: '#',
+                        url: '/dashboard/study/quiz/plants-theory',
                     },
                     {
                         title: $t('dashboard.navigation.nav-study.quiz.items.plants-poison'),
-                        url: '#',
+                        url: '/dashboard/study/quiz/plants-poison',
                     },
                     {
                         title: $t('dashboard.navigation.nav-study.quiz.items.catalogue'),
-                        url: '#',
+                        url: '/dashboard/study/quiz/catalogue',
                     },
                 ],
             },
@@ -178,46 +181,46 @@
         navCourse: [
             {
                 title: $t('dashboard.navigation.nav-course.courses.title'),
-                url: '#',
+                url: '/dashboard/courses',
                 icon: GraduationCap,
                 isActive: true,
                 items: [
                     {
                         title: $t('dashboard.navigation.nav-course.courses.items.overview'),
-                        url: '#',
+                        url: '/dashboard/courses',
                     },
                     {
                         title: $t('dashboard.navigation.nav-course.courses.items.documents'),
-                        url: '#',
+                        url: '/dashboard/courses/documents',
                     },
                 ],
             },
             {
                 title: $t('dashboard.navigation.nav-course.course-modules.title'),
-                url: '#',
+                url: '/dashboard/courses/modules',
                 icon: CalendarDays,
                 items: [
                     {
                         title: $t('dashboard.navigation.nav-course.course-modules.items.overview'),
-                        url: '#',
+                        url: '/dashboard/courses/modules',
                     },
                 ],
             },
         ],
         navSecondary: [
             {
-                title: $t('dashboard.navigation.nav-secondary.support'),
-                url: '#',
+                title: $t('dashboard.navigation.nav-secondary.help'),
+                url: '/dashboard/help',
                 icon: LifeBuoy,
             },
             {
                 title: $t('dashboard.navigation.nav-secondary.feedback'),
-                url: '#',
+                url: '/dashboard/feedback',
                 icon: Send,
             },
             {
                 title: $t('dashboard.navigation.nav-secondary.changelog'),
-                url: '#',
+                url: '/dashboard/changelog',
                 icon: FileClock,
             },
         ],

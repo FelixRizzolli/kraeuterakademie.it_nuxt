@@ -11,4 +11,20 @@
     definePageMeta({
         layout: 'dashboard',
     });
+
+    import { useI18n } from 'vue-i18n';
+    import { useBreadcrumbs } from '~~/layers/dashboard/composables/useBreadcrumbs';
+    import { useRoute } from 'vue-router';
+
+    const { t } = useI18n();
+    const { set } = useBreadcrumbs();
+    const route = useRoute();
+
+    const version = Array.isArray(route.params.version) ? route.params.version.join('/') : (route.params.version ?? '');
+
+    set([
+        { text: t('dashboard.pages.dashboard.breadcrumb-title'), url: '/dashboard' },
+        { text: t('dashboard.pages.changelog.breadcrumb-title'), url: '/dashboard/changelog' },
+        { text: version || t('dashboard.pages.changelog.breadcrumb-title') },
+    ]);
 </script>

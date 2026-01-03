@@ -1,4 +1,5 @@
 <template>
+    <h1>{{ t('dashboard.navigation.nav-study.title') }}</h1>
     <div class="grid auto-rows-min gap-4 md:grid-cols-3">
         <div class="bg-muted/50 aspect-video rounded-xl" />
         <div class="bg-muted/50 aspect-video rounded-xl" />
@@ -8,23 +9,15 @@
 </template>
 
 <script setup lang="ts">
-    definePageMeta({
-        layout: 'dashboard',
-    });
-
+    definePageMeta({ layout: 'dashboard' });
     import { useI18n } from 'vue-i18n';
     import { useBreadcrumbs } from '~~/layers/dashboard/composables/useBreadcrumbs';
-    import { useRoute } from 'vue-router';
 
     const { t } = useI18n();
     const { set } = useBreadcrumbs();
-    const route = useRoute();
-
-    const slug = Array.isArray(route.params.slug) ? route.params.slug.join('/') : (route.params.slug ?? '');
 
     set([
         { text: t('dashboard.pages.dashboard.breadcrumb-title'), url: '/dashboard' },
-        { text: t('dashboard.pages.help.breadcrumb-title'), url: '/dashboard/help' },
-        { text: slug || t('dashboard.pages.help.breadcrumb-title') },
+        { text: t('dashboard.navigation.nav-study.title') },
     ]);
 </script>

@@ -14,17 +14,13 @@
 
     import { useI18n } from 'vue-i18n';
     import { useBreadcrumbs } from '~~/layers/dashboard/composables/useBreadcrumbs';
-    import { useRoute } from 'vue-router';
 
     const { t } = useI18n();
     const { set } = useBreadcrumbs();
-    const route = useRoute();
-
-    const slug = Array.isArray(route.params.slug) ? route.params.slug.join('/') : (route.params.slug ?? '');
 
     set([
         { text: t('dashboard.pages.dashboard.breadcrumb-title'), url: '/dashboard' },
-        { text: t('dashboard.pages.help.breadcrumb-title'), url: '/dashboard/help' },
-        { text: slug || t('dashboard.pages.help.breadcrumb-title') },
+        { text: t('dashboard.pages.study.breadcrumb-title'), url: '/dashboard/study' },
+        { text: t('dashboard.pages.study.video-lessons.breadcrumb-title') },
     ]);
 </script>

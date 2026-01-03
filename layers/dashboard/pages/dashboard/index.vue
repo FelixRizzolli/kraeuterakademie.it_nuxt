@@ -11,4 +11,13 @@
     definePageMeta({
         layout: 'dashboard',
     });
+
+    import { useI18n } from 'vue-i18n';
+    import { useBreadcrumbs } from '~~/layers/dashboard/composables/useBreadcrumbs';
+
+    const { t } = useI18n();
+    const { set } = useBreadcrumbs();
+
+    // Dashboard home
+    set([{ text: t('dashboard.pages.dashboard.breadcrumb-title') }]);
 </script>
