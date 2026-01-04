@@ -96,6 +96,61 @@
                     "feedback": "Feedback",
                     "changelog": "Registro delle modifiche"
                 }
+            },
+            "pages": {
+                "dashboard": {
+                    "breadcrumb-title": "Dashboard"
+                },
+                "help": {
+                    "breadcrumb-title": "Aiuto"
+                },
+                "feedback": {
+                    "breadcrumb-title": "Feedback"
+                },
+                "changelog": {
+                    "breadcrumb-title": "Registro delle modifiche"
+                },
+                "course": {
+                    "breadcrumb-title": "Corso"
+                },
+                "study": {
+                    "breadcrumb-title": "Studio",
+                    "video-lessons": {
+                        "breadcrumb-title": "Lezioni video"
+                    },
+                    "plant-lexicon": {
+                        "state": {
+                            "loading": "Caricamento {type}...",
+                            "not-found": "{type} non trovato.",
+                            "error": "Errore durante il caricamento di {type}."
+                        },
+                        "plants": {
+                            "title": "Piante",
+                            "table-caption": "Una lista di tutte le piante nel lessico delle piante."
+                        },
+                        "poison-plants": {
+                            "title": "Piante velenose",
+                            "table-caption": "Una lista di piante velenose nel lessico delle piante."
+                        },
+                        "plant-families": {
+                            "title": "Famiglie di piante",
+                            "table-caption": "Una lista di tutte le famiglie di piante nel lessico delle piante."
+                        },
+                        "catalogue": {
+                            "title": "Catalogo d'esame"
+                        }
+                    }
+                }
+            },
+            "plants": {
+                "plant-family": "Famiglia di piante",
+                "plant-families": "Famiglie di piante",
+                "plant": "Pianta",
+                "plants": "Piante",
+                "german-name": "Nome tedesco",
+                "scientific-name": "Nome scientifico",
+                "recognition": "Riconoscimento",
+                "toxicity-level": "Livello di tossicità"
             }
         }
     },

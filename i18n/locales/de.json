@@ -77,7 +77,7 @@
                     "items": {
                         "plants": "Pflanzen",
                         "poison-plants": "Giftpflanzen",
-                        "plant-families": "Pflanzenfamilein",
+                        "plant-families": "Pflanzenfamilien",
                         "plant-groups": "Pflanzengruppen",
                         "catalogue": "Prüfungskatalog"
                     }
@@ -118,8 +118,40 @@
                 "breadcrumb-title": "Lernen",
                 "video-lessons": {
                     "breadcrumb-title": "Video Lektionen"
+                },
+                "plant-lexicon": {
+                    "state": {
+                        "loading": "Lade {type}...",
+                        "not-found": "{type} nicht gefunden.",
+                        "error": "Fehler beim Laden von {type}."
+                    },
+                    "plants": {
+                        "title": "Pflanzen",
+                        "table-caption": "Eine Liste aller Pflanzen im Pflanzenlexikon."
+                    },
+                    "poison-plants": {
+                        "title": "Giftpflanzen",
+                        "table-caption": "Eine Liste von giftigen Pflanzen im Pflanzenlexikon."
+                    },
+                    "plant-families": {
+                        "title": "Pflanzenfamilien",
+                        "table-caption": "Eine Liste aller Pflanzenfamilien im Pflanzenlexikon."
+                    },
+                    "catalogue": {
+                        "title": "Prüfungskatalog"
+                    }
                 }
             }
+        },
+        "plants": {
+            "plant-family": "Pflanzenfamilie",
+            "plant-families": "Pflanzenfamilien",
+            "plant": "Pflanze",
+            "plants": "Pflanzen",
+            "german-name": "Deutscher Name",
+            "scientific-name": "Wissenschaftlicher Name",
+            "recognition": "Erkennen mit",
+            "toxicity-level": "Giftigkeit"
         }
     },
     "public": {}

@@ -5,7 +5,13 @@
         </h1>
 
         <div v-if="loading" class="flex items-center justify-center py-12">
-            <p class="text-muted-foreground">Loading plant families...</p>
+            <p class="text-muted-foreground">
+                {{
+                    t('dashboard.pages.study.plant-lexicon.state.loading', {
+                        type: t('dashboard.pages.study.plant-lexicon.plant-families.title'),
+                    })
+                }}
+            </p>
         </div>
 
         <div v-else-if="error" class="rounded-lg bg-destructive/15 p-4 text-destructive">
@@ -14,11 +20,11 @@
 
         <div v-else-if="plantfamilies && plantfamilies.length">
             <Table>
-                <TableCaption>A list of plant families.</TableCaption>
+                <TableCaption>{{ t('dashboard.pages.study.plant-lexicon.plant-families.table-caption') }}</TableCaption>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>Wissenschaftlicher Name</TableHead>
-                        <TableHead>Deutscher Name</TableHead>
+                        <TableHead>{{ t('dashboard.plants.scientific-name') }}</TableHead>
+                        <TableHead>{{ t('dashboard.plants.german-name') }}</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -31,7 +37,13 @@
         </div>
 
         <div v-else class="rounded-lg bg-muted p-4">
-            <p class="text-muted-foreground">Plant families not found</p>
+            <p class="text-muted-foreground">
+                {{
+                    t('dashboard.pages.study.plant-lexicon.state.not-found', {
+                        type: t('dashboard.pages.study.plant-lexicon.plant-families.title'),
+                    })
+                }}
+            </p>
         </div>
     </div>
 </template>
@@ -66,13 +78,19 @@
             plantfamilies.value = await fetchPlantFamilies();
 
             if (!plantfamilies.value?.length) {
-                error.value = 'Plant families not found';
+                error.value = t('dashboard.pages.study.plant-lexicon.state.not-found', {
+                    type: t('dashboard.pages.study.plant-lexicon.plant-families.title'),
+                });
                 console.warn('⚠️ No plant families found');
             } else {
                 console.log('✅ Plant families loaded:', plantfamilies.value);
             }
         } catch (err: any) {
-            error.value = err?.message ?? 'Failed to load plant families';
+            error.value =
+                err?.message ??
+                t('dashboard.pages.study.plant-lexicon.state.error', {
+                    type: t('dashboard.pages.study.plant-lexicon.plant-families.title'),
+                });
             console.error('❌ Error loading plant families:', err);
         } finally {
             loading.value = false;

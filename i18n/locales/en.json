@@ -97,6 +97,61 @@
                 "feedback": "Feedback",
                 "changelog": "Changelog"
             }
+        },
+        "pages": {
+            "dashboard": {
+                "breadcrumb-title": "Dashboard"
+            },
+            "help": {
+                "breadcrumb-title": "Help"
+            },
+            "feedback": {
+                "breadcrumb-title": "Feedback"
+            },
+            "changelog": {
+                "breadcrumb-title": "Changelog"
+            },
+            "course": {
+                "breadcrumb-title": "Course"
+            },
+            "study": {
+                "breadcrumb-title": "Study",
+                "video-lessons": {
+                    "breadcrumb-title": "Video Lessons"
+                },
+                "plant-lexicon": {
+                    "state": {
+                        "loading": "Loading {type}...",
+                        "not-found": "{type} not found.",
+                        "error": "Error loading {type}."
+                    },
+                    "plants": {
+                        "title": "Plants",
+                        "table-caption": "A list of all plants in the plant lexicon."
+                    },
+                    "poison-plants": {
+                        "title": "Poisonous Plants",
+                        "table-caption": "A list of poisonous plants in the plant lexicon."
+                    },
+                    "plant-families": {
+                        "title": "Plant Families",
+                        "table-caption": "A list of all plant families in the plant lexicon."
+                    },
+                    "catalogue": {
+                        "title": "Catalogue"
+                    }
+                }
+            }
+        },
+        "plants": {
+            "plant-family": "Plant Family",
+            "plant-families": "Plant Families",
+            "plant": "Plant",
+            "plants": "Plants",
+            "german-name": "German Name",
+            "scientific-name": "Scientific Name",
+            "recognition": "Recognition",
+            "toxicity-level": "Toxicity"
         }
     },
     "public": {}
