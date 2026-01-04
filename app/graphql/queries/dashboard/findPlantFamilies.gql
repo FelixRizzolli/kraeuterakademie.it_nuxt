@@ -1,0 +1,8 @@
+query findPlantFamilies($pagination: Boolean, $limit: Int) {
+    PlantFamilies(pagination: $pagination, limit: $limit) {
+        docs {
+            germanName
+            scientificName
+        }
+    }
+}
