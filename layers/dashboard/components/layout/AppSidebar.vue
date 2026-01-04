@@ -20,9 +20,9 @@
             </SidebarMenu>
         </SidebarHeader>
         <SidebarContent>
-            <NavGroup :title="$t('dashboard.navigation.nav-course.title')" :items="data.navCourse" />
+            <NavGroup :title="$t('dashboard.navigation.nav-course.title')" :items="navCourse" />
             <NavGroup :title="$t('dashboard.navigation.nav-study.title')" :items="navStudy" />
-            <NavSecondary :items="data.navSecondary" class="mt-auto" />
+            <NavSecondary :items="navSecondary" class="mt-auto" />
         </SidebarContent>
         <SidebarFooter>
             <NavUser :user="userInfo" />
@@ -32,17 +32,6 @@
 
 <script setup lang="ts">
     import type { SidebarProps } from '~~/layers/dashboard/components/ui/sidebar';
-
-    import {
-        BookOpenText,
-        CalendarDays,
-        FileClock,
-        GraduationCap,
-        LifeBuoy,
-        NotebookPen,
-        Send,
-        Video,
-    } from 'lucide-vue-next';
 
     import { computed } from 'vue';
     import { useAuth } from '~~/layers/dashboard/composables/useAuth';
@@ -60,6 +49,7 @@
     import NavSecondary from '~~/layers/dashboard/components/layout/NavSecondary.vue';
     import NavUser from '~~/layers/dashboard/components/layout/NavUser.vue';
     import useDashboardUserStore from '../../stores/dashboardUserStore';
+    import { useDashboardNavigation } from '~~/layers/dashboard/composables/useDashboardNavigation';
 
     const props = withDefaults(defineProps<SidebarProps>(), {
         variant: 'inset',
@@ -69,18 +59,20 @@
     const userData = useDashboardUserStore();
 
     // Ensure user data is loaded when sidebar mounts
+    const { navCourse, navStudy, navSecondary, ensureLoaded } = useDashboardNavigation({ userStore: userData });
+
     onMounted(async () => {
         console.log('Sidebar mounted - User ID from auth:', userId.value);
         console.log('Store userId before setting:', userData.userId);
 
         if (userId.value) {
             const numericUserId = Number(userId.value);
-            // Set userId in store first, then ensure data is loaded
+            // Set userId in store first, then ensure data is loaded via the composable
             userData.setUserId(numericUserId);
             console.log('Store userId after setting:', userData.userId);
 
             try {
-                await userData.ensureLoaded();
+                await ensureLoaded();
                 console.log('User data loaded successfully:', userData.data);
             } catch (err) {
                 console.error('Failed to load dashboard user data:', err);
@@ -100,115 +92,4 @@
             avatar: '/avatars/shadcn.jpg',
         };
     });
-
-    const navStudy = computed(() => {
-        const videoItems =
-            userData.data?.accessibleVideoLessons?.map((v: any) => ({
-                title: v.title,
-                url: `/dashboard/study/video-lessons/${v.slug}`,
-            })) ?? [];
-
-        return [
-            {
-                title: $t('dashboard.navigation.nav-study.video-lessons'),
-                url: '/dashboard/study/video-lessons',
-                icon: Video,
-                items: videoItems,
-            },
-            {
-                title: $t('dashboard.navigation.nav-study.plant-lexicon.title'),
-                url: '/dashboard/study/plant-lexicon',
-                icon: BookOpenText,
-                items: [
-                    {
-                        title: $t('dashboard.navigation.nav-study.plant-lexicon.items.plants'),
-                        url: '/dashboard/study/plant-lexicon/plants',
-                    },
-                    {
-                        title: $t('dashboard.navigation.nav-study.plant-lexicon.items.poison-plants'),
-                        url: '/dashboard/study/plant-lexicon/poison-plants',
-                    },
-                    {
-                        title: $t('dashboard.navigation.nav-study.plant-lexicon.items.plant-families'),
-                        url: '/dashboard/study/plant-lexicon/plant-families',
-                    },
-                    {
-                        title: $t('dashboard.navigation.nav-study.plant-lexicon.items.catalogue'),
-                        url: '/dashboard/study/plant-lexicon/catalogue',
-                    },
-                ],
-            },
-            {
-                title: $t('dashboard.navigation.nav-study.quiz.title'),
-                url: '#',
-                icon: NotebookPen,
-                items: [
-                    {
-                        title: $t('dashboard.navigation.nav-study.quiz.items.plants-practice'),
-                        url: '/dashboard/study/quiz/plants-practice',
-                    },
-                    {
-                        title: $t('dashboard.navigation.nav-study.quiz.items.plants-theory'),
-                        url: '/dashboard/study/quiz/plants-theory',
-                    },
-                    {
-                        title: $t('dashboard.navigation.nav-study.quiz.items.plants-poison'),
-                        url: '/dashboard/study/quiz/plants-poison',
-                    },
-                    {
-                        title: $t('dashboard.navigation.nav-study.quiz.items.catalogue'),
-                        url: '/dashboard/study/quiz/catalogue',
-                    },
-                ],
-            },
-        ];
-    });
-
-    const data = {
-        navCourse: [
-            {
-                title: $t('dashboard.navigation.nav-course.courses.title'),
-                url: '/dashboard/courses',
-                icon: GraduationCap,
-                items: [
-                    {
-                        title: $t('dashboard.navigation.nav-course.courses.items.overview'),
-                        url: '/dashboard/courses',
-                    },
-                    {
-                        title: $t('dashboard.navigation.nav-course.courses.items.documents'),
-                        url: '/dashboard/courses/documents',
-                    },
-                ],
-            },
-            {
-                title: $t('dashboard.navigation.nav-course.course-modules.title'),
-                url: '/dashboard/courses/modules',
-                icon: CalendarDays,
-                items: [
-                    {
-                        title: $t('dashboard.navigation.nav-course.course-modules.items.overview'),
-                        url: '/dashboard/courses/modules',
-                    },
-                ],
-            },
-        ],
-        navSecondary: [
-            {
-                title: $t('dashboard.navigation.nav-secondary.help'),
-                url: '/dashboard/help',
-                icon: LifeBuoy,
-            },
-            {
-                title: $t('dashboard.navigation.nav-secondary.feedback'),
-                url: '/dashboard/feedback',
-                icon: Send,
-            },
-            {
-                title: $t('dashboard.navigation.nav-secondary.changelog'),
-                url: '/dashboard/changelog',
-                icon: FileClock,
-            },
-        ],
-    };
 </script>

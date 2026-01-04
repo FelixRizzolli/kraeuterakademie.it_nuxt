@@ -32,9 +32,8 @@
 
     import { useI18n } from 'vue-i18n';
     import { useBreadcrumbs } from '~~/layers/dashboard/composables/useBreadcrumbs';
-    import { useCourseVideoLesson } from '~~/layers/dashboard/composables/useCourseVideoLesson';
+    import { useCourseVideoLesson } from '~~/layers/dashboard/composables/queries/useCourseVideoLesson';
     import { useRoute } from 'vue-router';
-    import { computed } from 'vue';
 
     const { t } = useI18n();
     const { set } = useBreadcrumbs();
