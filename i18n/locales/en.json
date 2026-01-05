@@ -111,7 +111,28 @@
                 "breadcrumb-title": "Help"
             },
             "feedback": {
-                "breadcrumb-title": "Feedback"
+                "title": "Create Ticket",
+                "description": "Have suggestions or issues? Create a ticket and we'll address it as soon as possible.",
+                "breadcrumb-title": "Feedback",
+                "ticket": "Ticket",
+                "tickets": "Tickets",
+                "ticket-category": "Ticket Category",
+                "ticket-categories": "Ticket Categories",
+                "formular": {
+                    "title": {
+                        "label": "Title",
+                        "description": "Enter a descriptive title for your ticket."
+                    },
+                    "ticket-category": {
+                        "label": "Category",
+                        "description": "Choose the category that best fits your issue."
+                    },
+                    "description": {
+                        "label": "Description",
+                        "description": "Describe your issue in as much detail as possible."
+                    },
+                    "submit-button": "Submit Ticket"
+                }
             },
             "changelog": {
                 "breadcrumb-title": "Changelog"

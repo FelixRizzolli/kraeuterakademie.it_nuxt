@@ -1,0 +1,9 @@
+query getDashboardTicketCategories {
+    DashboardTicketCategories {
+        docs {
+            id
+            title
+            description
+        }
+    }
+}

@@ -111,7 +111,28 @@
                 "breadcrumb-title": "Hilfe"
             },
             "feedback": {
-                "breadcrumb-title": "Feedback"
+                "title": "Ticket erstellen",
+                "description": "Haben Sie Vorschläge oder Probleme? Erstellen Sie ein Ticket, und wir werden uns so schnell wie möglich darum kümmern.",
+                "breadcrumb-title": "Feedback",
+                "ticket": "Ticket",
+                "tickets": "Tickets",
+                "ticket-category": "Ticket-Kategorie",
+                "ticket-categories": "Ticket-Kategorien",
+                "formular": {
+                    "title": {
+                        "label": "Titel",
+                        "description": "Geben Sie einen aussagekräftigen Titel für Ihr Ticket ein."
+                    },
+                    "ticket-category": {
+                        "label": "Kategorie",
+                        "description": "Wählen Sie die Kategorie aus, die am besten zu Ihrem Anliegen passt."
+                    },
+                    "description": {
+                        "label": "Beschreibung",
+                        "description": "Beschreiben Sie Ihr Anliegen so detailliert wie möglich."
+                    },
+                    "submit-button": "Ticket senden"
+                }
             },
             "changelog": {
                 "breadcrumb-title": "Änderungsprotokoll"

@@ -110,7 +110,28 @@
                     "breadcrumb-title": "Aiuto"
                 },
                 "feedback": {
-                    "breadcrumb-title": "Feedback"
+                    "title": "Crea segnalazione",
+                    "description": "Hai suggerimenti o problemi? Crea una segnalazione e ce ne occuperemo il prima possibile.",
+                    "breadcrumb-title": "Feedback",
+                    "ticket": "Segnalazione",
+                    "tickets": "Segnalazioni",
+                    "ticket-category": "Categoria della segnalazione",
+                    "ticket-categories": "Categorie delle segnalazioni",
+                    "formular": {
+                        "title": {
+                            "label": "Titolo",
+                            "description": "Inserisci un titolo descrittivo per la tua segnalazione."
+                        },
+                        "ticket-category": {
+                            "label": "Categoria",
+                            "description": "Seleziona la categoria che meglio rappresenta il tuo problema."
+                        },
+                        "description": {
+                            "label": "Descrizione",
+                            "description": "Descrivi il tuo problema nel modo più dettagliato possibile."
+                        },
+                        "submit-button": "Invia segnalazione"
+                    }
                 },
                 "changelog": {
                     "breadcrumb-title": "Registro delle modifiche"

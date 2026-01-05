@@ -53475,6 +53475,23 @@ export type ContactAttributesFragment = {
     address?: { __typename?: 'Contact_Address'; street?: string | null; place?: string | null } | null;
 };
 
+export type createDashboardTicketMutationVariables = Exact<{
+    data: mutationDashboardTicketInput;
+}>;
+
+export type createDashboardTicketMutation = {
+    __typename?: 'Mutation';
+    createDashboardTicket?: {
+        __typename?: 'DashboardTicket';
+        title: string;
+        description?: string | null;
+        status: DashboardTicket_status;
+        priority: DashboardTicket_priority;
+        author: { __typename?: 'User'; id: number };
+        category?: { __typename?: 'DashboardTicketCategory'; id: number } | null;
+    } | null;
+};
+
 export type findCourseVideoLessonsQueryVariables = Exact<{
     where?: InputMaybe<CourseVideoLesson_where>;
 }>;
@@ -53484,6 +53501,38 @@ export type findCourseVideoLessonsQuery = {
     CourseVideoLessons?: {
         __typename?: 'CourseVideoLessons';
         docs: Array<{ __typename?: 'CourseVideoLesson'; slug: string; title: string; youtubeURL?: string | null }>;
+    } | null;
+};
+
+export type findPlantFamiliesQueryVariables = Exact<{
+    pagination?: InputMaybe<Scalars['Boolean']['input']>;
+    limit?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+export type findPlantFamiliesQuery = {
+    __typename?: 'Query';
+    PlantFamilies?: {
+        __typename?: 'PlantFamilies';
+        docs: Array<{ __typename?: 'PlantFamily'; germanName: string; scientificName: string }>;
+    } | null;
+};
+
+export type findPlantsQueryVariables = Exact<{
+    pagination?: InputMaybe<Scalars['Boolean']['input']>;
+    limit?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+export type findPlantsQuery = {
+    __typename?: 'Query';
+    Plants?: {
+        __typename?: 'Plants';
+        docs: Array<{
+            __typename?: 'Plant';
+            germanName: string;
+            scientificName: string;
+            family: { __typename?: 'PlantFamily'; germanName: string; scientificName: string };
+            toxicityLevel?: { __typename?: 'PlantToxicityLevel'; title: string } | null;
+        }>;
     } | null;
 };
 
@@ -53498,6 +53547,16 @@ export type getCourseVideoLessonQuery = {
         title: string;
         youtubeURL?: string | null;
         id: number;
+    } | null;
+};
+
+export type getDashboardTicketCategoriesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type getDashboardTicketCategoriesQuery = {
+    __typename?: 'Query';
+    DashboardTicketCategories?: {
+        __typename?: 'DashboardTicketCategories';
+        docs: Array<{ __typename?: 'DashboardTicketCategory'; id: number; title: string; description?: string | null }>;
     } | null;
 };
 
@@ -60271,6 +60330,67 @@ export const ContactAttributesFragmentDoc = {
         },
     ],
 } as unknown as DocumentNode<ContactAttributesFragment, unknown>;
+export const createDashboardTicketDocument = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'OperationDefinition',
+            operation: 'mutation',
+            name: { kind: 'Name', value: 'createDashboardTicket' },
+            variableDefinitions: [
+                {
+                    kind: 'VariableDefinition',
+                    variable: { kind: 'Variable', name: { kind: 'Name', value: 'data' } },
+                    type: {
+                        kind: 'NonNullType',
+                        type: { kind: 'NamedType', name: { kind: 'Name', value: 'mutationDashboardTicketInput' } },
+                    },
+                },
+            ],
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'createDashboardTicket' },
+                        arguments: [
+                            {
+                                kind: 'Argument',
+                                name: { kind: 'Name', value: 'data' },
+                                value: { kind: 'Variable', name: { kind: 'Name', value: 'data' } },
+                            },
+                        ],
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'author' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [{ kind: 'Field', name: { kind: 'Name', value: 'id' } }],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'category' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [{ kind: 'Field', name: { kind: 'Name', value: 'id' } }],
+                                    },
+                                },
+                                { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                                { kind: 'Field', name: { kind: 'Name', value: 'description' } },
+                                { kind: 'Field', name: { kind: 'Name', value: 'status' } },
+                                { kind: 'Field', name: { kind: 'Name', value: 'priority' } },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<createDashboardTicketMutation, createDashboardTicketMutationVariables>;
 export const findCourseVideoLessonsDocument = {
     kind: 'Document',
     definitions: [
@@ -60321,6 +60441,148 @@ export const findCourseVideoLessonsDocument = {
         },
     ],
 } as unknown as DocumentNode<findCourseVideoLessonsQuery, findCourseVideoLessonsQueryVariables>;
+export const findPlantFamiliesDocument = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'OperationDefinition',
+            operation: 'query',
+            name: { kind: 'Name', value: 'findPlantFamilies' },
+            variableDefinitions: [
+                {
+                    kind: 'VariableDefinition',
+                    variable: { kind: 'Variable', name: { kind: 'Name', value: 'pagination' } },
+                    type: { kind: 'NamedType', name: { kind: 'Name', value: 'Boolean' } },
+                },
+                {
+                    kind: 'VariableDefinition',
+                    variable: { kind: 'Variable', name: { kind: 'Name', value: 'limit' } },
+                    type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+                },
+            ],
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'PlantFamilies' },
+                        arguments: [
+                            {
+                                kind: 'Argument',
+                                name: { kind: 'Name', value: 'pagination' },
+                                value: { kind: 'Variable', name: { kind: 'Name', value: 'pagination' } },
+                            },
+                            {
+                                kind: 'Argument',
+                                name: { kind: 'Name', value: 'limit' },
+                                value: { kind: 'Variable', name: { kind: 'Name', value: 'limit' } },
+                            },
+                        ],
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'docs' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'germanName' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'scientificName' } },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<findPlantFamiliesQuery, findPlantFamiliesQueryVariables>;
+export const findPlantsDocument = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'OperationDefinition',
+            operation: 'query',
+            name: { kind: 'Name', value: 'findPlants' },
+            variableDefinitions: [
+                {
+                    kind: 'VariableDefinition',
+                    variable: { kind: 'Variable', name: { kind: 'Name', value: 'pagination' } },
+                    type: { kind: 'NamedType', name: { kind: 'Name', value: 'Boolean' } },
+                },
+                {
+                    kind: 'VariableDefinition',
+                    variable: { kind: 'Variable', name: { kind: 'Name', value: 'limit' } },
+                    type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+                },
+            ],
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'Plants' },
+                        arguments: [
+                            {
+                                kind: 'Argument',
+                                name: { kind: 'Name', value: 'pagination' },
+                                value: { kind: 'Variable', name: { kind: 'Name', value: 'pagination' } },
+                            },
+                            {
+                                kind: 'Argument',
+                                name: { kind: 'Name', value: 'limit' },
+                                value: { kind: 'Variable', name: { kind: 'Name', value: 'limit' } },
+                            },
+                        ],
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'docs' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'germanName' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'scientificName' } },
+                                            {
+                                                kind: 'Field',
+                                                name: { kind: 'Name', value: 'family' },
+                                                selectionSet: {
+                                                    kind: 'SelectionSet',
+                                                    selections: [
+                                                        { kind: 'Field', name: { kind: 'Name', value: 'germanName' } },
+                                                        {
+                                                            kind: 'Field',
+                                                            name: { kind: 'Name', value: 'scientificName' },
+                                                        },
+                                                    ],
+                                                },
+                                            },
+                                            {
+                                                kind: 'Field',
+                                                name: { kind: 'Name', value: 'toxicityLevel' },
+                                                selectionSet: {
+                                                    kind: 'SelectionSet',
+                                                    selections: [
+                                                        { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                                                    ],
+                                                },
+                                            },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<findPlantsQuery, findPlantsQueryVariables>;
 export const getCourseVideoLessonDocument = {
     kind: 'Document',
     definitions: [
@@ -60362,6 +60624,42 @@ export const getCourseVideoLessonDocument = {
         },
     ],
 } as unknown as DocumentNode<getCourseVideoLessonQuery, getCourseVideoLessonQueryVariables>;
+export const getDashboardTicketCategoriesDocument = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'OperationDefinition',
+            operation: 'query',
+            name: { kind: 'Name', value: 'getDashboardTicketCategories' },
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'DashboardTicketCategories' },
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'docs' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'description' } },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<getDashboardTicketCategoriesQuery, getDashboardTicketCategoriesQueryVariables>;
 export const getUserDataDocument = {
     kind: 'Document',
     definitions: [
