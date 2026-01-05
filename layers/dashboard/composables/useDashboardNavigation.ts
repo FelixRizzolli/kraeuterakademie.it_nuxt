@@ -30,12 +30,12 @@ export type NavGroup = {
 export function useDashboardNavigation(
     opts: { userStore?: ReturnType<typeof useDashboardUserStore>; t?: (k: string) => string } = {},
 ) {
-    const store = opts.userStore ?? useDashboardUserStore();
+    const userStore = opts.userStore ?? useDashboardUserStore();
     const { t } = useI18n();
 
     const navStudy = computed<NavGroup[]>(() => {
         const videoItems =
-            store.data?.accessibleVideoLessons?.map((v: any) => ({
+            (userStore.data?.accessibleVideoLessons as Array<CourseVideoLesson>)?.map((v: CourseVideoLesson) => ({
                 title: v.title,
                 url: `/dashboard/study/video-lessons/${v.slug}`,
             })) ?? [];
@@ -96,24 +96,33 @@ export function useDashboardNavigation(
         ];
     });
 
-    const navCourse = computed<NavGroup[]>(() => [
-        {
-            title: t('dashboard.navigation.nav-course.courses.title'),
-            url: '/dashboard/courses',
-            icon: GraduationCap,
-            // items: [
-            //     {
-            //         title: t('dashboard.navigation.nav-course.courses.items.documents'),
-            //         url: '/dashboard/courses/documents',
-            //     },
-            // ],
-        },
-        {
-            title: t('dashboard.navigation.nav-course.course-modules.title'),
-            url: '/dashboard/courses/modules',
-            icon: CalendarDays,
-        },
-    ]);
+    const navCourse = computed<NavGroup[]>(() => {
+        const enrolledCourses =
+            (userStore.data?.enrolledCourses as Array<Course>)?.map((v: Course) => ({
+                title: v.name,
+                url: `/dashboard/courses/${v.name.toLowerCase()}`,
+            })) ?? [];
+
+        return [
+            {
+                title: t('dashboard.navigation.nav-course.courses.title'),
+                url: '/dashboard/courses',
+                icon: GraduationCap,
+                items: [
+                    ...enrolledCourses,
+                    //     {
+                    //         title: t('dashboard.navigation.nav-course.courses.items.documents'),
+                    //         url: '/dashboard/courses/documents',
+                    //     },
+                ],
+            },
+            {
+                title: t('dashboard.navigation.nav-course.course-modules.title'),
+                url: '/dashboard/courses/modules',
+                icon: CalendarDays,
+            },
+        ];
+    });
 
     const navSecondary = computed<NavItem[]>(() => [
         {
