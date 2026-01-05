@@ -132,6 +132,25 @@
                         "description": "Beschreiben Sie Ihr Anliegen so detailliert wie möglich."
                     },
                     "submit-button": "Ticket senden"
+                },
+                "priority": {
+                    "low": "Niedrig",
+                    "medium": "Medium",
+                    "high": "Hoch"
+                },
+                "status": {
+                    "open": "Offen",
+                    "in-progress": "In Arbeit",
+                    "closed": "Geschlossen"
+                },
+                "table": {
+                    "id": "ID",
+                    "title": "Titel",
+                    "priority": "Priorität",
+                    "status": "Status",
+                    "updatedAt": "Aktualisiert am",
+                    "createdAt": "Erstellt am",
+                    "category": "Kategorie"
                 }
             },
             "changelog": {

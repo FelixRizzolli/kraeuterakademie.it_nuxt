@@ -107,23 +107,28 @@
     const columns: ColumnDef<TableData>[] = [
         {
             accessorKey: 'id',
-            header: 'ID',
+            header: t('dashboard.pages.feedback.table.id'),
             cell: ({ row }) => h('span', { class: 'font-mono' }, String(row.getValue('id'))),
             enableHiding: false,
         },
         {
             accessorKey: 'title',
-            header: 'Title',
+            header: t('dashboard.pages.feedback.table.title'),
             cell: ({ row }) => h('span', {}, String(row.getValue('title'))),
         },
         {
             accessorKey: 'priority',
-            header: 'Priority',
-            cell: ({ row }) => h(Badge, { variant: 'outline' }, () => String(row.getValue('priority'))),
+            header: t('dashboard.pages.feedback.table.priority'),
+            cell: ({ row }) => {
+                const raw = row.getValue('priority');
+                const key = String(raw ?? '').toLowerCase();
+                const label = t(`dashboard.pages.feedback.priority.${key}`) || String(raw ?? '');
+                return h(Badge, { variant: 'outline' }, () => String(label));
+            },
         },
         {
             accessorKey: 'status',
-            header: 'Status',
+            header: t('dashboard.pages.feedback.table.status'),
             cell: ({ row }) => {
                 const raw = row.getValue('status');
                 const status = String(raw ?? '').toLowerCase();
@@ -137,22 +142,24 @@
                 const icon =
                     (iconsMap[status] as any) ?? h(IconLoader, { class: 'h-4 w-4 animate-spin text-muted-foreground' });
 
-                return h('div', { class: 'flex items-center gap-2' }, [icon, h('span', {}, String(raw))]);
+                const label = t(`dashboard.pages.feedback.status.${status}`) || String(raw ?? '');
+
+                return h('div', { class: 'flex items-center gap-2' }, [icon, h('span', {}, label)]);
             },
         },
         {
             accessorKey: 'updatedAt',
-            header: 'Updated',
+            header: t('dashboard.pages.feedback.table.updatedAt'),
             cell: ({ row }) => h('span', {}, new Date(String(row.getValue('updatedAt'))).toLocaleString()),
         },
         {
             accessorKey: 'createdAt',
-            header: 'Created',
+            header: t('dashboard.pages.feedback.table.createdAt'),
             cell: ({ row }) => h('span', {}, new Date(String(row.getValue('createdAt'))).toLocaleString()),
         },
         {
             id: 'category',
-            header: 'Category',
+            header: t('dashboard.pages.feedback.table.category'),
             cell: ({ row }) => {
                 const original = (row.original as TableData) || {};
                 const cat = original.category ?? (row.getValue('category') as any);

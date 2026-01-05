@@ -132,6 +132,25 @@
                         "description": "Describe your issue in as much detail as possible."
                     },
                     "submit-button": "Submit Ticket"
+                },
+                "priority": {
+                    "low": "Low",
+                    "medium": "Medium",
+                    "high": "High"
+                },
+                "status": {
+                    "open": "Open",
+                    "in-progress": "In Progress",
+                    "closed": "Closed"
+                },
+                "table": {
+                    "id": "ID",
+                    "title": "Title",
+                    "priority": "Priority",
+                    "status": "Status",
+                    "updatedAt": "Updated",
+                    "createdAt": "Created",
+                    "category": "Category"
                 }
             },
             "changelog": {

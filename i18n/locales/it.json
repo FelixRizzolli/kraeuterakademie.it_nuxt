@@ -131,6 +131,25 @@
                             "description": "Descrivi il tuo problema nel modo più dettagliato possibile."
                         },
                         "submit-button": "Invia segnalazione"
+                    },
+                    "priority": {
+                        "low": "Basso",
+                        "medium": "Medio",
+                        "high": "Alto"
+                    },
+                    "status": {
+                        "open": "Aperto",
+                        "in-progress": "In lavorazione",
+                        "closed": "Chiuso"
+                    },
+                    "table": {
+                        "id": "ID",
+                        "title": "Titolo",
+                        "priority": "Priorità",
+                        "status": "Stato",
+                        "updatedAt": "Aggiornato il",
+                        "createdAt": "Creato il",
+                        "category": "Categoria"
                     }
                 },
                 "changelog": {
