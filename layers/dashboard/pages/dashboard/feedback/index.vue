@@ -3,6 +3,7 @@
         <div class="w-full max-w-sm md:max-w-4xl">
             <div :class="cn('flex flex-col gap-6')">
                 <FeedbackForm />
+                <FeedbackTicketList />
             </div>
         </div>
     </div>
@@ -19,6 +20,7 @@
     import { cn } from '~~/layers/dashboard/lib/utils';
 
     import FeedbackForm from '~~/layers/dashboard/components/feedback/FeedbackForm';
+    import FeedbackTicketList from '~~/layers/dashboard/components/feedback/FeedbackTicketList';
 
     const { t } = useI18n();
     const { set } = useBreadcrumbs();

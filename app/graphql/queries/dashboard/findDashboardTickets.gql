@@ -1,0 +1,16 @@
+query findDashboardTickets($where: DashboardTicket_where) {
+    DashboardTickets(where: $where) {
+        docs {
+            id
+            title
+            status
+            priority
+            updatedAt
+            createdAt
+            category {
+                id
+                title
+            }
+        }
+    }
+}
