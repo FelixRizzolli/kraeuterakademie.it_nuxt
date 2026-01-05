@@ -7,7 +7,7 @@
         <div v-if="loading" class="flex items-center justify-center py-12">
             <p class="text-muted-foreground">
                 {{
-                    t('dashboard.pages.study.plant-lexicon.state.loading', {
+                    t('dashboard.pages.state.loading', {
                         type: t('dashboard.pages.study.plant-lexicon.poison-plants.title'),
                     })
                 }}
@@ -49,7 +49,7 @@
         <div v-else class="rounded-lg bg-muted p-4">
             <p class="text-muted-foreground">
                 {{
-                    t('dashboard.pages.study.plant-lexicon.state.not-found', {
+                    t('dashboard.pages.state.not-found', {
                         type: t('dashboard.pages.study.plant-lexicon.poison-plants.title'),
                     })
                 }}
@@ -94,7 +94,7 @@
             const fetchedPlants = await fetchPlantsFn();
 
             if (!fetchedPlants || !fetchedPlants.length) {
-                error.value = t('dashboard.pages.study.poison-plants.state.not-found', {
+                error.value = t('dashboard.pages.state.not-found', {
                     type: t('dashboard.pages.study.plant-lexicon.poison-plants.title'),
                 });
                 console.warn('⚠️ No plants found');
@@ -121,7 +121,7 @@
         } catch (err: any) {
             error.value =
                 err?.message ??
-                t('dashboard.pages.study.plant-lexicon.state.error', {
+                t('dashboard.pages.state.error', {
                     type: t('dashboard.pages.study.plant-lexicon.poison-plants.title'),
                 });
             console.error('❌ Error loading plants:', err);

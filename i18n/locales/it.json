@@ -98,6 +98,11 @@
                 }
             },
             "pages": {
+                "state": {
+                    "loading": "Caricamento {type}...",
+                    "not-found": "{type} non trovato.",
+                    "error": "Errore durante il caricamento di {type}."
+                },
                 "dashboard": {
                     "breadcrumb-title": "Dashboard"
                 },
@@ -119,11 +124,6 @@
                         "breadcrumb-title": "Lezioni video"
                     },
                     "plant-lexicon": {
-                        "state": {
-                            "loading": "Caricamento {type}...",
-                            "not-found": "{type} non trovato.",
-                            "error": "Errore durante il caricamento di {type}."
-                        },
                         "plants": {
                             "title": "Piante",
                             "table-caption": "Una lista di tutte le piante nel lessico delle piante."

@@ -7,7 +7,7 @@
         <div v-if="loading" class="flex items-center justify-center py-12">
             <p class="text-muted-foreground">
                 {{
-                    t('dashboard.pages.study.plant-lexicon.state.loading', {
+                    t('dashboard.pages.state.loading', {
                         type: t('dashboard.pages.study.plant-lexicon.plant-families.title'),
                     })
                 }}
@@ -39,7 +39,7 @@
         <div v-else class="rounded-lg bg-muted p-4">
             <p class="text-muted-foreground">
                 {{
-                    t('dashboard.pages.study.plant-lexicon.state.not-found', {
+                    t('dashboard.pages.state.not-found', {
                         type: t('dashboard.pages.study.plant-lexicon.plant-families.title'),
                     })
                 }}
@@ -78,7 +78,7 @@
             plantfamilies.value = await fetchPlantFamilies();
 
             if (!plantfamilies.value?.length) {
-                error.value = t('dashboard.pages.study.plant-lexicon.state.not-found', {
+                error.value = t('dashboard.pages.state.not-found', {
                     type: t('dashboard.pages.study.plant-lexicon.plant-families.title'),
                 });
                 console.warn('⚠️ No plant families found');
@@ -88,7 +88,7 @@
         } catch (err: any) {
             error.value =
                 err?.message ??
-                t('dashboard.pages.study.plant-lexicon.state.error', {
+                t('dashboard.pages.state.error', {
                     type: t('dashboard.pages.study.plant-lexicon.plant-families.title'),
                 });
             console.error('❌ Error loading plant families:', err);

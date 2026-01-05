@@ -99,6 +99,11 @@
             }
         },
         "pages": {
+            "state": {
+                "loading": "Lade {type}...",
+                "not-found": "{type} nicht gefunden.",
+                "error": "Fehler beim Laden von {type}."
+            },
             "dashboard": {
                 "breadcrumb-title": "Dashboard"
             },
@@ -120,11 +125,6 @@
                     "breadcrumb-title": "Video Lektionen"
                 },
                 "plant-lexicon": {
-                    "state": {
-                        "loading": "Lade {type}...",
-                        "not-found": "{type} nicht gefunden.",
-                        "error": "Fehler beim Laden von {type}."
-                    },
                     "plants": {
                         "title": "Pflanzen",
                         "table-caption": "Eine Liste aller Pflanzen im Pflanzenlexikon."
