@@ -1,5 +1,19 @@
 <template>
-    <div class="overflow-hidden rounded-lg border" v-if="dashboardTickets && dashboardTickets.length > 0">
+    <div v-if="loading" class="rounded-lg p-4 bg-muted">
+        <p>
+            {{
+                t('dashboard.pages.state.loading', {
+                    type: t('dashboard.pages.feedback.tickets'),
+                })
+            }}
+        </p>
+    </div>
+
+    <div v-else-if="error" class="rounded-lg p-4 bg-destructive/15 text-destructive">
+        <p>{{ error }}</p>
+    </div>
+
+    <div v-else-if="dashboardTickets && dashboardTickets.length > 0" class="overflow-hidden rounded-lg border">
         <Table>
             <TableHeader class="bg-muted sticky top-0 z-10">
                 <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
@@ -25,6 +39,16 @@
                 </TableRow>
             </TableBody>
         </Table>
+    </div>
+
+    <div v-else class="rounded-lg p-4 bg-muted">
+        <p>
+            {{
+                t('dashboard.pages.state.not-found', {
+                    type: t('dashboard.pages.feedback.tickets'),
+                })
+            }}
+        </p>
     </div>
 </template>
 
