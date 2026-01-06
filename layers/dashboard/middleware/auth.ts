@@ -1,4 +1,4 @@
-export default defineNuxtRouteMiddleware(async (to, from) => {
+export default defineNuxtRouteMiddleware(async (_to, _from) => {
     const { isAuthenticated, hasDashboardAccess, initAuth } = useAuth();
 
     // Initialize auth state once (initAuth has internal guard)
