@@ -1,4 +1,3 @@
-import type { DocumentNode } from 'graphql';
 import { usePayloadGraphQL } from '~~/layers/shared/composables/usePayloadGraphQL';
 import GET_USER_DATA from '~~/app/graphql/queries/dashboard/getUserData.gql';
 

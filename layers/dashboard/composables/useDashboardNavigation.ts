@@ -2,16 +2,7 @@ import { computed } from 'vue';
 import useDashboardUserStore from '../stores/dashboardUserStore';
 import { useI18n } from 'vue-i18n';
 
-import {
-    BookOpenText,
-    Video,
-    GraduationCap,
-    CalendarDays,
-    LifeBuoy,
-    Send,
-    FileClock,
-    NotebookPen,
-} from 'lucide-vue-next';
+import { BookOpenText, Video, GraduationCap, CalendarDays, LifeBuoy, Send, FileClock } from 'lucide-vue-next';
 
 export type NavItem = {
     title: string;
@@ -143,8 +134,8 @@ export function useDashboardNavigation(
     ]);
 
     async function ensureLoaded() {
-        if (store && typeof store.ensureLoaded === 'function') {
-            await store.ensureLoaded();
+        if (userStore && typeof userStore.ensureLoaded === 'function') {
+            await userStore.ensureLoaded();
         }
     }
 
