@@ -35,7 +35,7 @@
         "nuxt-swiper": "2.0.1",
         "pinia": "3.0.4",
         "prettier": "3.7.4",
-        "qs": "6.14.0",
+        "qs": "6.14.1",
         "reka-ui": "2.7.0",
         "shadcn-nuxt": "2.4.3",
         "tailwind-merge": "3.4.0",
