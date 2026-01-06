@@ -1,0 +1,32 @@
+query getDashboardTicketDetails($dashboardTicketId: Int!) {
+    DashboardTicket(id: $dashboardTicketId) {
+        author {
+            firstName
+            lastName
+            email
+        }
+        assignedTo {
+            email
+            firstName
+            lastName
+        }
+        title
+        description
+        category {
+            title
+        }
+        priority
+        status
+        updatedAt
+        createdAt
+        comments {
+            commenter {
+                firstName
+                email
+                lastName
+            }
+            createdAt
+            commentText
+        }
+    }
+}

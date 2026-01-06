@@ -1,0 +1,14 @@
+mutation createDashboardTicket($data: mutationDashboardTicketInput!) {
+    createDashboardTicket(data: $data) {
+        author {
+            id
+        }
+        category {
+            id
+        }
+        title
+        description
+        status
+        priority
+    }
+}
