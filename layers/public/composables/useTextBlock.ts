@@ -1,5 +1,5 @@
 import { computed } from 'vue';
-import { useGlobalStore } from '~/stores/globalStore';
+import { useGlobalStore } from '~~/layers/public/stores/globalStore';
 
 interface TextBlock {
     slug: string;

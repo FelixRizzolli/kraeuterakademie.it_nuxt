@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-    import { useMenuStore } from '~/stores/menuStore';
+    import { useMenuStore } from '~~/layers/public/stores/menuStore';
     const menuStore = useMenuStore();
 
     const menuTextBlock = ref<string | undefined | null>(null);
