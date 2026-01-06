@@ -14,7 +14,7 @@ const getDashboardUserQuery = `
 export const useDashboardUser = () => {
     const gqlQuery = usePayloadGraphQL();
 
-    const fetchDashboardUser = async (userId: number): Promise<DashboardUserData> => {
+    const fetchDashboardUser = async (): Promise<DashboardUserData> => {
         // Call without userId variable since we're using meUser (authenticated user)
         const response = await gqlQuery<any>(getDashboardUserQuery);
 

@@ -59,7 +59,7 @@ export const useDashboardUserStore = defineStore('dashboardUser', {
             this.error = null;
             try {
                 const fetchDashboardUser = useDashboardUser();
-                const data = await fetchDashboardUser(this.userId as number);
+                const data = await fetchDashboardUser();
                 this.data = data;
                 this.lastFetchedAt = Date.now();
             } catch (err: any) {
