@@ -8,7 +8,7 @@ const getDashboardTicketDetails = `
 export const useDashboardTicketDetails = () => {
     const gqlQuery = usePayloadGraphQL();
 
-    const fetchDashboardTicketDetails = async (ticketId: string): Promise<Array<DashboardTicket> | null> => {
+    const fetchDashboardTicketDetails = async (ticketId: number): Promise<Array<DashboardTicket> | null> => {
         try {
             const response = await gqlQuery<any>(getDashboardTicketDetails, {
                 dashboardTicketId: ticketId,
