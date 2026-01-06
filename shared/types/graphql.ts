@@ -53504,6 +53504,27 @@ export type findCourseVideoLessonsQuery = {
     } | null;
 };
 
+export type findDashboardTicketsQueryVariables = Exact<{
+    where?: InputMaybe<DashboardTicket_where>;
+}>;
+
+export type findDashboardTicketsQuery = {
+    __typename?: 'Query';
+    DashboardTickets?: {
+        __typename?: 'DashboardTickets';
+        docs: Array<{
+            __typename?: 'DashboardTicket';
+            id: number;
+            title: string;
+            status: DashboardTicket_status;
+            priority: DashboardTicket_priority;
+            updatedAt?: string | null;
+            createdAt?: string | null;
+            category?: { __typename?: 'DashboardTicketCategory'; id: number; title: string } | null;
+        }>;
+    } | null;
+};
+
 export type findPlantFamiliesQueryVariables = Exact<{
     pagination?: InputMaybe<Scalars['Boolean']['input']>;
     limit?: InputMaybe<Scalars['Int']['input']>;
@@ -53557,6 +53578,37 @@ export type getDashboardTicketCategoriesQuery = {
     DashboardTicketCategories?: {
         __typename?: 'DashboardTicketCategories';
         docs: Array<{ __typename?: 'DashboardTicketCategory'; id: number; title: string; description?: string | null }>;
+    } | null;
+};
+
+export type getDashboardTicketDetailsQueryVariables = Exact<{
+    dashboardTicketId: Scalars['Int']['input'];
+}>;
+
+export type getDashboardTicketDetailsQuery = {
+    __typename?: 'Query';
+    DashboardTicket?: {
+        __typename?: 'DashboardTicket';
+        title: string;
+        description?: string | null;
+        priority: DashboardTicket_priority;
+        status: DashboardTicket_status;
+        updatedAt?: string | null;
+        createdAt?: string | null;
+        author: { __typename?: 'User'; firstName?: string | null; lastName?: string | null; email: string };
+        assignedTo?: { __typename?: 'User'; email: string; firstName?: string | null; lastName?: string | null } | null;
+        category?: { __typename?: 'DashboardTicketCategory'; title: string } | null;
+        comments?: Array<{
+            __typename?: 'DashboardTicket_Comments';
+            createdAt?: string | null;
+            commentText?: string | null;
+            commenter?: {
+                __typename?: 'User';
+                firstName?: string | null;
+                email: string;
+                lastName?: string | null;
+            } | null;
+        }> | null;
     } | null;
 };
 
@@ -60441,6 +60493,70 @@ export const findCourseVideoLessonsDocument = {
         },
     ],
 } as unknown as DocumentNode<findCourseVideoLessonsQuery, findCourseVideoLessonsQueryVariables>;
+export const findDashboardTicketsDocument = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'OperationDefinition',
+            operation: 'query',
+            name: { kind: 'Name', value: 'findDashboardTickets' },
+            variableDefinitions: [
+                {
+                    kind: 'VariableDefinition',
+                    variable: { kind: 'Variable', name: { kind: 'Name', value: 'where' } },
+                    type: { kind: 'NamedType', name: { kind: 'Name', value: 'DashboardTicket_where' } },
+                },
+            ],
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'DashboardTickets' },
+                        arguments: [
+                            {
+                                kind: 'Argument',
+                                name: { kind: 'Name', value: 'where' },
+                                value: { kind: 'Variable', name: { kind: 'Name', value: 'where' } },
+                            },
+                        ],
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'docs' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'status' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'priority' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'updatedAt' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'createdAt' } },
+                                            {
+                                                kind: 'Field',
+                                                name: { kind: 'Name', value: 'category' },
+                                                selectionSet: {
+                                                    kind: 'SelectionSet',
+                                                    selections: [
+                                                        { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                                                        { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                                                    ],
+                                                },
+                                            },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<findDashboardTicketsQuery, findDashboardTicketsQueryVariables>;
 export const findPlantFamiliesDocument = {
     kind: 'Document',
     definitions: [
@@ -60660,6 +60776,105 @@ export const getDashboardTicketCategoriesDocument = {
         },
     ],
 } as unknown as DocumentNode<getDashboardTicketCategoriesQuery, getDashboardTicketCategoriesQueryVariables>;
+export const getDashboardTicketDetailsDocument = {
+    kind: 'Document',
+    definitions: [
+        {
+            kind: 'OperationDefinition',
+            operation: 'query',
+            name: { kind: 'Name', value: 'getDashboardTicketDetails' },
+            variableDefinitions: [
+                {
+                    kind: 'VariableDefinition',
+                    variable: { kind: 'Variable', name: { kind: 'Name', value: 'dashboardTicketId' } },
+                    type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } } },
+                },
+            ],
+            selectionSet: {
+                kind: 'SelectionSet',
+                selections: [
+                    {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'DashboardTicket' },
+                        arguments: [
+                            {
+                                kind: 'Argument',
+                                name: { kind: 'Name', value: 'id' },
+                                value: { kind: 'Variable', name: { kind: 'Name', value: 'dashboardTicketId' } },
+                            },
+                        ],
+                        selectionSet: {
+                            kind: 'SelectionSet',
+                            selections: [
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'author' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+                                        ],
+                                    },
+                                },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'assignedTo' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+                                        ],
+                                    },
+                                },
+                                { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                                { kind: 'Field', name: { kind: 'Name', value: 'description' } },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'category' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [{ kind: 'Field', name: { kind: 'Name', value: 'title' } }],
+                                    },
+                                },
+                                { kind: 'Field', name: { kind: 'Name', value: 'priority' } },
+                                { kind: 'Field', name: { kind: 'Name', value: 'status' } },
+                                { kind: 'Field', name: { kind: 'Name', value: 'updatedAt' } },
+                                { kind: 'Field', name: { kind: 'Name', value: 'createdAt' } },
+                                {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'comments' },
+                                    selectionSet: {
+                                        kind: 'SelectionSet',
+                                        selections: [
+                                            {
+                                                kind: 'Field',
+                                                name: { kind: 'Name', value: 'commenter' },
+                                                selectionSet: {
+                                                    kind: 'SelectionSet',
+                                                    selections: [
+                                                        { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+                                                        { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+                                                        { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+                                                    ],
+                                                },
+                                            },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'createdAt' } },
+                                            { kind: 'Field', name: { kind: 'Name', value: 'commentText' } },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        },
+    ],
+} as unknown as DocumentNode<getDashboardTicketDetailsQuery, getDashboardTicketDetailsQueryVariables>;
 export const getUserDataDocument = {
     kind: 'Document',
     definitions: [
