@@ -28,7 +28,17 @@
             </TableHeader>
             <TableBody>
                 <template v-if="table.getRowModel().rows.length">
-                    <TableRow v-for="row in table.getRowModel().rows" :key="row.id">
+                    <TableRow
+                        v-for="row in table.getRowModel().rows"
+                        :key="row.id"
+                        class="cursor-pointer hover:bg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        tabindex="0"
+                        role="link"
+                        :aria-label="`Open ticket ${getRowId(row)}`"
+                        @click="goToTicket(getRowId(row))"
+                        @keydown.enter.prevent="goToTicket(getRowId(row))"
+                        @keydown.space.prevent="goToTicket(getRowId(row))"
+                    >
                         <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
                             <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
                         </TableCell>
@@ -54,6 +64,7 @@
 
 <script setup lang="ts">
     import { h, computed, ref, onMounted } from 'vue';
+    import { useRouter } from 'vue-router';
     import { useI18n } from 'vue-i18n';
     import { useDashboardTickets } from '~~/layers/dashboard/composables/queries/useDashboardTickets';
     import type { ColumnDef, ColumnFiltersState, SortingState, VisibilityState } from '@tanstack/vue-table';
@@ -122,6 +133,15 @@
     });
 
     const tableSource = computed(() => props.data ?? (dashboardTickets.value as unknown as TableData[]));
+
+    const router = useRouter();
+
+    const goToTicket = (id: number | string) => {
+        if (!id && id !== 0) return;
+        router.push(`/dashboard/feedback/${String(id)}`);
+    };
+
+    const getRowId = (row: any) => ((row?.original as TableData)?.id ?? row?.getValue?.('id')) as number;
 
     const sorting = ref<SortingState>([]);
     const columnFilters = ref<ColumnFiltersState>([]);
