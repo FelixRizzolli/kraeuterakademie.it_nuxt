@@ -1,0 +1,36 @@
+query findDashboardHelpPage($where: DashboardHelpPage_where) {
+    DashboardHelpPages: DashboardHelpPages(where: $where) {
+        docs {
+            id
+            slug
+            title
+            updatedAt
+            createdAt
+            blocks {
+                __typename
+                ... on DashboardImageElement {
+                    ...DashboardImageElementAttributes
+                }
+                ... on DashboardImageText {
+                    ...DashboardImageTextAttributes
+                }
+                ... on DashboardTitleElement {
+                    ...DashboardTitleElementAttributes
+                }
+                ... on DashboardTextElement {
+                    ...DashboardTextElementAttributes
+                }
+            }
+        }
+        hasNextPage
+        hasPrevPage
+        limit
+        nextPage
+        offset
+        page
+        pagingCounter
+        prevPage
+        totalDocs
+        totalPages
+    }
+}

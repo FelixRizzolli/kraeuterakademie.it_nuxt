@@ -1,0 +1,11 @@
+fragment DashboardImageElementAttributes on DashboardImageElement {
+    id
+    blockName
+    blockType
+
+    dashboardImageElementContent: content {
+        image {
+            ...DashboardImageAttributes
+        }
+    }
+}

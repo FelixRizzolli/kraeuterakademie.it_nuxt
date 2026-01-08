@@ -1,0 +1,11 @@
+fragment DashboardTextElementAttributes on DashboardTextElement {
+    id
+    blockName
+    blockType
+
+    dashboardTextElementContent: content {
+        icon
+        title
+        text
+    }
+}

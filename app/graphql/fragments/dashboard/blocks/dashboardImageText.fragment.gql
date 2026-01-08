@@ -1,0 +1,12 @@
+fragment DashboardImageTextAttributes on DashboardImageText {
+    id
+    blockName
+    blockType
+
+    dashboardImageTextContent: content {
+        image {
+            ...DashboardImageAttributes
+        }
+        text
+    }
+}

@@ -1,0 +1,10 @@
+fragment DashboardTitleElementAttributes on DashboardTitleElement {
+    id
+    blockName
+    blockType
+
+    dashboardTitleElementContent: content {
+        icon
+        title
+    }
+}
