@@ -24,6 +24,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed some issues introduced during the migration from Strapi to Payload CMS with storybook stories
 
+## [1.0.1] - 2026-01-08
+
+## Fixed
+
+- Fixed HighlightedLinks component: use Payload CMS `url` field (temporary fix; will standardize fields in Payload CMS later).
+
 ## [1.0.0] - 2025-12-29
 
 ### Added

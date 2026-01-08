@@ -5,7 +5,7 @@
         :style="settings?.style"
     >
         <template v-for="(imageLink, index) in data.links">
-            <NuxtLink :to="imageLink.href || '/'" class="link-container" :target="imageLink.target ?? '_self'">
+            <NuxtLink :to="imageLink.url || '/'" class="link-container" :target="imageLink.target ?? '_self'">
                 <div
                     class="inner-container scale-animation"
                     ref="highlightedLinkElements"
@@ -21,10 +21,10 @@
 
 <script lang="ts" setup>
     import { gsap } from 'gsap';
-    import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
     interface ImageLink extends Link {
         image: PublicImage;
+        url: string; // TODO: fix issue in payload in v2
     }
 
     interface HighlightedLinksData {
