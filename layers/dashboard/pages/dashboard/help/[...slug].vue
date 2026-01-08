@@ -6,18 +6,14 @@
             <NuxtErrorBoundary :error="error" />
         </div>
 
-        <template v-else-if="pageData">
-            {{ pageData }}
-        </template>
-
         <template v-else-if="pageData?.contentComponents?.length">
-            <!-- <ContentComponentRenderer
+            <ContentComponentRenderer
                 v-for="(cc, index) in pageData.contentComponents"
                 :key="index"
                 :name="cc.name"
                 :data="cc.data"
                 :settings="cc.settings"
-            /> -->
+            />
         </template>
 
         <div v-else class="no-content">
@@ -35,6 +31,9 @@
     import { useI18n } from 'vue-i18n';
     import { useBreadcrumbs } from '~~/layers/dashboard/composables/useBreadcrumbs';
     import { useDashboardHelpPage } from '~~/layers/dashboard/composables/queries/useDashboardHelpPage';
+
+    import ContentComponentRenderer from '~~/layers/dashboard/components/dashboard/ContentComponentRenderer';
+
     import { useRoute } from 'vue-router';
 
     const { t } = useI18n();
