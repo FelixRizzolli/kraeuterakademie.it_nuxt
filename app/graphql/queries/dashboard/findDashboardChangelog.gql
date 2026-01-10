@@ -1,0 +1,36 @@
+query findDashboardChangelog($where: DashboardChangelog_where) {
+    DashboardChangelogs: DashboardChangelogs(where: $where) {
+        docs {
+            id
+            version
+            releaseDate
+            updatedAt
+            createdAt
+            blocks {
+                __typename
+                ... on DashboardImageElement {
+                    ...DashboardImageElementAttributes
+                }
+                ... on DashboardImageText {
+                    ...DashboardImageTextAttributes
+                }
+                ... on DashboardTitleElement {
+                    ...DashboardTitleElementAttributes
+                }
+                ... on DashboardTextElement {
+                    ...DashboardTextElementAttributes
+                }
+            }
+        }
+        hasNextPage
+        hasPrevPage
+        limit
+        nextPage
+        offset
+        page
+        pagingCounter
+        prevPage
+        totalDocs
+        totalPages
+    }
+}
