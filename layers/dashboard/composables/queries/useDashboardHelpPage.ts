@@ -1,3 +1,5 @@
+import { usePayloadGraphQL } from '~~/layers/shared/composables/usePayloadGraphQL';
+
 import DASHBOARD_IMAGE_FRAGMENT from '~/graphql/fragments/dashboard/collections/dashboardImage.fragment.gql';
 
 import DASHBOARD_IMAGE_ELEMENT_FRAGMENT from '~/graphql/fragments/dashboard/blocks/dashboardImageElement.fragment.gql';
@@ -70,7 +72,7 @@ export const useDashboardHelpPage = () => {
      * @param slug - The page slug to fetch
      * @returns Promise with the page data or null if not found
      */
-    const fetchDashboardHelpPage = async (slug: string): Promise<PageData | null> => {
+    const fetchDashboardHelpPage = async (slug: string): Promise<DashboardPageData | null> => {
         try {
             if (!slug) {
                 throw new Error('Slug parameter is required');

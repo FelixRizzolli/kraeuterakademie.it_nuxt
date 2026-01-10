@@ -1,5 +1,6 @@
-import FIND_COURSE_VIDEO_LESSONS from '~/graphql/queries/dashboard/findCourseVideoLessons.gql';
 import { usePayloadGraphQL } from '~~/layers/shared/composables/usePayloadGraphQL';
+
+import FIND_COURSE_VIDEO_LESSONS from '~/graphql/queries/dashboard/findCourseVideoLessons.gql';
 
 const getCourseVideoLessonQuery = `
     ${FIND_COURSE_VIDEO_LESSONS?.loc?.source?.body}
