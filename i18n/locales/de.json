@@ -108,7 +108,14 @@
                 "breadcrumb-title": "Dashboard"
             },
             "help": {
-                "breadcrumb-title": "Hilfe"
+                "breadcrumb-title": "Hilfe",
+                "title": "Hilfe Seite",
+                "table-caption": "Eine Liste aller Hilfeseiten.",
+                "table": {
+                    "title": "Seitentitel",
+                    "updatedAt": "Zuletzt aktualisiert",
+                    "createdAt": "Erstellt am"
+                }
             },
             "feedback": {
                 "title": "Ticket erstellen",

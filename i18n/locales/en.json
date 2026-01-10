@@ -108,7 +108,14 @@
                 "breadcrumb-title": "Dashboard"
             },
             "help": {
-                "breadcrumb-title": "Help"
+                "breadcrumb-title": "Help",
+                "title": "Help Page",
+                "table-caption": "A list of all help pages.",
+                "table": {
+                    "title": "Page Title",
+                    "updatedAt": "Updated",
+                    "createdAt": "Created"
+                }
             },
             "feedback": {
                 "title": "Create Ticket",

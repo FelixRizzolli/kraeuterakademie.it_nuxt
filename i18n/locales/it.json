@@ -107,7 +107,14 @@
                     "breadcrumb-title": "Dashboard"
                 },
                 "help": {
-                    "breadcrumb-title": "Aiuto"
+                    "breadcrumb-title": "Aiuto",
+                    "title": "Pagina di aiuto",
+                    "table-caption": "Una lista di tutte le pagine di aiuto.",
+                    "table": {
+                        "title": "Titolo della pagina",
+                        "updatedAt": "Aggiornato il",
+                        "createdAt": "Creato il"
+                    }
                 },
                 "feedback": {
                     "title": "Crea segnalazione",
