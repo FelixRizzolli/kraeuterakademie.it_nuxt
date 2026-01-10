@@ -161,7 +161,13 @@
                 }
             },
             "changelog": {
-                "breadcrumb-title": "Änderungsprotokoll"
+                "breadcrumb-title": "Änderungsprotokoll",
+                "title": "Änderungsprotokoll",
+                "table-caption": "Eine Liste aller Änderungsprotokolle.",
+                "table": {
+                    "version": "Version",
+                    "releaseDate": "Veröffentlichungsdatum"
+                }
             },
             "course": {
                 "breadcrumb-title": "Kurs"

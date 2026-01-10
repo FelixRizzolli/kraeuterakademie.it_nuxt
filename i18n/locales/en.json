@@ -161,7 +161,13 @@
                 }
             },
             "changelog": {
-                "breadcrumb-title": "Changelog"
+                "breadcrumb-title": "Changelog",
+                "title": "Changelog",
+                "table-caption": "A list of all changelogs.",
+                "table": {
+                    "version": "Version",
+                    "releaseDate": "Release Date"
+                }
             },
             "course": {
                 "breadcrumb-title": "Course"

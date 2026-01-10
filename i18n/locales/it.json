@@ -48,157 +48,163 @@
                     "terms": "Termini di servizio",
                     "privacy": "Informativa sulla privacy"
                 }
-            },
-            "navigation": {
-                "title": "Kräuterakademie",
-                "subtitle": "di Sigrid Thaler Rizzolli",
-                "nav-course": {
-                    "title": "Corsi",
-                    "courses": {
-                        "title": "Corsi",
-                        "items": {
-                            "overview": "Panoramica",
-                            "documents": "Documenti"
-                        }
-                    },
-                    "course-modules": {
-                        "title": "Moduli del corso",
-                        "items": {
-                            "overview": "Panoramica"
-                        }
-                    }
-                },
-                "nav-study": {
-                    "title": "Studio",
-                    "video-lessons": "Lezioni video",
-                    "plant-lexicon": {
-                        "title": "Lessico delle piante",
-                        "items": {
-                            "plants": "Piante",
-                            "poison-plants": "Piante velenose",
-                            "plant-families": "Famiglie di piante",
-                            "plant-groups": "Gruppi di piante",
-                            "catalogue": "Catalogo d'esame"
-                        }
-                    },
-                    "quiz": {
-                        "title": "Quiz",
-                        "items": {
-                            "plants-practice": "Pratica piante",
-                            "plants-theory": "Teoria piante",
-                            "plants-poison": "Piante velenose",
-                            "catalogue": "Catalogo d'esame"
-                        }
-                    }
-                },
-                "nav-secondary": {
-                    "help": "Supporto",
-                    "feedback": "Feedback",
-                    "changelog": "Registro delle modifiche"
-                }
-            },
-            "pages": {
-                "state": {
-                    "loading": "Caricamento {type}...",
-                    "not-found": "{type} non trovato.",
-                    "error": "Errore durante il caricamento di {type}."
-                },
-                "dashboard": {
-                    "breadcrumb-title": "Dashboard"
-                },
-                "help": {
-                    "breadcrumb-title": "Aiuto",
-                    "title": "Pagina di aiuto",
-                    "table-caption": "Una lista di tutte le pagine di aiuto.",
-                    "table": {
-                        "title": "Titolo della pagina",
-                        "updatedAt": "Aggiornato il",
-                        "createdAt": "Creato il"
-                    }
-                },
-                "feedback": {
-                    "title": "Crea segnalazione",
-                    "description": "Hai suggerimenti o problemi? Crea una segnalazione e ce ne occuperemo il prima possibile.",
-                    "breadcrumb-title": "Feedback",
-                    "ticket": "Segnalazione",
-                    "tickets": "Segnalazioni",
-                    "ticket-category": "Categoria della segnalazione",
-                    "ticket-categories": "Categorie delle segnalazioni",
-                    "formular": {
-                        "title": {
-                            "label": "Titolo",
-                            "description": "Inserisci un titolo descrittivo per la tua segnalazione."
-                        },
-                        "ticket-category": {
-                            "label": "Categoria",
-                            "description": "Seleziona la categoria che meglio rappresenta il tuo problema."
-                        },
-                        "description": {
-                            "label": "Descrizione",
-                            "description": "Descrivi il tuo problema nel modo più dettagliato possibile."
-                        },
-                        "submit-button": "Invia segnalazione"
-                    },
-                    "priority": {
-                        "low": "Basso",
-                        "medium": "Medio",
-                        "high": "Alto"
-                    },
-                    "status": {
-                        "open": "Aperto",
-                        "in-progress": "In lavorazione",
-                        "closed": "Chiuso"
-                    },
-                    "table": {
-                        "id": "ID",
-                        "title": "Titolo",
-                        "priority": "Priorità",
-                        "status": "Stato",
-                        "updatedAt": "Aggiornato il",
-                        "createdAt": "Creato il",
-                        "category": "Categoria"
-                    }
-                },
-                "changelog": {
-                    "breadcrumb-title": "Registro delle modifiche"
-                },
-                "course": {
-                    "breadcrumb-title": "Corso"
-                },
-                "study": {
-                    "breadcrumb-title": "Studio",
-                    "video-lessons": {
-                        "breadcrumb-title": "Lezioni video"
-                    },
-                    "plant-lexicon": {
-                        "plants": {
-                            "title": "Piante",
-                            "table-caption": "Una lista di tutte le piante nel lessico delle piante."
-                        },
-                        "poison-plants": {
-                            "title": "Piante velenose",
-                            "table-caption": "Una lista di piante velenose nel lessico delle piante."
-                        },
-                        "plant-families": {
-                            "title": "Famiglie di piante",
-                            "table-caption": "Una lista di tutte le famiglie di piante nel lessico delle piante."
-                        },
-                        "catalogue": {
-                            "title": "Catalogo d'esame"
-                        }
-                    }
-                }
-            },
-            "plants": {
-                "plant-family": "Famiglia di piante",
-                "plant-families": "Famiglie di piante",
-                "plant": "Pianta",
-                "plants": "Piante",
-                "german-name": "Nome tedesco",
-                "scientific-name": "Nome scientifico",
-                "recognition": "Riconoscimento",
-                "toxicity-level": "Livello di tossicità"
             }
+        },
+        "navigation": {
+            "title": "Kräuterakademie",
+            "subtitle": "di Sigrid Thaler Rizzolli",
+            "nav-course": {
+                "title": "Corsi",
+                "courses": {
+                    "title": "Corsi",
+                    "items": {
+                        "overview": "Panoramica",
+                        "documents": "Documenti"
+                    }
+                },
+                "course-modules": {
+                    "title": "Moduli del corso",
+                    "items": {
+                        "overview": "Panoramica"
+                    }
+                }
+            },
+            "nav-study": {
+                "title": "Studio",
+                "video-lessons": "Lezioni video",
+                "plant-lexicon": {
+                    "title": "Lessico delle piante",
+                    "items": {
+                        "plants": "Piante",
+                        "poison-plants": "Piante velenose",
+                        "plant-families": "Famiglie di piante",
+                        "plant-groups": "Gruppi di piante",
+                        "catalogue": "Catalogo d'esame"
+                    }
+                },
+                "quiz": {
+                    "title": "Quiz",
+                    "items": {
+                        "plants-practice": "Pratica piante",
+                        "plants-theory": "Teoria piante",
+                        "plants-poison": "Piante velenose",
+                        "catalogue": "Catalogo d'esame"
+                    }
+                }
+            },
+            "nav-secondary": {
+                "help": "Supporto",
+                "feedback": "Feedback",
+                "changelog": "Registro delle modifiche"
+            }
+        },
+        "pages": {
+            "state": {
+                "loading": "Caricamento {type}...",
+                "not-found": "{type} non trovato.",
+                "error": "Errore durante il caricamento di {type}."
+            },
+            "dashboard": {
+                "breadcrumb-title": "Dashboard"
+            },
+            "help": {
+                "breadcrumb-title": "Aiuto",
+                "title": "Pagina di aiuto",
+                "table-caption": "Una lista di tutte le pagine di aiuto.",
+                "table": {
+                    "title": "Titolo della pagina",
+                    "updatedAt": "Aggiornato il",
+                    "createdAt": "Creato il"
+                }
+            },
+            "feedback": {
+                "title": "Crea segnalazione",
+                "description": "Hai suggerimenti o problemi? Crea una segnalazione e ce ne occuperemo il prima possibile.",
+                "breadcrumb-title": "Feedback",
+                "ticket": "Segnalazione",
+                "tickets": "Segnalazioni",
+                "ticket-category": "Categoria della segnalazione",
+                "ticket-categories": "Categorie delle segnalazioni",
+                "formular": {
+                    "title": {
+                        "label": "Titolo",
+                        "description": "Inserisci un titolo descrittivo per la tua segnalazione."
+                    },
+                    "ticket-category": {
+                        "label": "Categoria",
+                        "description": "Seleziona la categoria che meglio rappresenta il tuo problema."
+                    },
+                    "description": {
+                        "label": "Descrizione",
+                        "description": "Descrivi il tuo problema nel modo più dettagliato possibile."
+                    },
+                    "submit-button": "Invia segnalazione"
+                },
+                "priority": {
+                    "low": "Basso",
+                    "medium": "Medio",
+                    "high": "Alto"
+                },
+                "status": {
+                    "open": "Aperto",
+                    "in-progress": "In lavorazione",
+                    "closed": "Chiuso"
+                },
+                "table": {
+                    "id": "ID",
+                    "title": "Titolo",
+                    "priority": "Priorità",
+                    "status": "Stato",
+                    "updatedAt": "Aggiornato il",
+                    "createdAt": "Creato il",
+                    "category": "Categoria"
+                }
+            },
+            "changelog": {
+                "breadcrumb-title": "Registro delle modifiche",
+                "title": "Registro delle modifiche",
+                "table-caption": "Una lista di tutti i registri delle modifiche.",
+                "table": {
+                    "version": "Versione",
+                    "releaseDate": "Data di rilascio"
+                }
+            },
+            "course": {
+                "breadcrumb-title": "Corso"
+            },
+            "study": {
+                "breadcrumb-title": "Studio",
+                "video-lessons": {
+                    "breadcrumb-title": "Lezioni video"
+                },
+                "plant-lexicon": {
+                    "plants": {
+                        "title": "Piante",
+                        "table-caption": "Una lista di tutte le piante nel lessico delle piante."
+                    },
+                    "poison-plants": {
+                        "title": "Piante velenose",
+                        "table-caption": "Una lista di piante velenose nel lessico delle piante."
+                    },
+                    "plant-families": {
+                        "title": "Famiglie di piante",
+                        "table-caption": "Una lista di tutte le famiglie di piante nel lessico delle piante."
+                    },
+                    "catalogue": {
+                        "title": "Catalogo d'esame"
+                    }
+                }
+            }
+        },
+        "plants": {
+            "plant-family": "Famiglia di piante",
+            "plant-families": "Famiglie di piante",
+            "plant": "Pianta",
+            "plants": "Piante",
+            "german-name": "Nome tedesco",
+            "scientific-name": "Nome scientifico",
+            "recognition": "Riconoscimento",
+            "toxicity-level": "Livello di tossicità"
         }
     },
     "public": {}
