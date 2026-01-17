@@ -140,6 +140,16 @@
                     },
                     "submit-button": "Submit Ticket"
                 },
+                "comment": {
+                    "add": "Add Comment",
+                    "text": "Comment",
+                    "placeholder": "Write your comment here...",
+                    "submit": "Submit Comment",
+                    "comments": "Comments",
+                    "no-comments": "No comments yet.",
+                    "comment": "Comment text is required.",
+                    "comment": "Comment added successfully!"
+                },
                 "priority": {
                     "low": "Low",
                     "medium": "Medium",

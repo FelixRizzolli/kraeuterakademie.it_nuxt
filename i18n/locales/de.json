@@ -109,7 +109,7 @@
             },
             "help": {
                 "breadcrumb-title": "Hilfe",
-                "title": "Hilfe Seite",
+                "title": "Hilfeseite",
                 "table-caption": "Eine Liste aller Hilfeseiten.",
                 "table": {
                     "title": "Seitentitel",
@@ -139,6 +139,16 @@
                         "description": "Beschreiben Sie Ihr Anliegen so detailliert wie möglich."
                     },
                     "submit-button": "Ticket senden"
+                },
+                "comment": {
+                    "add": "Kommentar hinzufügen",
+                    "text": "Kommentar",
+                    "placeholder": "Schreibe hier deinen Kommentar...",
+                    "submit": "Kommentar absenden",
+                    "comments": "Kommentare",
+                    "no-comments": "Noch keine Kommentare.",
+                    "required": "Kommentartext ist erforderlich.",
+                    "success": "Kommentar erfolgreich hinzugefügt!"
                 },
                 "priority": {
                     "low": "Niedrig",

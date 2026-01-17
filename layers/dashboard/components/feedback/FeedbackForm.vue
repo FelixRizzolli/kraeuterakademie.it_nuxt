@@ -91,13 +91,17 @@
             <div v-if="submitSuccess" class="w-full rounded-lg p-4 bg-green-500/15 text-green-700 mb-2">
                 <p>{{ submitSuccess }}</p>
             </div>
-            <Button 
-                class="w-full" 
+            <Button
+                class="w-full"
                 v-if="dashboardTicketCategories && dashboardTicketCategories.length > 0"
                 @click="handleSubmit"
                 :disabled="submitting || loading"
             >
-                {{ submitting ? t('dashboard.pages.state.loading', { type: '' }) : t('dashboard.pages.feedback.formular.submit-button') }}
+                {{
+                    submitting
+                        ? t('dashboard.pages.state.loading', { type: '' })
+                        : t('dashboard.pages.feedback.formular.submit-button')
+                }}
             </Button>
         </CardFooter>
     </Card>
@@ -130,10 +134,12 @@
     import CREATE_DASHBOARD_TICKET from '~/graphql/mutations/dashboard/createDashboardTicket.gql';
     const { t } = useI18n();
     const userStore = useDashboardUserStore();
+
     // Form data
     const title = ref('');
     const description = ref('');
     const selectedCategory = ref('');
+
     // State
     const dashboardTicketCategories = ref<Array<DashboardTicketCategory | null>>([]);
     const loading = ref(true);
@@ -141,6 +147,7 @@
     const submitting = ref(false);
     const submitError = ref<string | null>(null);
     const submitSuccess = ref<string | null>(null);
+
     onMounted(async () => {
         try {
             const fetchDashboardTicketCategories = useDashboardTicketCategories();
@@ -206,7 +213,8 @@
                 throw new Error(response.errors[0]?.message || 'Failed to create ticket');
             }
             if (response?.data?.createDashboardTicket) {
-                submitSuccess.value = t('dashboard.pages.feedback.formular.success') || 'Feedback submitted successfully!';
+                submitSuccess.value =
+                    t('dashboard.pages.feedback.formular.success') || 'Feedback submitted successfully!';
                 // Reset form
                 title.value = '';
                 description.value = '';

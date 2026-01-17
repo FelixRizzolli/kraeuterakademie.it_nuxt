@@ -1,0 +1,18 @@
+mutation UpdateDashboardTicket($updateDashboardTicketId: Int!, $data: mutationDashboardTicketUpdateInput!) {
+    updateDashboardTicket(id: $updateDashboardTicketId, data: $data) {
+        comments {
+            commenter {
+                lastName
+                firstName
+            }
+            createdAt
+        }
+        status
+        priority
+        description
+        author {
+            firstName
+            lastName
+        }
+    }
+}

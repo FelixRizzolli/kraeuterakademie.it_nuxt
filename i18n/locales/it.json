@@ -140,10 +140,15 @@
                     },
                     "submit-button": "Invia segnalazione"
                 },
-                "priority": {
-                    "low": "Basso",
-                    "medium": "Medio",
-                    "high": "Alto"
+                "comment": {
+                    "add": "Aggiungi commento",
+                    "text": "Commento",
+                    "placeholder": "Scrivi qui il tuo commento...",
+                    "submit": "Invia commento",
+                    "comments": "Commenti",
+                    "no-comments": "Ancora nessun commento.",
+                    "required": "Il testo del commento è obbligatorio.",
+                    "success": "Commento aggiunto con successo!"
                 },
                 "status": {
                     "open": "Aperto",
