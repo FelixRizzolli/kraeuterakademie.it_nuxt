@@ -55,7 +55,7 @@
         "@storybook/addon-docs": "9.1.17",
         "@storybook/addon-vitest": "9.1.17",
         "@storybook/vue3": "9.1.17",
-        "@tailwindcss/vite": "4.1.18",
+        "@tailwindcss/vite": "4.2.1",
         "@vitest/browser": "4.0.18",
         "@vitest/browser-playwright": "4.0.18",
         "@vitest/coverage-v8": "4.0.18",
