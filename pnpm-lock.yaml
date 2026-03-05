@@ -30,8 +30,8 @@ importers:
         specifier: 8.21.3
         version: 8.21.3(vue@3.5.29(typescript@5.9.2))
       '@vueuse/core':
-        specifier: 14.1.0
-        version: 14.1.0(vue@3.5.29(typescript@5.9.2))
+        specifier: 14.2.1
+        version: 14.2.1(vue@3.5.29(typescript@5.9.2))
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -3916,22 +3916,27 @@ packages:
   '@vueuse/core@12.8.2':
     resolution: {integrity: sha512-HbvCmZdzAu3VGi/pWYm5Ut+Kd9mn1ZHnn4L5G8kOQTPs/IwIAmJoBrmYk2ckLArgMXZj0AW3n5CAejLUO+PhdQ==}
 
-  '@vueuse/core@14.1.0':
-    resolution: {integrity: sha512-rgBinKs07hAYyPF834mDTigH7BtPqvZ3Pryuzt1SD/lg5wEcWqvwzXXYGEDb2/cP0Sj5zSvHl3WkmMELr5kfWw==}
+  '@vueuse/core@14.2.1':
+    resolution: {integrity: sha512-3vwDzV+GDUNpdegRY6kzpLm4Igptq+GA0QkJ3W61Iv27YWwW/ufSlOfgQIpN6FZRMG0mkaz4gglJRtq5SeJyIQ==}
     peerDependencies:
       vue: ^3.5.0
 
   '@vueuse/metadata@12.8.2':
     resolution: {integrity: sha512-rAyLGEuoBJ/Il5AmFHiziCPdQzRt88VxR+Y/A/QhJ1EWtWqPBBAxTAFaSkviwEuOEZNtW8pvkPgoCZQ+HxqW1A==}
 
-  '@vueuse/metadata@14.1.0':
-    resolution: {integrity: sha512-7hK4g015rWn2PhKcZ99NyT+ZD9sbwm7SGvp7k+k+rKGWnLjS/oQozoIZzWfCewSUeBmnJkIb+CNr7Zc/EyRnnA==}
+  '@vueuse/metadata@14.2.1':
+    resolution: {integrity: sha512-1ButlVtj5Sb/HDtIy1HFr1VqCP4G6Ypqt5MAo0lCgjokrk2mvQKsK2uuy0vqu/Ks+sHfuHo0B9Y9jn9xKdjZsw==}
 
   '@vueuse/shared@12.8.2':
     resolution: {integrity: sha512-dznP38YzxZoNloI0qpEfpkms8knDtaoQ6Y/sfS0L7Yki4zh40LFHEhur0odJC6xTHG5dxWVPiUWBXn+wCG2s5w==}
 
   '@vueuse/shared@14.1.0':
     resolution: {integrity: sha512-EcKxtYvn6gx1F8z9J5/rsg3+lTQnvOruQd8fUecW99DCK04BkWD7z5KQ/wTAx+DazyoEE9dJt/zV8OIEQbM6kw==}
+    peerDependencies:
+      vue: ^3.5.0
+
+  '@vueuse/shared@14.2.1':
+    resolution: {integrity: sha512-shTJncjV9JTI4oVNyF1FQonetYAiTBd+Qj7cY89SWbXSkx7gyhrgtEdF2ZAVWS1S3SHlaROO6F2IesJxQEkZBw==}
     peerDependencies:
       vue: ^3.5.0
 
@@ -12184,16 +12189,16 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@vueuse/core@14.1.0(vue@3.5.29(typescript@5.9.2))':
+  '@vueuse/core@14.2.1(vue@3.5.29(typescript@5.9.2))':
     dependencies:
       '@types/web-bluetooth': 0.0.21
-      '@vueuse/metadata': 14.1.0
-      '@vueuse/shared': 14.1.0(vue@3.5.29(typescript@5.9.2))
+      '@vueuse/metadata': 14.2.1
+      '@vueuse/shared': 14.2.1(vue@3.5.29(typescript@5.9.2))
       vue: 3.5.29(typescript@5.9.2)
 
   '@vueuse/metadata@12.8.2': {}
 
-  '@vueuse/metadata@14.1.0': {}
+  '@vueuse/metadata@14.2.1': {}
 
   '@vueuse/shared@12.8.2(typescript@5.9.2)':
     dependencies:
@@ -12202,6 +12207,10 @@ snapshots:
       - typescript
 
   '@vueuse/shared@14.1.0(vue@3.5.29(typescript@5.9.2))':
+    dependencies:
+      vue: 3.5.29(typescript@5.9.2)
+
+  '@vueuse/shared@14.2.1(vue@3.5.29(typescript@5.9.2))':
     dependencies:
       vue: 3.5.29(typescript@5.9.2)
 
@@ -14529,7 +14538,7 @@ snapshots:
     dependencies:
       '@nuxt/devtools-kit': 3.1.1(magicast@0.5.1)(vite@7.3.1(@types/node@24.3.0)(jiti@2.6.1)(lightningcss@1.31.1)(sass@1.97.3)(terser@5.43.1)(yaml@2.8.2))
       '@nuxt/kit': 4.3.0(magicast@0.5.1)
-      '@vueuse/core': 14.1.0(vue@3.5.29(typescript@5.9.2))
+      '@vueuse/core': 14.2.1(vue@3.5.29(typescript@5.9.2))
       consola: 3.4.2
       diff: 8.0.2
       fuse.js: 7.1.0
@@ -15611,7 +15620,7 @@ snapshots:
       '@internationalized/date': 3.10.1
       '@internationalized/number': 3.6.5
       '@tanstack/vue-virtual': 3.13.14(vue@3.5.29(typescript@5.9.2))
-      '@vueuse/core': 14.1.0(vue@3.5.29(typescript@5.9.2))
+      '@vueuse/core': 14.2.1(vue@3.5.29(typescript@5.9.2))
       '@vueuse/shared': 14.1.0(vue@3.5.29(typescript@5.9.2))
       aria-hidden: 1.2.6
       defu: 6.1.4
