@@ -63,8 +63,8 @@ importers:
         specifier: 6.15.0
         version: 6.15.0
       reka-ui:
-        specifier: 2.8.0
-        version: 2.8.0(vue@3.5.29(typescript@5.9.2))
+        specifier: 2.9.0
+        version: 2.9.0(vue@3.5.29(typescript@5.9.2))
       shadcn-nuxt:
         specifier: 2.4.3
         version: 2.4.3(magicast@0.5.1)
@@ -6703,10 +6703,10 @@ packages:
     resolution: {integrity: sha512-iETxpjK6YoRWJG5o6hXLwvjYAoW+FEZn9os0PD/b6AP6xQwsa/Y7lCVgIixBbUPMfhu+i2LtdeAqVTgGlQarfA==}
     hasBin: true
 
-  reka-ui@2.8.0:
-    resolution: {integrity: sha512-N4JOyIrmDE7w2i06WytqcV2QICubtS2PsK5Uo8FIMAgmO13KhUAgAByP26cXjjm2oF/w7rTyRs8YaqtvaBT+SA==}
+  reka-ui@2.9.0:
+    resolution: {integrity: sha512-5dpp80u109iLTbRBu+jhAk8R/877/JN20gYGjb3GsuAgS7E/5QTX5ZxuzWtZAVbChBDYDpXc8pkaQAFpa6s+4w==}
     peerDependencies:
-      vue: '>= 3.2.0'
+      vue: '>= 3.4.0'
 
   relay-runtime@12.0.0:
     resolution: {integrity: sha512-QU6JKr1tMsry22DXNy9Whsq5rmvwr3LSZiiWV/9+DFpuTWvp+WFhobWMc8TC4OjKFfNhEZy7mOiqUAn5atQtug==}
@@ -15473,7 +15473,7 @@ snapshots:
 
   regexp-tree@0.1.27: {}
 
-  reka-ui@2.8.0(vue@3.5.29(typescript@5.9.2)):
+  reka-ui@2.9.0(vue@3.5.29(typescript@5.9.2)):
     dependencies:
       '@floating-ui/dom': 1.7.4
       '@floating-ui/vue': 1.1.9(vue@3.5.29(typescript@5.9.2))
@@ -16639,7 +16639,7 @@ snapshots:
   vue-input-otp@0.3.2(typescript@5.9.2)(vue@3.5.29(typescript@5.9.2)):
     dependencies:
       '@vueuse/core': 12.8.2(typescript@5.9.2)
-      reka-ui: 2.8.0(vue@3.5.29(typescript@5.9.2))
+      reka-ui: 2.9.0(vue@3.5.29(typescript@5.9.2))
       vue: 3.5.29(typescript@5.9.2)
     transitivePeerDependencies:
       - '@vue/composition-api'
