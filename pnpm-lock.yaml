@@ -42,8 +42,8 @@ importers:
         specifier: 3.14.2
         version: 3.14.2
       lucide-vue-next:
-        specifier: 0.563.0
-        version: 0.563.0(vue@3.5.29(typescript@5.9.2))
+        specifier: 0.577.0
+        version: 0.577.0(vue@3.5.29(typescript@5.9.2))
       nuxt:
         specifier: 4.3.1
         version: 4.3.1(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.1)(@types/node@24.3.0)(@vue/compiler-sfc@3.5.29)(cac@6.7.14)(db0@0.3.4)(eslint@9.39.2(jiti@2.6.1))(ioredis@5.9.2)(lightningcss@1.31.1)(magicast@0.5.1)(optionator@0.9.4)(oxlint@1.51.0(oxlint-tsgolint@0.16.0))(rollup@4.57.0)(sass@1.97.3)(terser@5.43.1)(typescript@5.9.2)(vite@7.3.1(@types/node@24.3.0)(jiti@2.6.1)(lightningcss@1.31.1)(sass@1.97.3)(terser@5.43.1)(yaml@2.8.2))(yaml@2.8.2)
@@ -5796,8 +5796,8 @@ packages:
     resolution: {integrity: sha512-MhWWlVnuab1RG5/zMRRcVGXZLCXrZTgfwMikgzCegsPnG62yDQo5JnqKkrK4jO5iKqDAZGItAqN5CtKBCBWRUA==}
     engines: {node: '>=16.14'}
 
-  lucide-vue-next@0.563.0:
-    resolution: {integrity: sha512-zsE/lCKtmaa7bGfhSpN84br1K9YoQ5pCN+2oKWjQQG3Lo6ufUUKBuHSjNFI6RvUevxaajNXb8XwFUKeTXG3sIA==}
+  lucide-vue-next@0.577.0:
+    resolution: {integrity: sha512-py05bAfv9SHVJqscbiOnjcnLlEmOffA58a+7XhZuFxrs6txe1E8VoR1ngWGTYO+9aVKABAz8l3ee3PqiQN9QPA==}
     peerDependencies:
       vue: '>=3.0.1'
 
@@ -14218,7 +14218,7 @@ snapshots:
 
   lru-cache@8.0.5: {}
 
-  lucide-vue-next@0.563.0(vue@3.5.29(typescript@5.9.2)):
+  lucide-vue-next@0.577.0(vue@3.5.29(typescript@5.9.2)):
     dependencies:
       vue: 3.5.29(typescript@5.9.2)
 
